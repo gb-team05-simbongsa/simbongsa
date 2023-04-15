@@ -29,13 +29,7 @@ button, input, select, textarea {
 
 button {
     overflow: visible;
-}
-
-button, select {
     text-transform: none;
-}
-
-button, html input[type="button"] {
     -webkit-appearance: button;
     cursor: pointer;
 }
@@ -149,7 +143,7 @@ button, html input[type="button"] {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    width: 100%;
+    width: 91%;
     height: 56px;
     padding: 0px 18px;
     background-color: rgb(254, 229, 0);
@@ -284,6 +278,11 @@ button, html input[type="button"] {
         max-width: 414px;
     }
 
+    .join-title {
+        text-align: left;
+        margin-bottom: 80px;
+    }
+
     .login-title {
         text-align: left;
         margin-bottom: 50px;
@@ -321,6 +320,18 @@ button, html input[type="button"] {
         width: 50%;
         height: 100%;
         background-image: url(https://tumblbug-assets.s3.ap-northeast-1.amazonaws.com/static_assets/login/bg_login_kakao.jpg);
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .half-img-join {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 50%;
+        height: 100%;
+        background-image: url(https://tumblbug-assets.s3.ap-northeast-1.amazonaws.com/static_assets/login/bg_signup_kakao.jpg);
         background-size: cover;
         background-position: center center;
     }
