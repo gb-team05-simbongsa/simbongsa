@@ -1,0 +1,327 @@
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+h3, p, div {
+    word-break: break-all;
+}
+
+a, div {
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+button, input, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+button {
+    overflow: visible;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, html input[type="button"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.all-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+    height: 100%;
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+}
+
+.wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    background: rgb(255, 255, 255);
+    height: 100%;
+}
+
+.login-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 66px;
+}
+
+.login-header-text {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1080px;
+    padding: 0px 16px;
+    margin: 0px auto;
+}
+
+.header-text {
+    width: 110px;
+    transition: all 0.3s ease 0s;
+}
+
+.header-text svg {
+    width: 100%;
+}
+
+.main-wrap {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1080px;
+    min-height: calc(100% - 66px);
+    height: 100%;
+    padding: 80px 16px 20px;
+    margin: 0px auto;
+}
+
+.login-wrap {
+    flex: 1 1 0px;
+}
+
+.login-inner-wrap {
+    width: 100%;
+    max-width: 328px;
+    margin: 0px auto;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-text-first {
+    margin: 0px;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(13, 13, 13);
+    margin-top: 0;
+}
+
+.login-text-second {
+    line-height: 28px;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(13, 13, 13);
+    margin-bottom: 0;
+}
+
+.kakao-login {
+    position: relative;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    padding: 0px 18px;
+    background-color: rgb(254, 229, 0);
+    border: none;
+    outline: none;
+    border-radius: 1px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(25, 25, 25);
+}
+
+.kakao-login-wrap {
+    display: inline-flex;
+    position: absolute;
+    left: 18px;
+    font-size: 24px;
+    margin-right: auto;
+}
+
+.kakao-login-wrap svg {
+    width: 1em;
+    height: 1em;
+}
+
+.login-another {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.login-another-inner {
+    padding: 10px 0px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.login-another-text {
+    position: relative;
+    padding: 16px;
+    color: rgb(158, 158, 158);
+    font-size: 12px;
+}
+
+.login-another-text::before, .login-another-text::after {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    top: 50%;
+    width: 5000px;
+}
+
+.login-another-text::before {
+    right: 100%;
+}
+
+.login-circle {
+    width: auto;
+    height: auto;
+    margin-right: 20px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.naver-login-wrap {
+    display: inline-flex;
+    margin: 0px;
+    font-size: 42px;
+}
+
+.naver-login-wrap svg {
+    width: 1em;
+    height: 1em;
+}
+
+.email-login-wrap {
+    display: inline-flex;
+    margin: 0px;
+    font-size: 42px;
+}
+
+.email-login-wrap svg {
+    width: 1em;
+    height: 1em;
+}
+
+.join-wrap {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 50px 0px 0px;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    color: rgb(158, 158, 158);
+}
+
+.join-text {
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0px 0px 0px 4px;
+}
+
+.join-page {
+    color: rgb(39, 163, 255);
+    text-decoration: underline;
+}
+
+.half-img {
+    display: none;
+}
+
+
+@media (min-width: 1080px) {
+    .login-header {
+        height: 88px;
+    }
+
+    .header-text {
+        width: 140px;
+    }
+
+    .main-wrap {
+        min-height: calc(100% - 80px);
+        padding: 0px 16px;
+    }
+
+    .login-inner-wrap {
+        margin: 0px;
+        max-width: 414px;
+    }
+
+    .login-title {
+        text-align: left;
+        margin-bottom: 50px;
+    }
+
+    .login-text-first {
+        font-size: 20px;
+    }
+
+    .login-text-second {
+        margin-top: 3px;
+        line-height: 36px;
+        font-size: 24px;
+    }
+
+    .kakao-login {
+        height: 62px;
+    }
+
+    .login-another {
+        margin-top: 70px;
+        text-align: left;
+    }
+
+    .join-wrap {
+        justify-content: left;
+        flex-direction: row;
+    }
+
+    .half-img {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 50%;
+        height: 100%;
+        background-image: url(https://tumblbug-assets.s3.ap-northeast-1.amazonaws.com/static_assets/login/bg_login_kakao.jpg);
+        background-size: cover;
+        background-position: center center;
+    }
+}
