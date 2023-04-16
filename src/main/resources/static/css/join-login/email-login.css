@@ -155,10 +155,6 @@ input {
     font-weight: 500;
 }
 
-.input-include-div {
-    width: auto;
-    margin: 0px 0px 12px;
-}
 
 .input-include-span {
     border: 1px solid rgb(230, 230, 230);
@@ -195,6 +191,7 @@ input {
     line-height: 20px;
     letter-spacing: -0.015em;
     margin: 0px 0px 12px;
+    display: none;
 }
 
 .submit-button {
@@ -399,4 +396,9 @@ input {
         background-size: cover;
         background-position: center center;
     }
+}
+
+.input-include-div {
+    width: auto;
+    margin: 0px 0px 12px;
 }
