@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/calendar/calendar.css">
+    <link rel="stylesheet" href="/static/css/calendar/common.css">
+
+    <title>Document</title>
+</head>
+
+<body class="sub">
+    <section id="sub">
+        <div id="content">
+            <div class="sub-tit">
+                <h3>자원봉사 일정/신청</h3>
+                <em>국내외 이웃들이 여러분의 참여를 기다립니다.</em>
+            </div>
+
+            <ul class="tab1">
+                <li class="active"><a href="/welfare/schedule">국내자원봉사</a></li>
+                <li class=""><a href="/welfare/schedule2">해외자원봉사</a></li>
+                <li class=""><a href="/welfare/schedule3">교육프로그램</a></li>
+            </ul>
+
+            <div class="sche-date" id="title_i">
+                <form name="searchForm" action="">
+                    <select name="year" id="year" onchange="this.form.submit();">
+                        <option value="2010">2010년</option>
+                        <option value="2011">2011년</option>
+                        <option value="2012">2012년</option>
+                        <option value="2013">2013년</option>
+                        <option value="2014">2014년</option>
+                        <option value="2015">2015년</option>
+                        <option value="2016">2016년</option>
+                        <option value="2017">2017년</option>
+                        <option value="2018">2018년</option>
+                        <option value="2019">2019년</option>
+                        <option value="2020">2020년</option>
+                        <option value="2021">2021년</option>
+                        <option value="2022">2022년</option>
+                        <option value="2023" selected="selected">2023년</option>
+                        <option value="2024">2024년</option>
+                        <option value="2025">2025년</option>
+                        <option value="2026">2026년</option>
+                        <option value="2027">2027년</option>
+                        <option value="2028">2028년</option>
+                        <option value="2029">2029년</option>
+                        <option value="2030">2030년</option>
+                    </select>
+                    <select name="month" id="month" onchange="this.form.submit();">
+                        <option value="1">1월</option>
+                        <option value="2">2월</option>
+                        <option value="3">3월</option>
+                        <option value="4" selected="selected">4월</option>
+                        <option value="5">5월</option>
+                        <option value="6">6월</option>
+                        <option value="7">7월</option>
+                        <option value="8">8월</option>
+                        <option value="9">9월</option>
+                        <option value="10">10월</option>
+                        <option value="11">11월</option>
+                        <option value="12">12월</option>
+                    </select>
+                    <select name="wm_program" id="wm_program" onchange="this.form.submit();">
+                        <option value="">프로그램 선택</option>
+                        <option value="1001">희망의 집짓기</option>
+                        <option value="1002">주거환경개선</option>
+                        <option value="1003">한국번개건축</option>
+                        <option value="1004">일반봉사</option>
+                        <option value="1005">특별프로그램</option>
+                    </select>
+                    <!-- <select name="wm_affiliate" onchange="this.form.submit();">
+                    <option value="124" >본부</option>
+                    <option value="2" >경기북부지회</option>
+                    <option value="3" >군산지회</option>
+                    <option value="4" >대구경북지회</option>
+                    <option value="6" >서울지회</option>
+                    <option value="7" >울산지회</option>
+                    <option value="8" >전남동부지회</option>
+                    <option value="10" >춘천지회</option>
+                    <option value="9" >충남세종지회</option>
+                    <option value="53" >충북청주지회</option>
+                    <option value="553" >목조건축학교</option>
+                    <option value="552" >해비타트빌더스스쿨</option>
+                </select> -->
+                </form>
+            </div>
+
+            <div class="sche-sment">
+                <ul class="bullist1">
+                    <li>아래 일정에서 신청하고자 하는 날짜/지회를 선택하세요.</li>
+                    <li>달력에 일정이 없는 경우는 봉사가 진행되지 않습니다.</li>
+                    <li>별도 문의 시에도 홈페이지와 동일한 일정으로만 안내해 드립니다.</li>
+                    <li>건축봉사활동 특성상, 현장 상황에 따라 공사는 진행되어도 봉사자 모집은 없을 수 있습니다.</li>
+                    <li>신청 전에 ‘국내/해외 건축봉사’ 페이지를 꼭 확인해주세요</li>
+                </ul>
+            </div>
+
+            <span class="ctxt1 mt10">※ 지회명/신청 가능 인원 (더 보기 버튼을 클릭하시면 더 많은 일정 확인이 가능합니다)</span>
+
+            <!-- 캘린더 -->
+            <div class="sche-cal">
+                <div class="date">
+                    <!-- 이번 년 이전 월 -->
+                    <a href="?year=2023&amp;month=3#title_i" class="prev"></a>
+                    <h5>2023년 4월</h5>
+                    <!-- 현재가 12월이라 다음 달이 내년 1월인경우 -->
+                    <!-- 이번 년 다음 월 -->
+                    <a href="?year=2023&amp;month=5#title_i" class="next"></a>
+                </div>
+
+                <div class="tblWrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>일</th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                                <th>토</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!-- 1일부터 7일 (한 주) -->
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">1</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!-- 1일부터 7일 (한 주) -->
+                                <td>
+                                    <div class="wrap"><span class="date">2</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">3</span> <a class="item"><img
+                                                src="/images/sub/cal-ico-house.jpg">(마감)충남세종 </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">4</span> <a class="item"><img
+                                                src="/images/sub/cal-ico-house.jpg">(마감)충남세종 </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">5</span> <a class="item"><img
+                                                src="/images/sub/cal-ico-dwelling.jpg">(마감)충남세종 </a>
+                                        <a class="item"><img src="/images/sub/cal-ico-dwelling.jpg">(마감)충남세종 </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">6</span> <a class="item"><img
+                                                src="/images/sub/cal-ico-dwelling.jpg">(마감)충남세종 </a>
+                                        <a class="item"><img src="/images/sub/cal-ico-house.jpg">(마감)충남세종 </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">7</span> <a class="item"><img
+                                                src="/images/sub/cal-ico-dwelling.jpg">(마감)충남세종 </a>
+                                        <a class="item"><img src="/images/sub/cal-ico-house.jpg">(마감)충남세종 </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">8</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!-- 1일부터 7일 (한 주) -->
+                                <td>
+                                    <div class="wrap"><span class="date">9</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">10</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">11</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">12</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">13</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">14</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">15</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!-- 1일부터 7일 (한 주) -->
+                                <td>
+                                    <div class="wrap"><span class="date">16</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">17</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">18</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">19</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">20</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">21</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">22</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!-- 1일부터 7일 (한 주) -->
+                                <td>
+                                    <div class="wrap"><span class="date">23</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">24</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">25</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">26</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">27</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">28</span></div>
+                                </td>
+                                <td>
+                                    <div class="wrap"><span class="date">29</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!-- 1일부터 7일 (한 주) -->
+                                <td>
+                                    <div class="wrap"><span class="date">30</span></div>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <form action="schedule_step2" class="cal-ajax-wrap" id="cal-ajax-wrap" method="POST">
+                <!-- AJAX : schedule.detail.ajax.php -->
+            </form>
+
+
+            <div class="domecontact">
+                <h5><img src="/images/sub/dome-ft-ico1.jpg">국내자원봉사 문의</h5>
+                <ul>
+                    <li>
+                        <strong><img src="/images/sub/dome-ft-ico2.jpg">전화(교회)</strong>
+                        <p>02-3407-1991 </p>
+                    </li>
+                    <li>
+                        <strong><img src="/images/sub/dome-ft-ico3.jpg">이메일</strong>
+                        <p><a href="mailto:ig@habitat.or.kr">ig@habitat.or.kr</a></p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <strong><img src="/images/sub/dome-ft-ico2.jpg">전화(기업)</strong>
+                        <p>02-3407-1984</p>
+                    </li>
+                    <li>
+                        <strong><img src="/images/sub/dome-ft-ico3.jpg">이메일</strong>
+                        <p><a href="mailto:csr@habitat.or.kr">csr@habitat.or.kr</a></p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <strong><img src="/images/sub/dome-ft-ico2.jpg">전화(기타)</strong>
+                        <p>02-3407-1992, 1934</p>
+                    </li>
+                    <li>
+                        <strong><img src="/images/sub/dome-ft-ico3.jpg">이메일</strong>
+                        <p><a href="mailto:volunteer@habitat.or.kr">volunteer@habitat.or.kr</a></p>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.sche-cal .item').on({
+                        'click': function (e) {
+                            e.preventDefault();
+                            var idx = $(this).data('item-idx');
+                            var date = $(this).data('item-date');
+                            if (idx) {
+                                $('.cal-ajax-wrap').load('/_subpage/kor/welfare/schedule.detail.ajax.php?idx=' + idx + '&date=' + date, function () {
+                                    var et = $('.cal-ajax-wrap').offset().top;
+                                    $('html,boxy').stop().animate({
+                                        'scrollTop': et - 130
+                                    })
+                                });
+                            }
+                        }
+                    })
+
+                })
+
+
+            </script>
+        </div>
+    </section>
+</body>
+
+</html>
