@@ -11,16 +11,16 @@
     }
 }
 @media screen and (max-width: 1200px){
-    #sub .sub-tit {
+    #sub-calendar .sub-tit {
         margin-bottom: 20px;
     }
 }
 @media screen and (max-width: 1200px){
-    #sub #content > * {
+    #sub-calendar #content > * {
     }
 }
 @media screen and (max-width: 1200px){
-    #sub #content {
+    #sub-calendar #content {
         width: auto;
         padding: 20px 15px;
     }
@@ -82,7 +82,7 @@
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-date select {
+    .schedule-date select {
         height: 30px;
         min-width: 120px;
         margin-right: 2px;
@@ -91,7 +91,7 @@
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-sment {
+    .schedule-sment {
         padding: 10px;
     }
 }
@@ -101,55 +101,55 @@
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .date h5 {
+    .schedule-cal .date h5 {
         margin: 0 20px;
         font-size: 18px;
     }
 }
 
 @media screen and (max-width: 1200px){
-    .sche-cal {
+    .schedule-cal {
         margin-bottom: 20px;
         margin-top: 20px;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .date > a {
+    .schedule-cal .date > a {
         width: 25px;
         height: 25px;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .tblWrap table tr > * {
+    .schedule-cal .tblWrap table tr > * {
         padding: 10 3px;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .tblWrap {
+    .schedule-cal .tblWrap {
         margin-top: 20px;
         overflow-x: scroll;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .tblWrap table {
+    .schedule-cal .tblWrap table {
         min-width: 750px;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .tblWrap table thead th {
+    .schedule-cal .tblWrap table thead th {
         font-size: 12px;
         padding: 10px 0;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .tblWrap table .wrap {
+    .schedule-cal .tblWrap table .wrap {
         min-height: 0;
         vertical-align: top;
         padding-top: 20px;
     }
 }
 @media screen and (max-width: 1200px){
-    .sche-cal .tblWrap table .wrap .date {
+    .schedule-cal .tblWrap table .wrap .date {
         font-size: 11px;
     }
 }
@@ -170,5 +170,18 @@
         line-height: 18px;
         letter-spacing: -1px;
         word-break: break-all;
+    }
+}
+@media screen and (max-width: 1200px){
+    .domecontact ul li {
+        display: block;
+        margin-right: 0;
+    }
+
+}
+@media screen and (max-width: 1200px){
+    .domecontact ul li strong {
+        margin-right: 0;
+        font-size: 13px;
     }
 }
