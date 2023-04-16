@@ -24,7 +24,7 @@
                 <div class="login-inner-wrap">
                     <h3 class="login-title">이메일로 로그인</h3>
 
-                    <form action="">
+                    <form action="" name="loginForm">
                         <div class="input-div">
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
@@ -38,12 +38,12 @@
                             <div class="input-title">비밀번호</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="text" class="input-write" placeholder="비밀번호를 입력해주세요">
+                                    <input type="password" class="input-write" placeholder="비밀번호를 입력해주세요">
                                 </span>
                             </div>
                             <div class="email-error">비밀번호를 입력해주세요</div>
                         </div>
-                        <button class="submit-button">
+                        <button class="submit-button" type="button">
                             <span>로그인</span>
                         </button>
                     </form>
@@ -80,4 +80,6 @@
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../static/js/join-login/email-login.js"></script>
 </html>
