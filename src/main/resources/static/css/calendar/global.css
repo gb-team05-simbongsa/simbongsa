@@ -1,4 +1,4 @@
-#sub .sub-tit {
+#sub-calendar .sub-tit {
     margin-bottom: 50px;
 }
 
@@ -9,16 +9,16 @@ a:link {
     text-decoration: none;
     color: #666666;
 }
-#sub #content > * {
+#sub-calendar #content > * {
 }
-#sub .sub-tit h3 {
+#sub-calendar .sub-tit h3 {
     font-size: 35px;
     color: #333333;
     letter-spacing: -1px;
     font-family: sc;
     text-align: center;
 }
-#sub .sub-tit em {
+#sub-calendar .sub-tit em {
     font-style: normal;
     display: block;
     margin-top: 5px;
@@ -108,44 +108,43 @@ a:link {
     position: relative;
 }
 
-/* 엄청 뒤에 */
-.sche-date {
+.schedule-date {
     margin-bottom: 20px;
 }
-.sche-date select {
+.schedule-date select {
     border: 1px solid #ddd;
     height: 40px;
     min-width: 120px;
     margin-right: 5px;
 }
 
-.sche-sment {
+.schedule-sment {
     border: 1px solid #ddd;
     padding: 20px;
 }
 
-.sche-cal {
+.schedule-cal {
     margin-bottom: 30px;
     text-align: center;
     margin-top: 60px;
 }
-.sche-cal .date > * {
+.schedule-cal .date > * {
     display: inline-block;
     vertical-align: middle;
 }
-.sche-cal .date > a.prev {
-    background-image: url(/static/image/prev.png);
+.schedule-cal .date > a.prev {
+    background-image: url(/static/image/calendar/prev.png);
 }
-.sche-cal .date > a.next {
-    background-image: url(/static/image/next.png);
+.schedule-cal .date > a.next {
+    background-image: url(/static/image/calendar/next.png);
 }
-.sche-cal .date > a {
+.schedule-cal .date > a {
     width: 38px;
     height: 38px;
     background-position: center center;
     background-size: contain;
 }
-.sche-cal .tblWrap {
+.schedule-cal .tblWrap {
     margin-top: 30px;
 }
 .bullist1 li {
@@ -168,24 +167,24 @@ a:link {
     width: 4px;
     height: 4px;
 }
-.sche-cal .date h5 {
+.schedule-cal .date h5 {
     margin: 0 40px;
     font-size: 34px;
     color: #333333;
     letter-spacing: -1px;
     font-weight: 600;
 }
-.sche-cal .tblWrap table {
+.schedule-cal .tblWrap table {
     width: 100%;
     border-top: 2px solid #333;
     table-layout: fixed;
 }
-.sche-cal .tblWrap table tr > * {
+.schedule-cal .tblWrap table tr > * {
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.sche-cal .tblWrap table thead th {
+.schedule-cal .tblWrap table thead th {
     text-align: center;
     background: #f7f7f7;
     border: none;
@@ -195,17 +194,30 @@ a:link {
     padding: 15px 0;
     font-weight: 300;
 }
-.sche-cal .tblWrap table .wrap {
+.schedule-cal .tblWrap table .wrap {
     position: relative;
     min-height: 130px;
     box-sizing: border-box;
     padding-top: 25px;
     text-align: left;
 }
-.sche-cal .tblWrap table .wrap .date {
+.schedule-cal .tblWrap table .wrap .date {
     position: absolute;
     top: 0;
     left: 0;
     font-size: 14px;
+    color: #555555;
+}
+.calendarImg {
+    height: 4vh; 
+}
+.speakerImg {
+    height: 4vh; 
+    margin-right: 11px;
+}
+.domecontact ul li p {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px;
     color: #555555;
 }

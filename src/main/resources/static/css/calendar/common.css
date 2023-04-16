@@ -8,12 +8,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     padding: 0;
 }
 @media screen and (max-width: 1200px){
-    #sub {
+    #sub-calendar {
 
     }
 }
 body, td, form, select, input, button, textarea, div, option, pre, p, span, blockquote, li, dt, dd, legend, label, h1, h2, h3, h4, h5, h6 {
-    font-family: noto,dotum,gullim,Tahoma,Arial,Helvetica,sans-serif;
+    font-family: SF Pro Text, Helvetica Neue, Segoe UI, Arial, NotoSansKR, sans-serif;
     font-size: 15px;
     color: #666666;
     word-break: keep-all !important;
@@ -24,9 +24,9 @@ body, td, form, select, input, button, textarea, div, option, pre, p, span, bloc
     -moz-hyphens: auto;
     hyphens: auto;
 }
-#sub #content {
+#sub-calendar #content {
     position: relative;
-    width: 1200px;
+    width: 1080px;
     margin: 0 auto;
     padding: 70px 0;
 }
@@ -34,6 +34,7 @@ a, input, select, textarea, button, label {
     vertical-align: top;
     outline: none;
 }
+
 input, select, textarea {
     box-sizing: border-box;
 }
