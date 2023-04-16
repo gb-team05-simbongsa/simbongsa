@@ -188,6 +188,15 @@ input {
     appearance: none !important;
 }
 
+.email-error {
+    margin: 8px 0px 0px;
+    color: rgb(255, 87, 87);
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    margin: 0px 0px 12px;
+}
+
 .submit-button {
     width: 100%;
     cursor: pointer;
@@ -211,6 +220,10 @@ input {
     font-size: 16px;
     line-height: 27px;
     letter-spacing: -0.02em;
+}
+
+.submit-button:hover {
+    opacity: 0.6;
 }
 
 .login-another {
