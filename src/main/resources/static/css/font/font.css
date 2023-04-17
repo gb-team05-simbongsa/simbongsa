@@ -7,37 +7,37 @@
 }
 
 @font-face {
-    font-family: 'SpoqaHanSans';
-    src: url(/wpa/3e019a62f664fb2e711e0fc93e68e0ff.eot);
-    /* IE9 Compat Modes */
-    src: url(/wpa/3e019a62f664fb2e711e0fc93e68e0ff.eot?#iefix) format('embedded-opentype'), 
-   url(/wpa/ba0e2ca4c63cc656898404027a295ae4.woff2) format('woff2'), 
-   url(/wpa/a0421d301d2d7796e0e055857cd38c50.woff) format('woff'), 
-   url(/wpa/1c56ae0a92b76330dfd87b238b62f752.ttf) format('truetype'), 
-   url(/wpa/a15bf713a98102b0068a34d52d1fbc27.svg#SpoqaHanSans) format('svg');
-    /* Legacy iOS */
-    font-weight: normal;
-}
+    font-family: 'NotoSansKR';
+    src: local('Noto Sans KR Bold'),
+    url(../../font/d197a963b8be534ec3620e51addcf533.woff2) format('woff2');
+    font-weight: 700;
+  }
   
   @font-face {
-    font-family: 'SpoqaHanSans';
-    src: url(/wpa/1f7521e7db160fd4182a7ae6a4ddbd37.eot);
-    /* IE9 Compat Modes */
-    src: url(/wpa/1f7521e7db160fd4182a7ae6a4ddbd37.eot?#iefix) format('embedded-opentype'), 
-   url(/wpa/8fc218f494d6e2209ae0fc7d23770a7c.woff2) format('woff2'), 
-   url(/wpa/a6b79ce32080d32b0d85bac2e4fbdcc4.woff) format('woff'), 
-   url(/wpa/1b37d90b132291f1acbe2fd2a5abfc59.ttf) format('truetype'), 
-   url(/wpa/8a05c102e2f973e9751b8402dc18eb08.svg#SpoqaHanSans) format('svg');
-    /* Legacy iOS */
-    font-weight: bold;
-}
-  
-  /* Tumblbug Logo */
+    font-family: 'NotoSansKR';
+    src: local('Noto Sans KR'),
+    url(../../font/bfaf1857e71d0b18bac8956117b642df.woff2) format('woff2');
+    font-weight: 500;
+  }
   
   @font-face {
-    font-family: 'TumblbugLogo';
-    src: url(/wpa/57412ac6b24fa705d3f6a01aa64e9493.eot);
+    font-family: 'NotoSansKR';
+    src: local('Noto Sans KR'),
+    url(../../font/f97524d1b3a0c3b3943493627b7a4fc6.woff2) format('woff2');
+    font-weight: 400;
+  }
+  
+  @font-face {
+    font-family: 'NotoSansKR';
+    src: local('Noto Sans KR Light'),
+    url(../../font/9ea09379fe14e88d01db5ddb4c2814d8.woff2) format('woff2');
+    font-weight: 300;
+  }
+
+@font-face {
+    font-family: 'SpoqaHanSans';
     /* IE9 Compat Modes */
-    src: url(/wpa/57412ac6b24fa705d3f6a01aa64e9493.eot?#iefix) format('embedded-opentype'), url(/wpa/30acb23e8e1c5bd5ac4cab407d906f10.woff2) format('woff2'), url(/wpa/64e78eab21c4b218ae6c302b28c9362c.woff) format('woff'), url(/wpa/39db850d56a16f7219b04ccfce62684c.ttf) format('truetype'), url(/wpa/6f3ccd0b5cd4ab40cd6ea92a42c09fbe.svg#TumblbugLogo) format('svg');
+    src: url(../../font/ba0e2ca4c63cc656898404027a295ae4.woff2) format('woff2');
+    /* Legacy iOS */
     font-weight: normal;
 }
