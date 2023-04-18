@@ -454,3 +454,16 @@ input {
     width: 1em;
     height: 1em;
 }
+
+.keyword {
+    font-style: normal;
+    color: rgb(255, 87, 87);
+}
+
+.notice-search-wrap {
+    width: 100%;
+    /* border: 0px; */
+    border-radius: 4px;
+   /*  background-color: rgb(241 248 254); */
+    color: rgba(0, 0, 0, 0.87);
+}
