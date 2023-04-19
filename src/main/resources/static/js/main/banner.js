@@ -2,8 +2,8 @@
 const $container = $(".banner-swiper-container");
 const $banner = $(".banner-swiper-wrapper");
 const $imageDiv = $(".swiper-slider");
-const $firstImageDiv = '<div class="swiper-slider"></div>';
-const $lastImageDiv = '<div class="swiper-slider"></div>';
+const firstImageDiv = '<div class="swiper-slider"></div>';
+const lastImageDiv = '<div class="swiper-slider"></div>';
 /* const lastImageDiv = document.createElement("div"); //append
 const firstImageDiv = document.createElement("div"); */ //prepend
 const $next = $(".next");
@@ -29,13 +29,13 @@ $imageDiv.each(function(index) {
     });
 });
 
-$banner.append($lastImageDiv);
-$($lastImageDiv).css('background-image', imgUrl[imgUrl[0]]);
+$banner.append(lastImageDiv);
+$(".swiper-slider").last().css('background-image', imgUrl[0]);
 
-$banner.prepend($firstImageDiv);
-$firstImageDiv.css("background-image", imgUrl[$imageDiv.length]);
+$banner.prepend(firstImageDiv);
+$(".swiper-slider").first().css('background-image', imgUrl[3]);
 
-$banner.css("transition", "translate(-766px)");
+/* $banner.css("transition", "translate(-766px)"); */
 updateBannerCount();
 
 function autoSlide(){
