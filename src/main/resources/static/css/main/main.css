@@ -188,21 +188,12 @@ b, strong {
     z-index: 1;
 }
 
-.swiper-controll-wrapper{
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    z-index: 1;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-}
-
 .banner-swiper-wrapper{
     position: relative;
     z-index: 1;
     display: flex;
-    width: 11490px;
+    /* width: 11490px; */
+    width: 3830px;
     box-sizing: content-box;
     transition: transform 0.3s;
     transition-property: transform;

@@ -35,7 +35,7 @@ $($lastImageDiv).css('background-image', imgUrl[imgUrl[0]]);
 $banner.prepend($firstImageDiv);
 $firstImageDiv.css("background-image", imgUrl[$imageDiv.length]);
 
-$banner.css("transition", "translate(-766px)");
+/* $banner.css("transition", "translate(-766px)"); */
 updateBannerCount();
 
 function autoSlide(){
