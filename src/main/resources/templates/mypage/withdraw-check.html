@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원탈퇴 확인</title>
+    <link rel="stylesheet" href="../../static/css/main/header.css">
+    <link rel="stylesheet" href="../../static/css/mypage/withdraw-check.css">
+    <link rel="stylesheet" href="../../static/css/main/footer.css">
+</head>
+<body>
+    <div class="full-screen">
+
+        <!-- 헤더 임시 -->
+        <header id="_header"></header>
+
+        <div class="withdraw-explain-wrap">
+            <div class="withdraw-header-wrap">
+                <div class="withdraw-header">
+                    <span class="withdraw-header-text">회원 탈퇴</span>
+                </div>
+            </div>
+            <div class="withdraw-explain">
+                <div class="withdraw">
+                    <div class="withdraw-title">
+                        서비스 이용에
+                        <br>
+                        불편함이 있으신가요?
+                    </div>
+                    <div class="withdraw-wrap">
+                        <div class="withdraw-content">
+                            불편한 사항이 있으셨나요?
+                        </div>
+                        <div class="withdraw-content">
+                            불편한 사항이 있다면 언제든 심봉사에 알려주세요.
+                            <a href="">심봉사에 문의하기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="withdraw">
+                    <div class="withdraw-title">
+                        탈퇴 전, 유의사항을
+                        <br>
+                        확인해주시기 바랍니다.
+                    </div>
+                    <div class="withdraw-content-wrap">
+                        <div class="withdraw-content-inner">
+                            <div class="withdraw-little-title">후원 및 결제</div>
+                            <div class="withdraw-content">
+                                <strong>이미 결제된 후원은 취소되지 않습니다.</strong>
+                            </div>
+                            <div class="withdraw-content">아직 선물을 받지 못했다면, 선물 전달 과정에서 불이익이 발생할 수 있습니다.</div>
+                            <div class="withdraw-content">배송정보를 변경할 수 없으며 전달에 관한 커뮤니티 공지, 메시지 등을 확인할 수 없습니다.</div>
+                        </div>
+                        <div class="withdraw-content-inner">
+                            <div class="withdraw-little-title">프로젝트</div>
+                            <div class="withdraw-content">프로젝트는 모두 삭제되고 공개예정, 펀딩 진행중인 프로젝트는 모두 중단됩니다.</div>
+                        </div>
+                        <div class="withdraw-check-wrap">
+                            <div class="withdraw-check">
+                                <label for="" class="withdraw-check-label">
+                                    <span class="check-span">
+                                        <div class="check">
+                                            <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path></svg>
+                                        </div>
+                                    </span>
+                                    <input type="checkbox" name="" id="">
+                                    탈퇴 유의사항을 확인했습니다.
+                                </label>
+                            </div>
+                            <button class="next-button">다음</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <!-- 푸터 임시 -->
+        <footer id="_footer"></footer>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#_header').load('../main/header.html');
+        $('#_footer').load('../main/footer.html');
+    });
+</script>
+</html>

@@ -1,0 +1,204 @@
+.withdraw-explain-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.withdraw-header-wrap {
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.withdraw-header {
+    max-width: 1160px;
+    padding: 32px 16px 18px;
+    margin: 0px auto;
+    width: 100%;
+}
+
+.withdraw-header-text {
+    font-size: 36px;
+    line-height: 54px;
+    letter-spacing: -0.035em;
+    font-weight: 300;
+}
+
+.withdraw-explain {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 16px;
+    display: flex;
+    min-height: 640px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.withdraw {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    padding: 56px 0px;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.withdraw-title {
+    font-weight: bold;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    letter-spacing: -0.32px;
+    color: rgb(61, 61, 61);
+    min-width: 340px;
+    font-size: 20px;
+    line-height: 34px;
+}
+
+.withdraw-content {
+    position: relative;
+    padding-left: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.21px;
+    color: rgb(109, 109, 109);
+}
+
+.withdraw-content::before {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    content: " ";
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background: rgb(109, 109, 109);
+}
+
+.withdraw-content a {
+    font-style: normal;
+    color: rgb(39, 163, 255);
+    text-decoration: underline;
+}
+
+.withdraw-content-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.withdraw-content-inner {
+    margin: 0px 0px 32px;
+    padding: 0px 0px 24px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.withdraw-little-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.32px;
+    color: rgb(61, 61, 61);
+}
+
+.withdraw-check-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.withdraw-check {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.withdraw-check-label {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding: 0px 0px 0px 29px;
+    color: rgb(61, 61, 61);
+    display: inline-flex;
+}
+
+.withdraw-check-label::before {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 2px;
+    z-index: 2;
+    left: 0px;
+    top: 0.14em;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(189, 189, 189);
+    background: rgb(255, 255, 255);
+}
+
+.check-span {
+    position: absolute;
+    z-index: 3;
+    left: 0px;
+    top: 0.14em;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: rgb(255, 87, 87);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.check {
+    display: inline-flex;
+    align-self: center;
+}
+
+.check svg {
+    width: 1em;
+    height: 1em;
+    fill: rgb(255, 255, 255);
+}
+
+.withdraw-check-label input {
+    visibility: hidden;
+    z-index: 1;
+    position: absolute;
+    left: 10px;
+    width: 0px;
+    height: 0px;
+    top: 90%;
+    margin: -1px 0px 0px;
+}
+
+.next-button {
+    margin: 24px 0px 30px;
+    display: flex;
+    width: 100%;
+    margin-top: 0px;
+    min-width: 128px;
+    max-width: 128px;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+
+    cursor: pointer;
+    align-items: center;
+    height: 40px;
+    border-radius: 1px;
+    border: 0px;
+    font-weight: normal;
+    padding: 0px 16px;
+    background-color: rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/main/header.css">
+    <link rel="stylesheet" href="../../static/css/mypage/withdraw-login.css">
+    <link rel="stylesheet" href="../../static/css/main/footer.css">
+</head>
+<body>
+    <div class="full-screen">
+
+        <!-- 헤더 임시 -->
+        <header id="_header"></header>
+
+        <div class="withdraw-login-container">
+            <div class="withdraw-header-wrap">
+                <div class="withdraw-header">
+                    <span class="withdraw-header-text">회원 탈퇴</span>
+                </div>
+            </div>
+
+            <div class="password-wrap">
+                <div class="password-inner-wrap">
+                    <h3 class="password-title">본인 인증</h3>
+
+                    <form action="" name="withdrawForm">
+                        <div class="input-div">
+                            <div class="input-include-div">
+                                <span class="input-include-span">
+                                    <input type="password" class="input-write" placeholder="tonky0810@naver.com" readonly>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-include-div">
+                                <span class="input-include-span">
+                                    <input type="password" class="input-write" placeholder="비밀번호">
+                                </span>
+                            </div>
+                            <div class="email-error"></div>
+                        </div>
+                        </form>
+                        <button class="submit-button" type="button">
+                            <span>회원 탈퇴</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="modal-wrap">
+                <div class="modal-container">
+                    <div class="modal">
+                        <div class="modal-content">회원 탈퇴가 완료되었습니다.</div>
+                        <div class="modal-ok-div">
+                            <button type="button" class="modal-ok">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- 푸터 임시 -->
+        <footer id="_footer"></footer>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#_header').load('../main/header.html');
+        $('#_footer').load('../main/footer.html');
+    });
+</script>
+<script src="../../static/js/mypage/withdraw-login.js"></script>
+</html>
