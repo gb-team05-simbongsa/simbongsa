@@ -1,0 +1,183 @@
+.withdraw-header-wrap {
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.withdraw-header {
+    max-width: 1160px;
+    padding: 32px 16px 18px;
+    margin: 0px auto;
+    width: 100%;
+}
+
+.withdraw-header-text {
+    font-size: 36px;
+    line-height: 54px;
+    letter-spacing: -0.035em;
+    font-weight: 300;
+}
+
+
+.password-wrap {
+    width: 400px;
+    text-align: center;
+    padding: 32px 0px 175px;
+    margin: 0 auto 12px;
+}
+
+.password-inner-wrap {
+    padding: 32px;
+    border-radius: 5px;
+    border: 1px solid rgb(228, 228, 228);
+}
+
+.password-title {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.025em;
+    text-align: left;
+    margin: 0px 0px 32px;
+}
+
+.input-div {
+    text-align: left;
+    margin: 0px 0px 10px;
+}
+
+.input-include-div {
+    width: auto;
+    margin: 0px 0px 16px;
+}
+
+.input-include-span {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(13, 13, 13);
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+
+.input-write {
+    width: 100%;
+    background: transparent;
+    border: 0px;
+    padding: 13px 0px;
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    margin: 0px;
+    appearance: none !important;
+}
+
+.email-error {
+    margin: 8px 0px 0px;
+    color: rgb(255, 87, 87);
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    margin: 0px 0px 12px;
+    display: none;
+}
+
+.submit-button {
+    width: 100%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    background-color: rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+}
+
+.submit-button:hover {
+    opacity: 0.6;
+}
+
+.password-footer {
+    display: block;
+    width: 100%;
+    color: rgb(158, 158, 158);
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.modal-wrap {
+    position: absolute;
+    width: auto;
+    z-index: 9999;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
+.modal-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.65);
+}
+
+.modal {
+    max-width: 60%;
+    min-width: 328px;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 16px 0px;
+    border-radius: 4px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.modal-content {
+    color: rgb(13, 13, 13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+}
+
+.modal-ok-div {
+    border-top: 1px solid rgb(230, 230, 230);
+    display: flex;
+    justify-content: center;
+}
+
+.modal-ok {
+    flex-grow: 1;
+    border: 0px;
+    background: rgb(255, 255, 255);
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 17px;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+    color: rgb(255, 87, 87);
+    cursor: pointer;
+}

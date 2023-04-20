@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>후원 내역</title>
+    <title>내 문의사항</title>
     <link rel="stylesheet" href="../../static/css/font/font.css">
     <link rel="stylesheet" href="../../static/css/main/header.css">
     <link rel="stylesheet" href="../../static/css/mypage/mypage-header.css">
     <link rel="stylesheet" href="../../static/css/mypage/support-request.css">
+    <link rel="stylesheet" href="../../static/css/mypage/my-question.css">
     <link rel="stylesheet" href="../../static/css/main/footer.css">
 </head>
 <body>
@@ -51,7 +52,7 @@
                         </span>
                         <span class="header-menu-element">
                             <div class="header-menu-div">
-                                <a href="" class="header-menu-a">내 문의사항</a>
+                                <a href="" class="header-menu-a-select">내 문의사항</a>
                             </div>
                         </span>
                         <span class="header-menu-element">
@@ -61,7 +62,7 @@
                         </span>
                         <span class="header-menu-element">
                             <div class="header-menu-div">
-                                <a href="" class="header-menu-a-select">후원내역</a>
+                                <a href="" class="header-menu-a">후원내역</a>
                             </div>
                         </span>
                         <span class="header-menu-element">
@@ -151,7 +152,74 @@
             </div>
         </div>
 
-
+        <div class="change-modal" id="modal">
+            <div class="change-modal-root"></div>
+            <div class="change-modal-container">
+                <div class="change-modal-wrapper">
+                    <div>
+                        <div class="change-modal-title-row">
+                            <h4 class="change-modal-title-text">1:1 문의내역</h4>
+                            <!-- x버튼 -->
+                            <div class="modal-close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                     viewBox="0 0 32 32">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g>
+                                            <g>
+                                                <g>
+                                                    <path fill="#fff" fill-opacity="0"
+                                                          d="M0 0H32V32H0z"
+                                                          transform="translate(-884 -270) translate(500 240) translate(384 30)"></path>
+                                                    <g stroke="#999" stroke-linecap="round">
+                                                        <path d="M20 20L0 0M0 20L20 0"
+                                                              transform="translate(-884 -270) translate(500 240) translate(384 30) translate(6 6)"></path>
+                                                    </g>
+                                                    <g fill="#999">
+                                                        <path d="M.784.089l.07.057L10.5 9.793 20.146.146c.196-.195.512-.195.708 0 .173.174.192.443.057.638l-.057.07-9.647 9.646 9.647 9.646c.195.196.195.512 0 .708-.174.173-.443.192-.638.057l-.07-.057-9.646-9.647-9.646 9.647c-.196.195-.512.195-.708 0-.173-.174-.192-.443-.057-.638l.057-.07L9.793 10.5.146.854C-.049.658-.049.342.146.146.32-.027.59-.046.784.09z"
+                                                              transform="translate(-884 -270) translate(500 240) translate(384 30) translate(5.5 5.5)"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <form action="" class="change-modal-form-wrapper">
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">제목</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-title">
+                                        <input type="text" placeholder="제목을 입력해주세요." class="change-modal-form-title-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">내용</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-field-container">
+                                        <textarea inputmode="text"
+                                                  class="change-modal-form-field-text"></textarea>
+                                        <span class="change-modal-form-field-content">
+                                                <span style="color: rgb(51, 51, 51);">0자</span>
+                                                <span style="color: rgb(153, 153, 153);"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="change-modal-actions-row">
+                            <button type="submit" class="change-modal-ok-btn">
+                                <span class="change-modal-btn">수정</span>
+                            </button>
+                            <button type="button" class="change-modal-delete-btn">
+                                <span class="change-modal-btn">삭제</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -167,4 +235,5 @@
         $('#_footer').load('../main/footer.html');
     });
 </script>
+<script src="../../static/js/mypage/my-question.js"></script>
 </html>

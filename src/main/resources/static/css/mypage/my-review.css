@@ -25,11 +25,10 @@
 
 .review-title {
     display: flex;
-    -webkit-box-align: center;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
     flex: 1 0 auto;
-    max-width: 100%;
 }
 
 .review-title-text {
@@ -39,6 +38,11 @@
     color: rgb(61, 61, 61);
     font-size: 20px;
     font-weight: bold;
+}
+
+.review-modify, .review-delete {
+    cursor: pointer;
+    margin-left: 8px;
 }
 
 .review-main {
@@ -54,14 +58,11 @@
     margin-right: 10px;
 }
 
-.review-img {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-image: url(https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg);
+.review-img img {
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 1px;
     cursor: pointer;
+    width: 100%;
     height: 100px;
 }
 
@@ -196,4 +197,49 @@
     height: 15px;
     display: inline-flex;
     align-self: center;
+}
+
+.modal-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(13, 13, 13, 0.65);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background: transparent;
+    min-width: 328px;
+    max-width: 800px;
+}
+
+.modal-close {
+    height: 68px;
+    text-align: right;
+}
+
+.modal-close svg {
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+}
+
+.modal-img {
+    width: 100%;
+}
+
+.modal-img img {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    max-height: calc(100vh - 228px);
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
