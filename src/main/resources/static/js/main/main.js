@@ -22,10 +22,7 @@ let imgUrl = [
 
 $imageDiv.each(function(index) {
     $(this).css({
-        'background-image': imgUrl[index],
-        'width': '766px',
-        'height': '280px',
-        'background-size': 'cover'
+        'background-image': imgUrl[index]
     });
 });
 
@@ -35,7 +32,7 @@ $($lastImageDiv).css('background-image', imgUrl[imgUrl[0]]);
 $banner.prepend($firstImageDiv);
 $firstImageDiv.css("background-image", imgUrl[$imageDiv.length]);
 
-/* $banner.css("transition", "translate(-766px)"); */
+$banner.css("transition", "translate(-766px)");
 updateBannerCount();
 
 function autoSlide(){
