@@ -310,5 +310,6 @@ section.modal-stage {
 
 section.trip-status{
   background-color: #ffffff;
-  min-width: 946px;
+  min-width: 948px;
+  box-shadow: 0 10px 10px rgb(48 52 65 / 10%);
 }

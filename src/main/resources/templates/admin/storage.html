@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
     <link rel="stylesheet" href="/static/css/admin/storage-modal.css" />
+    <link rel="stylesheet" href="/static/css/admin/paging.css">
   </head>
   <body>
     <section class="main">
@@ -181,26 +182,40 @@
                 </tr>
               </table>
               <!-- default.css > pagenation -->
-              <div class="pagenation">
-                <a href="javascript:void(0)">1</a>
-                <a href="javascript:void(0)">2</a>
-                <a href="javascript:void(0)">3</a>
-              </div>
+              <div>
+                <div class="paging" style="text-align: center">
+                  <a class="changePage" style="color: black"><code><</code></a>
+                  <code id="currentPage">1</code>
+                    <a class="changePage" style="color: black"}"><code>2</code></a>
+                  <a class="changePage"style="color: black"><code>></code></a>
+                </div>
+                <form name="pageForm">
+                  <input type="hidden">
+                  <input type="hidden">
+                </form>
+            </div>
             </div>
           </div>
         </main>
       </section>
       <!-- 모달창 들어가야할 곳 -->
       <!-- 추후 타임리프로 불러와야 함 -->
-      <div id="confirm-modal" style="display: none">
-        <div class="confirm_modal_content">
-          <p>정말로 삭제하겠습니까?</p>
-          <div class="confirm_btn">
-            <button id="confirm-delete">확인</button>
-            <button id="cancel-delete">취소</button>
+      <div id="confirm-modal" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>삭제 확인</h3>
+            <button class="close-btn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>정말로 삭제하시겠습니까?</p>
+          </div>
+          <div class="modal-footer">
+            <button id="confirm-delete" class="btn confirm-btn">확인</button>
+            <button id="cancel-delete" class="btn cancel-btn">취소</button>
           </div>
         </div>
       </div>
+
       <section class="modal-stage" style="display: none">
         <section class="modal">
           <div class="modal__header">

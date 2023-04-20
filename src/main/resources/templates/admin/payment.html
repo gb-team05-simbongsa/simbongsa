@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공양미 내역</title>
+    <title>공양미 충전 내역</title>
     <link
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
       rel="stylesheet" />
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
     <link rel="stylesheet" href="/static/css/admin/payment-modal.css" />
+    <link rel="stylesheet" href="/static/css/admin/paging.css">
   </head>
   <body>
     <section class="main">
@@ -139,11 +140,10 @@
                     </label>
                   </th>
                   <th class="content__id">결제번호</th>
-                  <th class="content__id">창고번호</th>
-                  <th>유저 아이디</th>
+                  <th>아이디</th>
                   <th>이메일</th>
-                  <th>창고 위치</th>
-                  <th>결제일</th>
+                  <th>공양미 충전</th>
+                  <th>충전일</th>
                   <th></th>
                 </tr>
                 <tr class="table__content">
@@ -153,10 +153,9 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td class="content__id">1</td>
                   <td>kmg2331</td>
                   <td>kmg2331@gmail.com</td>
-                  <td>경기 의왕시 경수대로 262</td>
+                  <td>300개</td>
                   <td>2023-01-01</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
@@ -171,10 +170,9 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td class="content__id">1</td>
                   <td>kmg2331</td>
                   <td>kmg2331@gmail.com</td>
-                  <td>서울시 강남구 테헤란로 146</td>
+                  <td>3000개</td>
                   <td>2023-01-01</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
@@ -184,23 +182,36 @@
                 </tr>
               </table>
               <!-- default.css > pagenation -->
-              <div class="pagenation">
-                <a href="javascript:void(0)">1</a>
-                <a href="javascript:void(0)">2</a>
-                <a href="javascript:void(0)">3</a>
-              </div>
+              <div>
+                <div class="paging" style="text-align: center">
+                  <a class="changePage" style="color: black"><code><</code></a>
+                  <code id="currentPage">1</code>
+                    <a class="changePage" style="color: black"}"><code>2</code></a>
+                  <a class="changePage"style="color: black"><code>></code></a>
+                </div>
+                <form name="pageForm">
+                  <input type="hidden">
+                  <input type="hidden">
+                </form>
+            </div>
             </div>
           </div>
         </main>
       </section>
       <!-- 모달창 들어가야할 곳 -->
       <!-- 추후 타임리프로 불러와야 함 -->
-      <div id="confirm-modal" style="display: none">
-        <div class="confirm_modal_content">
-          <p>정말로 삭제하겠습니까?</p>
-          <div class="confirm_btn">
-            <button id="confirm-delete">확인</button>
-            <button id="cancel-delete">취소</button>
+      <div id="confirm-modal" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>삭제 확인</h3>
+            <button class="close-btn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>정말로 삭제하시겠습니까?</p>
+          </div>
+          <div class="modal-footer">
+            <button id="confirm-delete" class="btn confirm-btn">확인</button>
+            <button id="cancel-delete" class="btn cancel-btn">취소</button>
           </div>
         </div>
       </div>
@@ -236,15 +247,15 @@
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>항목 1</h5>
+                  <h5>결제방법</h5>
                   <div class="user__profile__input">
                     <input type="text" name="" value="신용카드" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>항목 2</h5>
+                  <h5>충전 갯수</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="신용카드" readonly="true" />
+                    <input type="text" name="" value="3000개" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
