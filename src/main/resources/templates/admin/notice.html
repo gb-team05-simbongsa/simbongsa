@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
     <link rel="stylesheet" href="/static/css/admin/notice-modal.css" />
+    <link rel="stylesheet" href="/static/css/admin/paging.css">
     <!-- 웹에디터 API -->
     <link
       href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
@@ -49,71 +50,7 @@
                         d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
                         fill="#11CA2D"></path>
                     </svg>
-                    <div class="status-item-name">답변 대기중</div>
-                  </div>
-                  <div class="status-item-count">
-                    <a href="">0</a>
-                  </div>
-                </li>
-                <li class="status-list-item">
-                  <div class="status-item-wrapper">
-                    <div class="problem-icon-wrapper">
-                      <div class="problem-icon">
-                        <div>
-                          <div>
-                            <span>
-                              <svg
-                                width="36"
-                                height="36"
-                                viewBox="0 0 36 36"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                <path
-                                  d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
-                                  fill="#11CA2D"></path>
-                                <path
-                                  d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
-                                  fill="#11CA2D"></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="status-item-name">답변 완료</div>
-                  </div>
-                  <div class="status-item-count">
-                    <a href="">0</a>
-                  </div>
-                </li>
-                <li class="status-list-item">
-                  <div class="status-item-wrapper">
-                    <div class="problem-icon-wrapper">
-                      <div class="problem-icon">
-                        <div>
-                          <div>
-                            <span>
-                              <svg
-                                width="36"
-                                height="36"
-                                viewBox="0 0 36 36"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                <path
-                                  d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
-                                  fill="#11CA2D"></path>
-                                <path
-                                  d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
-                                  fill="#11CA2D"></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="status-item-name">총 문의 개수</div>
+                    <div class="status-item-name">총 공지사항</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
@@ -127,12 +64,20 @@
             </section>
             <div class="table__box">
               <div class="table__search__form">
+                <div>
                 <button
                   id="delete-button"
                   class="button__type_2 button__color__red"
                   style="width: 120px">
-                  문의내역 삭제
+                  공지사항 삭제
                 </button>
+                <button
+                  id="create-button"
+                  class="button__type_3 button__color__green"
+                  style="width: 120px;">
+                  공지사항 작성
+                </button>
+              </div>
                 <!-- default.css -->
                 <div class="search-box-wrap">
                   <div class="select-box">
@@ -176,9 +121,9 @@
                   </th>
                   <th class="content__id">공지번호</th>
                   <th>공지 제목</th>
-                  <th>공지 내용</th>
                   <th>공지 등록일</th>
                   <th>공지 수정일</th>
+                  <th>작성자</th>
                   <th></th>
                 </tr>
                 <tr class="table__content">
@@ -188,10 +133,10 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td>테스트 공지1</td>
-                  <td class="notice-content">테스트용 공지내용입니다. 테스트입니다...</td>
+                  <td class="notice-content">테스트 공지1</td>
                   <td>2023-01-01</td>
                   <td>2023-01-02</td>
+                  <td>심청이</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -205,10 +150,10 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td>테스트 공지1</td>
-                  <td class="notice-content">테스트용 공지내용입니다. 테스트입니다...</td>
+                  <td class="notice-content">테스트 공지1</td>
                   <td>2023-01-01</td>
-                  <td>2023-01-02</td>
+                  <td>2023-01-01</td>
+                  <td>심청이</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -217,26 +162,41 @@
                 </tr>
               </table>
               <!-- default.css > pagenation -->
-              <div class="pagenation">
-                <a href="javascript:void(0)">1</a>
-                <a href="javascript:void(0)">2</a>
-                <a href="javascript:void(0)">3</a>
-              </div>
+              <div>
+                <div class="paging" style="text-align: center">
+                  <a class="changePage" style="color: black"><code><</code></a>
+                  <code id="currentPage">1</code>
+                    <a class="changePage" style="color: black"}"><code>2</code></a>
+                  <a class="changePage"style="color: black"><code>></code></a>
+                </div>
+                <form name="pageForm">
+                  <input type="hidden">
+                  <input type="hidden">
+                </form>
+            </div>
             </div>
           </div>
         </main>
       </section>
       <!-- 모달창 들어가야할 곳 -->
       <!-- 추후 타임리프로 불러와야 함 -->
-      <div id="confirm-modal" style="display: none">
-        <div class="confirm_modal_content">
-          <p>정말로 삭제하겠습니까?</p>
-          <div class="confirm_btn">
-            <button id="confirm-delete">확인</button>
-            <button id="cancel-delete">취소</button>
+      <div id="confirm-modal" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>삭제 확인</h3>
+            <button class="close-btn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>정말로 삭제하시겠습니까?</p>
+          </div>
+          <div class="modal-footer">
+            <button id="confirm-delete" class="btn confirm-btn">확인</button>
+            <button id="cancel-delete" class="btn cancel-btn">취소</button>
           </div>
         </div>
       </div>
+
+      <!-- 공지사항 상세보기 -->
       <section class="modal-stage" style="display: none">
         <section class="modal">
           <div class="modal__header">
@@ -301,4 +261,5 @@
       ],
     });
   </script>
+  <script src="/static/js/admin/notice.js"></script>
 </html>

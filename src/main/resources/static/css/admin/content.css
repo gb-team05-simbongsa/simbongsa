@@ -56,7 +56,7 @@ div.table__box {
 }
 
 div.table__box .table__search__form {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
 }

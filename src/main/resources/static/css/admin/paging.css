@@ -1,0 +1,42 @@
+.paging {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.paging a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    color: #2ac385;
+    background-color: #fff;
+    border: 1px solid #2ac385;
+    font-family: inherit;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.paging a code {
+    font-family: inherit;
+}
+
+.paging a:hover {
+    background-color: #2ac385;
+    color: #fff;
+    text-decoration: none;
+    border-color: #2ac385;
+}
+.paging a:hover code {
+    color: #fff;
+}
+
+.paging #currentPage {
+    color: #fff;
+    background-color: #2ac385;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: 1px solid #2ac385;
+    font-family: inherit;
+}

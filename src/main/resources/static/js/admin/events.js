@@ -67,6 +67,7 @@ $searchBar.on('keyup', function (key) {
   }
 });
 
+
 /* 상세보기 모달창 ======================================= */
 $detailButton.on('click', function () {
   var i = $detailButton.index($(this));
@@ -91,7 +92,6 @@ $('#completeBtn').on('click', function (e) {
   e.preventDefault();
   return new Promise(
     function () {
-      console.log('으으아');
       $modalStage.fadeOut(500);
     },
     () => {

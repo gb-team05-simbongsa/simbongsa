@@ -29,6 +29,7 @@ const $searchBar = $('.search-input');
 /* 상세보기 관련 */
 const $detailButton = $('.content__detail__btn');
 const $modalStage = $('.modal-stage');
+const $createButton = $('#create-button');
 
 /* 시게 */
 const clock = document.querySelector('.clock h1');
