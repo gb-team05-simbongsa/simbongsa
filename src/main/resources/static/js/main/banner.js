@@ -22,10 +22,7 @@ let imgUrl = [
 
 $imageDiv.each(function(index) {
     $(this).css({
-        'background-image': imgUrl[index],
-        'width': '766px',
-        'height': '280px',
-        'background-size': 'cover'
+        'background-image': imgUrl[index]
     });
 });
 
@@ -33,7 +30,17 @@ $banner.append(lastImageDiv);
 $(".swiper-slider").last().css('background-image', imgUrl[0]);
 
 $banner.prepend(firstImageDiv);
-$(".swiper-slider").first().css('background-image', imgUrl[3]);
+$(".swiper-slider").first().css('background-image', imgUrl[0]);
+
+
+$imageDiv.each(function(index) {
+    $(this).css({
+        'background-image': imgUrl[index],
+        'width': '766px',
+        'height': '280px',
+        'background-size': 'cover'
+    });
+});
 
 /* $banner.css("transition", "translate(-766px)"); */
 updateBannerCount();
