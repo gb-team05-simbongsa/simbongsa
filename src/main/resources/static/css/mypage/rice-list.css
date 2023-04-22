@@ -1,0 +1,28 @@
+.table-wrap {
+    margin: 50px auto;
+}
+
+.rice-table {
+    width: 1080px;
+    border: 1px solid rgb(233, 233, 233);
+}
+
+th {
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+th, td {
+    width: 25%;
+    height: 40px;
+    border-bottom: 1px solid rgb(233, 233, 233);
+    border-right: 1px solid rgb(233, 233, 233);
+    text-align: center;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+th:last-child, td:last-child {
+    border-right: 0;
+}
