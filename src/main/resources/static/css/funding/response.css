@@ -1,0 +1,83 @@
+@media only screen and (min-width: 992px){
+    .funding-text {
+        font: 700 32px / 44px NotoSansKR;
+    }
+}
+@media only screen and (min-width: 992px){
+    .sub-text {
+        margin-top: 20px;
+        font: 500 16px / 24px NotoSansKR;
+    }
+}
+@media only screen and (min-width: 992px){
+    .text-section {
+        margin-top: 100px;
+    }
+
+}
+@media only screen and (min-width: 992px){
+    .button-area {
+        margin-top: 36px;
+    }
+}
+
+@media only screen and (min-width: 992px){
+    .start-button {
+        padding: 11px 24px;
+        font: 500 14px / 22px NotoSansKR;
+    }
+}
+@media only screen and (min-width: 992px){
+    .guide-section {
+        padding: 180px 0px 160px;
+    }
+}
+@media only screen and (min-width: 992px){
+    .guide-section-text {
+        margin-bottom: 60px;
+        font: 700 24px / 36px NotoSansKR;
+    }
+}
+@media only screen and (min-width: 992px){
+    .guide-form {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 84px 110px;
+    }
+}
+@media only screen and (min-width: 992px){
+    .guide-wrap {
+        height: 160px;
+        width: 160px;
+    }    
+}
+@media only screen and (min-width: 992px){
+    .jRfiTa {
+        margin-top: 22px;
+        font: 700 16px / 24px NotoSansKR;
+    }
+}
+@media only screen and (min-width: 768px){
+    .guide-list {
+        flex: 1 1 calc(33.33% - 52px);
+    }
+    
+}
+@media only screen and (min-width: 992px){
+    .guide-list {
+        flex: 1 1 calc(33.33% - 110px);
+    }
+}
+@media only screen and (min-width: 992px){
+    .guide-wrap img.mobile-img {
+        display: none;
+    }
+
+}
+@media only screen and (max-width: 992px){
+    .guide-wrap img.pc-img {
+        display: none;
+    }
+
+}
+

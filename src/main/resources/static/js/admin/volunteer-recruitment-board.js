@@ -1,10 +1,10 @@
-/* 공지 사항 작성 버튼 */
+/* 게시판 작성 버튼 */
 $('#create-button').on('click', function(){
     $(".modal-stage").html(
         `
        <section class="modal" id="modal" th:fragment="notice-modal">
           <div class="modal__header">
-            <h3 class="modal__title">공지 작성하기</h3>
+            <h3 class="modal__title">게시판 작성하기</h3>
             <a class="modal-close" id="modal-close">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -20,9 +20,9 @@ $('#create-button').on('click', function(){
             <main class="modal__main">
               <div class="modal__content">
                 <div class="content__title">
-                  <h4>공지사항 제목</h4>
+                  <h4>게시판 제목</h4>
                   <div class="content__intput notice__title" style="margin-left: 11px;">
-                    <input type="text" name="noticeTitle" placeholder="공지사항 제목">
+                    <input type="text" name="noticeTitle" placeholder="게시판 제목">
                   </div>
                      <h4 style="margin-left: 37px;">작성자</h4>
                   <div class="content__intput notice__title" style="margin-right: 17px; margin-left: -33px;">
@@ -42,9 +42,10 @@ $('#create-button').on('click', function(){
           </form>
         </section>
         `
+        
     );
 $('#summernote').summernote({
-placeholder: '공지사항 내용 작성',
+placeholder: '게시판 내용 작성',
 tabsize: 2,
 height: 300,
 width: '100%',
@@ -54,7 +55,7 @@ toolbar: [
     ['color', ['color']],
     ['para', ['ul', 'ol', 'paragraph']],
     ['table', ['table']],
-    ['insert', ['link']],
+    ['insert', ['link', 'picture', 'video']],
 ],
 });
 
@@ -63,7 +64,7 @@ $('.modal-close').on('click', function () {
     $modalStage.fadeOut(500);
     });
 
-    $('.modal-close').on('click', function (e) {
-      $modalStage.fadeOut(500);
-    });   
+$('.modal-close').on('click', function (e) {
+  $modalStage.fadeOut(500); 
+});    
 })

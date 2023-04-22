@@ -1,0 +1,151 @@
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    /* background: #f6f5f5; */
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+/* button */
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+
+/* main */
+ 
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+a, div {
+    text-decoration: none;
+}
+p {
+    margin: 0em 0em 1em;
+    line-height: 1.7em;
+}
+h3, p, div {
+    word-break: break-all;
+}
+a, div {
+    text-decoration: none;
+}
+img {
+    border: 0;
+}
+.text-section {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.funding-text {
+    padding: 0px;
+    margin: 0px;
+    font: 700 24px / 36px NotoSansKR;
+    color: rgb(13, 13, 13);
+    text-align: center;
+}
+
+
+p:first-child {
+    margin-top: 0em;
+}
+.sub-text {
+    padding: 0px;
+    margin: 12px 0px 0px;
+    font: 500 14px / 22px NotoSansKR;
+    color: rgb(109, 109, 109);
+}
+.button-area {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+}
+
+.start-button {
+    border: none;
+    padding: 10px 20px;
+    font: 500 12px / 20px NotoSansKR;
+    background-color: rgb(248, 100, 83);
+    color: rgb(255, 255, 255);
+}
+.guide-section {
+    max-width: 880px;
+    margin: 0px auto;
+    padding: 120px 24px 100px;
+}
+.guide-section-text {
+    margin-bottom: 48px;
+    font: 700 20px / 28px NotoSansKR;
+    color: rgb(13, 13, 13);
+    text-align: center;
+}
+.guide-form {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 56px 52px;
+}
+.guide-wrap {
+    height: 130px;
+    width: 130px;
+    margin: 0px auto;
+}
+.guide-title {
+    margin-top: 12px;
+    font: 700 14px / 22px NotoSansKR;
+    color: rgb(61, 61, 61);
+    text-align: center;
+    word-break: keep-all;
+}
+.guide-list {
+    flex: 1 1 calc(50% - 52px);
+}
+.guide-wrap img {
+    width: 100%;
+    vertical-align: top;
+}
