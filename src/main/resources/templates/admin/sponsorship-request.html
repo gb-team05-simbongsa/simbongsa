@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공지 관리</title>
+    <title>후원 요청 관리</title>
     <link
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
       rel="stylesheet" />
@@ -14,19 +14,15 @@
     <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
-    <link rel="stylesheet" href="/static/css/admin/notice-modal.css" />
+    <link rel="stylesheet" href="/static/css/admin/sponsorship-request-modal.css" />
     <link rel="stylesheet" href="/static/css/admin/paging.css">
-    <!-- 웹에디터 API -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
-      rel="stylesheet" />
   </head>
   <body>
     <section class="main">
       <!-- content.css -->
       <section class="content">
         <div class="content__header">
-          <span>공지 관리</span>
+          <span>후원요청 관리</span>
           <a href="javascript:void(0)"> 로그아웃 </a>
         </div>
         <main class="content__main">
@@ -50,12 +46,45 @@
                         d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
                         fill="#11CA2D"></path>
                     </svg>
-                    <div class="status-item-name">총 공지사항</div>
+                    <div class="status-item-name">요청 대기</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
                   </div>
                 </li>
+                <li class="status-list-item">
+                  <div class="status-item-wrapper">
+                    <div class="problem-icon-wrapper">
+                      <div class="problem-icon">
+                        <div>
+                          <div>
+                            <span>
+                              <svg
+                                width="36"
+                                height="36"
+                                viewBox="0 0 36 36"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
+                                <path
+                                  d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
+                                  fill="#11CA2D"></path>
+                                <path
+                                  d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
+                                  fill="#11CA2D"></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="status-item-name">요청 승인</div>
+                  </div>
+                  <div class="status-item-count">
+                    <a href="">0</a>
+                  </div>
+                </li>
+                
                 <div class="clock">
                   <h2>현재시간</h2>
                   <h1></h1>
@@ -69,15 +98,15 @@
                   id="delete-button"
                   class="button__type_2 button__color__red"
                   style="width: 120px">
-                  공지사항 삭제
+                  요청내역 삭제
                 </button>
                 <button
-                  id="create-button"
-                  class="button__type_3 button__color__green"
-                  style="width: 120px;">
-                  공지사항 작성
-                </button>
-              </div>
+                    id="answer-check"
+                    class="button__type_3 button__color__green"
+                    style="width: 120px;">
+                    요청 승인
+                  </button>
+                </div>
                 <!-- default.css -->
                 <div class="search-box-wrap">
                   <div class="select-box">
@@ -119,11 +148,12 @@
                       <input type="checkbox" id="checkAll" />
                     </label>
                   </th>
-                  <th class="content__id">공지번호</th>
-                  <th>공지 제목</th>
-                  <th>공지 등록일</th>
-                  <th>공지 수정일</th>
-                  <th>작성자</th>
+                  <th class="content__id">번호</th>
+                  <th>아이디</th>
+                  <th>이름</th>
+                  <th>게시물 제목</th>
+                  <th>등록날짜</th>
+                  <th>후원요청</th>
                   <th></th>
                 </tr>
                 <tr class="table__content">
@@ -133,10 +163,12 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td class="notice-content">테스트 공지1</td>
+                  <td>kmg2331</td>
+                  <td>홍길동</td>
+                  <td>게시물 제목 TEST</td>
                   <td>2023-01-01</td>
-                  <td>2023-01-02</td>
-                  <td>심청이</td>
+                  <!-- default.css -->
+                  <td class="enquiryOk">승인</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -150,10 +182,12 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td class="notice-content">테스트 공지1</td>
+                  <td>kmg2331</td>
+                  <td>홍길동</td>
+                  <td>게시물 제목 TEST</td>
                   <td>2023-01-01</td>
-                  <td>2023-01-01</td>
-                  <td>심청이</td>
+                  <!-- default.css -->
+                  <td class="enquiryNo">대기</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -195,12 +229,10 @@
           </div>
         </div>
       </div>
-
-      <!-- 공지사항 상세보기 -->
       <section class="modal-stage" style="display: none">
         <section class="modal">
           <div class="modal__header">
-            <h3 class="modal__title">공지 상세보기</h3>
+            <h3 class="modal__title">후원 요청 상세보기</h3>
             <a class="modal-close">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -212,25 +244,36 @@
               </svg>
             </a>
           </div>
-          <form class="storage_form" action="">
+          <form action="">
             <main class="modal__main">
-              <div class="modal__content">
-                <div class="content__title">
-                  <h4>공지사항 제목</h4>
-                  <div class="content__intput notice__title">
-                    <input type="text" name="" value="공지사항 테스트용 제목" />
-                  </div>
-                  <div class="content__intput date" style="flex: 0">
-                    <input type="date" />
+              <div class="modal__profile__top">
+                <h4>회원정보</h4>
+                <div class="user__profile">
+                  <h5>아이디</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="example1234" readonly="true" />
                   </div>
                 </div>
-                <div class="notice__content">
-                  <textarea id="summernote" name="editordata"></textarea>
+                <div class="user__profile">
+                  <h5>이메일</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="example@gmail.com" readonly="true" />
+                  </div>
                 </div>
+                <div class="user__profile">
+                  <h5>전화번호</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="01012341234" readonly="true" />
+                  </div>
+                </div>
+              </div>
+              <div class="modal__profile__bottom">
+                <h4>테스트 후원요청 제목</h4>
+                <textarea cols="30" rows="10" readonly="true">테스트 후원요청 내용</textarea>
               </div>
               <div class="user__profile__button">
                 <button id="completeBtn" class="button__type_2 button__color__green">
-                  작성완료
+                  닫기
                 </button>
               </div>
             </main>
@@ -242,24 +285,4 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="/static/js/admin/app.js"></script>
   <script src="/static/js/admin/events.js"></script>
-  <!-- 웹에디터 API -->
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-  <script>
-    console.log('썸머노트');
-    $('#summernote').summernote({
-      placeholder: '공지사항 내용 작성',
-      tabsize: 2,
-      height: 300,
-      width: '100%',
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video']],
-      ],
-    });
-  </script>
-  <script src="/static/js/admin/notice.js"></script>
 </html>

@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공지 관리</title>
+    <title>봉사 모집 게시판 관리</title>
     <link
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
       rel="stylesheet" />
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
-    <link rel="stylesheet" href="/static/css/admin/notice-modal.css" />
+    <link rel="stylesheet" href="/static/css/admin/volunteer-recruitment-modal.css" />
     <link rel="stylesheet" href="/static/css/admin/paging.css">
     <!-- 웹에디터 API -->
     <link
@@ -26,7 +26,7 @@
       <!-- content.css -->
       <section class="content">
         <div class="content__header">
-          <span>공지 관리</span>
+          <span>봉사 모집 게시판 관리</span>
           <a href="javascript:void(0)"> 로그아웃 </a>
         </div>
         <main class="content__main">
@@ -50,7 +50,7 @@
                         d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
                         fill="#11CA2D"></path>
                     </svg>
-                    <div class="status-item-name">총 공지사항</div>
+                    <div class="status-item-name">총 게시판 수</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
@@ -69,13 +69,13 @@
                   id="delete-button"
                   class="button__type_2 button__color__red"
                   style="width: 120px">
-                  공지사항 삭제
+                  게시판 삭제
                 </button>
                 <button
                   id="create-button"
                   class="button__type_3 button__color__green"
                   style="width: 120px;">
-                  공지사항 작성
+                  게시판 작성
                 </button>
               </div>
                 <!-- default.css -->
@@ -119,10 +119,11 @@
                       <input type="checkbox" id="checkAll" />
                     </label>
                   </th>
-                  <th class="content__id">공지번호</th>
-                  <th>공지 제목</th>
-                  <th>공지 등록일</th>
-                  <th>공지 수정일</th>
+                  <th class="content__id">게시판 번호</th>
+                  <th>게시판 제목</th>
+                  <th>게시판 등록일</th>
+                  <th>게시판 수정일</th>
+                  <th>인원 수</th>
                   <th>작성자</th>
                   <th></th>
                 </tr>
@@ -133,9 +134,10 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td class="notice-content">테스트 공지1</td>
+                  <td class="notice-content">역삼 봉사센터 봉사 가실분!</td>
                   <td>2023-01-01</td>
                   <td>2023-01-02</td>
+                  <td>5명</td>
                   <td>심청이</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
@@ -149,12 +151,13 @@
                       <input type="checkbox" name="check" />
                     </label>
                   </td>
-                  <td class="content__id">1</td>
-                  <td class="notice-content">테스트 공지1</td>
-                  <td>2023-01-01</td>
-                  <td>2023-01-01</td>
-                  <td>심청이</td>
-                  <td>
+                    <td class="content__id">1</td>
+                    <td class="notice-content">봉사활동 재밌어요!</td>
+                    <td>2023-01-01</td>
+                    <td>2023-01-02</td>
+                    <td>5명</td>
+                    <td>심청이</td>
+                    <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
                     </button>
@@ -196,11 +199,11 @@
         </div>
       </div>
 
-      <!-- 공지사항 상세보기 -->
-      <section class="modal-stage" style="display: none">
+      <!-- 게시판 상세보기 -->
+      <section class="modal-stage create-modal" style="display: none">
         <section class="modal">
           <div class="modal__header">
-            <h3 class="modal__title">공지 상세보기</h3>
+            <h3 class="modal__title">게시판 상세보기</h3>
             <a class="modal-close">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -216,9 +219,9 @@
             <main class="modal__main">
               <div class="modal__content">
                 <div class="content__title">
-                  <h4>공지사항 제목</h4>
+                  <h4>게시판 제목</h4>
                   <div class="content__intput notice__title">
-                    <input type="text" name="" value="공지사항 테스트용 제목" />
+                    <input type="text" name="" value="게시판 테스트용 제목" />
                   </div>
                   <div class="content__intput date" style="flex: 0">
                     <input type="date" />
@@ -242,12 +245,13 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="/static/js/admin/app.js"></script>
   <script src="/static/js/admin/events.js"></script>
+  <script src="/static/js/admin/volunteer-recruitment-board.js"></script>
   <!-- 웹에디터 API -->
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
   <script>
     console.log('썸머노트');
     $('#summernote').summernote({
-      placeholder: '공지사항 내용 작성',
+      placeholder: '게시판 내용 작성',
       tabsize: 2,
       height: 300,
       width: '100%',
@@ -261,5 +265,4 @@
       ],
     });
   </script>
-  <script src="/static/js/admin/notice.js"></script>
 </html>
