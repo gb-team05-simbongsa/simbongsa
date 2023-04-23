@@ -212,8 +212,6 @@
 }
 
 .show-answer {
-    margin-left: 5px;
-
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -293,7 +291,7 @@
     justify-content: center;
 }
 
-.modal-ok {
+.modal-button {
     flex-grow: 1;
     border: 0px;
     background: rgb(255, 255, 255);
@@ -305,4 +303,8 @@
     letter-spacing: -0.020em;
     color: rgb(255, 87, 87);
     cursor: pointer;
+}
+
+.modal-button:first-child {
+    border-right: 1px solid rgb(230, 230, 230);
 }
