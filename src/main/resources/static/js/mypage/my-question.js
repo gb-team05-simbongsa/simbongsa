@@ -17,6 +17,16 @@ $('.modal-close').on('click', () => {
     $('.full-screen').off('scroll touchmove mousewheel');
 });
 
+// 모달에서 삭제 버튼을 눌렀을 때 진짜 삭제할건지 모달 띄우기
+$('.change-modal-delete-btn').on('click', () => {
+    $('.modal-wrap').show();
+});
+
+$('.modal-cancel').on('click', () => {
+    $('.modal-wrap').hide();
+    $modal.hide();
+});
+
 // 답변확인 버튼 눌렀을 때 답변이 있을 경우
 $('.show-answer').on('click', function() {
     if($(this).parent().parent().parent().next().css('display') == 'none') {
@@ -25,18 +35,3 @@ $('.show-answer').on('click', function() {
         $(this).parent().parent().parent().next().hide();
     }
 });
-
-// 답변확인 버튼 눌렀을 때 답변이 없을 때 모달 띄우기
-// $('.show-answer').on('click', () => {
-//     $('.full-screen').on('scroll touchmove mousewheel', function(e) {
-//         e.preventDefault();
-//         e.stopPropagation();
-//     });
-
-//     $('.modal-wrap').show();
-// });
-
-// $('.modal-ok').on('click', () => {
-//     $('.modal-wrap').hide();
-//     $('.full-screen').off('scroll touchmove mousewheel');
-// });
