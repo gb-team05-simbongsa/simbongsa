@@ -1,0 +1,282 @@
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    font-size: 14px;
+}
+html {
+    font-family: sans-serif;
+    font-size: 12.5px;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #f6f5f5;
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.87);
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+h3, p, div {
+    word-break: break-all;
+}
+a, div {
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
+/* button */
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+
+
+.funding-header {
+    position: fixed;
+    width: 100%;
+}
+.header-wrap {
+    position: relative;
+    z-index: 9999;
+}
+.header-container {
+    width: 100%;
+    height: 58px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    box-shadow: rgba(10, 10, 10, 0.1) 0px 1px 2px 0px;
+    z-index: 999;
+}
+.container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0px auto;
+    padding: 0px;
+}
+.header-menu {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    height: 100%;
+    max-height: 70px;
+}
+.left-menu {
+    flex: 1 0 25%;
+    text-align: center;
+    display: flex;
+}
+.header-linkButton {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 58px;
+    padding: 0px 1rem;
+}
+.header-linkButton:hover, .header-linkButton:active {
+    color: rgb(117, 117, 117);
+}
+i.menu {
+    display: inline-block;
+    opacity: 1;
+    margin: 0em 0.25rem 0em 0em;
+    width: 1.18em;
+    height: 1em;
+    font-family: 'Icons';
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    text-align: center;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+i.menu, i.JXDnh3ZF3p-Ajae7ENKXc {
+    font-size: 1em;
+}
+.header-linkButton > i {
+    font-size: 1.25em;
+}
+i.menu:before {
+    background: none !important;
+    
+}
+.header-createButton {
+    display: none;
+}
+.header-linkItem {
+    display: block;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 58px;
+    min-height: 58px;
+    padding: 0px 1rem;
+}
+.header-linkItem:hover {
+    color: rgb(117, 117, 117);
+}
+
+
+.center-menu {
+    width: 10rem;
+    position: absolute;
+    inset: 0px;
+    margin: 0px auto;
+    padding: 0px 1rem;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.logo {
+    fill: rgb(0, 0, 0);
+    width: 70px;
+    height: 18.41px;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.right-menu {
+    text-align: right;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+.btn-style2 {
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: none;
+    border: none;
+    vertical-align: baseline;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+    user-select: none;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0px 0.25em 0px 0px;
+    border-radius: 0.285714rem;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: bold;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(231, 231, 231);
+    padding: 1em 1.5em;
+    font-size: 1em;
+    opacity: 1;
+}
+.btn-style1 {
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    margin-right: 10px;
+    z-index: 9;
+    line-height: 0;
+}
+.site-svg1 {
+    display: inline-flex;
+    align-self: center;
+}
+.btn-style1 .icon_svg {
+    font-size: 18px;
+}
+.site-svg1 svg {
+    width: 1em;
+    height: 1em;
+}
+.btn-style1 .icon_svg svg {
+    stroke: rgb(35, 35, 35);
+    stroke-width: 2px;
+}
+.header-itemImg {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background: transparent;
+    outline: none;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 58px;
+}
+.header-itemImg .header-profile-name {
+    position: relative;
+}
+.header-profile-img {
+    margin: 0px 10px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+}
+.profileImg {
+    display: inline-block;
+    background-image: url(https://tumblbug-upi.imgix.net/default_avatar.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=250&mask=ellipse&w=250&s=80a07af0ffbe653137dd423ed1d5651c);
+    background-size: cover;
+    background-position: 50% 38%;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: rgb(208, 208, 208) 0px 0px 1px 0px inset, rgb(208, 208, 208) 0px 0px 1px 0px;
+    margin-right: 0px;
+    margin-top: 5px;
+}

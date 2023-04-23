@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>펀딩 기획 메인</title>
+    <link rel="stylesheet" href="/static/css/font/font.css">
+    <link rel="stylesheet" href="/static/css/funding/funding-editor.css">
+    <link rel="stylesheet" href="/static/css/funding/funding-editor-response.css">
+</head>
+
+<body>
+    <div id="view" class="view">
+            <div class="top-content">
+                <header id="_header"></header>
+                <div class="content-wrap">
+                    <div class="content-center">
+                        <div class="content-buttonWrap"></div>
+                        <div class="content-project"">
+                            <div class="content-thumbnail"></div>
+                            <div>
+                                <p class="content-title"><strong>황자현의 프로젝트</strong></p>
+                                <p class="content-category">디지털 게임 · 황자현</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-editorWrap">
+                <div class="project-content">
+                    <div class="project-mainWrap">
+                        <div class="project-notice">
+                            <p class="title">텀블벅의 프로젝트 심사 기준을 확인해주세요.</p>
+                            <p class="subTitle">심사 기준을 준수하면 보다 빠른 프로젝트 승인이 가능합니다.</p>
+                            <div class="project-checkWrap">
+                                <div class="article">
+                                    <div class="check-icon customIcon yes">
+                                        <div name="check" class="svg-icon">
+                                            <svg viewBox="0 0 48 48">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="auditTitle">승인 가능 프로젝트</p>
+                                    <ol>
+                                        <li>기존에 없던 새로운 시도</li>
+                                        <li>기존에 없던 작품, 제품, 디지털 콘텐츠, 활동, 행사</li>
+                                        <li>창작자의 이전 제품 및 콘텐츠는 새로운 선물에 부수적으로 제공 가능</li>
+                                    </ol>
+                                </div>
+                                <div class="article">
+                                    <div class="check-icon customIcon no">
+                                        <div name="close-1" class="svg-icon">
+                                            <svg viewBox="0 0 48 48">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M45.1766 41.0846L28.1097 24.0186L45.1766 6.95266C46.2744 5.85485 46.2744 4.05843 45.1766 2.86082C44.0778 1.66321 42.2824 1.76401 41.0838 2.86082L24.0189 19.9268L6.95301 2.86082C5.8552 1.76401 4.05879 1.76401 2.86119 2.86082C1.66358 3.95863 1.76338 5.75605 2.86119 6.95266L19.9271 24.0186L2.86119 41.0846C1.76338 42.1834 1.76338 43.9788 2.86119 45.1774C3.95899 46.2742 5.7554 46.2742 6.95301 45.1774L24.0189 28.1104L41.0838 45.1774C42.1826 46.2742 43.979 46.2742 45.1766 45.1774C46.2744 43.9788 46.2744 42.1834 45.1766 41.0846Z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="auditTitle">반려 대상 프로젝트</p>
+                                    <ol>
+                                        <li>기존 상품· 콘텐츠의 판매 및 홍보</li>
+                                        <li>제3자에 후원금 또는 물품 기부</li>
+                                        <li>시중에 판매 및 유통되었던 제품·콘텐츠 제공</li>
+                                        <li>현금, 주식, 지분, 복권, 사이버머니, 상품권 등 수익성 상품 제공</li>
+                                        <li>추첨을 통해서만 제공되는 선물</li>
+                                        <li>무기, 군용장비, 라이터 등 위험 품목</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="buttonWrap">
+                                <button class="goProject">
+                                    <span>프로젝트 기획하러 가기</span>
+                                </button>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#_header").load("/templates/funding/funding-header.html");
+    });
+</script>
+
+</html>
