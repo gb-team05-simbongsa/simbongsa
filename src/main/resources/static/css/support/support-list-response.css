@@ -1,0 +1,148 @@
+@media (min-width: 1080px) {
+    .support-list-wrapper {
+        padding: 0px 0px 40px;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-list-title {
+        padding-right: 0px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .support-list-title {
+        padding: 0px 1rem 0px 0px !important;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .support-list-wid {
+        width: 1160px;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    .support-list-wid {
+        width: 1080px;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-list-wid {
+        width: 1032px;
+        margin: 0px auto;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-list-sort-wrapper .sort-wrap {
+        padding-left: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sort-btn-container {
+        border: 1px solid rgb(230, 230, 230);
+    }
+}
+
+@media (min-width: 1080px) {
+    .sort-btn-wrap {
+        font-size: 1rem;
+        padding: 0px 27px 0px 8px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sort-btn-wrap .sort-title {
+        display: inline;
+    }
+}
+
+@media (min-width: 1080px) {
+    .sort-btn-wrap .sort-title-down {
+        display: block;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-container {
+        margin-bottom: 0px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .support-wid {
+        width: 1160px;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    .support-wid {
+        width: 1080px;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-wid {
+        width: 1032px;
+        margin: 0px auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .support-wrap {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-wrap {
+        font-size: 16px;
+        line-height: 27px;
+        width: 100%;
+        margin: 0px auto;
+        padding: 16px 20px 32px 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .support-wrap {
+        padding: 16px 20px 32px;
+    }
+}
+
+@media (min-width: 1080px) {
+    .support-list-layout {
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        margin: 0px -10px;
+        padding: 0px;
+    }
+}
+
+@media (min-width: 640px) {
+.support-list-layout {
+        width: auto;
+        padding: 0px 8px;
+    }
+}
+
+@media only screen and (min-width: 640px) {
+    .support-list-layout-container {
+        margin: 0px 0px 56px;
+    }
+}
+
+@media only screen and (min-width: 640px) {
+    .support-list-layout-container .support-list-layout-wrapper {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 640px) {
+    .support-list-content-container {
+        padding: 0px;
+    }
+}
