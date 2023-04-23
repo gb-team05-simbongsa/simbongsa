@@ -109,12 +109,6 @@ button {
     letter-spacing: -0.015em;
 }
 
-.rice-charge-input {
-    position: absolute;
-    right: 215px;
-    top: -12px;
-}
-
 .rice-charge-wrap {
     position: relative;
     margin-top: 16px;
