@@ -328,22 +328,6 @@ button {
     fill: #fff;
     background-color: #7e69fe;
 }
-.singUp{
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 16px;
-    justify-content: center;
-    align-items: center;
-    height: 32px;
-    display: flex;
-    position: relative;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 16px;
-    color: #fff;
-    fill: #fff;
-    background-color: #7e69fe;
-}
 .comment-box2{
     border-width: 1px;
     border-radius: 8px;
@@ -357,6 +341,13 @@ button {
     display: flex;
 }
 .comment-box-span{
+    width: 402px;
+    height: 17px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    width: 100%;
+    max-height: 88px;
+    background-color: #fff;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
@@ -407,7 +398,6 @@ button {
     object-fit: cover;
     object-position: center center;
     border-radius: 9999px;
-
 }
 .comment-list{
     padding-bottom: 8px;
