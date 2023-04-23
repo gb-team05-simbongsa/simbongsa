@@ -1,0 +1,564 @@
+
+.tbb-only-ff {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+    height: 100%;
+}
+.tbb-only-ff, .tbb-only-ff h1, .tbb-only-ff h2, .tbb-only-ff h3, .tbb-only-ff h4, .tbb-only-ff h5 {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+}
+.lhcIOG {
+    margin: 60px auto 0px;
+    display: block;
+    background: rgb(255, 255, 255);
+}
+.fEFqM {
+    background: rgb(252, 252, 252);
+}
+.jFWgiC {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 8px, rgba(0, 0, 0, 0.02) 0px 1px 0px;
+    z-index: 1;
+}
+.iePPZZ {
+    padding: 24px 16px;
+    font-weight: 700;
+    font-size: 24px !important;
+    line-height: 36px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.gvPBkk {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+}
+.cWslIP {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0px 16px;
+    overflow-x: auto;
+}
+.cBbdAT {
+    padding: 0px;
+    margin: 0px;
+    height: 60px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    white-space: nowrap;
+}
+.cqTslV {
+    position: relative;
+    display: flex;
+    height: 100%;
+    margin: 0px 8px;
+}
+.cqTslV:first-child {
+    margin-left: 0px;
+}
+.cqTslV a {
+    font-weight: 500;
+    color: rgb(13, 13, 13);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.krGOIO {
+    position: relative;
+    display: flex;
+    height: 100%;
+    margin: 0px 8px;
+}
+.krGOIO a {
+    color: rgb(13, 13, 13);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 700 !important;
+}
+.ghVmvY {
+    padding: 48px 16px 0px;
+}
+.fGfROL {
+    border-bottom: 1px solid rgb(240, 240, 240);
+    padding-bottom: 40px;
+    margin-bottom: 32px;
+}
+.kwDByH {
+    margin: 0px 0px 24px;
+}
+.gjLASS {
+    margin-bottom: 14px;
+    font-weight: 700;
+    color: rgb(61, 61, 61);
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.ccxeYs {
+    display: inline-flex;
+    align-self: center;
+}
+.ccxeYs svg {
+    width: 1em;
+    height: 1em;
+}
+.gjLASS svg {
+    fill: rgb(248, 100, 83);
+    font-size: 13px;
+}
+.kbTFwt {
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    margin: 0px;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.etypUj .style__ProjectFormsHalf-sc-1mawbc1-9 {
+    margin-bottom: 24px;
+}
+.fHMBHo {
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: -0.005em;
+    margin-bottom: 8px;
+    color: rgb(61, 61, 61);
+    display: flex;
+}
+p:first-child {
+    margin-top: 0em;
+}
+.fzVHyd {
+    position: relative;
+}
+.bXlLWE {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(13, 13, 13);
+    background: rgb(248, 248, 248);
+    padding: 0px 0px 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+.gojAHY {
+    padding: 0px 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+}
+input {
+    line-height: normal;
+}
+.bfmNPl {
+    width: 100%;
+    background: transparent;
+    border: 0px;
+    padding: 11px 0px;
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    margin: 0px;
+    appearance: none !important;
+}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.gojAHY input {
+    cursor: default;
+}
+.gojAHY > div {
+    font-size: 10px;
+}
+.gojAHY svg {
+    fill: rgb(61, 61, 61);
+    transform: rotate(0deg);
+    transition: transform 0.3s ease 0s;
+}
+.jQwQu {
+    font-weight: 400;
+    color: rgb(229, 60, 65);
+    margin: 0px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.gpuBnE {
+    margin-top: 8px;
+}
+.dvfxOp {
+    padding: 0px 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(201, 201, 201);
+}
+.dvfxOp input {
+    cursor: default;
+}
+.dvfxOp > div {
+    font-size: 10px;
+}
+.dvfxOp svg {
+    fill: rgb(61, 61, 61);
+    transform: rotate(0deg);
+    transition: transform 0.3s ease 0s;
+}
+.enzGlj {
+    width: 100%;
+}
+.kWrcyJ {
+    margin-bottom: 10px;
+}
+.eCiCMa {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 10px;
+}
+.joiGLy {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 16px;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background: transparent;
+    cursor: pointer;
+}
+.eCiCMa em {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px 0px 0px 2px;
+    padding: 2px;
+    border: 0px;
+    background: transparent;
+    border-radius: 2px;
+    outline: none;
+    font-size: 16px;
+}
+.eCiCMa svg {
+    fill: rgb(255, 87, 87);
+}
+.cRZPeO {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    border-radius: 4px;
+    padding: 16px 46px 16px 26px;
+    position: relative;
+    margin: 10px 0px 0px;
+    border: 1px solid rgb(240, 240, 240);
+    transition: all 0.5s ease 0s;
+    height: auto;
+    transform: translateY(0px);
+    opacity: 1;
+}
+.fuJzEN .title {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 700 !important;
+}
+img {
+    border: 0;
+}
+.fuJzEN .image img {
+    width: 100%;
+}
+.cRZPeO .close {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 7px;
+    background: rgb(252, 252, 252);
+    cursor: pointer;
+}
+.cRZPeO svg {
+    fill: rgb(109, 109, 109);
+}
+.jcLEQH {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    border: 1px solid rgb(244, 69, 68);
+}
+.dXKaPI {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(13, 13, 13);
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+.wmJOZ {
+    flex: 1 1 0%;
+    border: 0px;
+    text-align: left;
+    padding: 0px;
+    background: transparent;
+}
+.wmJOZ input {
+    text-align: inherit;
+    font-weight: 400;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.ciHGYP {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-weight: 400;
+    margin: 8px 0px 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.fduvas {
+    color: rgb(158, 158, 158);
+}
+.hpeTKa {
+    margin-left: auto;
+    color: rgb(244, 69, 68);
+}
+.bBnjVq {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    border: 1px solid rgb(240, 240, 240);
+}
+.vnOMO {
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 1px;
+    padding: 12px;
+}
+.dUzqeP {
+    width: 100%;
+    min-height: auto;
+    border: 0px;
+    padding: 11px 0px;
+    font-weight: 400;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+textarea {
+    overflow: auto;
+}
+.cjoUaQ {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    padding: 0px;
+    resize: none;
+}
+.dUzqeP textarea {
+    background: transparent;
+}
+.kEJJPl {
+    margin-left: auto;
+    color: rgb(158, 158, 158);
+}
+.gJNjvn {
+    background: rgb(253, 244, 243);
+    border-radius: 8px;
+    padding: 20px 24px 20px 50px;
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    margin-top: 10px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.gJNjvn .noticeTitle {
+    color: rgb(248, 100, 83);
+    margin-bottom: 10px;
+    font-weight: 700;
+    position: relative;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.gJNjvn .noticeTitle > div {
+    position: absolute;
+    top: 3px;
+    left: -23px;
+}
+.gJNjvn .noticeTitle svg {
+    position: relative;
+    top: 1px;
+    margin-right: 6px;
+    fill: rgb(248, 100, 83);
+    font-size: 12px;
+}
+.eCiCMa p {
+    font-weight: 500;
+    margin: 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.LlndN {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 25px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: relative;
+    transition: border 0.4s ease 0s;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.LlndN input[type="file"] {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.LlndN span {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: 500;
+    margin: 0px auto 2px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.LlndN span i {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 12px;
+    margin: 0px 8px 0px 0px;
+}
+.LlndN span i svg {
+    fill: rgb(248, 100, 83);
+}
+.LlndN p {
+    width: 100%;
+    font-weight: 400;
+    color: rgb(158, 158, 158);
+    text-align: center;
+    margin: 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.LlndN strong {
+    display: block;
+    text-align: center;
+    font-weight: 400;
+    color: rgb(248, 100, 83);
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.bPMnIA {
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    margin: 0px;
+    padding: 8px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+    transform: translateY(48px);
+}
+.bPMnIA ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.kxgSiI {
+    background: transparent;
+    transition: background 0.3s ease 0s;
+}
+.bPMnIA li button {
+    display: block;
+    width: 100%;
+    height: 44px;
+    text-align: left;
+    padding: 0px 16px;
+    border: 0px;
+    border-radius: 4px;
+    background: transparent;
+    color: rgb(61, 61, 61);
+}

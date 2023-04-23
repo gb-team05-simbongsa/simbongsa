@@ -1,0 +1,128 @@
+@media (min-width: 1080px){
+    .content-wrap {
+        margin: 64px auto 0px;
+    }
+}
+@media (min-width: 1080px){
+    .content-center {
+        margin: 0px auto;
+        width: 1080px;
+    }
+}
+@media (min-width: 1080px){
+    .content-buttonWrap {
+        padding: 24px 0px 25px;
+    }
+}
+@media (min-width: 1080px){
+    .hQPdvE {
+        width: 120px;
+        height: 40px;
+    }
+}
+@media (min-width: 1080px){
+    .content-project {
+        display: inline-flex;
+        padding: 0px 0px 54px;
+    }
+}
+@media (min-width: 1080px){
+    .content-thumbnail {
+        border-radius: 8px;
+        width: 200px;
+        height: 133px;
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .content-title {
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-size: 32px !important;
+        line-height: 44px !important;
+        font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    
+ }
+}
+@media (min-width: 1080px){
+    .content-category {
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.015em;
+        margin-bottom: 8px;
+    }
+}
+@media (min-width: 1080px){
+    .project-notice {
+        padding: 86px 0px 53px;
+    }
+}
+@media (min-width: 1080px){
+    .project-notice button {
+        width: 396px;
+    }
+}
+@media (min-width: 1080px){
+    .project-notice .closeButton {
+        top: 20px;
+        right: 24px;
+    }
+}
+@media (min-width: 1080px){
+    .project-notice .title {
+        font-weight: 700;
+        font-size: 24px !important;
+        line-height: 36px !important;
+        font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    }
+}
+@media (min-width: 1080px){
+    .project-checkWrap {
+        display: flex;
+        padding: 0px 180px;
+        margin-bottom: 40px;
+    }
+}
+@media (min-width: 1080px){
+    .project-checkWrap .article {
+        width: 335px;
+        padding: 48px 24px;
+        margin-bottom: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .project-checkWrap .customIcon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 9px;
+    }
+}
+@media (min-width: 1080px){
+    .project-checkWrap .auditTitle {
+        margin-bottom: 36px;
+    }
+}
+@media (min-width: 1080px){
+    .project-notice .buttonWrap {
+        padding: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .project-content {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0px auto;
+    }
+}
+@media (min-width: 1080px){
+    .project-mainWrap {
+        padding: 24px 0px 70px;
+    }
+}
+@media (min-width: 1080px){
+    .project-checkWrap .customIcon svg {
+        width: 9px;
+        height: 9px;
+    }
+}
+

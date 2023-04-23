@@ -1,0 +1,330 @@
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    font-size: 14px;
+}
+html {
+    font-family: sans-serif;
+    font-size: 12.5px;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #f6f5f5;
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.87);
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+h3, p, div {
+    word-break: break-all;
+}
+a, div {
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
+/* button */
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+.view {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    height: 100%;
+}
+.view, .view h1, .view h2, .view h3, .view h4, .view h5 {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+}
+.content-wrap {
+    margin: 60px auto 0px;
+    display: block;
+    background: rgb(255, 255, 255);
+}
+.content-buttonWrap {
+    display: flex;
+    gap: 8px;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding: 20px 16px;
+    position: relative;
+}
+.dlhxb {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+
+.svg-icon {
+    display: inline-flex;
+    align-self: center;
+}
+
+.svg-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+.top-content {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 8px, rgba(0, 0, 0, 0.02) 0px 1px 0px;
+    z-index: 1;
+}
+.hQPdvE:disabled {
+    background: rgb(240, 240, 240);
+}
+.hgsFUp span {
+    color: rgb(61, 61, 61);
+    opacity: 0.5;
+}
+.content-project {
+    padding: 0px 16px 12px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.content-thumbnail {
+    background: url("https://tumblbug.com/wpa/b092e02bfb24cf713ec1d34b712d2528.png") center center / 50% no-repeat rgb(252, 252, 252);
+    border-radius: 8px;
+    width: 113px;
+    height: 80px;
+    margin: 0px 32px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+}
+.content-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 24px !important;
+    line-height: 36px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+p:first-child {
+    margin-top: 0em;
+}
+b, strong {
+    font-weight: bold;
+}
+.content-category {
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    color: rgb(109, 109, 109);
+    margin-bottom: 4px;
+}
+p:last-child {
+    margin-bottom: 0em;
+}
+.project-editorWrap {
+    background: rgb(252, 252, 252);
+}
+.project-mainWrap {
+    padding: 24px 16px 182px;
+}
+.project-notice {
+    position: relative;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    border-radius: 8px;
+    margin-bottom: 17px;
+    text-align: center;
+    padding: 67px 0px 45px;
+}
+
+.project-notice button {
+    width: 100%;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.project-notice .closeButton {
+    position: absolute;
+    top: 12px;
+    right: 13px;
+    width: 24px;
+    height: 24px;
+    background: rgb(240, 240, 240);
+    padding: 0px;
+}
+.svg-icon svg {
+    width: 1em;
+    height: 1em;
+}
+.project-notice .closeButton svg {
+    width: 9px;
+    height: 9px;
+}
+.project-notice .title {
+    margin-bottom: 8px;
+    padding: 0px 18px;
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+    word-break: keep-all;
+    font-size: 20px !important;
+    line-height: 28px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.project-notice .subTitle {
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    margin-bottom: 51px;
+    padding: 0px 30px;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.project-checkWrap {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 9px;
+    text-align: left;
+    padding: 0px 14px;
+    color: rgb(61, 61, 61);
+}
+.project-checkWrap .article {
+    background: rgb(252, 252, 252);
+    border-radius: 8px;
+    width: 100%;
+    padding: 32px 16px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 13px;
+    font-size: 13px !important;
+    line-height: 22px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.check-icon {
+    border-radius: 100px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    justify-content: center;
+}
+.check-icon.yes {
+    background: rgb(94, 189, 145);
+}
+.check-icon.no {
+    background: rgb(230, 60, 65);
+}
+.check-icon svg {
+    fill: rgb(255, 255, 255);
+}
+
+.project-checkWrap .customIcon {
+    margin-bottom: 10px;
+}
+.project-checkWrap .auditTitle {
+    margin-bottom: 32px;
+    font-weight: 500;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.project-checkWrap ol {
+    padding: 0px;
+    margin: 0px;
+}
+.project-checkWrap ol li {
+    list-style: none;
+    margin-bottom: 16px;
+    text-align: left;
+    position: relative;
+    padding-left: 16px;
+}
+.project-checkWrap ol li::before {
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    content: "·";
+}
+.goProject {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    background-color: rgb(248, 100, 83);
+    color: rgb(255, 255, 255);
+}
+.project-notice .buttonWrap {
+    padding: 0px 17px;
+}
+.goProject:hover, .goProject:active {
+    opacity: 0.6;
+}
+.goProject.pdc-btn-xl {
+    font-size: 12px;
+    line-height: 20px;
+}
+.project-notice a {
+    color: rgb(61, 61, 61);
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
