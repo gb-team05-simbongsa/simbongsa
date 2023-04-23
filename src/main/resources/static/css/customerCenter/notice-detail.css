@@ -1,0 +1,191 @@
+@media only screen and (min-width: 1200px) {
+    .notice-detail-container {
+        max-width: 1160px;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+.notice-detail-container {
+        max-width: 1080px;
+        margin: 0px auto;
+    }
+}
+
+.notice-detail-container {
+    width: 100%;
+}
+
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-wrapper {
+        padding: 40px 40px 88px;
+        border-radius: 4px;
+        border: 1px solid rgb(230, 230, 230);
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-wrapper header {
+        padding: 0px 0px 16px;
+    }
+}
+
+.notice-detail-wrapper header {
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-wrapper .notice-detail-content {
+        padding: 48px 44px 0px;
+    }
+}
+
+.notice-detail-wrapper .notice-detail-content {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    padding: 24px 16px 57px;
+}
+
+.notice-detail-wrapper .notice-detail-content > :first-child {
+    margin-top: 0px;
+}
+
+.notice-detail-wrapper .notice-detail-content p {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    margin: 16px 0px 0px;
+}
+
+.notice-detail-next-container {
+    list-style: none;
+    padding: 0px;
+    margin: 0px 0px 32px;
+}
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-next-container {
+        margin: 0px 0px 40px;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+.notice-detail-next-container li {
+        height: 47px;
+    }
+}
+
+.notice-detail-next-container li {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    padding: 0px 16px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-next-container li button {
+        font-size: 16px;
+        line-height: 27px;
+        letter-spacing: -0.02em;
+    }
+}
+
+.notice-detail-next-container li button  {
+    flex: 1 1 0%;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: normal;
+    white-space: nowrap;
+    color: rgb(109, 109, 109);
+    background: transparent;
+    text-align: left;
+    border: 0px;
+}
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-next-container li b {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    margin-right: 24px;
+    }
+}
+
+.notice-detail-next-container li b {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+    margin-right: 16px;
+}
+
+.notice-detail-btn-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 1080px) {
+    .notice-detail-btn  {
+        width: 199px;
+        height: 52px;
+    }
+}
+
+.notice-detail-btn {
+    cursor: pointer;
+   /*  width: 167px;
+    height: 44px; */
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    color: rgb(109, 109, 109);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    padding: 0px;
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+    margin: 0px;
+}
+
+.back-list {
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: none;
+    border: none;
+    vertical-align: baseline;
+    box-shadow: transparent 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0em 0px 0px inset;
+    user-select: none;
+    transition: opacity 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s, background 0.1s ease 0s;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0px 0.25em 0px 0px;
+    border-radius: 0.285714rem;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: bold;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(231, 231, 231);
+    padding: 1em 1.5em;
+    font-size: 1em;
+    width: 100%;
+    opacity: 1;
+}
