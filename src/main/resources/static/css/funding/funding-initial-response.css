@@ -1,10 +1,10 @@
 @media (min-width: 1080px){
-    .lhcIOG {
+    .top-contentWrap {
         margin: 64px auto 0px;
     }
 }
 @media (min-width: 1080px){
-    .iePPZZ {
+    .top-title {
         font-weight: 700;
         padding: 39px 0px 21px;
         margin: 0px auto;
@@ -15,7 +15,7 @@
     }
 }
 @media (min-width: 1080px){
-    .iePPZZ {
+    .top-title {
         font-weight: 700;
         padding: 39px 0px 21px;
         margin: 0px auto;
@@ -26,36 +26,36 @@
     }
 }
 @media (min-width: 1080px){
-    .cWslIP {
+    .plan-depthWrap {
         width: 1080px;
         margin: 0px auto;
         padding: 0px;
     }
 }
 @media (min-width: 1080px){
-    .cqTslV {
+    .item-li {
         margin: 0px 16px;
     }
 }
 @media (min-width: 1080px){
-    .krGOIO {
+    .tapItem-li {
         margin: 0px 16px;
     }
 }
 @media (min-width: 1080px){
-    .qbVXa {
+    .contents {
         width: 100%;
         max-width: 1080px;
         margin: 0px auto;
     }
 }
 @media (min-width: 1080px){
-    .ghVmvY {
+    .plan-content {
         padding: 84px 0px 0px;
     }
 }
 @media (min-width: 1080px){
-    .fGfROL {
+    .project-itemWrap {
         display: flex;
         padding-bottom: 48px;
         margin-bottom: 56px;
@@ -64,13 +64,13 @@
     }
 }
 @media (min-width: 1080px){
-    .kwDByH {
+    .project-info {
         margin: 0px 0px 14px;
         width: 351px;
     }
 }
 @media (min-width: 1080px){
-    .gjLASS {
+    .project-infoTitle {
         font-weight: 700;
         margin-bottom: 12px;
         font-size: 16px !important;
@@ -79,7 +79,7 @@
     }
 }
 @media (min-width: 1080px){
-    .etypUj {
+    .projectForm {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
@@ -88,45 +88,45 @@
 
 }
 @media (min-width: 1080px){
-    .gXezwb {
+    .form-half {
         width: 50%;
     }
 }
 @media (min-width: 1080px){
-    .etypUj .style__ProjectFormsHalf-sc-1mawbc1-9 {
+    .projectForm .style__ProjectFormsHalf-sc-1mawbc1-9 {
         margin: 0px 8px;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN {
+    .toolTip-content {
         display: flex;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN .title {
+    .toolTip-content .title {
         width: 212px;
         flex-shrink: 0;
         font-weight: 700 !important;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN .image {
+    .toolTip-content .image {
         -webkit-box-flex: 1;
         flex-grow: 1;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN .image img {
+    .toolTip-content .image img {
         width: 100%;
     }
 }
 @media (min-width: 1080px){
-    .gJNjvn {
+    .projectItem {
         margin-top: 25px;
     }
 }
 @media (min-width: 1080px){
-    .qbVXa {
+    .contents {
         width: 100%;
         max-width: 1080px;
         margin: 0px auto;
