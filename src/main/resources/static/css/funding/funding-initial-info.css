@@ -13,6 +13,10 @@
 .view, .view h1, .view h2, .view h3, .view h4, .view h5 {
     font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
 }
+.funding-header {
+    position: inherit;
+    width: 100%;
+}
 .top-contentWrap {
     margin: 60px auto 0px;
     display: block;
@@ -561,4 +565,252 @@ textarea {
     border-radius: 4px;
     background: transparent;
     color: rgb(61, 61, 61);
+}
+
+.ImgStyleList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.ImgStyleStepper {
+    display: flex;
+    flex-flow: column wrap;
+    width: 33px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(240, 240, 240);
+    padding: 4px;
+}
+.imgWithButtonBox {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex: 1 1 0%;
+    padding: 12px 12px 15px;
+    background: rgb(255, 255, 255);
+}
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+.imgStyleButton:disabled {
+    background: transparent;
+}
+
+.imgStyleButton:disabled svg {
+    fill: rgba(96, 96, 96, 0.3);
+}
+.imgStyleButton {
+    display: flex;
+    width: 90%;
+    height: 26px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 0px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 8px;
+    border-radius: 2px;
+}
+.ccxeYs svg {
+    width: 1em;
+    height: 1em;
+}
+.imgBox {
+    width: 96px;
+    position: relative;
+}
+.imgtag {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 2px 4px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 9px;
+    line-height: 11px;
+    color: rgb(255, 255, 255);
+    background: rgb(254, 95, 76);
+}
+.imgBox img {
+    width: 100%;
+    vertical-align: bottom;
+}
+.expendButton {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 0px;
+}
+.imgBox svg {
+    fill: rgb(255, 255, 255);
+}
+.styleBtWrap {
+    display: flex;
+}
+.changeBt {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+.lineBt {
+    width: 73px;
+    height: 36px;
+    font-weight: 500;
+    position: relative;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.lineBt i {
+    margin: 0px 8px 0px 0px;
+}
+input {
+    line-height: normal;
+}
+.lineBt input[type="file"] {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.imgDownStyle {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 46px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-left: 8px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(242, 242, 242);
+}
+.imgDownStyle svg {
+    fill: rgb(61, 61, 61);
+}
+.removeBt {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 48px;
+    height: 36px;
+    background: rgb(255, 255, 255);
+    font-size: 14px;
+    margin-left: 8px;
+    border: 1px solid rgb(242, 242, 242);
+    border-radius: 4px;
+}
+
+.lineBt input[type="file"] {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.lineBt i svg {
+    fill: rgb(248, 100, 83);
+}
+
+.modal-layer {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    background: #FFF;
+    color: #3d3d3d;
+}
+.modal-wrapper {
+    position: fixed;
+    z-index: 99999999;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+.modal-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(13, 13, 13, 0.65);
+}
+.modal-posWrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    overflow: hidden auto;
+}
+.modalWrap {
+    padding: 18px 16px;
+}
+.modal-header {
+    display: flex;
+    font-weight: bold;
+    position: relative;
+    min-height: 36px;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.025em;
+    margin: 0px 0px 24px;
+    padding: 38px 0px 0px;
+}
+.modal-layer .fnt-p1 {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+}
+.modal-header .Modal-modalCloseButton {
+    position: fixed;
+    z-index: 3;
+    top: 18px;
+    right: 16px;
+}
+.modalBt .Modal-svg {
+    display: flex;
 }
