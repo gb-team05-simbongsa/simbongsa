@@ -1,6 +1,6 @@
 @media (min-width: 1080px){
     .top-contentWrap {
-        margin: 64px auto 0px;
+        margin: -3px auto 0px;
     }
 }
 @media (min-width: 1080px){
@@ -132,7 +132,112 @@
         margin: 0px auto;
     }
 }
+@media only screen and (min-width: 1080px){
+    .ImgStyleStepper {
+        width: 40px;
+    }
+}
 
+@media only screen and (min-width: 1080px){
+    .imgWithButtonBox {
+        padding: 22px 32px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .imgBox {
+        width: 145px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-wrapper {
+        position: absolute;
+        width: auto;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-back {
+        overflow: hidden auto;
+    }
+}
 
-
+@media only screen and (min-width: 1080px){
+    .modal-posWrap {
+        min-width: 328px;
+        position: absolute;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        background: transparent;
+        max-width: 600px;
+        max-height: 100vh;
+        border-radius: 4px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modalWrap {
+        padding: 24px 32px 40px;
+        background: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 16px 0px;
+        border-radius: 4px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-header {
+        display: flex;
+        position: relative;
+        padding: 0px;
+        height: auto;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-header .Modal-modalCloseButton {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        margin: -10px 0px 0px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-Hasback {
+        max-height: 75vh;
+        overflow: hidden auto;
+    }
+}
+.modal-preview img {
+    width: 100%;
+}
+.modalBt {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: transparent;
+    color: rgb(61, 61, 61);
+}
+.modal-closeBt {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: none;
+    right: 0px;
+    top: 0px;
+    font-size: 20px;
+    border: 0px;
+    outline: 0px;
+    padding: 0px;
+    margin: 0px;
+}
 
