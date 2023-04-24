@@ -166,11 +166,13 @@ a{
     position: relative;
     background: #fff;
     box-shadow: none;
-    padding: 16px;
+    padding: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 0.28571429rem;
     border: 1px solid #d9dfeb;
+    width: 50%;
+    margin: 10px;
 }
 .service-items-wrapper{
     margin-bottom: 0;
@@ -226,7 +228,8 @@ a{
 .items-buttons{
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .gather{
     display: inline-block;
@@ -255,6 +258,7 @@ a{
     transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
 }
 .button{
+    margin-top: 18px;
     cursor: pointer;
     box-shadow: inset 0 0 0 0 #d9dfeb;
     background-color: #4e61ff;
@@ -267,7 +271,6 @@ a{
     outline: 0;
     border: none;
     vertical-align: baseline;
-    margin: 0 0.25em 0 0;
     padding: 0.92857143em 1.5em;
     text-transform: none;
     font-weight: 400;
@@ -281,4 +284,38 @@ a{
     font-size: 12px;
     text-align: center;
     padding-bottom: 30px;
+    padding-top: 30px;
+}
+.cruit{
+    font-size: 12px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+.paging{
+    background-color: #ffffff;
+    font-size: 14px;
+    margin: 15px;
+    margin-top: 50px;
+}
+.changePage{
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 7px;
+    border-radius: 4px;
+    color: #4e61ff;
+    background-color: #fff;
+    border: 1px solid #4e61ff;
+    font-family: inherit;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+.currentPage{
+    color: #fff;
+    background-color: #4e61ff;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: 1px solid #4e61ff;
 }

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심봉사 | 봉사 모집 게시판</title>
-    <link rel="stylesheet" href="../../static/css/community/service-board.css">
+    <title>심봉사 | 자유게시판</title>
     <link rel="stylesheet" href="../../static/css/font/font.css">
+    <link rel="stylesheet" href="../../static/css/community/review-board.css">
+    <link rel="stylesheet" href="../../static/css/community/free-board.css">
     <link rel="stylesheet" href="../../static/css/main/header.css">
     <link rel="stylesheet" href="../../static/css/main/footer.css">
 </head>
-<body>
+<body class="body">
     <!-- 헤더 -->
     <div class="full-screen">
         <header class="header-layout">
@@ -74,242 +75,383 @@
             </div>
         </header>
     </div>
+
+
     <!-- 전체 div -->
-    <div class="main">
-        <!-- 배너 -->
-        <div class="board-benner">
-            <div class="benner-cover"></div>
+    <div style="background-color: #fff;">
+        <div class="header" style="background-color: #fff;">
+            <div class="header-container">
+                <span class="header-title">자유게시판</span>
+            </div>
         </div>
-        <!-- 중간 메인 -->
-        <div>
-            <div class="main-container">
-                <section class="row">
-                    <div class="row-container">
-                        <h1 class="row-text">심봉사와 함께 봉사할 심청을 찾습니다.</h1>
+        <main class="review-main">
+            <div class="categori-container">
+                <div class="categori-wrapper">
+                    <div class="categori-wrapper">
+                        <label class="categori-label">
+                            <span class="categori-new">최신글</span>
+                        </label>
                     </div>
-                </section>
-                <section class="service-info">
-                    <h4 class="service-header">
-                        <a href="#">진행 중인 봉사 정보</a>
-                    </h4>
-                    <!--  -->
-                    <div style="display: flex; margin-bottom: 10px;">
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="categori-wrapper">
+                        <span class="categori-wrapper-span"></span>
+                        <label class="categori-label2">
+                            <span class="categori-best">인기글</span>
+                        </label>
                     </div>
-                    <!--  -->
-                    <div style="display: flex; margin-bottom: 10px;">
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div>
+                    <div class="items-buttons">
+                        <a class="button">작성하기</a>
                     </div>
-                    <!--  -->
-                    <div style="display: flex; margin-bottom: 10px;">
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div style="display: flex; margin-bottom: 10px;">
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div style="display: flex; margin-bottom: 10px;">
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)</div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                    </div>
-                                    <div class="dates">
-                                        <span class="dates-text">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                <div class="items-buttons">
-                                    <span class="cruit">모집중</span>
-                                    <a class="button">지원 ></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                </section>
+                </div>
             </div>
             <div>
-                <div class="paging" style="text-align: center">
-                  <a class="changePage" style="color: black"><code>&lt;</code></a>
-                  <code id="currentPage" class="currentPage">1</code>
-                    <a class="changePage" style="color: black" }"=""><code>2</code></a>
-                  <a class="changePage" style="color: black"><code>&gt;</code></a>
-                </div>
-                <form name="pageForm">
-                  <input type="hidden">
-                  <input type="hidden">
-                </form>
+                <ul class="contant">
+                    <!--  -->
+                    <li class="contant-list-container" style="margin-top: 10px">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                    <li class="contant-list-container">
+                        <div>
+                            <button class="contant-btn">
+                                <div class="contant-title-container">
+                                    <div class="contant-title-wrapper">
+                                        <h2 class="contant-title">쓰레기 줍기 봉사 활동은 어때요?</h2>
+                                        <p class="contant-contant">안녕하세요. 이번에 서울 산책로 쓰레기 봉사에 참여하려고 합니다. 쓰레기가 길가에 많이 떨어져 있어 산책하면서 봉사 활동을 할 수 있다고 하여 참가 해보려고 합니다. 혹시 참여해보신분 계신다면 분위기나 기타 준비물이 어떤것들이 필요한지 알려주세요</p>
+                                    </div>
+                                    <div class="contant-img">
+                                        <span class="contant-img-span">
+                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="contant-user">
+                                    <div class="user-photo"></div>
+                                    <div class="user-profile">
+                                        <span class="user-name">봉사하는 봉린이</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-time">3시간 전</span>
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                        <span class="user-see">조회수 3</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <!--  -->
+                </ul>
             </div>
-            <div class="service-help">
-                <p>마지막 정보 수정 : 2023-04-19</p>
-                <p style="line-height: 1.5em;">심봉사 관리자의 도움이 필요할 땐 여기서 문의해주세요</p>
-            </div>
-        </div>
+        </main>
     </div>
+
+
     <!-- 푸터 -->
-    <div class="full-screen">
+    <!-- <div class="full-screen">
         <footer class="footer-wrapper">
             <div class="footer-link-wrapper">
                 <div class="footer-site-map-wrapper">
@@ -463,6 +605,6 @@
                 </div>
             </div> -->
         </footer>
-    </div>
+    </div> -->
 </body>
 </html>
