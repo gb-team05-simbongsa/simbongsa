@@ -97,7 +97,10 @@ h3, p, div {
     -webkit-box-pack: center;
     justify-content: center;
     cursor: pointer;
-    transition: scale 0.3s ease-in-out 0s
+    transition: scale 0.3s ease-in-out 0s;
+    background-image: url(../../image/logo-test.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .status-wrapper{
@@ -703,5 +706,6 @@ svg:not(:root) {
 
     .category-wrapper{
         font-size: 14px;
+        padding: 0px 2px;
     }
 }
