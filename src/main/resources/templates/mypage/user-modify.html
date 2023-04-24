@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 수정</title>
+    <link rel="stylesheet" href="../../static/css/font/font.css">
+    <link rel="stylesheet" href="../../static/css/main/header.css">
+    <link rel="stylesheet" href="../../static/css/mypage/mypage-header.css">
+    <link rel="stylesheet" href="../../static/css/mypage/user-modify.css">
+    <link rel="stylesheet" href="../../static/css/main/footer.css">
+</head>
+<body>
+    <div class="full-screen">
+
+        <!-- 헤더 임시 -->
+        <header id="_header"></header>
+
+        <div class="modify-wrap">
+            <div class="modify-container">
+                <!-- 이메일 띄우기 -->
+                <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">이메일</p>
+                    </div>
+                    <div class="modify-value">tonky0810@naver.com</div>
+                </div>
+
+                <!-- 비밀번호 변경 버튼 누르기 전 -->
+                <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">비밀번호</p>
+                        <button class="modify-button">변경</button>
+                    </div>
+                </div>
+
+                <!-- 비밀번호 변경 버튼 눌렀을 때 -->
+                <div class="modify-content" style="display: none;">
+                    <div class="modify-title-div">
+                        <p class="modify-title">비밀번호</p>
+                        <button class="modify-button-cancel">취소</button>
+                    </div>
+                    <div>
+                        <div class="little-title">현재 비밀번호</div>
+                        <div class="modify-input-div">
+                            <span class="modify-input-span">
+                                <input type="password" class="modify-input" placeholder="현재 비밀번호를 입력하세요.">
+                            </span>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+
+
+                        <div class="little-title" style="margin-top: 15px;">변경할 비밀번호</div>
+                        <div class="modify-input-div">
+                            <span class="modify-input-span">
+                                <input type="password" class="modify-input" placeholder="바꿀 비밀번호를 입력하세요.">
+                            </span>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+                        <div class="modify-input-div" style="margin-top: 10px">
+                            <span class="modify-input-span">
+                                <input type="password" class="modify-input" placeholder="바꿀 비밀번호를 한번 더 입력하세요.">
+                            </span>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+                    </div>
+                    <div class="modify-submit-div">
+                        <button class="modify-submit" id="password-submit">
+                            <span class="modify-submit-text">변경</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 이름 변경 버튼 누르기 전 -->
+                <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">이름</p>
+                        <button class="modify-button">변경</button>
+                    </div>
+                    <div class="modify-value">정현진</div>
+                </div>
+
+                <!-- 이름 변경 버튼 눌렀을 때 -->
+                <div class="modify-content" style="display: none;">
+                    <div class="modify-title-div">
+                        <p class="modify-title">이름</p>
+                        <button class="modify-button-cancel">취소</button>
+                    </div>
+                    <div>
+                        <div class="modify-input-div">
+                            <span class="modify-input-span">
+                                <input type="text" class="modify-input" placeholder="바꿀 이름을 입력하세요.">
+                            </span>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+                    </div>
+                    <div class="modify-submit-div">
+                        <button class="modify-submit">
+                            <span class="modify-submit-text">변경</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                 <!-- 주소 변경 버튼 누르기 전 -->
+                 <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">주소</p>
+                        <button class="modify-button">변경</button>
+                    </div>
+                    <div class="modify-value">서울시 강남구 역삼로15길 7</div>
+                </div>
+
+                <!-- 주소 변경 버튼 눌렀을 때 -->
+                <div class="modify-content" style="display: none;">
+                    <div class="modify-title-div">
+                        <p class="modify-title">주소</p>
+                        <button class="modify-button-cancel">취소</button>
+                    </div>
+                    <div>
+                        <div class="modify-input-div">
+                            <span class="modify-input-span">
+                                <input type="text" class="modify-input" placeholder="주소를 입력하세요." readonly>
+                                <button class="find-address">검색</button>
+                            </span>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+                    </div>
+                    <div class="modify-submit-div">
+                        <button class="modify-submit">
+                            <span class="modify-submit-text">변경</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- 나이 변경 버튼 누르기 전 -->
+                <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">나이</p>
+                        <button class="modify-button">변경</button>
+                    </div>
+                    <div class="modify-value">24</div>
+                </div>
+
+                <!-- 나이 변경 버튼 눌렀을 때 -->
+                <div class="modify-content" style="display: none;">
+                    <div class="modify-title-div">
+                        <p class="modify-title">나이</p>
+                        <button class="modify-button-cancel">취소</button>
+                    </div>
+                    <div>
+                        <div class="modify-input-div">
+                            <span class="modify-input-span">
+                                <input type="text" class="modify-input" placeholder="바꿀 나이를 입력하세요.">
+                            </span>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+                    </div>
+                    <div class="modify-submit-div">
+                        <button class="modify-submit">
+                            <span class="modify-submit-text">변경</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 관심봉사활동 변경 버튼 누르기 전 -->
+                <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">관심봉사활동</p>
+                        <button class="modify-button">변경</button>
+                    </div>
+                    <div class="modify-value">노인</div>
+                </div>
+
+                <!-- 관심봉사활동 변경 버튼 눌렀을 때 -->
+                <div class="modify-content" style="display: none;">
+                    <div class="modify-title-div">
+                        <p class="modify-title">관심봉사활동</p>
+                        <button class="modify-button-cancel">취소</button>
+                    </div>
+                    <div>
+                        <div class="modify-input-div">
+                            <label for="drop-span">
+                                <span id="drop-span" class="modify-input-span" style="cursor: pointer;">
+                                    <input type="text" id="interest-volunteer" class="modify-input" placeholder="관심봉사활동을 선택해주세요." readonly>
+                                    <div>
+                                        <svg height="20" width="20" style="padding-top: 8px;" viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-8mmkcg">
+                                            <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+                                        </svg>
+                                    </div>
+                                </span>
+                            </label>
+                            <div class="drop-content">
+                                <p>정</p>
+                                <p>현</p>
+                                <p>진</p>
+                                <p>정</p>
+                                <p>정</p>
+                                <p>정</p>
+                                <p>정</p>
+                            </div>
+                        </div>
+                        <div class="error-message">비워놓을 수 없습니다.</div>
+                    </div>
+                    <div class="modify-submit-div">
+                        <button class="modify-submit" type="button">
+                            <span class="modify-submit-text">변경</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="modify-content">
+                    <div class="modify-title-div">
+                        <p class="modify-title">회원탈퇴</p>
+                        <button class="modify-button">탈퇴</button>
+                    </div>
+                </div>
+
+               
+
+            </div>
+        </div>
+
+
+        <!-- 푸터 임시 -->
+        <footer id="_footer"></footer>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#_header').load('../main/header.html');
+    $('#_footer').load('../main/footer.html');
+});
+</script>
+<script src="../../static/js/mypage/user.modify.js"></script>
+</html>

@@ -224,7 +224,6 @@ input[type="checkbox"] {
 .agree {
     cursor: pointer;
     position: relative;
-    overflow: hidden;
     padding: 0px 0px 0px 29px;
     color: rgb(61, 61, 61);
     display: inline-flex;

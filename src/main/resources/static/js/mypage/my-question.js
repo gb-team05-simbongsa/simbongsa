@@ -17,11 +17,19 @@ $('.modal-close').on('click', () => {
     $('.full-screen').off('scroll touchmove mousewheel');
 });
 
-// 모달에서 삭제 버튼을 눌렀을 때 진짜 삭제할건지 모달 띄우기
+// 수정 모달이 띄워졌을 때 취소버튼 누르면 모달 닫기
 $('.change-modal-delete-btn').on('click', () => {
+    $modal.hide();
+
+    $('.full-screen').off('scroll touchmove mousewheel');
+});
+
+// 모달에서 삭제 버튼을 눌렀을 때 진짜 삭제할건지 모달 띄우기
+$('.go-support-request-delete').on('click', () => {
     $('.modal-wrap').show();
 });
 
+// 삭제할건지 묻는 모달에서 취소 버튼 눌렀을 때 모달 닫기
 $('.modal-cancel').on('click', () => {
     $('.modal-wrap').hide();
     $modal.hide();
@@ -29,9 +37,9 @@ $('.modal-cancel').on('click', () => {
 
 // 답변확인 버튼 눌렀을 때 답변이 있을 경우
 $('.show-answer').on('click', function() {
-    if($(this).parent().parent().parent().next().css('display') == 'none') {
-        $(this).parent().parent().parent().next().show();
+    if($(this).parent().parent().parent().parent().next().css('display') == 'none') {
+        $(this).parent().parent().parent().parent().next().show();
     } else {
-        $(this).parent().parent().parent().next().hide();
+        $(this).parent().parent().parent().parent().next().hide();
     }
 });
