@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="stylesheet" href="../../static/css/font/font.css">
+    <link rel="stylesheet" href="../../static/css/error/error.css" />
+</head>
+<body>
+    <div class="full-screen">
+        <div class="not-found-page">
+            <div class="error-number">4<div class="missing-zero"></div>4</div>
+            <div class="not-found-error-message">페이지를 찾을 수 없습니다</div>
+            <button type="button" class="home-button home-button-min">심봉사 홈으로 돌아가기</button>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+    $('.home-button').click(function(){
+        window.location.href = 'http://127.0.0.1:5500/templates/main/main.html';
+    });
+</script>
+</html>
