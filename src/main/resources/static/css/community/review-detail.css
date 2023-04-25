@@ -344,6 +344,32 @@ button {
     fill: #fff;
     background-color: #7e69fe;
 }
+.singUp1{
+    padding-left: 15px;
+    padding-right: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    display: flex;
+    position: relative;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    border-color: rgba(0,0,0,.1);
+    color: #333334;
+    fill: #333334;
+    background-color: #fff;
+}
+.singUp-btn{
+    gap: 10px;
+    justify-content: flex-end;
+    display: flex;
+    margin-bottom: 2%;
+    margin-right: 3%;
+}
 .comment-box2{
     border-width: 1px;
     border-radius: 8px;
@@ -357,11 +383,26 @@ button {
     display: flex;
 }
 .comment-box-span{
+    height: 53px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 8px;
+    width: 100%;
+    max-height: 88px;
     font-weight: 400;
     font-size: 14px;
-    line-height: 18px;
-    color: #b9b9bb;
-    fill: #b9b9bb;
+    line-height: 20px;
+    border-color: rgba(0,0,0,.1);
+    color: #333334;
+    fill: #333334;
+    background-color: #fff;
+    resize: vertical;
 }
 .comment-login{
     width: 32px;
