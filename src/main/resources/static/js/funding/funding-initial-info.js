@@ -245,13 +245,10 @@ const $imageFile = $('#imageFile');
 $imageFile.on("change", function(e){
     var file = e.target.files[0];
     var reader = new FileReader();
-
     // $('.preview').empty();
-
         reader.onload = function(e){
             $('.preview').attr("src", e.target.result);
         }
-        
         if($('.imgtag').length){
             $imgList.append(nextImage);
         }else{

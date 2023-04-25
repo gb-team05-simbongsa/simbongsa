@@ -1,26 +1,26 @@
-.ghVmvY {
+.planContents {
     padding: 48px 16px 0px;
 }
-.fGfROL {
+.projectWrap {
     border-bottom: 1px solid rgb(240, 240, 240);
     padding-bottom: 40px;
     margin-bottom: 32px;
 }
-.kwDByH {
+.projectInfo {
     margin: 0px 0px 24px;
 }
 .loGysm{
 
 }
-.ccxeYs {
+.icon-svg {
     display: inline-flex;
     align-self: center;
 }
-.gjLASS svg {
+.projectInfoTitle svg {
     fill: rgb(248, 100, 83);
     font-size: 13px;
 }
-.gjLASS {
+.projectInfoTitle {
     margin-bottom: 14px;
     font-weight: 700;
     color: rgb(61, 61, 61);
@@ -28,7 +28,7 @@
     line-height: 22px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.kbTFwt {
+.projectInfoDescription {
     font-weight: 400;
     color: rgb(109, 109, 109);
     margin: 0px;
@@ -36,7 +36,7 @@
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gJNjvn {
+.projectInfoNotice {
     background: rgb(253, 244, 243);
     border-radius: 8px;
     padding: 20px 24px 20px 50px;
@@ -47,7 +47,7 @@
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gJNjvn .noticeTitle {
+.projectInfoNotice .noticeTitle {
     color: rgb(248, 100, 83);
     margin-bottom: 10px;
     font-weight: 700;
@@ -56,16 +56,16 @@
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gJNjvn .noticeTitle > div {
+.projectInfoNotice .noticeTitle > div {
     position: absolute;
     top: 3px;
     left: -23px;
 }
-.ccxeYs svg {
+.icon-svg svg {
     width: 1em;
     height: 1em;
 }
-.gJNjvn .noticeTitle svg {
+.projectInfoNotice .noticeTitle svg {
     position: relative;
     top: 1px;
     margin-right: 6px;
@@ -75,7 +75,7 @@
 p:first-child {
     margin-top: 0em;
 }
-.fHMBHo {
+.formTitle {
     font-weight: bold;
     font-size: 11px;
     line-height: 18px;
@@ -84,18 +84,18 @@ p:first-child {
     color: rgb(61, 61, 61);
     display: flex;
 }
-.gJNjvn p {
+.projectInfoNotice p {
     padding-left: 14px;
     margin-bottom: 5px;
     position: relative;
 }
-.gJNjvn p::before {
+.projectInfoNotice p::before {
     content: "*";
     position: absolute;
     top: 2px;
     left: 3px;
 }
-.kHILbl {
+.goalFunding {
     background: rgb(255, 255, 255);
     border: 1px solid rgb(234, 234, 234);
     border-radius: 4px;
@@ -449,7 +449,7 @@ p:last-child {
 .eCiCMa svg {
     fill: rgb(255,  87, 87);
 }
-.dBcuBc {
+.areaToolTip {
     width: 100%;
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
@@ -476,7 +476,7 @@ p:last-child {
     outline: none;
     font-size: 16px;
 }
-.dBcuBc .close {
+.areaToolTip .close {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -536,7 +536,7 @@ p:last-child {
 .eCiCMa svg {
     fill: rgb(255, 87, 87);
 }
-.dBcuBc svg {
+.areaToolTip svg {
     fill: rgb(109, 109, 109);
 }
 
