@@ -29,7 +29,35 @@
     <div id="view" class="view">
         <div class="project-wrap">
             <div id="_header"></div>
+            <div class="modal-layer" style="display: none;">
+                <div class="modal-wrapper">
+                    <div class="modal-back">
+                        <div class="modal-posWrap">
+                            <div data-ignore-lock="true" class="modalWrap">
+                                <div class="modal-header">
+                                     <button class="modalBt modal-closeBt modalCloseButton fnt-p1" color="transparent">
+                                        <span> 
+                                            <div name="close-1" class="icon-svg Modal-svg">
+                                                <svg viewBox="0 0 48 48">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M45.1766 41.0846L28.1097 24.0186L45.1766 6.95266C46.2744 5.85485 46.2744 4.05843 45.1766 2.86082C44.0778 1.66321 42.2824 1.76401 41.0838 2.86082L24.0189 19.9268L6.95301 2.86082C5.8552 1.76401 4.05879 1.76401 2.86119 2.86082C1.66358 3.95863 1.76338 5.75605 2.86119 6.95266L19.9271 24.0186L2.86119 41.0846C1.76338 42.1834 1.76338 43.9788 2.86119 45.1774C3.95899 46.2742 5.7554 46.2742 6.95301 45.1774L24.0189 28.1104L41.0838 45.1774C42.1826 46.2742 43.979 46.2742 45.1766 45.1774C46.2744 43.9788 46.2744 42.1834 45.1766 41.0846Z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="modal-Hasback">
+                                    <div class="modal-preview">
+                                        <img src="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/05388a1d-65de-4194-bd85-40c6ee9a9443.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=3b75e10a7ae02059bd05b1fc6bb9c58e" alt="프로젝트 이미지 미리보기"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="_topContent"></div>
+            
             <div class="contents" size="228">
                 <div class="plan-content">
                     <div class="project-itemWrap">
@@ -244,7 +272,7 @@
                                     </div>
                                 </div>
                                 <div class="input-guideCheck-wrapper">
-                                    <div class="input-guide-lengthCheck input-guide-lengthCheck inputBorder">
+                                    <div class="input-guide-lengthCheck inputBorder">
                                         <span class="inputWrapper-style1 inputWrapper-style2">
                                             <input type="text"  maxlength="6" inputmode="text" placeholder="짧은 제목을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput shortInput inputText" value="">
                                         </span>
@@ -420,7 +448,6 @@
                                     <input type="file" id="imageFile" accept=".jpg, .jpeg, .png" multiple="">
                                 </div>
                                 <li class="ImgStyleList firstTest imgList"></li>
-                                
                             </div>
                         </div>
                     </div>

@@ -1,17 +1,17 @@
 @media (min-width: 1080px){
-    .qbVXa {
+    .contents {
         width: 100%;
         max-width: 1080px;
         margin: 0px auto;
     }
 }
 @media (min-width: 1080px){
-    .ghVmvY {
+    .planContents {
         padding: 84px 0px 0px;
     }
 }
 @media (min-width: 1080px){
-    .fGfROL {
+    .projectWrap {
         display: flex;
         padding-bottom: 48px;
         margin-bottom: 56px;
@@ -20,7 +20,7 @@
     }
 }
 @media (min-width: 1080px){
-    .gjLASS {
+    .projectInfoTitle {
         font-weight: 700;
         margin-bottom: 12px;
         font-size: 16px !important;
@@ -29,12 +29,12 @@
     }
 }
 @media (min-width: 1080px){
-    .gJNjvn {
+    .projectInfoNotice {
         margin-top: 25px;
     }
 }
 @media (min-width: 1080px){
-    .etypUj {
+    .projectForm {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
@@ -42,7 +42,7 @@
     }
 }
 @media (min-width: 1080px){
-    .OobSQ {
+    .TotalAmount {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
@@ -50,46 +50,46 @@
     }
 }
 @media (min-width: 1080px){
-    .OobSQ span {
+    .TotalAmount span {
         padding-bottom: 0px;
     }
 }
 @media (min-width: 1080px){
-    .OobSQ em {
+    .TotalAmount em {
         display: inline;
     }
 }
 @media (min-width: 1080px){
-    .jFIOTU {
+    .feeWrap {
         margin-bottom: 3px;
     }
 }
 @media (min-width: 1080px){
-    .jFIOTU {
+    .feeWrap {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
     }
 }
 @media (min-width: 1080px){
-    .jFIOTU em {
+    .feeWrap em {
         display: inline;
     }
 }
 @media (min-width: 1080px){
-    .fsjSoz {
+    .fee {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
     }
 }
 @media (min-width: 1080px){
-    .fsjSoz em {
+    .fee em {
         display: inline;
     }
 }
 @media (min-width: 1080px){
-    .loGysm {
+    .fundingPJ {
         display: flex;
         padding-bottom: 48px;
         margin-bottom: 56px;
@@ -98,13 +98,13 @@
     }
 }
 @media (min-width: 1080px){
-    .kwDByH {
+    .projectInfo {
         margin: 0px 0px 14px;
         width: 351px;
     }
 }
 @media (min-width: 1080px){
-    .eghppi {
+    .itemform {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
@@ -112,61 +112,58 @@
     }
 }
 
-
-
-
 @media (min-width: 1080px){
-    .kjHLZy {
+    .formHalf {
         width: 50%;
     }
 }
 @media (min-width: 1080px){
-    .eghppi .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5 {
+    .itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5 {
         margin: 0px 8px;
         width: 50%;
     }
 }
 @media (min-width: 1080px){
-    .eghppi .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5:last-child {
+    .itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5:last-child {
         margin-right: 0px;
     }
 }
 @media (min-width: 1080px){
-    .eghppi .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5:first-child {
+    .itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5:first-child {
         margin-left: 0px;
     }
 }
 @media (min-width: 1080px){
-    .psjim {
+    .authwrap {
         padding: 24px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .fdWgNc {
+    .planContents {
         padding: 0px 0px 302px;
         position: relative;
     }
 }
 
 @media only screen and (min-width: 1080px){
-    .sfObC {
+    .titleWraper {
         padding: 0px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .kjapul {
+    .guidewrapper {
         width: 302px;
         padding: 0px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .gbPNTG {
+    .editoerWrapper {
         width: 722px;
         padding: 0px 36px 32px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .jFRkWO {
+    .editorPreview {
         width: 620px;
     }
 }
@@ -183,7 +180,6 @@
     }
 }
 @media (min-width: 1080px){
-
     .storyContent p {
         font-size: 16px;
         line-height: 28px;
