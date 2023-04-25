@@ -170,7 +170,7 @@ dl {
 }
 
 .company-data {
-    padding: 21px 25px;
+    padding: 24px 52px;
     border-top: 1px solid #ccc;
     /* border-bottom: 1px solid #333; */
     background: #ffffff;
@@ -213,6 +213,7 @@ dl {
 .company-data dd {
     display: inline-block;
     font-size: 15px;
+    margin: 0px 4px;
 }
 /* .company-info-map {
     position: relative;
