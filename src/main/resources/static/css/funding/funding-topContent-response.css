@@ -1,0 +1,44 @@
+@media (min-width: 1080px){
+    .top-contentWrap {
+        margin: -3px auto 0px;
+    }
+}
+@media (min-width: 1080px){
+    .top-title {
+        font-weight: 700;
+        padding: 39px 0px 21px;
+        margin: 0px auto;
+        width: 1080px;
+        font-size: 32px !important;
+        line-height: 44px !important;
+        font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    }
+}
+@media (min-width: 1080px){
+    .plan-depthWrap {
+        width: 1080px;
+        margin: 0px auto;
+        padding: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .top-title {
+        font-weight: 700;
+        padding: 39px 0px 21px;
+        margin: 0px auto;
+        width: 1080px;
+        font-size: 32px !important;
+        line-height: 44px !important;
+        font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    }
+}
+@media (min-width: 1080px){
+    .tapItem-li {
+        margin: 0px 16px;
+    }
+}
+@media (min-width: 1080px){
+    .item-li {
+        margin: 0px 16px;
+    }
+}

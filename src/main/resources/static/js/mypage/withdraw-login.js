@@ -1,5 +1,6 @@
 const $password = $('.input-write').eq(1);
 
+// 입력 비밀번호 글자 수 검사 및 비어있지 않은지 검사
 $('.submit-button').on('click', () => {
     if(!$password.val()) {
         $('.email-error').text('비밀번호를 입력해주세요');
@@ -16,6 +17,7 @@ $('.submit-button').on('click', () => {
     $('.modal-wrap').show();
 });
 
+// 모달에서 확인 버튼을 누르면 submit
 $('.modal-ok').on('click', () => {
     document.withdrawForm.submit();
 });

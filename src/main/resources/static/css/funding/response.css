@@ -1,0 +1,188 @@
+@media (min-width: 1080px){
+    .contents {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0px auto;
+    }
+}
+@media (min-width: 1080px){
+    .planContents {
+        padding: 84px 0px 0px;
+    }
+}
+@media (min-width: 1080px){
+    .projectWrap {
+        display: flex;
+        padding-bottom: 48px;
+        margin-bottom: 56px;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 1080px){
+    .projectInfoTitle {
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-size: 16px !important;
+        line-height: 24px !important;
+        font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    }
+}
+@media (min-width: 1080px){
+    .projectInfoNotice {
+        margin-top: 25px;
+    }
+}
+@media (min-width: 1080px){
+    .projectForm {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        width: 630px;
+    }
+}
+@media (min-width: 1080px){
+    .TotalAmount {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        text-align: initial;
+    }
+}
+@media (min-width: 1080px){
+    .TotalAmount span {
+        padding-bottom: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .TotalAmount em {
+        display: inline;
+    }
+}
+@media (min-width: 1080px){
+    .feeWrap {
+        margin-bottom: 3px;
+    }
+}
+@media (min-width: 1080px){
+    .feeWrap {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 1080px){
+    .feeWrap em {
+        display: inline;
+    }
+}
+@media (min-width: 1080px){
+    .fee {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 1080px){
+    .fee em {
+        display: inline;
+    }
+}
+@media (min-width: 1080px){
+    .fundingPJ {
+        display: flex;
+        padding-bottom: 48px;
+        margin-bottom: 56px;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 1080px){
+    .projectInfo {
+        margin: 0px 0px 14px;
+        width: 351px;
+    }
+}
+@media (min-width: 1080px){
+    .itemform {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1080px){
+    .formHalf {
+        width: 50%;
+    }
+}
+@media (min-width: 1080px){
+    .itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5 {
+        margin: 0px 8px;
+        width: 50%;
+    }
+}
+@media (min-width: 1080px){
+    .itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5:last-child {
+        margin-right: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5:first-child {
+        margin-left: 0px;
+    }
+}
+@media (min-width: 1080px){
+    .authwrap {
+        padding: 24px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .planContents {
+        padding: 0px 0px 302px;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 1080px){
+    .titleWraper {
+        padding: 0px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .guidewrapper {
+        width: 302px;
+        padding: 0px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .editoerWrapper {
+        width: 722px;
+        padding: 0px 36px 32px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .editorPreview {
+        width: 620px;
+    }
+}
+@media (min-width: 1080px){
+    .storyContent {
+        padding: 1.5rem 0;
+        font-size: 17px;
+    }
+}
+@media (min-width: 1080px){
+    .storyContent, .storyContent ol, .storyContent ul {
+        font-size: 16px;
+        line-height: 28px;
+    }
+}
+@media (min-width: 1080px){
+    .storyContent p {
+        font-size: 16px;
+        line-height: 28px;
+        margin-top: 20px;
+    }
+}

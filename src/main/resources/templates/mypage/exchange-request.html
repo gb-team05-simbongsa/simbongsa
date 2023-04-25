@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>후원 내역</title>
+    <title>공양미 환전요청</title>
     <link rel="stylesheet" href="../../static/css/font/font.css">
     <link rel="stylesheet" href="../../static/css/main/header.css">
     <link rel="stylesheet" href="../../static/css/mypage/mypage-header.css">
-    <link rel="stylesheet" href="../../static/css/mypage/support-request.css">
+    <link rel="stylesheet" href="../../static/css/mypage/exchange-request.css">
     <link rel="stylesheet" href="../../static/css/main/footer.css">
 </head>
 <body>
@@ -64,7 +64,7 @@
                         </span>
                         <span class="header-menu-element">
                             <div class="header-menu-div">
-                                <a href="" class="header-menu-a-select">후원내역</a>
+                                <a href="" class="header-menu-a">후원내역</a>
                             </div>
                         </span>
                         <span class="header-menu-element">
@@ -79,7 +79,7 @@
                         </span>
                         <span class="header-menu-element">
                             <div class="header-menu-div">
-                                <a href="" class="header-menu-a">공양미 환전요청</a>
+                                <a href="" class="header-menu-a-select">공양미 환전요청</a>
                             </div>
                         </span>
                         <span class="header-menu-element">
@@ -92,80 +92,57 @@
             </div>
         </div>
 
-        <div class="content-wrap">
-            <div class="support-request-wrap">
-                <div class="support-request-inner-wrap">
-                    <div class="support-request-one-wrap">
-                        <div class="support-request">
-                            <div class="support-request-place">
-                                <div class="support-request-title-wrap">
-                                    <div class="support-request-title">높이 올라가</div>
+
+        <div class="change-modal" id="modal">
+            <div class="change-modal-root"></div>
+            <div class="change-modal-container">
+                <div class="change-modal-wrapper">
+                    <div>
+                        <div class="change-modal-title-row">
+                            <h4 class="change-modal-title-text">공양미 환전 요청</h4>
+                        </div>
+                        <form action="" class="change-modal-form-wrapper" name="exchangeForm">
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">이름</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-title">
+                                        <input type="text" placeholder="이름을 입력하세요." id="name" class="change-modal-form-title-input" maxlength="4">
+                                        <div class="error-message">비워둘 수 없습니다.</div>
+                                    </div>
                                 </div>
-                                <div class="support-request-content">세상을 다 가져봐</div>
-                                <div class="support-request-reply">공양미 100석 후원</div>
                             </div>
-                            <div class="support-request-detail">
-                                <button class="go-support-request">
-                                    <span class="request-detail">
-                                        <div class="detail-text">상세보기</div>
-                                    </span>
-                                </button>
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">계좌번호</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-title">
+                                        <input type="text" placeholder="계좌번호를 입력해주세요." class="change-modal-form-title-input">
+                                        <div class="error-message">비워둘 수 없습니다.</div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">환전할 공양미</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-title">
+                                        <input type="text" placeholder="환전할 공양미 개수를 입력하세요." class="change-modal-form-title-input">
+                                        <div class="error-message">비워둘 수 없습니다.</div>
+                                        <div class="able-exchange">
+                                            환전 가능한 공양미 수 : 
+                                            <span class="able-exchange-rice">300</span>석
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="change-modal-actions-row">
+                            <button type="submit" class="change-modal-ok-btn">
+                                <span class="change-modal-btn">환전요청</span>
+                            </button>
                         </div>
                     </div>
-                    <div class="support-request-one-wrap">
-                        <div class="support-request">
-                            <div class="support-request-place">
-                                <div class="support-request-title-wrap">
-                                    <div class="support-request-title">높이 올라가</div>
-                                </div>
-                                <div class="support-request-content">세상을 다 가져봐</div>
-                                <div class="support-request-reply">공양미 100석 후원</div>
-                            </div>
-                            <div class="support-request-detail">
-                                <button class="go-support-request">
-                                    <span class="request-detail">
-                                        <div class="detail-text">상세보기</div>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-wrap">
-                    <ul class="page-ul">
-                        <li class="page-arrow">
-                            <div class="arrow">
-                                <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M32.8912 45.3014L12 23.913L32.8912 2.52471C33.5866 1.8251 34.7804 1.8251 35.4777 2.52471C36.1741 3.22333 36.1741 4.42368 35.4777 5.22224L17.1731 23.913L35.4777 42.7018C36.1741 43.4024 36.1741 44.6018 35.4777 45.4013C35.0788 45.8011 34.6819 46 34.1845 46C33.7855 45.9011 33.2881 45.7002 32.8912 45.3014Z"></path></svg>
-                            </div>
-                        </li>
-                        <li class="page-li-select">
-                            <a href="">1</a>
-                        </li>
-                        <li class="page-li">
-                            <a href="">2</a>
-                        </li>
-                        <li class="page-li">
-                            <a href="">3</a>
-                        </li>
-                        <li class="page-li">
-                            <a href="">4</a>
-                        </li>
-                        <li class="page-li">
-                            <a href="">5</a>
-                        </li>
-                        <li class="page-arrow">
-                            <div class="arrow">
-                                <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9071 46C13.4118 46 12.9164 45.8001 12.6192 45.4003C11.9257 44.7007 11.9257 43.5014 12.6192 42.7019L30.8493 24.0125L12.5201 5.22317C11.8266 4.52357 11.8266 3.32425 12.5201 2.5247C13.2136 1.8251 14.3034 1.8251 15.096 2.5247L36 24.0125L15.195 45.4003C14.7988 45.8001 14.3034 46 13.9071 46Z"></path></svg>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
-
-
-
 
 
         <!-- 푸터 임시 -->
@@ -180,4 +157,5 @@
         $('#_footer').load('../main/footer.html');
     });
 </script>
+<script src="../../static/js/mypage/exchange-request.js"></script>
 </html>

@@ -1,5 +1,5 @@
 
-.tbb-only-ff {
+.view {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -10,34 +10,38 @@
     min-height: 100%;
     height: 100%;
 }
-.tbb-only-ff, .tbb-only-ff h1, .tbb-only-ff h2, .tbb-only-ff h3, .tbb-only-ff h4, .tbb-only-ff h5 {
+.view, .view h1, .view h2, .view h3, .view h4, .view h5 {
     font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
 }
-.lhcIOG {
+.funding-header {
+    position: inherit;
+    width: 100%;
+}
+.top-contentWrap {
     margin: 60px auto 0px;
     display: block;
     background: rgb(255, 255, 255);
 }
-.fEFqM {
+.project-wrap {
     background: rgb(252, 252, 252);
 }
-.jFWgiC {
+.top-content {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 8px, rgba(0, 0, 0, 0.02) 0px 1px 0px;
     z-index: 1;
 }
-.iePPZZ {
+.top-title {
     padding: 24px 16px;
     font-weight: 700;
     font-size: 24px !important;
     line-height: 36px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gvPBkk {
+.fix-contentWrap {
     position: relative;
     background-color: rgb(255, 255, 255);
 }
-.cWslIP {
+.plan-depthWrap {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -46,7 +50,7 @@
     padding: 0px 16px;
     overflow-x: auto;
 }
-.cBbdAT {
+.tap-item {
     padding: 0px;
     margin: 0px;
     height: 60px;
@@ -55,16 +59,16 @@
     align-items: center;
     white-space: nowrap;
 }
-.cqTslV {
+.item-li {
     position: relative;
     display: flex;
     height: 100%;
     margin: 0px 8px;
 }
-.cqTslV:first-child {
+.item-li:first-child {
     margin-left: 0px;
 }
-.cqTslV a {
+.item-li a {
     font-weight: 500;
     color: rgb(13, 13, 13);
     display: flex;
@@ -74,13 +78,13 @@
     line-height: 22px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.krGOIO {
+.tapItem-li {
     position: relative;
     display: flex;
     height: 100%;
     margin: 0px 8px;
 }
-.krGOIO a {
+.tapItem-li a {
     color: rgb(13, 13, 13);
     display: flex;
     -webkit-box-align: center;
@@ -90,18 +94,18 @@
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
     font-weight: 700 !important;
 }
-.ghVmvY {
+.plan-content {
     padding: 48px 16px 0px;
 }
-.fGfROL {
+.project-itemWrap {
     border-bottom: 1px solid rgb(240, 240, 240);
     padding-bottom: 40px;
     margin-bottom: 32px;
 }
-.kwDByH {
+.project-info {
     margin: 0px 0px 24px;
 }
-.gjLASS {
+.project-infoTitle {
     margin-bottom: 14px;
     font-weight: 700;
     color: rgb(61, 61, 61);
@@ -109,19 +113,19 @@
     line-height: 22px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.ccxeYs {
+.icon-svg {
     display: inline-flex;
     align-self: center;
 }
-.ccxeYs svg {
+.icon-svg svg {
     width: 1em;
     height: 1em;
 }
-.gjLASS svg {
+.project-infoTitle svg {
     fill: rgb(248, 100, 83);
     font-size: 13px;
 }
-.kbTFwt {
+.project-infoDescription {
     font-weight: 400;
     color: rgb(109, 109, 109);
     margin: 0px;
@@ -129,10 +133,10 @@
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.etypUj .style__ProjectFormsHalf-sc-1mawbc1-9 {
+.projectForm .style__ProjectFormsHalf-sc-1mawbc1-9 {
     margin-bottom: 24px;
 }
-.fHMBHo {
+.form-title {
     font-weight: bold;
     font-size: 11px;
     line-height: 18px;
@@ -144,10 +148,10 @@
 p:first-child {
     margin-top: 0em;
 }
-.fzVHyd {
+.selectWrap {
     position: relative;
 }
-.bXlLWE {
+.input-wrap {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(248, 248, 248);
@@ -162,7 +166,7 @@ p:first-child {
     align-items: center;
     border-radius: 1px;
 }
-.gojAHY {
+.input-select-wrap {
     padding: 0px 18px;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
@@ -170,7 +174,7 @@ p:first-child {
 input {
     line-height: normal;
 }
-.bfmNPl {
+.innerInput {
     width: 100%;
     background: transparent;
     border: 0px;
@@ -185,18 +189,18 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-.gojAHY input {
+.input-select-wrap input {
     cursor: default;
 }
-.gojAHY > div {
+.input-select-wrap > div {
     font-size: 10px;
 }
-.gojAHY svg {
+.input-select-wrap svg {
     fill: rgb(61, 61, 61);
     transform: rotate(0deg);
     transition: transform 0.3s ease 0s;
 }
-.jQwQu {
+.selectOp1 {
     font-weight: 400;
     color: rgb(229, 60, 65);
     margin: 0px;
@@ -206,10 +210,10 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gpuBnE {
+.selctOp2 {
     margin-top: 8px;
 }
-.dvfxOp {
+/* .dvfxOp {
     padding: 0px 18px;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
@@ -225,14 +229,14 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     fill: rgb(61, 61, 61);
     transform: rotate(0deg);
     transition: transform 0.3s ease 0s;
-}
-.enzGlj {
+} */
+.projectForm-wrap {
     width: 100%;
 }
-.kWrcyJ {
+.projectToolTip {
     margin-bottom: 10px;
 }
-.eCiCMa {
+.label-wrap {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -242,7 +246,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     color: rgb(61, 61, 61);
     margin: 0px 0px 10px;
 }
-.joiGLy {
+.label-areaToolTip {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -255,7 +259,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     background: transparent;
     cursor: pointer;
 }
-.eCiCMa em {
+.label-wrap em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -267,10 +271,10 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     outline: none;
     font-size: 16px;
 }
-.eCiCMa svg {
+.label-wrap svg {
     fill: rgb(255, 87, 87);
 }
-.cRZPeO {
+.areaTooltip {
     width: 100%;
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
@@ -284,7 +288,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     transform: translateY(0px);
     opacity: 1;
 }
-.fuJzEN .title {
+.toolTip-content .title {
     width: 100%;
     margin-bottom: 16px;
     font-size: 12px !important;
@@ -295,10 +299,10 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
 img {
     border: 0;
 }
-.fuJzEN .image img {
+.toolTip-content .image img {
     width: 100%;
 }
-.cRZPeO .close {
+.areaTooltip .close {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -314,10 +318,10 @@ img {
     background: rgb(252, 252, 252);
     cursor: pointer;
 }
-.cRZPeO svg {
+.areaTooltip svg {
     fill: rgb(109, 109, 109);
 }
-.jcLEQH {
+.input-guide-lengthCheck {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -328,7 +332,7 @@ img {
     padding: 0px 18px;
     border: 1px solid rgb(244, 69, 68);
 }
-.dXKaPI {
+.inputWrapper-style1 {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(255, 255, 255);
@@ -343,21 +347,21 @@ img {
     align-items: center;
     border-radius: 1px;
 }
-.wmJOZ {
+.inputWrapper-style2 {
     flex: 1 1 0%;
     border: 0px;
     text-align: left;
     padding: 0px;
     background: transparent;
 }
-.wmJOZ input {
+.inputWrapper-style2 input {
     text-align: inherit;
     font-weight: 400;
     font-size: 14px !important;
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.ciHGYP {
+.notice-area {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
@@ -369,14 +373,14 @@ img {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.fduvas {
+.guide-msg {
     color: rgb(158, 158, 158);
 }
-.hpeTKa {
+.count-length {
     margin-left: auto;
     color: rgb(244, 69, 68);
 }
-.bBnjVq {
+.input-check {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -385,14 +389,14 @@ img {
     border-radius: 1px;
     background: rgb(255, 255, 255);
     padding: 0px 18px;
-    border: 1px solid rgb(240, 240, 240);
+    border: 1px solid rgb(244, 69, 68);
 }
-.vnOMO {
+.textareaWrap2 {
     border: 1px solid rgb(230, 230, 230);
     border-radius: 1px;
     padding: 12px;
 }
-.dUzqeP {
+.textareaWrap1 {
     width: 100%;
     min-height: auto;
     border: 0px;
@@ -405,21 +409,21 @@ img {
 textarea {
     overflow: auto;
 }
-.cjoUaQ {
+.textarea-style {
     width: 100%;
     height: 100%;
     border: 0px;
     padding: 0px;
     resize: none;
 }
-.dUzqeP textarea {
+.textareaWrap1 textarea {
     background: transparent;
 }
-.kEJJPl {
+.count-msg {
     margin-left: auto;
-    color: rgb(158, 158, 158);
+    color: rgb(244, 69, 68);
 }
-.gJNjvn {
+.projectItem {
     background: rgb(253, 244, 243);
     border-radius: 8px;
     padding: 20px 24px 20px 50px;
@@ -430,7 +434,7 @@ textarea {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gJNjvn .noticeTitle {
+.projectItem .noticeTitle {
     color: rgb(248, 100, 83);
     margin-bottom: 10px;
     font-weight: 700;
@@ -439,26 +443,26 @@ textarea {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gJNjvn .noticeTitle > div {
+.projectItem .noticeTitle > div {
     position: absolute;
     top: 3px;
     left: -23px;
 }
-.gJNjvn .noticeTitle svg {
+.projectItem .noticeTitle svg {
     position: relative;
     top: 1px;
     margin-right: 6px;
     fill: rgb(248, 100, 83);
     font-size: 12px;
 }
-.eCiCMa p {
+.label-wrap p {
     font-weight: 500;
     margin: 0px;
     font-size: 12px !important;
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.LlndN {
+.UploadWrap {
     width: 100%;
     padding: 13px;
     margin-bottom: 25px;
@@ -475,7 +479,7 @@ textarea {
     -webkit-box-pack: center;
     justify-content: center;
 }
-.LlndN input[type="file"] {
+.UploadWrap input[type="file"] {
     display: block;
     width: 100%;
     height: 100%;
@@ -484,7 +488,7 @@ textarea {
     left: 0px;
     opacity: 0;
 }
-.LlndN span {
+.UploadWrap span {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -497,17 +501,17 @@ textarea {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.LlndN span i {
+.UploadWrap span i {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     font-size: 12px;
     margin: 0px 8px 0px 0px;
 }
-.LlndN span i svg {
+.UploadWrap span i svg {
     fill: rgb(248, 100, 83);
 }
-.LlndN p {
+.UploadWrap p {
     width: 100%;
     font-weight: 400;
     color: rgb(158, 158, 158);
@@ -517,7 +521,7 @@ textarea {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.LlndN strong {
+.UploadWrap strong {
     display: block;
     text-align: center;
     font-weight: 400;
@@ -526,7 +530,7 @@ textarea {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.bPMnIA {
+.select-option {
     width: 100%;
     max-height: 500px;
     overflow-y: auto;
@@ -542,16 +546,16 @@ textarea {
     z-index: 20;
     transform: translateY(48px);
 }
-.bPMnIA ul {
+.select-option ul {
     padding: 0px;
     margin: 0px;
     list-style: none;
 }
-.kxgSiI {
+.customOption {
     background: transparent;
     transition: background 0.3s ease 0s;
 }
-.bPMnIA li button {
+.select-option li button {
     display: block;
     width: 100%;
     height: 44px;
@@ -561,4 +565,252 @@ textarea {
     border-radius: 4px;
     background: transparent;
     color: rgb(61, 61, 61);
+}
+
+.ImgStyleList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.ImgStyleStepper {
+    display: flex;
+    flex-flow: column wrap;
+    width: 33px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(240, 240, 240);
+    padding: 4px;
+}
+.imgWithButtonBox {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex: 1 1 0%;
+    padding: 12px 12px 15px;
+    background: rgb(255, 255, 255);
+}
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+.imgStyleButton:disabled {
+    background: transparent;
+}
+
+.imgStyleButton:disabled svg {
+    fill: rgba(96, 96, 96, 0.3);
+}
+.imgStyleButton {
+    display: flex;
+    width: 90%;
+    height: 26px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 0px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 8px;
+    border-radius: 2px;
+}
+.ccxeYs svg {
+    width: 1em;
+    height: 1em;
+}
+.imgBox {
+    width: 96px;
+    position: relative;
+}
+.imgtag {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 2px 4px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 9px;
+    line-height: 11px;
+    color: rgb(255, 255, 255);
+    background: rgb(254, 95, 76);
+}
+.imgBox img {
+    width: 100%;
+    vertical-align: bottom;
+}
+.expendButton {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 0px;
+}
+.imgBox svg {
+    fill: rgb(255, 255, 255);
+}
+.styleBtWrap {
+    display: flex;
+}
+.changeBt {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+.lineBt {
+    width: 73px;
+    height: 36px;
+    font-weight: 500;
+    position: relative;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.lineBt i {
+    margin: 0px 8px 0px 0px;
+}
+input {
+    line-height: normal;
+}
+.lineBt input[type="file"] {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.imgDownStyle {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 46px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-left: 8px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(242, 242, 242);
+}
+.imgDownStyle svg {
+    fill: rgb(61, 61, 61);
+}
+.removeBt {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 48px;
+    height: 36px;
+    background: rgb(255, 255, 255);
+    font-size: 14px;
+    margin-left: 8px;
+    border: 1px solid rgb(242, 242, 242);
+    border-radius: 4px;
+}
+
+.lineBt input[type="file"] {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.lineBt i svg {
+    fill: rgb(248, 100, 83);
+}
+
+.modal-layer {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    background: #FFF;
+    color: #3d3d3d;
+}
+.modal-wrapper {
+    position: fixed;
+    z-index: 99999999;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+.modal-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(13, 13, 13, 0.65);
+}
+.modal-posWrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    overflow: hidden auto;
+}
+.modalWrap {
+    padding: 18px 16px;
+}
+.modal-header {
+    display: flex;
+    font-weight: bold;
+    position: relative;
+    min-height: 36px;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.025em;
+    margin: 0px 0px 24px;
+    padding: 38px 0px 0px;
+}
+.modal-layer .fnt-p1 {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: -0.020em;
+}
+.modal-header .Modal-modalCloseButton {
+    position: fixed;
+    z-index: 3;
+    top: 18px;
+    right: 16px;
+}
+.modalBt .Modal-svg {
+    display: flex;
 }
