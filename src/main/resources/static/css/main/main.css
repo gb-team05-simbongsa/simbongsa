@@ -169,19 +169,6 @@ b, strong {
     position: relative;
 }
 
-.main-popular-section::after{
-    display: block;
-    content: "";
-    width: calc(100% - 32px);
-    height: 1px;
-    background: rgb(239, 239, 239);
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
 .main-banner-container{
     position: relative;
     user-select: none;
