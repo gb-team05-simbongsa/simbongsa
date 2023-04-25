@@ -60,18 +60,30 @@
                         </div>
                         <div class="withdraw-check-wrap">
                             <div class="withdraw-check">
-                                <label for="" class="withdraw-check-label">
+                                <div class="withdraw-check-label">
                                     <span class="check-span">
                                         <div class="check">
                                             <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z"></path></svg>
                                         </div>
                                     </span>
-                                    <input type="checkbox" name="" id="">
+                                    <input type="checkbox" name="" id="check">
                                     탈퇴 유의사항을 확인했습니다.
-                                </label>
+                                </div>
                             </div>
                             <button class="next-button">다음</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal-wrap">
+            <div class="modal-container">
+                <div class="modal">
+                    <div class="modal-content">유의사항을 확인해주세요.</div>
+                    <div class="modal-ok-div">
+                        <button type="button" class="modal-ok">확인</button>
                     </div>
                 </div>
             </div>
@@ -89,6 +101,34 @@
     $(document).ready(function () {
         $('#_header').load('../main/header.html');
         $('#_footer').load('../main/footer.html');
+    });
+</script>
+<script>
+    // 탈퇴 유의사항 확인을 누르면 체크박스 체크 혹은 해제
+    $('.withdraw-check-label').on('click', () => {
+        if($('.check-span').css('display') == 'none') {
+            $('.check-span').css('display', 'flex');
+            $('#check').prop('checked', true);
+        } else {
+            $('.check-span').css('display', 'none');
+            $('#check').prop('checked', false);
+        }
+    });
+
+    // 체크가 되어있지 않으면 모달 띄우고 빠져나감.
+    // 여기에 다음 페이지로 넘기는 것 쓰면 됨
+    $('.next-button').on('click', () => {
+        if(!$('#check').prop('checked')) {
+            $('.modal-wrap').show();
+            return;
+        }
+
+
+    });
+
+    // 모달에 확인 버튼 누르면 모달 끄기
+    $('.modal-ok').on('click', () => {
+        $('.modal-wrap').hide();
     });
 </script>
 </html>

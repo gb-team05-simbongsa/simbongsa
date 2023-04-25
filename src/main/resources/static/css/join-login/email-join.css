@@ -160,12 +160,21 @@ input[type="checkbox"] {
 }
 
 .email-error {
-    margin: 8px 0px 0px;
     color: rgb(255, 87, 87);
     font-size: 13px;
     line-height: 20px;
     letter-spacing: -0.015em;
     margin: 0px 0px 12px;
+    display: none;
+}
+
+.check-error {
+    color: rgb(255, 87, 87);
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    margin: 0px 0px 12px;
+    display: none;
 }
 
 .join-explain {
@@ -190,6 +199,10 @@ input[type="checkbox"] {
     cursor: pointer;
     width: 84px;
     font-weight: bold;
+}
+
+.drop-content {
+    display: none;
 }
 
 .drop-content p {
@@ -244,11 +257,42 @@ input[type="checkbox"] {
     background: rgb(255, 255, 255);
 }
 
+.agree-all::before {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 2px;
+    z-index: 2;
+    left: 0px;
+    top: 0.1em;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(189, 189, 189);
+    background: rgb(255, 255, 255);
+}
+
 .agree-all {
     font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    padding: 0px 0px 0px 29px;
+    color: rgb(61, 61, 61);
+    display: inline-flex;
 }
 
 .agree input[type="checkbox"] {
+    visibility: hidden;
+    z-index: 1;
+    position: absolute;
+    left: 10px;
+    width: 0px;
+    height: 0px;
+    top: 90%;
+    margin: -1px 0px 0px;
+}
+
+.agree-all input[type="checkbox"] {
     visibility: hidden;
     z-index: 1;
     position: absolute;
@@ -288,6 +332,7 @@ input[type="checkbox"] {
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
+    display: none;
 }
 
 .checked-div {
