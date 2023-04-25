@@ -9,9 +9,6 @@
 .projectInfo {
     margin: 0px 0px 24px;
 }
-.loGysm{
-
-}
 .icon-svg {
     display: inline-flex;
     align-self: center;
@@ -102,7 +99,7 @@ p:first-child {
     padding: 32px 24px 24px;
     width: 100%;
 }
-.bBnjVq {
+.inputWrapper {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -113,7 +110,7 @@ p:first-child {
     padding: 0px 18px;
     border: 1px solid rgb(240, 240, 240);
 }
-.fOjsfs {
+.inputSpan2 {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(255, 255, 255);
@@ -128,14 +125,14 @@ p:first-child {
     align-items: center;
     border-radius: 1px;
 }
-.cNNWwa {
+.inputSpan {
     flex: 1 1 0%;
     border: 0px;
     text-align: right;
     padding: 0px;
     background: transparent;
 }
-.bfmNPl {
+.innerInput {
     width: 100%;
     background: transparent;
     border: 0px;
@@ -146,14 +143,14 @@ p:first-child {
     margin: 0px;
     appearance: none !important;
 }
-.cNNWwa input {
+.inputSpan input {
     text-align: inherit;
     font-weight: 400;
     font-size: 14px !important;
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.ciHGYP {
+.noticeArea {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
@@ -165,19 +162,19 @@ p:first-child {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.fduvas {
+.guidearea {
     color: rgb(158, 158, 158);
 }
 p:last-child {
     margin-bottom: 0em;
 }
-.qZZRG {
+.estimateAmount {
     background: rgb(252, 252, 252);
     border-radius: 4px;
     padding: 25px 22px 15px;
     margin-top: 8px;
 }
-.OobSQ {
+.TotalAmount {
     color: rgb(61, 61, 61);
     font-size: 12px;
     line-height: 19px;
@@ -187,11 +184,11 @@ p:last-child {
     margin-bottom: 11px;
     text-align: center;
 }
-.OobSQ span {
+.TotalAmount span {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.OobSQ em {
+.TotalAmount em {
     display: block;
     font-style: normal;
     color: rgb(248, 100, 83);
@@ -202,7 +199,7 @@ p:last-child {
 }
 
 
-.jFIOTU {
+.feeWrap {
     color: rgb(158, 158, 158);
     font-size: 12px;
     line-height: 19px;
@@ -212,43 +209,43 @@ p:last-child {
     justify-content: space-between;
     margin-bottom: 12px;
 }
-.jFIOTU em {
+.feeWrap em {
     font-style: normal;
     color: rgb(61, 61, 61);
     display: block;
 }
 
-.fsjSoz {
+.fee {
     color: rgb(158, 158, 158);
     font-size: 11px;
     line-height: 18px;
     letter-spacing: -0.005em;
     margin-bottom: 3px;
 }
-.fsjSoz em {
+.fee em {
     font-style: normal;
     color: rgb(61, 61, 61);
     display: block;
 }
-.loGysm {
+.fundingPJ {
     border-bottom: 0px;
     padding-bottom: 40px;
     margin-bottom: 32px;
 }
-.enzGlj {
+.projectFormWrap {
     width: 100%;
 }
-.foZtIs {
+.findingPlan {
     margin: 0px;
     padding: 0px;
 }
-.eMrMYN {
+.planItem {
     position: relative;
     list-style: none;
     padding: 0px 0px 38px 18px;
     color: rgb(158, 158, 158);
 }
-.eMrMYN::before {
+.planItem::before {
     position: absolute;
     top: 4px;
     left: 0px;
@@ -261,10 +258,10 @@ p:last-child {
     border-radius: 4px;
     background: rgb(255, 255, 255);
 }
-.eghppi .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5 {
+.itemform .FundingPlan__ProjectFormsHalf-sc-1f9ovdu-5 {
     margin-bottom: 24px;
 }
-.gKXnxM {
+.formTitle {
     font-weight: 500;
     margin-bottom: 8px;
     color: rgb(13, 13, 13);
@@ -273,19 +270,19 @@ p:last-child {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.eMrMYN .FundingPlan__ProjectFormsTitle-sc-1f9ovdu-0 {
+.planItem .FundingPlan__ProjectFormsTitle-sc-1f9ovdu-0 {
     margin-bottom: 4px;
 }
-.react-datepicker-wrapper {
+.datapickerwrap {
     display: inline-block;
     padding: 0;
     border: 0;
 }
-.giJkqL .react-datepicker-wrapper {
+.editorDate .datapickerwrap {
     position: relative;
     width: 100%;
 }
-.react-datepicker__input-container {
+.datapickercontain {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -321,7 +318,7 @@ p:last-child {
     background: rgb(255, 255, 255);
     color: rgb(61, 61, 61);
 }
-.bWmuoo {
+.customInput {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -336,7 +333,7 @@ p:last-child {
     background: rgb(255, 255, 255);
     color: rgb(208, 208, 208);
 }
-.LuJNQ {
+.SelectSingle {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(158, 158, 158);
     background: rgb(248, 248, 248);
@@ -351,27 +348,27 @@ p:last-child {
     align-items: center;
     border-radius: 1px;
 }
-.intylJ {
+.singleStyle {
     padding: 0px 18px;
     background: rgba(240, 240, 240, 0.7);
     border: 1px solid rgb(228, 228, 228);
     color: rgb(61, 61, 61);
 }
-.intylJ svg {
+.singleStyle svg {
     fill: rgb(158, 158, 158);
     transform: rotate(0deg);
     transition: transform 0.3s ease 0s;
 }
-.bWmuoo svg {
+.customInput svg {
     margin: 0px 9px 0px 0px;
 }
-.giJkqL input, .giJkqL button {
+.editorDate input, .editorDate button {
     outline: none;
 }
 .cbhVef svg {
     margin: 0px 9px 0px 0px;
 }
-.fzVHyd {
+.selectWrap {
     position: relative;
 }
 .bXlLWE {
@@ -405,7 +402,7 @@ p:last-child {
     transform: rotate(0deg);
     transition: transform 0.3s ease 0s;
 }
-.jQwQu {
+.selectErr1 {
     font-weight: 400;
     color: rgb(229, 60, 65);
     margin: 0px;
@@ -415,17 +412,17 @@ p:last-child {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gpuBnE {
+.selectErr2 {
     margin-top: 8px;
 }
-.cFBWEo {
+.fundingTerm {
     padding-top: 46px;
     font-weight: 400;
     font-size: 14px !important;
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.eMrMYN::after {
+.planItem::after {
     content: "";
     position: absolute;
     top: 4px;
@@ -434,7 +431,7 @@ p:last-child {
     border-left: 1px solid rgb(228, 228, 228);
 }
 
-.eCiCMa em {
+.labelWrapper em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -446,7 +443,7 @@ p:last-child {
     outline: none;
     font-size: 16px;
 }
-.eCiCMa svg {
+.labelWrapper svg {
     fill: rgb(255,  87, 87);
 }
 .areaToolTip {
@@ -464,7 +461,7 @@ p:last-child {
     padding: 0px 26px;
     margin: 0px;
 }
-.eCiCMa em {
+.labelWrapper em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -492,13 +489,13 @@ p:last-child {
     background: rgb(252, 252, 252);
     cursor: pointer;
 }
-.eMrMYN:last-child {
+.planItem:last-child {
     padding-bottom: 0px;
 }
-.hkXrPY {
+.fundingToolTip {
     margin-bottom: 10px;
 }
-.eCiCMa {
+.labelWrapper {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -508,7 +505,7 @@ p:last-child {
     color: rgb(61, 61, 61);
     margin: 0px 0px 10px;
 }
-.joiGLy {
+.labelToolTip {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -521,7 +518,7 @@ p:last-child {
     background: transparent;
     cursor: pointer;
 }
-.eCiCMa em {
+.labelWrapper em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -533,17 +530,17 @@ p:last-child {
     outline: none;
     font-size: 16px;
 }
-.eCiCMa svg {
+.labelWrapper svg {
     fill: rgb(255, 87, 87);
 }
 .areaToolTip svg {
     fill: rgb(109, 109, 109);
 }
 
-.hkXrPY {
+.fundingToolTip {
     margin-bottom: 10px;
 }
-.eCiCMa {
+.labelWrapper {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -554,7 +551,7 @@ p:last-child {
     margin: 0px 0px 10px;
 }
 
-.eCiCMa p {
+.labelWrapper p {
     font-weight: 500;
     margin: 0px;
     font-size: 12px !important;
@@ -565,7 +562,7 @@ p:last-child {
 
 
 /* funding-creater-info */
-.jcLEQH {
+.divWrap {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -576,12 +573,12 @@ p:last-child {
     padding: 0px 18px;
     border: 1px solid rgb(244, 69, 68);
 }
-.dCdIbF {
+.textWrap {
     border: 1px solid rgb(255, 87, 87);
     border-radius: 1px;
     padding: 12px;
 }
-.dUzqeP {
+.textStyle {
     width: 100%;
     min-height: auto;
     border: 0px;
@@ -594,21 +591,21 @@ p:last-child {
 textarea {
     overflow: auto;
 }
-.cjoUaQ {
+.textareaStyle {
     width: 100%;
     height: 100%;
     border: 0px;
     padding: 0px;
     resize: none;
 }
-.dUzqeP textarea {
+.textStyle textarea {
     background: transparent;
 }
-.hpeTKa {
+.textguideArea {
     margin-left: auto;
     color: rgb(244, 69, 68);
 }
-.psjim {
+.authwrap {
     width: 100%;
     border: 1px solid rgb(240, 240, 240);
     border-radius: 4px;
@@ -617,12 +614,12 @@ textarea {
     -webkit-box-align: center;
     align-items: center;
 }
-.psjim .info {
+.authwrap .info {
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
-.psjim .authInfo {
+.authwrap .authInfo {
     display: block;
     color: rgb(109, 109, 109);
     font-weight: 400;
@@ -630,7 +627,7 @@ textarea {
     line-height: 22px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.psjim .authInfo .authType {
+.authwrap .authInfo .authType {
     color: rgb(61, 61, 61);
     font-weight: 500;
     padding-bottom: 8px;
@@ -638,7 +635,7 @@ textarea {
     line-height: 22px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.psjim .authInfo .authType svg {
+.authwrap .authInfo .authType svg {
     fill: rgb(248, 100, 83);
     margin-right: 10px;
     font-size: 20px;
@@ -651,7 +648,7 @@ b, strong {
 button[disabled], html input[disabled] {
     cursor: default;
 }
-.euVqTZ {
+.lineBT {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -670,31 +667,31 @@ button[disabled], html input[disabled] {
     background: rgb(255, 255, 255);
     color: rgb(204, 204, 204);
 }
-.gEVqSR {
+.authBT {
     padding: 0px 16px;
 }
-.euVqTZ:hover {
+.lineBT:hover {
     border-color: rgb(228, 228, 228);
     color: rgb(61, 61, 61);
 }
-.euVqTZ.pdc-btn-m {
+.lineBT.pdc-btn-m {
     font-size: 12px;
     line-height: 20px;
 }
-.gEVqSR:disabled {
+.authBT:disabled {
     color: rgb(61, 61, 61);
     border: 1px solid rgb(240, 240, 240);
 }
-.psjim .info button {
+.authwrap .info button {
     font-weight: 500;
     font-size: 11px !important;
     line-height: 18px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.euVqTZ svg {
+.lineBT svg {
     fill: rgb(204, 204, 204);
 }
-.gEVqSR svg {
+.authBT svg {
     fill: rgb(248, 100, 83);
     margin-right: 8px;
 }
@@ -702,7 +699,7 @@ p {
     margin: 0em 0em 1em;
     line-height: 1.7em;
 }
-.dSPaHO {
+.registButton {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -721,17 +718,17 @@ p {
     color: rgb(61, 61, 61);
     background: rgb(255, 255, 255);
 }
-.dSPaHO.pdc-btn-m {
+.registButton.pdc-btn-m {
     font-size: 12px;
     line-height: 20px;
 }
 
 /*  */
-.fdWgNc {
+.planContents {
     padding: 0px 0px 63px;
     margin: 44px 0px 0px;
 }
-.sfObC {
+.titleWraper {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -741,16 +738,16 @@ p {
     margin: 0px 0px 12px;
     padding: 0px 11px;
 }
-.bSEQgt {
+.selectionTitle {
     font-weight: 700;
     font-size: 16px !important;
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.bSEQgt svg {
+.selectionTitle svg {
     fill: rgb(248, 100, 83);
 }
-.lekbXK {
+.ideaButton {
     display: inline-flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -765,10 +762,10 @@ p {
     border-radius: 45px;
     cursor: pointer;
 }
-.lekbXK svg {
+.ideaButton svg {
     fill: rgb(248, 100, 83);
 }
-.jOdkVg {
+.textGuide {
     font-weight: 500;
     color: rgb(61, 61, 61);
     margin: 0px 0px 0px 5px;
@@ -778,17 +775,17 @@ p {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.hujKvr {
+.storyWrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
-.kjapul {
+.guidewrapper {
     padding: 0px 11px;
 }
-.gbPNTG {
+.editoerWrapper {
     width: 100%;
     padding: 0px 13px;
     background: rgb(255, 255, 255);
@@ -796,7 +793,7 @@ p {
     position: relative;
     box-sizing: border-box;
 }
-.kRqCGW {
+.guideInfo {
     padding: 20px 24px;
     box-sizing: border-box;
     background: rgb(253, 244, 243);
@@ -806,7 +803,7 @@ p {
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.kvKWkr {
+.guideTitle {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -817,40 +814,40 @@ p {
     line-height: 18px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.kvKWkr svg {
+.guideTitle svg {
     margin: 0px 8px 0px 0px;
     fill: rgb(255, 87, 87);
 }
-.kRqCGW p {
+.guideInfo p {
     margin: 0px;
     color: rgb(109, 109, 109);
 }
-.kRqCGW em {
+.guideInfo em {
     font-weight: 700;
     font-style: normal;
 }
-.goALXE {
+.planSelection {
     padding: 32px 0px;
     border-bottom: 1px solid rgb(228, 228, 228);
 }
-.foCaVP {
+.rightButtonWrapper {
     position: absolute;
     top: 32px;
     right: 68px;
     display: flex;
     gap: 4px;
 }
-.fHPKlJ {
+.peakToolTipWrap {
     position: absolute;
     left: -50px;
     right: auto;
     bottom: calc(100% + 12px);
     width: 240px;
 }
-.foCaVP div {
+.rightButtonWrapper div {
     align-self: flex-start;
 }
-.fzpkYi {
+.peakToolTip {
     position: relative;
     width: 100%;
     background: rgb(255, 255, 255);
@@ -862,21 +859,21 @@ p {
     transform: translateY(0px);
     opacity: 1;
 }
-.fzpkYi svg {
+.peakToolTip svg {
     fill: rgb(109, 109, 109);
 }
-.klNlpA {
+.toolTipContent {
     font: 400 12px / 20px NotoSansKR;
     color: rgb(61, 61, 61);
 }
-.fWFUND {
+.confirmButton {
     font: 700 12px / 20px NotoSansKR;
     color: rgb(248, 100, 83);
     border: 0px;
     background: transparent;
     padding-left: 0px;
 }
-.fzpkYi .peak {
+.peakToolTip .peak {
     overflow: hidden;
     position: absolute;
     top: 100%;
@@ -886,15 +883,15 @@ p {
     left: 50%;
     transform: translateX(-50%);
 }
-.fzpkYi .peak svg {
+.peakToolTip .peak svg {
     display: block;
     margin: 0px auto;
 }
-.fzpkYi .peak svg:nth-child(1) {
+.peakToolTip .peak svg:nth-child(1) {
     filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 1px 2.5px);
 }
 
-.cuzeJc {
+.lineButton {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -912,15 +909,15 @@ p {
     border: 1px solid rgb(61, 61, 61);
     background-color: rgb(255, 255, 255);
 }
-.lltcrw {
+.gptbutton {
     border: 1px solid rgb(238, 238, 238);
     font-weight: 500;
 }
-.cuzeJc.pdc-btn-l {
+.lineButton.pdc-btn-l {
     font-size: 12px;
     line-height: 20px;
 }
-.fOsbkJ {
+.accorationTitle {
     display: flex;
     width: 100%;
     height: 28px;
@@ -938,18 +935,18 @@ p {
     line-height: 28px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.dZDehu {
+.toggleContent {
     min-height: auto;
     height: auto;
     overflow: hidden;
     transition: all 0.4s ease 0s;
 }
-.fOsbkJ i {
+.accorationTitle i {
     font-size: 13px;
     transform: rotate(-180deg);
     transition: transform 0.4s ease 0s;
 }
-.dZDehu {
+.toggleContent {
     min-height: auto;
     height: auto;
     overflow: hidden;
