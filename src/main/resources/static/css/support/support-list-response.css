@@ -1,104 +1,43 @@
-@media (min-width: 1080px) {
-    .support-list-wrapper {
-        padding: 0px 0px 40px;
-    }
-}
-
-@media (min-width: 1080px) {
-    .support-list-title {
-        padding-right: 0px !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .support-list-title {
-        padding: 0px 1rem 0px 0px !important;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .support-list-wid {
-        width: 1160px;
-    }
-}
 
 @media only screen and (min-width: 1080px) {
-    .support-list-wid {
-        width: 1080px;
+    .main_content {
+      margin-bottom: 0px;
     }
-}
+  }
 
-@media (min-width: 1080px) {
-    .support-list-wid {
-        width: 1032px;
-        margin: 0px auto;
+  @media only screen and (min-width: 1080px) {
+    .main_content {
+      width: 1080px;
     }
-}
+  }
 
-@media (min-width: 1080px) {
-    .support-list-sort-wrapper .sort-wrap {
-        padding-left: 0px;
+  @media only screen and (min-width: 1200px) {
+    .main_content {
+      width: 1160px;
     }
-}
+  }
 
-@media (min-width: 768px) {
-    .sort-btn-container {
-        border: 1px solid rgb(230, 230, 230);
+  @media only screen and (min-width: 1080px) {
+    .main_content {
+      width: 1032px;
     }
-}
+  }
 
-@media (min-width: 1080px) {
-    .sort-btn-wrap {
+  @media (max-width: 1080px){
+    .achievement{
         font-size: 1rem;
-        padding: 0px 27px 0px 8px;
+        padding: 0px 0px 0px 0px;
     }
 }
 
-@media (min-width: 768px) {
-    .sort-btn-wrap .sort-title {
-        display: inline;
-    }
-}
-
-@media (min-width: 1080px) {
-    .sort-btn-wrap .sort-title-down {
+@media (min-width: 1080px){
+    .achievement_second_span{
         display: block;
     }
 }
 
-@media (min-width: 1080px) {
-    .support-container {
-        margin-bottom: 0px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .support-wid {
-        width: 1160px;
-    }
-}
-
-@media only screen and (min-width: 1080px) {
-    .support-wid {
-        width: 1080px;
-    }
-}
-
-@media (min-width: 1080px) {
-    .support-wid {
-        width: 1032px;
-        margin: 0px auto;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .support-wrap {
-        width: 100%;
-    }
-}
-
-@media (min-width: 1080px) {
-    .support-wrap {
+@media (min-width: 1080px){
+    .have_project{
         font-size: 16px;
         line-height: 27px;
         width: 100%;
@@ -107,42 +46,102 @@
     }
 }
 
-@media only screen and (min-width: 768px) {
-    .support-wrap {
+@media only screen and (min-width: 768px){
+    .have_project{
         padding: 16px 20px 32px;
+        }
     }
-}
 
-@media (min-width: 1080px) {
-    .support-list-layout {
-        -webkit-box-pack: start;
-        justify-content: flex-start;
-        margin: 0px -10px;
-        padding: 0px;
-    }
-}
-
-@media (min-width: 640px) {
-.support-list-layout {
+@media (min-width: 640px){
+    .real_content{
         width: auto;
         padding: 0px 8px;
     }
 }
 
-@media only screen and (min-width: 640px) {
-    .support-list-layout-container {
+@media (min-width: 640px){
+    .first_content{
+        width: 50%;
+        padding: 0px 10px;
+    }
+}
+
+@media (min-width: 865px){
+    .first_content{
+        width: 25%;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .project_card{
         margin: 0px 0px 56px;
     }
 }
 
-@media only screen and (min-width: 640px) {
-    .support-list-layout-container .support-list-layout-wrapper {
+@media only screen and (min-width: 640px){
+    .project_card_div{
         display: block;
     }
 }
 
-@media only screen and (min-width: 640px) {
-    .support-list-content-container {
+@media only screen and (min-width: 640px){
+    .project_name{
         padding: 0px;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .content_dl{
+        min-height: 138px;
+        padding: 16px 0px 0px;
+        margin-bottom: 14px;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .money{
+        margin: 0px 16px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .money{
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .line{
+        width: 100%;
+        height: 3px;
+        margin: 6px 0px 0px;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .first_dt{
+        min-height: auto;
+        margin: 0px 0px 8px;
+        font-size: 16px !important;
+        line-height: 22px !important;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .second_dd{
+        display: -webkit-box;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .money_achievement{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .money_money{
+        font-size: 12px;
+        line-height: 19px;
+        letter-spacing: -0.01em;
     }
 }
