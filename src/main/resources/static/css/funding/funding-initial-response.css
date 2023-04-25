@@ -1,10 +1,10 @@
 @media (min-width: 1080px){
-    .lhcIOG {
-        margin: 64px auto 0px;
+    .top-contentWrap {
+        margin: -3px auto 0px;
     }
 }
 @media (min-width: 1080px){
-    .iePPZZ {
+    .top-title {
         font-weight: 700;
         padding: 39px 0px 21px;
         margin: 0px auto;
@@ -15,7 +15,7 @@
     }
 }
 @media (min-width: 1080px){
-    .iePPZZ {
+    .top-title {
         font-weight: 700;
         padding: 39px 0px 21px;
         margin: 0px auto;
@@ -26,36 +26,36 @@
     }
 }
 @media (min-width: 1080px){
-    .cWslIP {
+    .plan-depthWrap {
         width: 1080px;
         margin: 0px auto;
         padding: 0px;
     }
 }
 @media (min-width: 1080px){
-    .cqTslV {
+    .item-li {
         margin: 0px 16px;
     }
 }
 @media (min-width: 1080px){
-    .krGOIO {
+    .tapItem-li {
         margin: 0px 16px;
     }
 }
 @media (min-width: 1080px){
-    .qbVXa {
+    .contents {
         width: 100%;
         max-width: 1080px;
         margin: 0px auto;
     }
 }
 @media (min-width: 1080px){
-    .ghVmvY {
+    .plan-content {
         padding: 84px 0px 0px;
     }
 }
 @media (min-width: 1080px){
-    .fGfROL {
+    .project-itemWrap {
         display: flex;
         padding-bottom: 48px;
         margin-bottom: 56px;
@@ -64,13 +64,13 @@
     }
 }
 @media (min-width: 1080px){
-    .kwDByH {
+    .project-info {
         margin: 0px 0px 14px;
         width: 351px;
     }
 }
 @media (min-width: 1080px){
-    .gjLASS {
+    .project-infoTitle {
         font-weight: 700;
         margin-bottom: 12px;
         font-size: 16px !important;
@@ -79,7 +79,7 @@
     }
 }
 @media (min-width: 1080px){
-    .etypUj {
+    .projectForm {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
@@ -88,51 +88,156 @@
 
 }
 @media (min-width: 1080px){
-    .gXezwb {
+    .form-half {
         width: 50%;
     }
 }
 @media (min-width: 1080px){
-    .etypUj .style__ProjectFormsHalf-sc-1mawbc1-9 {
+    .projectForm .style__ProjectFormsHalf-sc-1mawbc1-9 {
         margin: 0px 8px;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN {
+    .toolTip-content {
         display: flex;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN .title {
+    .toolTip-content .title {
         width: 212px;
         flex-shrink: 0;
         font-weight: 700 !important;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN .image {
+    .toolTip-content .image {
         -webkit-box-flex: 1;
         flex-grow: 1;
     }
 }
 @media (min-width: 1080px){
-    .fuJzEN .image img {
+    .toolTip-content .image img {
         width: 100%;
     }
 }
 @media (min-width: 1080px){
-    .gJNjvn {
+    .projectItem {
         margin-top: 25px;
     }
 }
 @media (min-width: 1080px){
-    .qbVXa {
+    .contents {
         width: 100%;
         max-width: 1080px;
         margin: 0px auto;
     }
 }
+@media only screen and (min-width: 1080px){
+    .ImgStyleStepper {
+        width: 40px;
+    }
+}
 
+@media only screen and (min-width: 1080px){
+    .imgWithButtonBox {
+        padding: 22px 32px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .imgBox {
+        width: 145px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-wrapper {
+        position: absolute;
+        width: auto;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-back {
+        overflow: hidden auto;
+    }
+}
 
-
+@media only screen and (min-width: 1080px){
+    .modal-posWrap {
+        min-width: 328px;
+        position: absolute;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        background: transparent;
+        max-width: 600px;
+        max-height: 100vh;
+        border-radius: 4px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modalWrap {
+        padding: 24px 32px 40px;
+        background: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 16px 0px;
+        border-radius: 4px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-header {
+        display: flex;
+        position: relative;
+        padding: 0px;
+        height: auto;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-header .Modal-modalCloseButton {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        margin: -10px 0px 0px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .modal-Hasback {
+        max-height: 75vh;
+        overflow: hidden auto;
+    }
+}
+.modal-preview img {
+    width: 100%;
+}
+.modalBt {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: transparent;
+    color: rgb(61, 61, 61);
+}
+.modal-closeBt {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: none;
+    right: 0px;
+    top: 0px;
+    font-size: 20px;
+    border: 0px;
+    outline: 0px;
+    padding: 0px;
+    margin: 0px;
+}
 
