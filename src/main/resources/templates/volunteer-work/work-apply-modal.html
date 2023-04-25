@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>봉사 신청하기</title>
+    <link rel="stylesheet" href="/static/css/volunteer-work/work-apply.css">
+    <link rel="stylesheet" href="/static/css/font/font.css">
+
+</head>
+<body>
+    <!-- <button>신청하기</button> -->
+       
+    <div class="apply-layout">
+        <div class="apply-container">
+            <div class="apply-layer">
+                <p class="apply-title">자원봉사자참여신청</p>
+                <form name=""   action="">
+                    <!-- 로그인 정보 DB로 숨겨서 들어감 -->
+                    <!-- <input type="hidden" id="seq" name="seq" value="">
+                    <input type="hidden" id="id" name="id" value="">
+                    <input type="hidden" id="password" name="password" value="">
+                    <input type="hidden" id="" name="" value="N">
+                    <input type="hidden" id="" name="" value="Y"> -->
+                    <p class="apply-star-title">* 표시는 필수입력사항 입니다</p>
+                    
+                    <table class="apply-content-container">
+                        <colgroup>
+                            <col style="width:30%">
+                            <col style="width:70%">
+                        </colgroup>
+                        <tbody>
+                            
+                            <tr>
+                                <th scope="row">* 이름</th>
+                                <td>
+                                    <input type="text" name=""  value="" readonly="readonly" title="이름" class="apply-text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">* 연락처</th>
+                                <td>
+                                    <select name="" id="" title="핸드폰번호 앞자리" class="apply-select">
+                                        <option value="">선택</option>
+                                        <option value="010">010</option>
+                                        <option value="011">011</option>
+                                        <option value="016">016</option>
+                                        <option value="017">017</option>
+                                        <option value="018">018</option>
+                                        <option value="019">019</option>
+                                    </select>
+                                    <span class="">-</span> 
+                                    <input type="text" id="prttel_2" name="" value="" title="핸드폰번호 중간자리" maxlength="4" class="apply-text apply-width">
+                                    <span class="">-</span>
+                                    <input type="text" id="prttel_3" name="" value="" title="핸드폰번호 뒷자리" maxlength="4" class="apply-text apply-width">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">* 이메일</th>
+                                <td>
+                                <input type="text" name="prtemail" id="prtemail" value="" title="이메일" class="apply-text">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </form>
+            </div>
+            
+            <!-- 신청하기 버튼 -->
+            <div class="apply-btn-layout">
+                <button type="button" class="apply-btn" onclick="">신청하기</button>
+            </div>
+
+            <button type="button" class="apply-close">X</button>
+                <!-- <img src="/static/image/volunteer-work/close.png"> -->
+            
+
+        </div>
+    </div>
+</body>
+</html>

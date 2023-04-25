@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+body {
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: #666;
+}
+
+h3 {
+   margin: 0; 
+}
+.content-container {
+    width: 885px;
+    min-height: 400px;
+    margin: 0 auto;
+  /*   background: url(/web/vols/images/common/bg_sideMenu.png) 0 0 repeat-y; */
+}
+
+.content-layout {
+    position: relative;
+    /* float: right; */
+    width: 845px;
+    padding: 60px 0 60px 40px;
+}
+
+
+.work-detail-info-container {
+    padding-bottom: 10px;
+   /*  border-top: 2px solid #000; */
+
+}
+
+.work-detail-info-container .work-detail-info-title {
+    padding: 10px;
+    color: #000;
+    border-top: 1px solid #333;;
+    border-bottom: 1px solid #333;
+    background: #eee;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.work-detail-info-container .work-detail-info-top-btn-layout {
+    position: relative;
+   
+}
+
+.work-detail-info-top-btn-layout {
+     padding-bottom: 10px;
+     text-align: right;
+}
+
+.apply-btn {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    vertical-align: top;
+    border: none;
+    /* margin: 0;
+    padding: 0; */
+    cursor: pointer;
+    background: none;
+}
+
+.apply-btn span {
+    height: 33px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 43px;
+    border-radius: 50px;
+    background: #d43e0c;
+    color: #fff;
+}
+
+.work-detail-info-title h3 {
+    line-height: 30px;
+}
+
+.em {
+    color: #f3521a;
+    font-weight: inherit;
+    font-style: normal;
+}
+
+.detail-info-data-wrap {
+    margin-top: 0;
+    padding: 0;
+    border-top: 2px solid #333;
+}
+
+.detail-info-data-wrap .group {
+    overflow: hidden;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.detail-info-data-wrap .group dl {
+    position: relative;
+    width: 50%;
+    margin-right: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+    float: left;
+}
+
+.board_data dl:first-child {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+dl {
+    margin: 0;
+    line-height: 100%;
+    list-style: none;
+}
+
+.detail-info-data-wrap .group dl dt {
+    position: absolute; 
+    float: left;
+    width: 115px;
+    padding: 8px 0;
+    line-height: 22px;
+   /*  top: 0;
+    left: 0; */
+    /* margin-left: -1px; */
+    border-right: 1px solid #ccc;
+    background: #eee;
+    color: #333;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.detail-info-data-wrap .group dl dd {
+    position: relative;
+    /* text-align: center; */
+    float: left;
+    /* width: 280px; */
+    margin: 0px 116px;
+    padding: 8px 10px;
+    /* padding-right: 0; */
+    font-weight: normal;
+    line-height: 22px;
+    color: #666;
+    min-height: 22px;
+  /*   border-left: 1px solid #ccc; */
+    font-size: 14px;
+    letter-spacing: -0.025em;
+    /* border-right: 1px solid #ccc;*/
+}
+
+.work-detail-info-top-btn-layout .detail-info-board-wrap {
+    margin-top: 0;
+    border-top: 0 none;
+}
+
+.detail-info-board-wrap {
+    border-bottom: 1px solid #333;
+}
+
+.detail-info-board-wrap .detail-info-board-text {
+    padding: 20px 20px 60px;
+}
+
+.detail-info-board-wrap .detail-info-board-text pre {
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.company-data {
+    padding: 21px 25px;
+    border-top: 1px solid #ccc;
+    /* border-bottom: 1px solid #333; */
+    background: #ffffff;
+}
+
+.company-data dl {
+    /* display: inline-block; */
+    float: left;
+    width: 33.33%;
+}
+
+.company-data dt {
+    position: relative;
+    padding-left: 19px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #333;
+    display: inline-block;
+}
+
+.company-data dt:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 6px;
+    left: 0;
+    overflow: hidden;
+    background: url(https://www.1365.go.kr/web/vols/images/ico/ico_bul1.png) left center no-repeat;
+}
+
+.company-data dl:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.company-data dd {
+    display: inline-block;
+    font-size: 15px;
+}
+.company-info-map {
+    position: relative;
+}
