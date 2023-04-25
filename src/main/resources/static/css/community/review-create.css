@@ -171,9 +171,6 @@ body{
     right: 15px;
     height: 14px;
 }
-
-
-
 #plus_picture_div div::after{
     content: "";
     width: 14px;
