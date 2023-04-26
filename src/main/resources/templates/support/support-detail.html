@@ -108,10 +108,10 @@
                         <div class="action-area">
                             <ul class="tab-list">
                                 <li class="tab-item">
-                                    <button class="tab-button" type="button" aria-selected="true">댓글</button>
+                                    <button id="comment-id-button" class="tab-button" type="button" aria-selected="true">댓글</button>
                                 </li>
                                 <li class="tab-item">
-                                    <button class="tab-button" type="button" aria-selected="false">참여내역</button>
+                                    <button id="join-id-button" class="tab-button" type="button" aria-selected="false">참여내역</button>
                                 </li>
                             </ul>
                             <div id="comment-tabpanel" class="comment-wrap" aria-hidden="false">
@@ -261,7 +261,7 @@
                             </div>
 
                             <!-- 참여내역 -->
-                            <!-- <div id="history-tabpanel" class="history-wrap" aria-hidden="true">
+                            <div id="history-tabpanel" class="history-wrap" aria-hidden="true">
                                 <h5 class="blind">참여 내역</h5>
                                 <div class="history-title">
                                     <p class="history-title-inner">
@@ -355,7 +355,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -413,6 +413,7 @@
     <footer id="_footer"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../static/js/support/supportDetail.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#_header').load('../main/header.html');
