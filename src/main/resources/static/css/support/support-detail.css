@@ -99,17 +99,9 @@ address, em {
     padding-bottom: 16px;
     font-size: 17px;
     font-weight: 400;
-    color: #00ab33;
+    color: #757575;
     letter-spacing: -.06em;
     line-height: 1;
-}
-
-.collect-wrap .theme {
-    padding-bottom: 9px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #00ab33;
-    letter-spacing: -1px;
 }
 
 .collect-wrap .tit {
@@ -142,34 +134,10 @@ address, em {
     text-decoration: none;
 }
 
-.collect-wrap .theme{
-    padding-bottom: 16px;
-    font-size: 17px;
-    font-weight: 400;
-    color: #00ab33;
-    letter-spacing: -.06em;
-    line-height: 1;
-}
-
-.collect-wrap .theme{
-    padding-bottom: 9px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #00ab33;
-    letter-spacing: -1px;
-}
-
 .collect-content h3::after {
     display: block;
     clear: both;
     content: '';
-}
-
-.collect-tab {
-    overflow: hidden;
-    margin: 60px 0 30px;
-    font-size: 15px;
-    background: url(https://ssl.pstatic.net/happyimg2/img2/fund/bg_tab_border_repeat.gif) 0 100% repeat-x;
 }
 
 .dimmed{
@@ -371,7 +339,7 @@ address, em {
     z-index: 10;
     width: 95px;
     height: 66px;
-    border: 2px solid #10c838;
+    border: 2px solid #ffbcbc;
     content: '';
 }
 
@@ -447,8 +415,8 @@ address, em {
     padding-top: 10px;
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 2px;
-    background: #10c838;
-    font-size: 20px;
+    background: #fa6462;
+    /* font-size: 15px; */
     font-weight: 700;
     color: #fff;
     letter-spacing: -.06em;
@@ -565,8 +533,20 @@ address, em {
     margin-top: 11px;
 }
 
-.history-wrap[aaria-hidden=true] {
+.comment-wrap[aria-hidden=true]{
     display: none;
+}
+
+.comment-wrap[aria-hidden=false]{
+    display: block;
+}
+
+.history-wrap[aria-hidden=true] {
+    display: none;
+}
+
+.history-wrap[aria-hidden=false] {
+    display: block;
 }
 
 .history-wrap {
@@ -651,7 +631,7 @@ address, em {
     font-size: 16px;
     font-weight: 700;
     line-height: 1.13;
-    color: #00ab33;
+    color: #ec635c;
     letter-spacing: -.2px;
 }
 
@@ -896,7 +876,7 @@ address, em {
 
 .history-amount .number {
     position: relative;
-    color: #00ab33;
+    color: #ec635c;
 }
 
 /* siderbar */
@@ -917,8 +897,8 @@ address, em {
     height: 60px;
     padding-top: 17px;
     border: 1px solid rgba(0,0,0,.1);
-    background: #10c838;
-    font-size: 22px;
+    background: #fa6462;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
     text-decoration: none;
@@ -1019,7 +999,7 @@ address, em {
 .graph-status .per {
     float: left;
     font-size: 24px;
-    color: #00ab33;
+    color: #ff5757;
 }
 
 .graph-status .per strong{
@@ -1040,7 +1020,7 @@ address, em {
 .section-status .graph-bar span {
     display: inline-block;
     height: 4px;
-    background: #10c838;
+    background: #ff5757;
     vertical-align: top;
 }
 
@@ -1075,7 +1055,7 @@ address, em {
     padding: 1px 10px 0;
     margin-right: 5px;
     border-radius: 2px;
-    background: #f86f46;
+    background: #ff5757;
     font-size: 14px;
     font-weight: 700;
     color: #fff;
