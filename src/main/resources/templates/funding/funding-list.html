@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/font/font.css">
+    <link rel="stylesheet" href="/static/css/funding/funding-list.css">
+    <link rel="stylesheet" href="/static/css/funding/funding-list-response.css">
+</head>
+
+<body>
+    <!-- class : percentByRed의 width: 1~100% 빨간색바 조절 가능  -->
+    <div id="view" class="view">
+        <!-- header -->
+        <header id="_header"></header>
+        <div></div>
+        <div class="contain">
+            <div class="discover tbb">
+                <div class="filterWrap hRsKsV">
+                    <div class="filterCont discoverCont">
+                        <div class="filterLayout boizim">
+                            <div class="filterOp gIFvgV">
+                                <div class="wrap">
+                                    <span class="spanWrap">
+                                        <button class="buttonWrap">
+                                            <span class="title-wrapper">달성률</span>
+                                            <!-- <span class="buttonAction icon-down">
+                                                <div name="arrow1-down"
+                                                    class=" icon-svg svgButtonsvgButton">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M45.4003 15.1217L23.9125 36L2.5247 15.1217C1.8251 14.4225 1.8251 13.2237 2.5247 12.5245C3.2243 11.8252 4.42362 11.8252 5.22317 12.5245L23.9125 30.8054L42.7019 12.5245C43.4015 11.8252 44.6008 11.8252 45.4003 12.5245C45.8001 12.8241 46 13.3236 46 13.8231C45.9001 14.3226 45.7002 14.8221 45.4003 15.1217Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </span> -->
+                                            <!-- <span class="buttonAction icon-up">
+                                                <div name="arrow1-up"
+                                                    class=" icon-svg svgButtonsvgButton">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M46 34.1769C46 34.6764 45.8001 35.1759 45.4003 35.4755C44.7007 36.1748 43.5014 36.1748 42.7019 35.4755L24.0125 17.1946L5.22317 35.4755C4.52357 36.1748 3.32425 36.1748 2.5247 35.4755C1.8251 34.7763 1.8251 33.5765 2.5247 32.8783L24.0125 12L45.5003 32.8783C45.8001 33.1779 46 33.6774 46 34.1769Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </span> -->
+                                        </button>
+                                    </span>
+                                    <span class="buttonWrapper spanWrap">
+                                        <button class="BTStyle">
+                                            <span class="title-wrapper">에디터 추천</span>
+                                            <span class="buttonAction buttonAction icon-down">
+                                                <div name="arrow1-down"
+                                                    class=" icon-svg svgButtonsvgButton">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M45.4003 15.1217L23.9125 36L2.5247 15.1217C1.8251 14.4225 1.8251 13.2237 2.5247 12.5245C3.2243 11.8252 4.42362 11.8252 5.22317 12.5245L23.9125 30.8054L42.7019 12.5245C43.4015 11.8252 44.6008 11.8252 45.4003 12.5245C45.8001 12.8241 46 13.3236 46 13.8231C45.9001 14.3226 45.7002 14.8221 45.4003 15.1217Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </span>
+                                            <!-- <span class="buttonAction icon-up">
+                                                <div name="arrow1-up"
+                                                    class="icon-svg svgButton">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M46 34.1769C46 34.6764 45.8001 35.1759 45.4003 35.4755C44.7007 36.1748 43.5014 36.1748 42.7019 35.4755L24.0125 17.1946L5.22317 35.4755C4.52357 36.1748 3.32425 36.1748 2.5247 35.4755C1.8251 34.7763 1.8251 33.5765 2.5247 32.8783L24.0125 12L45.5003 32.8783C45.8001 33.1779 46 33.6774 46 34.1769Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </span> -->
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contain-gc infinityContain listContain">
+                    <div class="resultWrapper">
+                        <div class="resultContain">
+                            <span>695</span>개의 프로젝트가 있습니다.
+                        </div>
+                        <div class="listWrapper">
+                            <!-- 목록 -->
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="linkByButoon">
+                                                    <button type="button" class="buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="linkByButoon">
+                                                    <button type="button" class="buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="  linkByButoon">
+                                                    <button type="button" class=" buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class="fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentBarpercentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listByinfinity">
+                                <div></div>
+                                <div class="project-card">
+                                    <div></div>
+                                    <div class="CardOpx link-wrapper">
+                                        <div class="imgStyleBox">
+                                            <div class="image-wrapper">
+                                                <a href=""></a>
+                                                <div class="linkByButoon linkByButoon">
+                                                    <button type="button" class="buttonByLink">
+                                                        <span>좋아요</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="styleByInfoBox">
+                                            <dl>
+                                                <dd class="project-sub-info">
+                                                    <span><a href="">캐릭터 · 굿즈</a></span>
+                                                    <span><a href="">아이돌룩(idolllook)</a></span>
+                                                </dd>
+                                                <dt><a href="">토심이 토뭉이 하고 싶은거 다 해! &lt;봉제 인형&amp;파우치&gt;</a></dt>
+                                                <dd class="project-desc">분홍색 볼의 사랑스러운 토끼 토심이, 귀엽고 다정 다감한 강아지 토뭉이의 인형과 파우치</dd>
+                                            </dl>
+                                            <div class="projectCard2 projectCard1">
+                                                <div>
+                                                    <span class=" fundingState">1373%</span>
+                                                    <span class="funding-amount"><em>68,676,002</em>원</span>
+                                                </div>
+                                                <span class="rest-day">20일 남음</span>
+                                            </div>
+                                            <div class="percentByRed"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="font-size:0"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <footer id="_footer">
+            </header>
+
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#_header").load("../main/header.html");
+        $("#_footer").load("../main/footer.html");
+    });
+</script>
+
+</html>

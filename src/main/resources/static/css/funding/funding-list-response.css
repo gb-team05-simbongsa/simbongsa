@@ -1,0 +1,222 @@
+@media (min-width: 1080px){
+    .discover {
+        padding: 0px 0px 40px;
+    }
+}
+@media (min-width: 1080px){
+    .filterCont {
+        width: 1032px;
+        margin: 0px auto;
+    }
+}
+
+@media only screen and (min-width: 1080px){
+    .filterCont {
+        width: 1080px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .filterCont {
+        width: 1160px;
+    }
+}
+@media (min-width: 768px){
+    .discoverCont {
+        padding: 0px 1rem 0px 0px !important;
+    }
+}
+@media (min-width: 1080px){
+    .discoverCont {
+        padding-right: 0px !important;
+    }
+}
+/* contain-gcDiscover__FilterContainer-a92tdn-1 filterCont discoverCont 부터 */
+@media (min-width: 1080px){
+    .filterOp .wrap {
+        padding-left: 0px;
+    }
+}
+@media (min-width: 768px){
+    .buttonWrapper {
+        border: 1px solid rgb(230, 230, 230);
+    }
+}
+
+@media (min-width: 1080px){
+    .BTStyle {
+        font-size: 1rem;
+        padding: 0px 8px;
+    }
+}
+@media (min-width: 768px){
+    .BTStyle .title-wrapper {
+        display: inline;
+    }
+}
+@media (min-width: 1080px){
+    .BTStyle .icon-down {
+        display: none;
+    }
+}
+@media (min-width: 1080px){
+    .BTStyle .icon-up {
+        display: none;
+    }
+}
+@media (min-width: 1080px){
+    .listContain {
+        width: 1032px;
+        margin: 0px auto;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .listContain {
+        width: 1080px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .listContain {
+        width: 1160px;
+    }
+}
+@media (min-width: 1080px){
+    .infinityContain {
+        margin-bottom: 0px;
+    }
+}
+@media only screen and (min-width: 768px){
+    .resultContain {
+        padding: 16px 20px 32px;
+    }
+}
+@media (min-width: 1080px){
+    .resultContain {
+        font-size: 16px;
+        line-height: 27px;
+        width: 100%;
+        margin: 0px auto;
+        padding: 16px 20px 32px 0px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .resultContain {
+        width: 100%;
+    }
+}
+
+@media (min-width: 640px){
+    .listWrapper {
+        width: auto;
+        padding: 0px 8px;
+    }
+}
+@media (min-width: 1080px){
+    .listWrapper {
+        justify-content: flex-start;
+        margin: 0px -10px;
+        padding: 0px;
+    }
+}
+@media (min-width: 640px){
+    .listByinfinity {
+        padding: 0px 10px;
+        width: 50%;
+    }
+}
+@media (min-width: 865px){
+    .listByinfinity {
+        width: 25%;
+    }
+}
+@media only screen and (min-width: 640px){
+    .project-card {
+        margin: 0px 0px 56px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .project-card .link-wrapper {
+        display: block;
+    }
+}
+@media only screen and (min-width: 640px){
+    .linkByButoon {
+        right: 12px;
+        bottom: 12px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .styleByInfoBox {
+        padding: 0px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .project-card dl {
+        min-height: 138px;
+        padding: 16px 0px 0px;
+        margin-bottom: 14px;
+    }
+}
+
+@media only screen and (min-width: 640px){
+    .project-card dl dt {
+        min-height: auto;
+        margin: 0px 0px 8px;
+        font-size: 16px !important;
+        line-height: 22px !important;
+    }
+
+}
+@media only screen and (min-width: 640px){
+    .project-card dl dd.project-desc {
+        display: -webkit-box;
+    }
+}
+@media only screen and (min-width: 640px){
+    .project-card .projectCard2 {
+        margin: 0px 16px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .project-card .projectCard2 {
+        margin: 0px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .fundingState {
+        font-size: 15px;
+    }
+}
+@media only screen and (min-width: 640px){
+    .project-card .projectCard2 .funding-amount {
+        font-size: 12px;
+        line-height: 19px;
+        letter-spacing: -0.01em;
+    }
+}
+@media only screen and (min-width: 640px){
+    .percentByRed {
+        width: 100%;
+        height: 3px;
+        margin: 6px 0px 0px;
+    }
+}
+@media (min-width: 1080px){
+    .buttonWrap {
+        font-size: 1rem;
+        padding: 0px 7px 0px 8px;
+    }
+}
+@media (min-width: 768px){
+
+    .buttonWrap .title-wrapper {
+        display: inline;
+    }
+}
+
+
+
+@media (min-width: 768px){
+    .spanWrap {
+        border: 1px solid rgb(230, 230, 230);
+    }
+}
