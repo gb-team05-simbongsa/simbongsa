@@ -706,3 +706,9 @@ button[disabled], input[disabled] {
     height: 1.125rem;
     background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMDAwIiBvcGFjaXR5PSIuNSIgY3g9IjkiIGN5PSI5IiByPSI5Ii8+CiAgICAgICAgPGcgc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMS41Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTEyLjI1OSAxMi4xMzUgNS43NjggNS42NDRNNS43NjIgMTIuMTMzbDYuNDk3LTYuNDk3Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K) 0px 0px no-repeat;
 }
+.notice__content {
+    display: flex;
+    font-weight: 600;
+    margin-top: 30px;
+    color: #777777;
+}
