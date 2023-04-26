@@ -945,6 +945,25 @@ b, strong {
     .main-content-slider-banner-wrapper .main-content-swiper-container{
         padding: 0px;
     }
+
+    .move-arrow{
+        display: none;
+    }
+
+    .main-first-wrapper{
+        margin-top: 40px;
+        padding-bottom: 40px;
+        position: relative;
+    }
+
+    .main-first-list-layout{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
 }
 
 @media (min-width: 640px) {

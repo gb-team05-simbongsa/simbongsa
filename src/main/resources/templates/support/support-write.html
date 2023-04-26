@@ -7,6 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/font/font.css">
     <link rel="stylesheet" href="/static/css/support/support-write.css">
+     <!-- 웹에디터 API -->
+     <link
+     href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+     rel="stylesheet" />
 </head>
 <body>
 
@@ -70,6 +74,9 @@
                                                     </span>
                                                 </span>
                                         </div>
+                                        <div class="notice__content">
+                                            <textarea id="summernote" name="editordata"></textarea>
+                                          </div>
                                         <div class="errorDiv">
                                             <p class="errorMessage"></p>
                                         </div>
@@ -133,5 +140,24 @@
         $('#_header').load('../main/header.html');
         $('#_footer').load('../main/footer.html');
     });
+</script>
+<!-- 웹에디터 API -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+  console.log('썸머노트');
+  $('#summernote').summernote({
+    placeholder: '공지사항 내용 작성',
+    tabsize: 2,
+    height: 300,
+    width: '100%',
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture', 'video']],
+    ],
+  });
 </script>
 </html>
