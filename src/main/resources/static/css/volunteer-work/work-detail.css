@@ -71,7 +71,8 @@ h3 {
     font-weight: 500;
     line-height: 43px;
     border-radius: 50px;
-    background: #d43e0c;
+    /* background: #d43e0c; */
+    background: #4e61ff;
     color: #fff;
 }
 
