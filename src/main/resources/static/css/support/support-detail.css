@@ -881,9 +881,11 @@ address, em {
 
 /* siderbar */
 .collect-wrap .collect-side{
-    float: left;
+    position: fixed;
     width: 282px;
     font-size: 15px;
+    right: 402px;
+    bottom: 446px;
 }
 
 .collect-side .section-status {
