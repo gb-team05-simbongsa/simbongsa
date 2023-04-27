@@ -52,11 +52,35 @@ div{
     height: 100%;
     margin: auto;
 }
-.register-btn{
+.register-btn:disabled{
     display: flex;
     cursor: pointer;
     box-shadow: inset 0 0 0 0 #d9dfeb;
     background-color: #c5c5c5;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    font-size: .92857143rem;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    padding: 0.92857143em 1.5em;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    border-radius: 0.28571429rem;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+    transform-origin: 0px 0px;
+}
+.register-btn{
+    display: flex;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #d9dfeb;
+    background-color: rgba(229, 104, 89, 0.83);
     color: #fff;
     text-shadow: none;
     background-image: none;
@@ -134,7 +158,7 @@ div{
     margin: auto;
 }
 .title-label{
-    width: 52%;
+    width: 74%;
     padding: 1.25rem 0;
     margin: 0;
     display: inline-block;
@@ -282,4 +306,128 @@ div{
     font-weight: bold;
     color: white;
     background-color: #00000094;
+}
+.imageThumbnail{
+    background-position: center;
+    height: 72px;
+    width: 72px;
+    display: inline-flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.closeImgButton {
+    position: absolute;
+    top: 0.375rem;
+    right: 0.375rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMDAwIiBvcGFjaXR5PSIuNSIgY3g9IjkiIGN5PSI5IiByPSI5Ii8+CiAgICAgICAgPGcgc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMS41Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTEyLjI1OSAxMi4xMzUgNS43NjggNS42NDRNNS43NjIgMTIuMTMzbDYuNDk3LTYuNDk3Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K) 0px 0px no-repeat;
+}
+
+/* 등록 버튼 모달창 */
+.modal{
+    transform: translate(-50%, -50%);
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    --tw-shadow: 0px 2px 8px rgba(0,0,0,.08);
+    --tw-shadow-colored: 0px 2px 8px var(--tw-shadow-color);
+    padding: 32px;
+    border-width: 1px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    -tw-translate-y: -50%;
+    --tw-translate-x: -50%;
+    min-width: 360px;
+    display: flex;
+    box-sizing: border-box;
+    z-index: 50;
+    left: 40%;
+    top: 36%;
+    position: fixed;
+    border-color: #e6e6e7;
+    background-color: #fff;
+    display: none;
+}
+.modal-back{
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,.4);
+}
+.modal-title{
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #1d1d1e;
+    fill: #1d1d1e;
+    margin: 0;
+}
+.modal-content{
+    text-align: center;
+    max-width: 276px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333334;
+    fill: #333334;
+    margin-top: 3%;
+}
+.modal-choce{
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    margin-top: 24px;
+}
+.choce1{
+    flex: 1 1 0%;
+}
+.choce2{
+    flex: 1 1 0%;
+    margin-left: 16px;
+}
+.choce1-btn{
+    border: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    position: relative;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333334;
+    fill: #333334;
+    background-color: #f3f3f4;
+}
+.choce2-btn{
+    border: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    position: relative;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    fill: #fff;
+    background-color: rgba(229, 104, 89, 0.83);
+}
+.choce1 :hover{
+    background-color: #e6e6e7db;
 }

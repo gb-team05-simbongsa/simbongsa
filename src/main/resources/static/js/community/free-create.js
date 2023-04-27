@@ -37,42 +37,6 @@ cancelBtn.addEventListener('click', hideModal);
 modalBack.addEventListener('click', hideModal);
 
 
-// $('.register-btn').on('click', () => {
-//     $('.modal-back')
-//     $('.modal').css('display', 'flex');
-// });
-    
-    
-// const file = document.querySelector('#photo');
-// const imgDiv = document.querySelector('.file-name');
-// const closeSpan = document.querySelector('#btn_x');
-// const input = document.querySelector('#file_input');
-// const plusPicture = document.querySelector('#plus_picture');
-
-// // x 버튼을 누르면, 기본 이미지로 변경!
-// closeSpan.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     input.value = "";
-//     this.style.display = 'none';
-//     imgDiv.style.backgroundImage = `url('')`;
-//     $("#plus_picture").show();
-// });
-
-// file.addEventListener('change', function (e) {
-//     closeSpan.style.display = "inline-block";
-//     this.style.display = 'none';
-//     let reader = new FileReader();
-//     reader.readAsDataURL(e.target.files[0]);
-//     $("#plus_picture").hide();
-//     reader.onload = function (e) {
-//         let result = e.target.result;
-//         if (result.includes('image')) {
-//             imgDiv.style.backgroundImage = `url('${result}')`;
-//         } else {
-//             imgDiv.style.backgroundImage = `url('no_image.png')`;
-//         }
-//     };
-// });
 
 
 /* 파일 썸네일 */
@@ -80,7 +44,7 @@ modalBack.addEventListener('click', hideModal);
 const file1 = document.querySelector('input[type=file]');
 function handleFiles(files) {
     /* 썸네일 담을 div의 부모 */
-    const thumbnailList = document.getElementById("photo");
+    const thumbnailList = document.getElementById("photo-picker2");
     for (let i = 0; i < files.length; i++) {
         /* 파일절대경로얻기 */  
         const file1 = files[i];
