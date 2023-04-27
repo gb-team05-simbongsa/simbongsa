@@ -328,7 +328,7 @@ button {
     fill: #fff;
     background-color: rgba(229, 104, 89, 0.83);
 }
-.singUp{
+.singUp:disabled{
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 16px;
@@ -343,6 +343,22 @@ button {
     color: #fff;
     fill: #fff;
     background-color: #c5c5c5;
+}
+.singUp{
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    display: flex;
+    position: relative;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    fill: #fff;
+    background-color: rgba(229, 104, 89, 0.83);
 }
 .singUp1{
     padding-left: 15px;

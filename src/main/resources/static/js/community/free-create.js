@@ -57,3 +57,20 @@ file.addEventListener('change', function (e) {
         }
     };
 });
+
+
+$('.title-input').on('keyup', () => {
+    if($('.title-input').val() && $('.contents-text').val()) {
+        $('.register-btn').attr('disabled', false);
+    } else {
+        $('.register-btn').attr('disabled', true);
+    }
+});
+
+$('.contents-text').on('keyup', () => {
+    if($('.title-input').val() && $('.contents-text').val()) {
+        $('.register-btn').attr('disabled', false);
+    } else {
+        $('.register-btn').attr('disabled', true);
+    }
+});

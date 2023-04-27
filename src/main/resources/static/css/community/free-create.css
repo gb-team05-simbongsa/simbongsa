@@ -39,11 +39,35 @@ div{
     height: 100%;
     margin: auto;
 }
-.register-btn{
+.register-btn:disabled{
     display: flex;
     cursor: pointer;
     box-shadow: inset 0 0 0 0 #d9dfeb;
     background-color: #c5c5c5;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    font-size: .92857143rem;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    padding: 0.92857143em 1.5em;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    border-radius: 0.28571429rem;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+    transform-origin: 0px 0px;
+}
+.register-btn{
+    display: flex;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #d9dfeb;
+    background-color: rgba(229, 104, 89, 0.83);
     color: #fff;
     text-shadow: none;
     background-image: none;
