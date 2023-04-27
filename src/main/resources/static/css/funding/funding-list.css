@@ -1,0 +1,542 @@
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    overflow: visible;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button, select {
+    text-transform: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+
+.view {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+    height: 100%;
+}
+
+.view, .view h1, .view h2, .view h3, .view h4, .view h5 {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+}
+.container {
+    position: relative;
+    display: block;
+    width: 100%;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    background: rgb(255, 255, 255);
+}
+
+.discover {
+    background: rgb(255, 255, 255);
+    padding: 0px 0px 64px;
+    border-bottom: 1px solid rgb(245, 245, 245);
+}
+.tbb {
+    font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    background: #FFF;
+    color: #3d3d3d;
+}
+.discover {
+    background: rgb(255, 255, 255);
+    padding: 0px 0px 64px;
+    border-bottom: 1px solid rgb(245, 245, 245);
+}
+.filterWrap {
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    position: relative;
+}
+.FilterContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0px auto;
+    padding: 0px 1rem;
+}
+.discoverContain {
+    height: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 6px 0px 0px !important;
+}
+/* contain-gcDiscover__FilterContainer-a92tdn-1 FilterContainer discoverContain 부터 */
+.filterLayout {
+    margin-top: 24px;
+    width: 100%;
+    position: relative;
+    z-index: 99;
+}
+.filterOp {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex: 9 1 0%;
+    width: 100%;
+    height: 100%;
+    overflow: auto hidden;
+}
+.filterOp .wrap {
+    display: inline-flex;
+    padding-right: 50px;
+    padding-left: 1rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+.buttonWrapper {
+    display: flex;
+    position: relative;
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+    margin: 0px 8px 0px 0px;
+    border-radius: 3px;
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 255, 255);
+    color: rgb(72, 72, 72);
+    padding: 0px;
+    overflow: hidden;
+}
+
+.iEdXmr {
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0px 8px;
+    border: 0px;
+    height: 100%;
+    background: rgb(242, 242, 242);
+    color: rgb(85, 85, 85);
+    font-weight: normal;
+}
+.iEdXmr .title-wrapper {
+    display: inline;
+    font-size: 1.07rem;
+    position: relative;
+}
+.buttonAction {
+    right: 7px;
+    top: 50%;
+    width: 16px;
+    margin: 1px 0px 0px;
+    border: 0px;
+    background: 0px center;
+    padding: 0px;
+    outline: none;
+    font-size: 8px;
+    line-height: 0;
+    transform: translateY(-50%);
+    position: absolute !important;
+}
+.iEdXmr .icon-down {
+    display: none;
+}
+.icon-svg {
+    display: inline-flex;
+    align-self: center;
+}
+.icon-svg svg {
+    width: 1em;
+    height: 1em;
+}
+.buttonAction .svgButtonsvg {
+    stroke: rgb(103, 103, 103);
+    stroke-width: 4px;
+}
+.buttonAction {
+    right: 7px;
+    top: 50%;
+    width: 16px;
+    margin: 1px 0px 0px;
+    border: 0px;
+    background: 0px center;
+    padding: 0px;
+    outline: none;
+    font-size: 8px;
+    line-height: 0;
+    transform: translateY(-50%);
+    position: absolute !important;
+}
+.iEdXmr .icon-up {
+    display: none;
+}
+.filterOp .wrap > span:last-child {
+    margin-right: 0px !important;
+}
+.BTStyle {
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0px 8px;
+    border: 0px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    color: rgb(85, 85, 85);
+    font-weight: normal;
+}
+.tbb button {
+    outline: 0;
+}
+.BTStyle .title-wrapper {
+    display: inline;
+    font-size: 1.0rem;
+    position: relative;
+}
+.buttonAction {
+    right: 7px;
+    top: 50%;
+    width: 16px;
+    margin: 1px 0px 0px;
+    border: 0px;
+    background: 0px center;
+    padding: 0px;
+    outline: none;
+    font-size: 8px;
+    line-height: 0;
+    transform: translateY(-50%);
+    position: absolute !important;
+}
+.BTStyle .icon-down {
+    display: none;
+}
+.BTStyle .icon-up {
+    display: none;
+}
+.buttonAction .svgButtonsvg {
+    stroke: rgb(103, 103, 103);
+    stroke-width: 4px;
+}
+.listContain {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0px auto;
+    padding: 0px;
+}
+.infinityContain {
+    min-height: 150px;
+    margin-bottom: -44px;
+}
+.resultWrapper {
+    color: rgb(51, 51, 51);
+}
+.resultContain {
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(61, 61, 61);
+    padding: 6px 16px 26px;
+    letter-spacing: -0.08px;
+}
+.listWrapper {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0px 16px;
+}
+.resultContain span {
+    color: rgb(255, 87, 87);
+}
+.listByinfinity {
+    width: 100%;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.project-card {
+    position: relative;
+    margin: 0px 0px 16px;
+}
+.project-card .link-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.imgStyleBox {
+    position: relative;
+    flex-basis: 132px;
+}
+.project-card .image-wrapper {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.project-card .image-wrapper::before {
+    content: "";
+    padding: 0px 0px 86%;
+    display: block;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+.imgStyleBox .image-wrapper a {
+    background: url("https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=ccaf0c29a4a9c34a703c08e3ddef88d1") center center / cover no-repeat;
+}
+.project-card .image-wrapper a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    
+    transition: transform 0.2s ease 0s;
+}
+.project-card .image-wrapper a::before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+.kiaOkh {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+}
+.linkByButoon {
+    position: absolute;
+    z-index: 9;
+    right: 8px;
+    bottom: 8px;
+    width: 24px;
+    height: 24px;
+}
+.buttonByLink {
+    border: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+    z-index: 2;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.buttonByLink::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: url("/wpa/2d61acb1947426fe50825e64c51e61db.png") 0px 0px / cover no-repeat
+}
+.buttonByLink span {
+    position: absolute;
+    text-indent: -1000em;
+    overflow: hidden;
+}
+.styleByInfoBox {
+    flex: 1 1 0%;
+    padding-left: 14px;
+}
+.project-card dl {
+    min-height: 80px;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(61, 61, 61);
+    overflow: hidden;
+}
+.project-card dl dd {
+    margin: 0px;
+    padding: 0px;
+}
+.project-card dl dd.project-sub-info {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    color: rgb(61, 61, 61);
+    padding: 0px 0px 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.project-card dl dd.project-sub-info a {
+    color: rgb(61, 61, 61);
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+}
+.project-card dl dd.project-sub-info > span::before {
+    content: "|";
+    display: inline-block;
+    margin: 0px 6px;
+    position: relative;
+    z-index: 1;
+    top: -1px;
+    font-size: 9px;
+    color: rgb(208, 208, 208);
+}
+.project-card dl dt {
+    width: 93%;
+    min-height: 40px;
+    margin: 0px 0px 12px;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-height: 58px;
+    font-size: 14px;
+    letter-spacing: -0.015em;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    line-height: 20px !important;
+}
+@supports (-webkit-line-clamp:2){
+    .project-card dl dt {
+        max-height: initial;
+    }
+}
+.project-card dl dt a:link, .project-card dl dt a:visited {
+    color: rgb(61, 61, 61);
+}
+.project-card dl dd {
+    margin: 0px;
+    padding: 0px;
+}
+.project-card dl dd.project-desc {
+    width: 93%;
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-height: 48px;
+    word-break: keep-all;
+    color: rgb(158, 158, 158);
+    font-size: 13px;
+    line-height: 21px;
+}
+@supports (-webkit-line-clamp:2){
+    .project-card dl dd.project-desc {
+        max-height: initial;
+    }
+}
+.projectCard1 {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.project-card .projectCard2 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+}
+.fundingState {
+    color: rgb(255, 87, 87);
+    font-size: 14px;
+    font-weight: 700;
+}
+.project-card .projectCard2 .funding-amount {
+    margin-left: 4px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    color: rgb(61, 61, 61);
+}
+.projectCard1 .rest-day {
+    font-weight: 700;
+}
+.project-card .projectCard2 .rest-day {
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    color: rgb(109, 109, 109);
+}
+.percentByRed {
+    overflow: hidden;
+    background: rgb(208, 208, 208);
+    height: 3px;
+    position: relative;
+    margin: 6px 0px 0px;
+}
+.percentByRed::after {
+    content: "";
+    width: 1373%;
+    display: block;
+    height: 100%;
+    background: rgb(255, 87, 87);
+}
+.eBmKwt {
+    position: relative;
+    flex-basis: 132px;
+}
+.eBmKwt .image-wrapper a {
+    background: url(https://tumblbug-pci.imgix.net/11ea5b9…/007b6da…/99ad89d…/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=ccaf0c2…) center center / cover no-repeat;
+}
+.buttonWrap {
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0px 8px;
+    border: 0px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    color: rgb(85, 85, 85);
+    font-weight: normal;
+}
+.buttonWrap .title-wrapper {
+    display: inline;
+    font-size: 1.0rem;
+    position: relative;
+}
+.spanWrap {
+    display: flex;
+    position: relative;
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+    margin: 0px 8px 0px 0px;
+    border-radius: 3px;
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 255, 255);
+    color: rgb(72, 72, 72);
+    padding: 0px;
+    overflow: hidden;
+}

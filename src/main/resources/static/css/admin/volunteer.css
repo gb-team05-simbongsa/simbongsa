@@ -1,5 +1,4 @@
 /** @format */
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -42,6 +41,7 @@
 }
 .modal__profile__top h4 {
   color: #363636;
+  margin-bottom: 10px;
 }
 
 .modal__profile__bottom {
@@ -53,19 +53,7 @@
 }
 .modal__profile__bottom h4 {
   color: #363636;
-  margin-bottom: 30px;
-}
-
-.modal__profile__bottom textarea {
-  width: 90%;
-  border: none;
-  box-shadow: 0 4px 14px rgb(48 52 65 / 8%);
-  resize: none;
-  height: 300px;
-  padding: 30px;
-  font-family: 'NanumBarunGothic';
-  font-size: 14px;
-  outline: none;
+  margin-bottom: 10px;
 }
 
 .user__profile {
@@ -99,7 +87,7 @@
   outline: none;
   border: none;
   border-radius: 3px;
-  padding: 3px 8px;
+  padding: 3px 12px ;
 }
 .user__profile__input input:focus {
   border: 1px solid #777777;
@@ -109,4 +97,19 @@
   display: flex;
   justify-content: flex-end;
 }
-
+.content__img__wrap {
+  display: flex;
+  gap: 8px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgb(48 52 65 / 8%);
+  overflow-x: auto;
+}
+.content__img__wrap label {
+  display: flex;
+  /* flex: 1; */
+  cursor: pointer;
+}
+.content__img img {
+  width: 200px;
+}
