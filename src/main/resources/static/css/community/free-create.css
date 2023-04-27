@@ -158,7 +158,7 @@ div{
     margin: auto;
 }
 .title-label{
-    width: 52%;
+    width: 74%;
     padding: 1.25rem 0;
     margin: 0;
     display: inline-block;
@@ -393,6 +393,7 @@ div{
     margin-left: 16px;
 }
 .choce1-btn{
+    border: 0;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 20px;
@@ -410,6 +411,7 @@ div{
     background-color: #f3f3f4;
 }
 .choce2-btn{
+    border: 0;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 20px;
