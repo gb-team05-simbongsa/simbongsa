@@ -41,15 +41,15 @@
                             <div>
                                 <div type="h6" class="previewText previewTitle">
                                     <span class="previewHead">내가 만든 아이템 
-                                        <span>0</span>
+                                        <span class="item-count">0</span>
                                     </span>
                                 </div>
-                                <ul>
+                                <ul class="result-ul">
                                     <li class="previewItem">만든 아이템이 없습니다</li>
-                                    <li class="previewItemStyel previewItemStyel">
+                                    <!-- <li class="previewItemStyel previewItemStyel">
                                         <button type="button" value="7513af07-bd37-48b3-9cee-28f6c588d2a2" class="previewItemButton">
                                             <strong>이건 도대체 ....</strong>
-                                            <span>주관식 옵션(1)</span>
+                                            <span class="select-type">주관식</span> 옵션<span class="explain-count">(1)</span>
                                             <ul>
                                                 <li>이게 블락이야?</li>
                                             </ul>
@@ -63,8 +63,8 @@
                                                 </svg>
                                             </div>
                                         </button>
-                                    </li>
-                                    <li class="previewItemStyel">
+                                    </li> -->
+                                    <!-- <li class="previewItemStyel">
                                         <button type="button" value="9fe96cb2-6fda-42c5-98f1-0a098a861df1" class="previewItemButton"><strong>이건 블락이야?</strong><span>객관식 옵션(2)</span>
                                             <ul>
                                                 <li>블락</li>
@@ -79,7 +79,7 @@
                                                 </svg>
                                             </div>
                                         </button>
-                                    </li>
+                                    </li> -->
 
                                 </ul>
                             </div>
@@ -128,12 +128,12 @@
                                         <div class="inputWrapper">
                                             <div class="inputGuideWrapper">
                                                 <span class="inputCheckWrap inputCheckStyle">
-                                                    <input type="text" inputmode="text" placeholder="아이템 이름을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput" value="">
+                                                    <input type="text" inputmode="text" placeholder="아이템 이름을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput" maxlength="50">
                                                 </span>
                                             </div>
                                             <div class="noticeArea">
                                                 <p class="guideMsg guideMsg"></p>
-                                                <span class="countLength">0/50</span>
+                                                <span class="countLength">0</span><span>/50</span>
                                             </div>
                                         </div>
                                     </section>
@@ -177,38 +177,34 @@
                                                 <div class="selectableInner">
                                                     <div class="selectCard">
                                                         <div class="checkBox"></div>
-                                                        <label for="optionType">없음</label>
+                                                        <label for="optionType" class="option-text">없음</label>
                                                     </div>
                                                     <div class="prefix"></div>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="itemOpCard  selectCardWrap">
-                                                <input type="radio" name="optionType"
-                                                    class="checkInput" value="1">
+                                            <div class="itemOpCard selectCardWrap">
+                                                <input type="radio" name="optionType" class="checkInput" value="1">
                                                 <div class="selectableInner">
                                                     <div class="selectCard">
                                                         <div class="checkBox"></div>
-                                                        <label for="optionType">주관식</label>
+                                                        <label for="optionType" class="option-text">주관식</label>
                                                     </div>
                                                     <div class="prefix"></div>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="itemOpCard  selectCardWrap">
-                                                <input type="radio" name="optionType"
-                                                    class="checkInput" value="2">
+                                            <div class="itemOpCard selectCardWrap">
+                                                <input type="radio" name="optionType" class="checkInput" value="2">
                                                 <div class="selectableInner">
                                                     <div class="selectCard">
                                                         <div class="checkBox"></div>
-                                                        <label for="optionType">객관식</label>
+                                                        <label for="optionType" class="option-text">객관식</label>
                                                     </div>
                                                     <div class="prefix"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
-                                    <section class="sectionStyle">
+                                    <section class="sectionStyle" style="display: none;">
                                         <div class="labelWrap">
                                             <button type="button" class="areaToolTip">
                                                 <p>옵션 항목</p>
@@ -231,16 +227,16 @@
                                                     <div
                                                         class="textareaWrapper inputLengthCheck">
                                                         <textarea placeholder="예) 각인할 메세지를 입력해주세요"
-                                                            class="textareaStyle textareaStyle"></textarea></div>
+                                                            class="textareaStyle textareaJu" maxlength="100"></textarea></div>
                                                 </div>
                                                 <div class="noticeArea">
                                                     <p class="guideMsg"></p>
-                                                    <span class="countLength">0/100</span>
+                                                    <span class="countLength">0</span><span>/100</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
-                                    <section class="sectionStyle">
+                                    <section class="sectionStyle" style="display: none;">
                                         <div class="labelWrap">
                                             <button type="button" class="areaToolTip">
                                                 <p>옵션 항목</p>
@@ -261,15 +257,15 @@
                                                     <div
                                                         class="textareaWrapper inputLengthCheck">
                                                         <textarea placeholder="옵션 항목을 입력해주세요. 예) 블랙-230mm, 블랙-240mm"
-                                                            class="textareaStyle"></textarea></div>
+                                                            class="textareaStyle textareaGaek" maxlength="100"></textarea></div>
                                                 </div>
                                                 <div class="noticeArea">
-                                                    <p class="guideMsg">2개 이상의 옵션 항목을 만들어주세요</p><span
-                                                        class="countLength">0/100</span>
+                                                    <p class="guideMsg">2개 이상의 옵션 항목을 만들어주세요</p>
+                                                    <span class="countLength">0</span><span>/100</span>
                                                 </div>
                                             </div>
                                             <section>
-                                                <span class="removableTag">
+                                                <!-- <span class="removableTag">
                                                 <span class="value">블락</span>
                                                 <button type="button" value="블락">
                                                         <div name="close-1" class="iconSVG">
@@ -292,13 +288,13 @@
                                                             </svg>
                                                         </div>
                                                     </button>
-                                                </span>
+                                                </span> -->
                                             </section>
                                         </div>
                                     </section>
                                     <div class="buttonWrap">
                                         <button class="lineButton resetButton buttonStyle" color="grayEditor200">초기화</button>
-                                        <button class="solidButton saveButton solidButton buttonStyle" disabled="" color="mainEditorP80">
+                                        <button class="solidButton saveButton solidButton buttonStyle" type="button" id="saveButton" disabled color="mainEditorP80">
                                             <span>저장</span>
                                         </button>
                                     </div>
@@ -324,5 +320,5 @@
         $("#_topContent").load("/templates/funding/funding-topContent.html");
     });
 </script>
-
+<script src="../../static/js/funding/funding-gift.js"></script>
 </html>
