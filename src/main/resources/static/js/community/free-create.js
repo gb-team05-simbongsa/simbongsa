@@ -1,23 +1,33 @@
 $(document).ready(function() {
 
-// // 초기 등록 버튼 색상 설정
-// $('#regist_btn').css("color", "rgb(196, 196, 196)").css("background-color", "rgb(242, 244, 247)");
-
-// // textarea 입력시 등록 버튼 색상 변경
-// $('#content_textarea, #title_textarea').on('input', function() {
-//   var contentLength = $('#content_textarea').val().length;
-//   var titleLength = $('#title_textarea').val().length;
-//   if (contentLength > 0 && titleLength > 0) {
-//     $('#regist_btn').css("color", "white").css("background-color", "blue");
-//   } else {
-//     $('#regist_btn').css("color", "rgb(196, 196, 196)").css("background-color", "rgb(242, 244, 247)");
-//   }
-// });
-
-// });
+// 초기 등록 버튼 색상 설정
+$('.register-btn').css({
+    "color": "#fff",
+    "background-color": "#c5c5c5"
+  });
+  
+  // textarea 입력시 등록 버튼 색상 변경
+  $('.title-input, .contents-text').on('input', function() {
+    var contentLength = $('.contents-text').val().length;
+    var titleLength = $('.title-input').val().length;
+    
+    if (contentLength > 0 && titleLength > 0) {
+      $('.register-btn').css({
+        "color": "#fff",
+        "background-color": "rgba(229, 104, 89, 0.83)"
+      });
+    } else {
+      $('.register-btn').css({
+        "color": "#fff",
+        "background-color": "#c5c5c5"
+      });
+    }
+  });
+  
+});
     
     
-const file = document.querySelector('input[type=file]');
+const file = document.querySelector('#photo');
 const imgDiv = document.querySelector('.file-name');
 const closeSpan = document.querySelector('#btn_x');
 const input = document.querySelector('#file_input');
