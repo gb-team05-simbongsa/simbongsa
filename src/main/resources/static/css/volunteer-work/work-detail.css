@@ -70,9 +70,9 @@ h3 {
     font-size: 15px;
     font-weight: 500;
     line-height: 43px;
-    border-radius: 50px;
+    border-radius: 6px;
     /* background: #d43e0c; */
-    background: #4e61ff;
+    background: rgb(248, 100, 83);
     color: #fff;
 }
 
@@ -172,7 +172,7 @@ dl {
 
 .company-data {
     padding: 24px 52px;
-    border-top: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
     /* border-bottom: 1px solid #333; */
     background: #ffffff;
 }
@@ -219,3 +219,102 @@ dl {
 /* .company-info-map {
     position: relative;
 } */
+
+.work-detail-board-layout {
+    position: relative;
+    margin-top: 25px;
+}
+
+.work-detail-info-container .work-detail-list-btn-wrap button{
+    text-align: center;
+}
+
+.list-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    vertical-align: top;
+    border: none;
+    background: none;
+    text-align: center;
+
+}
+
+.list-btn span {
+    display: inline-block;
+    height: 40px;
+    padding: 0 33px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 40px;
+    /* border: 1px solid #ccc; */
+    color: #fff;
+    background: rgb(248, 100, 83);
+}
+
+.work-list-prev-btn {
+    display: block;
+    position: absolute;
+    top: auto;
+    left: -1px;
+    bottom: -6px;
+    width: 40%;
+    text-align: right;
+    color: #444;
+    font-size: 16px;
+}
+
+.work-list-prev-btn img {
+    display: inline-block;
+    padding: 5px 5px 0;
+}
+
+.work-list-prev-btn span {
+    display: block;
+    color: #666;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+}
+
+.work-detail-list-next-btn {
+    display: block;
+    position: absolute;
+    top: auto;
+    left: 507px;
+    bottom: -6px;
+    width: 40%;
+    text-align: left;
+    color: #444;
+    font-size: 16px;
+}
+
+
+.work-detail-list-next-btn .next-btn {
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+.work-detail-list-next-btn img {
+    display: inline-block;
+    padding: 5px 5px 0;
+
+}
+
+.work-detail-list-next-btn span {
+    display: block;
+    color: #666;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+}
+
+img {
+    vertical-align: top;
+    border: 0 none;
+}
