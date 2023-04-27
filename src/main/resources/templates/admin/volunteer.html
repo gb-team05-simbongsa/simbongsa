@@ -764,14 +764,35 @@
 
     })
 
-    $('.volunteer_button').on('click', ()=>{
-      $('.volunteer-modal').show();
-        $('.modal-close').on('click', function () {
-          $('.volunteer-modal').fadeOut(500);
-        });
-    })
+    // $('.volunteer_button').on('click', ()=>{
+    //   $('.volunteer-modal').show();
+    //     $('.modal-close').on('click', function () {
+    //       $('.volunteer-modal').fadeOut(500);
+    //     });
+    // })
     
   </script>
   <script src="/static/js/admin/app.js"></script>
   <script src="/static/js/admin/events.js"></script>
+  <script>
+    $('.volunteer_button').on('click', ()=>{
+      $('.volunteer-modal').show();
+      $('.modal-stage').fadeOut(500);
+      
+
+        $('.modal-close').on('click', function () {
+          $('.volunteer-modal').fadeOut(500);
+        });
+        
+    })
+    $detailButton.on('click', ()=>{
+      $('.modal-stage').show();
+      $('.volunteer-modal').fadeOut(500);
+
+        $('.modal-close').on('click', function () {
+          $('.modal-stage').fadeOut(500);
+        });
+        
+    })
+  </script>
 </html>
