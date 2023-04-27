@@ -110,3 +110,13 @@
   justify-content: flex-end;
 }
 
+.volunteer_input{
+  width: 630px;
+}
+.volunteer_input input{
+  font-size: 14px;
+}
+.volunteer_profile h5 {
+  font-size: 14px;
+}
+
