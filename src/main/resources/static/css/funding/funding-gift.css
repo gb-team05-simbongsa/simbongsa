@@ -361,7 +361,7 @@ input[type="checkbox"], input[type="radio"] {
     flex: 1 1 0%;
     margin: 0px 0px 0px 10px;
 }
-.solidButton {
+.solidButton:disabled {
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -378,8 +378,26 @@ input[type="checkbox"], input[type="radio"] {
     padding: 0px 24px;
     color: rgb(255, 255, 255);
     cursor: auto;
-    pointer-events: none;
     background-color: rgb(228, 228, 228);
+}
+.solidButton {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background-color: rgba(229, 104, 89, 0.83);
 }
 button[disabled], html input[disabled] {
     cursor: default;
@@ -565,4 +583,7 @@ button[disabled], html input[disabled] {
     font-size: 11px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
     line-height: 32px !important;
+}
+.saveButton span {
+    color: rgb(255, 255, 255);
 }
