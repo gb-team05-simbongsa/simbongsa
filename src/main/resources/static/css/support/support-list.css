@@ -111,6 +111,7 @@ a, div {
     color: rgb(72, 72, 72);
     padding: 0px;
     overflow: hidden;
+    outline: none;
 }
 
 
@@ -269,15 +270,7 @@ a, div {
     transition: transform 0.2s ease 0s;
     background: url(https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8047a90aa1bf9936012f741d35e13f6ef3f80c24/360f0f9f2cbc91815ca9180e2597b50d605bee41/1ecf7d0f-a0e5-4b6b-9fae-d2f5094c89ba.jpeg?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=b3c1ea182b4e142c95d5cf9dc617d20c) center center / cover no-repeat;
 }
-.like{
-    right: 12px;
-    bottom: 12px;
-    position: absolute;
-    z-index: 9;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
+
 .image_wrapper a::before{
     display: block;
     content: "";
@@ -290,24 +283,7 @@ a, div {
     box-sizing: border-box;
     cursor: pointer;
 }
-.like_button{
-    outline: 0;
-    border: 0px;
-    padding: 0px;
-    overflow: hidden;
-    background: transparent;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    cursor: pointer;
-    text-transform: none;
-}
+
 .content_dl{
     min-height: 80px;
     margin: 0px;
