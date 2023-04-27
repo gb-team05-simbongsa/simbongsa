@@ -127,3 +127,36 @@
     width: 100%;
     opacity: 1;
 }
+
+
+
+/* 문의하기 버튼 */
+.inquiry-btn-layout {
+    position: fixed;
+    z-index: 10000000;
+    display: block;
+    flex-wrap: nowrap;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    bottom: 24px;
+    right: 24px;
+}
+
+.inquiry-btn-img-wrap {
+    position: relative;
+    display: flex;
+    /* -webkit-box-align: center; */
+    align-items: center;
+    /* -webkit-box-pack: center; */
+    justify-content: center;
+    overflow: visible;
+    cursor: pointer;
+    background: transparent;
+    border: 0px solid transparent;
+}
+
+.inquiry-btn-img {
+    width: 70.5; 
+    height: 70.5;
+}
