@@ -54,7 +54,7 @@ $contentInput.keyup((e) =>{
 
     }
     if($content){
-        $('.inputWrapper').css('border', '1px solid rgb(240, 240, rgba(0, 0, 0, 0.87)');
+        $('.inputWrapper').css('border', '1px solid rgb(240, 240, 240');
         $contentCount.css('color', 'rgba(0, 0, 0, 0.87)');
     }else{
         $('.inputWrapper').css('border', '1px solid rgb(244, 69, 68)');
@@ -74,7 +74,7 @@ $textAreaStyle.keyup((e) =>{
 
     }
     if($content){
-        $('.TextAreaWrap').css('border', '1px solid rgb(240, 240, rgba(0, 0, 0, 0.87)');
+        $('.TextAreaWrap').css('border', '1px solid rgb(240, 240, 240');
         $textAreaCount.css('color', 'rgba(0, 0, 0, 0.87)');
     }else{
         $('.TextAreaWrap').css('border', '1px solid rgb(244, 69, 68)');
@@ -82,3 +82,22 @@ $textAreaStyle.keyup((e) =>{
     }
 })
 
+const $accountInput = $('.accountInput');
+const $accountCount = $('.contentLengthCheck');
+
+$accountInput.keyup((e)=>{
+    let $content = $accountInput.val();
+    if($content.length == 0 || $content ==''){
+        $accountCount.text('0/16');
+    }else{
+        $accountCount.text($content.length + '/16');
+
+    }
+    if($content){
+        $('.test2').css('border', '1px solid rgb(240, 240, 240');
+        $accountCount.css('color', 'rgba(0, 0, 0, 0.87)');
+    }else{
+        $('.test2').css('border', '1px solid rgb(244, 69, 68)');
+        $accountCount.css('color', 'rgb(244, 69, 68)');
+    }
+});

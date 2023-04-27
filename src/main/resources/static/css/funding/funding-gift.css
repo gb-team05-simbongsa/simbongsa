@@ -490,7 +490,7 @@ button[disabled], html input[disabled] {
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
 .inputLengthCheck {
-    border: 1px solid rgb(230, 230, 230);
+    /* border: 1px solid rgb(230, 230, 230); */
     border-radius: 1px;
     padding: 12px;
 }
@@ -500,6 +500,7 @@ button[disabled], html input[disabled] {
     border: 0px;
     padding: 0px;
     resize: none;
+    outline: none;
 }
 .removableTag {
     -webkit-box-pack: justify;

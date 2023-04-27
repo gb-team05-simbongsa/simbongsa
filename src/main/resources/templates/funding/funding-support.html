@@ -105,9 +105,6 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="modifyButton">
-                                            <button class="modifyBt">변경</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -207,15 +204,32 @@
                             <div class="pledgeCheckWrapper">
                                 <div class="checkBoxWrapper">
                                     <div class="checkBoxRow">
-                                        <label for="b946a175-bc8f-4c8a-bbac-8a73f43d87cd" class="checkWrapper pledgeTerm">
-                                            <input id="b946a175-bc8f-4c8a-bbac-8a73f43d87cd" type="checkbox" value=""><span>개인정보 제 3자 제공 동의</span></label>
+                                        <label for="firstCheck" class="checkWrapper pledgeTerm">
+                                            <span class="checkBox">
+                                                <div name="check" class="icon-svg">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </span>
+                                            <input id="firstCheck" type="checkbox" value=""><span>개인정보 제 3자 제공 동의</span>
+                                        </label>
                                         <div class="termLink">내용보기</div>
                                     </div>
                                 </div>
                                 <div class="checkBoxWrapper">
                                     <div class="checkBoxRow">
-                                        <label for="918cf16f-ee09-4334-b381-81b4b2ebbe68" class="checkWrapper pledgeTerm">
-                                            <input id="918cf16f-ee09-4334-b381-81b4b2ebbe68" type="checkbox" value="">
+                                        <label for="secondCheck" class="checkWrapper pledgeTerm">
+                                            <span class="checkBox">
+                                                <div name="check" class="icon-svg">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </span>
+                                            <input id="secondCheck" type="checkbox" value="">
                                             <span>후원 유의사항 확인</span>
                                         </label>
                                         <div class="termSwitch">닫기
@@ -252,5 +266,42 @@
     </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+const $checkWrapper = $('.checkWrapper');
+const $check = $('.checkBox');
+
+// $checkWrapper.each((i,e)=>{
+//     console.log($(e).eq(1));
+//     $(e).eq(i).on('click', ()=>{
+//         console.log($("input[type='checkbox']").prop("checked"))
+//         if( $(".checkWrapper input[type='checkbox']").is(":checked")){
+//             $check.eq(i).css('background', 'white');
+//         }else{
+//             $check.eq(i).css('background', 'rgb(255, 87, 87)');
+//         }
+//     })
+// });
+$checkWrapper.eq(0).on('click', function(){
+    if( $(".checkWrapper input[type='checkbox']").is(":checked")){
+        $check.eq(0).css({
+                'background': 'white',
+                'border' : '1px solid rgb(189, 189, 189)'
+        });
+        }else{
+            $check.eq(0).css('background', 'rgb(255, 87, 87)');
+        }
+});
+$checkWrapper.eq(1).on('click', function(){
+    if( $(".checkWrapper input[type='checkbox']").is(":checked")){
+            $check.eq(1).css({
+                'background': 'white',
+                'border' : '1px solid rgb(189, 189, 189)'
+        });
+        }else{
+            $check.eq(1).css('background', 'rgb(255, 87, 87)');
+        }
+});
+</script>
 
 </html>
