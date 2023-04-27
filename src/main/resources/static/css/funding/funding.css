@@ -371,7 +371,7 @@ p:last-child {
 .selectWrap {
     position: relative;
 }
-.bXlLWE {
+.selectWithSingle {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(248, 248, 248);
@@ -562,7 +562,7 @@ p:last-child {
 
 
 /* funding-creater-info */
-.divWrap {
+.TextAreaWrap {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -600,6 +600,7 @@ textarea {
 }
 .textStyle textarea {
     background: transparent;
+    outline: none;
 }
 .textguideArea {
     margin-left: auto;
@@ -976,4 +977,444 @@ p {
     line-height: 28px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
     margin: 16px 0px 0px !important;
+}
+.accountWrap {
+    border: 1px solid rgb(238, 238, 238);
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 40px 16px;
+    list-style: none;
+    margin: 0px;
+}
+.accountWrap > li {
+    margin-bottom: 24px;
+}
+.labelWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 10px;
+}
+.areaTooltip {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 16px;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background: transparent;
+    cursor: pointer;
+}
+.labelWrapper p {
+    font-weight: 500;
+    margin: 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.labelWrapper em {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px 0px 0px 2px;
+    padding: 2px;
+    border: 0px;
+    background: transparent;
+    border-radius: 2px;
+    outline: none;
+    font-size: 16px;
+}
+.ccxeYs {
+    display: inline-flex;
+    align-self: center;
+}
+.labelWrapper svg {
+    fill: rgb(255, 87, 87);
+}
+.tooltip {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid rgb(240, 240, 240);
+    transition: all 0.5s ease 0s;
+    height: 0px;
+    overflow: hidden;
+    transform: translateY(-10px);
+    opacity: 0;
+    padding: 0px 26px;
+    margin: 0px;
+}
+.labelWrapper em {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px 0px 0px 2px;
+    padding: 2px;
+    border: 0px;
+    background: transparent;
+    border-radius: 2px;
+    outline: none;
+    font-size: 16px;
+}
+.tooltip .close {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 7px;
+    background: rgb(252, 252, 252);
+    cursor: pointer;
+}
+.ccxeYs {
+    display: inline-flex;
+    align-self: center;
+}
+.labelWrapper svg {
+    fill: rgb(255, 87, 87);
+}
+.tooltip svg {
+    fill: rgb(109, 109, 109);
+}
+.accountWrap .typeButtonWrap {
+    display: flex;
+}
+.accountWrap .typeButtonWrap .half {
+    width: 50%;
+    padding: 0px 8px;
+}
+.accountWrap .typeButtonWrap .half:first-child {
+    padding-left: 0px;
+}
+
+.lineButton {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+.accountWrap .typeButtonWrap button {
+    width: 100%;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+.accountWrap .typeButtonWrap .half .isActive {
+    border: 1px solid rgb(248, 100, 83);
+}
+.accountWrap .typeButtonWrap button svg {
+    margin-right: 12px;
+    fill: rgb(248, 100, 83);
+}
+.accountWrap .typeButtonWrap .half {
+    width: 50%;
+    padding: 0px 8px;
+}
+.accountWrap .typeButtonWrap .half:last-child {
+    padding-right: 0px;
+}
+.lineButton {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+.accountWrap .typeButtonWrap button {
+    width: 100%;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+.accountWrap .typeButtonWrap button svg {
+    margin-right: 12px;
+    fill: rgb(248, 100, 83);
+}
+.accountWrap .halfContents {
+    display: flex;
+}
+.accountWrap .halfContents > div {
+    width: 50%;
+    padding: 0px 7px;
+}
+.accountWrap .halfContents > div:first-child {
+    padding-left: 0px;
+}
+.accountWrap .itemName {
+    font-weight: 500;
+    color: rgb(13, 13, 13);
+    margin-bottom: 8px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.selectWithWrapper {
+    position: relative;
+}
+.slectedSingle {
+    padding: 0px 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(201, 201, 201);
+}
+.selectWithSingle {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(13, 13, 13);
+    background: rgb(248, 248, 248);
+    padding: 0px 0px 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+.slectedSingle {
+    padding: 0px 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(201, 201, 201);
+}
+.input_innerInput {
+    width: 100%;
+    background: transparent;
+    border: 0px;
+    padding: 11px 0px;
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    margin: 0px;
+    appearance: none !important;
+}
+.slectedSingle input {
+    cursor: default;
+}
+.slectedSingle > div {
+    font-size: 10px;
+}
+.slectedSingle svg {
+    fill: rgb(61, 61, 61);
+    transform: rotate(0deg);
+    transition: transform 0.3s ease 0s;
+}
+.errorMsg {
+    font-weight: 400;
+    color: rgb(229, 60, 65);
+    margin: 0px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.selectText {
+    margin-top: 8px;
+}
+.accountWrap .noti {
+    font-weight: 400;
+    color: rgb(158, 158, 158);
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.accountWrap .halfContents > div:last-child {
+    padding-right: 0px;
+}
+.inputWithWrapper {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+    background: rgba(240, 240, 240, 0.7);
+    padding: 0px 18px;
+    border: 1px solid rgb(240, 240, 240);
+}
+.input_inputWrapper {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(158, 158, 158);
+    background: rgb(248, 248, 248);
+    padding: 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+.wraperSpan {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(13, 13, 13);
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
+.inputWithGuide {
+    flex: 1 1 0%;
+    border: 0px;
+    text-align: left;
+    padding: 0px;
+    background: transparent;
+}
+.inputWithGuide input {
+    text-align: inherit;
+    font-weight: 400;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.noticeArea_lengCheck {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-weight: 400;
+    margin: 8px 0px 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.guideWrap {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    border: 1px solid rgb(244, 69, 68);
+}
+.contentLengthCheck {
+    margin-left: auto;
+    color: rgb(244, 69, 68);
+}
+input {
+    line-height: normal;
+}
+.uploadWrap input {
+    display: none;
+}
+.accountWrap .fileUploadButton {
+    width: 100%;
+    margin-bottom: 8px;
+    height: 50px;
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.accountWrap .fileUploadButton svg {
+    fill: rgb(248, 100, 83);
+    margin-right: 8px;
+    font-size: 16px;
+}
+.accountWrap .buttonWrap {
+    text-align: right;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    display: flex;
+}
+.lineButton.pdc-btn-l {
+    font-size: 12px;
+    line-height: 20px;
+}
+.accountWrap .buttonWrap button {
+    width: 88px;
+    margin-left: 12px;
+    font-weight: 500;
+}
+.solidButton span {
+    color: rgb(158, 158, 158);
+}
+.selectWithOp {
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    margin: 0px;
+    padding: 8px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+    transform: translateY(48px);
+}
+.selectWithOp ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.customOption {
+    background: transparent;
+    transition: background 0.3s ease 0s;
+}
+.selectWithOp li button {
+    display: block;
+    width: 100%;
+    height: 44px;
+    text-align: left;
+    padding: 0px 16px;
+    border: 0px;
+    border-radius: 4px;
+    background: transparent;
+    color: rgb(61, 61, 61);
 }
