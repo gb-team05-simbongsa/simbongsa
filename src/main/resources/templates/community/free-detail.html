@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>심봉사 | 자유게시판 상세페이지</title>
     <link rel="stylesheet" href="../../static/css/font/font.css">
-    <link rel="stylesheet" href="../../static/css/community/free-detail.css">
+    <link rel="stylesheet" href="../../static/css/community/review-detail.css">
+    <link rel="stylesheet" href="../../static/js/community/free-detail.js">
     <link rel="stylesheet" href="../../static/css/main/header.css">
 </head>
 <body>
@@ -179,7 +180,6 @@
                         <div id="show">
                             <!-- JS로 처리 -->
                             <!-- <div class="my-user-wrapper">
-                                
      <!-- 전체 div -->
      <div>
         <div style="background-color: #fff;">
@@ -242,7 +242,7 @@
                         <div class="comment-box" style="display: none;">
                             <div class="comment-box-container">
                                 <div class="comment-box-wrapper">
-                                    <textarea placeholder="댓글을 작성하려면 로그인을 해주세요." class="comment-box-p"></textarea>
+                                    <span class="comment-box-p">댓글을 작성하려면 로그인을 해주세요.</span>
                                 </div>
                                 <div class="comment-Nologin">
                                     <button class="comment-Nologin-btn">로그인</button>
@@ -251,16 +251,20 @@
                         </div>
                         <!-- 로그인 했을때 -->
                         <div class="comment-box2">
-                            <button type="button" class="comment-box-wrapper2">
+                            <div class="comment-box-wrapper2">
                                 <div class="comment-login">
                                     <div class="comment-login-profile">
                                         <span class="profile-span">
-                                            <img class="profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
+                                            <img class="profile-img" style="margin: 0;" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
                                         </span>
                                     </div>
                                 </div>
-                                <textarea placeholder="댓글을 작성해주세요." class="comment-box-span"></textarea>
-                            </button>
+                                <textarea class="comment-box-span" placeholder="댓글을 작성해 주세요..."></textarea>
+                            </div>
+                            <div class="singUp-btn">
+                                <button class="singUp1">취소</button>
+                                <button class="singUp">등록</button>
+                            </div>
                         </div>
                         <!--  -->
                         <div style="height: 33px;"></div>
@@ -272,7 +276,32 @@
 
                         <!-- 댓글 있을때 -->
                         <ul>
-                            <!--  -->
+                            <!-- 내가 쓴 댓글일 경우 -->
+                            <li class="comment-ok-list">
+                                <div class="comment-profile">
+                                    <div class="comment-profile-container">
+                                        <span class="comment-profile-span">
+                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div style="width: 100%;">
+                                    <div class="comment-user">
+                                        <div class="comment-user-name">서현</div>
+                                        <button type="button" class="x-btn">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
+                                                <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div style="flex: 0 0 auto; height: 5px;"></div>
+                                    <p class="comment-contant"></p>
+                                    좋은 활동 후기보고 갑니다.
+                                    <div style="flex: 0 0 auto; height: 8px;"></div>
+                                    <span class="comment-day">1일 전</span>
+                                </div>
+                            </li>
+                            <!-- 다른 사람들 댓글 x버튼 없음 -->
                             <li class="comment-ok-list">
                                 <div class="comment-profile">
                                     <div class="comment-profile-container">
@@ -554,4 +583,5 @@
      </div>
      <!--  -->
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </html>

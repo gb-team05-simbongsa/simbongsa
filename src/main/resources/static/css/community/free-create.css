@@ -43,7 +43,7 @@ div{
     display: flex;
     cursor: pointer;
     box-shadow: inset 0 0 0 0 #d9dfeb;
-    background-color: rgb(229 104 89 / 83%);
+    background-color: #c5c5c5;
     color: #fff;
     text-shadow: none;
     background-image: none;
@@ -73,6 +73,7 @@ div{
     border-top: 0.0625rem solid #f4f4f4;
     border-bottom: 0.0625rem solid #f4f4f4;
     margin-top: 1%;
+    cursor: pointer;
 }
 .photo-container{
     display: flex;
@@ -120,7 +121,7 @@ div{
     margin: auto;
 }
 .title-label{
-    width: 100%;
+    width: 52%;
     padding: 1.25rem 0;
     margin: 0;
     display: inline-block;
@@ -140,7 +141,7 @@ div{
     outline: 0;
 }
 .contents{
-    width: 60.625rem;
+    width: 100%;
     min-height: 22.5rem;
     height: 100%;
     position: relative;

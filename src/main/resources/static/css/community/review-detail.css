@@ -326,7 +326,7 @@ button {
     line-height: 16px;
     color: #fff;
     fill: #fff;
-    background-color: #7e69fe;
+    background-color: rgba(229, 104, 89, 0.83);
 }
 .singUp{
     padding-left: 16px;
@@ -342,7 +342,7 @@ button {
     line-height: 16px;
     color: #fff;
     fill: #fff;
-    background-color: #7e69fe;
+    background-color: #c5c5c5;
 }
 .singUp1{
     padding-left: 15px;
@@ -402,7 +402,7 @@ button {
     color: #333334;
     fill: #333334;
     background-color: #fff;
-    resize: vertical;
+    resize: none;
 }
 .comment-login{
     width: 32px;
@@ -741,4 +741,11 @@ ul{
     line-height: 16px;
     color: #8a8a8b;
     fill: #8a8a8b;
+}
+.x-btn-svg{
+    width: 20px;
+    height: 20px;
+    color: #cccccd;
+    fill: #cccccd;
+    display: block;
 }
