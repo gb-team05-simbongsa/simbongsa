@@ -19,6 +19,17 @@
      <!-- 웹에디터 API -->
      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
   </head>
+  <style>
+    .user__profile__input input {
+    padding: 3px 5px;
+    }
+    .volunteer_input{
+      width: 630px;
+    }
+  .button__type_2 {
+      width: 70px;
+    }
+  </style>
   <body>
     <section class="main">
       <section class="sidebar">
@@ -446,6 +457,9 @@
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
                     </button>
+                    <button class="button__type_2 volunteer_button button__color__green">
+                      후원명단
+                    </button>
                   </td>
                 </tr>
                 <tr class="table__content">
@@ -464,6 +478,9 @@
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
+                    </button>
+                    <button class="button__type_2 volunteer_button button__color__green">
+                      후원명단
                     </button>
                   </td>
                 </tr>
@@ -557,6 +574,83 @@
           </form>
         </section>
       </section>
+      <section class="volunteer-modal" style="display: none">
+        <section class="modal">
+          <div class="modal__header">
+            <h3 class="modal__title">후원 신청 명단</h3>
+            <a class="modal-close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                data-name="Capa 1"
+                id="Capa_1"
+                viewBox="0 0 20 19.84">
+                <path
+                  d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z" />
+              </svg>
+            </a>
+          </div>
+          <form class="storage_form" action="">
+            <main class="modal__main">
+              <div class="modal__profile__top">
+                <h4>신청자</h4>
+                <div class="user__profile volunteer_profile">
+                  <h5>회원정보</h5>
+                  <div class="user__profile__input volunteer_input">
+                    <input type="text" name="" value="회원번호" readonly="true" />
+                    <input type="text" name="" value="이름" readonly="true" />
+                    <input type="text" name="" value="전화번호" readonly="true" />
+                    <input type="text" name="" value="아이디" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                <h5></h5>
+                  <div class="user__profile__input volunteer_input">
+                    <input type="text" name="" value="1" readonly="true" />
+                    <input type="text" name="" value="홍길동" readonly="true" />
+                    <input type="text" name="" value="01011112222" readonly="true" />
+                    <input type="text" name="" value="kmg2331" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                <h5></h5>
+                  <div class="user__profile__input volunteer_input">
+                    <input type="text" name="" value="1" readonly="true" />
+                    <input type="text" name="" value="홍길동" readonly="true" />
+                    <input type="text" name="" value="01011112222" readonly="true" />
+                    <input type="text" name="" value="kmg2331" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                <h5></h5>
+                  <div class="user__profile__input volunteer_input">
+                    <input type="text" name="" value="1" readonly="true" />
+                    <input type="text" name="" value="홍길동" readonly="true" />
+                    <input type="text" name="" value="01011112222" readonly="true" />
+                    <input type="text" name="" value="kmg2331" readonly="true" />
+                  </div>
+                </div>
+                <div>
+                  <div class="paging" style="margin-top: 28px; margin-bottom: -57px; text-align: center;">
+                    <a class="changePage" style="color: black"><code><</code></a>
+                    <code id="currentPage">1</code>
+                      <a class="changePage" style="color: black"}"><code>2</code></a>
+                    <a class="changePage"style="color: black"><code>></code></a>
+                  </div>
+                  <form name="pageForm">
+                    <input type="hidden">
+                    <input type="hidden">
+                  </form>
+                </div>
+                <div class="user__profile__button" style="margin-top: 20px;">
+                  <button id="completeBtn" class="button__type_2 button__color__green">
+                    작성완료
+                  </button>
+                </div>
+              </div>
+            </main>
+          </form>
+        </section>
+      </section>
     </section>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -577,6 +671,13 @@
         ['insert', ['link', 'picture', 'video']],
       ],
     });
+
+    $('.volunteer_button').on('click', ()=>{
+      $('.volunteer-modal').show();
+        $('.modal-close').on('click', function () {
+          $('.volunteer-modal').fadeOut(500);
+        });
+    })
   </script>
   <script src="/static/js/admin/app.js"></script>
   <script src="/static/js/admin/events.js"></script>

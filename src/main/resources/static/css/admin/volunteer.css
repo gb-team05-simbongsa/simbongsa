@@ -113,3 +113,12 @@
 .content__img img {
   width: 200px;
 }
+.volunteer_input{
+  width: 630px;
+}
+.volunteer_input input{
+  font-size: 14px;
+}
+.volunteer_profile h5 {
+  font-size: 14px;
+}
