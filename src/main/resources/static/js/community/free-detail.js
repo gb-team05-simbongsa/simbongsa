@@ -5,3 +5,7 @@ $('.comment-box-span').on('keyup', () => {
         $('.singUp').attr('disabled', true);
     }
 });
+
+
+
+
