@@ -407,3 +407,14 @@
     margin: -9px 2px 0px 0px;
     border-radius: 8px;
 }
+
+input::placeholder {
+    font-size: 12px;
+    color:#d5d7db;
+
+}
+
+textarea::placeholder {
+    font-size: 12px;
+    color:#d5d7db;
+}
