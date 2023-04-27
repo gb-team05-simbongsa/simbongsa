@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>후원요청하기</title>
     <link rel="stylesheet" href="/static/css/font/font.css">
     <link rel="stylesheet" href="/static/css/support/support-write.css">
      <!-- 웹에디터 API -->
@@ -49,6 +49,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 내용 -->
                         <div class="qna-content-input-layout">
                             <div class="qna-original-input-layout">
                                 <div class="qna-write-content-title-div">
@@ -58,13 +59,13 @@
                                 </div>
                                 <div class="qna-write-content-input">
                                     <div class="write-content-contents-outter-div">
-                                        <div class="write-content-contents-inner-div">
-                                            <textarea id="inquiry-contents" class="write-content-contents-textarea"
+                                        <!-- <div class="write-content-contents-inner-div">
+                                                 <textarea id="inquiry-contents" class="write-content-contents-textarea"
                                                       name="inquiryContent" inputmode="text" cols="30" rows="10"
                                                       style="resize: none;" maxlength="5000"
                                                       placeholder="전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다."></textarea>
                                           
-                                            <span class="content-length-counter">
+                                                 <span class="content-length-counter">
                                                     <span>
                                                         <span class="content-length-count">0자</span>
                                                         <span class="content-length-max-count">
@@ -73,10 +74,11 @@
                                                         </span>
                                                     </span>
                                                 </span>
-                                        </div>
-                                        <div class="notice__content">
+                                            </div> -->
+                                        <!-- 썸머노트 API -->
+                                        <div class="notice__content" >
                                             <textarea id="summernote" name="editordata"></textarea>
-                                          </div>
+                                        </div>
                                         <div class="errorDiv">
                                             <p class="errorMessage"></p>
                                         </div>
@@ -84,6 +86,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="qna-original-input-layout">
                             <div class="qna-write-content-title-div">
                                 <label data-testid="label-text"></label>
@@ -91,7 +94,7 @@
                             <div class="imageContainer">
                                 <div class="imageWrapperPadding">
                                     <div class="imageWrapper">
-                                        <div id="thumbnail-list" class="imageDiv">
+                                        <!-- <div id="thumbnail-list" class="imageDiv">
                                             <div class="imgButtonWrap">
                                                 <label for="photo-picker">
                                                     <div class="imgButton">
@@ -101,7 +104,7 @@
                                                         multiple="multiple"  accept="image/jpg, image/jpeg, image/png, image/bmp"/>
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="imgTextWrapper">
                                             <div class="imgTextDiv">
                                                 <span></span>
@@ -146,7 +149,7 @@
 <script>
   console.log('썸머노트');
   $('#summernote').summernote({
-    placeholder: '공지사항 내용 작성',
+    placeholder: '내용을 입력하세요',
     tabsize: 2,
     height: 300,
     width: '100%',
