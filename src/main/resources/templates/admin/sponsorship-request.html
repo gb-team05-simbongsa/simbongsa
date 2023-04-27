@@ -559,7 +559,6 @@
               </div>
               <div class="modal__profile__bottom">
                 <h4>테스트 후원요청 제목</h4>
-                <textarea cols="30" rows="10" readonly="true">테스트 후원요청 내용</textarea>
                 <div class="notice__content">
                   <textarea id="summernote" name="editordata"></textarea>
                 </div>
@@ -671,14 +670,29 @@
         ['insert', ['link', 'picture', 'video']],
       ],
     });
-
-    $('.volunteer_button').on('click', ()=>{
-      $('.volunteer-modal').show();
-        $('.modal-close').on('click', function () {
-          $('.volunteer-modal').fadeOut(500);
-        });
-    })
+   
   </script>
   <script src="/static/js/admin/app.js"></script>
   <script src="/static/js/admin/events.js"></script>
+  <script>
+    $('.volunteer_button').on('click', ()=>{
+      $('.volunteer-modal').show();
+      $('.modal-stage').fadeOut(500);
+      
+
+        $('.modal-close').on('click', function () {
+          $('.volunteer-modal').fadeOut(500);
+        });
+        
+    })
+    $detailButton.on('click', ()=>{
+      $('.modal-stage').show();
+      $('.volunteer-modal').fadeOut(500);
+
+        $('.modal-close').on('click', function () {
+          $('.modal-stage').fadeOut(500);
+        });
+        
+    })
+  </script>
 </html>
