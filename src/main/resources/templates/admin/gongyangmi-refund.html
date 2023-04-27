@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공양미 충전 내역</title>
+    <title>공양미 환전 요청</title>
     <link
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
       rel="stylesheet" />
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
-    <link rel="stylesheet" href="/static/css/admin/payment-modal.css" />
+    <link rel="stylesheet" href="/static/css/admin/sponsorship-request-modal.css" />
     <link rel="stylesheet" href="/static/css/admin/paging.css">
   </head>
   <body>
@@ -80,7 +80,7 @@
                 <polygon points="160,115.4 180.7,96 352,256 180.7,416 160,396.7 310.5,256 " />
               </svg>
             </a>
-            
+          
             <!-- 봉사관리 -->
             <a href="/templates/admin/volunteer.html" class="sidebar__menu">
               <div class="sidebar__menu__name">
@@ -293,7 +293,7 @@
       <!-- content.css -->
       <section class="content">
         <div class="content__header">
-          <span>공양미 내역</span>
+          <span>공양미 환전 관리</span>
           <a href="javascript:void(0)"> 로그아웃 </a>
         </div>
         <main class="content__main">
@@ -317,7 +317,7 @@
                         d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
                         fill="#11CA2D"></path>
                     </svg>
-                    <div class="status-item-name">금일 결제수</div>
+                    <div class="status-item-name">요청 대기</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
@@ -349,12 +349,13 @@
                         </div>
                       </div>
                     </div>
-                    <div class="status-item-name">결제 총 금액</div>
+                    <div class="status-item-name">요청 승인</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
                   </div>
                 </li>
+                
                 <div class="clock">
                   <h2>현재시간</h2>
                   <h1></h1>
@@ -363,12 +364,20 @@
             </section>
             <div class="table__box">
               <div class="table__search__form">
+                <div>
                 <button
                   id="delete-button"
                   class="button__type_2 button__color__red"
                   style="width: 120px">
-                  결제내역 삭제
+                  요청내역 삭제
                 </button>
+                <button
+                    id="answer-check"
+                    class="button__type_3 button__color__green"
+                    style="width: 120px;">
+                    요청 승인
+                  </button>
+                </div>
                 <!-- default.css -->
                 <div class="search-box-wrap">
                   <div class="select-box">
@@ -410,11 +419,13 @@
                       <input type="checkbox" id="checkAll" />
                     </label>
                   </th>
-                  <th class="content__id">결제번호</th>
+                  <th class="content__id">번호</th>
                   <th>아이디</th>
-                  <th>이메일</th>
-                  <th>공양미 충전</th>
-                  <th>충전일</th>
+                  <th>이름</th>
+                  <th>공양미</th>
+                  <th>환전 공양미</th>
+                  <th>요청 날짜</th>
+                  <th>환전요청</th>
                   <th></th>
                 </tr>
                 <tr class="table__content">
@@ -425,9 +436,11 @@
                   </td>
                   <td class="content__id">1</td>
                   <td>kmg2331</td>
-                  <td>kmg2331@gmail.com</td>
-                  <td>300개</td>
+                  <td>홍길동</td>
+                  <td>2000</td>
                   <td>2023-01-01</td>
+                  <!-- default.css -->
+                  <td class="enquiryOk">승인</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -442,9 +455,11 @@
                   </td>
                   <td class="content__id">1</td>
                   <td>kmg2331</td>
-                  <td>kmg2331@gmail.com</td>
-                  <td>3000개</td>
+                  <td>홍길동</td>
+                  <td>2000</td>
                   <td>2023-01-01</td>
+                  <!-- default.css -->
+                  <td class="enquiryNo">대기</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -489,7 +504,7 @@
       <section class="modal-stage" style="display: none">
         <section class="modal">
           <div class="modal__header">
-            <h3 class="modal__title">결제 상세보기</h3>
+            <h3 class="modal__title">환전 요청 상세보기</h3>
             <a class="modal-close">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -501,45 +516,56 @@
               </svg>
             </a>
           </div>
-          <form class="storage_form" action="">
+          <form action="">
             <main class="modal__main">
               <div class="modal__profile__top">
-                <h4>결제 정보</h4>
+                <h4>회원정보</h4>
                 <div class="user__profile">
-                  <h5>주문번호</h5>
+                  <h5>이름</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="12345" readonly="true" />
+                    <input type="text" name="" value="example1234" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>결제일자</h5>
+                  <h5>이메일</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="2023-03-19" readonly="true" />
+                    <input type="text" name="" value="example@gmail.com" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>결제방법</h5>
+                  <h5>전화번호</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="신용카드" readonly="true" />
+                    <input type="text" name="" value="01012341234" readonly="true" />
                   </div>
                 </div>
-                <div class="user__profile">
-                  <h5>충전 갯수</h5>
-                  <div class="user__profile__input">
-                    <input type="text" name="" value="3000개" readonly="true" />
+              </div>
+              <div class="modal__profile__top">
+                <h4 style="height: 26px;">공양미 환전요청</h4>
+                  <div class="user__profile">
+                    <h5>요청 날짜</h5>
+                    <div class="user__profile__input">
+                      <input type="text" name="" value="2023-04-12" readonly="true" />
+                    </div>
+                  </div>
+                  <div class="user__profile">
+                    <h5>계좌번호</h5>
+                    <div class="user__profile__input">
+                      <input type="text" name="" value="국민은행" readonly="true" style="width: 50px;" />
+                      <input type="text" name="" value="61250201378228" readonly="true" />
+                    </div>
+                  </div>
+                  <div class="user__profile">
+                    <h5>환전 요청한 공양미</h5>
+                    <div class="user__profile__input">
+                      <input type="text" name="" value="2000" readonly="true" />
+                    </div>
                   </div>
                 </div>
-                <div class="user__profile">
-                  <h5>결제금액</h5>
-                  <div class="user__profile__input">
-                    <input type="text" name="" value="100,000원" readonly="true" />
-                  </div>
-                </div>
-                <div class="user__profile__button">
-                  <button id="completeBtn" class="button__type_2 button__color__green">
-                    작성완료
-                  </button>
-                </div>
+              </div>
+              <div class="user__profile__button">
+                <button id="completeBtn" class="button__type_2 button__color__green">
+                  닫기
+                </button>
               </div>
             </main>
           </form>

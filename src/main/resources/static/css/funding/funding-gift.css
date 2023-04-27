@@ -1,0 +1,468 @@
+.planContents {
+    padding: 48px 16px 77px;
+}
+.previewText {
+    font-weight: 700;
+    margin: 0px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.previewTitle {
+    min-height: 24px;
+    font-weight: 700;
+    position: relative;
+    margin: 0px 0px 20px !important;
+}
+.previewHead {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.previewTitle span {
+    color: rgb(13, 13, 13);
+}
+.previewHead span {
+    color: rgb(109, 109, 109);
+}
+.previewWrapper ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.previewItem {
+    padding: 0px;
+    list-style: none;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: 400;
+    color: rgb(158, 158, 158);
+    min-height: 166px;
+    height: 166px;
+    border-radius: 4px;
+    position: relative;
+    background: rgb(255, 255, 255);
+    border: 1px dashed rgb(240, 240, 240);
+    box-sizing: border-box;
+    margin: 0px 0px 12px;
+    font-size: 13px !important;
+    line-height: 22px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.previewItem:last-child {
+    margin-bottom: 0px;
+}
+.contentWrapper {
+    display: none;
+}
+.wrapStyle {
+    flex: 1 1 0%;
+    margin-top: 76px;
+}
+.createItem {
+    background: rgb(255, 255, 255);
+}
+.createAreaTitle {
+    margin-bottom: 12px !important;
+}
+p:first-child {
+    margin-top: 0em;
+}
+.createText {
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    margin: 0px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.sectionStyle {
+    padding: 32px 0px;
+    border-bottom: 1px solid rgba(240, 240, 240, 0.4);
+    margin: 0px;
+}
+.labelWrap {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 10px;
+}
+.areaToolTip {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 16px;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background: transparent;
+    cursor: pointer;
+}
+.labelWrap p {
+    font-weight: 500;
+    margin: 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.labelWrap em {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px 0px 0px 2px;
+    padding: 2px;
+    border: 0px;
+    background: transparent;
+    border-radius: 2px;
+    outline: none;
+    font-size: 16px;
+}
+.iconSVG {
+    display: inline-flex;
+    align-self: center;
+}
+.iconSVG svg {
+    width: 1em;
+    height: 1em;
+}
+.labelWrap svg {
+    fill: rgb(255, 87, 87);
+}
+.toolTip {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid rgb(240, 240, 240);
+    transition: all 0.5s ease 0s;
+    height: 0px;
+    overflow: hidden;
+    transform: translateY(-10px);
+    opacity: 0;
+    padding: 0px 26px;
+    margin: 0px;
+}
+.toolTip .close {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 7px;
+    background: rgb(252, 252, 252);
+    cursor: pointer;
+}
+.inputGuideWrapper {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    border: 1px solid rgb(240, 240, 240);
+}
+.inputCheckWrap {
+    border: 1px solid rgb(230, 230, 230);
+    color: rgb(13, 13, 13);
+    background: rgb(255, 255, 255);
+    padding: 0px 12px;
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    align-items: center;
+    border-radius: 1px;
+}
+.inputCheckStyle {
+    flex: 1 1 0%;
+    border: 0px;
+    text-align: left;
+    padding: 0px;
+    background: transparent;
+}
+.inputCheckStyle input {
+    text-align: inherit;
+    font-weight: 400;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.noticeArea {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-weight: 400;
+    margin: 8px 0px 0px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.countLength {
+    margin-left: auto;
+    color: rgb(158, 158, 158);
+}
+.selectTableWrapper {
+    display: inline-flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+.itemOpCard {
+    display: inline-flex;
+    flex: 1 0 auto;
+    margin-left: 11px;
+    position: relative;
+}
+.kgPzRw {
+    padding: 0px;
+    height: 48px;
+}
+.itemOpCard:first-child {
+    margin-left: 0px;
+}
+.selectableInner {
+    display: inline-flex;
+    flex: 1 0 auto;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0px;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: rgb(61, 61, 61);
+    border: 1px solid rgb(240, 240, 240);
+    background: rgb(255, 255, 255);
+    flex-direction: row;
+}
+.selectCard {
+    width: 100%;
+    position: relative;
+}
+.checkBox {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+}
+.selectCard label {
+    display: flex;
+    width: 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 16px;
+    height: 26px;
+    box-sizing: border-box;
+    transition: border 0.2s ease 0s;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.prefix {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+input {
+    line-height: normal;
+}
+.checkInput {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+    cursor: pointer;
+    border-color: rgb(240, 240, 240);
+}
+input[type="checkbox"], input[type="radio"] {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+input[type="checkbox"], input[type="radio"] {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+.buttonWrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 22px 0px 0px;
+}
+.lineButton {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 24px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
+.resetButton button {
+    flex: 1 1 0%;
+    margin: 0px 0px 0px 10px;
+}
+.lineButton.buttonStyle {
+    font-size: 12px;
+    line-height: 20px;
+}
+.resetButton button:first-child {
+    margin-left: 0px;
+}
+
+.resetButton button {
+    flex: 1 1 0%;
+    margin: 0px 0px 0px 10px;
+}
+.solidButton {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    color: rgb(255, 255, 255);
+    cursor: auto;
+    pointer-events: none;
+    background-color: rgb(228, 228, 228);
+}
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+.solidButton.buttonStyle {
+    font-size: 12px;
+    line-height: 20px;
+}
+.solidButton span {
+    color: rgb(158, 158, 158);
+}
+.itemButton {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(61, 61, 61);
+}
+
+.openCreateModal {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 44px;
+    background: rgb(255, 87, 87);
+    color: rgb(255, 255, 255);
+    border-radius: 0px;
+}
+.innerInput {
+    width: 100%;
+    background: transparent;
+    border: 0px;
+    padding: 11px 0px;
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    margin: 0px;
+    appearance: none !important;
+}
+.resetButton {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 22px 0px 0px;
+}
+.lineButton:hover {
+    border-color: rgb(228, 228, 228);
+    color: rgb(61, 61, 61);
+}
+.lineButton.pdc-btn-xl {
+    font-size: 12px;
+    line-height: 20px;
+}
+.resetButton button:first-child {
+    margin-left: 0px;
+}
+@media only screen and (min-width: 1080px){
+    .resetButton button:first-child {
+        flex: 0 0 auto;
+        width: 170px;
+    }
+
+}
+.buttonWrap button:first-child {
+    margin-left: 0px;
+}
+.buttonWrap button {
+    flex: 1 1 0%;
+    margin: 0px 0px 0px 10px;
+}
+
+
+
+
+

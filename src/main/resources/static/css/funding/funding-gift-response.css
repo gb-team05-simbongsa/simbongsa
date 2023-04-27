@@ -1,0 +1,93 @@
+@media (min-width: 1080px){
+    .contents {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0px auto;
+    }
+}
+@media (min-width: 1080px){
+    .planContents {
+        padding: 84px 0px 0px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .tabWrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        min-height: calc(100vh - 298px);
+        position: relative;
+        padding: 0px 0px 98px;
+        margin-top: -34px;
+        justify-content: space-between;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .previewWrapper {
+        width: 360px;
+    }
+}
+
+@media only screen and (min-width: 1080px){
+    .previewTitle {
+        box-sizing: border-box;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .contentWrapper {
+        display: block;
+        width: 630px;
+    }
+}
+
+@media only screen and (min-width: 1080px){
+    .createItem {
+        padding: 44px 48px;
+        border: 1px solid rgb(240, 240, 240);
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+}
+@media only screen and (min-width: 1080px){
+    .selectableInner {
+        padding: 10px 16px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .prefix {
+        padding: 0px;
+    }
+}
+
+@media only screen and (min-width: 1080px){
+    .buttonWrap button:first-child {
+        flex: 0 0 auto;
+        width: 170px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    .openCreateModal {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

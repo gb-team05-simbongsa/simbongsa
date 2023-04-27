@@ -44,19 +44,19 @@ $('#create-button').on('click', function(){
         `
         
     );
-$('#summernote').summernote({
-placeholder: '게시판 내용 작성',
-tabsize: 2,
-height: 300,
-width: '100%',
-toolbar: [
-    ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol', 'paragraph']],
-    ['table', ['table']],
-    ['insert', ['link', 'picture', 'video']],
-],
+  $('#summernote').summernote({
+  placeholder: '게시판 내용 작성',
+  tabsize: 2,
+  height: 300,
+  width: '100%',
+  toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture', 'video']],
+  ],
 });
 
 $modalStage.show();

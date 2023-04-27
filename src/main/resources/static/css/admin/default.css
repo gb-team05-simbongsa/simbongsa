@@ -313,3 +313,9 @@ section.trip-status{
   min-width: 948px;
   box-shadow: 0 10px 10px rgb(48 52 65 / 10%);
 }
+.notice__content {
+  display: flex;
+  font-weight: 600;
+  margin-top: 30px;
+  color: #777777;
+}

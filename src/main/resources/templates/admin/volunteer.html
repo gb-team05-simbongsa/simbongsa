@@ -6,17 +6,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공양미 충전 내역</title>
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
-      rel="stylesheet" />
+    <title>봉사 관리</title>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/admin/default.css" />
     <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
     <link rel="stylesheet" href="/static/css/admin/content.css" />
     <link rel="stylesheet" href="/static/css/admin/status.css" />
-    <link rel="stylesheet" href="/static/css/admin/payment-modal.css" />
     <link rel="stylesheet" href="/static/css/admin/paging.css">
+    <link rel="stylesheet" href="/static/css/admin/volunteer.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
   </head>
+  <style>
+    .user__profile__input input {
+    padding: 3px 5px;
+}
+  </style>
   <body>
     <section class="main">
       <section class="sidebar">
@@ -80,7 +85,7 @@
                 <polygon points="160,115.4 180.7,96 352,256 180.7,416 160,396.7 310.5,256 " />
               </svg>
             </a>
-            
+           
             <!-- 봉사관리 -->
             <a href="/templates/admin/volunteer.html" class="sidebar__menu">
               <div class="sidebar__menu__name">
@@ -293,7 +298,7 @@
       <!-- content.css -->
       <section class="content">
         <div class="content__header">
-          <span>공양미 내역</span>
+          <span>봉사관리</span>
           <a href="javascript:void(0)"> 로그아웃 </a>
         </div>
         <main class="content__main">
@@ -317,7 +322,7 @@
                         d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
                         fill="#11CA2D"></path>
                     </svg>
-                    <div class="status-item-name">금일 결제수</div>
+                    <div class="status-item-name">봉사 게시글</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
@@ -349,7 +354,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="status-item-name">결제 총 금액</div>
+                    <div class="status-item-name">TEST</div>
                   </div>
                   <div class="status-item-count">
                     <a href="">0</a>
@@ -363,12 +368,20 @@
             </section>
             <div class="table__box">
               <div class="table__search__form">
-                <button
-                  id="delete-button"
-                  class="button__type_2 button__color__red"
-                  style="width: 120px">
-                  결제내역 삭제
-                </button>
+                <div>
+                  <button
+                    id="delete-button"
+                    class="button__type_2 button__color__red"
+                    style="width: 120px">
+                    봉사내역 삭제
+                  </button>
+                  <button
+                    id="delete-button"
+                    class="button__type_2 button__color__red registVolunteer"
+                    style="width: 120px">
+                    봉사 등록
+                  </button>
+                </div>
                 <!-- default.css -->
                 <div class="search-box-wrap">
                   <div class="select-box">
@@ -403,6 +416,7 @@
                   </div>
                 </div>
               </div>
+              <!-- 봉사기간(시작, 끝), 봉사시간, 모집기간(시작, 끝), 모집인원, 봉사분야, 등록기관, 봉사장소 -->
               <table class="table">
                 <tr class="table__header">
                   <th class="content_check">
@@ -410,12 +424,12 @@
                       <input type="checkbox" id="checkAll" />
                     </label>
                   </th>
-                  <th class="content__id">결제번호</th>
-                  <th>아이디</th>
-                  <th>이메일</th>
-                  <th>공양미 충전</th>
-                  <th>충전일</th>
-                  <th></th>
+                  <th class="content__id">봉사번호</th>
+                  <th>게시글제목</th>
+                  <th>봉사분야</th>
+                  <th>봉사장소</th>
+                  <th>등록기관</th>
+                  <th>모집인원</th>
                 </tr>
                 <tr class="table__content">
                   <td>
@@ -424,10 +438,11 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td>kmg2331</td>
-                  <td>kmg2331@gmail.com</td>
-                  <td>300개</td>
-                  <td>2023-01-01</td>
+                  <td>서울시 다문화가정 봉사 모집</td>
+                  <td>다문화가정</td>
+                  <td>서울복지센터</td>
+                  <td>서울복지센터</td>
+                  <td>30명</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -441,10 +456,11 @@
                     </label>
                   </td>
                   <td class="content__id">1</td>
-                  <td>kmg2331</td>
-                  <td>kmg2331@gmail.com</td>
-                  <td>3000개</td>
-                  <td>2023-01-01</td>
+                  <td>서울시 다문화가정 봉사 모집</td>
+                  <td>다문화가정</td>
+                  <td>서울복지센터</td>
+                  <td>서울복지센터</td>
+                  <td>30명</td>
                   <td>
                     <button class="content__detail__btn button__type_2 button__color__green">
                       상세보기
@@ -489,7 +505,7 @@
       <section class="modal-stage" style="display: none">
         <section class="modal">
           <div class="modal__header">
-            <h3 class="modal__title">결제 상세보기</h3>
+            <h3 class="modal__title">봉사 상세보기</h3>
             <a class="modal-close">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -501,41 +517,127 @@
               </svg>
             </a>
           </div>
+          <!-- 봉사기간(시작, 끝), 봉사시간, 모집기간(시작, 끝), 모집인원, 봉사분야, 등록기관, 봉사장소 -->
           <form class="storage_form" action="">
             <main class="modal__main">
               <div class="modal__profile__top">
-                <h4>결제 정보</h4>
+                <h4>봉사 정보</h4>
                 <div class="user__profile">
-                  <h5>주문번호</h5>
+                  <h5>게시글 제목</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="12345" readonly="true" />
+                    <input type="text" name="" value="서울시 연탄 봉사활동 모집" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>결제일자</h5>
+                  <h5>봉사기간</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="2023-03-19" readonly="true" />
+                    <input type="text" name="" value="2023-03-01" readonly="true" />
+                    <input type="text" name="" value="2023-04-20" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>결제방법</h5>
+                  <h5>봉시시간</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="신용카드" readonly="true" />
+                    <input type="text" name="" value="12:00" readonly="true" />~
+                    <input type="text" name="" value="17:00" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>충전 갯수</h5>
+                  <h5>모집기간</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="3000개" readonly="true" />
+                    <input type="text" name="" value="2023-02-01" readonly="true" />
+                    <input type="text" name="" value="2023-02-25" readonly="true" />
                   </div>
                 </div>
                 <div class="user__profile">
-                  <h5>결제금액</h5>
+                  <h5>모집인원</h5>
                   <div class="user__profile__input">
-                    <input type="text" name="" value="100,000원" readonly="true" />
+                    <input type="text" name="" value="30명" readonly="true" />
                   </div>
                 </div>
-                <div class="user__profile__button">
+                <div class="user__profile">
+                  <h5>봉사분야</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="다문화가정" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                  <h5>봉사장소</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="서울 복지센터" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                  <h5>등록기관</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="서울 복지센터" readonly="true" />
+                  </div>
+                </div>
+                <h4>이미지</h4>
+                <!-- 이미지 파일 -->
+                <div class="content__img__wrap">
+                    <!-- 임시로 name='file' 해둠 -->
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                    <label>
+                      <div class="content__img">
+                        <img
+                          src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" />
+                      </div>
+                      <input type="file" name="file" style="display: none" />
+                    </label>
+                </div>
+                <div class="notice__content">
+                  <textarea id="summernote" name="editordata"></textarea>
+                </div>
+                <div class="user__profile__button" style="margin-top: 20px;">
                   <button id="completeBtn" class="button__type_2 button__color__green">
                     작성완료
                   </button>
@@ -548,6 +650,32 @@
     </section>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+  <script>
+    console.log('썸머노트');
+    $('#summernote').summernote({
+      placeholder: '봉사 내용 작성',
+      tabsize: 2,
+      height: 300,
+      width: '100%',
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+      ],
+    });
+
+    $('.registVolunteer').on('click',()=>{
+      $modalStage.show();
+      $('.modal-close').on('click', function () {
+         $modalStage.fadeOut(500);
+       });
+
+    })
+  </script>
   <script src="/static/js/admin/app.js"></script>
   <script src="/static/js/admin/events.js"></script>
 </html>
