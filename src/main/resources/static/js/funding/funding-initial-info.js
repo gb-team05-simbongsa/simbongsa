@@ -12,9 +12,11 @@ const $inputSvg = $('.input-select-wrap svg');
 
 // 카테고리 창 선택 JS
 $inputSelectWrap.on('click', function(){
-    $selectOption.css('display', 'block');
-    $inputSvg.css('transform', 'rotate(180deg)')
-
+    if($selectOption.css('display')=='block'){
+        $selectOption.css('display', 'none');
+    }else{
+        $selectOption.css('display', 'block');
+    }
     $customOption.each((i, e) => {
         var text = $customOption.eq(i).text();
         $customOption.eq(i).on('click', function(){
@@ -24,12 +26,17 @@ $inputSelectWrap.on('click', function(){
         });
     })   
 });
-
+// 긴글 count
 const $longCountLength = $(".long-count");
+// 긴글 input
 const $longInput = $(".longInput");
+// 짧은글 count
 const $shortCountLength = $(".short-count");
+// 짧은글 input
 const $shortInput = $(".shortInput");
+// textarea
 const $textarea = $('.textarea-style');
+// textareaCount
 const $textareaCount = $('.textareaCount');
 const $inputCount = $('.inputCount');
 const $inputText = $('.inputText');
