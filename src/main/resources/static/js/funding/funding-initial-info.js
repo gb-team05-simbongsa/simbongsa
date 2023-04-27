@@ -110,7 +110,7 @@ let nextImage =
 `
 <li class="ImgStyleList">
 <div class="imgWithButtonBox"> <div class="imgBox">
-    <img src="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/f9dfada5-495f-4550-a2c5-8ebd8bfa13ca.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=213697091fbcd8643b46bb0f5eea56ed" alt="test">
+    <img class="preview" src="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/f9dfada5-495f-4550-a2c5-8ebd8bfa13ca.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=213697091fbcd8643b46bb0f5eea56ed" alt="test">
             <button type="button" value="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/f9dfada5-495f-4550-a2c5-8ebd8bfa13ca.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=213697091fbcd8643b46bb0f5eea56ed" class="expendButton">
             <div name="wide" class="icon-svg">
                 <svg viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +174,9 @@ $imageFile.on("change", function(e){
     var reader = new FileReader();
     // $('.preview').empty();
         reader.onload = function(e){
-            $('.preview').attr("src", e.target.result);
+            let result = e.target.result;
+            console.log(e.target.result);
+            $('.preview').attr('src', result);
         }
         $imgList.append(nextImage);
         
