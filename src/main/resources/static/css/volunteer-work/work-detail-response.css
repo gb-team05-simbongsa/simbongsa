@@ -1,0 +1,87 @@
+@media screen and (max-width: 767px) {
+    .work-list-prev-btn .work-detail-list-next-btn {
+        bottom: 8px;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .company-data {
+        padding: 10px;
+        border-bottom: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        /* font-size: 12px; */
+        line-height: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .company-data dl {
+        display: block;
+        width: 100%;
+        padding: 2px 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    dd {
+        margin: 0;
+        padding: 0;
+        line-height: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .work-detail-info-top-btn-layout {
+        padding-bottom: 10px;
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .work-detail-info-container .work-detail-info-title {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .work-detail-info-container h3 {
+        line-height: 26px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .detail-info-data-wrap {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .detail-info-data-wrap .group {
+        padding: 0;
+        border-bottom: 0 none;
+        background: url(https://www.1365.go.kr/web/vols/images/common/bg_board_data_type2.png) 0 0 repeat-y;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .content-container {
+        padding: 10px 5px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .list-btn span {
+        height: 36px;
+        padding: 0 17px;
+        font-size: 15px;
+        line-height: 36px;
+        /* border: 1px solid #ccc; */
+    }
+}
+    
