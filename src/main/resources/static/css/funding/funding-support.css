@@ -908,7 +908,23 @@ input[type="checkbox"], input[type="radio"] {
     left: -1000em;
 }
 
-
+.checkBox {
+    position: absolute;
+    z-index: 3;
+    left: 0px;
+    top: 0.14em;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: rgb(255, 87, 87);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.checkBox svg {
+    fill: rgb(255, 255, 255);
+}
 
 
 
