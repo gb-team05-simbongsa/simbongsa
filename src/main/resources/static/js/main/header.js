@@ -4,8 +4,13 @@ $(".category-extend-select").mouseover( () => {
 });
 
 $(".category-extend-select").mouseout(() => {
-        $(".extended-category-section-start").attr("class", "extended-category-section");
-        $(".category-extend-select").css("color", "rgba(13, 13, 13, 1)");
+    $(".extended-category-section-start").attr("class", "extended-category-section");
+    $(".category-extend-select").css("color", "rgba(13, 13, 13, 1)");
+});
+
+$('.extended-categeory-header').click( () => {
+    $(".extended-category-section-start").attr("class", "extended-category-section");
+    $(".category-extend-select").css("color", "rgba(13, 13, 13, 1)");
 });
 
 function showMyPage(result) {

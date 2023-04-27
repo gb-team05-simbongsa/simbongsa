@@ -186,3 +186,14 @@
         margin-top: 20px;
     }
 }
+@media (min-width: 1080px){
+
+    .tooltipContents {
+        display: flex;
+    }
+}
+@media (min-width: 1080px){
+    .accountWrap > li {
+    margin-bottom: 32px;
+    }
+}
