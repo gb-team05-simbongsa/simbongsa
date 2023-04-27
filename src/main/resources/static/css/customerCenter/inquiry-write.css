@@ -6,7 +6,7 @@
     position: relative;
     width: 370px;
     height: 680px;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     overflow: hidden;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 60px 5px;
