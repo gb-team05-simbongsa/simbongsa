@@ -219,7 +219,7 @@ b, strong {
     position: relative;
     flex-shrink: 0;
     max-width: 100%;
-    width: 766px;
+    /* width: 766px; */
     transition-property: transform;
     background-size: cover;
 }
@@ -963,8 +963,8 @@ b, strong {
         display: flex;
         flex-wrap: nowrap;
     }
-
 }
+
 
 @media (min-width: 640px) {
     .main-popular-list-layout .list-wrapper {

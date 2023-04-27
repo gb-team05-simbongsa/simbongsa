@@ -52,8 +52,8 @@
                             <div class="projectFormWrap">
                                 <div class="guideCheckWrapper">
                                     <div class="inputWrapper inputWrapper">
-                                        <span class="inputSpan-1 inputSpan-2 dXKaPI wmJOZ">
-                                            <input type="text" inputmode="text" placeholder="창작자님의 이름을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput" value="황자현"></span>
+                                        <span class="inputSpan-1 inputSpan-2 wraperSpan wraperSpan inputWithGuide">
+                                            <input type="text" maxlength="20" inputmode="text" placeholder="창작자님의 이름을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput" value="황자현"></span>
                                     </div>
                                     <div class="noticeArea">
                                         <p class="guidearea"></p>
@@ -79,9 +79,9 @@
                         <div class="projectForm">
                             <div class="projectFormWrap">
                                 <div class="guideCheckWrapper">
-                                    <div class="divWrap">
+                                    <div class="TextAreaWrap">
                                         <div class="textWrap textStyle">
-                                            <textarea placeholder="간단한 이력과 소개를 써주세요" class="textareaStyle"></textarea>
+                                            <textarea placeholder="간단한 이력과 소개를 써주세요" class="textareaStyle" maxlength="300"></textarea>
                                         </div>
                                     </div>
                                     <div class="noticeArea">
@@ -149,7 +149,7 @@
                             <dd class="projectInfoDescription">후원금을 전달받을 계좌를 등록해주세요. 법인사업자는 법인계좌로만
                                 정산받을 수 있습니다.</dd>
                         </dl>
-                        <div class="projectForm">
+                        <div class="projectForm formClass1">
                             <div class="projectFormWrap">
                                 <div class="authwrap">
                                     <div class="info">
@@ -172,6 +172,211 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="projectForm formClass2" style="display:none;">
+                            <div class="projectFormWrap">
+                                <ul class="accountWrap kvLhtL">
+                                    <li>
+                                        <div class="labelWrapper">
+                                            <button type="button" class="areaTooltip joiGLy">
+                                                <p>예금주 생년월일</p>
+                                                <em>
+                                                    <div name="question-line-oval" class="icon-svg">
+                                                        <svg viewBox="0 0 48 48">
+                                                            <path
+                                                                d="M21 32C21 30.3431 22.3431 29 24 29C25.6569 29 27 30.3431 27 32C27 33.6569 25.6569 35 24 35C22.3431 35 21 33.6569 21 32Z">
+                                                            </path>
+                                                            <path
+                                                                d="M21.9348 26.9132C21.9415 26.9622 21.9838 27 22.0333 27H26.0227C26.0817 27 26.1276 26.9473 26.1235 26.8885C25.8753 23.3015 30.3992 22.3538 30.3992 18.5189C30.3992 14.6445 26.5708 13 24.4315 13C22.3011 13 19.2378 13 17.224 17.9579C17.2092 17.9945 17.2169 18.0376 17.2444 18.066L19.8 20.704C19.8484 20.7539 19.9321 20.7395 19.9628 20.6771C21.2872 17.9873 22.4684 16.9859 23.8375 16.9859C24.6647 16.9859 25.7817 17.627 25.7817 18.8534C25.7817 21.1235 21.3597 22.6862 21.9348 26.9132Z">
+                                                            </path>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M24 40C32.8366 40 40 32.8366 40 24C40 15.1634 32.8366 8 24 8C15.1634 8 8 15.1634 8 24C8 32.8366 15.1634 40 24 40ZM24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </em>
+                                            </button>
+                                            <div class="tooltip">
+                                                <div class="tooltipContents">입력하신 사업자 번호는 세금 계산서(영수증)를 발행하기 위해서만
+                                                    사용됩니다. 중요 정보이므로 신중하게 기입해주세요.
+                                                </div>
+                                                <em class="close">
+                                                    <div name="close-1" class="icon-svg">
+                                                        <svg viewBox="0 0 48 48">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M45.1766 41.0846L28.1097 24.0186L45.1766 6.95266C46.2744 5.85485 46.2744 4.05843 45.1766 2.86082C44.0778 1.66321 42.2824 1.76401 41.0838 2.86082L24.0189 19.9268L6.95301 2.86082C5.8552 1.76401 4.05879 1.76401 2.86119 2.86082C1.66358 3.95863 1.76338 5.75605 2.86119 6.95266L19.9271 24.0186L2.86119 41.0846C1.76338 42.1834 1.76338 43.9788 2.86119 45.1774C3.95899 46.2742 5.7554 46.2742 6.95301 45.1774L24.0189 28.1104L41.0838 45.1774C42.1826 46.2742 43.979 46.2742 45.1766 45.1774C46.2744 43.9788 46.2744 42.1834 45.1766 41.0846Z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </em>
+                                            </div>
+                                        </div>
+                                        <div class="inputWithGuideWrap inputWithGuideWrap">
+                                            <div class="inputWithWrapper" disabled="">
+                                                <span class="inputWithGuide input_inputWrapper" disabled="">
+                                                    <input type="text" inputmode="text" autocomplete="off" autocapitalize="off" class="input_innerInput" value="940412" disabled=""></span>
+                                                </div>
+                                        </div>
+                                    </li>
+                                    <li class="halfContents">
+                                        <div>
+                                            <p class="itemName">거래은행</p>
+                                            <div class="selectWithWrapper">
+                                                <span class="selectWithSingle slectedSingle" readonly="">
+                                                    <input readonly="" type="text" inputmode="text" autocomplete="off" autocapitalize="off" class="input_innerInput categoryInput" value="은행을 선택해주세요">
+                                                    <div name="arrow2-down" class="icon-svg">
+                                                        <svg viewBox="0 0 48 48">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M2 14.4065C2 13.1363 3.09843 12.0615 4.39657 12.0615C4.99571 12.0615 5.59485 12.257 6.09414 12.7455L23.9685 29.4526L41.843 12.6478C42.8415 11.7684 44.3394 11.7684 45.338 12.7455C46.2367 13.7226 46.2367 15.1882 45.2381 16.0676L23.9685 36L2.79886 16.0676C2.29957 15.6767 2 14.9928 2 14.4065Z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </span>
+                                                    <div>
+                                                        <div class="selectWithOp" style="display: none;">
+                                                            <ul>
+                                                                <li value="KDB산업은행" label="KDB산업은행" class="customOption customOption">
+                                                                    <button type="button" value="KDB산업은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">KDB산업은행</button></li>
+                                                                <li value="BOA" label="BOA" class="customOption"><button
+                                                                        type="button" value="BOA"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">BOA</button></li>
+                                                                <li value="IBK기업은행" label="IBK기업은행" class="customOption"><button
+                                                                        type="button" value="IBK기업은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">IBK기업은행</button></li>
+                                                                <li value="KB국민은행" label="KB국민은행" class="customOption"><button
+                                                                        type="button" value="KB국민은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">KB국민은행</button></li>
+                                                                <li value="NH농협" label="NH농협" class="customOption"><button
+                                                                        type="button" value="NH농협"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">NH농협</button></li>
+                                                                <li value="NH투자증권" label="NH투자증권" class="customOption"><button
+                                                                        type="button" value="NH투자증권"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">NH투자증권</button></li>
+                                                                <li value="SC은행" label="SC은행" class="customOption"><button
+                                                                        type="button" value="SC은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">SC은행</button></li>
+                                                                <li value="경남은행" label="경남은행" class="customOption"><button
+                                                                        type="button" value="경남은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">경남은행</button></li>
+                                                                <li value="광주은행" label="광주은행" class="customOption"><button
+                                                                        type="button" value="광주은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">광주은행</button></li>
+                                                                <li value="대구은행" label="대구은행" class="customOption"><button
+                                                                        type="button" value="대구은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">대구은행</button></li>
+                                                                <li value="대신증권" label="대신증권" class="customOption"><button
+                                                                        type="button" value="대신증권"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">대신증권</button></li>
+                                                                <li value="미래에셋" label="미래에셋" class="customOption"><button
+                                                                        type="button" value="미래에셋"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">미래에셋</button></li>
+                                                                <li value="부산은행" label="부산은행" class="customOption"><button
+                                                                        type="button" value="부산은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">부산은행</button></li>
+                                                                <li value="삼성증권" label="삼성증권" class="customOption"><button
+                                                                        type="button" value="삼성증권"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">삼성증권</button></li>
+                                                                <li value="새마을은행" label="새마을은행" class="customOption"><button
+                                                                        type="button" value="새마을은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">새마을은행</button></li>
+                                                                <li value="수협은행" label="수협은행" class="customOption"><button
+                                                                        type="button" value="수협은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">수협은행</button></li>
+                                                                <li value="신한은행" label="신한은행" class="customOption"><button
+                                                                        type="button" value="신한은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">신한은행</button></li>
+                                                                <li value="신협은행" label="신협은행" class="customOption"><button
+                                                                        type="button" value="신협은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">신협은행</button></li>
+                                                                <li value="씨티은행" label="씨티은행" class="customOption"><button
+                                                                        type="button" value="씨티은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">씨티은행</button></li>
+                                                                <li value="외환은행" label="외환은행" class="customOption"><button
+                                                                        type="button" value="외환은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">외환은행</button></li>
+                                                                <li value="우리은행" label="우리은행" class="customOption"><button
+                                                                        type="button" value="우리은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">우리은행</button></li>
+                                                                <li value="우체국" label="우체국" class="customOption"><button
+                                                                        type="button" value="우체국"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">우체국</button></li>
+                                                                <li value="유안타증권" label="유안타증권" class="customOption"><button
+                                                                        type="button" value="유안타증권"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">유안타증권</button></li>
+                                                                <li value="전북은행" label="전북은행" class="customOption"><button
+                                                                        type="button" value="전북은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">전북은행</button></li>
+                                                                <li value="제주은행" label="제주은행" class="customOption"><button
+                                                                        type="button" value="제주은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">제주은행</button></li>
+                                                                <li value="하나은행" label="하나은행" class="customOption"><button
+                                                                        type="button" value="하나은행"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">하나은행</button></li>
+                                                                <li value="한화투자증권" label="한화투자증권" class="customOption"><button
+                                                                        type="button" value="한화투자증권"
+                                                                        data-props="{&quot;fadeDown&quot;:true,&quot;name&quot;:&quot;bankName&quot;}">한화투자증권</button></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div type="p4" color="#e53c41"
+                                                class="errorMsg selectText"></div>
+                                            <p class="noti">케이뱅크와 카카오뱅크는 계좌등록이 불가합니다</p>
+                                        </div>
+                                        <div>
+                                            <p class="itemName">예금주명</p>
+                                            <div class="inputWithGuideWrap">
+                                                <div class="inputWithWrapper" disabled="">
+                                                    <span class="input_inputWrapper inputWithGuide" disabled="">
+                                                        <input type="text" inputmode="text" placeholder="상호명을 입력해주세요" autocomplete="off" autocapitalize="off" class="input_innerInput" value="황자현" disabled=""></span>
+                                                    </div>
+                                                <div class="noticeArea_lengCheck">
+                                                    <p class="guideMsg">( 텀블벅 ) 처럼 공백과 괄호까지 정확히 입력해주세요</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p class="itemName">계좌 번호</p>
+                                        <div class="inputWithGuideWrap">
+                                            <div class="guideWrap test2">
+                                                <span class="wraperSpan inputWithGuide">
+                                                    <input type="text" inputmode="text" placeholder="숫자로만 입력해주세요" autocomplete="off" autocapitalize="off" maxlength="16" class="input_innerInput accountInput" value=""></span></div>
+                                            <div class="noticeArea_lengCheck">
+                                                <p class="guideMsg"></p>
+                                                <span class="contentLengthCheck">0/16</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p class="itemName">통장 사본 첨부</p>
+                                    <label for="test">
+                                        <div class="uploadWrap uploadWrap">
+                                                <input id="test" type="file" accept=".jpg, .jpeg, .png, .pdf">
+                                                <button class="lineButton fileUploadButton fnt-p1" color="grayEditor200">
+                                            
+                                                <div name="share-1" class="icon-svg">
+                                                    <svg viewBox="0 0 48 48">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M25.9087 8.12155L36.4566 18.3158C37.2603 18.7156 38.2648 18.6156 38.968 18.3158C39.6712 17.5163 39.6712 16.4169 38.968 15.7173L25.3059 2.5247C24.6027 1.8251 23.4977 1.8251 22.7945 2.5247L9.03196 15.8172C8.32877 16.5168 8.32877 17.6162 9.03196 18.3158C9.73516 19.0154 10.9406 19.0154 11.6438 18.3158L22.2922 8.12155V28.4111C22.2922 29.4106 23.0959 30.2091 24.1005 30.2091C25.105 30.2091 25.9087 29.4106 25.9087 28.4111V8.12155ZM5.61644 29.4104C5.61644 28.4109 4.81279 27.6104 3.80822 27.6104C2.80365 27.6104 2 28.5099 2 29.5093V44.202C2 45.2015 2.80365 46 3.80822 46H44.1918C45.1963 46 46 45.2015 46 44.202V29.5093C46 28.5099 45.1963 27.7113 44.1918 27.7113C43.1872 27.7113 42.3836 28.5099 42.3836 29.5093V42.3021H5.61644V29.4104Z">
+                                                        </path>
+                                                    </svg>
+                                                </div>파일 업로드
+                                            </button>
+                                        </div>
+                                    </label>
+                                    </li>
+                                    <li>
+                                        <div class="buttonWrap">
+                                            <button class="lineButton pdc-btn-l" color="grayEditor200">취소</button>
+                                            <button class="solidButton solidButton pdc-btn-l" disabled="" color="mainEditorP80"><span>등록</span>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -186,4 +391,9 @@
         $("#_topContent").load("/templates/funding/funding-topContent.html");
     });
 </script>
+<script src="/static/js/funding/funding-creator-info.js"></script>
+<script>
+  
+</script>
+
 </html>

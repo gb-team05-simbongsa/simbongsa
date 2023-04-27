@@ -1,3 +1,4 @@
+// 메뉴바 다음, 이전버튼
 const $prev1 = $('.main-content-slider-nav-button-left');
 const $next1 = $('.main-content-slider-nav-button-right');
 let countcount = 0;
@@ -26,3 +27,4 @@ $next1.click(function(){
         $(this).prev().css('display', 'inline-flex');
     }
 });
+
