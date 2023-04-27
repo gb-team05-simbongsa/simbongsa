@@ -969,3 +969,11 @@ p {
 .storyContent:first-child {
     margin-top: 0;
 }
+.editorDescription {
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    font-size: 16px !important;
+    line-height: 28px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    margin: 16px 0px 0px !important;
+}
