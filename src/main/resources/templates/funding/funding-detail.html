@@ -682,6 +682,46 @@
                             <div class="stickerWrap reward-sticker" style="">
                                 <div class="rewardSticker tbb">
                                     <div class="rewardLabel">선물 선택</div>
+                                    <div class="donation-container">
+                                        <div class="donation-top" id="flip">
+                                            <div class="donation-top-container">
+                                                <div class="donation-wrap">
+                                                    <div class="donation-top-money">1,000원 +</div>
+                                                    <div class="donation-top-text">선물 없이 후원하기</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="donation-mid" id="panel" style="display: none;">
+                                            <div class="donation-mid-container">
+                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
+                                                    <div class="formContent form-input-wrapper">
+                                                        <div class="inputguide">
+                                                            <div class="inputLengthCheck">
+                                                                <span class="styleInput inputWrapper">
+                                                                    <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
+                                                                </span>
+                                                            </div>
+                                                            <div class="noticeMsg">
+                                                                <p class="guideMsg"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
+                                                </div>
+                                                <div class="buttonWrapper">
+                                                    <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
+                                                    <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
+                                                    <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
+                                                    <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
+                                                </div>
+                                                <button class=" solidButton rewardDetailButton fnt-p1" color="main80">
+                                                    <span>1,000원 후원하기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    </div>
+
                                     <div class="rewardCardWrapper">
                                         <div class="card styleCard">
                                             <div class="stepperWrapper" style="height: 110px;">
@@ -696,7 +736,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </section>
+                                                </section >
                                                 <section direction="right" class="stepperWrap">
                                                     <div class="rewardCardInner">
                                                         <div class="rewardSelector">
@@ -1466,6 +1506,6 @@
         $("#_header").load("../main/header.html");
         $("#_footer").load("../main/footer.html");
     });
-
 </script>
+<script src="/static/js/funding/funding-detail.js"></script>
 </html>
