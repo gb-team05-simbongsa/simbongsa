@@ -184,7 +184,7 @@ section.volunteer-modal {
   margin: 0 auto;
   padding: 12px;
   background-color: #fcfcfc;
-  border: 1px solid #3b4e7d;
+  border: 1px solid #a4a4a7;
   border-radius: 12px;
   opacity: 0;
   animation: fade-in 0.4s ease-in-out forwards;
