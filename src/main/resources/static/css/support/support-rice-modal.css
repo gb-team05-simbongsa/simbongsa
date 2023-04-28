@@ -64,8 +64,7 @@ input::placeholder {
     font-style: normal;
 }
 
-봉사기간(시작, 끝), 봉사시간, 모집기간(시작, 끝), 
-모집인원, 봉사분야, 등록기관, 봉사장소
+
 .support-pay-layout {
     position: relative;
     float: right;
