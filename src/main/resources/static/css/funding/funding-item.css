@@ -206,6 +206,11 @@
 .previewItem .styled__BackerCount-sc-1bd2dui-49, .previewItem .styled__Limit-sc-1bd2dui-50 {
     font-weight: 400;
 }
+.previewWrapper ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
 .backer svg {
     fill: rgb(158, 158, 158);
     margin: 0px 4px 0px 0px;
@@ -213,20 +218,20 @@
 .kRZGqQ {
     display: none;
 }
-.byEQCM {
+.wrapperStyle {
     flex: 1 1 0%;
     margin-top: 76px;
 }
-.fCXgKN {
+.createItem {
     background: rgb(255, 255, 255);
 }
-.cHPDOo {
+.previewText {
     margin-bottom: 12px !important;
 }
-.cHPDOo svg {
+.previewText svg {
     fill: rgb(248, 100, 83);
 }
-.iALKZT {
+.view-pText {
     font-weight: 400;
     color: rgb(109, 109, 109);
     margin: 0px;
@@ -236,12 +241,12 @@
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.bMpwjn {
+.sectionStyle {
     padding: 32px 0px;
     border-bottom: 1px solid rgba(240, 240, 240, 0.4);
     margin: 0px;
 }
-.hVyvmh {
+.areaDiv {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -251,22 +256,22 @@
     color: rgb(61, 61, 61);
     margin: 0px 0px 14px;
 }
-.iTYmOZ {
+.optionText {
     margin: 0px;
     word-break: break-all;
     white-space: normal;
 }
-.EQuLP {
+.optionSytle {
     color: rgb(158, 158, 158);
 }
-.hVyvmh p {
+.areaDiv p {
     font-weight: 500;
     font-size: 12px !important;
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
     margin: 0px 4px 0px 0px !important;
 }
-.hVyvmh em {
+.areaDiv em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -278,11 +283,11 @@
     outline: none;
     font-size: 16px;
 }
-.hVyvmh svg {
+.areaDiv svg {
     fill: rgb(255, 87, 87);
 }
 
-.jjZnfQ {
+.tooTipDiv {
     width: 100%;
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
@@ -297,7 +302,7 @@
     padding: 0px 26px;
     margin: 0px;
 }
-.fJLEYd dt {
+.toolTipItemContent dt {
     font-weight: bold;
     word-break: break-all;
     white-space: normal;
@@ -306,10 +311,10 @@
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.fJLEYd dt:first-child {
+.toolTipItemContent dt:first-child {
     margin-top: 0px;
 }
-.fJLEYd dd {
+.toolTipItemContent dd {
     font-weight: 400;
     margin: 8px 0px 0px;
     word-break: break-all;
@@ -318,7 +323,7 @@
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.jjZnfQ .close {
+.tooTipDiv .close {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -334,18 +339,18 @@
     background: rgb(252, 252, 252);
     cursor: pointer;
 }
-.jjZnfQ svg {
+.tooTipDiv svg {
     fill: rgb(109, 109, 109);
 }
-.dHvRGN {
+.labelAreaToolTip {
     width: 100%;
     word-break: keep-all;
     margin: 4px 0px 0px;
 }
-.fzVHyd {
+.selectionWrapper {
     position: relative;
 }
-.jQwQu {
+.msgStyle {
     font-weight: 400;
     color: rgb(229, 60, 65);
     margin: 0px;
@@ -358,7 +363,7 @@
 .gpuBnE {
     margin-top: 8px;
 }
-.bXlLWE {
+.inputWrapper {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(248, 248, 248);
@@ -373,13 +378,13 @@
     align-items: center;
     border-radius: 1px;
 }
-.dvfxOp {
+.selectSingle {
     padding: 0px 18px;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
     color: rgb(201, 201, 201);
 }
-.bfmNPl {
+.innerInput {
     width: 100%;
     background: transparent;
     border: 0px;
@@ -390,18 +395,18 @@
     margin: 0px;
     appearance: none !important;
 }
-.dvfxOp input {
+.selectSingle input {
     cursor: default;
 }
-.dvfxOp > div {
+.selectSingle > div {
     font-size: 10px;
 }
-.dvfxOp svg {
+.selectSingle svg {
     fill: rgb(61, 61, 61);
     transform: rotate(0deg);
     transition: transform 0.3s ease 0s;
 }
-.bBnjVq {
+.checkInput {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -412,7 +417,7 @@
     padding: 0px 18px;
     border: 1px solid rgb(240, 240, 240);
 }
-.dXKaPI {
+.lengthCheckStyle {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(255, 255, 255);
@@ -435,7 +440,7 @@
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.ciHGYP {
+.noticeArea {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
@@ -447,16 +452,16 @@
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.kEJJPl {
+.checkLength {
     margin-left: auto;
     color: rgb(158, 158, 158);
 }
-.dguobU {
+.buttonWrap {
     display: flex;
     flex-wrap: wrap;
     margin: 22px 0px 0px;
 }
-.eCiCMa {
+.sectionStyleDiv {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -466,14 +471,14 @@
     color: rgb(61, 61, 61);
     margin: 0px 0px 10px;
 }
-.gkJlDT {
+.cardWrapper {
     display: inline-flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
 }
-.eCiCMa em {
+.sectionStyleDiv em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -493,7 +498,7 @@
     display: inline-flex;
     align-self: center;
 }
-.eCiCMa svg {
+.sectionStyleDiv svg {
     fill: rgb(255, 87, 87);
 }
 .ccxeYs svg {
@@ -519,23 +524,23 @@
     padding: 0px 26px;
     margin: 0px;
 }
-.gEeqzW {
+.cardInReward {
     height: 120px;
 }
-.jRoLPe {
+.selectCard {
     display: inline-flex;
     flex: 1 0 auto;
     margin-left: 11px;
     position: relative;
 }
-.cPEGvW {
+.selectReward {
     flex: 1 1 0%;
     height: 56px;
 }
-.jRoLPe:first-child {
+.selectCard:first-child {
     margin-left: 0px;
 }
-.jkgxVG {
+.cardInner {
     display: inline-flex;
     flex: 1 0 auto;
     -webkit-box-align: center;
@@ -552,18 +557,18 @@
     background: rgb(255, 255, 255);
     flex-direction: row;
 }
-.fReuMK {
+.selectableCard {
     width: 100%;
     position: relative;
 }
-.cLMslS {
+.cardCheckBox {
     display: block;
     position: absolute;
     top: 50%;
     left: 0px;
     transform: translateY(-50%);
 }
-.eAKMLv {
+.checkBoxSpan {
     display: block;
     position: relative;
     overflow: hidden;
@@ -574,7 +579,7 @@
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
 }
-.fReuMK label {
+.selectableCard label {
     display: flex;
     width: 100%;
     -webkit-box-align: center;
@@ -586,14 +591,14 @@
     -webkit-box-pack: start;
     justify-content: flex-start;
 }
-.gifdTD {
+.selectable {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     position: relative;
     z-index: 10;
 }
-.cszlSW {
+.cardInput {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -604,18 +609,18 @@
     cursor: pointer;
     border-color: rgb(240, 240, 240);
 }
-.czWteh {
+.errorMsg {
     margin: 4px 0px 0px;
     font-style: normal;
 }
-.eCiCMa p {
+.sectionStyleDiv p {
     font-weight: 500;
     margin: 0px;
     font-size: 12px !important;
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.dBcuBc .close {
+.toolTip .close {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -631,13 +636,13 @@
     background: rgb(252, 252, 252);
     cursor: pointer;
 }
-.JokYS {
+.estimateDateWrap {
     padding: 0px 22px;
     border: 1px solid rgb(242, 242, 242);
     border-radius: 4px;
     color: rgb(109, 109, 109);
 }
-.JokYS > div {
+.estimateDateWrap > div {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -647,27 +652,27 @@
     padding: 11px 0px;
     border-top: 1px solid rgb(242, 242, 242);
 }
-.JokYS > div:first-child {
+.estimateDateWrap > div:first-child {
     border-top: 0px;
 }
-.eCiCMa svg {
+.sectionStyleDiv svg {
     fill: rgb(255, 87, 87);
 }
 .dBcuBc svg {
     fill: rgb(109, 109, 109);
 }
-.eCiCMa p {
+.sectionStyleDiv p {
     font-weight: 500;
     margin: 0px;
     font-size: 12px !important;
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.lbIHvD {
+.innerInputWrapper {
     width: 100%;
     margin: 11px 0px 0px;
 }
-.hzEflD {
+.price-p {
     font-weight: 400;
     color: rgb(109, 109, 109);
     margin: 0px;
@@ -677,7 +682,7 @@
     line-height: 24px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.fOjsfs {
+.conutInput {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(255, 255, 255);
@@ -692,13 +697,13 @@
     align-items: center;
     border-radius: 1px;
 }
-.ikISMl input {
+.lengthCheckWrapper input {
     height: 34px;
     text-align: right;
     padding: 0px 17px 0px 0px;
     color: rgb(61, 61, 61);
 }
-.fCrDtX {
+.deleveryDate {
     min-width: 58px;
     height: 36px;
     display: flex;
@@ -713,7 +718,7 @@
     border-radius: 0px 2px 2px 0px;
     margin-right: -18px;
 }
-.eCjDUu {
+.deliveryDiv {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -723,7 +728,7 @@
     color: rgb(61, 61, 61);
     margin: 0px 0px 14px;
 }
-.fUJgQK {
+.deliveryButton {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -736,14 +741,14 @@
     background: transparent;
     cursor: default;
 }
-.eCjDUu p {
+.deliveryDiv p {
     font-weight: 500;
     margin: 0px;
     font-size: 12px !important;
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.eCjDUu em {
+.deliveryDiv em {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -755,7 +760,7 @@
     outline: none;
     font-size: 16px;
 }
-.eCjDUu svg {
+.deliveryDiv svg {
     fill: rgb(255, 87, 87);
 }
 
@@ -766,7 +771,7 @@
     padding: 0px;
     background: transparent;
 }
-.eUujdP {
+.moneyInput {
     min-width: 44px;
     height: 44px;
     display: flex;
@@ -781,7 +786,7 @@
     border-radius: 0px 2px 2px 0px;
     margin-right: -18px;
 }
-.kgLlka {
+.lineButton {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -800,22 +805,22 @@
     color: rgb(61, 61, 61);
     background: rgb(255, 255, 255);
 }
-.dguobU button {
+.buttonWrap button {
     flex: 1 1 0%;
     margin: 0px 0px 0px 10px;
 }
-.kgLlka.pdc-btn-xl {
+.lineButton.pdc-btn-xl {
     font-size: 12px;
     line-height: 20px;
 }
-.dguobU button:first-child {
+.buttonWrap button:first-child {
     margin-left: 0px;
 }
-.fYOLkK.pdc-btn-xl {
+.solidButton.pdc-btn-xl {
     font-size: 12px;
     line-height: 20px;
 }
-.fYOLkK span {
+.solidButton span {
     color: rgb(158, 158, 158);
 }
 .icXYZs {
@@ -837,7 +842,7 @@
     background-color: rgb(255, 255, 255);
     color: rgb(61, 61, 61);
 }
-.yjGeO {
+.createModel {
     display: block;
     position: fixed;
     bottom: 0px;
@@ -848,7 +853,7 @@
     color: rgb(255, 255, 255);
     border-radius: 0px;
 }
-.gsWCRt {
+.selectionOp {
     width: 100%;
     max-height: 500px;
     overflow-y: auto;
@@ -865,10 +870,10 @@
     transform: translateY(48px);
     animation: 0.3s ease 0s 1 normal none running fadeDown;
 }
-.kazSLx li {
+.multiOp li {
     margin: 0px 0px 8px;
 }
-.eQAnah {
+.checkBoxWrapper {
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -876,7 +881,7 @@
     color: rgb(61, 61, 61);
     display: inline-flex;
 }
-.kazSLx label {
+.multiOp label {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-pack: justify;
@@ -884,7 +889,7 @@
     font-size: 14px;
     color: rgb(61, 61, 61);
 }
-.eQAnah::before {
+.checkBoxWrapper::before {
     content: "";
     display: block;
     position: absolute;
@@ -898,10 +903,10 @@
     border: 1px solid rgb(189, 189, 189);
     background: rgb(255, 255, 255);
 }
-.fxYTGv {
+.itemTitle {
     width: 100%;
 }
-.kazSLx em {
+.multiOp em {
     font-size: 14px;
     color: rgb(158, 158, 158);
     font-style: normal;
@@ -912,7 +917,7 @@ input[type="checkbox"], input[type="radio"] {
     padding: 0;
 }
 
-.kazSLx .footer {
+.multiOp .footer {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
@@ -947,10 +952,10 @@ input[type="checkbox"], input[type="radio"] {
     font-size: 11px;
     line-height: 18px;
 }
-.kazSLx .footer button {
+.multiOp .footer button {
     width: auto;
 }
-.kazSLx .footer b {
+.multiOp .footer b {
     font-weight: 700;
     color: rgb(61, 61, 61);
 }
@@ -966,12 +971,12 @@ input[type="checkbox"], input[type="radio"] {
 ul li{
     list-style: none;
 }
-.kazSLx em {
+.multiOp em {
     font-size: 14px;
     color: rgb(158, 158, 158);
     font-style: normal;
 }
-.eQAnah input[type="checkbox"] {
+.checkBoxWrapper input[type="checkbox"] {
     visibility: hidden;
     z-index: 1;
     position: absolute;
@@ -981,38 +986,38 @@ ul li{
     top: 90%;
     margin: -1px 0px 0px;
 }
-.gsWCRt ul {
+.selectionOp ul {
     padding: 0px;
     margin: 0px;
     list-style: none;
 }
-.kazSLx ul {
+.multiOp ul {
     padding: 34px 20px;
 }
-.jRoLPe {
+.selectCard {
     display: inline-flex;
     flex: 1 0 auto;
     margin-left: 11px;
     position: relative;
 }
-.cPEGvW {
+.selectReward {
     flex: 1 1 0%;
     height: 56px;
 }
-.jRoLPe:first-child {
+.selectCard:first-child {
     margin-left: 0px;
 }
-.gkJlDT {
+.cardWrapper {
     display: inline-flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
 }
-.gEeqzW {
+.cardInReward {
     height: 120px;
 }
-.jkgxVG {
+.cardInner {
     display: inline-flex;
     flex: 1 0 auto;
     -webkit-box-align: center;
@@ -1032,11 +1037,11 @@ ul li{
 .jZPQEy:focus ~ div, .jZPQEy:checked ~ div {
     border-color: rgb(248, 100, 83);
 }
-.fReuMK {
+.selectableCard {
     width: 100%;
     position: relative;
 }
-.cLMslS {
+.cardCheckBox {
     display: block;
     position: absolute;
     top: 50%;
@@ -1066,7 +1071,7 @@ ul li{
     border-radius: 50%;
     transform: translate(-3px, -3px);
 }
-.fReuMK label {
+.selectableCard label {
     display: flex;
     width: 100%;
     -webkit-box-align: center;
@@ -1078,14 +1083,14 @@ ul li{
     -webkit-box-pack: start;
     justify-content: flex-start;
 }
-.gifdTD {
+.selectable {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     position: relative;
     z-index: 10;
 }
-.fOjsfs {
+.conutInput {
     border: 1px solid rgb(230, 230, 230);
     color: rgb(13, 13, 13);
     background: rgb(255, 255, 255);
@@ -1100,11 +1105,11 @@ ul li{
     align-items: center;
     border-radius: 1px;
 }
-.dIA-DKx {
+.countInputStyle {
     width: 138px;
     height: 36px;
 }
-.bfmNPl {
+.innerInput {
     width: 100%;
     background: transparent;
     border: 0px;
@@ -1115,12 +1120,12 @@ ul li{
     margin: 0px;
     appearance: none !important;
 }
-.dIA-DKx input {
+.countInputStyle input {
     width: 84px;
     height: 34px;
     padding: 0px;
 }
-.bydIPs {
+.countInputTail {
     display: flex;
     width: 40px;
     height: 34px;
@@ -1143,14 +1148,14 @@ ul li{
     background: #FFF;
     color: #3d3d3d;
 }
-.kUAEdo {
+.layerWrapper {
     position: fixed;
     z-index: 99999999;
     left: 0px;
     top: 0px;
     width: 100%;
 }
-.dGZJLC {
+.posWrapper {
     position: fixed;
     background: rgb(255, 255, 255);
     overflow: hidden auto;
@@ -1164,17 +1169,17 @@ ul li{
     transform: translate(-50%, -50%);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px, rgba(0, 0, 0, 0.1) 0px 1px 0px;
 }
-.dHDrpx {
+.dimmedBackground {
     position: fixed;
     width: 100%;
     height: 100%;
     display: block;
     background: rgba(13, 13, 13, 0.65);
 }
-.hpEGRk {
+.modelWrapper {
     padding: 18px 16px;
 }
-.ffjkxC {
+.modalHeader {
     display: flex;
     font-weight: bold;
     position: relative;
@@ -1183,7 +1188,7 @@ ul li{
     line-height: 36px;
     letter-spacing: -0.025em;
 }
-.eQujpF {
+.modalButton {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -1202,7 +1207,7 @@ ul li{
     background-color: transparent;
     color: rgb(61, 61, 61);
 }
-.eyIapB {
+.closeButton {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -1223,7 +1228,7 @@ ul li{
     line-height: 27px;
     letter-spacing: -0.020em;
 }
-.ffjkxC .Modal__CloseButton-sc-1ul7s4n-4 {
+.modalHeader .Modal__CloseButton-sc-1ul7s4n-4 {
     position: fixed;
     z-index: 3;
     top: 18px;
@@ -1234,13 +1239,13 @@ button, input, optgroup, select, textarea {
     font: inherit;
     margin: 0;
 }
-.eyIapB .Modal__StyledSVGIcon-sc-1ul7s4n-2 {
+.closeButton .Modal__StyledSVGIcon-sc-1ul7s4n-2 {
     display: flex;
 }
-.gLQNcr {
+.removeModal {
     padding: 0px 6px;
 }
-.gdSDyA {
+.removeModa {
     font-weight: 700;
     margin: 0px;
     word-break: break-all;
@@ -1249,18 +1254,18 @@ button, input, optgroup, select, textarea {
     line-height: 28px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.cMCvXr {
+.removeTitle {
     margin: 0px 0px 10px;
 }
-.gBHesk {
+.modalDescription {
     max-width: 384px;
     margin: 0px 0px 16px;
 }
-.gowDlz {
+.removeTartget {
     min-width: 254px;
     margin: 0px 0px 14px;
 }
-.cCOILF {
+.removeButtonWrapper {
     display: flex;
     flex-direction: column;
 }
@@ -1268,11 +1273,11 @@ button, input, optgroup, select, textarea {
     font-size: 14px;
     line-height: 22px;
 }
-.cvVuvT.pdc-btn-xl {
+.itemRemoveButton.pdc-btn-xl {
     font-size: 12px;
     line-height: 20px;
 }
-.cvVuvT {
+.itemRemoveButton {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -1291,7 +1296,7 @@ button, input, optgroup, select, textarea {
     background-color: rgb(248, 100, 83);
     color: rgb(255, 255, 255);
 }
-.previewItem .styled__BackerCount-sc-1bd2dui-49, .previewItem .styled__Limit-sc-1bd2dui-50 {
+.previewItem .previewItem .limitStyle {
     font-weight: 400;
 }
 .countStyle {
@@ -1304,7 +1309,7 @@ button, input, optgroup, select, textarea {
     line-height: 18px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.Limit {
+.limit {
     font-weight: 400;
     color: rgb(248, 100, 83);
     margin: 0px;
@@ -1360,4 +1365,66 @@ button, input, optgroup, select, textarea {
     font-size: 12px !important;
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.giftIdea {
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 0px 5px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.previewItem:last-child {
+    margin-bottom: 0px;
+}
+p:first-child {
+    margin-top: 0em;
+}
+.buttonWrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 22px 0px 0px;
+}
+
+.changeSpan {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: rgb(248, 100, 83);
+    border: 1px solid rgb(248, 100, 83);
+}
+.changeSpan::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    display: block;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    transform: translate(-3px, -3px);
+}
+.change {
+    position: absolute;
+    z-index: 3;
+    left: 0px;
+    top: 0.14em;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: rgb(255, 87, 87);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.change svg {
+    fill: rgb(255, 255, 255);
 }

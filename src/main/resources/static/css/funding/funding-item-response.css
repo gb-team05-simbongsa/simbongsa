@@ -46,7 +46,7 @@
     }
 }
 @media only screen and (min-width: 1080px){
-    .fCXgKN {
+    .createItem {
         padding: 44px 48px;
         border: 1px solid rgb(240, 240, 240);
         border-radius: 4px;
@@ -54,102 +54,102 @@
     }
 }
 @media only screen and (min-width: 1080px){
-    .gEeqzW {
+    .cardInReward {
         height: auto;
     }
 }
 @media only screen and (min-width: 1080px){
-    .jkgxVG {
+    .cardInner {
         padding: 10px 16px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .gifdTD {
+    .selectable {
         padding: 0px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .jkgxVG {
+    .cardInner {
         padding: 10px 16px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .gifdTD {
+    .selectable {
         padding: 0px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .czWteh {
+    .errorMsg {
         margin: 8px 0px 0px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .lbIHvD {
+    .innerInputWrapper {
         width: 146px;
         margin: 0px;
     }
 
 }
 @media only screen and (min-width: 1080px){
-    .jkgxVG {
+    .cardInner {
         padding: 10px 16px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .gifdTD {
+    .selectable {
         padding: 0px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .dguobU button:first-child {
+    .buttonWrap button:first-child {
         flex: 0 0 auto;
         width: 170px;
     }
 }
 
 @media only screen and (min-width: 1080px){
-    .yjGeO {
+    .createModel {
         display: none;
     }
 }
 @media only screen and (min-width: 1080px){
-    .kazSLx li {
+    .multiOp li {
         margin: 0px 0px 22px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .fxYTGv {
+    .itemTitle {
         margin: 0px 32px 0px 0px;
         flex: 1 1 0%;
     }
 }
 
 @media only screen and (min-width: 1080px){
-    .gEeqzW {
+    .cardInReward {
         height: auto;
     }
 }
 @media only screen and (min-width: 1080px){
-    .jkgxVG {
+    .cardInner {
         padding: 10px 16px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .kUAEdo {
+    .layerWrapper {
         position: absolute;
         width: auto;
     }
 }
 
 @media only screen and (min-width: 1080px){
-    .dHDrpx {
+    .dimmedBackground {
         overflow: hidden auto;
     }
 }
 
 
 @media only screen and (min-width: 1080px){
-    .dGZJLC {
+    .posWrapper {
         min-width: 328px;
         position: absolute;
         height: auto;
@@ -164,7 +164,7 @@
     }
 }
 @media only screen and (min-width: 1080px){
-    .hpEGRk {
+    .modelWrapper {
         padding: 24px 32px 40px;
         background: rgb(255, 255, 255);
         box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 16px 0px;
@@ -172,7 +172,7 @@
     }
 }
 @media only screen and (min-width: 1080px){
-    .ffjkxC {
+    .modalHeader {
         display: flex;
         position: relative;
         padding: 0px;
@@ -180,7 +180,7 @@
     }
 }
 @media only screen and (min-width: 1080px){
-    .ffjkxC .Modal__CloseButton-sc-1ul7s4n-4 {
+    .modalHeader .Modal__CloseButton-sc-1ul7s4n-4 {
         position: absolute;
         top: 50%;
         right: 0px;
@@ -188,24 +188,24 @@
     }
 }
 @media only screen and (min-width: 1080px){
-    .fyveZz {
+    .modalHashBackWrapper {
         max-height: 75vh;
         overflow: hidden auto;
     }
 }
 @media only screen and (min-width: 1080px){
-    .cMCvXr {
+    .removeTitle {
         margin: 0px 0px 16px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .gBHesk {
+    .modalDescription {
         width: 384px;
         margin: 0px 0px 33px;
     }
 }
 @media only screen and (min-width: 1080px){
-    .gowDlz {
+    .removeTartget {
         margin: 0px 0px 24px;
     }
 }
@@ -216,3 +216,16 @@
 
 
 
+@media only screen and (min-width: 1080px){
+    .displayStyle {
+        display: block;
+        width: 630px;
+    }
+}
+.inputStyle {
+    flex: 1 1 0%;
+    border: 0px;
+    text-align: left;
+    padding: 0px;
+    background: transparent;
+}
