@@ -759,6 +759,7 @@ svg:not(:root) {
 
     .depth-category-group{
         display: flex;
+        flex-direction: column;
     }
 
 /*     .my-user-wrapper{
