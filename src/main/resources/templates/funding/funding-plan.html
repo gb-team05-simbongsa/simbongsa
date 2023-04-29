@@ -75,18 +75,21 @@
                                 <div class="guideCheckWrapper">
                                     <div class="guideWrapper inputWrapper">
                                         <span class="inputSpan2 inputSpan">
-                                            <input type="text" inputmode="numeric" placeholder="50만원 이상의 금액을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput" value="">원</span>
+                                            <input type="text" inputmode="numeric" placeholder="50만원 이상의 금액을 입력해주세요" autocomplete="off" autocapitalize="off" class="innerInput targetAmount" value="">원</span>
                                     </div>
                                     <div class="noticeArea noticeArea">
                                         <p class="guideArea guidearea"></p>
                                     </div>
                                 </div>
                                 <div class="estimateAmount estimateAmount">
-                                    <div class="TotalAmount"><span>목표 금액 달성 시 예상 수령액</span> <em>0원</em>
+                                    <div class="TotalAmount">
+                                        <span>목표 금액 달성 시 예상 수령액</span>
+                                         <em class="receipt">0원</em>
                                     </div>
-                                    <div class="feeWrap">총 수수료<em>0원</em></div>
+                                    <div class="feeWrap">총 수수료
+                                        <em class="feeAmount">0원</em>
+                                    </div>
                                     <div class="fee">결제대행 수수료 (총 결제액의 3% + VAT)<em>0원</em></div>
-                                    <div class="fee">Basic 요금제 수수료(총 결제 금액의 5% + VAT)<em>0원</em>
                                     </div>
                                 </div>
                             </div>
@@ -291,5 +294,20 @@
         $("#_header").load("/templates/funding/funding-plan-header.html");
         $("#_topContent").load("/templates/funding/funding-topContent.html");
     });
+</script>
+<script>
+    const $feeAmount = $('.feeAmount');
+    const $receipt = $('.receipt');
+    const $targetAmount = $('.targetAmount');
+
+    // $feeAmount = $targetAmount.val() * 0.03 + ($targetAmount.val() * 0.03)*0.1;
+    // $receipt = $targetAmount - $feeAmount;
+
+    $targetAmount.keypress(function(){
+        $feeAmount.val() = $targetAmount.val() * 0.03 + $targetAmount.val() * 0.03*0.1;
+        $receipt.val() = $targetAmount - $feeAmount;
+        }
+    );
+
 </script>
 </html>

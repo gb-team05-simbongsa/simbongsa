@@ -93,3 +93,75 @@
     line-height: 22px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
+.subTapWrap {
+    width: 100%;
+    padding-top: 0px;
+    background: rgb(255, 255, 255);
+    border-top: 1px solid rgb(240, 240, 240);
+}
+.subTap {
+    max-width: 1080px;
+    height: 48px;
+    margin: 0px auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0px 18px;
+}
+.subTabInner button, .subTabInner a {
+    border: 0px;
+    background: transparent;
+    color: rgb(61, 61, 61);
+    opacity: 0.3;
+    padding: 0px;
+    margin-right: 18px;
+    outline: none;
+    cursor: pointer;
+}
+.subTabInner button:hover, .subTabInner a:hover, .subTabInner button.isActive, .subTabInner a.isActive {
+    color: rgb(61, 61, 61);
+    opacity: 1;
+    font-weight: bold;
+}
+.subTabInner button svg, .subTabInner a svg {
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+    fill: rgb(61, 61, 61);
+}
+.subTabInner button:hover svg, .subTabInner a:hover svg, .subTabInner button.isActive svg, .subTabInner a.isActive svg {
+    fill: rgb(248, 100, 83);
+}
+.ideaButton {
+    display: inline-flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 36px;
+    opacity: 1;
+    padding: 0px 17px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 45px;
+    cursor: pointer;
+}
+.ideaButton svg {
+    fill: rgb(248, 100, 83);
+}
+.jOdkVg {
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+    margin: 0px 0px 0px 5px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+p:last-child {
+    margin-bottom: 0em;
+}
