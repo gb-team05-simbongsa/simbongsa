@@ -1,18 +1,22 @@
 const $container = $(".banner-swiper-container");
 const $banner = $(".banner-swiper-wrapper");
-const $imageDiv = $(".swiper-slider");
 const firstImageDiv = '<div class="swiper-slider"></div>';
 const lastImageDiv = '<div class="swiper-slider"></div>';
+const $imageDiv = $(".swiper-slider");
 const $next = $(".next");
 const $prev = $(".prev");
 const $bannerCount = $(".banner-count strong");
 let checkArrow = false;
 let count = 1;
-let auto = setInterval(autoSlide, 2000);
+
+const autoSlideTimer = 2000;
+const autoSlideActionTimer = "transform 0.3s";
+const arrowLockTimer = 300;
+let auto = setInterval(autoSlide, autoSlideTimer);
 /* 모바일 검사 */
 let mobileCheck = screen.width < 1024;
 
-let imgUrl = [
+let imgURLs = [
     'url(../../static/image/main/001.jpg)',
     'url(../../static/image/main/002.jpg)',
     'url(../../static/image/main/003.jpg)',
@@ -26,85 +30,115 @@ const mobileImgURLs = [
     'url(../../static/image/main/008.jpg)'
 ];
 
-/* PC환경이면 1920px, 모바일이면 화면 크기에 맞춰서 */
+/* 배너 수 */
+let bannersLength = imgURLs.length;
+
+/* PC환경이면 766px, 모바일이면 화면 크기에 맞춰서 */
 console.log("screen.width" + screen.width);
-let width = mobileCheck ? screen.width : 1920;
+let width = mobileCheck ? screen.width : 766;
+let height = mobileCheck ? 228.88 : 280;
 
 /* 모바일이면 모바일 배너로 바꾸기 */
-imgUrls = mobileCheck ? mobileImgURLs : imgUrl;
+imgURLs = mobileCheck ? mobileImgURLs : imgURLs;
+
+/* container와 배너를 감싸고 있는 div 크기 조절 */
+$container.css('width', width+'px');
+$banner.css('width', width * (bannersLength + 2) + 'px');
 
 
-$imageDiv.each(function(index) {
-    $(this).css({
-        'background-image': imgUrls[index]
-    });
-});
+$imageDiv.each((index, e) => {
+    $(e).css('background-image', imgURLs[index]);
+} )
+/* ------------- */
 
 /* 위치 중요 추가한 후 css 바꿔주기 */
 /* 마지막에는 첫번째 사진 첫번째에는 마지막사진 */
 $banner.append(lastImageDiv);
-$(".swiper-slider").last().css('background-image', imgUrls[0]);
+$(".swiper-slider").last().css('background-image', imgURLs[0]);
 
 $banner.prepend(firstImageDiv);
-$(".swiper-slider").first().css('background-image', imgUrls[3]);
+$(".swiper-slider").first().css('background-image', imgURLs[imgURLs.length - 1]);
 
-const $imageDiv2 = $(".swiper-slider");
-
-$imageDiv2.each(function(index) {
-    if(mobileCheck) {
-        $(this).css({
-            'width': '539px',
-            'height': '280px',
-            'background-size': 'cover'
-        });
-    }
-    else{
-        $(this).css({
-            'width': '766px',
-            'height': '280px',
-            'background-size': 'cover'
-        });
-    }
+$('.swiper-slider').each((index, element) => {
+    $(element).css({
+        'width': width + 'px',
+        'height': height + 'px',
+        'background-size': 'inital'
+    });
 });
 
 /* 처음 배너 사진 오타 조심*/
-if(mobileCheck) {
-    $banner.css("transform", "translate(-539px)");
-}
-else{
-    $banner.css("transform", "translate(-766px)");
-}
+$banner.css("transform", `translate(${-width}px)`);
 updateBannerCount();
 
 /* ++count 여야함*/
 /* count++이면 translatae가 변경 전의 값이 사용됨 */
 function autoSlide(){
-    if(mobileCheck){
-        $banner.css("transition", "transform 0.3s");
-        $banner.css("transform", `translate(${-539 * ++count}px)`);
-        if(count == 5) {
-            count = 1;
-            updateBannerCount();
-            setTimeout(function(){
-            $banner.css("transition", "transform 0s");
-            $banner.css("transform", "translate(-539px)");
-            }, 300);
-        }
-    }
-    else {
-        $banner.css("transition", "transform 0.3s");
-        $banner.css("transform", `translate(${-766 * ++count}px)`);
-        if(count == 5) {
-            count = 1;
-            updateBannerCount();
-            setTimeout(function(){
-            $banner.css("transition", "transform 0s");
-            $banner.css("transform", "translate(-766px)");
-            }, 300);
-        }
+    $banner.css("transition", `${autoSlideActionTimer}`);
+    $banner.css("transform", `translate(${-width * ++count}px)`);
+    if(count == bannersLength + 1) {
+        count = 1;
+        updateBannerCount();
+        setTimeout(function(){
+        $banner.css("transition", "transform 0s");
+        $banner.css("transform", `translate(${-width}px)`);
+        }, arrowLockTimer);
     }
     updateBannerCount();
 };
+
+if (!mobileCheck) {
+    $prev.on('click', function() {
+        if (checkArrow) {
+            return;
+        }
+        checkArrow = true;
+        clearInterval(auto);
+        $banner.css('transition', `${autoSlideActionTimer}`);
+        $banner.css("transform", `translate(-${width * --count}px)`);
+
+        if(count == 0){
+            count = 4;
+            updateBannerCount();
+            setTimeout(function(){
+                $banner.css("transition", "transform 0s");
+                $banner.css("transform", `translate(${-width * $imageDiv.length}px)`);
+            }, arrowLockTimer);
+        }
+        updateBannerCount();
+        auto = setInterval(autoSlide, autoSlideTimer);
+        setTimeout( () => {
+            checkArrow = false;
+        }, arrowLockTimer);
+    });
+}
+
+if (!mobileCheck) {
+    $prev.on('click', function() {
+        if (checkArrow) {
+            return;
+        }
+        checkArrow = true;
+        clearInterval(auto);
+        $banner.css('transition', `${autoSlideActionTimer}`);
+        $banner.css("transform", `translate(-${width * ++count}px)`);
+
+        if(count == bannersLength + 1){
+            count = 1;
+            updateBannerCount();
+            setTimeout(function(){
+                $banner.css("transition", "transform 0s");
+                $banner.css("transform", `translate(-${width}px)`);
+            }, arrowLockTimer);
+        }
+        updateBannerCount();
+        auto = setInterval(autoSlide, autoSlideTimer);
+        setTimeout( () => {
+            checkArrow = false;
+        }, arrowLockTimer);
+    });
+}
+
 
 function updateBannerCount() {
     $bannerCount.html(`${count} / ${$imageDiv.length}`);
@@ -118,21 +152,21 @@ $prev.on("click", function(){
     checkArrow = true;
     clearInterval(auto);
     $banner.css("transition", "transform 0.3s");
-    $banner.css("transform", `translate(${-766 * --count}px)`);
+    $banner.css("transform", `translate(-${width * --count}px)`);
 
     if(count == 0){
         count = 4;
         updateBannerCount();
         setTimeout(function(){
             $banner.css("transition", "transform 0s");
-            $banner.css("transform", `translate(${-766 * 4}px)`);
-        }, 300);
+            $banner.css("transform", `translate(${-width * $imageDiv.length}px)`);
+        }, arrowLockTimer);
     }
     updateBannerCount();
-    auto = setInterval(autoSlide, 2000);
+    auto = setInterval(autoSlide, autoSlideTimer);
     setTimeout( () => {
         checkArrow = false
-    }, 300);
+    }, arrowLockTimer);
 });
 
 $next.on("click", function(){
@@ -140,18 +174,18 @@ $next.on("click", function(){
     checkArrow = true;
     clearInterval(auto);
     $banner.css("transition", "transform 0.3s");
-    $banner.css("transform", `translate(${-766 * ++count}px)`);
+    $banner.css("transform", `translate(-${width * ++count}px)`);
     if(count == 5){
         count = 1;
         updateBannerCount();
         setTimeout(function(){
             $banner.css("transition", "transform 0s");
-            $banner.css("transform", "translate(-766px)");
-        }, 300);
+            $banner.css("transform", `translate(-${width}px)`);
+        }, arrowLockTimer);
     }
     updateBannerCount();
-    auto = setInterval(autoSlide, 2000);
+    auto = setInterval(autoSlide, autoSlideTimer);
     setTimeout( () => {
         checkArrow = false
-    }, 300);
+    }, arrowLockTimer);
 });
