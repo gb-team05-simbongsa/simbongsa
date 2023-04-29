@@ -277,9 +277,9 @@
                                                     <div class="multiOp" >
                                                         <ul>
                                                             <li>
-                                                                <label for="checkItem" class="checkBoxWrapper">
-                                                                    <input id="" type="checkbox" value="">
-                                                                    <span class="change" style="visibility:hidden;"">
+                                                                <label for="checkItem1" class="checkBoxWrapper">
+                                                                    <input id="checkItem1" type="checkbox" value="" onclick="clickCheck()">
+                                                                    <span class="change" style="visibility:hidden;">
                                                                         <div name="check" class="iconSVG">
                                                                             <svg viewBox="0 0 48 48">
                                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
@@ -293,9 +293,9 @@
                                                                     </label>
                                                                 </li>
                                                             <li>
-                                                                <label for="checkItem" class="checkBoxWrapper">
-                                                                    <input id="" type="checkbox" value="">
-                                                                    <span class="change" style="visibility:hidden;"">
+                                                                <label for="checkItem2" class="checkBoxWrapper">
+                                                                    <input id="checkItem2" type="checkbox" value="" onclick="clickCheck()">
+                                                                    <span class="change" style="visibility:hidden;">
                                                                         <div name="check" class="iconSVG">
                                                                             <svg viewBox="0 0 48 48">
                                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
@@ -304,16 +304,15 @@
                                                                             </svg>
                                                                         </div>
                                                                     </span>
-                                                                    <input id="checkItem" type="checkbox" value="e85811d7-7aae-4f1e-aba8-bab1107c2932">
                                                                     <span class="itemTitle">이게 상품이야 (주관식 옵션)</span>
                                                                     <em>1 개의 선물에 포함됨</em>
                                                                 </label>
                                                             </li>
                                                             <li>
-                                                                <label for="checkItem" class="checkBoxWrapper">
+                                                                <label for="checkItem3" class="checkBoxWrapper">
                                                                     
-                                                                    <input id="" type="checkbox" value="">
-                                                                    <span class="change" style="visibility:hidden;"">
+                                                                    <input id="checkItem3" type="checkbox" value="" onclick="clickCheck()">
+                                                                    <span class="change" style="visibility:hidden;">
                                                                         <div name="check" class="iconSVG">
                                                                             <svg viewBox="0 0 48 48">
                                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
@@ -697,11 +696,17 @@
         
     // })
     // })
-    $("input[name='checkbox']").each((i,e), function(){
-    if( $(this).is(":checked") == true ){
-        $('.change').css('visibility', 'visible');
+    
+    function clickCheck() {
+        $("input[type='checkbox']").each((i,e) => {
+            if($(e).is(":checked")) {
+                    $('.change').eq(i).css('visibility', 'visible');
+            }
+            else {
+                $('.change').eq(i).css('visibility', 'hidden');
+            }
+        })
     }
-  });
     
     
     
