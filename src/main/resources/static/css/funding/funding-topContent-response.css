@@ -42,3 +42,8 @@
         margin: 0px 16px;
     }
 }
+@media (min-width: 1080px){
+    .subTap {
+        padding: 0px;
+    }
+}

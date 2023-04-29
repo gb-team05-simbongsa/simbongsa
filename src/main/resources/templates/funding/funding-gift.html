@@ -25,6 +25,12 @@
         height: 2px;
         background: rgb(248, 100, 83);
     }
+    @media (min-width: 1080px){
+        .top-contentWrap {
+            margin: 64px auto 0px;
+        }
+
+    }
 </style>
 
 <body>
@@ -32,8 +38,91 @@
         <div class="project-wrap">
             <!-- funding-header -->
             <div id="_header"></div>
-            <div id="_topContent"></div>
-
+            <div class="top-content" style="margin-top: 50px;">
+                <div class="top-contentWrap">
+                    <div class="top-title">프로젝트 기획</div>
+                </div>
+                <div class="fix-contentWrap">
+                    <div class="plan-depthWrap">
+                        <ul class="tap-item">
+                            <li class="tapItem-li initialInfo">
+                                <a class="" href="/templates/funding/funding-initial-info.html">기본정보
+                                    <span class="item-span"></span>
+                                </a>
+                            </li>
+                            <li class="item-li fundingPlan">
+                                <a class="" href="/templates/funding/funding-plan.html">펀딩 계획
+                                    <span class="Item-span"></span>
+                                </a>
+                            </li>
+                            <li class="item-li fundingGift">
+                                <a class="" href="/templates/funding/funding-gift.html">선물 구성
+                                    <span class="Item-span"></span>
+                                </a>
+                            </li>
+                            <li class="item-li projectPlan">
+                                <a class="" href="/templates/funding/funding-project-plan.html">프로젝트 계획
+                                    <span class="Item-span"></span>
+                                </a>
+                            </li>
+                            <li class="item-li createrInfo">
+                                <a class="" href="/templates/funding/funding-creater-info.html">창작자 정보
+                                    <span class="Item-span"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="subTapWrap">
+                    <div class="subTap">
+                        <div class="subTabInner">
+                            <button type="button" class="isActive">
+                                <div name="reward-solid" class="iconSVG">
+                                    <svg viewBox="0 0 48 48">
+                                        <path
+                                            d="M6.1 14.9994C6.04477 14.9994 6 15.0442 6 15.0994L6 26.3066C6 26.3618 6.04477 26.4066 6.1 26.4066H9.5V41.8994C9.5 41.9547 9.54477 41.9994 9.6 41.9994H21.9C21.9552 41.9994 22 41.9547 22 41.8994V26.4066L26 26.4066V41.8994C26 41.9547 26.0448 41.9994 26.1 41.9994H38.4C38.4552 41.9994 38.5 41.9547 38.5 41.8994V26.4066H41.9C41.9552 26.4066 42 26.3618 42 26.3066V15.0994C42 15.0442 41.9552 14.9994 41.9 14.9994L6.1 14.9994Z">
+                                        </path>
+                                        <path
+                                            d="M21.9125 11.8069L18.4181 4.11919C18.3907 4.05899 18.3135 4.04145 18.2628 4.08393L12.1476 9.2091C12.0855 9.26112 12.1078 9.3615 12.186 9.38236L21.7957 11.9449C21.8773 11.9667 21.9474 11.8838 21.9125 11.8069Z">
+                                        </path>
+                                        <path
+                                            d="M26.0875 11.8069L29.5819 4.11919C29.6093 4.05899 29.6865 4.04145 29.7372 4.08393L35.8524 9.2091C35.9145 9.26112 35.8922 9.3615 35.814 9.38236L26.2043 11.9449C26.1227 11.9667 26.0526 11.8838 26.0875 11.8069Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                선물
+                            </button>
+                            <button type="button" class="">
+                                <div name="list-solid" class="iconSVG">
+                                    <svg viewBox="0 0 48 48">
+                                        <rect x="8" y="10" width="5.81818" height="5.81818"></rect>
+                                        <rect x="8" y="20.6666" width="5.81818" height="5.81818"></rect>
+                                        <rect x="8" y="31.3334" width="5.81818" height="5.81818"></rect>
+                                        <rect x="18.668" y="10" width="21.3333" height="5.81818"></rect>
+                                        <rect x="18.668" y="20.666" width="21.3333" height="5.81818"></rect>
+                                        <rect x="18.668" y="31.334" width="21.3333" height="5.81818"></rect>
+                                    </svg>
+                                </div>
+                                아이템
+                            </button>
+                        </div>
+                        <div>
+                            <a class="ideaButton">
+                                <div name="lightbulb-line" class="iconSVG">
+                                    <svg viewBox="0 0 48 48">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M30.469 28.1702L31.6199 27.382C34.3726 25.4967 36 22.2707 36 18.2036C36 12.2507 30.5846 7 24 7C17.4154 7 12 12.2507 12 18.2036C12 22.2707 13.6274 25.4967 16.3801 27.382L17.531 28.1702L18.6941 31.9412H29.3059L30.469 28.1702ZM32.2581 35.9412H15.7419L14.1198 30.6821C10.1084 27.9347 8 23.3701 8 18.2036C8 9.80689 15.4485 3 24 3C32.5515 3 40 9.80689 40 18.2036C40 23.3701 37.8916 27.9347 33.8802 30.6821L32.2581 35.9412Z">
+                                        </path>
+                                        <path d="M17 39H31V43H17V39Z"></path>
+                                    </svg>
+                                </div>
+                                <p type="l3" color="#3d3d3d" class="Text-sc-1cqgvse-0 giftIdea jOdkVg">선물 아이디어</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="contents qbVXa" size="277">
                 <div class="planContents fguznA">
                     <div class="tabWrapper tabWrapper">
