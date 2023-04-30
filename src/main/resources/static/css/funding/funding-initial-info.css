@@ -408,6 +408,7 @@ img {
 }
 textarea {
     overflow: auto;
+    outline: none;
 }
 .textarea-style {
     width: 100%;
