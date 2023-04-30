@@ -1527,6 +1527,12 @@ h2 {
         min-height: 500px;
     }
 }
+
+@media (min-width: 1080px){
+    .subColumnInner {
+        min-height: 280px;
+    }
+}
 .creatorCard {
     display: none;
 }

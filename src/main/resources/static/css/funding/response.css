@@ -114,7 +114,7 @@
 
 @media (min-width: 1080px){
     .formHalf {
-        width: 50%;
+        width: 100%;
     }
 }
 @media (min-width: 1080px){
@@ -196,4 +196,9 @@
     .accountWrap > li {
     margin-bottom: 32px;
     }
+}
+@media (min-width: 1080px){
+    .planContents {
+        padding: 84px 0px 0px;
+}
 }
