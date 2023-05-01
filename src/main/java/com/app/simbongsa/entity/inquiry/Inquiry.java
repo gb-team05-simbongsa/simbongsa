@@ -1,24 +1,36 @@
 package com.app.simbongsa.entity.inquiry;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.app.simbongsa.audit.Period;
+import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.type.InquiryType;
+import com.sun.istack.NotNull;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter @Setter @ToString
 @Table(name = "TBL_INQUIRY")
-public class Inquiry {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Inquiry extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    private String inquiryTitle;
-    private String inquiryContent;
+    @NotNull private String inquiryTitle;
+    @NotNull private String inquiryContent;
+    @Enumerated(EnumType.STRING)
+    @ColumnDefault("답변대기")
+    @NotNull private InquiryType inquiryStatus;
 
-//    private Long user_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
+    @Builder
+    public Inquiry(String inquiryTitle, String inquiryContent, User user) {
+        this.inquiryTitle = inquiryTitle;
+        this.inquiryContent = inquiryContent;
+        this.user = user;
+    }
 }
