@@ -15,7 +15,7 @@
     backdrop-filter: blur(60px);
     float: right;
     margin-top: 16em;
-    margin-right: 20px;
+    margin-right: 4px;
 }
 
 .main-wrap{
@@ -170,7 +170,7 @@
     flex-direction: column;
     /* -webkit-box-align: center; */
     align-items: center;
-    padding-top: 24px;
+    /* padding-top: 3px; */
 }
 
 .inquiry-logo-wrap {
@@ -204,7 +204,7 @@
 
 .inquiry-title-one {
     padding: 0px 10px;
-    margin-top: 4px;
+    /* margin-top: 4px; */
     font-weight: 500;
     color: rgba(0, 0, 0, 0.4);
     text-align: center;
