@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문의하기</title>
-    <link rel="stylesheet" href="../../static/font/font.css">
+    <link rel="stylesheet" href="../static/font/font.css">
     <link rel="stylesheet" href="../../static/css/customerCenter/inquiry-write.css">
 </head>
 <body>
-    <div class="main">
+
+<button id="open" >심봉사 문의하기</button>
+
+    <div class="main" style="display: none;">
             <div class="main-layout">
                 <div  class="main-container">
                     <div class="main-wrap">
@@ -47,7 +50,11 @@
                                                         <div class="inquiry-service-time">평일 09:00 ~ 18:00 운영</div>
 
                                                      <!-- 현재시각 -->
-                                                         <div class="inquiry-currentTime">오전 4:28</div>
+                                                         <div id="" class="inquiry-currentTime">
+                                                            <span id="clock"> 4:28 </span>
+                                                            <span id="apm"> ampm</span>
+                                                        </div>
+                                                   
                                                     </div>
                                                          <div class="inquiry-title-one">심봉사 — 당신의 마음이 한 사람의 빛을 만듭니다</div>
 
@@ -127,6 +134,30 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    
+
+        var Target = document.getElementById("clock");
+        var Target_apm = document.getElementById("apm");
+        
+        function clock() {
+            var time = new Date();
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            // var seconds = time.getSeconds();
+            var AmPm ="AM";
+            if(hours > 12){   
+                var AmPm ="PM";
+                hours %= 12;
+            }
+
+            Target.innerText = 
+            `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+
+            Target_apm.innerText = `${AmPm}`;
+
+        }
+        clock();
+        setInterval(clock, 1000); // 1초마다 실행
 </script>
+<script src="/static/js/customerCenter/inquiry-write.js"></script>
+
 </html>
