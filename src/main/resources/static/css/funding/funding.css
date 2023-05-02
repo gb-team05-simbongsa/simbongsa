@@ -1381,30 +1381,10 @@ input {
     font-weight: 500;
 }
 
-.solidButton {
-    cursor: pointer;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    height: 40px;
-    white-space: nowrap;
-    border-radius: 1px;
-    margin: 0px;
-    border: 0px;
-    outline: none;
-    font-weight: normal;
-    box-sizing: border-box;
-    padding: 0px 16px;
-    background-color: rgb(248, 100, 83);
-    color: rgb(255, 255, 255);
-}
 
 
-.solidButton span {
-    color: rgb(255, 255, 255);
-}
+
+
 .solidButton-disable span {
     color: rgb(158, 158, 158);
 }
@@ -1428,7 +1408,28 @@ input {
     pointer-events: none;
     background-color: rgb(228, 228, 228);
 }
-
+.solidButton span {
+    color: rgb(255, 255, 255);
+}
+.solidButton {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: rgb(248, 100, 83);
+    color: rgb(255, 255, 255);
+}
 .selectWithOp {
     width: 100%;
     max-height: 500px;
