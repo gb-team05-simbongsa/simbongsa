@@ -32,14 +32,4 @@ public class User {
     private int userRice;
     @ColumnDefault("0")
     private int userVolunteerTime;
-
-    @Builder
-    public User(String userName, String userEmail, String userPassword, String userAddress, Integer userAge, String userInterest) {
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-        this.userAddress = userAddress;
-        this.userAge = userAge;
-        this.userInterest = userInterest;
-    }
 }

@@ -20,12 +20,4 @@ public class FundingGift {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
-
-    @Builder
-    public FundingGift(String fundingGiftExplain, int fundingGiftAmount, int fundingGiftPrice, Funding funding) {
-        this.fundingGiftExplain = fundingGiftExplain;
-        this.fundingGiftAmount = fundingGiftAmount;
-        this.fundingGiftPrice = fundingGiftPrice;
-        this.funding = funding;
-    }
 }

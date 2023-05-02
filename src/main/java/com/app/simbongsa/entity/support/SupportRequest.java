@@ -26,11 +26,4 @@ public class SupportRequest extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @Builder
-    public SupportRequest(String supportRequestTitle, String supportRequestContent, User user) {
-        this.supportRequestTitle = supportRequestTitle;
-        this.supportRequestContent = supportRequestContent;
-        this.user = user;
-    }
 }

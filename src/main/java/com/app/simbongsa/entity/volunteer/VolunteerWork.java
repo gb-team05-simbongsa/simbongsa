@@ -26,17 +26,4 @@ public class VolunteerWork {
     @NotNull private VolunteerWorkCategoryType volunteerWorkCategory;
     @NotNull private String volunteerWorkRegistrationAgency;
     @NotNull private String volunteerWorkPlace;
-
-    @Builder
-    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkRecruitmentStartDate, LocalDate volunteerWorkRecruitmentEndDate, int volunteerWorkRecruitmentNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegistrationAgency, String volunteerWorkPlace) {
-        this.volunteerWorkStartDate = volunteerWorkStartDate;
-        this.volunteerWorkEndDate = volunteerWorkEndDate;
-        this.volunteerWorkTime = volunteerWorkTime;
-        this.volunteerWorkRecruitmentStartDate = volunteerWorkRecruitmentStartDate;
-        this.volunteerWorkRecruitmentEndDate = volunteerWorkRecruitmentEndDate;
-        this.volunteerWorkRecruitmentNumber = volunteerWorkRecruitmentNumber;
-        this.volunteerWorkCategory = volunteerWorkCategory;
-        this.volunteerWorkRegistrationAgency = volunteerWorkRegistrationAgency;
-        this.volunteerWorkPlace = volunteerWorkPlace;
-    }
 }
