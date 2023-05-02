@@ -102,6 +102,7 @@ table {
 
 .apply-btn-layout {
     text-align: center!important;
+    cursor: pointer;
 }
 
 .apply-btn {
@@ -110,7 +111,7 @@ table {
     text-align: center;
     padding: 5px 20px;
     color: #fff;
-    background-color: #285ed8;
+    background-color: rgb(255, 87, 87);
     border-radius: 4px;
     box-sizing: border-box;
     vertical-align: middle;
@@ -127,17 +128,6 @@ table {
     box-shadow: 0px 0px 4px 4px lightgrey;
     width: 28px;
     height: 28px;
+    cursor: pointer;
 
 }
-
-/* .apply-close img{
-    bottom: 0;
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: url(../static/image/voiunteer-work/close.png) -77px -90px no-repeat;
-    width: 32px;
-    height: 32px;
-    text-indent: -9999px;
-
-} */
