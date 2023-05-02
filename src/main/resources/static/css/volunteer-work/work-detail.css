@@ -21,7 +21,7 @@ h3 {
     position: relative;
     /* float: right; */
     width: 845px;
-    padding: 60px 0 60px 40px;
+    padding: 68px 0 60px 40px;
 }
 
 
@@ -33,13 +33,13 @@ h3 {
 
 .work-detail-info-container .work-detail-info-title {
     padding: 10px;
-    color: #000;
+    /* color: #000;
     border-top: 1px solid #333;;
     border-bottom: 1px solid #333;
     background: #eee;
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 10px; */
 }
 
 .work-detail-info-container .work-detail-info-top-btn-layout {
@@ -50,6 +50,14 @@ h3 {
 .work-detail-info-top-btn-layout {
      padding-bottom: 10px;
      text-align: right;
+     padding: 10px;
+     color: #000;
+     border-top: 1px solid #333;;
+     border-bottom: 1px solid #333;
+     background: #eee;
+     font-size: 18px;
+     font-weight: 400;
+     margin-bottom: 10px;
 }
 
 .apply-btn {
@@ -222,7 +230,7 @@ dl {
 
 .work-detail-board-layout {
     position: relative;
-    margin-top: 25px;
+    /* margin-top: 25px; */
 }
 
 .work-detail-info-container .work-detail-list-btn-wrap button{
@@ -237,7 +245,9 @@ dl {
     border: none;
     background: none;
     text-align: center;
-
+    margin: 1px;
+    
+    
 }
 
 .list-btn span {
@@ -250,6 +260,7 @@ dl {
     /* border: 1px solid #ccc; */
     color: #fff;
     background: rgb(248, 100, 83);
+    border-radius: 5px;
 }
 
 .work-list-prev-btn {
