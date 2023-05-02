@@ -21,11 +21,4 @@ public class FreeBoard extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @Builder
-    public FreeBoard(String freeBoardTitle, String freeBoardContent, User user) {
-        this.freeBoardTitle = freeBoardTitle;
-        this.freeBoardContent = freeBoardContent;
-        this.user = user;
-    }
 }

@@ -26,11 +26,4 @@ public class Inquiry extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @Builder
-    public Inquiry(String inquiryTitle, String inquiryContent, User user) {
-        this.inquiryTitle = inquiryTitle;
-        this.inquiryContent = inquiryContent;
-        this.user = user;
-    }
 }

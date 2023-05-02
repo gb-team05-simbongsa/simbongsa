@@ -21,11 +21,4 @@ public class Review extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @Builder
-    public Review(String reviewTitle, String reviewContent, User user) {
-        this.reviewTitle = reviewTitle;
-        this.reviewContent = reviewContent;
-        this.user = user;
-    }
 }

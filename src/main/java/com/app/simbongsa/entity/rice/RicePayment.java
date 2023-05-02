@@ -22,15 +22,10 @@ public class RicePayment {
     @NotNull private LocalDateTime ricePaymentTime;
     @Enumerated(EnumType.STRING)
     @NotNull private RicePaymentType ricePaymentStatus;
+    private String ricePaymentExchangeBank;
+    private String ricePaymentExchangeAccountNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-    @Builder
-    public RicePayment(int ricePaymentUsed, RicePaymentType ricePaymentStatus, User user) {
-        this.ricePaymentUsed = ricePaymentUsed;
-        this.ricePaymentStatus = ricePaymentStatus;
-        this.user = user;
-    }
 }

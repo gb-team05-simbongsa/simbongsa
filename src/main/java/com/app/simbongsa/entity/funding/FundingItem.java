@@ -19,11 +19,4 @@ public class FundingItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
-
-    @Builder
-    public FundingItem(String itemTitle, String itemContent, Funding funding) {
-        this.itemTitle = itemTitle;
-        this.itemContent = itemContent;
-        this.funding = funding;
-    }
 }
