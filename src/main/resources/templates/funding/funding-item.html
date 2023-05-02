@@ -72,6 +72,11 @@
                                 </a>
                             </li>
                         </ul>
+                        <div class="style__HeaderRight-sc-1dvdb02-5 YPHW">
+                            <button class="SolidButton__Button-sc-1gsinzz-0 saveButton saveStyleButton  hgsFUp ProjectSubmitButton__ProjectButton-m5pw9c-2 hQPdvE fnt-p1" disabled="" color="white">
+                                <span>저장</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="subTapWrap">
@@ -511,15 +516,15 @@
                                         <div
                                             class="cardWrapper cardInReward">
                                             <div class="selectCard selectReward">
-                                                <input type="radio" name="isLimited" class="cardInput" value="" checked="">
+                                                <input type="radio" name="isLimited exist" class="cardInput" value="" checked="">
                                                     <div class="cardInner">
                                                         <div class="selectableCard">
                                                             <div class="cardCheckBox cardCheckBox">
-                                                                <span class="checkBoxSpan changeSpan"></span>
+                                                                <span class="checkBoxSpan"></span>
                                                             </div>
                                                             <label for="isLimited">있음</label>
                                                         </div>
-                                                        <div class="selectable">
+                                                        <div class="selectable selectableCount" style="display:none">
                                                             <span class="conutInput countInputStyle">
                                                                 <input type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" maxlength="20" autocomplete="off" autocapitalize="off" class="innerInput" value="1">
                                                                 <div class="countInputTail">개</div>
@@ -794,23 +799,23 @@
         })
     }
 
-    $(e).eq(i).on("change",()=>{
-            let number = parseInt($('.footer p b').text());
-            let result =0;
+    // $(e).eq(i).on("change",()=>{
+    //         let number = parseInt($('.footer p b').text());
+    //         let result =0;
             
 
-                if($(e).eq(i).is(":checked")){
+    //             if($(e).eq(i).is(":checked")){
                     
-                    result = ++(number);
-                    console.log($(this).eq(i));
+                    // result = ++(number);
+                    // console.log($(this).eq(i));
                     // $('.footer p b').text(++number)
                     // $('.footer p b').text(++result)
-                }else{
-                    result = --(number); 
+                // }else{
+                //     result = --(number); 
                     // $('.footer p b').text(--number)
                     // $('.footer p b').text(--result)
-                }
-                $('.footer p b').text(result)
+                // }
+                // $('.footer p b').text(result)
                 
                 //$wrapperInputs.on("blur", function () {
                 // let i = $wrapperInputs.index($(this));
@@ -818,7 +823,7 @@
 
                     
                  
-             })
+            //  })
 
                         //  $(e).eq(i).on("change",()=>{
             //         let number = $('.footer p b').text();
@@ -836,10 +841,29 @@
 
                 // .changeSpan, .checkBoxSpan
 
-    console.log($('.selectItem li'));
+    // console.log($('.selectItem li'));
 
 
-    
+    $(".selectCard").on('click', function(){
+        var i = $(this).index();
+        console.log(i);
+        console.log($(".cardInput"));
+        $(".cardInput").eq(0).on('click', ()=>{
+            $(".cardInput").eq(0).prop('checked',true);
+            $(".cardInput").eq(1).prop('checked',false);
+            $('.checkBoxSpan').eq(0).addClass("changeSpan");
+            $('.checkBoxSpan').eq(1).removeClass("changeSpan");
+            $('.selectableCount').css('display', 'block');
+        })
+        $(".cardInput").eq(1).on('click', ()=>{
+            $(".cardInput").eq(0).prop('checked',false);
+            $(".cardInput").eq(1).prop('checked',true);
+            $('.checkBoxSpan').eq(1).addClass("changeSpan");
+            $('.checkBoxSpan').eq(0).removeClass("changeSpan");
+            $('.selectableCount').css('display', 'none');
+        })
+
+    })
     
     
 </script>
