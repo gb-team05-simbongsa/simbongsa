@@ -281,3 +281,34 @@ svg:not(:root) {
     margin-top: 5px;
 }
 
+.YPHW {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.hQPdvE {
+    border-radius: 21px;
+    background: rgb(240, 240, 240);
+}
+.hgsFUp span {
+    color: rgb(255, 255, 255);
+}
+@media (min-width: 1080px){
+    .hQPdvE {
+        width: 120px;
+        height: 40px;
+    }
+}
+.hQPdvE {
+    border-style: none;
+    font-weight: 500;
+    background: rgb(248, 100, 83);
+    width: 112px;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
