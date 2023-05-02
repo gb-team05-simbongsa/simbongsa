@@ -9,29 +9,31 @@
     <link rel="stylesheet" href="/static/css/support/support-rice-modal.css">
 </head>
 <body>
-
-    <div class="support-rice-layout">
+    <button id="support-open">후원하기</button>
+    <div class="support-rice-layout" style="display: none;">
         <!-- <form name=""> -->
             <div class="suppport-rice-container">
-                <div class="">
-                    <input type="text" placeholder="공양미 입력"  class="rice-payment-input" value="">
-                    <!-- <div class="error-message">비워둘 수 없습니다.</div> -->
-                    <p>후원 가능한 공양미: <em>300</em>석</p>
+                <div class="support-rice-close-btn-layout">
+                    <button type="button">X</button>
                 </div>
+                    <div class="">
+                        <input type="text" placeholder="공양미 입력"  class="rice-payment-input" value="">
+                        <!-- <div class="error-message">비워둘 수 없습니다.</div> -->
+                        <p>후원 가능한 공양미: <em>300</em>석</p>
+                    </div>
 
-            </div>
-            <div class="support-pay-layout">
-                <button type="button">
-                    <span>확인</span>
-                </button>
-            </div>
-        <!-- </form> -->
+                </div>
+                <div class="support-pay-layout">
+                    <button type="button">
+                        <span>확인</span>
+                    </button>
+                </div>
+            <!-- </form> -->
     </div>
     
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- <script src="../../static/js/support/support-rice-modal.js"></script> -->
-
+<script src="../../static/js/support/support-rice-modal.js"></script>
 
 </html>

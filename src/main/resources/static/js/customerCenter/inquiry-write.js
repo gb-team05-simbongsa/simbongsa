@@ -3,10 +3,6 @@ const $main = $('.main');
 const $open = $('#open');
 
 
-
-
-
-
 $(document).ready(function(){
     
     // 버튼 클릭시 모달창 띄우기 
@@ -22,3 +18,5 @@ $(document).ready(function(){
     });
 
   });
+
+  
