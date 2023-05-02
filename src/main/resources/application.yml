@@ -14,7 +14,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.Oracle10gDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
     #jpa format
     properties:
