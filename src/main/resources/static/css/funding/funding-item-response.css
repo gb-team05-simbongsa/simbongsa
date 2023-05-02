@@ -229,3 +229,17 @@
     padding: 0px;
     background: transparent;
 }
+@media only screen and (min-width: 1080px){
+    .itemInfoWrap {
+        width: auto;
+        margin: 0px;
+    }
+}
+@media only screen and (min-width: 1080px){
+    
+    .itemDescription {
+        max-width: 300px;
+        margin: 0px 0px 7px;
+    }
+
+}

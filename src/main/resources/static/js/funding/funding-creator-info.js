@@ -100,4 +100,22 @@ $accountInput.keyup((e)=>{
         $('.test2').css('border', '1px solid rgb(244, 69, 68)');
         $accountCount.css('color', 'rgb(244, 69, 68)');
     }
+
+const $buttonWrap = $('.buttonWrap');
+const $accountInput = $('.accountInput');
+const $categoryInput = $('.categoryInput');
+
+
+    $buttonWrap.on('change', function(){
+        if($accountInput.length == 5 ){
+            $('.solidButton-disable').removeAttr("disabled");
+            $('.solidButton-disable').addClass("solidButton");
+        }else{
+            $('.solidButton-disable').attr("disabled", true);
+            $('.solidButton-disable').removeClass("solidButton");
+        }
+    })
+
 });
+// $(".클래스 이름").attr("class","변경 할 클래스명");
+// disabled 속성 해제하는 방법 $("#id").attr("disabled", false)

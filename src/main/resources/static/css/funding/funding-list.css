@@ -496,8 +496,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     position: relative;
     margin: 6px 0px 0px;
 }
-.percentByRed::after {
-    content: "";
+.percentBar {
     width: 1373%;
     display: block;
     height: 100%;

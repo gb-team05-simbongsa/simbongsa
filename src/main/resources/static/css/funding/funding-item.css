@@ -360,7 +360,7 @@
     line-height: 20px !important;
     font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
-.gpuBnE {
+.selectWithSigle {
     margin-top: 8px;
 }
 .inputWrapper {
@@ -823,7 +823,7 @@
 .solidButton span {
     color: rgb(158, 158, 158);
 }
-.icXYZs {
+.solidButton_Bt {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -929,7 +929,7 @@ input[type="checkbox"], input[type="radio"] {
     color: rgb(117, 117, 117);
     background: rgb(249, 249, 249);
 }
-.cgEYQP {
+.choiceButton {
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -948,7 +948,7 @@ input[type="checkbox"], input[type="radio"] {
     background-color: rgb(248, 100, 83);
     color: rgb(255, 255, 255);
 }
-.cgEYQP.pdc-btn-s {
+.choiceButton.pdc-btn-s {
     font-size: 11px;
     line-height: 18px;
 }
@@ -1427,4 +1427,124 @@ p:first-child {
 }
 .change svg {
     fill: rgb(255, 255, 255);
+}
+.selectItem {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.selectItem > li {
+    padding: 15px 13px 15px 20px;
+    border-radius: 4px;
+    border: 1px solid rgb(242, 242, 242);
+    margin: 10px 0px 0px;
+}
+
+.selectItem li > section {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.hZuCwf {
+    list-style: none;
+    padding: 0px;
+    margin: 8px 0px 0px;
+}
+.itemInfoWrap {
+    width: 100%;
+    margin: 0px 0px 4px;
+}
+.toggleItemListButton {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px;
+    color: rgb(109, 109, 109);
+    border: 0px;
+    outline: none;
+    background: transparent;
+}
+.cVwjbN {
+    font-weight: 400;
+    color: rgb(109, 109, 109);
+    margin: 0px;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.toggleItemListButton i {
+    font-size: 4px;
+    margin: 0px 0px 0px 7px;
+    transition: transform 0.4s ease 0s;
+    transform: rotate(0deg);
+}
+.stepperWrapper {
+    display: inline-flex;
+    height: 40px;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid rgb(228, 228, 228);
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+}
+.solidButton_Bt {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(61, 61, 61);
+}
+.removeButton_Bt {
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    border: 1px solid rgb(230, 230, 230);
+    margin-left: 9px;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    font-family: NotoSansKR, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+}
+.stepperWrapper button {
+    width: 40px;
+    height: 38px;
+    font-size: 10px;
+    border: 0px;
+    background: transparent;
+}
+.stepperWrapper button svg {
+    fill: rgb(0, 0, 0);
+}
+.stepperWrapper button:disabled svg {
+    fill: rgb(158, 158, 158);
+}
+.stepperWrapper input[type="number"] {
+    width: 22px;
+    height: 38px;
+    background: transparent;
+    text-align: center;
+    border: 0px;
+    padding: 0px;
+    outline: none;
+}
+
+input {
+    line-height: normal;
 }
