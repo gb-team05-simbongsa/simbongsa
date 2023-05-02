@@ -1,11 +1,13 @@
 package com.app.simbongsa.entity.board;
 
 import com.app.simbongsa.audit.Period;
+import com.app.simbongsa.entity.file.FileTest;
 import com.app.simbongsa.entity.user.User;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @Setter @ToString
@@ -21,4 +23,8 @@ public class FreeBoard extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
+//    @JoinColumn(name = "FILE_ID")
+    private List<FileTest> fileTests;
 }

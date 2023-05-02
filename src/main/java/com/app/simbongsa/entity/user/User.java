@@ -23,10 +23,10 @@ public class User {
     private Integer userAge;
     private String userInterest;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("일반")
+    @ColumnDefault("'일반'")
     private UserJoinType userStatus;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("동냥 3티어")
+    @ColumnDefault("'동냥 3티어'")
     private UserRankType userRank;
     @ColumnDefault("0")
     private int userRice;

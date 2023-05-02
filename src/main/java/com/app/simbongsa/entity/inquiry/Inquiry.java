@@ -20,7 +20,7 @@ public class Inquiry extends Period {
     @NotNull private String inquiryTitle;
     @NotNull private String inquiryContent;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("답변대기")
+    @ColumnDefault("'답변대기'")
     @NotNull private InquiryType inquiryStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
