@@ -1,34 +1,34 @@
 // 카테고리 옵션
-const $selectOption = $(".selectWithOp");
+const $selectOption1 = $(".selectWithOp");
 // 카테고리 박스
-const $inputSelectWrap = $(".selectWithWrapper");
+const $inputSelectWrap2 = $(".selectWithWrapper");
 // 카테고리 종류
-const $customOption = $(".customOption button");
+const $customOption3 = $(".customOption button");
 // 카테고리창 input
-const $innerInput = $('.categoryInput');
+const $innerInput4 = $('.categoryInput');
 
 
 // svg
-const $inputSvg = $('.slectedSingle svg');
+const $inputSvg5 = $('.slectedSingle svg');
 
 // 카테고리 창 선택 JS
-$inputSelectWrap.on('click', function(){
-    if($selectOption.css('display')=='block'){
-        $selectOption.css('display', 'none')
+$inputSelectWrap2.on('click', function(){
+    if($selectOption1.css('display')=='block'){
+        $selectOption1.css('display', 'none')
         $inputSvg.css('transform', 'rotate(180deg)')
     }else{
-        $selectOption.css('display', 'block');
+        $selectOption1.css('display', 'block');
         $inputSvg.css('transform', 'rotate(0deg)')
     }
     
 
     $customOption.each((i, e) => {
         var text = $customOption.eq(i).text();
-        $customOption.eq(i).on('click', function(){
-            $innerInput.val(text);
+        $customOption3.eq(i).on('click', function(){
+            $innerInput4.val(text);
             $inputSvg.css('transform', 'rotate(0deg)')
             console.log($(".selectWithOp"));
-            $selectOption.fadeOut(200);
+            $selectOption1.fadeOut(200);
         });
         
         
@@ -101,21 +101,7 @@ $accountInput.keyup((e)=>{
         $accountCount.css('color', 'rgb(244, 69, 68)');
     }
 
-const $buttonWrap = $('.buttonWrap');
-const $accountInput = $('.accountInput');
-const $categoryInput = $('.categoryInput');
 
 
-    $buttonWrap.on('change', function(){
-        if($accountInput.length == 5 ){
-            $('.solidButton-disable').removeAttr("disabled");
-            $('.solidButton-disable').addClass("solidButton");
-        }else{
-            $('.solidButton-disable').attr("disabled", true);
-            $('.solidButton-disable').removeClass("solidButton");
-        }
-    })
 
 });
-// $(".클래스 이름").attr("class","변경 할 클래스명");
-// disabled 속성 해제하는 방법 $("#id").attr("disabled", false)

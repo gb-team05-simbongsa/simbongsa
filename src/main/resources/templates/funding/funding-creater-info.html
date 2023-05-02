@@ -370,7 +370,7 @@
                                     <li>
                                         <div class="buttonWrap">
                                             <button class="lineButton pdc-btn-l" color="grayEditor200">취소</button>
-                                            <button class="solidButton-disable pdc-btn-l" disabled="" color="mainEditorP80">
+                                            <button class="solidButton-disable pdc-btn-l" disabled="disabled" color="mainEditorP80" onchange="onChange()">
                                                 <span>등록</span>
                                             </button>
                                         </div>
@@ -394,7 +394,27 @@
 </script>
 <script src="/static/js/funding/funding-creator-info.js"></script>
 <script>
-  
+const $buttonWrap = $('.buttonWrap');
+const $accountInput1 = $('.accountInput');
+const $categoryInput2 = $('.categoryInput');
+
+
+// console.log("들어와");
+
+     function onChange(){
+        if(true){
+            console.log(" 들어와")
+            $('.solidButton-disable').addClass("solidButton");
+            $('.solidButton-disable').attr('disabled', false);
+        }else{
+            console.log(" 들어와");
+            $('.solidButton-disable').removeClass("solidButton");
+            $('.solidButton-disable').attr('disabled', true);
+        }
+        console.log(" 들어와");
+     }
+
 </script>
 
 </html>
+
