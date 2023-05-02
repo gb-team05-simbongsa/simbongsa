@@ -1,5 +1,7 @@
 const file = document.querySelector('input[type=file]');
-let appendImage =
+const $ImgStyleList = $('.ImgStyleList');
+const $imgList = $('.imgList');
+let nextImage =
 `
 <li class="ImgStyleList">
 <div class="imgWithButtonBox"> <div class="imgBox">
@@ -16,17 +18,7 @@ let appendImage =
                     </svg>
                 </div>
             </i>변경
-            <input type="file" accept="image/*" data-index="1" multiple="" values="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/05388a1d-65de-4194-bd85-40c6ee9a9443.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=3b75e10a7ae02059bd05b1fc6bb9c58e,https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/f9dfada5-495f-4550-a2c5-8ebd8bfa13ca.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=213697091fbcd8643b46bb0f5eea56ed"></button>
-            <button type="button"
-            value="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/f9dfada5-495f-4550-a2c5-8ebd8bfa13ca.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=213697091fbcd8643b46bb0f5eea56ed"
-            class="imgDownStyle">
-            <div name="download" class="icon-svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M6.44325 7.02619L3.36676 4.05286C3.13236 3.93626 2.83937 3.96541 2.63427 4.05286C2.42917 4.28606 2.42917 4.60672 2.63427 4.81077L6.61905 8.6586C6.82415 8.86265 7.14644 8.86265 7.35154 8.6586L11.3656 4.78162C11.5707 4.57757 11.5707 4.25691 11.3656 4.05286C11.1605 3.84881 10.8089 3.84881 10.6038 4.05286L7.49804 7.02619L7.49804 1.1084C7.49804 0.816895 7.26364 0.583984 6.97064 0.583984C6.67765 0.583984 6.44325 0.816895 6.44325 1.1084L6.44325 7.02619ZM1.63829 9.91137C1.63829 9.61987 1.40389 9.38638 1.11089 9.38638C0.817895 9.38638 0.583496 9.64873 0.583496 9.94023V12.8923C0.583496 13.1838 0.817895 13.4167 1.11089 13.4167H12.8894C13.1824 13.4167 13.4168 13.1838 13.4168 12.8923V9.94023C13.4168 9.64873 13.1824 9.41582 12.8894 9.41582C12.5964 9.41582 12.362 9.64873 12.362 9.94023V12.3381H1.63829V9.91137Z">
-                    </path>
-                </svg>
-            </div>
-        </button>
+            <input type="file" id="changeFileInput" accept="image/*" data-index="1" multiple="" values="https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/05388a1d-65de-4194-bd85-40c6ee9a9443.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=3b75e10a7ae02059bd05b1fc6bb9c58e,https://tumblbug-pci.imgix.net/23132d1b1603bf67d41cae29a8bdeccf17b07d13/8002be7d5c77ab6e0b8020b1340198e8c37c611a/c28b4e86405484b4ad12bafd38ea47912c705ece/f9dfada5-495f-4550-a2c5-8ebd8bfa13ca.png?auto=format%2Ccompress&amp;fit=crop&amp;h=465&amp;lossless=true&amp;w=620&amp;s=213697091fbcd8643b46bb0f5eea56ed"></button>
         <button type="button" value="1" class="ImageStepper__StyledRemoveButton-p2ixf6-5 removeBt removeBt">
             <div name="delete" class="icon-svg">
                 <svg viewBox="0 0 48 48">
@@ -42,42 +34,75 @@ let appendImage =
 
 `
 
-
 function handleFiles(files) {
-    /* 썸네일 담을 div의 부모 */
-    const thumbnailList = document.getElementsByClassName("imgList");
     for (let i = 0; i < files.length; i++) {
         /* 파일절대경로얻기 */  
         const file = files[i];
         const reader = new FileReader();
+
         /* reader가 onload 할때 */
         reader.onload = function(event) {
             let result = event.target.result;
             /* 썸네일 담을 div에 절대경로 넣어주기 */
             $('.preview').attr('src', result);
-            /* 썸네일 담을 div와 그 자식의 span 추가해주기 */
-            /* div는 위에 선언해 준 부모 div에 prepend 해주고 */
-            /* span은 div에 appendChild 해주기 */
-            /* x버튼 선언 */
+            /* 삭제버튼 선언 */
             const closeButton = document.querySelector(".removeBt");
-            /* x버튼 누를 시 x버튼과 backgroundImage 지워주기 */
+            
+            /* 삭제버튼 누를 시 x버튼과 backgroundImage 지워주기 */
             closeButton.addEventListener('click', function (e) {
                 e.preventDefault();
                 console.log("클릭됨");
                 file.value = "";
                 $('.imgList').empty();
                 $('.preview').attr('src', '');
+                $('.uploadWrap').show();
             });
+
+            /* 사진이 한개 추가됐을 때 버튼 숨기기 */
+            if($('.ImgStyleList').length = 1) {
+                $('.uploadWrap').hide();
+            }
+
         };
+        /* result 속성(attribute)에 담기 */
+        reader.readAsDataURL(file);  
+
+        /* 파일썸네일 레이아웃 append */
+        $imgList.append(nextImage);  
+    }
+}
+
+function changeFiles(files) {
+    for (let i = 0; i < files.length; i++) {
+        /* 파일절대경로얻기 */  
+        const file = files[i];
+        const reader = new FileReader();
+
+        /* reader가 onload 할때 */
+        reader.onload = function(event) {
+            let result = event.target.result;
+            /* 썸네일 담을 div에 절대경로 넣어주기 */
+            $('.preview').attr('src', result);
+        };
+
         /* result 속성(attribute)에 담기 */
         reader.readAsDataURL(file);    
     }
 }
 
-/* 버튼을 감싸고있는 label객체 들고오기 */
+
+/* 사진버튼을 감싸고있는 label객체 들고오기 */
 const fileInput = document.getElementById("imageFile");
+
 
 /* 버튼을 감싸고있는 label객체 클릭하면 위에 function handleFiles 실행 */
 fileInput.addEventListener("change", function(event) {
     handleFiles(event.target.files);
+
+    /* 변경 파일 객체 들고오기 */
+    const changeFileInput = document.getElementById("changeFileInput");
+
+    changeFileInput.addEventListener("change", function(event) {
+        changeFiles(event.target.files);
+    });
 });
