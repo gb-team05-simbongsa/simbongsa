@@ -370,7 +370,7 @@
                                     <li>
                                         <div class="buttonWrap">
                                             <button class="lineButton pdc-btn-l" color="grayEditor200">취소</button>
-                                            <button class="solidButton-disable pdc-btn-l" disabled="disabled" color="mainEditorP80" onchange="onChange()">
+                                            <button class="solidButton-disable pdc-btn-l" disabled="disabled" color="mainEditorP80">
                                                 <span>등록</span>
                                             </button>
                                         </div>
@@ -398,10 +398,46 @@ const $buttonWrap = $('.buttonWrap');
 const $accountInput1 = $('.accountInput');
 const $categoryInput2 = $('.categoryInput');
 
+const $infoInputs = $('.accountWrap input[type=text]');
+let infoCheck;
+let infoCheckAll = [true, false, true, false];
 
-// console.log("들어와");
+$infoInputs.on('blur', function () {
+    let i = $infoInputs.index($(this));
+    let value = $(this).val();
 
-     function onChange(){
+    console.log("i: " + i);
+
+    switch (i) {
+        case 1:
+            infoCheck =  $(this).val() != "은행을 선택해주세요";
+            console.log("은행: " + $(this).val());
+            infoCheckAll[i] = true;
+            break;
+        case 2:
+            break;
+        case 3:
+            console.log("length: " + $(this).val().length);
+            infoCheck = $(this).val().length >= 11;
+            break;
+        default:
+            break;
+    }
+
+    infoCheckAll[i] = infoCheck;
+
+    console.log(infoCheckAll);
+    if ((infoCheckAll[1] == true) && (infoCheckAll[3] == true)) {
+        $('.solidButton-disable').addClass("solidButton");
+        $('.solidButton-disable').prop('disabled', false);
+    } else {
+        $('.solidButton-disable').removeClass("solidButton");
+        $('.solidButton-disable').prop('disabled', true);
+    }
+});
+
+
+     /* function onChange(){
         if(true){
             console.log(" 들어와")
             $('.solidButton-disable').addClass("solidButton");
@@ -412,7 +448,7 @@ const $categoryInput2 = $('.categoryInput');
             $('.solidButton-disable').attr('disabled', true);
         }
         console.log(" 들어와");
-     }
+     } */
 
 </script>
 
