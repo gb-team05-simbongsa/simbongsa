@@ -1,6 +1,5 @@
 package com.app.simbongsa.entity.funding;
 
-import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
