@@ -112,7 +112,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">80%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -149,7 +149,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">10%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -186,7 +186,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">15%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -260,7 +260,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">20%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -297,7 +297,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">30%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -334,7 +334,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">35%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -371,7 +371,7 @@
                                             </dl>
                                             <div class="projectCard2 projectCard1">
                                                 <div>
-                                                    <span class="fundingState">1373%</span>
+                                                    <span class="fundingState">75%</span>
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>68,676,002</em>원</span>
                                                 </div>
@@ -406,32 +406,41 @@
     });
 </script>
 <script>
-    const $fundingState1= $('.fundingState').text();
+    const $fundingState1 = parseInt($('.fundingState').text());
     const $fundingState2= $('.fundingState');
 
-   
+   console.log($fundingState1);
+//    console.log($fundingState2);
     
     $(document).ready(function(){
         
-        $fundingState2.each((i,e)=>{
+                //    $('.percentBar').css('width', $fundingState1 + '%');
+              
+                // $('.percentBar').width('75');
+                // console.log($('.percentBar').width());
+                
+        // $fundingState2.each((i,e)=>{
+
+            var i = $fundingState2.index();
+             $('.percentBar').eq(i).width($fundingState1);
+             console.log($('.percentBar').eq(i).width($fundingState1));
             
-            
-            $('inputHidden').text($fundingState1);
-            $('.inputHidden').eq(i).change(function(){
-                let $percent = $('inputHidden').text($fundingState1.eq(i));
-                console.log($percent);
-                  $('.percentBar').eq(i).css('width', $percent);
-            })
+            // $('.inputHidden').text($fundingState1);
+            // $('.inputHidden').eq(i).change(function(){
+            //     // let $percent = $('.inputHidden').text($fundingState1.eq(i));
+            //     // console.log($percent);
+                  
+            // });
                         
-        })
-        })
+        });
+    // });
 
     $(document).ready(function() {
         console.log($fundingState2.length);
         for(var i=0; i < $fundingState2.length; i++){
         
             console.log("들어오나");
-            console.log($fundingState1.eq(i));
+             console.log($fundingState1.eq(i));
         }
     });
     
