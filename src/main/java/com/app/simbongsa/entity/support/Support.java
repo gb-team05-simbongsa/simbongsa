@@ -7,7 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString
+@Getter @ToString
 @Table(name = "TBL_SUPPORT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Support {
