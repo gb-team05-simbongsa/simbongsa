@@ -26,7 +26,7 @@ public class User {
     @ColumnDefault("'일반'")
     private UserJoinType userStatus;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("'동냥 3티어'")
+    @ColumnDefault("'동냥 1티어'")
     private UserRankType userRank;
     @ColumnDefault("0")
     private int userRice;
