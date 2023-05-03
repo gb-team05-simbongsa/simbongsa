@@ -1364,6 +1364,7 @@ b, strong {
     .main-content-style-container .sbs{
         width: 1160px;
         max-width: 1160px;
+        padding-bottom: 40px;
     }
 
     .container-component {

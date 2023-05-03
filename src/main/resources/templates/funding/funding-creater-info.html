@@ -402,6 +402,8 @@ const $infoInputs = $('.accountWrap input[type=text]');
 let infoCheck;
 let infoCheckAll = [true, false, true, false];
 
+console.log($infoInputs);
+
 $infoInputs.on('blur', function () {
     let i = $infoInputs.index($(this));
     let value = $(this).val();
