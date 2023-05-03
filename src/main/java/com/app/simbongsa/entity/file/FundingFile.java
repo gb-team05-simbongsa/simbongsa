@@ -12,7 +12,18 @@ import javax.persistence.*;
 @Getter @ToString
 @Table(name = "TBL_FUNDING_FILE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FundingFile extends FileCollect {
+public class FundingFile {
+    @Id @GeneratedValue
+    @EqualsAndHashCode.Include
+    private Long id;
+    private String fileName;
+    private String fileUuid;
+    private String filePath;
+
+    //    대표 이미지 검사
+    @Enumerated(EnumType.STRING)
+    @NotNull private FileRepresentationalType fileRepresentationalType;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
