@@ -10,7 +10,7 @@
 //import javax.persistence.Table;
 //
 //@Entity
-//@Getter @Setter @ToString
+//@Getter @ToString
 //@Table(name = "TBL_")
 //public class Need {
 //    @Id @GeneratedValue

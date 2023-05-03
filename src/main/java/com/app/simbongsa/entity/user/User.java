@@ -9,7 +9,7 @@ import org.hibernate.annotations.ColumnDefault;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString
+@Getter @ToString
 @Table(name = "TBL_USER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
