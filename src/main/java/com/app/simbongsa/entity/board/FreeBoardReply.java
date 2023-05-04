@@ -8,7 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = {"user", "freeBoard"})
 @Table(name = "TBL_FREE_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeBoardReply extends Period {

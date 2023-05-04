@@ -17,8 +17,4 @@ public class Board extends Period {
     private Long id;
     @NotNull private String BoardTitle;
     @NotNull private String BoardContent;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "USER_ID")
-//    private User user;
 }

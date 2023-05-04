@@ -6,14 +6,16 @@ import com.app.simbongsa.type.RequestType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "user")
 @Table(name = "TBL_FUNDING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
 public class Funding {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -40,8 +42,4 @@ public class Funding {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
-////    @JoinColumn(name = "FILE_ID")
-//    private List<File> files;
 }
