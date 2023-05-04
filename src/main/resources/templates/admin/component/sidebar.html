@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/static/css/admin/default.css" />
-  <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
+  <link rel="stylesheet" href="/css/admin/default.css" />
+  <link rel="stylesheet" href="/css/admin/sidebar.css" />
   <title></title>
 </head>
 
 <body>
-  <section class="sidebar">
+  <section th:fragment="adminSidebar" class="sidebar">
     <div class="sidebar__wrapper">
       <a class="sidebar__wrapper__slider">
         <svg xmlns="http://www.w3.org/2000/svg" id="Icons" viewBox="0 0 24 24">
@@ -284,6 +284,6 @@
     </div>
   </section>
 </body>
-<script src="/static/js/admin/app.js"></script>
-<script src="/static/js/admin/events.js"></script>
+<script src="/js/admin/app.js"></script>
+<script src="/js/admin/events.js"></script>
 </html>
