@@ -27,3 +27,6 @@ spring:
     ansi:
       enabled: always
 
+  summernote:
+    image:
+      upload-dir: C:\uploads
