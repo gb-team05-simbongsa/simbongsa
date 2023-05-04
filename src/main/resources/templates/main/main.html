@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>심봉사</title>
-    <link rel="stylesheet" href="../../static/css/main/main.css" />
-    <link rel="stylesheet" href="../../static/css/font/font.css">
+    <link rel="stylesheet" href="/static/css/main/main.css" />
+    <link rel="stylesheet" href="/static/css/font/font.css">
+    <link rel="stylesheet" href="/static/css/main/header.css">
+    <link rel="stylesheet" href="/static/css/main/footer.css">
 </head>
 <body>
     <div class="full-screen">
@@ -27,7 +29,7 @@
                 </svg>
             </div>
         </div>
-        <header id="_header"></header>
+        <header th:insert="~{main/header.html :: mainHeader}"></header>
         <div class="container">
             <div class="home-wrapper">
                 <div class="main-top-section">
@@ -1344,16 +1346,17 @@
                 </div>
                 <div class="main-bottom-banner"></div>
             </div>
-            <footer id="_footer"></footer>
+            <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
         </div>
         <div class="common-layer-tab"></div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/main/banner.js"></script>
-<script src="../../static/js/main/main.js"></script>
+<script src="/static/js/main/banner.js"></script>
+<script src="/static/js/main/main.js"></script>
+<script src="/static/js/main/header.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
+/*    $(document).ready(function () {
         $('#_header').load('../main/header.html');
         $('#_footer').load('../main/footer.html');
     });
@@ -1361,6 +1364,6 @@
     $(".image-wrapper a").each((i,e) => {
         console.log($(e));
         $(e).eq(i).css('background-image', 'url("https://tumblbug-upi.imgix.net/default_avatar.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=250&mask=ellipse&w=250&s=80a07af0ffbe653137dd423ed1d5651c")');
-    } )
+    } )*/
 </script>
 </html>
