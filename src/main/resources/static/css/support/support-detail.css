@@ -58,7 +58,6 @@ img {
 
 #container {
     width: 100%;
-    position: relative;
     overflow: hidden;
     margin: 0;
 }
@@ -73,14 +72,15 @@ address, em {
     margin: 0 auto 90px;
     border-bottom: 1px solid #e5e5e5;
     background: url(https://ssl.pstatic.net/happyimg2/img/mainhome/bg_crowd.gif) repeat-y;
+    display: flex;
 }
 
-.collect-wrap::after {
+/* .collect-wrap::after {
     content: '';
     display: table;
     width: 100%;
     clear: both;
-}
+} */
 
 .collect-wrap .collect-content{
     float: left;
@@ -881,11 +881,10 @@ address, em {
 
 /* siderbar */
 .collect-wrap .collect-side{
-    position: fixed;
     width: 282px;
     font-size: 15px;
-    right: 402px;
-    bottom: 446px;
+/*     right: 402px;
+    bottom: 446px; */
 }
 
 .collect-side .section-status {
