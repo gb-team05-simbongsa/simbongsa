@@ -1,4 +1,4 @@
-package com.app.simbongsa.repository.file;
+package com.app.simbongsa.repository.funding;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
