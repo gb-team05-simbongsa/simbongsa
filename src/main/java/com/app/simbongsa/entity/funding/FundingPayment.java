@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "funding")
 @Table(name = "TBL_FUNDING_PAYMENT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FundingPayment {

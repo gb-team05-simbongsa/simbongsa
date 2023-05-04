@@ -1,15 +1,13 @@
 package com.app.simbongsa.entity.inquiry;
 
-import com.app.simbongsa.entity.funding.Funding;
 import com.sun.istack.NotNull;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "inquiry")
 @Table(name = "TBL_ANSWER")
 public class Answer {
     @Id @GeneratedValue

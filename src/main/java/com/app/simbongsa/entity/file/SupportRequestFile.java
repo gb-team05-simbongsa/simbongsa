@@ -8,21 +8,11 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(callSuper = true, exclude = "supportRequest")
 @Table(name = "TBL_SUPPORT_REQUEST_FILE")
+@PrimaryKeyJoinColumn(name = "ID")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SupportRequestFile {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String fileName;
-    private String fileUuid;
-    private String filePath;
-
-    //    대표 이미지 검사
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private FileRepresentationalType fileRepresentationalType;
+public class SupportRequestFile extends File {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SUPPORT_REQUEST_ID")

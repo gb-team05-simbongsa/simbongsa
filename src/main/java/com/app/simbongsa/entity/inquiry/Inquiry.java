@@ -6,13 +6,15 @@ import com.app.simbongsa.type.InquiryType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "user")
 @Table(name = "TBL_INQUIRY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
 public class Inquiry extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include

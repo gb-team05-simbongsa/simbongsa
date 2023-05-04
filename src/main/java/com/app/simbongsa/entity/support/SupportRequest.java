@@ -6,13 +6,15 @@ import com.app.simbongsa.type.RequestType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "user")
 @Table(name = "TBL_SUPPORT_REQUEST")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
 public class SupportRequest extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
@@ -26,8 +28,4 @@ public class SupportRequest extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "supportRequest")
-////    @JoinColumn(name = "FILE_ID")
-//    private List<File> files;
 }
