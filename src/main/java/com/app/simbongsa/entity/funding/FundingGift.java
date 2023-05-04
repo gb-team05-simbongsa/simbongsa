@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "funding")
 @Table(name = "TBL_FUNDING_GIFT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FundingGift {

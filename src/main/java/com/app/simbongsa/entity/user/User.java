@@ -5,6 +5,7 @@ import com.app.simbongsa.type.UserRankType;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Getter @ToString
 @Table(name = "TBL_USER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
 public class User {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
