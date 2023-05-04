@@ -18,18 +18,18 @@ function showMyPage(result) {
         html = `
         <div class="my-user-wrapper">
             <div class="user-menu-list">
-                <div class="menu-item">프로필</div>
-                <div class="menu-item">응원권</div>
+                <div class="menu-item">마이페이지</div>
+                <div class="menu-item">내 공양미</div>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">후원현황</div>
-                <div class="menu-item">관심 프로젝트</div>
-                <div class="menu-item">팔로우</div>
+                <div class="menu-item">봉사내역</div>
+                <div class="menu-item">펀딩내역</div>
+                <div class="menu-item">후원내역</div>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">알림</div>
-                <div class="menu-item">메시지</div>
+                <div class="menu-item">공양미충전</div>
+                <div class="menu-item">공양미환전</div>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">내가 만든 프로젝트</div>
-                <div class="menu-item">설정</div>
+                <div class="menu-item">내가 만든 펀딩</div>
+                <div class="menu-item">회원정보수정</div>
                 <div class="menu-item-divider"></div>
                 <div class="menu-item">로그아웃</div>
             </div>
