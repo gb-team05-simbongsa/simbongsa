@@ -1,4 +1,4 @@
-package com.app.simbongsa.repository.file;
+package com.app.simbongsa.repository.volunteer;
 
 public interface VolunteerWorkFileQueryDsl {
 }
