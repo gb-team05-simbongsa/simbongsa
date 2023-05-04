@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>본인 인증</title>
-    <link rel="stylesheet" href="../../static/css/font/font.css">
-    <link rel="stylesheet" href="../../static/css/main/header.css">
-    <link rel="stylesheet" href="../../static/css/mypage/withdraw-login.css">
-    <link rel="stylesheet" href="../../static/css/main/footer.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/mypage/withdraw-login.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 <body>
     <div class="full-screen">
 
         <!-- 헤더 임시 -->
-        <header id="_header"></header>
+        <header th:insert="~{main/header.html :: mainHeader}"></header>
 
         <div class="withdraw-login-container">
             <div class="withdraw-header-wrap">
@@ -67,16 +67,11 @@
 
 
         <!-- 푸터 임시 -->
-        <footer id="_footer"></footer>
+        <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
 
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#_header').load('../main/header.html');
-        $('#_footer').load('../main/footer.html');
-    });
-</script>
-<script src="../../static/js/mypage/withdraw-login.js"></script>
+<script src="/js/main/header.js"></script>
+<script src="/js/mypage/withdraw-login.js"></script>
 </html>
