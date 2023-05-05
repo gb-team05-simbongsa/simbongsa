@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,15 +10,16 @@
     <link
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/static/css/admin/default.css" />
-    <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
-    <link rel="stylesheet" href="/static/css/admin/content.css" />
-    <link rel="stylesheet" href="/static/css/admin/status.css" />
-    <link rel="stylesheet" href="/static/css/admin/storage-modal.css" />
-    <link rel="stylesheet" href="/static/css/admin/paging.css">
+    <link rel="stylesheet" href="/css/admin/default.css" />
+    <link rel="stylesheet" href="/css/admin/sidebar.css" />
+    <link rel="stylesheet" href="/css/admin/content.css" />
+    <link rel="stylesheet" href="/css/admin/status.css" />
+    <link rel="stylesheet" href="/css/admin/storage-modal.css" />
+    <link rel="stylesheet" href="/css/admin/paging.css">
   </head>
   <body>
     <section class="main">
+      <section th:insert="~{admin/component/sidebar.html :: adminSidebar}"></section>
       <!-- content.css -->
       <section class="content">
         <div class="content__header">
@@ -346,8 +347,8 @@
     </section>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="/static/js/admin/app.js"></script>
-  <script src="/static/js/admin/events.js"></script>
+  <script src="/js/admin/app.js"></script>
+  <script src="/js/admin/events.js"></script>
   <script>
     /* 추후 타임리프로 대체할 예정 */
     // $modalStage.load('/templates/admin/modals/storage-modal.html');
