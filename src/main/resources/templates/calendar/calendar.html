@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/calendar/common.css">
-    <link rel="stylesheet" href="/static/css/calendar/global.css">
-    <link rel="stylesheet" href="/static/css/calendar/calendar-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/calendar/common.css">
+    <link rel="stylesheet" href="/css/calendar/global.css">
+    <link rel="stylesheet" href="/css/calendar/calendar-response.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link href="//db.onlinewebfonts.com/c/1c45e28f8e86cc89876f003b953cc3e9?family=SF+Pro+Text" rel="stylesheet" type="text/css"/>
     <title>심봉사 캘린더</title>
 </head>
@@ -20,8 +22,9 @@
    
 </style>
 <body class="sub" id="body">
-    <header id="_header"></header>
-    <div id="wrap">
+<header th:insert="~{main/header.html :: mainHeader}"></header>
+
+<div id="wrap">
         <section id="sub-calendar">
         <div id="content">
             <div class="sub-tit">
@@ -50,50 +53,51 @@
 
 
             <div class="domecontact">
-                <h5><img class="speakerImg" src="/static/image/calendar/loud-speaker.png">국내자원봉사 문의</h5>
+                <h5><img class="speakerImg" src="/image/calendar/loud-speaker.png">국내자원봉사 문의</h5>
                 <ul>
                     <li>
-                        <strong><img class="calendarImg" src="/static/image/calendar/call.png">전화(교회)</strong>
+                        <strong><img class="calendarImg" src="/image/calendar/call.png">전화(교회)</strong>
                         <p>02-3407-1991 </p>
                     </li>
                     <li>
-                        <strong><img class="calendarImg" src="/static/image/calendar/mail.png">이메일</strong>
+                        <strong><img class="calendarImg" src="/image/calendar/mail.png">이메일</strong>
                         <p><a href="mailto:ig@habitat.or.kr">ig@habitat.or.kr</a></p>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <strong><img class="calendarImg" src="/static/image/calendar/call.png">전화(기업)</strong>
+                        <strong><img class="calendarImg" src="/image/calendar/call.png">전화(기업)</strong>
                         <p>02-3407-1984</p>
                     </li>
                     <li>
-                        <strong><img class="calendarImg" src="/static/image/calendar/mail.png">이메일</strong>
+                        <strong><img class="calendarImg" src="/image/calendar/mail.png">이메일</strong>
                         <p><a href="mailto:csr@habitat.or.kr">csr@habitat.or.kr</a></p>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <strong><img class="calendarImg" src="/static/image/calendar/call.png">전화(기타)</strong>
+                        <strong><img class="calendarImg" src="/image/calendar/call.png">전화(기타)</strong>
                         <p>02-3407-1992, 1934</p>
                     </li>
                     <li>
-                        <strong><img class="calendarImg" src="/static/image/calendar/mail.png">이메일</strong>
+                        <strong><img class="calendarImg" src="/image/calendar/mail.png">이메일</strong>
                         <p><a href="mailto:volunteer@habitat.or.kr">volunteer@habitat.or.kr</a></p>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
-    <footer id="_footer"></footer>
+    <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#_header").load("../main/header.html");
-        $("#_footer").load("../main/footer.html");
-    });
-</script>
-<script src="/static/js/calendar/calendar.js"></script>
-
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function(){-->
+<!--        $("#_header").load("../main/header.html");-->
+<!--        $("#_footer").load("../main/footer.html");-->
+<!--    });-->
+<!--</script>-->
+<script src="/js/calendar/calendar.js"></script>
+<script src="/js/header/header.js"></script>
 </html>
