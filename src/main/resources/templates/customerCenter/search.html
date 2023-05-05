@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 | 텀블벅 - 크리에이터를 위한 크라우드펀딩</title>
-    <link rel="stylesheet" href="/static/css/main/header.css">
-    <link rel="stylesheet" href="/static/css/customerCenter/notice.css">
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/customerCenter/search.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/customerCenter/notice.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/customerCenter/search.css">
 </head>
 <body>
     <!-- 헤더  -->
     <div>
-        <header></header>
+        <header th:insert="~{main/header.html :: mainHeader}"></header>
     
     
     <!-- 내용 -->
@@ -123,20 +124,8 @@
             </div>
         
         <!-- footer -->
-        <footer></footer>
+        <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
     </div>
 </body>
-<script>
-    /* 외부 html 파일 불러오기 */
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    
-    fetch('/templates/main/header.html')
-    .then(res => res.text())
-    .then(data => header.innerHTML = data);
-    
-    fetch('/templates/main/footer.html')
-    .then(res => res.text())
-    .then(data => footer.innerHTML = data);
-    </script>    
+<script src="/js/main/header.js"></script>
 </html>

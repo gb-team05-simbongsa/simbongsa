@@ -2,6 +2,9 @@ const $open = $('#support-open');
     const $layout = $('.support-rice-layout');
     const $submit = $('.support-pay-layout');
     const $close = $('.support-rice-close-btn-layout');
+    const $input = $('rice-payment-input');
+    const $errorMessage = $('.error-message');
+    const numberRegex = /^[0-9]+$/;
 
     $(document).ready(function(){
     
@@ -16,9 +19,9 @@ const $open = $('#support-open');
     })
     
     // 전송 
-    $submit.click(function(){
-        document.$submit();
-    });
+    // $submit.click(function(){
+    //     document.$submit();
+    // });
 
   });
 
@@ -38,13 +41,28 @@ const $open = $('#support-open');
 //         }
 //     });
 
-//     // 계좌번호와 환전할 수 있는 공양미는 숫자만 입력받게 정규식 테스트
-//     for(let i = 1; i < $errorMessage.length; i++) {
-//         if(!numberRegex.test($input.eq(i).val()) && $input.eq(i).val()) {
-//             $errorMessage.eq(i).text('숫자만 입력하세요.');
-//             $errorMessage.eq(i).show();
-//         }
-//     }
+  $('.btn-rice').on('click', () => {
+      // input값이 비어있으면 에러 메시지 출력
+      $input.each((i, e) => {
+          if(!$(e).val()) {
+            console.log(i);
+            console.log(e);
+              $errorMessage.eq(i).text('비워둘 수 없습니다.');
+              $errorMessage.eq(i).show();
+          } else {
+              $errorMessage.eq(i).hide();
+          }
+      });
+
+    // 계좌번호와 환전할 수 있는 공양미는 숫자만 입력받게 정규식 테스트
+        for(let i = 1; i < $errorMessage.length; i++) {
+            if(!numberRegex.test($input.eq(i).val()) && $input.eq(i).val()) {
+                $errorMessage.eq(i).text('숫자만 입력하세요.');
+                $errorMessage.eq(i).show();
+            }
+        }
+
+    });
 
 //     // 에러 메시지가 떠있는게 있으면 빠져나가기
 //     for(let i = 0; i < $errorMessage.length; i++) {

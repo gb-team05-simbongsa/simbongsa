@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/customerCenter/notice-detail.css">
-    <link rel="stylesheet" href="../../static/css/customerCenter/notice.css">
-    <link rel="stylesheet" href="/static/css/customerCenter/notice-detail-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/customerCenter/notice-detail.css">
+    <link rel="stylesheet" href="/css/customerCenter/notice.css">
+    <link rel="stylesheet" href="/css/customerCenter/notice-detail-response.css">
     
 </head>
 <body>
     <div>
         <!-- 헤더  -->
-        <header></header>
+        <header th:insert="~{main/header.html :: mainHeader}"></header>
         
         <div id="notice" class="notice-container">
             <div class="notice-wrap wid common">
@@ -65,9 +66,9 @@
         <div class="notice-detail-btn-wrap">
             <button class="notice-detail-btn">목록으로 돌아가기</button>
         </div>
-    <!-- footer -->
 
-        <footer></footer>
+    <!-- footer -->
+        <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
     </div>
     
     <div  class="inquiry-btn-layout">
@@ -76,18 +77,5 @@
         </button>
     </div>
 </body>
-<script>
-    /* 외부 html 파일 불러오기 */
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    
-    
-    fetch('/templates/main/header.html')
-    .then(res => res.text())
-    .then(data => header.innerHTML = data);
-    
-    fetch('/templates/main/footer.html')
-    .then(res => res.text())
-    .then(data => footer.innerHTML = data);
-    </script>    
+<script src="/js/main/header.js"></script>
 </html>
