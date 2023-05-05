@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>후원요청하기</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/support/support-write.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/support/support-write.css">
      <!-- 웹에디터 API -->
      <link
      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
@@ -15,8 +16,9 @@
 <body>
 
      <!-- 헤더 임시 -->
-     <header id="_header"></header>
-    
+     <header th:insert="~{main/header.html :: mainHeader}"></header>
+
+
      <div class="faq-list-all-outer-div">
         <div class="faq-list-all-inner-div">
             <div class="faq-list-side-bar">
@@ -52,11 +54,11 @@
                         <!-- 내용 -->
                         <div class="qna-content-input-layout">
                             <div class="qna-original-input-layout">
-                                <div class="qna-write-content-title-div">
-                                    <label for="inquiry-contents">
-                                        내용<span class="required-red-span">*</span>
-                                    </label>
-                                </div>
+<!--                                <div class="qna-write-content-title-div">-->
+<!--                                    <label for="inquiry-contents">-->
+<!--                                        내용<span class="required-red-span">*</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
                                 <div class="qna-write-content-input">
                                     <div class="write-content-contents-outter-div">
                                         <!-- <div class="write-content-contents-inner-div">
@@ -135,15 +137,11 @@
     </div>
 
      <!-- 푸터 임시 -->
-     <footer id="_footer"></footer>
+     <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#_header').load('../main/header.html');
-        $('#_footer').load('../main/footer.html');
-    });
-</script>
+<script src="/js/main/header.js"></script>
 <!-- 웹에디터 API -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>

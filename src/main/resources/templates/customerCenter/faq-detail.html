@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>faq 상세보기</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="../../static/css/main/footer.css">
-    <link rel="stylesheet" href="/static/css/customerCenter/faq-detail.css">
-    <link rel="stylesheet" href="/static/css/customerCenter/faq-detail-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/customerCenter/faq-detail.css">
+    <link rel="stylesheet" href="/css/customerCenter/faq-detail-response.css">
 
 </head>
 <body>
 
     <!-- 헤더  -->
-    <header></header>
+    <header th:insert="~{main/header.html :: mainHeader}"></header>
 
         <main class="faq-detail-main">
             <div class="faq-detail-head"></div>
@@ -213,14 +214,5 @@
             </footer>
         </div>
 </body>
-<script>
-    /* 외부 html 파일 불러오기 */
-    const header = document.querySelector('header');
-    
-    
-    fetch('/templates/main/header.html')
-    .then(res => res.text())
-    .then(data => header.innerHTML = data);
-    
-</script>    
+<script src="/js/main/header.js"></script>
 </html>

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>봉사 상세보기</title>
-    <link rel="stylesheet" href="../../static/css/font/font.css">
-    <link rel="stylesheet" href="../../static/css/main/header.css">
-    <link rel="stylesheet" href="/static/css/volunteer-work/work-detail-response.css">
-    <link rel="stylesheet" href="/static/css/volunteer-work/work-detail.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/volunteer-work/work-detail-response.css">
+    <link rel="stylesheet" href="/css/volunteer-work/work-detail.css">
 
 </head>
 <body>
     
      <!-- 헤더 임시 -->
-     <header id="_header"></header>
+     <header th:insert="~{main/header.html :: mainHeader}"></header>
 
-        <!-- contents -->
+
+     <!-- contents -->
             <div>
                 <div class="content-container">
                     <div class="content-layout">
@@ -452,14 +454,12 @@
             </div>
                 
             <!-- 푸터 임시 -->
-                <footer id="_footer"></footer>
-            </body>
-            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $('#_header').load('../main/header.html');
-                    $('#_footer').load('../main/footer.html');
-                });
-            </script>
+     <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/main/header.js"></script>
+
+
             
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +13,10 @@
 <body>
 
      <!-- 헤더 임시 -->
-     <header id="_header"></header>
-    
-    <div class="all_wrap">
+     <header th:insert="~{main/header.html :: mainHeader}"></header>
+
+
+     <div class="all_wrap">
         <div class="all_wrap_div">
             <div class="editer">
                 <div class="editer_div">
@@ -36,7 +38,7 @@
                                                 </svg>
                                             </div>
                                         </span>
-                                        <!-- display: none 윗 화살표 
+                                         display: none 윗 화살표
                                         <span class="achievement_third_span">
                                             <div class="arrow">
                                                 <svg viewBox="0 0 48 48" class="arrow_svg">
@@ -888,13 +890,10 @@
     </div>
 
      <!-- 푸터 임시 -->
-     <footer id="_footer"></footer>
+     <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#_header').load('../main/header.html');
-        $('#_footer').load('../main/footer.html');
-    });
-</script>
+<script src="/js/main/header.js"></script>
+
 </html>
