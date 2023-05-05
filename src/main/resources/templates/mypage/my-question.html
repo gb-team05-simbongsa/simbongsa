@@ -18,80 +18,7 @@
         <!-- 헤더 임시 -->
         <header th:insert="~{main/header.html :: mainHeader}"></header>
 
-
-        <div class="mypage-header-wrap">
-            <div class="mypage-header-container">
-                <div class="mypage-header">
-                    <div class="mypage-header-left">
-                        <div class="my-rank">
-                            <img src="https://i.namu.wiki/i/67tjhRLuCX7MYeLY5p94GgXYHP7v1dMQ5M0QP8emeuw3IvlZlQNZBgeKz5qj8P_3ll2AF97RWC_isDEnrT4kgeBMW1GU39jR-Wn92gD-XSt5J1HbKiRxpRt8ZRaq8dvGHUMTt_clauEc9TOx_JyIaQ.webp" alt="">
-                        </div>
-                        <div class="mypage-info">
-                            <div class="info-name">정현진</div>
-                            <div class="info-rice">
-                                <p>내 공양미 : 300석</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rice-charge-wrap">
-                        <button class="rice-charge">
-                            <div class="rice-charge-text">공양미 충전</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="header-menu-wrap">
-                <div class="header-menu">
-                    <div class="header-menu-inner">
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">후원 요청 목록</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">작성한 후기</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a-select">내 문의사항</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">봉사활동 내역</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">후원내역</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">펀딩내역</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">공양미 내역</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">공양미 환전요청</a>
-                            </div>
-                        </span>
-                        <span class="header-menu-element">
-                            <div class="header-menu-div">
-                                <a href="" class="header-menu-a">회원정보 수정</a>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div th:insert="~{mypage/mypage-header.html :: mypageHeader}"></div>
 
         <div class="content-wrap">
             <div class="support-request-wrap">
@@ -316,4 +243,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/my-question.js"></script>
+<script src="/js/mypage/mypage-header.js"></script>
 </html>
