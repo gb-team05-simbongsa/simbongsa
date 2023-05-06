@@ -22,8 +22,6 @@ public class RicePayment extends Period {
     @EqualsAndHashCode.Include
     private Long id;
     @NotNull private int ricePaymentUsed;
-    @CreatedDate @Column(updatable = false)
-    @NotNull private LocalDateTime ricePaymentTime;
     @Enumerated(EnumType.STRING)
     @ColumnDefault("'상태미지정'")
     @NotNull private RicePaymentType ricePaymentStatus;
@@ -33,4 +31,13 @@ public class RicePayment extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+//    더미 데이터용 생성자
+    public RicePayment(int ricePaymentUsed, RicePaymentType ricePaymentStatus, String ricePaymentExchangeBank, String ricePaymentExchangeAccount, User user) {
+        this.ricePaymentUsed = ricePaymentUsed;
+        this.ricePaymentStatus = ricePaymentStatus;
+        this.ricePaymentExchangeBank = ricePaymentExchangeBank;
+        this.ricePaymentExchangeAccount = ricePaymentExchangeAccount;
+        this.user = user;
+    }
 }

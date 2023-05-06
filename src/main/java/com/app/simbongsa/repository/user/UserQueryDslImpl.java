@@ -1,12 +1,12 @@
 package com.app.simbongsa.repository.user;
 
-import com.app.simbongsa.entity.user.QUser;
 import com.app.simbongsa.entity.user.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
 
@@ -34,6 +34,8 @@ public class UserQueryDslImpl implements UserQueryDsl {
     }
 
     @Override
+//    @Modifying(clearAutomatically = true)
+//    ??
     public void updateUser(Long id, String userName, String userAddress, String userInterest, int userVolunteerTime) {
         query.update(user)
                 .set(user.userName, userName)

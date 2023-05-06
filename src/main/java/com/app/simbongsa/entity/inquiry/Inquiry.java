@@ -28,4 +28,11 @@ public class Inquiry extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+//    단위 테스트용 생성자 생성
+    public Inquiry(String inquiryTitle, String inquiryContent, User user) {
+        this.inquiryTitle = inquiryTitle;
+        this.inquiryContent = inquiryContent;
+        this.user = user;
+    }
 }
