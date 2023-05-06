@@ -1,4 +1,4 @@
-const $open = $('#support-open');
+const $open = $('.donate');
     const $layout = $('.support-rice-layout');
     const $submit = $('.support-pay-layout');
     const $close = $('.support-rice-close-btn-layout');

@@ -7,9 +7,13 @@
     <title>후원 상세보기</title>
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/support/support-detail.css">
+    <link rel="stylesheet" href="/css/support/support-rice-modal.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 <body class="full">
 <header th:insert="~{main/header.html :: mainHeader}"></header>
+<div th:insert="~{support/support-rice-modal.html :: supportRiceLayout}"></div>
 
 <div id="wrap">
         <div id="container">
@@ -428,4 +432,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="../../static/js/support/supportDetail.js"></script>
 <script src="/js/main/header.js"></script>
+<script src="/js/support/support-rice-modal.js"></script>
 </html>

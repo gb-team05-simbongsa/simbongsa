@@ -553,6 +553,7 @@ margin-top: 7px;
 .phone-number-input-layout{
     width: 160px;
     margin-top: 5px;
+
 }
 
 .phone-number-input-outter-div{
@@ -657,7 +658,7 @@ button[disabled], input[disabled] {
     -webkit-box-align: center; */
     /* align-items: center; */
     padding-top: 40px;
-    width: 922px;
+    width: 880px;
     text-align: center;
 }
 

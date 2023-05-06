@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>후원하기</title>
-    <link rel="stylesheet" href="../../static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/support/support-rice-modal.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/support/support-rice-modal.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 <body>
     <button id="support-open">후원하기</button>
-    <div class="support-rice-layout" style="display: none;">
+    <div class="support-rice-layout" th:fragment="supportRiceLayout" style="display: none;">
         <!-- <form name=""> -->
             <div class="suppport-rice-container">
                 <div class="support-rice-close-btn-layout">
@@ -34,6 +36,6 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/support/support-rice-modal.js"></script>
+<script src="/js/support/support-rice-modal.js"></script>
 
 </html>
