@@ -17,17 +17,17 @@ let auto = setInterval(autoSlide, autoSlideTimer);
 let mobileCheck = screen.width < 1024;
 
 let imgURLs = [
-    'url(../../static/image/main/001.jpg)',
-    'url(../../static/image/main/002.jpg)',
-    'url(../../static/image/main/003.jpg)',
-    'url(../../static/image/main/004.jpg)'
+    'url(/image/main/001.jpg)',
+    'url(/image/main/002.jpg)',
+    'url(/image/main/003.jpg)',
+    'url(/image/main/004.jpg)'
 ];
 
 const mobileImgURLs = [
-    'url(../../static/image/main/005.jpg)',
-    'url(../../static/image/main/006.jpg)',
-    'url(../../static/image/main/007.jpg)',
-    'url(../../static/image/main/008.jpg)'
+    'url(/image/main/005.jpg)',
+    'url(/image/main/006.jpg)',
+    'url(/image/main/007.jpg)',
+    'url(/image/main/008.jpg)'
 ];
 
 /* 배너 수 */

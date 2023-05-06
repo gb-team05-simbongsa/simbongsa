@@ -1,4 +1,4 @@
-const $open = $('#work-open');
+const $open = $('.apply-btn');
 const $layout = $('.apply-layout');
 const $close = $('.apply-close');
 
