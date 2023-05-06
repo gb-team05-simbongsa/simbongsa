@@ -22,6 +22,5 @@ public class FreeBoardReply extends Period {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 }
