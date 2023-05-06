@@ -6,4 +6,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FundingFileQueryDslImpl implements FundingFileQueryDsl {
     private final JPAQueryFactory query;
+
+
 }

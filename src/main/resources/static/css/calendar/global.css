@@ -133,10 +133,10 @@ a:link {
     vertical-align: middle;
 }
 .schedule-cal .date > a.prev {
-    background-image: url(/static/image/calendar/prev.png);
+    background-image: url(/image/calendar/prev.png);
 }
 .schedule-cal .date > a.next {
-    background-image: url(/static/image/calendar/next.png);
+    background-image: url(/image/calendar/next.png);
 }
 .schedule-cal .date > a {
     width: 38px;

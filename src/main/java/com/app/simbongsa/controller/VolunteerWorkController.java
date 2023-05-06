@@ -21,6 +21,7 @@ public class VolunteerWorkController {
     @GetMapping("work-search")
     public String workSearch() { return "volunteer-work/work-search2.html";}
 
-
+    @GetMapping("work-modal")
+    public String workModal() { return "volunteer-work/work-apply-modal.html";}
 
 }

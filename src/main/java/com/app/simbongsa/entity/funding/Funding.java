@@ -42,4 +42,22 @@ public class Funding {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+
+    // 테스트용 생성자
+    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain,  FundingCreator fundingCreator) {
+        this.fundingCategory = fundingCategory;
+        this.fundingTitle = fundingTitle;
+        this.fundingShortTitle = fundingShortTitle;
+        this.fundingSummary = fundingSummary;
+        this.fundingTargetPrice = fundingTargetPrice;
+        this.fundingCurrentPrice = fundingCurrentPrice;
+        this.fundingStartDate = fundingStartDate;
+        this.fundingEndDate = fundingEndDate;
+        this.fundingIntroduce = fundingIntroduce;
+        this.fundingBudgetExplain = fundingBudgetExplain;
+        this.fundingScheduleExplain = fundingScheduleExplain;
+        this.fundingGiftExplain = fundingGiftExplain;
+        this.fundingCreator = fundingCreator;
+    }
 }
