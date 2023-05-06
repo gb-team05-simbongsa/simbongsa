@@ -88,12 +88,12 @@ address, em {
     padding: 60px 94px 90px;
     font-size: 16px;
 }
-
+/*
 .collect_-rap .collect_content {
     float: left;
     width: 628px;
     padding: 60px 94px 90px;
-}
+}*/
 
 .collect-wrap .theme{
     padding-bottom: 16px;
@@ -492,12 +492,16 @@ address, em {
     font-family: NanumSquareWebFont,Sans-serif;
     font-size: 20px;
     color: #828282;
+    font-weight: 700;
+    color: #000;
 }
 
+/*
 .action-area .tab-button[aria-selected=true]{
     font-weight: 700;
     color: #000;
 }
+*/
 
 .action-area .tab-item:first-child {
     margin-left: -10px;
