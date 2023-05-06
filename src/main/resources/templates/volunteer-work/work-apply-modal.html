@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>봉사 신청하기</title>
-    <link rel="stylesheet" href="/static/css/volunteer-work/work-apply.css">
-    <link rel="stylesheet" href="/static/css/font/font.css">
+    <link rel="stylesheet" href="/css/volunteer-work/work-apply.css">
+    <link rel="stylesheet" href="/css/font/font.css">
 
 </head>
 <body>
     <button id="work-open">봉사 신청하기</button>
        
-    <div class="apply-layout" style="display: none;">
+    <div class="apply-layout" style="display: none;" th:fragment="applyLayout">
         <div class="apply-container">
             <div class="apply-layer">
                 <p class="apply-title">자원봉사자참여신청</p>
@@ -86,6 +87,6 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/volunteer-work/work-apply-modal.js"></script>    
+<script src="/js/volunteer-work/work-apply-modal.js"></script>
 
 </html>
