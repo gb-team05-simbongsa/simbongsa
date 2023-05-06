@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Slf4j
 public class FundingController {
-    @GetMapping("funding-create-info")
-    public String fundingCreate() {return "funding/funding-create-info.html";}
+    @GetMapping("funding-creater-info")
+    public String fundingCreate() {return "funding/funding-creater-info.html";}
 
     @GetMapping("funding-detail")
     public String fundingDetail() {return "funding/funding-detail.html";}
