@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/funding/funding-start.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-start-response.css">
-    <link rel="stylesheet" href="/static/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-start.css">
+    <link rel="stylesheet" href="/css/funding/funding-start-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 
 <body>
     <div>
-        <header id="_header"></header>
+        <header th:insert="~{main/header.html :: mainHeader}"></header>
         <main style="overflow-x: hidden;">
             <div class="text-section">
                 <p class="funding-text">
@@ -75,15 +76,9 @@
                 </div>
             </div>
         </main>
-        <footer id="_footer"></footer>
+        <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#_header").load("../main/header.html");
-        $("#_footer").load("../main/footer.html");
-    });
-</script>
-
+<script src="/js/main/header.js"></script>
 </html>

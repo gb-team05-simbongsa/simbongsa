@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>창작자 이름</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding.css">
-    <link rel="stylesheet" href="/static/css/funding/response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-header.css">
+    <link rel="stylesheet" href="/css/funding/funding-header-response.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent-response.css">
+    <link rel="stylesheet" href="/css/funding/funding.css">
+    <link rel="stylesheet" href="/css/funding/response.css">
 </head>
 <style>
 .createrInfo::after {
@@ -30,6 +30,8 @@
     <div id="view" class="view">
         <div class="project-wrap">
                   <!-- funding-header -->
+            <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
+            <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
             <div id="_header"></div>
             <div id="_topContent"></div>
 
@@ -392,7 +394,7 @@
         $("#_topContent").load("/templates/funding/funding-topContent.html");
     });
 </script>
-<script src="/static/js/funding/funding-creator-info.js"></script>
+<script src="/js/funding/funding-creator-info.js"></script>
 <script>
 const $buttonWrap = $('.buttonWrap');
 const $accountInput1 = $('.accountInput');

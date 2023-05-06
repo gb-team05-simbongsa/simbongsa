@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-initial-info.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-initial-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-header.css">
+    <link rel="stylesheet" href="/css/funding/funding-header-response.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent.css">
+    <link rel="stylesheet" href="/css/funding/funding-initial-info.css">
+    <link rel="stylesheet" href="/css/funding/funding-initial-response.css">
 </head>
 <style>
 .initialInfo::after {
@@ -28,7 +28,8 @@
 <body>
     <div id="view" class="view">
         <div class="project-wrap">
-            <div id="_header"></div>
+            <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
+            <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
             <div class="modal-layer" style="display: none;">
                 <div class="modal-wrapper">
                     <div class="modal-back">
@@ -210,7 +211,7 @@
                                         <div class="LabelWithAreaTooltip__Tooltip-sc-16u328b- areaTooltip areaTooltip">
                                             <div class="toolTip-content toolTip-content">
                                                 <div class="title">긴 제목은 <br>어디에 쓰이나요?</div>
-                                                <div class="image"><img src="/static/image/funding/long-guide.png" alt="">
+                                                <div class="image"><img src="/image/funding/long-guide.png" alt="">
                                                 </div>
                                             </div><em class="close">
                                                 <div name="close-1" class="icon-svg">
@@ -259,7 +260,7 @@
                                             <div class="toolTip-content">
                                                 <div class="title">짧은 제목은 <br>어디에 쓰이나요?</div>
                                                 <div class="image">
-                                                    <img src="/static/image/funding/short-guide.png" alt="">
+                                                    <img src="/image/funding/short-guide.png" alt="">
                                                 </div>
                                             </div><em class="close">
                                                 <div name="close-1" class="icon-svg">
@@ -327,7 +328,7 @@
                                             <div class="toolTip-content">
                                                 <div class="title">프로젝트 요약은 <br>어디에 표시되나요?</div>
                                                 <div class="image">
-                                                    <img src="/static/image/funding/text-guide.png" alt="">
+                                                    <img src="/image/funding/text-guide.png" alt="">
                                                 </div>
                                             </div>
                                             <em class="close">
@@ -415,7 +416,7 @@
                                         <div class="areaTooltip">
                                             <div class="toolTip-content">
                                                 <div class="image">
-                                                    <img src="/static/image/funding/img-guide.png" alt="">
+                                                    <img src="/image/funding/img-guide.png" alt="">
                                                 </div>
                                             </div><em class="close">
                                                 <div name="close-1" class="icon-svg"><svg
@@ -460,12 +461,6 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#_header").load("/templates/funding/funding-plan-header.html");
-        $("#_topContent").load("/templates/funding/funding-topContent.html");
-    });
-</script>
-<script src="/static/js/funding/funding-initial-info.js"></script>
-<script src="/static/js/funding/funding-file.js"></script>
+<script src="/js/funding/funding-initial-info.js"></script>
+<script src="/js/funding/funding-file.js"></script>
 </html>

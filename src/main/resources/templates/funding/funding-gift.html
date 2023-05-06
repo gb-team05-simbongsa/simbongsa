@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>선물 구성</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-gift.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-gift-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-header.css">
+    <link rel="stylesheet" href="/css/funding/funding-header-response.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent-response.css">
+    <link rel="stylesheet" href="/css/funding/funding-gift.css">
+    <link rel="stylesheet" href="/css/funding/funding-gift-response.css">
 </head>
 <style>
     .fundingGift::after {
@@ -37,7 +37,7 @@
     <div id="view" class="view">
         <div class="project-wrap">
             <!-- funding-header -->
-            <div id="_header"></div>
+            <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
             <div class="top-content" style="margin-top: 50px;">
                 <div class="top-contentWrap">
                     <div class="top-title">프로젝트 기획</div>
@@ -410,12 +410,6 @@
     </div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#_header").load("/templates/funding/funding-plan-header.html");
-        $("#_topContent").load("/templates/funding/funding-topContent.html");
-    });
-</script>
-<script src="../../static/js/funding/funding-gift.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>˛
+<script src="../../js/funding/funding-gift.js"></script>
 </html>

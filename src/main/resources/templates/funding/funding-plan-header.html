@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-header.css">
+    <link rel="stylesheet" href="/css/funding/funding-header-response.css">
 </head>
 <body>
                   <!-- funding-header -->
-            <div class="funding-header" style="z-index: 1000;">
+            <div class="funding-header" style="z-index: 1000;" th:fragment="planHeader">
                 <div class="header-wrap">
                     <div class="header-container" style="box-shadow: none;">
                         <div class="container">
@@ -30,7 +30,7 @@
                                     </button>
                                 </div>
                                 <div class="center-menu">
-                                    <img src="/static/image/logo.png" alt="" style="width: 110%;">
+                                    <img src="/image/logo.png" alt="" style="width: 110%;">
                                 </div>
                                 
                                 <div class="right-menu">
@@ -50,5 +50,5 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/static/js/funding/funding-initial-info.js"></script>
+<script src="/js/funding/funding-initial-info.js"></script>
 </html>

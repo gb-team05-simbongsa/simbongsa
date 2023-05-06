@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트계획</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-header-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-topContent-response.css">
-    <link rel="stylesheet" href="/static/css/funding/funding.css">
-    <link rel="stylesheet" href="/static/css/funding/response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-header.css">
+    <link rel="stylesheet" href="/css/funding/funding-header-response.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent.css">
+    <link rel="stylesheet" href="/css/funding/funding-topContent-response.css">
+    <link rel="stylesheet" href="/css/funding/funding.css">
+    <link rel="stylesheet" href="/css/funding/response.css">
     <!-- 웹에디터 API -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
 </head>
@@ -31,15 +31,14 @@
     .note-toolbar{
         background-color: white;
     }
-}
+
 </style>
 <body>
     <div id="view" class="view">
         <div class="project-wrap">
                   <!-- funding-header -->
-            <div id="_header"></div>
-            <div id="_topContent"></div>
-
+            <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
+            <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
 
             <div class="contents" size="277">
                 <div class="planContents">

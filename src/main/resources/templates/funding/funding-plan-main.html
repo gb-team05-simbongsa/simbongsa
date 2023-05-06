@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>펀딩 기획 메인</title>
-    <link rel="stylesheet" href="/static/css/font/font.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-main.css">
-    <link rel="stylesheet" href="/static/css/funding/funding-main-response.css">
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-main.css">
+    <link rel="stylesheet" href="/css/funding/funding-main-response.css">
 </head>
 
 <body>
     <div id="view" class="view">
             <div class="top-content">
-                <header id="_header"></header>
+                <div th:insert="~{funding/funding-header.html :: fundingHeader}"></div>
                 <div class="content-wrap">
                     <div class="content-center">
                         <div class="content-buttonWrap"></div>
@@ -86,9 +86,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $("#_header").load("/templates/funding/funding-header.html");
-    });
 </script>
 
 </html>
