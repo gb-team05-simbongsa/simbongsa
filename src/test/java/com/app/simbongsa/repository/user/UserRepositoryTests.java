@@ -45,7 +45,7 @@ public class UserRepositoryTests {
         userRepository.findById(1L).stream().map(User::toString).forEach(log::info);
     }
 
-//    회원 정보 수정
+//    회원 정보 수정(관리자 페이지)
     @Test
     public void updateTest() {
         userRepository.updateUser(100L, "수정 이름", "수정 주소", "심봉사", 3);
