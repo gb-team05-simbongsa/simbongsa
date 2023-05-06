@@ -13,8 +13,4 @@ import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQueryDsl {
     private final JPAQueryFactory query;
 
-    @Override
-    public List<VolunteerWork> findVolunteerWorkList() {
-        return query.select(volunteerWork).from(volunteerWork).orderBy(volunteerWork.id.desc()).limit(8).fetch();
-    }
 }

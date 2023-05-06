@@ -26,8 +26,22 @@ public class VolunteerWork {
     @NotNull private LocalDate volunteerWorkJoinEndDate;
     @NotNull private int volunteerWorkRecruitNumber;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("'선택안함'")
-    @NotNull private VolunteerWorkCategoryType volunteerWorkCategory;
+    @ColumnDefault("'test'")
+    private VolunteerWorkCategoryType volunteerWorkCategory;
     @NotNull private String volunteerWorkRegisterAgency;
     @NotNull private String volunteerWorkPlace;
+
+//    단위테스트용 생성자 생성
+
+    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace) {
+        this.volunteerWorkStartDate = volunteerWorkStartDate;
+        this.volunteerWorkEndDate = volunteerWorkEndDate;
+        this.volunteerWorkTime = volunteerWorkTime;
+        this.volunteerWorkJoinStartDate = volunteerWorkJoinStartDate;
+        this.volunteerWorkJoinEndDate = volunteerWorkJoinEndDate;
+        this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
+        this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
+        this.volunteerWorkPlace = volunteerWorkPlace;
+    }
+
 }
