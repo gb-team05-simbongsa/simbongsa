@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header th:insert="~{main/header.html :: mainHeader}"></header>
+    <header id="_header"></header>
 
      <!-- 전체 div -->
      <div>
@@ -445,7 +445,7 @@
         </div>
     </div>
 
-    <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+    <<footer id="_footer"></footer>
      <!--  -->
      <!-- 댓글 삭제 모달창 -->
      <div>
@@ -465,6 +465,11 @@
      </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="/js/main/header.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#_header").load("../main/header.html");
+        $("#_footer").load("../main/footer.html");
+    });
+</script>
 <script src="/js/community/free-detail.js"></script>
 </html>
