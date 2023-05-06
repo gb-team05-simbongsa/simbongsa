@@ -18,12 +18,12 @@ import static com.app.simbongsa.entity.rice.QRicePayment.ricePayment;
 public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
     private final JPAQueryFactory query;
 
-//    공양미 내역 전체 조회(페이징)
+//    공양미 충전 내역 전체 조회(페이징), 상태에 따른 변화
     @Override
-    public Page<RicePayment> findByPaymentStatusWithPaging(Pageable pageable) {
+    public Page<RicePayment> findByPaymentStatusWithPaging(Pageable pageable, RicePaymentType ricePaymentType) {
         List<RicePayment> foundRicePayment = query.select(ricePayment)
                 .from(ricePayment)
-                .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.충전))
+                .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
                 .orderBy(ricePayment.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -31,11 +31,13 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 
         Long count = query.select(ricePayment.count())
                 .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
                 .fetchOne();
 
         return new PageImpl<>(foundRicePayment, pageable, count);
     }
 
+//    금일 결제 수 조회
     @Override
     public Long findByCreateDateToday() {
         Long count = query.select(ricePayment.count())
@@ -44,5 +46,23 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .fetchOne();
 
         return count;
+    }
+
+//    결제 총 금액 조회
+    @Override
+    public List<RicePayment> findAllPaymentTypeCharge() {
+        return query.select(ricePayment)
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.충전))
+                .fetch();
+    }
+
+//    환전 요청 상태 승인으로 변경
+    @Override
+    public void updatePaymentStatusToAccessById(Long id) {
+        query.update(ricePayment)
+                .set(ricePayment.ricePaymentStatus, RicePaymentType.환전승인)
+                .where(ricePayment.id.eq(id))
+                .execute();
     }
 }

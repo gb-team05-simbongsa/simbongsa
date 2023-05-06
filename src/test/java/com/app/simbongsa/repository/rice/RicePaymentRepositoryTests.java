@@ -34,12 +34,18 @@ public class RicePaymentRepositoryTests {
         }
     }
 
-//    공양미 충전내역 전체 조회
+//    공양미 충전 내역 전체 조회(상태에 따름)
     @Test
-    public void findAllWithPaging() {
-        Page<RicePayment> foundRicePayment = ricePaymentRepository.findByPaymentStatusWithPaging(PageRequest.of(0, 5));
+    public void findByPaymentStatusWithPaging() {
+        Page<RicePayment> foundRicePayment = ricePaymentRepository.findByPaymentStatusWithPaging(PageRequest.of(0, 5), RicePaymentType.충전);
         foundRicePayment.stream().map(RicePayment::toString).forEach(log::info);
         log.info("=========================" + foundRicePayment.getTotalElements());
+    }
+
+//    공양미 충전 내역 상세보기(충전한 사람 포함)
+    @Test
+    public void findByIdTest() {
+        ricePaymentRepository.findById(149L).ifPresent(ricePayment -> log.info(ricePayment.getUser().getUserName()));
     }
 
 //    금일 결제 수 조회
@@ -49,11 +55,21 @@ public class RicePaymentRepositoryTests {
     }
 
 //    결제 총 금액 조회
+    @Test
+    public void findAllPaymentTypeChargeTest() {
+        log.info("=========================" + ricePaymentRepository.findAllPaymentTypeCharge().stream().map(RicePayment::getRicePaymentUsed).mapToInt(used -> used).sum());
+    }
 
-//    공양미 내역 삭제
+//    공양미 내역 삭제(요청 내역 삭제)
     @Test
     public void deleteTest() {
         Long[] ids = {142L, 143L};
         ricePaymentRepository.deleteAllById(Arrays.asList(ids));
+    }
+
+//    환전 요청 상태 승인으로 변경
+    @Test
+    public void updatePaymentStatusToAccessByIdTest() {
+        ricePaymentRepository.updatePaymentStatusToAccessById(142L);
     }
 }
