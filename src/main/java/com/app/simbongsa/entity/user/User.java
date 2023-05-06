@@ -28,10 +28,21 @@ public class User {
     @ColumnDefault("'일반'")
     private UserJoinType userStatus;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("'동냥 1티어'")
+    @ColumnDefault("'동냥1티어'")
     private UserRankType userRank;
     @ColumnDefault("0")
     private int userRice;
     @ColumnDefault("0")
     private int userVolunteerTime;
+
+//    단위테스트용 생성자 생성
+
+    public User(String userName, String userEmail, String userPassword, String userAddress, Integer userAge, String userInterest) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userAddress = userAddress;
+        this.userAge = userAge;
+        this.userInterest = userInterest;
+    }
 }
