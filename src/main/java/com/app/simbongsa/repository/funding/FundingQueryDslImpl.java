@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.simbongsa.entity.funding.QFunding.funding;
 
@@ -23,7 +24,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetch();
     }
 
-//    펀딩 전체 조회(페이징)
+    //    펀딩 전체 조회(페이징)
     @Override
     public Page<Funding> findAllWithPaging(Pageable pageable) {
         List<Funding> foundFunding = query.select(funding)
@@ -38,5 +39,13 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetchOne();
 
         return new PageImpl<>(foundFunding, pageable, count);
+    }
+
+    @Override
+    public Optional<Funding> findByIdForDetail(Long fundingId) {
+        return Optional.ofNullable(query.select(funding)
+                .from(funding)
+                .where(funding.id.eq(fundingId))
+                .fetchOne());
     }
 }
