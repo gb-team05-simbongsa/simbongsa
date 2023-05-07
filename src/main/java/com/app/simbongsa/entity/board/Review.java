@@ -14,4 +14,10 @@ public class Review extends Board {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    /* 단위테스트 위한 생성자 생성 */
+    public Review(String boardTitle, String boardContent, User user) {
+        super(boardTitle, boardContent);
+        this.user = user;
+    }
 }

@@ -47,10 +47,6 @@ public class SupportRepositoryTests {
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
     @Test
     public void findByUserIdTest(){
-/*        PageRequest pageRequest = PageRequest.of(0, 5);
-        Page<User> users = userRepository.findAllWithPaging(pageRequest);
-        users.stream().map(User::toString).forEach(log::info);
-        log.info("=======================" + users.getTotalElements());*/
         PageRequest pageRequest = PageRequest.of(0,3);
         Page<SupportRequest> supportRequests = supportRequestRepository.findByUserId(pageRequest, 6L);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
