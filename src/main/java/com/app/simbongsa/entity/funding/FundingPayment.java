@@ -25,4 +25,12 @@ public class FundingPayment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
+
+    /* 단위테스트용 */
+    public FundingPayment(int fundingPaymentPrice, LocalDateTime fundingPaymentDate, User user, Funding funding) {
+        this.fundingPaymentPrice = fundingPaymentPrice;
+        this.fundingPaymentDate = fundingPaymentDate;
+        this.user = user;
+        this.funding = funding;
+    }
 }
