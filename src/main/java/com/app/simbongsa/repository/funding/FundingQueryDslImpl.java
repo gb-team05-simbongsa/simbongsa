@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.funding.QFunding;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -22,9 +23,20 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetch();
     }
 
-//    
+//    펀딩 전체 조회(페이징)
     @Override
     public Page<Funding> findAllWithPaging(Pageable pageable) {
-        return null;
+        List<Funding> foundFunding = query.select(funding)
+                .from(funding)
+                .orderBy(funding.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(funding.count())
+                .from(funding)
+                .fetchOne();
+
+        return new PageImpl<>(foundFunding, pageable, count);
     }
 }

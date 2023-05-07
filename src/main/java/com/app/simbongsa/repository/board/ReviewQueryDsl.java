@@ -12,4 +12,7 @@ public interface ReviewQueryDsl {
 /*    public Review deleteById(Review review);*/
 
     /* 후기 게시판 수정 */
+
+//    후기 목록 전체 조회(페이징)
+    public Page<Review> findAllWithPaging(Pageable pageable);
 }
