@@ -37,4 +37,20 @@ public class FreeBoardRepositoryTests {
         foundFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
         log.info("=====================" + foundFreeBoard.getTotalElements());
     }
+
+
+    /* 유저별 자유게시판 목록 조회 (페이징처리) */
+    @Test
+    public void findByUserIdTest(){
+        PageRequest pageRequest = PageRequest.of(0,4);
+        Page<FreeBoard> freeBoards = freeBoardRepository.findByUserId(pageRequest, 146L);
+        freeBoards.stream().map(FreeBoard::toString).forEach(log::info);
+        log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
+    }
+
+    /* 자유게시판 상세 조회 */
+    @Test
+    public void findByIdTest(){
+        freeBoardRepository.findById(146L);
+    }
 }
