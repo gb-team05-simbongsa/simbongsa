@@ -20,4 +20,9 @@ public class FreeBoard extends Board {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
     List<FreeBoardReply> freeBoardReplies;
+
+    public FreeBoard(String boardTitle, String boardContent, User user) {
+        super(boardTitle, boardContent);
+        this.user = user;
+    }
 }

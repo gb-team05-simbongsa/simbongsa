@@ -74,5 +74,12 @@ public class SupportRepositoryTests {
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 
     }
+    //    후원 요청 목록 전체 조회(페이징)
+    @Test
+    public void findAllWithPagingTest() {
+        Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(PageRequest.of(0, 5));
+        foundSupportRequest.stream().map(SupportRequest::toString).forEach(log::info);
+        log.info("=======================" + foundSupportRequest.getTotalElements());
+    }
 
 }

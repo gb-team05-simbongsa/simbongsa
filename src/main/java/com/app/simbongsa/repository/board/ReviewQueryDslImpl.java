@@ -33,4 +33,21 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
         return new PageImpl<>(foundReview, pageable, count);
     }
+
+//    후기 목록 전체 조회(페이징)
+    @Override
+    public Page<Review> findAllWithPaging(Pageable pageable) {
+        List<Review> foundReview = query.select(review)
+                .from(review)
+                .orderBy(review.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(review.count())
+                .from(review)
+                .fetchOne();
+
+        return new PageImpl<>(foundReview, pageable, count);
+    }
 }

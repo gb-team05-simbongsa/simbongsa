@@ -12,5 +12,7 @@ public interface SupportRequestQueryDsl {
     public Page<SupportRequest> findByUserId(Pageable pageable, Long id);
     // 후원 요청 목록
     public Slice<SupportRequest> findAllSupportRequest(Pageable pageable);
-    // 후원 상세페이지
+    // 후원 요청 전체 조회
+    public Page<SupportRequest> findAllWithPaging(Pageable pageable);
+
 }

@@ -4,11 +4,14 @@ import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.funding.QFundingCreator;
 import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.repository.user.UserRepository;
 import com.app.simbongsa.type.FundingCategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +26,9 @@ import java.time.LocalDateTime;
 public class FundingRepositoryTests {
     @Autowired
     private FundingRepository fundingRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     public void saveTest() {
@@ -41,7 +47,8 @@ public class FundingRepositoryTests {
                     ,"안녕하십니까"
                     ,"하이하이"
                     ,"헬로헬로"
-                    ,fundingCreator);
+                    ,fundingCreator
+                    ,userRepository.findById(555L).get());
             fundingRepository.save(funding);
         }
 
@@ -57,7 +64,9 @@ public class FundingRepositoryTests {
 //    펀딩 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
-
+        Page<Funding> foundFunding = fundingRepository.findAllWithPaging(PageRequest.of(0, 5));
+        foundFunding.stream().map(Funding::toString).forEach(log::info);
+        log.info("==========================" + foundFunding.getTotalElements());
     }
 
 
