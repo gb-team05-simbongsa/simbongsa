@@ -1,5 +1,6 @@
 package com.app.simbongsa.audit;
 
+import com.querydsl.core.types.Expression;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -19,4 +20,5 @@ public abstract class Period {
     private LocalDateTime createdDate;
     @LastModifiedDate
     private LocalDateTime updatedDate;
+
 }

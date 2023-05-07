@@ -15,7 +15,7 @@ public class ReviewReply extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String freeBoardReplyContent;
+    @NotNull private String reviewReplyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
@@ -24,4 +24,8 @@ public class ReviewReply extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "REVIEW_ID")
     private Review review;
+
+    public ReviewReply(String reviewReplyContent) {
+        this.reviewReplyContent = reviewReplyContent;
+    }
 }
