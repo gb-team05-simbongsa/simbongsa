@@ -18,4 +18,15 @@ public class Answer {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "INQUIRY_ID")
     private Inquiry inquiry;
+
+    /* 단위테스트용 */
+    public Answer(String answerTitle, String answerContent, Inquiry inquiry) {
+        this.answerTitle = answerTitle;
+        this.answerContent = answerContent;
+        this.inquiry = inquiry;
+    }
+
+    public Answer() {
+    }
+
 }
