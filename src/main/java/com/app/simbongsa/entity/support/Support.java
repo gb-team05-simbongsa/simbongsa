@@ -23,4 +23,11 @@ public class Support {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SUPPORT_REQUEST_ID")
     private SupportRequest supportRequest;
+
+    /* 단위 테스트용 */
+    public Support(int supportPrice, User user, SupportRequest supportRequest) {
+        this.supportPrice = supportPrice;
+        this.user = user;
+        this.supportRequest = supportRequest;
+    }
 }

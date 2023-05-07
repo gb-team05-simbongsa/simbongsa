@@ -66,4 +66,14 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .execute();
     }
 
+    @Override
+    public void updatePaymentByUserId(Long id, int supportGongyang) {
+        query.update(ricePayment)
+                .set(ricePayment.user.userRice, ricePayment.user.userRice.subtract(supportGongyang))
+                .set(ricePayment.ricePaymentUsed, supportGongyang)
+                .where(ricePayment.user.id.eq(id))
+                .execute();
+    }
+
+//
 }

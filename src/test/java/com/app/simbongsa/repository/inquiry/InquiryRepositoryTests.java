@@ -68,4 +68,14 @@ public class InquiryRepositoryTests {
         Long[] ids = {101L, 102L};
         inquiryRepository.deleteAllById(Arrays.asList(ids));
     }
+
+
+    /* 유저별 문의 목록 조회 (페이징처리) */
+    @Test
+    public void findByUserIdTest(){
+        PageRequest pageRequest = PageRequest.of(0,3);
+        Page<Inquiry> inquiries = inquiryRepository.findByUserId(pageRequest, 6L);
+        inquiries.stream().map(Inquiry::toString).forEach(log::info);
+        log.info("====================유저 아이디 6의 후원요청목록수=================" + inquiries.getTotalElements());
+    }
 }

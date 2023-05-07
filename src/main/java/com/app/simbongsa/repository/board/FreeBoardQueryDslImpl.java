@@ -26,8 +26,9 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Page<FreeBoard> findAllWithPaging(Pageable pageable) {
         List<FreeBoard> foundFreeBoard = query.select(freeBoard)
                 .from(freeBoard)
+                .leftJoin(freeBoard.freeBoardReplies, freeBoardReply)
+                .fetchJoin()
                 .orderBy(freeBoard.id.desc())
-                .join(freeBoard.user)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -37,5 +38,24 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne();
 
         return new PageImpl<>(foundFreeBoard, pageable, count);
+    }
+
+
+    /* 유저가 작성한 자유게시물 조회(페이징처리) */
+    @Override
+    public Page<FreeBoard> findByUserId(Pageable pageable, Long userId) {
+        List<FreeBoard> foundFreeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .where(freeBoard.user.id.eq(userId))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(freeBoard.count())
+                .from(freeBoard)
+                .where(freeBoard.user.id.eq(userId))
+                .fetchOne();
+
+        return new PageImpl<>(foundFreeBoards,pageable,count);
     }
 }

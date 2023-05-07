@@ -1,10 +1,13 @@
 package com.app.simbongsa.repository.funding;
 
+import com.app.simbongsa.entity.file.File;
+import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.funding.QFundingCreator;
 import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.FundingCategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -49,7 +52,8 @@ public class FundingRepositoryTests {
                     ,"헬로헬로"
                     ,fundingCreator
                     ,userRepository.findById(555L).get());
-            fundingRepository.save(funding);
+
+
         }
 
     }
@@ -68,6 +72,13 @@ public class FundingRepositoryTests {
         foundFunding.stream().map(Funding::toString).forEach(log::info);
         log.info("==========================" + foundFunding.getTotalElements());
     }
+
+    //  펀딩 상세보기
+    @Test
+    public void findByIdTest() {
+        fundingRepository.findById(555L).ifPresent(funding -> log.info(funding.toString()));
+    }
+
 
 
 }

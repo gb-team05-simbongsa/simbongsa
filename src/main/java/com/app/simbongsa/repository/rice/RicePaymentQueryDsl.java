@@ -21,5 +21,6 @@ public interface RicePaymentQueryDsl {
 //    환전 요청 상태 승인으로 변경
     public void updatePaymentStatusToAccessById(Long id);
 
-
+//    userId로 조회해서 공양미 후원
+    public void updatePaymentByUserId(Long id, int supportGongyang);
 }

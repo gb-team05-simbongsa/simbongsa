@@ -73,7 +73,16 @@ public class RicePaymentRepositoryTests {
         ricePaymentRepository.updatePaymentStatusToAccessById(142L);
     }
 //    공양미 조회
-//    @Test void findByIdWithPayment(){
-//        userRepository.findById()
+    @Test
+    public void findByIdWithPayment(){
+        userRepository.findById(715L).ifPresent(user -> log.info(String.valueOf(user.getUserRice())));
+    }
+//    공양미 후원
+//    @Test
+//    public void updatePaymentByUserIdTest(){
+//         ricePaymentRepository.updatePaymentByUserId(716L,3000);
+//
+//         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 사용량 "+ricePayment.getRicePaymentUsed() + "==========="));
+//         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 남은 "+ricePayment.getUser().getUserRice() + " =========="));
 //    }
 }
