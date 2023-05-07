@@ -10,8 +10,9 @@ import java.util.List;
 public interface SupportRequestQueryDsl {
     /* 유저별 후원 요청 조회 */
     public Page<SupportRequest> findByUserId(Pageable pageable, Long id);
+    // 후원 요청 목록
     public Slice<SupportRequest> findAllSupportRequest(Pageable pageable);
-
-//    후원 요청 전체 조회
+    // 후원 요청 전체 조회
     public Page<SupportRequest> findAllWithPaging(Pageable pageable);
+
 }

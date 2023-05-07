@@ -65,4 +65,5 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .where(ricePayment.id.eq(id))
                 .execute();
     }
+
 }

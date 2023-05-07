@@ -37,7 +37,7 @@ public class User {
 
 //    단위테스트용 생성자 생성 (봉사시간 추가)
 
-    public User(String userName, String userEmail, String userPassword, String userAddress, Integer userAge, String userInterest, int userVolunteerTime) {
+    public User(String userName, String userEmail, String userPassword, String userAddress, Integer userAge, String userInterest, int userVolunteerTime, int userRice) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -45,5 +45,6 @@ public class User {
         this.userAge = userAge;
         this.userInterest = userInterest;
         this.userVolunteerTime = userVolunteerTime;
+        this.userRice = userRice;
     }
 }

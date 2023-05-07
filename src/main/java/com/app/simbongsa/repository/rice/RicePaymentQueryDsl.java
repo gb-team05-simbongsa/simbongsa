@@ -20,4 +20,6 @@ public interface RicePaymentQueryDsl {
 
 //    환전 요청 상태 승인으로 변경
     public void updatePaymentStatusToAccessById(Long id);
+
+
 }
