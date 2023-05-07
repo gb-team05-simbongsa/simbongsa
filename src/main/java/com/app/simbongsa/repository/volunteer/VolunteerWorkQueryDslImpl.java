@@ -72,11 +72,15 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         }
 
         BooleanExpression finalCondition = searchConditions.stream().reduce(BooleanExpression::or).orElse(null);
-
         List<VolunteerWork> findAllVolunteerWorkKeywords = query.select(volunteerWork)
                 .from(volunteerWork)
                 .where(finalCondition)
-                
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(volunteerWork.count())
+                .from(volunteerWork)
                 .where(finalCondition)
                 .fetchOne();
 
