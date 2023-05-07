@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.simbongsa.entity.user.QUser.user;
 import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
@@ -82,6 +83,14 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
                 .fetchOne();
 
         return new PageImpl<>(findAllVolunteerWorkKeywords, pageable, count);
+    }
+
+    @Override
+    public Optional<VolunteerWork> findByIdForDetail(Long volunteerWorkId) {
+        return Optional.ofNullable(query.select(volunteerWork)
+                .from(volunteerWork)
+                .where(volunteerWork.id.eq(volunteerWorkId))
+                .fetchOne());
     }
 
 }

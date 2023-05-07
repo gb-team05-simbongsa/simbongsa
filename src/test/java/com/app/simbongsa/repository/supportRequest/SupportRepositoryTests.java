@@ -33,15 +33,15 @@ public class SupportRepositoryTests {
     @Test
     public void saveTest(){
         for (int i = 1; i <= 5; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, userRepository.findById(5L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, userRepository.findById(143L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, userRepository.findById(6L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, userRepository.findById(144L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, userRepository.findById(6L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, userRepository.findById(145L).get());
             supportRequestRepository.save(supportRequest);
         }
     }
@@ -71,6 +71,7 @@ public class SupportRepositoryTests {
         List<SupportRequest> supportRequestList = supportRequests.getContent();
         long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
         log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
+        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 
     }
 }
