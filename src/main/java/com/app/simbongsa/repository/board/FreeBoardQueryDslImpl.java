@@ -26,8 +26,9 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Page<FreeBoard> findAllWithPaging(Pageable pageable) {
         List<FreeBoard> foundFreeBoard = query.select(freeBoard)
                 .from(freeBoard)
+                .leftJoin(freeBoard.freeBoardReplies, freeBoardReply)
+                .fetchJoin()
                 .orderBy(freeBoard.id.desc())
-                .join(freeBoard.user)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
