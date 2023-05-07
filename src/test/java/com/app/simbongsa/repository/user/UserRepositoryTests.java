@@ -68,6 +68,7 @@ public class UserRepositoryTests {
 //    유저 공양미 조회(후원 상세페이지 공양미 조회용)
     @Test
     public void findUserPaymentById(){
-        Optional<User> userRepository.findById(110L).;
+        Optional<User> goyangmi = userRepository.findById(110L);
+        goyangmi.ifPresent(user -> log.info(user.getUserRice()+ ""));
     }
 }
