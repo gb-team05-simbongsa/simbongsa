@@ -14,6 +14,7 @@ import org.springframework.test.annotation.Rollback;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -74,7 +75,7 @@ public class VolunteerRepositoryTests {
 
     }
     @Test
-    public void testFindAllWithPagingAndMultipleKeywordSearch() {
+    public void FindAllWithPagingAndMultipleKeywordSearchTest() {
         String placeKeyword = "서";
         String agencyKeyword = "경기";
         PageRequest pageRequest = PageRequest.of(0, 5);
@@ -85,5 +86,11 @@ public class VolunteerRepositoryTests {
         volunteerWorks.stream().map(VolunteerWork::toString).forEach(log::info);
         log.info("=======================" + volunteerWorks.getTotalElements());
     }
-
+    @Test
+    public void findByIdForDetailTest(){
+        // queryDsl 연습용
+        log.info(volunteerWorkRepository.findByIdForDetail(40L).toString());
+        volunteerWorkRepository.findByIdForDetail(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
+        volunteerWorkRepository.findByIdForDetail(42L).stream().map(VolunteerWork::toString);
+    }
 }
