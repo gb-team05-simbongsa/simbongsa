@@ -4,6 +4,7 @@ import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.funding.QFundingCreator;
 import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.repository.user.UserRepository;
 import com.app.simbongsa.type.FundingCategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,9 @@ public class FundingRepositoryTests {
     @Autowired
     private FundingRepository fundingRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Test
     public void saveTest() {
 
@@ -41,7 +45,8 @@ public class FundingRepositoryTests {
                     ,"안녕하십니까"
                     ,"하이하이"
                     ,"헬로헬로"
-                    ,fundingCreator);
+                    ,fundingCreator
+                    ,userRepository.findById(555L).get());
             fundingRepository.save(funding);
         }
 

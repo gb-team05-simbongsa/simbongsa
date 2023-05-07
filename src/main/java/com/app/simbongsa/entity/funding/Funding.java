@@ -44,8 +44,12 @@ public class Funding {
     private User user;
 
 
+    public Funding(User user) {
+        this.user = user;
+    }
+
     // 테스트용 생성자
-    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain,  FundingCreator fundingCreator) {
+    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, User user) {
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
         this.fundingShortTitle = fundingShortTitle;
@@ -59,5 +63,9 @@ public class Funding {
         this.fundingScheduleExplain = fundingScheduleExplain;
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingCreator = fundingCreator;
+        this.user = user;
+
+
+
     }
 }
