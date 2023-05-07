@@ -19,4 +19,5 @@ public class FreeBoard extends Board {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
     List<FreeBoardReply> freeBoardReplies;
+
 }

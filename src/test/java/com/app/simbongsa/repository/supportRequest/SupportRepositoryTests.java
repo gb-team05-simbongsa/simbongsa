@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Random;
 
 @SpringBootTest
@@ -55,5 +57,24 @@ public class SupportRepositoryTests {
         Page<SupportRequest> supportRequests = supportRequestRepository.findByUserId(pageRequest, 6L);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + supportRequests.getTotalElements());
+    }
+    @Test
+    public void findAllSupportRequest(){
+        // 페이지 요청 설정
+        PageRequest pageRequest = PageRequest.of(0, 3);
+
+        // findAllSupportRequest() 메서드 호출
+        Slice<SupportRequest> supportRequests = supportRequestRepository.findAllSupportRequest(pageRequest);
+
+        // 조회된 데이터 출력
+        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+
+        // 전체 후원 요청 목록 수 출력
+//        Slice 객체에는 현재 페이지의 요소 목록과 다음 페이지가 있는지 여부를 확인할 수 있는 hasNext() 있는데,
+//        전체 요소 수를 얻기 위해서는 Slice 객체를 List로 변환한 후에 List의 크기를 확인.
+        List<SupportRequest> supportRequestList = supportRequests.getContent();
+        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
+        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
+
     }
 }

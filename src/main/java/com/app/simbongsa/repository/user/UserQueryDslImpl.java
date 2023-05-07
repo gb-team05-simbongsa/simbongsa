@@ -48,7 +48,6 @@ public class UserQueryDslImpl implements UserQueryDsl {
 
     @Override
     public List<User> findUserWithVolunteerTime() {
-
         return query.select(user).from(user).orderBy(user.userVolunteerTime.desc()).limit(8).fetch();
     }
 }
