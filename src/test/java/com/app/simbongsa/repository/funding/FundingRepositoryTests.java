@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,7 +64,9 @@ public class FundingRepositoryTests {
 //    펀딩 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
-
+        Page<Funding> foundFunding = fundingRepository.findAllWithPaging(PageRequest.of(0, 5));
+        foundFunding.stream().map(Funding::toString).forEach(log::info);
+        log.info("==========================" + foundFunding.getTotalElements());
     }
 
 

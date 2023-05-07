@@ -46,4 +46,21 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 //      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
 //      false로 설정되면 다음 페이지가 없는 것으로 간주
     }
+
+//    후원 요청 전체 조회(페이징)
+    @Override
+    public Page<SupportRequest> findAllWithPaging(Pageable pageable) {
+        List<SupportRequest> foundSupportRequest = query.select(supportRequest)
+                .from(supportRequest)
+                .orderBy(supportRequest.createdDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(supportRequest.count())
+                .from(supportRequest)
+                .fetchOne();
+
+        return new PageImpl<>(foundSupportRequest, pageable, count);
+    }
 }
