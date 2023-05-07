@@ -8,7 +8,8 @@ body {
 
 .support-rice-layout {
     position: relative;
-    width: 339px;
+    border: 1px solid #d2d0d0;;
+    width: 340px;
     height: 182px;
     background-color: white;
     margin: 0 auto;
@@ -18,9 +19,10 @@ body {
 }
 
 .suppport-rice-container {
-    width: 220px;
-    height: 28px;
-    margin-top: 23rem;
+    position: relative;
+    width: 223px;
+    height: 111px;
+    /* margin-top: 23rem; */
     position: relative;
 }
     
@@ -99,9 +101,25 @@ input::placeholder {
     border: none;
     background-color: white;
     cursor: pointer;
-    border-radius: 5px;
-    left: 119px;
+    border-radius: 7px;
+    left: 114px;
     font-size: 15px;
     font-weight: bold;
 
+}
+.support-layout{
+    display: flex;
+    position: fixed;
+    z-index: 1060;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625em;
+    overflow-x: hidden;
+    transition: background-color .1s;
+    backdrop-filter: blur(2px);
 }

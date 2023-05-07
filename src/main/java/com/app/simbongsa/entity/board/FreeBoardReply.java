@@ -23,4 +23,8 @@ public class FreeBoardReply extends Period {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private FreeBoard freeBoard;
+
+    public FreeBoardReply(String freeBoardReplyContent) {
+        this.freeBoardReplyContent = freeBoardReplyContent;
+    }
 }
