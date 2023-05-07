@@ -35,14 +35,15 @@ public class User {
     @ColumnDefault("0")
     private int userVolunteerTime;
 
-//    단위테스트용 생성자 생성
+//    단위테스트용 생성자 생성 (봉사시간 추가)
 
-    public User(String userName, String userEmail, String userPassword, String userAddress, Integer userAge, String userInterest) {
+    public User(String userName, String userEmail, String userPassword, String userAddress, Integer userAge, String userInterest, int userVolunteerTime) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userAddress = userAddress;
         this.userAge = userAge;
         this.userInterest = userInterest;
+        this.userVolunteerTime = userVolunteerTime;
     }
 }
