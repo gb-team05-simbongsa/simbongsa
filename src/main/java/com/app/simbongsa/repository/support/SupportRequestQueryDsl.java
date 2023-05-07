@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface SupportRequestQueryDsl {
     /* 유저별 후원 요청 조회 */
-    public Page<SupportRequest> findByUserId(Pageable pageable, Long id);
+    public Page<SupportRequest> findByUserId(Pageable pageable, Long userId);
 }

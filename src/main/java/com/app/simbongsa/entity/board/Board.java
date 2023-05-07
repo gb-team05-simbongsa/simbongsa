@@ -17,4 +17,10 @@ public class Board extends Period {
     private Long id;
     @NotNull private String BoardTitle;
     @NotNull private String BoardContent;
+
+    /* 단위테스트 위한 생성자 생성 */
+    public Board(String boardTitle, String boardContent) {
+        BoardTitle = boardTitle;
+        BoardContent = boardContent;
+    }
 }

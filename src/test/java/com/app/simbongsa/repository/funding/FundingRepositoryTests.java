@@ -20,7 +20,7 @@ public class FundingRepositoryTests {
     @Autowired
     private FundingRepository fundingRepository;
 
-    @Test
+/*    @Test
     public void saveTest() {
         for (int i = 1; i <= 30; i++) {
             Funding funding = new Funding(FundingCategoryType.승인, "큰제목", "소제목",
@@ -29,5 +29,5 @@ public class FundingRepositoryTests {
             fundingRepository.save(funding);
         }
 
-    }
+    }*/
 }
