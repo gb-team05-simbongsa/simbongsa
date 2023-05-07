@@ -16,6 +16,7 @@ public class InquiryController {
     public String faq() {
         return "customerCenter/faq";
     }
+
     @GetMapping("faq-detail")
     public String faqDetail() {
         return "customerCenter/faq-detail";
@@ -39,6 +40,11 @@ public class InquiryController {
     @GetMapping("search")
     public String search() {
         return "customerCenter/search";
+    }
+
+    @GetMapping("header")
+    public String header() {
+        return "customerCenter/header";
     }
 
 }

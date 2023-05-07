@@ -54,5 +54,11 @@ public class FundingRepositoryTests {
                 .forEach(System.out::println);
     }
 
+//    펀딩 전체 조회(페이징)
+    @Test
+    public void findAllWithPagingTest() {
+
+    }
+
 
 }

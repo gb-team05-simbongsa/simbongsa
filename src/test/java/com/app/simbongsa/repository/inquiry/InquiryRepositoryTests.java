@@ -29,7 +29,7 @@ public class InquiryRepositoryTests {
     @Test
     public void saveTest() {
         for (int i = 1; i <= 20; i++) {
-            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, userRepository.findById(5L).get());
+            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, userRepository.findById(145L).get());
             inquiryRepository.save(inquiry);
         }
     }
@@ -41,6 +41,12 @@ public class InquiryRepositoryTests {
 
         inquiries.stream().map(Inquiry::toString).forEach(log::info);
         log.info("=======================" + inquiries.getTotalElements());
+    }
+
+//    문의 상세보기
+    @Test
+    public void findByIdTest() {
+        inquiryRepository.findById(421L).ifPresent(inquiry -> log.info(inquiry.toString()));
     }
 
 //    답변 대기중, 답변 완료 개수 조회
