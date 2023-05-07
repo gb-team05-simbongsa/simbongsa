@@ -51,4 +51,24 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
                 .where(inquiry.id.eq(id))
                 .execute();
     }
+
+
+    /* 유저아이디로 문의 페이징처리해서 불러오기 */
+    @Override
+    public Page<Inquiry> findByUserId(Pageable pageable, Long userId) {
+        List<Inquiry> foundInquiries = query.select(inquiry)
+                .from(inquiry)
+                .where(inquiry.user.id.eq(userId))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(inquiry.count())
+                .from(inquiry)
+                .where(inquiry.user.id.eq(userId))
+                .fetchOne();
+
+        return new PageImpl<>(foundInquiries,pageable,count);
+    }
+
 }

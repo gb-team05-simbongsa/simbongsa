@@ -15,4 +15,7 @@ public interface InquiryQueryDsl {
 
 //    답변 대기를 답변 완료로 수정
     public void updateInquiryStatus(Long id);
+
+    /* 유저별 문의 목록 조회 (페이징처리) */
+    public Page<Inquiry> findByUserId(Pageable pageable, Long userId);
 }
