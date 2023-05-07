@@ -8,13 +8,11 @@ $(document).ready(function(){
 
 // 버튼 클릭시 모달창 띄우기
     $open.click(function(){
-        $('body').css('background-color','#dfdbdb');
         $layout.show();
     });
 
 // x버튼 클릭시 모달창 닫기
     $close.click(function(){
-        $('body').css('background-color','white');
         $layout.hide();
     })
 // 전송 
