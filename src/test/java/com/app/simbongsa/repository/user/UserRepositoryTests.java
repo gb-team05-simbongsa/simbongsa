@@ -11,6 +11,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -25,7 +26,7 @@ public class UserRepositoryTests {
     public void saveTest() {
         for (int i = 1; i <= 100; i++) {
             User user = new User("이름" + i, "email" + i + "@naver.com",
-                    "123" + i, "역삼로" + i, 10 + i, "봉사",i+1);
+                    "123" + i, "역삼로" + i, 10 + i, "봉사",i+1, 100 * i);
             userRepository.save(user);
         }
     }
@@ -64,4 +65,9 @@ public class UserRepositoryTests {
         userRepository.findUserWithVolunteerTime().stream().map(User::toString).forEach(log::info);
     }
 
+//    유저 공양미 조회(후원 상세페이지 공양미 조회용)
+    @Test
+    public void findUserPaymentById(){
+        Optional<User> userRepository.findById(110L).;
+    }
 }

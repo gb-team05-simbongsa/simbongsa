@@ -72,4 +72,8 @@ public class RicePaymentRepositoryTests {
     public void updatePaymentStatusToAccessByIdTest() {
         ricePaymentRepository.updatePaymentStatusToAccessById(142L);
     }
+//    공양미 조회
+//    @Test void findByIdWithPayment(){
+//        userRepository.findById()
+//    }
 }

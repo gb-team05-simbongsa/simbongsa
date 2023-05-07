@@ -74,4 +74,5 @@ public class SupportRepositoryTests {
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 
     }
+
 }
