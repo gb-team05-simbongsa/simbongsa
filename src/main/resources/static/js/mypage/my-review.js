@@ -18,3 +18,23 @@ $('.modal-close').on('click', () => {
 
     $('.full-screen').off('scroll touchmove mousewheel');
 });
+
+/* 수정버튼 누르면 작성페이지로 이동 */
+$('.review-modify').on('click', function () {
+    console.log("수정버튼눌림");
+    location.href = "/community/free-create";
+})
+
+/* 삭제 모달 */
+const $deleteModal = $('.delete-modal-wrap');
+
+// 모달에서 삭제 버튼을 눌렀을 때 진짜 삭제할건지 모달 띄우기
+$('.review-delete').on('click', () => {
+    $('.delete-modal-wrap').show();
+});
+
+// 삭제할건지 묻는 모달에서 취소 버튼 눌렀을 때 모달 닫기
+$('.modal-cancel').on('click', () => {
+    $('.delete-modal-wrap').hide();
+    $deleteModal.hide();
+});

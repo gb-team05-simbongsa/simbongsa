@@ -16,17 +16,17 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
     @Override
-    public Page<SupportRequest> findByUserId(Pageable pageable, Long id) {
+    public Page<SupportRequest> findByUserId(Pageable pageable, Long userId) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(supportRequest.user.id.eq(id))
+                .where(supportRequest.user.id.eq(userId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
-                .where(supportRequest.user.id.eq(id))
+                .where(supportRequest.user.id.eq(userId))
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest,pageable,count);
