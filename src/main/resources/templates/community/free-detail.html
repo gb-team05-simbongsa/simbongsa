@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>심봉사 | 자유게시판 상세페이지</title>
     <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/community/free-detail.css">
 </head>
 <body>
     <!-- 헤더 -->
-    <header id="_header"></header>
-
+    <header th:insert="~{main/header.html :: mainHeader}"></header>
      <!-- 전체 div -->
      <div>
         <div style="background-color: #fff;">
@@ -445,8 +445,8 @@
         </div>
     </div>
 
-    <<footer id="_footer"></footer>
-     <!--  -->
+     <!-- -->
+
      <!-- 댓글 삭제 모달창 -->
      <div>
          <div class="modal">
@@ -465,11 +465,6 @@
      </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#_header").load("../main/header.html");
-        $("#_footer").load("../main/footer.html");
-    });
-</script>
+<script src="/js/main/header.js"></script>
 <script src="/js/community/free-detail.js"></script>
 </html>
