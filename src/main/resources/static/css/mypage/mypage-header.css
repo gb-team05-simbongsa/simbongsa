@@ -189,8 +189,9 @@ button {
 }
 
 .header-menu-a:hover {
-    font-weight: bold;
+    font-weight: 700;
     color: rgb(61, 61, 61);
+    opacity: 0.7;
 }
 
 .header-menu-a-select {

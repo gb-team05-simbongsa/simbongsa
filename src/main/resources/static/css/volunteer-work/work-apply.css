@@ -12,14 +12,25 @@ body {
     margin: 0 auto;
     margin-top: 16rem;
     /*margin: 10% auto;*/
-    display: block; 
+    display: block;
     width: 358px;
     height: 353px;
     position: fixed;
     z-index: 9999!important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625em;
+    overflow-x: hidden;
+    transition: background-color .1s;
 }
 
 .apply-container {
+    margin: 7px 15px;
     position: fixed;
     box-sizing: border-box;
     z-index: 20;
@@ -128,8 +139,8 @@ table {
 
 .apply-close {
     position: absolute;
-    top: -16px;
-    right: -13px;
+    top: -5px;
+    right: -48px;
     border-radius: 50%;
     border: none;
     /* border: 2px solid #6e6e74; */

@@ -1,5 +1,5 @@
 const $open = $('.donate');
-    const $layout = $('.support-rice-layout');
+    const $layout = $('.support-layout');
     const $submit = $('.support-pay-layout');
     const $close = $('.support-rice-close-btn-layout');
     const $input = $('rice-payment-input');

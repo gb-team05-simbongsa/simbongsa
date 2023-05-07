@@ -25,7 +25,7 @@ public class UserRepositoryTests {
     public void saveTest() {
         for (int i = 1; i <= 100; i++) {
             User user = new User("이름" + i, "email" + i + "@naver.com",
-                    "123" + i, "역삼로" + i, 10 + i, "봉사");
+                    "123" + i, "역삼로" + i, 10 + i, "봉사",i+1);
             userRepository.save(user);
         }
     }
@@ -56,6 +56,12 @@ public class UserRepositoryTests {
     public void deleteTest() {
 //        userRepository.delete(userRepository.findById(1L).get());
         userRepository.deleteAllById(Arrays.asList(1L, 2L, 3L));
+    }
+
+//    봉사시간 순 랭킹 조회 (메인 페이지)
+    @Test
+    public void findUserWithVolunteerTime(){
+        userRepository.findUserWithVolunteerTime().stream().map(User::toString).forEach(log::info);
     }
 
 }

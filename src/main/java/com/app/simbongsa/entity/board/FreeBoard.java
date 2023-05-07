@@ -1,6 +1,7 @@
 package com.app.simbongsa.entity.board;
 
 import com.app.simbongsa.entity.user.User;
+import com.querydsl.core.types.dsl.StringPath;
 import lombok.*;
 
 import javax.persistence.*;

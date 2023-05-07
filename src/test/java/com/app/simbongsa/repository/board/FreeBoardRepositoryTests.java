@@ -13,13 +13,5 @@ import javax.transaction.Transactional;
 @Rollback(false)
 @Slf4j
 public class FreeBoardRepositoryTests {
-    @Autowired
-    private FreeBoardRepository freeBoardRepository;
 
-    @Test
-    public void saveTest() {
-        for(int i = 1; i <= 20; i++) {
-
-        }
-    }
 }
