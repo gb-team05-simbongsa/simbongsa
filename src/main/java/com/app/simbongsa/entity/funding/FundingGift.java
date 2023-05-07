@@ -20,4 +20,12 @@ public class FundingGift {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
+
+    //단위테스트용 생성자
+    public FundingGift(String fundingGiftExplain, int fundingGiftAmount, int fundingGiftPrice, Funding funding) {
+        this.fundingGiftExplain = fundingGiftExplain;
+        this.fundingGiftAmount = fundingGiftAmount;
+        this.fundingGiftPrice = fundingGiftPrice;
+        this.funding = funding;
+    }
 }
