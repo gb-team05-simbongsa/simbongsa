@@ -25,11 +25,13 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         return query.select(volunteerWork).from(volunteerWork).orderBy(volunteerWork.id.desc()).limit(8).fetch();
     }
 
-    // 봉사 활동 목록 조회 페이징
+
+//    봉사활동 전체 조회(페이지)
     @Override
     public Page<VolunteerWork> findAllWithPaging(Pageable pageable) {
-        List<VolunteerWork> findAllVolunteer = query.select(volunteerWork)
+        List<VolunteerWork> foundVolunteerWork = query.select(volunteerWork)
                 .from(volunteerWork)
+                .orderBy(volunteerWork.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -37,8 +39,9 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
                 .from(volunteerWork)
                 .fetchOne();
 
-        return new PageImpl<>(findAllVolunteer, pageable, count);
+        return new PageImpl<>(foundVolunteerWork, pageable, count);
     }
+
 
     // 봉사 활동 목록 조회 (검색 + 페이징)
     @Override
@@ -73,12 +76,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         List<VolunteerWork> findAllVolunteerWorkKeywords = query.select(volunteerWork)
                 .from(volunteerWork)
                 .where(finalCondition)
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-
-        Long count = query.select(volunteerWork.count())
-                .from(volunteerWork)
+                
                 .where(finalCondition)
                 .fetchOne();
 

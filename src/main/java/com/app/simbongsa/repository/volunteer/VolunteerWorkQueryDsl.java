@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface VolunteerWorkQueryDsl {
     //    봉사활동 목록 조회
     public List<VolunteerWork> findVolunteerWorkList();
-    //    봉사활동 목록페이지 페이징
+    //    봉사활동 전체 조회(페이징)
     public Page<VolunteerWork> findAllWithPaging(Pageable pageable);
     //    봉사활동 목록페이지 지역 검색 페이징 처리
     public Page<VolunteerWork> findAllWithPagingAndSearch(String keyword, Pageable pageable);

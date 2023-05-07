@@ -4,6 +4,8 @@ import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.QFunding;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -18,5 +20,11 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
         return query.selectFrom(funding)
                 .orderBy(funding.fundingCurrentPrice.divide(funding.fundingTargetPrice).multiply(100).desc())
                 .fetch();
+    }
+
+//    
+    @Override
+    public Page<Funding> findAllWithPaging(Pageable pageable) {
+        return null;
     }
 }

@@ -21,4 +21,9 @@ public class VolunteerWorkActivity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "VOLUNTEER_WORK_ID")
     private VolunteerWork volunteerWork;
+
+    public VolunteerWorkActivity(User user, VolunteerWork volunteerWork) {
+        this.user = user;
+        this.volunteerWork = volunteerWork;
+    }
 }
