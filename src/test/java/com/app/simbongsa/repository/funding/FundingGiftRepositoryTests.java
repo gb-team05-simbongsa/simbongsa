@@ -30,4 +30,10 @@ public class FundingGiftRepositoryTests {
             fundingGiftRepository.save(fundingGift);
         }
     }
+
+    // 조회하기
+    @Test
+    public void findByIdTest() {
+        fundingGiftRepository.findById(773L);
+    }
 }
