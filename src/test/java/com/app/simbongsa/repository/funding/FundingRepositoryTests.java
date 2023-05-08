@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.funding.QFundingCreator;
+import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.repository.user.UserRepository;
 import com.app.simbongsa.type.FileRepresentationalType;
@@ -19,6 +20,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 //import static com.app.simbongsa.entity.funding.QFundingCreator.fundingCreator;
 
@@ -32,6 +34,9 @@ public class FundingRepositoryTests {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FundingFileRepository fundingFileRepository;
 
     @Test
     public void saveTest() {
@@ -80,5 +85,18 @@ public class FundingRepositoryTests {
     }
 
 
+    /* 내 펀딩 내역 조회(페이징처리) */
+    @Test
+    public void findByUserIdTest(){
+        PageRequest pageRequest = PageRequest.of(0,9);
+        Page<Funding> myFunding = fundingRepository.findByUserId_QueryDSL(pageRequest,555L);
+        myFunding.stream().map(Funding::toString).forEach(log::info);
+        log.info("====================유저 아이디 555의 내 펀딩 목록 수=================" + myFunding.getTotalElements());
+    }
+
+    @Test
+    public void findFileAll() {
+        log.info(fundingFileRepository.findAll() + "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+    }
 
 }
