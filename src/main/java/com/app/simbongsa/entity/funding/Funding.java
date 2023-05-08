@@ -1,5 +1,6 @@
 package com.app.simbongsa.entity.funding;
 
+import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
@@ -10,6 +11,7 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter @ToString(exclude = "user")
@@ -43,6 +45,8 @@ public class Funding {
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
+    private List<FundingFile> fundingFile;
 
     public Funding(User user) {
         this.user = user;

@@ -16,6 +16,12 @@ import javax.persistence.*;
 public class FundingFile extends File{
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FUNDING_ID")
+    /*@JoinColumn(name = "FUNDING_ID")*/
     private Funding funding;
+
+    /* 단위테스트 위한 생성자 생성 */
+    public FundingFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Funding funding) {
+        super(fileName, fileUuid, filePath, fileRepresentationalType);
+        this.funding = funding;
+    }
 }

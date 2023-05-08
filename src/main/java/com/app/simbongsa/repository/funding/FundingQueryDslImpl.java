@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.funding;
 
+import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.QFunding;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
+import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
 
 @RequiredArgsConstructor
@@ -48,4 +50,28 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .where(funding.id.eq(fundingId))
                 .fetchOne());
     }
+
+    /* 내 펀딩 내역 조회(페이징처리) */
+    @Override
+    public Page<Funding> findByUserId_QueryDSL(Pageable pageable, Long userId) {
+        /*memberService.getPays((Long)session.getAttribute("memberId"));*/
+
+        List<Funding> foundFunding = query.select(funding)
+                .from(funding)
+                .join(funding.fundingFile)
+                .fetchJoin()
+                .where(funding.user.id.eq(userId))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(funding.count())
+                .from(funding)
+                .where(funding.user.id.eq(userId))
+                .fetchOne();
+
+        return new PageImpl<>(foundFunding, pageable, count);
+    }
+
+
 }

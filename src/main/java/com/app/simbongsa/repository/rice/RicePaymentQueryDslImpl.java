@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.rice;
 
+import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.rice.QRicePayment;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.type.RicePaymentType;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.rice.QRicePayment.ricePayment;
 
 @RequiredArgsConstructor
@@ -75,5 +77,21 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .execute();
     }
 
-//
+    /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
+    @Override
+    public Page<RicePayment> findByUserId(Pageable pageable, Long userId) {
+        List<RicePayment> foundRice = query.select(ricePayment)
+                .from(ricePayment)
+                .where(ricePayment.user.id.eq(userId))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(ricePayment.count())
+                .from(ricePayment)
+                .where(ricePayment.user.id.eq(userId))
+                .fetchOne();
+
+        return new PageImpl<>(foundRice, pageable, count);
+    }
 }
