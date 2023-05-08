@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +36,10 @@ public class FreeBoardRepositoryTests {
     /*전체 조회 페이징*/
     @Test
     public void findAllWithPaging() {
-        Page<FreeBoard> foundFreeBoard = freeBoardRepository.findAllWithPaging(PageRequest.of(0, 5));
+        AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
+//        adminBoardSearch.setBoardTitle("3");
+        adminBoardSearch.setUserEmail("5");
+        Page<FreeBoard> foundFreeBoard = freeBoardRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(0, 5));
         foundFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
         log.info("=====================" + foundFreeBoard.getTotalElements());
     }

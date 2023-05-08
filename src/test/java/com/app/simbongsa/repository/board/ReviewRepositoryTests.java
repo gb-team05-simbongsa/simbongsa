@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +36,11 @@ public class ReviewRepositoryTests {
     /*전체 조회 페이징*/
     @Test
     public void findAllWithPaging() {
-        Page<Review> foundReview = reviewRepository.findAllWithPaging(PageRequest.of(0, 5));
-        foundReview.stream().map(Review::toString).forEach(log::info);
+        AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
+//        adminBoardSearch.setBoardTitle("3");
+        adminBoardSearch.setUserEmail("5");
+        Page<Review> foundReview = reviewRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(0, 5));
+        foundReview.stream().map(review -> review.getBoardTitle()).forEach(log::info);
         log.info("=====================" + foundReview.getTotalElements());
     }
 

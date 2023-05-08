@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ public interface FreeBoardQueryDsl {
     public List<FreeBoard> findAllWithPopularFreeBoard();
 
     //    자유게시판 전체 조회(페이징)
-    public Page<FreeBoard> findAllWithPaging(Pageable pageable);
+    public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);
 
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
     public Page<FreeBoard> findByUserId(Pageable pageable, Long userId);

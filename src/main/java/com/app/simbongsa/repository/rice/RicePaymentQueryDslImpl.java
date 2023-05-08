@@ -1,8 +1,10 @@
 package com.app.simbongsa.repository.rice;
 
+import com.app.simbongsa.domain.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.rice.QRicePayment;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.type.RicePaymentType;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,10 +22,16 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 
 //    공양미 충전 내역 전체 조회(페이징), 상태에 따른 변화
     @Override
-    public Page<RicePayment> findByPaymentStatusWithPaging(Pageable pageable, RicePaymentType ricePaymentType) {
+    public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType, Pageable pageable) {
+        BooleanExpression ricePaymentUsedEq = adminPaymentSearch.getRicePaymentUsed() == null ? null : ricePayment.ricePaymentUsed.eq(adminPaymentSearch.getRicePaymentUsed());
+        BooleanExpression userEmailLike = adminPaymentSearch.getUserEmail() == null ? null : ricePayment.user.userEmail.like("%" + adminPaymentSearch.getUserEmail() + "%");
+        BooleanExpression riceRefundRequestPriceLt = adminPaymentSearch.getRiceRefundRequestPrice() == null ? null : ricePayment.ricePaymentUsed.lt(adminPaymentSearch.getRiceRefundRequestPrice());
+
+
         List<RicePayment> foundRicePayment = query.select(ricePayment)
                 .from(ricePayment)
                 .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
+                .where(ricePaymentUsedEq, userEmailLike)
                 .orderBy(ricePayment.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

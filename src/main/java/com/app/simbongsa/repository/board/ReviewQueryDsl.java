@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.Review;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,7 @@ public interface ReviewQueryDsl {
     /* 후기 게시판 수정 */
 
     //    후기 목록 전체 조회(페이징)
-    public Page<Review> findAllWithPaging(Pageable pageable);
+    public Page<Review> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);
 
     //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
     public List<Review> findReviewListByUserId(Pageable pageable, Long userId);
