@@ -1,6 +1,8 @@
 package com.app.simbongsa.entity.support;
 
 import com.app.simbongsa.audit.Period;
+import com.app.simbongsa.entity.file.QSupportRequestFile;
+import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.type.RequestType;
 import com.sun.istack.NotNull;
@@ -9,6 +11,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @ToString(exclude = "user")
@@ -28,6 +31,9 @@ public class SupportRequest extends Period {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "supportRequest")
+    private List<SupportRequestFile> supportRequestFiles;
 
     /* 단위 테스트용 생성자 생성 */
 

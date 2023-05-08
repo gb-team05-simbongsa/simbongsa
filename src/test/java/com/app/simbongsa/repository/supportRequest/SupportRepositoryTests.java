@@ -44,6 +44,7 @@ public class SupportRepositoryTests {
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, userRepository.findById(145L).get());
             supportRequestRepository.save(supportRequest);
         }
+
     }
 
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
@@ -80,6 +81,11 @@ public class SupportRepositoryTests {
         Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(PageRequest.of(0, 5));
         foundSupportRequest.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("=======================" + foundSupportRequest.getTotalElements());
+    }
+
+    @Test
+    public void findSupportRequestDetail_QueryDSLTest(){
+        log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(441L).toString());
     }
 
 }

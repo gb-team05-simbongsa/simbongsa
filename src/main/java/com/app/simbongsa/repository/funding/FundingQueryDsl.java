@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FundingQueryDsl {
-    public List<Funding> findAllWithPopularFunding();
+    public List<Funding> findAllWithPopular();
 
     //    펀딩 전체 조회(페이징)
     public Page<Funding> findAllWithPaging(Pageable pageable);

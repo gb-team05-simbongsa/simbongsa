@@ -1,14 +1,8 @@
 package com.app.simbongsa.repository.funding;
 
-import com.app.simbongsa.entity.file.File;
-import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
-import com.app.simbongsa.entity.funding.QFundingCreator;
-import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.repository.user.UserRepository;
-import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.FundingCategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -20,7 +14,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 //import static com.app.simbongsa.entity.funding.QFundingCreator.fundingCreator;
 
@@ -64,10 +57,10 @@ public class FundingRepositoryTests {
     }
 //    메인페이지 달성률로 인기펀딩 목록 조회
     @Test
-    public void findAllWithPopularFundingTest(){
-        fundingRepository.findAllWithPopularFunding().stream()
-                .map(funding -> String.valueOf((Double.valueOf(funding.getFundingCurrentPrice())/ funding.getFundingTargetPrice()) * 100))
-                .forEach(System.out::println);
+    public void findAllWithPopularTest(){
+        fundingRepository.findAllWithPopular().stream()
+                .map(Funding::toString)
+                .forEach(log::info);
     }
 
 //    펀딩 전체 조회(페이징)

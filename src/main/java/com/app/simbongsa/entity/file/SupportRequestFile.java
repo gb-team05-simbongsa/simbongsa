@@ -15,6 +15,14 @@ import javax.persistence.*;
 public class SupportRequestFile extends File {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SUPPORT_REQUEST_ID")
     private SupportRequest supportRequest;
+
+    public SupportRequestFile(SupportRequest supportRequest) {
+        this.supportRequest = supportRequest;
+    }
+
+    public SupportRequestFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, SupportRequest supportRequest) {
+        super(fileName, fileUuid, filePath, fileRepresentationalType);
+        this.supportRequest = supportRequest;
+    }
 }

@@ -20,8 +20,8 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
     private final JPAQueryFactory query;
 
     @Override
-    public List<Funding> findAllWithPopularFunding() {
-        return query.selectFrom(funding)
+    public List<Funding> findAllWithPopular() {
+        return query.selectFrom(funding).join(funding.fundingFile).fetchJoin()
                 .orderBy(funding.fundingCurrentPrice.divide(funding.fundingTargetPrice).multiply(100).desc())
                 .fetch();
     }

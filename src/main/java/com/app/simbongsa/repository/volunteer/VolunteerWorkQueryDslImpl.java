@@ -23,7 +23,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     // 봉사활동 목록 조회 (메인페이지)
     @Override
     public List<VolunteerWork> findVolunteerWorkList() {
-        return query.select(volunteerWork).from(volunteerWork).orderBy(volunteerWork.id.desc()).limit(8).fetch();
+        return query.select(volunteerWork).from(volunteerWork).join(volunteerWork.volunteerWorkFiles).orderBy(volunteerWork.id.desc()).limit(8).fetch();
     }
 
 
