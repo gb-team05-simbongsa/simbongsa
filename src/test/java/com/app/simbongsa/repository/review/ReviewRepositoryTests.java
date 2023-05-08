@@ -51,7 +51,7 @@ public class ReviewRepositoryTests {
         PageRequest pageRequest = PageRequest.of(0,4);
         Page<Review> reviews = reviewRepository.findByUserId(pageRequest, 542L);
         reviews.stream().map(Review::toString).forEach(log::info);
-        log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + reviews.getTotalElements());
+        log.info("----------------------유저 542L의 리뷰게시물 목록 수 --------------------" + reviews.getTotalElements());
     }
 
     /*후기게시판 상세 조회*/

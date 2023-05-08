@@ -24,17 +24,18 @@ import static com.app.simbongsa.entity.board.QReviewReply.reviewReply;
 public class ReviewQueryDslImpl implements ReviewQueryDsl {
     private final JPAQueryFactory query;
 
-    /* 유저별 후기 게시판 목록 조회 (페이징처리) */
+    /* 내 후기 게시물 목록 조회 (페이징처리) */
     @Override
     public Page<Review> findByUserId(Pageable pageable, Long userId) {
         List<Review> foundReview = query.select(review)
                 .from(review)
-                .join(reviewFile)
+                .join(review.reviewFiles)
                 .fetchJoin()
                 .where(review.user.id.eq(userId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+
 
         Long count = query.select(review.count())
                 .from(review)
