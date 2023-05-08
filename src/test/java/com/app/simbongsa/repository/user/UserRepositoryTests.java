@@ -75,4 +75,17 @@ public class UserRepositoryTests {
         Optional<User> goyangmi = userRepository.findById(715L);
         goyangmi.ifPresent(user -> log.info("====================================" + user.getUserRice()+ "====================="));
     }
+
+    //    비밀번호 찾기
+    @Test
+    public void findByUserEmailForPasswordTest(){
+        userRepository.findByUserEmailForPassword("email101@naver.com").map(User::getUserEmail).ifPresent(log::info);
+        log.info("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOooo");
+    }
+
+    //    비밀번호 변경
+    @Test
+    public void updatePasswordTest(){
+        userRepository.updatePassword(542L, "email101@naver.com");
+    }
 }

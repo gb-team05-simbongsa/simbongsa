@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.simbongsa.entity.user.QUser.user;
 
@@ -56,5 +57,18 @@ public class UserQueryDslImpl implements UserQueryDsl {
     @Override
     public List<User> findUserWithVolunteerTime() {
         return query.select(user).from(user).orderBy(user.userVolunteerTime.desc()).limit(8).fetch();
+    }
+
+    //    비밀 번호 찾기
+    @Override
+    public Optional<User> findByUserEmailForPassword(String userEmail) {
+        return Optional.ofNullable(query.select(user).from(user).where(user.userEmail.eq(userEmail)).fetchOne());
+    }
+
+    //    비밀 번호 변경
+    @Override
+    public void updatePassword(Long id, String userPassword) {
+        query.update(user).set(user.userPassword, userPassword).where(user.id.eq(id)).execute();
+
     }
 }
