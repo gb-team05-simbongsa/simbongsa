@@ -1,7 +1,12 @@
 package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.board.QFreeBoard;
+import com.app.simbongsa.entity.board.QFreeBoardReply;
+import com.app.simbongsa.entity.file.QFreeBoardFile;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
+import com.querydsl.jpa.JPAExpressions;
+import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -13,6 +18,7 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
+import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
 import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 
 @RequiredArgsConstructor
@@ -22,7 +28,13 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     //    인기순 목록 조회
     @Override
     public List<FreeBoard> findAllWithPopularFreeBoard() {
-        return query.selectFrom(freeBoard).limit(8).orderBy(freeBoardReply.id.desc()).fetch();
+        return query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.freeBoardReplies, freeBoardReply)
+                .fetchJoin()
+                .orderBy(freeBoard.freeBoardReplies.size().desc())
+                .limit(8)
+                .fetch();
     }
 
     //    자유게시판 전체 조회(페이징)

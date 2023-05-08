@@ -1,10 +1,11 @@
 package com.app.simbongsa.repository.volunteer;
 
-import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.entity.file.QVolunteerWorkFile;
+import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.repository.user.UserRepository;
-import com.app.simbongsa.type.VolunteerWorkCategoryType;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.ws.soap.addressing.messageid.UuidMessageIdStrategy;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.UUID;
+
+import static com.app.simbongsa.entity.file.QVolunteerWorkFile.volunteerWorkFile;
 
 @SpringBootTest
 @Transactional
@@ -29,6 +33,9 @@ public class VolunteerRepositoryTests {
 
     @Autowired
     private VolunteerWorkActivityRepository volunteerWorkActivityRepository;
+
+    @Autowired
+    private VolunteerWorkFileRepository volunteerWorkFileRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -47,18 +54,19 @@ public class VolunteerRepositoryTests {
 //                    ,"서울");
 //            volunteerWorkRepository.save(volunteerWork);
 //        }
-        for(int i = 0; i < 20; i++){
-            VolunteerWork volunteerWork = new VolunteerWork(
-                    LocalDateTime.of(2023,4,12,12,00)
-                    ,LocalDateTime.of(2023,5,12,12,00)
-                    ,1+i
-                    ,LocalDate.of(2023,04,12)
-                    ,LocalDate.of(2023,04,17)
-                    ,1+i
-                    ,"전주"
-                    ,"전주");
-            volunteerWorkRepository.save(volunteerWork);
-        }
+//        for(int i = 0; i < 20; i++){
+//            VolunteerWork volunteerWork = new VolunteerWork(
+//                    LocalDateTime.of(2023,4,12,12,00)
+//                    ,LocalDateTime.of(2023,5,12,12,00)
+//                    ,1+i
+//                    ,LocalDate.of(2023,04,12)
+//                    ,LocalDate.of(2023,04,17)
+//                    ,1+i
+//                    ,"전주"
+//                    ,"전주"));
+//            volunteerWorkRepository.save(volunteerWork);
+//        }
+
     }
 
     @Test
@@ -110,8 +118,8 @@ public class VolunteerRepositoryTests {
     }
     @Test
     public void FindAllWithPagingAndMultipleKeywordSearchTest() {
-        String placeKeyword = "서";
-        String agencyKeyword = "경기";
+        String placeKeyword = null;
+        String agencyKeyword = "기";
         PageRequest pageRequest = PageRequest.of(0, 5);
 
         Page<VolunteerWork> volunteerWorks = volunteerWorkRepository
@@ -121,11 +129,10 @@ public class VolunteerRepositoryTests {
         log.info("=======================" + volunteerWorks.getTotalElements());
     }
     @Test
-    public void findByIdForDetailTest(){
-        // queryDsl 연습용
-        log.info(volunteerWorkRepository.findByIdForDetail(40L).toString());
-        volunteerWorkRepository.findByIdForDetail(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
-        volunteerWorkRepository.findByIdForDetail(42L).stream().map(VolunteerWork::toString);
+    public void findById_QueryDSLTest(){
+        log.info(volunteerWorkRepository.findById_QueryDSL(40L).toString());
+        volunteerWorkRepository.findById_QueryDSL(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
+        volunteerWorkRepository.findById_QueryDSL(42L).stream().map(VolunteerWork::toString);
     }
 
 }
