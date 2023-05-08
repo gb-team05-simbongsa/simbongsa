@@ -29,7 +29,7 @@ public class RicePaymentRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 10; i++) {
-            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, userRepository.findById(5L).get());
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, userRepository.findById(716L).get());
             ricePaymentRepository.save(ricePayment);
         }
     }
@@ -84,5 +84,10 @@ public class RicePaymentRepositoryTests {
 //
 //         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 사용량 "+ricePayment.getRicePaymentUsed() + "==========="));
 //         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 남은 "+ricePayment.getUser().getUserRice() + " =========="));
+//    }
+//    @Test
+//    public void updatePaymentByUserIdAndSupportGongyangTest(){
+//        ricePaymentRepository.updatePaymentByUserIdAndSupportGongyang(716L, 3000);
+//
 //    }
 }
