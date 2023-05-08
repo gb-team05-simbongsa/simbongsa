@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.rice;
 
 import com.app.simbongsa.domain.search.admin.AdminPaymentSearch;
+import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.repository.user.UserRepository;
 import com.app.simbongsa.type.RicePaymentType;
@@ -30,7 +31,7 @@ public class RicePaymentRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 10; i++) {
-            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, userRepository.findById(5L).get());
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, userRepository.findById(716L).get());
             ricePaymentRepository.save(ricePayment);
         }
     }
@@ -89,4 +90,22 @@ public class RicePaymentRepositoryTests {
 //         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 사용량 "+ricePayment.getRicePaymentUsed() + "==========="));
 //         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 남은 "+ricePayment.getUser().getUserRice() + " =========="));
 //    }
+
+
+
+//    @Test
+//    public void updatePaymentByUserIdAndSupportGongyangTest(){
+//        ricePaymentRepository.updatePaymentByUserIdAndSupportGongyang(716L, 3000);
+//
+//    }
+
+    /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
+      @Test
+      public void findByUserId(){
+          PageRequest pageRequest = PageRequest.of(0,3);
+          Page<RicePayment> ricePayments = ricePaymentRepository.findByUserId(pageRequest, 716L);
+          ricePayments.stream().map(RicePayment::toString).forEach(log::info);
+          log.info("====================유저 아이디 6의 후원요청목록수=================" + ricePayments.getTotalElements());
+      }
+
 }

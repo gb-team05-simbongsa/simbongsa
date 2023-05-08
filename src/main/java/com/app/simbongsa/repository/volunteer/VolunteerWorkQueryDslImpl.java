@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.volunteer;
 
+import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -88,7 +89,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     }
 
     @Override
-    public Optional<VolunteerWork> findByIdForDetail(Long volunteerWorkId) {
+    public Optional<VolunteerWork> findById_QueryDSL(Long volunteerWorkId) {
         return Optional.ofNullable(query.select(volunteerWork)
                 .from(volunteerWork)
                 .where(volunteerWork.id.eq(volunteerWorkId))

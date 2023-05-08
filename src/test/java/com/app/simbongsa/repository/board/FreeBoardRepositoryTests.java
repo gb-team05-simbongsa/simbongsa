@@ -2,6 +2,8 @@ package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.board.FreeBoardReply;
+import com.app.simbongsa.entity.board.QFreeBoard;
 import com.app.simbongsa.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -24,6 +28,9 @@ public class FreeBoardRepositoryTests {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private  FreeBoardReplyRepository freeBoardReplyRepository;
+
     /*자유게시판 등록*/
     @Test
     public void saveTest() {
@@ -31,6 +38,16 @@ public class FreeBoardRepositoryTests {
             FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, userRepository.findById(542L).get());
             freeBoardRepository.save(freeBoard);
         }
+    }
+    /*자유게시판 댓글 등록*/
+    @Test
+    public void saveReplies(){
+        for(int i =1; i<=2; i++){
+            Optional<FreeBoard> byId = freeBoardRepository.findById(1183L);
+            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,userRepository.findById(145L).get(), byId.get());
+            freeBoardReplyRepository.save(freeBoardReply);
+        }
+
     }
 
     /*전체 조회 페이징*/
@@ -59,4 +76,12 @@ public class FreeBoardRepositoryTests {
     public void findByIdTest(){
         freeBoardRepository.findById(146L);
     }
-}
+
+    /* 자유게시판 인기순 목록 조회*/
+    @Test
+    public void findAllWithPopularFreeBoard(){
+        List<FreeBoard> allWithPopularFreeBoard = freeBoardRepository.findAllWithPopularFreeBoard();
+        allWithPopularFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
+        }
+
+    }

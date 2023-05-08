@@ -22,11 +22,15 @@ public class FreeBoardReply extends Period {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FREE_BOARD_ID")
+//    @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
 
-    public FreeBoardReply(String freeBoardReplyContent) {
+
+    // 단위 테스트용 생성자
+    public FreeBoardReply(String freeBoardReplyContent, User user, FreeBoard freeBoard) {
         this.freeBoardReplyContent = freeBoardReplyContent;
+        this.user = user;
+        this.freeBoard = freeBoard;
     }
 }
