@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.rice;
 
+import com.app.simbongsa.domain.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.repository.user.UserRepository;
@@ -38,7 +39,10 @@ public class RicePaymentRepositoryTests {
 //    공양미 충전 내역 전체 조회(상태에 따름)
     @Test
     public void findByPaymentStatusWithPaging() {
-        Page<RicePayment> foundRicePayment = ricePaymentRepository.findByPaymentStatusWithPaging(PageRequest.of(0, 5), RicePaymentType.충전);
+        AdminPaymentSearch adminPaymentSearch = new AdminPaymentSearch();
+//        adminPaymentSearch.setRicePaymentUsed(301);
+        adminPaymentSearch.setUserEmail("5");
+        Page<RicePayment> foundRicePayment = ricePaymentRepository.findByPaymentStatusWithPaging(adminPaymentSearch, RicePaymentType.충전, PageRequest.of(0, 5));
         foundRicePayment.stream().map(RicePayment::toString).forEach(log::info);
         log.info("=========================" + foundRicePayment.getTotalElements());
     }

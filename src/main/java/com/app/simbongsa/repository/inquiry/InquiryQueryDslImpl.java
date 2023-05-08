@@ -1,8 +1,7 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminInquirySearch;
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.entity.inquiry.QInquiry;
 import com.app.simbongsa.type.InquiryType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -14,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import static com.app.simbongsa.entity.inquiry.QInquiry.inquiry;
-import static com.app.simbongsa.entity.user.QUser.user;
 
 @RequiredArgsConstructor
 public class InquiryQueryDslImpl implements InquiryQueryDsl {
@@ -22,9 +20,9 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
 
 //    문의 전체 조회(페이징 처리)
     @Override
-    public Page<Inquiry> findAllWithPaging(AdminInquirySearch adminInquirySearch, Pageable pageable) {
-        BooleanExpression inquiryTitleLike = adminInquirySearch.getInquiryTitle() == null ? null : inquiry.inquiryTitle.like("%" + adminInquirySearch.getInquiryTitle() + "%");
-        BooleanExpression userEmailLike = adminInquirySearch.getUserEmail() == null ? null : inquiry.user.userEmail.like("%" + adminInquirySearch.getUserEmail() + "%");
+    public Page<Inquiry> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
+        BooleanExpression inquiryTitleLike = adminBoardSearch.getBoardTitle() == null ? null : inquiry.inquiryTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
+        BooleanExpression userEmailLike = adminBoardSearch.getUserEmail() == null ? null : inquiry.user.userEmail.like("%" + adminBoardSearch.getUserEmail() + "%");
 
         List<Inquiry> foundInquiry = query.select(inquiry)
                 .from(inquiry)

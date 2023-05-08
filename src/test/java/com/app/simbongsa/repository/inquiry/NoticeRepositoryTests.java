@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
+import com.app.simbongsa.domain.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.entity.inquiry.Notice;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,10 @@ public class NoticeRepositoryTests {
 //    공지사항 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
-        Page<Notice> foundNotice = noticeRepository.findAllWithPaging(PageRequest.of(0, 5));
+        AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
+//        adminNoticeSearch.setNoticeTitle("3");
+        adminNoticeSearch.setNoticeTitle("5");
+        Page<Notice> foundNotice = noticeRepository.findAllWithPaging(adminNoticeSearch, PageRequest.of(0, 5));
         foundNotice.stream().map(Notice::toString).forEach(log::info);
         log.info("=============================" + foundNotice.getTotalElements());
     }

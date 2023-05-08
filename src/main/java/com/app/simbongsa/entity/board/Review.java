@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter @ToString(callSuper = true, exclude = "user")
+@Getter @ToString(callSuper = true, exclude = {"user", "reviewReplies", "reviewFiles"})
 @Table(name = "TBL_REVIEW")
 @PrimaryKeyJoinColumn(name = "ID")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -18,7 +18,7 @@ public class Review extends Board {
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "review")
-    List<ReviewReply> riviewReplies;
+    List<ReviewReply> reviewReplies;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "review")
     private List<ReviewFile> reviewFiles;

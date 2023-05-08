@@ -3,7 +3,7 @@ package com.app.simbongsa.domain.search.admin;
 import lombok.Data;
 
 @Data
-public class AdminInquirySearch {
-    private String inquiryTitle;
+public class AdminBoardSearch {
+    private String boardTitle;
     private String userEmail;
 }

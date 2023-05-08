@@ -1,12 +1,17 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
+
+import com.querydsl.core.types.dsl.BooleanExpression;
+
 import com.app.simbongsa.entity.board.QFreeBoard;
 import com.app.simbongsa.entity.board.QFreeBoardReply;
 import com.app.simbongsa.entity.file.QFreeBoardFile;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.JPQLQuery;
+
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,6 +25,7 @@ import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
 import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
 import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
+
 
 @RequiredArgsConstructor
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
@@ -39,11 +45,13 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     //    자유게시판 전체 조회(페이징)
     @Override
-    public Page<FreeBoard> findAllWithPaging(Pageable pageable) {
+    public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
+        BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : freeBoard.BoardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
+        BooleanExpression userEmailLike = adminBoardSearch.getUserEmail() == null ? null : freeBoard.user.userEmail.like("%" + adminBoardSearch.getUserEmail() + "%");
+
         List<FreeBoard> foundFreeBoard = query.select(freeBoard)
                 .from(freeBoard)
-                .leftJoin(freeBoard.freeBoardReplies, freeBoardReply)
-                .fetchJoin()
+                .where(boardTitleLike, userEmailLike)
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
