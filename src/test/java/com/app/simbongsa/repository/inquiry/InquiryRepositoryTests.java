@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
+import com.app.simbongsa.domain.search.admin.AdminInquirySearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.repository.user.UserRepository;
 import com.app.simbongsa.type.InquiryType;
@@ -37,7 +38,10 @@ public class InquiryRepositoryTests {
 //    문의 전체 조회
     @Test
     public void findAllTest() {
-        Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(PageRequest.of(0, 5));
+        AdminInquirySearch adminInquirySearch = new AdminInquirySearch();
+//        adminInquirySearch.setInquiryTitle("13");
+        adminInquirySearch.setUserEmail("18");
+        Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(adminInquirySearch, PageRequest.of(0, 5));
 
         inquiries.stream().map(Inquiry::toString).forEach(log::info);
         log.info("=======================" + inquiries.getTotalElements());
