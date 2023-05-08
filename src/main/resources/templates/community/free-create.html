@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유게시판 작성하기</title>
     <link rel="stylesheet" href="/css/community/free-create.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link rel="stylesheet" href="/js/community/free-create.js">
     <link rel="stylesheet" href="/css/font/font.css">
 </head>
 <body>
     <!-- 헤더 -->
-    <header id="_header"></header>
+    <header th:insert="~{main/header.html :: mainHeader}"></header>
     <!-- 전체 div -->
     <div class="board">
         <section class="board-container">
