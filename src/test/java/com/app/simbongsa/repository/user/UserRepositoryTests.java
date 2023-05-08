@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.user;
 
+import com.app.simbongsa.domain.search.admin.AdminUserSearch;
 import com.app.simbongsa.entity.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,10 @@ public class UserRepositoryTests {
     @Test
     public void findAllWithPagingTest() {
         PageRequest pageRequest = PageRequest.of(0, 5);
-        Page<User> users = userRepository.findAllWithPaging(pageRequest);
+        AdminUserSearch adminUserSearch = new AdminUserSearch();
+//        adminUserSearch.setUserEmail("email33");
+        adminUserSearch.setUserAddress("삼");
+        Page<User> users = userRepository.findAllWithPaging(adminUserSearch, pageRequest);
         users.stream().map(User::toString).forEach(log::info);
         log.info("=======================" + users.getTotalElements());
     }

@@ -1,6 +1,8 @@
 package com.app.simbongsa.repository.user;
 
+import com.app.simbongsa.domain.search.admin.AdminUserSearch;
 import com.app.simbongsa.entity.user.User;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,10 +19,15 @@ public class UserQueryDslImpl implements UserQueryDsl {
     private final JPAQueryFactory query;
 
 //    회원 전체 조회(페이징)
+//    검색 포함(관리자)
     @Override
-    public Page<User> findAllWithPaging(Pageable pageable) {
+    public Page<User> findAllWithPaging(AdminUserSearch adminUserSearch, Pageable pageable) {
+        BooleanExpression userEmailLike = adminUserSearch.getUserEmail() == null ? null : user.userEmail.like("%" + adminUserSearch.getUserEmail() + "%");
+        BooleanExpression userAddressLike = adminUserSearch.getUserAddress() == null ? null : user.userAddress.like("%" + adminUserSearch.getUserAddress() + "%");
+
         List<User> foundUser = query.select(user)
                 .from(user)
+                .where(userEmailLike, userAddressLike)
                 .orderBy(user.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
