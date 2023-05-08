@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.entity.board.QReview;
 import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.entity.file.QReviewFile;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import static com.app.simbongsa.entity.board.QReview.review;
+import static com.app.simbongsa.entity.file.QReviewFile.reviewFile;
 
 @RequiredArgsConstructor
 public class ReviewQueryDslImpl implements ReviewQueryDsl {
@@ -21,6 +23,8 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
     public Page<Review> findByUserId(Pageable pageable, Long userId) {
         List<Review> foundReview = query.select(review)
                 .from(review)
+                .join(reviewFile)
+                .fetchJoin()
                 .where(review.user.id.eq(userId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

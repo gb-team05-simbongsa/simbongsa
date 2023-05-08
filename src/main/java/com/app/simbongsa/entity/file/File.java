@@ -22,4 +22,11 @@ public class File {
     //    대표 이미지 검사
     @Enumerated(EnumType.STRING)
     @NotNull private FileRepresentationalType fileRepresentationalType;
+
+    public File(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType) {
+        this.fileName = fileName;
+        this.fileUuid = fileUuid;
+        this.filePath = filePath;
+        this.fileRepresentationalType = fileRepresentationalType;
+    }
 }
