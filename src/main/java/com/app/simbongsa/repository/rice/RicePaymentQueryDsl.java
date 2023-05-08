@@ -26,5 +26,7 @@ public interface RicePaymentQueryDsl {
 
     /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
     public Page<RicePayment> findByUserId(Pageable pageable, Long userId);
+      
+//    public void updatePaymentByUserIdAndSupportGongyang(Long id, int supportGonynag);
 
 }

@@ -48,4 +48,19 @@ public class SupportRepositoryTests {
         supports.stream().map(Support::toString).forEach(log::info);
         log.info("====================유저 아이디 542의 후원목록수=================" + supports.getTotalElements());
     }
+    /* 후원 참여 내역 조회(페이징처리) - 후원 상세페이지 */
+    @Test
+    public void findAllSupportAttendWithUser_QueryDSLTest(){
+        PageRequest pageRequest = PageRequest.of(0, 5);
+        Page<Support> supports = supportRepository.findAllSupportAttendWithUser_QueryDSL(pageRequest);
+        supports.stream().map(Support::toString).forEach(log::info);
+        log.info("====================" + supports.getTotalElements() + "===========================");
+    }
+
+    /* 후원 총 참여 내역 수*/
+    @Test
+    public void findAllSupportAttend_QueryDSLTest() {
+        log.info("================== 총 개수 : "+supportRepository.findAllSupportAttend_QueryDSL().toString() + " ============");
+    }
+
 }
