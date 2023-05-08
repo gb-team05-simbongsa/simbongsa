@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class ReviewFile extends File {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "REVIEW_ID")
+    /*@JoinColumn(name = "REVIEW_ID")*/
     private Review review;
 
     public ReviewFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Review review) {
