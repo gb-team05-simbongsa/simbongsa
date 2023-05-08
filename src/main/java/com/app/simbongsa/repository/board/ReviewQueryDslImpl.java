@@ -1,8 +1,8 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
-import com.app.simbongsa.entity.file.QReviewFile;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,10 +12,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QReview.review;
 
-import static com.app.simbongsa.entity.file.QReviewFile.reviewFile;
 
 import static com.app.simbongsa.entity.board.QReviewReply.reviewReply;
 
@@ -47,9 +45,13 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
     //    후기 목록 전체 조회(페이징)
     @Override
-    public Page<Review> findAllWithPaging(Pageable pageable) {
+    public Page<Review> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
+        BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : review.BoardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
+        BooleanExpression userEmailLike = adminBoardSearch.getUserEmail() == null ? null : review.user.userEmail.like("%" + adminBoardSearch.getUserEmail() + "%");
+
         List<Review> foundReview = query.select(review)
                 .from(review)
+                .where(boardTitleLike, userEmailLike)
                 .orderBy(review.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

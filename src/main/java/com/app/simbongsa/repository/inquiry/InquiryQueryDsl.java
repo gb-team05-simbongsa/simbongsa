@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminInquirySearch;
+import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.type.InquiryType;
 import org.springframework.data.domain.Page;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 public interface InquiryQueryDsl {
 
 //    문의 전체 조회(페이징 처리)
-    public Page<Inquiry> findAllWithPaging(AdminInquirySearch adminInquirySearch, Pageable pageable);
+    public Page<Inquiry> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);
 
 //    답변 대기중, 답변 완료 개수 조회
     public Long findInquiryStatusCount(InquiryType inquiryType);

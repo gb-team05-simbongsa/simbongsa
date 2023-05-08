@@ -1,7 +1,8 @@
 package com.app.simbongsa.repository.support;
 
-import com.app.simbongsa.entity.support.QSupportRequest;
+import com.app.simbongsa.domain.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
@@ -49,9 +50,13 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
 //    후원 요청 전체 조회(페이징)
     @Override
-    public Page<SupportRequest> findAllWithPaging(Pageable pageable) {
+    public Page<SupportRequest> findAllWithPaging(AdminSupportRequestSearch adminSupportRequestSearch, Pageable pageable) {
+        BooleanExpression requestTypeEq = adminSupportRequestSearch.getRequestType() == null ? null : supportRequest.supportRequestStatus.eq(adminSupportRequestSearch.getRequestType());
+        BooleanExpression userEmailLike = adminSupportRequestSearch.getUserEmail() == null ? null : supportRequest.user.userEmail.like("%" + adminSupportRequestSearch.getUserEmail() + "%");
+
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
+                .where(requestTypeEq, userEmailLike)
                 .orderBy(supportRequest.createdDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

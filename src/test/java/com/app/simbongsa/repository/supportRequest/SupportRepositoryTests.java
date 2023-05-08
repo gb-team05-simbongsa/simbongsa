@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.supportRequest;
 
+import com.app.simbongsa.domain.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
@@ -78,7 +79,10 @@ public class SupportRepositoryTests {
     //    후원 요청 목록 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
-        Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(PageRequest.of(0, 5));
+        AdminSupportRequestSearch adminSupportRequestSearch = new AdminSupportRequestSearch();
+        adminSupportRequestSearch.setRequestType(RequestType.대기);
+        adminSupportRequestSearch.setUserEmail("6");
+        Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(adminSupportRequestSearch, PageRequest.of(0, 5));
         foundSupportRequest.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("=======================" + foundSupportRequest.getTotalElements());
     }

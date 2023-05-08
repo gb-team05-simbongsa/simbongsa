@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter @ToString(callSuper = true)
+@Getter @ToString(callSuper = true, exclude = {"user", "freeBoardReplies", "freeBoardFiles"})
 @Table(name = "TBL_FREE_BOARD")
 @PrimaryKeyJoinColumn(name = "ID")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,7 +23,7 @@ public class FreeBoard extends Board {
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
-    List<FreeBoardReply> freeBoardReplies;
+    private List<FreeBoardReply> freeBoardReplies;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
     private List<FreeBoardFile> freeBoardFiles;
