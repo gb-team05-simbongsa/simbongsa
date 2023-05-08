@@ -40,5 +40,13 @@ public class ReviewRepositoryTests {
         log.info("=====================" + foundReview.getTotalElements());
     }
 
+    /* 유저별 후기게시판 목록 조회 (페이징처리) */
+    @Test
+    public void findByUserIdTest(){
+        PageRequest pageRequest = PageRequest.of(0,4);
+        Page<Review> reviews = reviewRepository.findByUserId(pageRequest, 542L);
+        reviews.stream().map(Review::toString).forEach(log::info);
+        log.info("----------------------유저 542L의 리뷰게시물 목록 수 --------------------" + reviews.getTotalElements());
+    }
 
 }
