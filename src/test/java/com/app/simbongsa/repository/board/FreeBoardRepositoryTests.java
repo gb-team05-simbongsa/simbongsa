@@ -23,6 +23,7 @@ public class FreeBoardRepositoryTests {
     @Autowired
     private UserRepository userRepository;
 
+    /*자유게시판 등록*/
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
@@ -31,6 +32,7 @@ public class FreeBoardRepositoryTests {
         }
     }
 
+    /*전체 조회 페이징*/
     @Test
     public void findAllWithPaging() {
         Page<FreeBoard> foundFreeBoard = freeBoardRepository.findAllWithPaging(PageRequest.of(0, 5));
