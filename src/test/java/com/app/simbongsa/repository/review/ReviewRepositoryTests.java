@@ -49,7 +49,7 @@ public class ReviewRepositoryTests {
     @Test
     public void findByUserIdTest(){
         PageRequest pageRequest = PageRequest.of(0,4);
-        Page<Review> reviews = reviewRepository.findByUserId(pageRequest, 146L);
+        Page<Review> reviews = reviewRepository.findByUserId(pageRequest, 542L);
         reviews.stream().map(Review::toString).forEach(log::info);
         log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + reviews.getTotalElements());
     }
