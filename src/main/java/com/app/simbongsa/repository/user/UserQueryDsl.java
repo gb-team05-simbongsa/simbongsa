@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserQueryDsl {
 
@@ -16,4 +17,10 @@ public interface UserQueryDsl {
 
 //   회원 랭킹 조회
     public List<User> findUserWithVolunteerTime();
+
+    //    비밀 번호 찾기
+    public Optional<User> findByUserEmailForPassword(String userEmail);
+
+    //    비밀 번호 변경
+    public void updatePassword(Long id, String userPassword);
 }
