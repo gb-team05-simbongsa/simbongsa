@@ -23,4 +23,5 @@ public interface RicePaymentQueryDsl {
 
 //    userId로 조회해서 공양미 후원
     public void updatePaymentByUserId(Long id, int supportGongyang);
+//    public void updatePaymentByUserIdAndSupportGongyang(Long id, int supportGonynag);
 }
