@@ -1,5 +1,6 @@
 package com.app.simbongsa.entity.volunteer;
 
+import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.DynamicInsert;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter @ToString
@@ -31,6 +33,8 @@ public class VolunteerWork {
     @NotNull private String volunteerWorkRegisterAgency;
     @NotNull private String volunteerWorkPlace;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<VolunteerWorkFile> volunteerWorkFiles;
 //    단위테스트용 생성자 생성
 
     public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace) {

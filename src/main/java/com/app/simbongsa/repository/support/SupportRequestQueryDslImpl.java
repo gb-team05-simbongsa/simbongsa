@@ -68,4 +68,15 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
         return new PageImpl<>(foundSupportRequest, pageable, count);
     }
+
+    @Override
+    public SupportRequest findSupportRequestDetail_QueryDSL(Long id) {
+        return query.select(supportRequest)
+                .from(supportRequest)
+                .join(supportRequest.supportRequestFiles)
+                .fetchJoin()
+                .where(supportRequest.id.eq(id))
+                .fetchOne();
+    }
+
 }
