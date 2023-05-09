@@ -13,7 +13,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = "member")
+@Getter @ToString(exclude = {"member", "supportRequestFiles"})
 @Table(name = "TBL_SUPPORT_REQUEST")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -44,6 +44,11 @@ public class SupportRequest extends Period {
         this.supportRequestContent = supportRequestContent;
         this.supportRequestStatus = supportRequestStatus;
         this.member = member;
+    }
+
+
+    public void setSupportRequestStatus(RequestType supportRequestStatus) {
+        this.supportRequestStatus = supportRequestStatus;
     }
 
 }

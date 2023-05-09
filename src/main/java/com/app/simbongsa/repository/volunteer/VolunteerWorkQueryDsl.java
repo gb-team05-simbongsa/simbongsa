@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.volunteer;
 
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
+import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,7 +12,7 @@ public interface VolunteerWorkQueryDsl {
     //    봉사활동 목록 조회
     public List<VolunteerWork> findVolunteerWorkList();
     //    봉사활동 전체 조회(페이징)
-    public Page<VolunteerWork> findAllWithPaging(Pageable pageable);
+    public Page<VolunteerWork> findAllWithPaging(AdminVolunteerSearch adminVolunteerSearch, Pageable pageable);
     //    봉사활동 목록페이지 지역 검색 페이징 처리
     public Page<VolunteerWork> findAllPagingAndSearch(String keyword, Pageable pageable);
     //    봉사활동 목록페이지 키워드 검색 페이징 처리

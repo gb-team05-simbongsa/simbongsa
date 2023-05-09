@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.volunteer;
 
 import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
+import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -30,13 +31,18 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
 
 //    봉사활동 전체 조회(페이지)
     @Override
-    public Page<VolunteerWork> findAllWithPaging(Pageable pageable) {
+    public Page<VolunteerWork> findAllWithPaging(AdminVolunteerSearch adminVolunteerSearch, Pageable pageable) {
+        BooleanExpression volunteerWorkPlaceLike = adminVolunteerSearch.getVolunteerWorkPlace() == null ? null : volunteerWork.volunteerWorkPlace.like("%" + adminVolunteerSearch.getVolunteerWorkPlace() + "%");
+        BooleanExpression volunteerWorkRegisterAgencyLike = adminVolunteerSearch.getVolunteerWorkRegisterAgency() == null ? null : volunteerWork.volunteerWorkRegisterAgency.like("%" + adminVolunteerSearch.getVolunteerWorkRegisterAgency() + "%");
+
         List<VolunteerWork> foundVolunteerWork = query.select(volunteerWork)
                 .from(volunteerWork)
+                .where(volunteerWorkPlaceLike, volunteerWorkRegisterAgencyLike)
                 .orderBy(volunteerWork.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+
         Long count = query.select(volunteerWork.count())
                 .from(volunteerWork)
                 .fetchOne();

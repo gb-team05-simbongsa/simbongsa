@@ -32,6 +32,15 @@ public class SupportRequestRepositoryTests {
     @Test
     public void saveTest(){
         for (int i = 1; i <= 5; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(143L).get());
+            supportRequestRepository.save(supportRequest);
+        }
+        for (int i = 1; i <= 3; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(144L).get());
+            supportRequestRepository.save(supportRequest);
+        }
+        for (int i = 1; i <= 3; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
             supportRequestRepository.save(supportRequest);
         }
@@ -78,7 +87,7 @@ public class SupportRequestRepositoryTests {
     @Test
     public void findAllWithPagingTest() {
         AdminSupportRequestSearch adminSupportRequestSearch = new AdminSupportRequestSearch();
-        adminSupportRequestSearch.setRequestType(RequestType.대기);
+//        adminSupportRequestSearch.setRequestType(RequestType.대기);
         adminSupportRequestSearch.setMemberEmail("6");
         Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(adminSupportRequestSearch, PageRequest.of(0, 5));
         foundSupportRequest.stream().map(SupportRequest::toString).forEach(log::info);
@@ -87,9 +96,17 @@ public class SupportRequestRepositoryTests {
 
     @Test
     public void findSupportRequestDetail_QueryDSLTest(){
-        log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(441L).toString());
+//        log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(122L).toString());
+        supportRequestRepository.findSupportRequestDetail_QueryDSL(122L).ifPresent(supportRequest -> log.info(supportRequest.getSupportRequestFiles().toString()));
     }
 
+//    후원요청 대기에서 승인으로
+    @Test
+    public void updateWaitToAccessTest() {
+        SupportRequest supportRequest = supportRequestRepository.findById(121L).get();
+        supportRequest.setSupportRequestStatus(RequestType.승인);
+    }
+  
     @Test
     public void findByIdWithSupportRequestInfo_QueryDslTest(){
         log.info("===========" + supportRequestRepository.findByIdWithSupportRequestInfo_QueryDsl(121L).toString());
@@ -107,7 +124,12 @@ public class SupportRequestRepositoryTests {
         long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
         log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+    }
 
+//    후원요청 삭제
+    @Test
+    public void deleteTest() {
+        supportRequestRepository.delete(supportRequestRepository.findById(121L).get());
     }
 
 }

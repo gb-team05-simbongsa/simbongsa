@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @ToString
+@Getter @ToString(exclude = "volunteerWorkFiles")
 @Table(name = "TBL_VOLUNTEER_WORK")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert

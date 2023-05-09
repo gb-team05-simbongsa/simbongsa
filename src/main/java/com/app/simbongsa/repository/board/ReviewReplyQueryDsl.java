@@ -11,5 +11,5 @@ public interface ReviewReplyQueryDsl {
     public Page<ReplyDTO> findAllByReviewReplyWithPaging(Long Id, Pageable pageable);
 
     // 댓글 갯수
-    public Long getReviewReplyCount(Long id);
+    public Long findReplyCountByReviewId(Long id);
 }

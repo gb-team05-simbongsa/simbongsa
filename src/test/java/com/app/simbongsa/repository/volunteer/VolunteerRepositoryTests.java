@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.volunteer;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -35,30 +37,30 @@ public class VolunteerRepositoryTests {
 
     @Test
     public void saveTest(){
-//        for(int i = 0; i < 50; i++){
-//            VolunteerWork volunteerWork = new VolunteerWork(
-//                    LocalDateTime.of(2023,4,12,12,00)
-//                    ,LocalDateTime.of(2023,5,12,12,00)
-//                    ,1+i
-//                    ,LocalDate.of(2023,04,12)
-//                    ,LocalDate.of(2023,04,17)
-//                    ,1+i
-//                    ,"서울"
-//                    ,"서울");
-//            volunteerWorkRepository.save(volunteerWork);
-//        }
-//        for(int i = 0; i < 20; i++){
-//            VolunteerWork volunteerWork = new VolunteerWork(
-//                    LocalDateTime.of(2023,4,12,12,00)
-//                    ,LocalDateTime.of(2023,5,12,12,00)
-//                    ,1+i
-//                    ,LocalDate.of(2023,04,12)
-//                    ,LocalDate.of(2023,04,17)
-//                    ,1+i
-//                    ,"전주"
-//                    ,"전주"));
-//            volunteerWorkRepository.save(volunteerWork);
-//        }
+        for(int i = 0; i < 50; i++){
+            VolunteerWork volunteerWork = new VolunteerWork(
+                    LocalDateTime.of(2023,4,12,12,00)
+                    ,LocalDateTime.of(2023,5,12,12,00)
+                    ,1+i
+                    ,LocalDate.of(2023,04,12)
+                    ,LocalDate.of(2023,04,17)
+                    ,1+i
+                    ,"서울"
+                    ,"서울");
+            volunteerWorkRepository.save(volunteerWork);
+        }
+        for(int i = 0; i < 20; i++){
+            VolunteerWork volunteerWork = new VolunteerWork(
+                    LocalDateTime.of(2023,4,12,12,00)
+                    ,LocalDateTime.of(2023,5,12,12,00)
+                    ,1+i
+                    ,LocalDate.of(2023,04,12)
+                    ,LocalDate.of(2023,04,17)
+                    ,1+i
+                    ,"전주"
+                    ,"전주");
+            volunteerWorkRepository.save(volunteerWork);
+        }
 
     }
 
@@ -71,7 +73,10 @@ public class VolunteerRepositoryTests {
 //    봉사 목록 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
-        Page<VolunteerWork> foundVolunteerWork = volunteerWorkRepository.findAllWithPaging(PageRequest.of(0, 5));
+        AdminVolunteerSearch adminVolunteerSearch = new AdminVolunteerSearch();
+        adminVolunteerSearch.setVolunteerWorkPlace("전");
+//        adminVolunteerSearch.setVolunteerWorkRegisterAgency("서");
+        Page<VolunteerWork> foundVolunteerWork = volunteerWorkRepository.findAllWithPaging(adminVolunteerSearch, PageRequest.of(0, 5));
         foundVolunteerWork.stream().map(VolunteerWork::toString).forEach(log::info);
         log.info("======================" + foundVolunteerWork.getTotalElements());
     }
@@ -121,7 +126,6 @@ public class VolunteerRepositoryTests {
         volunteerWorks.stream().map(VolunteerWork::toString).forEach(log::info);
         log.info("=======================" + volunteerWorks.getTotalElements());
     }
-    /* */
     @Test
     public void findById_QueryDSLTest(){
         log.info(volunteerWorkRepository.findById_QueryDSL(40L).toString());

@@ -21,12 +21,12 @@ public class FundingGiftRepositoryTests {
 
     @Test
     public void saveTest() {
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 8; i++) {
             FundingGift fundingGift = new FundingGift(
                     "펀딩선물" + i
                 , 120 * i
                 ,12000* i
-                ,fundingRepository.findById(82L).get());
+                ,fundingRepository.findById(141L).get());
             fundingGiftRepository.save(fundingGift);
         }
     }

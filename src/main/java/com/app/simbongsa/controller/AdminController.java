@@ -15,7 +15,7 @@ public class AdminController {
 //    봉사관리 - volunteer.html
 //    문의관리 - inquiry.html
 //    공지사항 - notice.html
-//    펀딩관리 - funsding.html
+//    펀딩관리 - funding.html
 //    공양미  충전내역 - payment.html
 //    공양미 환전요청 - gongyangmi-refund.html
 //    후원요청 - sponsorship-request.html

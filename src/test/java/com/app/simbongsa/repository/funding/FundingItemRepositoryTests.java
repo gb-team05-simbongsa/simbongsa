@@ -21,11 +21,11 @@ public class FundingItemRepositoryTests {
 
     @Test
     public void saveTest() {
-        for(int i=1; i<=80; i++) {
+        for(int i=1; i<=12; i++) {
             FundingItem fundingItem = new FundingItem(
                     "펀딩아이템" + i
              , "필름카메라2개"
-             ,fundingRepository.findById(78L).get()
+             ,fundingRepository.findById(141L).get()
             );
          fundingItemRepository.save(fundingItem);
         }

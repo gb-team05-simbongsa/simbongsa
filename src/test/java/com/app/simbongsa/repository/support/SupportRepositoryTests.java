@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -59,6 +60,12 @@ public class SupportRepositoryTests {
     @Test
     public void findAllSupportAttend_QueryDSLTest() {
         log.info("================== 총 개수 : "+supportRepository.findAllSupportAttend_QueryDSL().toString() + " ============");
+    }
+
+//    해당 후원 명단 조회
+    @Test
+    public void findSupportByRequestIdTest() {
+        memberRepository.findSupportByRequestId(129L).stream().map(Member::toString).forEach(log::info);
     }
 
 }
