@@ -35,19 +35,19 @@ public class FreeBoardRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
-            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(542L).get());
+            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(50L).get());
             freeBoardRepository.save(freeBoard);
         }
     }
+  
     /*자유게시판 댓글 등록*/
     @Test
     public void saveReplies(){
         for(int i =1; i<=2; i++){
-            Optional<FreeBoard> byId = freeBoardRepository.findById(1183L);
-            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,memberRepository.findById(145L).get(), byId.get());
+            Optional<FreeBoard> byId = freeBoardRepository.findById(103L);
+            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,memberRepository.findById(51L).get(), byId.get());
             freeBoardReplyRepository.save(freeBoardReply);
         }
-
     }
 
     /*전체 조회 페이징*/
@@ -68,6 +68,14 @@ public class FreeBoardRepositoryTests {
         PageRequest pageRequest = PageRequest.of(0,4);
         Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, 50L);
         freeBoards.stream().map(FreeBoard::toString).forEach(log::info);
+
+        log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
+    }
+
+    /* 자유게시판 상세 조회 */
+    @Test
+    public void findByIdTest(){
+        freeBoardRepository.findById(103L).ifPresent(freeBoard -> log.info(freeBoard.getFreeBoardReplies().toString()));
         log.info("----------------------유저 50L 자유게시판 목록 수 --------------------" + freeBoards.getTotalElements());
     }
 
@@ -76,7 +84,13 @@ public class FreeBoardRepositoryTests {
     public void findAllWithPopularFreeBoard(){
         List<FreeBoard> allWithPopularFreeBoard = freeBoardRepository.findAllWithPopularFreeBoard();
         allWithPopularFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
-        }
+    }
+
+//    자유게시판 삭제(파일, 댓글도 한번에)
+    @Test
+    public void deleteTest() {
+        freeBoardRepository.delete(freeBoardRepository.findById(103L).get());
+    }
 
     /* 마이페이지 작성한 자유게시물 상세 조회*/
     @Test
@@ -84,4 +98,5 @@ public class FreeBoardRepositoryTests {
         Optional<FreeBoard> myFreeBoard = freeBoardRepository.findById(105L);
         myFreeBoard.ifPresent(freeBoard -> log.info("====================================" + freeBoard.getFreeBoardFiles().toString() + "====================="));
     }
+
 }

@@ -28,4 +28,11 @@ public class ReviewReply extends Period {
     public ReviewReply(String reviewReplyContent) {
         this.reviewReplyContent = reviewReplyContent;
     }
+
+    // 단위 테스트용 생성자
+    public ReviewReply(String reviewReplyContent, Member member, Review review) {
+        this.reviewReplyContent = reviewReplyContent;
+        this.member = member;
+        this.review = review;
+    }
 }
