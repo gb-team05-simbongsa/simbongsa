@@ -15,6 +15,6 @@ import javax.persistence.*;
 public class VolunteerWorkFile extends File {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "VOLUNTEER_WORK_ID")
+//    @JoinColumn(name = "VOLUNTEER_WORK_ID")
     private VolunteerWork volunteerWork;
 }

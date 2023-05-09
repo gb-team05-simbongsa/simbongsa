@@ -33,7 +33,7 @@ public class VolunteerWork {
     @NotNull private String volunteerWorkRegisterAgency;
     @NotNull private String volunteerWorkPlace;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork")
     private List<VolunteerWorkFile> volunteerWorkFiles;
 //    단위테스트용 생성자 생성
 
