@@ -22,10 +22,10 @@ public class FreeBoard extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard", cascade = CascadeType.REMOVE)
     private List<FreeBoardReply> freeBoardReplies;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "freeBoard", cascade = CascadeType.REMOVE)
     private List<FreeBoardFile> freeBoardFiles;
 
     public FreeBoard(String boardTitle, String boardContent, Member member) {

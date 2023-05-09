@@ -17,10 +17,10 @@ public class Review extends Board {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "review")
-    List<ReviewReply> reviewReplies;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "review", cascade = CascadeType.REMOVE)
+    private List<ReviewReply> reviewReplies;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "review")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "review", cascade = CascadeType.REMOVE)
     private List<ReviewFile> reviewFiles;
 
     /* 단위테스트 위한 생성자 생성 */

@@ -34,7 +34,7 @@ public class FreeBoardRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
-            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(542L).get());
+            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(50L).get());
             freeBoardRepository.save(freeBoard);
         }
     }
@@ -42,8 +42,8 @@ public class FreeBoardRepositoryTests {
     @Test
     public void saveReplies(){
         for(int i =1; i<=2; i++){
-            Optional<FreeBoard> byId = freeBoardRepository.findById(1183L);
-            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,memberRepository.findById(145L).get(), byId.get());
+            Optional<FreeBoard> byId = freeBoardRepository.findById(103L);
+            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,memberRepository.findById(51L).get(), byId.get());
             freeBoardReplyRepository.save(freeBoardReply);
         }
 
@@ -73,7 +73,7 @@ public class FreeBoardRepositoryTests {
     /* 자유게시판 상세 조회 */
     @Test
     public void findByIdTest(){
-        freeBoardRepository.findById(146L);
+        freeBoardRepository.findById(103L).ifPresent(freeBoard -> log.info(freeBoard.getFreeBoardReplies().toString()));
     }
 
     /* 자유게시판 인기순 목록 조회*/
@@ -81,6 +81,12 @@ public class FreeBoardRepositoryTests {
     public void findAllWithPopularFreeBoard(){
         List<FreeBoard> allWithPopularFreeBoard = freeBoardRepository.findAllWithPopularFreeBoard();
         allWithPopularFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
-        }
-
     }
+
+//    자유게시판 삭제(파일, 댓글도 한번에)
+    @Test
+    public void deleteTest() {
+        freeBoardRepository.delete(freeBoardRepository.findById(103L).get());
+    }
+
+}
