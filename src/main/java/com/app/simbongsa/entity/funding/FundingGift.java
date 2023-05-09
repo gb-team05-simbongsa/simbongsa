@@ -18,7 +18,7 @@ public class FundingGift {
     @NotNull private int fundingGiftPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FUNDING_ID")
+//    @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
 
     //단위테스트용 생성자

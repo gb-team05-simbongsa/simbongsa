@@ -74,7 +74,7 @@ public class FundingRepositoryTests {
     //  펀딩 상세보기
     @Test
     public void findByIdTest() {
-        fundingRepository.findById(555L).ifPresent(funding -> log.info(funding.toString()));
+        fundingRepository.findById(612L).ifPresent(funding -> log.info(funding.toString()));
     }
 
 

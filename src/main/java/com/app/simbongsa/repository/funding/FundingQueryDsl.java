@@ -19,7 +19,7 @@ public interface FundingQueryDsl {
 //    public List<Funding> findById(Long FundingId, Long UserId);
 
     //    펀딩 상세페이지 조회
-    public Optional<Funding> findByIdForDetail(Long fundingId);
+    public Funding findByIdForDetail(Long fundingId);
 
     /* 내 펀딩 내역 조회(페이징처리) */
     /* 나중에 HttpSession session 으로 매개변수 바꿔줘야 함 */
