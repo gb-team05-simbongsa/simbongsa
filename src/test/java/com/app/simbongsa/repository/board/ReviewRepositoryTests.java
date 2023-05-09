@@ -60,7 +60,7 @@ public class ReviewRepositoryTests {
     @Test
     public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,4);
-        Page<Review> reviews = reviewRepository.findByMemberId(pageRequest, 542L);
+        Page<Review> reviews = reviewRepository.findByMemberId(pageRequest, 50L);
         reviews.stream().map(Review::toString).forEach(log::info);
         log.info("----------------------유저 542L의 리뷰게시물 목록 수 --------------------" + reviews.getTotalElements());
     }

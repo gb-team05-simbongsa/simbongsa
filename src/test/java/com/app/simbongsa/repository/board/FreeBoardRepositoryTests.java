@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
@@ -38,6 +39,7 @@ public class FreeBoardRepositoryTests {
             freeBoardRepository.save(freeBoard);
         }
     }
+  
     /*자유게시판 댓글 등록*/
     @Test
     public void saveReplies(){
@@ -46,7 +48,6 @@ public class FreeBoardRepositoryTests {
             FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,memberRepository.findById(51L).get(), byId.get());
             freeBoardReplyRepository.save(freeBoardReply);
         }
-
     }
 
     /*전체 조회 페이징*/
@@ -61,12 +62,13 @@ public class FreeBoardRepositoryTests {
     }
 
 
-    /* 유저별 자유게시판 목록 조회 (페이징처리) */
+    /* 내 자유게시물 목록 조회 (페이징처리) */
     @Test
     public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,4);
-        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, 146L);
+        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, 50L);
         freeBoards.stream().map(FreeBoard::toString).forEach(log::info);
+
         log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
     }
 
@@ -74,6 +76,7 @@ public class FreeBoardRepositoryTests {
     @Test
     public void findByIdTest(){
         freeBoardRepository.findById(103L).ifPresent(freeBoard -> log.info(freeBoard.getFreeBoardReplies().toString()));
+        log.info("----------------------유저 50L 자유게시판 목록 수 --------------------" + freeBoards.getTotalElements());
     }
 
     /* 자유게시판 인기순 목록 조회*/
@@ -87,6 +90,13 @@ public class FreeBoardRepositoryTests {
     @Test
     public void deleteTest() {
         freeBoardRepository.delete(freeBoardRepository.findById(103L).get());
+    }
+
+    /* 마이페이지 작성한 자유게시물 상세 조회*/
+    @Test
+    public void findByIdForMyDetail(){
+        Optional<FreeBoard> myFreeBoard = freeBoardRepository.findById(105L);
+        myFreeBoard.ifPresent(freeBoard -> log.info("====================================" + freeBoard.getFreeBoardFiles().toString() + "====================="));
     }
 
 }

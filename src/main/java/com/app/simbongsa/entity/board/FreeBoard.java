@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter @ToString(callSuper = true, exclude = {"member", "freeBoardReplies", "freeBoardFiles"})
+@Getter @ToString(callSuper = true, exclude = {"member", "freeBoardReplies"})
 @Table(name = "TBL_FREE_BOARD")
 @PrimaryKeyJoinColumn(name = "ID")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
