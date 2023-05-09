@@ -1,10 +1,12 @@
 package com.app.simbongsa.repository.volunteer;
 
+import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +18,7 @@ import java.util.Optional;
 import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 
 @RequiredArgsConstructor
+@Slf4j
 public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     private final JPAQueryFactory query;
 
@@ -91,13 +94,35 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
 
         return new PageImpl<>(findAllVolunteerWorkKeywords, pageable, count);
     }
-
+    //    봉사활동 상세페이지 조회
     @Override
     public Optional<VolunteerWork> findById_QueryDSL(Long volunteerWorkId) {
-        return Optional.ofNullable(query.select(volunteerWork)
-                .from(volunteerWork)
+        return Optional.ofNullable(query.selectFrom(volunteerWork)
                 .where(volunteerWork.id.eq(volunteerWorkId))
                 .fetchOne());
+     }
+    //    이전글 다음글
+    @Override
+    public Optional<VolunteerWork> findByNextIdOrPrevId(String keyword, Long id) {
+        BooleanExpression prevPage = volunteerWork.id.lt(id);
+        BooleanExpression nextPage = volunteerWork.id.gt(id);
+
+        if(keyword == "다음글"){
+            return Optional.ofNullable(query.selectFrom(volunteerWork)
+                    .where(nextPage)
+                    .fetchFirst());
+        }else if(keyword == "이전글"){
+            return Optional.ofNullable(query.selectFrom(volunteerWork)
+                    .where(prevPage)
+                    .fetchFirst());
+        }else {
+            return Optional.ofNullable(query.selectFrom(volunteerWork)
+                    .where(volunteerWork.id.eq(id))
+                    .fetchOne());
+        }
+
+
     }
 
 }
+

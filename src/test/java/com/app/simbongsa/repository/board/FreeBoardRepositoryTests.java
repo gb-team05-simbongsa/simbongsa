@@ -79,6 +79,7 @@ public class FreeBoardRepositoryTests {
 //        log.info("----------------------유저 50L 자유게시판 목록 수 --------------------" + freeBoards.getTotalElements());
     }
 
+
     /* 자유게시판 인기순 목록 조회*/
     @Test
     public void findAllWithPopularFreeBoard(){

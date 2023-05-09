@@ -19,5 +19,7 @@ public interface VolunteerWorkQueryDsl {
     public Page<VolunteerWork> findPagingAndSearch(String placeKeyword, String agencyKeyword, Pageable pageable);
     //    봉사활동 상세페이지 조회
     public Optional<VolunteerWork> findById_QueryDSL(Long volunteerWorkId);
+    //    봉사활동 이전글 다음글 조회
+    public Optional<VolunteerWork> findByNextIdOrPrevId(String keyword, Long id);
 
 }

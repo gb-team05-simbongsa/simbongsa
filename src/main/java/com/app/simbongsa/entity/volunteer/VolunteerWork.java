@@ -47,5 +47,4 @@ public class VolunteerWork {
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
     }
-
 }
