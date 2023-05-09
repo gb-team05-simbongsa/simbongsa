@@ -41,6 +41,15 @@ public class SupportRequestRepositoryTests {
         }
         for (int i = 1; i <= 3; i++) {
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
+            supportRequestRepository.save(supportRequest);
+        }
+        for (int i = 1; i <= 3; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(79L).get());
+            supportRequestRepository.save(supportRequest);
+        }
+        for (int i = 1; i <= 3; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(81L).get());
             supportRequestRepository.save(supportRequest);
         }
 
@@ -95,6 +104,25 @@ public class SupportRequestRepositoryTests {
     public void updateWaitToAccessTest() {
         SupportRequest supportRequest = supportRequestRepository.findById(121L).get();
         supportRequest.setSupportRequestStatus(RequestType.승인);
+    }
+  
+    @Test
+    public void findByIdWithSupportRequestInfo_QueryDslTest(){
+        log.info("===========" + supportRequestRepository.findByIdWithSupportRequestInfo_QueryDsl(121L).toString());
+    }
+
+    
+    /* 후원 최신순, 후원 많은순, 후원 적은순 */
+    @Test
+    public void findByIdWithOrderTest(){
+        PageRequest pageRequest = PageRequest.of(0, 3);
+        Slice<SupportRequest> supportRequests = supportRequestRepository.findByIdWithOrder("후원 적은순", pageRequest);
+        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+
+        List<SupportRequest> supportRequestList = supportRequests.getContent();
+        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
+        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
+        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
     }
 
 }

@@ -18,5 +18,10 @@ public interface SupportRequestQueryDsl {
     // 후원 요청 전체 조회
     public Page<SupportRequest> findAllWithPaging(AdminSupportRequestSearch adminSupportRequestSearch, Pageable pageable);
 
+    /* 후원 상세페이지, 후원 상세 정보 조회*/
+    public SupportRequest findByIdWithSupportRequestInfo_QueryDsl(Long id);
+
+    /* 후원 목록 페이지 검색(후원 많은 순, 후원 적은순, 최신순) */
+    public Slice<SupportRequest> findByIdWithOrder(String keyword, Pageable pageable);
 
 }
