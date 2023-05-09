@@ -61,6 +61,8 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Page<FreeBoard> findByMemberId(Pageable pageable, Long memberId) {
         List<FreeBoard> foundFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
+                .join(freeBoard.freeBoardFiles)
+                .fetchJoin()
                 .where(freeBoard.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -92,6 +94,17 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Optional<FreeBoard> findByIdForDetail(Long freeBoardId) {
         return Optional.ofNullable(query.select(freeBoard)
                 .from(freeBoard)
+                .where(freeBoard.id.eq(freeBoardId))
+                .fetchOne());
+    }
+
+    /* 마이페이지 작성한 자유게시물 상세 조회*/
+    @Override
+    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId) {
+        return Optional.ofNullable(query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.freeBoardFiles)
+                .fetchJoin()
                 .where(freeBoard.id.eq(freeBoardId))
                 .fetchOne());
     }
