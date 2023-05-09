@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.simbongsa.entity.support.QSupport.support;
 import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
@@ -82,13 +83,13 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
                     .fetchOne();
     }
     @Override
-    public SupportRequest findSupportRequestDetail_QueryDSL(Long id) {
-        return query.select(supportRequest)
+    public Optional<SupportRequest> findSupportRequestDetail_QueryDSL(Long id) {
+        return Optional.of(query.select(supportRequest)
                 .from(supportRequest)
-                .join(supportRequest.supportRequestFiles)
+                .leftJoin(supportRequest.supportRequestFiles)
                 .fetchJoin()
                 .where(supportRequest.id.eq(id))
-                .fetchOne();
+                .fetchOne());
     }
 
     /* 후원 목록 페이지 검색(후원 많은 순, 후원 적은순, 최신순) */

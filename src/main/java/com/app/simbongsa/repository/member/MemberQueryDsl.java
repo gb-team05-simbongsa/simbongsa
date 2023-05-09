@@ -24,4 +24,7 @@ public interface MemberQueryDsl {
 
     //    비밀 번호 변경
     public void updatePassword(Long id, String memberPassword);
+
+//    후원 명단 조회
+    public List<Member> findSupportByRequestId(Long id);
 }
