@@ -1,8 +1,6 @@
-package com.app.simbongsa.support;
+package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.repository.support.SupportRepository;
-import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.repository.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
