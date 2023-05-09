@@ -12,5 +12,5 @@ public interface VolunteerWorkActivityQueryDsl {
     public List<VolunteerWorkActivity> findApplyByVolunteerWorkId(Long id);
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
-    public Page<VolunteerWorkActivity> findByUserId(Pageable pageable, Long userId);
+    public Page<VolunteerWorkActivity> findByMemberId(Pageable pageable, Long memberId);
 }

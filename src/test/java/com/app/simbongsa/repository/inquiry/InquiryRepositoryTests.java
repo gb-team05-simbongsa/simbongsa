@@ -1,8 +1,8 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.type.InquiryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ public class InquiryRepositoryTests {
     private InquiryRepository inquiryRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
 //    더미데이터 넣기
     @Test

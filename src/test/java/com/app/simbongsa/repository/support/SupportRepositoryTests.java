@@ -1,7 +1,7 @@
 package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class SupportRepositoryTests {
     private SupportRepository supportRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Autowired
     private SupportRequestRepository supportRequestRepository;

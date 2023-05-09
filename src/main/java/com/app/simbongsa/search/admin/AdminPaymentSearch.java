@@ -1,10 +1,10 @@
-package com.app.simbongsa.domain.search.admin;
+package com.app.simbongsa.search.admin;
 
 import lombok.Data;
 
 @Data
 public class AdminPaymentSearch {
     private Integer ricePaymentUsed;
-    private String userEmail;
+    private String memberEmail;
     private Integer riceRefundRequestPrice;
 }

@@ -1,12 +1,9 @@
 package com.app.simbongsa.repository.rice;
 
 
-import com.app.simbongsa.domain.search.admin.AdminPaymentSearch;
-import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.search.admin.AdminPaymentSearch;
 
-import com.app.simbongsa.entity.rice.QRicePayment;
 import com.app.simbongsa.entity.rice.RicePayment;
-import com.app.simbongsa.entity.user.QUser;
 import com.app.simbongsa.type.RicePaymentType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -18,9 +15,7 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.rice.QRicePayment.ricePayment;
-import static com.app.simbongsa.entity.user.QUser.user;
 
 @RequiredArgsConstructor
 public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
@@ -31,14 +26,14 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
     @Override
     public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType, Pageable pageable) {
         BooleanExpression ricePaymentUsedEq = adminPaymentSearch.getRicePaymentUsed() == null ? null : ricePayment.ricePaymentUsed.eq(adminPaymentSearch.getRicePaymentUsed());
-        BooleanExpression userEmailLike = adminPaymentSearch.getUserEmail() == null ? null : ricePayment.user.userEmail.like("%" + adminPaymentSearch.getUserEmail() + "%");
+        BooleanExpression memberEmailLike = adminPaymentSearch.getMemberEmail() == null ? null : ricePayment.member.memberEmail.like("%" + adminPaymentSearch.getMemberEmail() + "%");
         BooleanExpression riceRefundRequestPriceLt = adminPaymentSearch.getRiceRefundRequestPrice() == null ? null : ricePayment.ricePaymentUsed.lt(adminPaymentSearch.getRiceRefundRequestPrice());
 
 
         List<RicePayment> foundRicePayment = query.select(ricePayment)
                 .from(ricePayment)
                 .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
-                .where(ricePaymentUsedEq, userEmailLike)
+                .where(ricePaymentUsedEq, memberEmailLike)
                 .orderBy(ricePayment.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -82,36 +77,36 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
     }
 
     @Override
-    public void updatePaymentByUserId(Long id, int supportGongyang) {
+    public void updatePaymentByMemberId(Long id, int supportGongyang) {
         query.update(ricePayment)
-                .set(ricePayment.user.userRice, ricePayment.user.userRice.subtract(supportGongyang))
+                .set(ricePayment.member.memberRice, ricePayment.member.memberRice.subtract(supportGongyang))
                 .set(ricePayment.ricePaymentUsed, supportGongyang)
-                .where(ricePayment.user.id.eq(id))
+                .where(ricePayment.member.id.eq(id))
                 .execute();
     }
 //    }
 //    @Override
-//    public void updatePaymentByUserIdAndSupportGongyang(Long id, int supportGongyang) {
-//        query.update(user)
-//                .set(user.userRice, user.userRice.subtract(supportGongyang))
-//                .set(ricePayment.user.id.)
+//    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGongyang) {
+//        query.update(member)
+//                .set(member.memberRice, member.memberRice.subtract(supportGongyang))
+//                .set(ricePayment.member.id.)
 ////                .set(ricePayment.ricePaymentUsed, supportGongyang)
-//                .where(user.id.eq(id))
+//                .where(member.id.eq(id))
 //                .execute();
 //    }
   /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
       @Override
-      public Page<RicePayment> findByUserId(Pageable pageable, Long userId) {
+      public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId) {
           List<RicePayment> foundRice = query.select(ricePayment)
                   .from(ricePayment)
-                  .where(ricePayment.user.id.eq(userId))
+                  .where(ricePayment.member.id.eq(memberId))
                   .offset(pageable.getOffset())
                   .limit(pageable.getPageSize())
                   .fetch();
 
           Long count = query.select(ricePayment.count())
                   .from(ricePayment)
-                  .where(ricePayment.user.id.eq(userId))
+                  .where(ricePayment.member.id.eq(memberId))
                   .fetchOne();
 
           return new PageImpl<>(foundRice, pageable, count);

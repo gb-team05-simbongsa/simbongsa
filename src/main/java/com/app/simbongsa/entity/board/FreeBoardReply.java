@@ -1,14 +1,14 @@
 package com.app.simbongsa.entity.board;
 
 import com.app.simbongsa.audit.Period;
-import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString(exclude = {"user", "freeBoard"})
+@Getter @ToString(exclude = {"member", "freeBoard"})
 @Table(name = "TBL_FREE_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeBoardReply extends Period {
@@ -18,8 +18,8 @@ public class FreeBoardReply extends Period {
     @NotNull private String freeBoardReplyContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "FREE_BOARD_ID")
@@ -28,9 +28,9 @@ public class FreeBoardReply extends Period {
 
 
     // 단위 테스트용 생성자
-    public FreeBoardReply(String freeBoardReplyContent, User user, FreeBoard freeBoard) {
+    public FreeBoardReply(String freeBoardReplyContent, Member member, FreeBoard freeBoard) {
         this.freeBoardReplyContent = freeBoardReplyContent;
-        this.user = user;
+        this.member = member;
         this.freeBoard = freeBoard;
     }
 }

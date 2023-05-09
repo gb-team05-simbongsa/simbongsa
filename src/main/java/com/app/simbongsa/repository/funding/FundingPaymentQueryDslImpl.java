@@ -19,17 +19,17 @@ public class FundingPaymentQueryDslImpl implements FundingPaymentQueryDsl {
 
     /* 내 펀딩 내역 조회 (페이징처리)*/
     @Override
-    public Page<FundingPayment> findByUserId(Pageable pageable, Long userId) {
+    public Page<FundingPayment> findByMemberId(Pageable pageable, Long memberId) {
         List<FundingPayment> foundFundingPayments = query.select(fundingPayment)
                 .from(fundingPayment)
-                .where(fundingPayment.user.id.eq(userId))
+                .where(fundingPayment.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(fundingPayment.count())
                 .from(fundingPayment)
-                .where(fundingPayment.user.id.eq(userId))
+                .where(fundingPayment.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundFundingPayments,pageable,count);

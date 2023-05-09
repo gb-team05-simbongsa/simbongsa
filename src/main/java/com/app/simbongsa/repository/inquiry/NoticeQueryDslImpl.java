@@ -1,8 +1,7 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.entity.inquiry.Notice;
-import com.app.simbongsa.entity.inquiry.QNotice;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

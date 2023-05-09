@@ -1,11 +1,8 @@
 package com.app.simbongsa.repository.review;
 
-import com.app.simbongsa.entity.board.QReview;
 import com.app.simbongsa.entity.board.Review;
-import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.repository.board.ReviewRepository;
-import com.app.simbongsa.repository.user.UserRepository;
-import com.app.simbongsa.type.RequestType;
+import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +22,7 @@ public class ReviewRepositoryTests {
     private ReviewRepository reviewRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Test
     public void saveTest() {

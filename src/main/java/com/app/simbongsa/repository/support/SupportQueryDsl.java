@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface SupportQueryDsl {
     /* 내 후원 내역 조회 (페이징처리)*/
-    public Page<Support> findByUserId(Pageable pageable, Long userId);
+    public Page<Support> findByMemberId(Pageable pageable, Long memberId);
 
     /* 후원 참여 내역 조회(페이징처리) - 후원 상세페이지 */
-    public Page<Support> findAllSupportAttendWithUser_QueryDSL(Pageable pageable);
+    public Page<Support> findAllSupportAttendWithMember_QueryDSL(Pageable pageable);
 
     /* 총 후원 참여 내역*/
     public Long findAllSupportAttend_QueryDSL();

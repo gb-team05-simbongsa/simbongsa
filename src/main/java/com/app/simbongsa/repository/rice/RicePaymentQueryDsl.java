@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.rice;
 
-import com.app.simbongsa.domain.search.admin.AdminPaymentSearch;
+import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.type.RicePaymentType;
 import org.springframework.data.domain.Page;
@@ -22,12 +22,12 @@ public interface RicePaymentQueryDsl {
 //    환전 요청 상태 승인으로 변경
     public void updatePaymentStatusToAccessById(Long id);
 
-//    userId로 조회해서 공양미 후원
-    public void updatePaymentByUserId(Long id, int supportGongyang);
+//    memberId로 조회해서 공양미 후원
+    public void updatePaymentByMemberId(Long id, int supportGongyang);
 
     /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
-    public Page<RicePayment> findByUserId(Pageable pageable, Long userId);
+    public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId);
       
-//    public void updatePaymentByUserIdAndSupportGongyang(Long id, int supportGonynag);
+//    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGonynag);
 
 }

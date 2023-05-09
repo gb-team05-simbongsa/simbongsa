@@ -1,6 +1,6 @@
 package com.app.simbongsa.entity.volunteer;
 
-import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter @ToString(exclude = {"user", "volunteerWork"})
+@Getter @ToString(exclude = {"member", "volunteerWork"})
 @Table(name = "TBL_VOLUNTEER_WORK_ACTIVITY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class VolunteerWorkActivity {
@@ -19,16 +19,16 @@ public class VolunteerWorkActivity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
-    private User user;
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "VOLUNTEER_WORK_ID")
     private VolunteerWork volunteerWork;
     
     
-    public VolunteerWorkActivity(LocalDate volunteerWorkActivityDate, User user, VolunteerWork volunteerWork) {
+    public VolunteerWorkActivity(LocalDate volunteerWorkActivityDate, Member member, VolunteerWork volunteerWork) {
         this.volunteerWorkActivityDate = volunteerWorkActivityDate;
-        this.user = user;
+        this.member = member;
         this.volunteerWork = volunteerWork;
     }
 }

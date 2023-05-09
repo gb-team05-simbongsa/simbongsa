@@ -2,7 +2,7 @@ package com.app.simbongsa.repository.funding;
 
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.type.FundingCategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ public class FundingRepositoryTests {
     private FundingRepository fundingRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Autowired
     private FundingFileRepository fundingFileRepository;
