@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>후원하기</title>
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/support/support-rice-modal.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+</head>
+<body>
+    <button id="support-open" >후원하기</button>
+    <div class="support-layout-error" th:fragment="supportRiceLayoutError" style="display: none;">
+    <div class="support-rice-layout">
+        <!-- <form name=""> -->
+            <div class="suppport-rice-container-error">
+                <div class="support-rice-close-btn-layout-error">
+                    <button type="button">X</button>
+                </div>
+                    <div class="">
+                        <p>후원 가능한 <em>공양미</em>를 입력해주세요.</p>
+                    </div>
+
+                </div>
+                <div class="support-pay-layout-error">
+                    <button type="button" class="btn-rice">
+                        <span>확인</span>
+                    </button>
+                </div>
+            <!-- </form> -->
+    </div>
+    </div>
+    
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/support/support-rice-modal.js"></script>
+
+</html>
