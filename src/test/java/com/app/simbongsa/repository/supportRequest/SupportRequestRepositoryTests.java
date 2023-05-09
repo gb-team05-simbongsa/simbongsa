@@ -41,7 +41,7 @@ public class SupportRequestRepositoryTests {
         }
         for (int i = 1; i <= 3; i++) {
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
+            SupportRequest supportRequest1 = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {

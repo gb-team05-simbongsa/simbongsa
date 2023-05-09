@@ -22,7 +22,7 @@ $('.modal-close').on('click', () => {
 /* 수정버튼 누르면 작성페이지로 이동 */
 $('.review-modify').on('click', function () {
     console.log("수정버튼눌림");
-    location.href = "/community/free-create";
+    location.href = "/community/board-modify";
 })
 
 /* 삭제 모달 */

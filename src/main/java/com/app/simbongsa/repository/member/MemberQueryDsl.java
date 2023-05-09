@@ -19,12 +19,28 @@ public interface MemberQueryDsl {
 //   회원 랭킹 조회
     public List<Member> findMemberWithVolunteerTime();
 
+    /* 이메일 로그인 */
+    public Optional<Member> login(String memberEmail, String memberPassword);
+
     //    비밀 번호 찾기
     public Optional<Member> findByMemberEmailForPassword(String memberEmail);
 
     //    비밀 번호 변경
     public void updatePassword(Long id, String memberPassword);
 
+<<<<<<< HEAD
 //    후원 명단 조회
     public List<Member> findSupportByRequestId(Long id);
+=======
+    /*이메일 중복 검사*/
+    public Optional<Member> overlapByMemberEmail(String memberEmail);
+
+    /* 내 공양미 환전 요청*/
+    public void updateChangeRiceByMemberId(Long memberId, int changeRice);
+
+    /* 공양미 충전 */
+    public void updateChargeRiceByMemberId(Long memberId, int chargeRice);
+
+
+>>>>>>> juyeon
 }
