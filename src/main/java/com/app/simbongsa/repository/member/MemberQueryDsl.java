@@ -28,10 +28,9 @@ public interface MemberQueryDsl {
     //    비밀 번호 변경
     public void updatePassword(Long id, String memberPassword);
 
-<<<<<<< HEAD
 //    후원 명단 조회
     public List<Member> findSupportByRequestId(Long id);
-=======
+
     /*이메일 중복 검사*/
     public Optional<Member> overlapByMemberEmail(String memberEmail);
 
@@ -41,6 +40,4 @@ public interface MemberQueryDsl {
     /* 공양미 충전 */
     public void updateChargeRiceByMemberId(Long memberId, int chargeRice);
 
-
->>>>>>> juyeon
 }
