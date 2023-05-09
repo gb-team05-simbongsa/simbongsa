@@ -2,6 +2,7 @@ package com.app.simbongsa.entity.file;
 
 import com.app.simbongsa.entity.board.Board;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,8 @@ public class FreeBoardFile extends File {
     @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
+    public FreeBoardFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
+        super(fileName, fileUuid, filePath, fileRepresentationalType);
+        this.freeBoard = freeBoard;
+    }
 }
