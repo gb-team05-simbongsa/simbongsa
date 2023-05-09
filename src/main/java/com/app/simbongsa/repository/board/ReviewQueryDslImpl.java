@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -90,4 +91,16 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
                 .where(review.id.eq(reviewId))
                 .fetchOne());
     }
+
+    /* 마이페이지 작성한 후기게시물 상세 조회*/
+    @Override
+    public Optional<Review> findByIdForMyDetail(Long reviewId) {
+        return Optional.ofNullable(query.select(review)
+                .from(review)
+                .join(review.reviewFiles)
+                .fetchJoin()
+                .where(review.id.eq(reviewId))
+                .fetchOne());
+    }
+
 }

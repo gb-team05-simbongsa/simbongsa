@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.simbongsa.entity.member.QMember.member;
+import static com.app.simbongsa.entity.rice.QRicePayment.ricePayment;
 
 
 @RequiredArgsConstructor
@@ -71,5 +72,40 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     public void updatePassword(Long id, String memberPassword) {
         query.update(member).set(member.memberPassword, memberPassword).where(member.id.eq(id)).execute();
 
+    }
+
+    /* 내 공양미 환전 요청*/
+    @Override
+    public void updateChangeRiceByMemberId(Long memberId, int changeRice) {
+        query.update(member)
+                .set(member.memberRice, member.memberRice.subtract(changeRice))
+                .where(member.id.eq(memberId))
+                .execute();
+    }
+
+    /* 공양미 충전 */
+    @Override
+    public void updateChargeRiceByMemberId(Long memberId, int chargeRice) {
+        query.update(member)
+                .set(member.memberRice, member.memberRice.add(chargeRice))
+                .where(member.id.eq(memberId))
+                .execute();
+    }
+
+    /* 이메일 로그인 */
+    @Override
+    public Optional<Member> login(String memberEmail, String memberPassword) {
+        return Optional.ofNullable(
+                query.select(member)
+                        .from(member)
+                        .where(member.memberEmail.eq(memberEmail)
+                                .and(member.memberPassword.eq(memberPassword)))
+                        .fetchOne());
+    }
+
+    /*이메일 중복 검사*/
+    @Override
+    public Optional<Member> overlapByMemberEmail(String memberEmail) {
+        return Optional.ofNullable(query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
     }
 }
