@@ -78,7 +78,7 @@ public class SupportRequestRepositoryTests {
     @Test
     public void findAllWithPagingTest() {
         AdminSupportRequestSearch adminSupportRequestSearch = new AdminSupportRequestSearch();
-        adminSupportRequestSearch.setRequestType(RequestType.대기);
+//        adminSupportRequestSearch.setRequestType(RequestType.대기);
         adminSupportRequestSearch.setMemberEmail("6");
         Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(adminSupportRequestSearch, PageRequest.of(0, 5));
         foundSupportRequest.stream().map(SupportRequest::toString).forEach(log::info);
@@ -87,7 +87,8 @@ public class SupportRequestRepositoryTests {
 
     @Test
     public void findSupportRequestDetail_QueryDSLTest(){
-        log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(441L).toString());
+//        log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(122L).toString());
+        supportRequestRepository.findSupportRequestDetail_QueryDSL(122L).ifPresent(supportRequest -> log.info(supportRequest.getSupportRequestFiles().toString()));
     }
 
 //    후원요청 대기에서 승인으로
@@ -95,6 +96,12 @@ public class SupportRequestRepositoryTests {
     public void updateWaitToAccessTest() {
         SupportRequest supportRequest = supportRequestRepository.findById(121L).get();
         supportRequest.setSupportRequestStatus(RequestType.승인);
+    }
+
+//    후원요청 삭제
+    @Test
+    public void deleteTest() {
+        supportRequestRepository.delete(supportRequestRepository.findById(121L).get());
     }
 
 }

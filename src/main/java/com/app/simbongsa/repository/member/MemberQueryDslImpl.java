@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.member;
 
 import com.app.simbongsa.entity.member.QMember;
+import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
 import com.app.simbongsa.entity.member.Member;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.simbongsa.entity.member.QMember.member;
+import static com.app.simbongsa.entity.support.QSupport.support;
 
 
 @RequiredArgsConstructor
@@ -71,5 +73,14 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     public void updatePassword(Long id, String memberPassword) {
         query.update(member).set(member.memberPassword, memberPassword).where(member.id.eq(id)).execute();
 
+    }
+
+//    해당 후원 명단 조회
+    @Override
+    public List<Member> findSupportByRequestId(Long id) {
+        return query.select(support.member)
+                .from(support)
+                .where(support.supportRequest.id.eq(id))
+                .fetch();
     }
 }

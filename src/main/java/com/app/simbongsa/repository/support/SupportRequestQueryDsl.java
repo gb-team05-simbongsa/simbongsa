@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.util.Optional;
+
 public interface SupportRequestQueryDsl {
     /* 유저별 후원 요청 조회 */
     public Page<SupportRequest> findByMemberId(Pageable pageable, Long id);
@@ -13,7 +15,7 @@ public interface SupportRequestQueryDsl {
     public Slice<SupportRequest> findAllSupportRequest(Pageable pageable);
 
     /* 후원 요청 상세 페이지 조회*/
-    public SupportRequest findSupportRequestDetail_QueryDSL(Long id);
+    public Optional<SupportRequest> findSupportRequestDetail_QueryDSL(Long id);
 
     // 후원 요청 전체 조회
     public Page<SupportRequest> findAllWithPaging(AdminSupportRequestSearch adminSupportRequestSearch, Pageable pageable);
