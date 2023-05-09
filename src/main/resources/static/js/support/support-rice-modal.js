@@ -18,12 +18,31 @@ const $open = $('.donate');
         $layout.hide();
     })
     
-    // 전송 
+    // 전송
     // $submit.click(function(){
     //     document.$submit();
     // });
 
   });
+const $resultModal = $('.support-layout-error');
+const $modalClose = $('.support-rice-close-btn-layout-error');
+const $closeButton = $('.support-pay-layout-error');
+    $submit.on('click',function(e){
+        $resultModal.show();
+        $layout.hide()
+    })
+    $modalClose.click(function (){
+        $resultModal.hide();
+        $layout.show()
+    })
+    $closeButton.click(function (){
+        $resultModal.hide();
+        $layout.show()
+    })
+
+
+
+
 
 
 // const $input = $('rice-payment-input');
