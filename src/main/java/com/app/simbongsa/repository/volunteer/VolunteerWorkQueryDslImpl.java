@@ -46,7 +46,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
 
     // 봉사 활동 목록 조회 (검색 + 페이징)
     @Override
-    public Page<VolunteerWork> findAllWithPagingAndSearch(String keyword, Pageable pageable) {
+    public Page<VolunteerWork> findAllPagingAndSearch(String keyword, Pageable pageable) {
         BooleanExpression searchCondition = volunteerWork.volunteerWorkPlace.containsIgnoreCase(keyword);
         List<VolunteerWork> findAllVolunteer = query.select(volunteerWork)
                 .from(volunteerWork)
@@ -62,7 +62,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     }
 
     @Override
-    public Page<VolunteerWork> findAllWithPagingAndMultipleKeywordSearch(String placeKeyword, String agencyKeyword, Pageable pageable) {
+    public Page<VolunteerWork> findPagingAndSearch(String placeKeyword, String agencyKeyword, Pageable pageable) {
         List<BooleanExpression> searchConditions = new ArrayList<>();
 
         if (placeKeyword != null && !placeKeyword.isEmpty()) {

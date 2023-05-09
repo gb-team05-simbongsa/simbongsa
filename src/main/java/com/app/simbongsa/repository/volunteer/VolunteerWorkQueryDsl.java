@@ -13,9 +13,9 @@ public interface VolunteerWorkQueryDsl {
     //    봉사활동 전체 조회(페이징)
     public Page<VolunteerWork> findAllWithPaging(Pageable pageable);
     //    봉사활동 목록페이지 지역 검색 페이징 처리
-    public Page<VolunteerWork> findAllWithPagingAndSearch(String keyword, Pageable pageable);
+    public Page<VolunteerWork> findAllPagingAndSearch(String keyword, Pageable pageable);
     //    봉사활동 목록페이지 키워드 검색 페이징 처리
-    public Page<VolunteerWork> findAllWithPagingAndMultipleKeywordSearch(String placeKeyword, String agencyKeyword, Pageable pageable);
+    public Page<VolunteerWork> findPagingAndSearch(String placeKeyword, String agencyKeyword, Pageable pageable);
     //    봉사활동 상세페이지 조회
     public Optional<VolunteerWork> findById_QueryDSL(Long volunteerWorkId);
 
