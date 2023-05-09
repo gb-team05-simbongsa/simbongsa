@@ -44,11 +44,14 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
     }
 
     @Override
-    public Optional<Funding> findByIdForDetail(Long fundingId) {
-        return Optional.ofNullable(query.select(funding)
+    public  Funding findByIdForDetail(Long fundingId) {
+        return query.select(funding)
                 .from(funding)
+                .join(funding.fundingFile)
+                .join(funding.fundingGifts)
+                .fetchJoin()
                 .where(funding.id.eq(fundingId))
-                .fetchOne());
+                .fetchOne();
     }
 
     /* 내 펀딩 내역 조회(페이징처리) */

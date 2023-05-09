@@ -48,6 +48,12 @@ public class Funding {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingFile> fundingFile;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
+    private List<FundingGift> fundingGifts;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
+    private List<FundingItem> fundingItems;
+
     public Funding(User user) {
         this.user = user;
     }
