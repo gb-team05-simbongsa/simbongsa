@@ -1,7 +1,6 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
-import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +10,7 @@ import java.util.Optional;
 
 public interface ReviewQueryDsl {
     /* 유저별 후기게시판 목록 조회 */
-    public Page<Review> findByUserId(Pageable pageable, Long userId);
+    public Page<Review> findByMemberId(Pageable pageable, Long memberId);
 
     /* 후기게시판 삭제*/
 /*    public Review deleteById(Review review);*/
@@ -22,7 +21,7 @@ public interface ReviewQueryDsl {
     public Page<Review> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);
 
     //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
-    public List<Review> findReviewListByUserId(Pageable pageable, Long userId);
+    public List<Review> findReviewListByMemberId(Pageable pageable, Long memberId);
 
     //    인기순 목록 조회
     public List<Review> findAllWithPopularReview();

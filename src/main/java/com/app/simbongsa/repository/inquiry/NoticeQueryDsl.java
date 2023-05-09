@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.entity.inquiry.Notice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

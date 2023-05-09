@@ -1,11 +1,8 @@
 package com.app.simbongsa.repository.volunteer;
 
-import com.app.simbongsa.entity.file.QVolunteerWorkFile;
-import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
-import com.app.simbongsa.repository.user.UserRepository;
-import com.app.simbongsa.type.FileRepresentationalType;
+import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.ws.soap.addressing.messageid.UuidMessageIdStrategy;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.UUID;
-
-import static com.app.simbongsa.entity.file.QVolunteerWorkFile.volunteerWorkFile;
 
 @SpringBootTest
 @Transactional
@@ -38,7 +30,7 @@ public class VolunteerRepositoryTests {
     private VolunteerWorkFileRepository volunteerWorkFileRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Test
     public void saveTest(){

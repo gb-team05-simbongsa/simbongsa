@@ -1,16 +1,9 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
-
-import com.app.simbongsa.entity.board.QFreeBoard;
-import com.app.simbongsa.entity.board.QFreeBoardReply;
-import com.app.simbongsa.entity.file.QFreeBoardFile;
-import com.app.simbongsa.entity.volunteer.VolunteerWork;
-import com.querydsl.jpa.JPAExpressions;
-import com.querydsl.jpa.JPQLQuery;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +16,6 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
-import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
-import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 
 
 @RequiredArgsConstructor
@@ -47,11 +38,11 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     @Override
     public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
         BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : freeBoard.BoardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
-        BooleanExpression userEmailLike = adminBoardSearch.getUserEmail() == null ? null : freeBoard.user.userEmail.like("%" + adminBoardSearch.getUserEmail() + "%");
+        BooleanExpression memberEmailLike = adminBoardSearch.getMemberEmail() == null ? null : freeBoard.member.memberEmail.like("%" + adminBoardSearch.getMemberEmail() + "%");
 
         List<FreeBoard> foundFreeBoard = query.select(freeBoard)
                 .from(freeBoard)
-                .where(boardTitleLike, userEmailLike)
+                .where(boardTitleLike, memberEmailLike)
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -67,17 +58,17 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
     @Override
-    public Page<FreeBoard> findByUserId(Pageable pageable, Long userId) {
+    public Page<FreeBoard> findByMemberId(Pageable pageable, Long memberId) {
         List<FreeBoard> foundFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .where(freeBoard.user.id.eq(userId))
+                .where(freeBoard.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(freeBoard.count())
                 .from(freeBoard)
-                .where(freeBoard.user.id.eq(userId))
+                .where(freeBoard.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundFreeBoards,pageable,count);
@@ -85,10 +76,10 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
     @Override
-    public List<FreeBoard> findFreeBoardListByUserId(Pageable pageable, Long userId) {
+    public List<FreeBoard> findFreeBoardListByMemberId(Pageable pageable, Long memberId) {
         return query.select(freeBoard)
                 .from(freeBoard)
-                .where(freeBoard.user.id.eq(userId))
+                .where(freeBoard.member.id.eq(memberId))
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

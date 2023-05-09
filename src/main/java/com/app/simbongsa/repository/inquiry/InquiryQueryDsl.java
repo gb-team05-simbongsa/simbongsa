@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.type.InquiryType;
 import org.springframework.data.domain.Page;
@@ -18,5 +18,5 @@ public interface InquiryQueryDsl {
     public void updateInquiryStatus(Long id);
 
     /* 유저별 문의 목록 조회 (페이징처리) */
-    public Page<Inquiry> findByUserId(Pageable pageable, Long userId);
+    public Page<Inquiry> findByMemberId(Pageable pageable, Long memberId);
 }

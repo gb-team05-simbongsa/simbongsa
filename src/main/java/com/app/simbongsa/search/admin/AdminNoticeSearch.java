@@ -1,4 +1,4 @@
-package com.app.simbongsa.domain.search.admin;
+package com.app.simbongsa.search.admin;
 
 import lombok.Data;
 

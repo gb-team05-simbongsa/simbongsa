@@ -1,9 +1,8 @@
 package com.app.simbongsa.repository.rice;
 
-import com.app.simbongsa.domain.search.admin.AdminPaymentSearch;
-import com.app.simbongsa.entity.inquiry.Inquiry;
+import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.rice.RicePayment;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ public class RicePaymentRepositoryTests {
     private RicePaymentRepository ricePaymentRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
 //    더미데이터 넣기
     @Test

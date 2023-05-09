@@ -1,6 +1,6 @@
 package com.app.simbongsa.entity.funding;
 
-import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -19,18 +19,18 @@ public class FundingPayment {
     @NotNull private LocalDateTime fundingPaymentDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNDING_ID")
     private Funding funding;
 
     /* 단위테스트용 */
-    public FundingPayment(int fundingPaymentPrice, LocalDateTime fundingPaymentDate, User user, Funding funding) {
+    public FundingPayment(int fundingPaymentPrice, LocalDateTime fundingPaymentDate, Member member, Funding funding) {
         this.fundingPaymentPrice = fundingPaymentPrice;
         this.fundingPaymentDate = fundingPaymentDate;
-        this.user = user;
+        this.member = member;
         this.funding = funding;
     }
 }

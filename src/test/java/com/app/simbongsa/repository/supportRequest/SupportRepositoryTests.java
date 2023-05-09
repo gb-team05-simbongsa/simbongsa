@@ -1,10 +1,9 @@
 package com.app.simbongsa.repository.supportRequest;
 
-import com.app.simbongsa.domain.search.admin.AdminSupportRequestSearch;
+import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
-import com.app.simbongsa.entity.user.User;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.type.RequestType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Random;
 
 @SpringBootTest
 @Transactional
@@ -28,7 +26,7 @@ public class SupportRepositoryTests {
     private SupportRequestRepository supportRequestRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     /* 후원요청목록 save */
     @Test
