@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 
 import java.awt.print.Pageable;
 
+import static com.app.simbongsa.entity.board.QReviewReply.reviewReply;
+
 @RequiredArgsConstructor
 public class ReviewReplyQueryDslImpl implements ReviewReplyQueryDsl {
     private final JPAQueryFactory query;
@@ -18,7 +20,10 @@ public class ReviewReplyQueryDslImpl implements ReviewReplyQueryDsl {
     }
 
     @Override
-    public Long getReviewReplyCount(Long id) {
-        return null;
+    public Long findReplyCountByReviewId(Long id) {
+        return query.select(reviewReply.count())
+                .from(reviewReply)
+                .where(reviewReply.review.id.eq(id))
+                .fetchOne();
     }
 }

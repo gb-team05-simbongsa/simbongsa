@@ -1,9 +1,13 @@
 package com.app.simbongsa.repository.funding;
 
+import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
+import com.app.simbongsa.entity.funding.FundingGift;
 import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FundingCategoryType;
+import com.app.simbongsa.type.RequestType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +18,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-
-//import static com.app.simbongsa.entity.funding.QFundingCreator.fundingCreator;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -49,9 +52,9 @@ public class FundingRepositoryTests {
                     ,"하이하이"
                     ,"헬로헬로"
                     ,fundingCreator
-                    ,memberRepository.findById(555L).get());
+                    ,memberRepository.findById(55L).get());
 
-
+            fundingRepository.save(funding);
         }
 
     }
@@ -66,7 +69,10 @@ public class FundingRepositoryTests {
 //    펀딩 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
-        Page<Funding> foundFunding = fundingRepository.findAllWithPaging(PageRequest.of(0, 5));
+        AdminFundingSearch adminFundingSearch = new AdminFundingSearch();
+//        adminFundingSearch.setCreatorNickName("5");
+        adminFundingSearch.setFundingTitle("큰제목");
+        Page<Funding> foundFunding = fundingRepository.findAllWithPaging(adminFundingSearch, PageRequest.of(0, 5));
         foundFunding.stream().map(Funding::toString).forEach(log::info);
         log.info("==========================" + foundFunding.getTotalElements());
     }
@@ -74,7 +80,11 @@ public class FundingRepositoryTests {
     //  펀딩 상세보기
     @Test
     public void findByIdTest() {
-        fundingRepository.findById(612L).ifPresent(funding -> log.info(funding.toString()));
+        fundingRepository.findByIdForDetail(141L).ifPresent(funding -> {
+            log.info(funding.toString());
+            funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
+            funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
+        });
     }
 
 
@@ -92,4 +102,23 @@ public class FundingRepositoryTests {
         log.info(fundingFileRepository.findAll() + "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
     }
 
+//    펀딩 삭제(fk도 같이 삭제)
+    @Test
+    public void deleteTest() {
+        fundingRepository.delete(fundingRepository.findById(141L).get());
+    }
+
+//    펀딩 승인, 펀딩 대기 수 구하기
+    @Test
+    public void findCountAcceptOrWaitTest() {
+        log.info("==========================" + fundingRepository.findCountAcceptOrWait(RequestType.승인));
+        log.info("==========================" + fundingRepository.findCountAcceptOrWait(RequestType.대기));
+    }
+
+//    펀딩 대기를 승인으로 변경
+    @Test
+    public void updateWaitToAcceptByIdTest() {
+        Optional<Funding> byId = fundingRepository.findById(142L);
+        byId.get().setFundingStatus(RequestType.승인);
+    }
 }

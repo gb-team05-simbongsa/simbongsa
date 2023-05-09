@@ -32,6 +32,15 @@ public class SupportRequestRepositoryTests {
     @Test
     public void saveTest(){
         for (int i = 1; i <= 5; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(143L).get());
+            supportRequestRepository.save(supportRequest);
+        }
+        for (int i = 1; i <= 3; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(144L).get());
+            supportRequestRepository.save(supportRequest);
+        }
+        for (int i = 1; i <= 3; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
             supportRequestRepository.save(supportRequest);
         }
@@ -90,6 +99,13 @@ public class SupportRequestRepositoryTests {
         log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(441L).toString());
     }
 
+//    후원요청 대기에서 승인으로
+    @Test
+    public void updateWaitToAccessTest() {
+        SupportRequest supportRequest = supportRequestRepository.findById(121L).get();
+        supportRequest.setSupportRequestStatus(RequestType.승인);
+    }
+  
     @Test
     public void findByIdWithSupportRequestInfo_QueryDslTest(){
         log.info("===========" + supportRequestRepository.findByIdWithSupportRequestInfo_QueryDsl(121L).toString());
@@ -107,7 +123,6 @@ public class SupportRequestRepositoryTests {
         long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
         log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
-
     }
 
 }
