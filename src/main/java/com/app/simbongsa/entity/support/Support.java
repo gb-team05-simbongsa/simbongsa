@@ -21,7 +21,6 @@ public class Support {
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SUPPORT_REQUEST_ID")
     private SupportRequest supportRequest;
 
     /* 단위 테스트용 */

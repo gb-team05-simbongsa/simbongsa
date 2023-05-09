@@ -17,6 +17,17 @@ body {
     font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
 }
+.support-rice-layout-error {
+    position: relative;
+    border: 1px solid #d2d0d0;;
+    width: 340px;
+    height: 182px;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+}
 
 .suppport-rice-container {
     position: relative;
@@ -25,7 +36,14 @@ body {
     /* margin-top: 23rem; */
     position: relative;
 }
-    
+.suppport-rice-container-error {
+    position: relative;
+    width: 300px;
+    height: 111px;
+    /* margin-top: 23rem; */
+    position: relative;
+}
+
 
 
 .suppport-rice-container input{
@@ -52,6 +70,13 @@ input::placeholder {
     font-weight: bold;
 
 }
+.suppport-rice-container-error p {
+    font-size: 17px;
+    margin: 56px -26px 0px 0px;
+    float: right;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+}
 
 
 .suppport-rice-container em {
@@ -59,9 +84,22 @@ input::placeholder {
     font-weight: bold;
     font-style: normal;
 }
+.suppport-rice-container-error em {
+    color: rgb(248, 100, 83);
+    font-weight: bold;
+    font-style: normal;
+}
 
 
 .support-pay-layout {
+    position: relative;
+    float: right;
+    padding-top: 1rem;
+    width: 339px;
+    height: 48px;
+    cursor: pointer;
+}
+.support-pay-layout-error {
     position: relative;
     float: right;
     padding-top: 1rem;
@@ -79,10 +117,24 @@ input::placeholder {
     background-color: white;
     padding-top: 10px;
 }
+.support-pay-layout-error button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-top: 1px solid #b6b4b4;
+    color: rgb(248, 100, 83);
+    background-color: white;
+    padding-top: 10px;
+}
 
 .support-pay-layout span {
     font-size: 17px;
     font-weight: bold; 
+    font-style: normal;
+}
+.support-pay-layout-error span {
+    font-size: 17px;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -93,8 +145,28 @@ input::placeholder {
     float: right;
     
 }
+.support-rice-close-btn-layout-error {
+    width: 26px;
+    height: 41px;
+    position: relative;
+    float: right;
+
+}
 
 .support-rice-close-btn-layout button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 7px;
+    left: 114px;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+.support-rice-close-btn-layout-error button {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -122,4 +194,32 @@ input::placeholder {
     overflow-x: hidden;
     transition: background-color .1s;
     backdrop-filter: blur(2px);
+}
+.support-layout-error{
+    display: flex;
+    position: fixed;
+    z-index: 1070;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625em;
+    overflow-x: hidden;
+    transition: background-color .1s;
+
+}
+.support-rice-close-btn-layout-error button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 7px;
+    left: 31px;
+    font-size: 15px;
+    font-weight: bold;
 }
