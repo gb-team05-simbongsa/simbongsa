@@ -21,36 +21,36 @@ public class SupportRepositoryTests {
     private SupportRepository supportRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private SupportRequestRepository supportRequestRepository;
 
     @Test
     public void saveTest(){
-        Support support1 = new Support(100,userRepository.findById(542L).get(), supportRequestRepository.findById(441L).get());
+        Support support1 = new Support(100,memberRepository.findById(542L).get(), supportRequestRepository.findById(441L).get());
         supportRepository.save(support1);
 
-        Support support2 = new Support(200,userRepository.findById(543L).get(), supportRequestRepository.findById(442L).get());
+        Support support2 = new Support(200,memberRepository.findById(543L).get(), supportRequestRepository.findById(442L).get());
         supportRepository.save(support2);
 
-        Support support3 = new Support(200,userRepository.findById(542L).get(), supportRequestRepository.findById(441L).get());
+        Support support3 = new Support(200,memberRepository.findById(542L).get(), supportRequestRepository.findById(441L).get());
         supportRepository.save(support3);
     }
 
     /* 내 후원 내역 조회 (페이징처리)*/
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<Support> supports = supportRepository.findByUserId(pageRequest, 542L);
+        Page<Support> supports = supportRepository.findByMemberId(pageRequest, 542L);
         supports.stream().map(Support::toString).forEach(log::info);
         log.info("====================유저 아이디 542의 후원목록수=================" + supports.getTotalElements());
     }
     /* 후원 참여 내역 조회(페이징처리) - 후원 상세페이지 */
     @Test
-    public void findAllSupportAttendWithUser_QueryDSLTest(){
+    public void findAllSupportAttendWithMember_QueryDSLTest(){
         PageRequest pageRequest = PageRequest.of(0, 5);
-        Page<Support> supports = supportRepository.findAllSupportAttendWithUser_QueryDSL(pageRequest);
+        Page<Support> supports = supportRepository.findAllSupportAttendWithMember_QueryDSL(pageRequest);
         supports.stream().map(Support::toString).forEach(log::info);
         log.info("====================" + supports.getTotalElements() + "===========================");
     }

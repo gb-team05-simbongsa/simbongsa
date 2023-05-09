@@ -48,16 +48,15 @@ public class Funding {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingFile> fundingFile;
 
-
-    public Funding(Member member) {
-        this.member = member;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingGift> fundingGifts;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingItem> fundingItems;
 
+
+    public Funding(Member member) {
+        this.member = member;
     }
 
     // 테스트용 생성자

@@ -24,13 +24,13 @@ public class RicePaymentRepositoryTests {
     private RicePaymentRepository ricePaymentRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
 //    더미데이터 넣기
     @Test
     public void saveTest() {
         for(int i = 1; i <= 10; i++) {
-            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, userRepository.findById(716L).get());
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, memberRepository.findById(716L).get());
             ricePaymentRepository.save(ricePayment);
         }
     }
@@ -40,7 +40,7 @@ public class RicePaymentRepositoryTests {
     public void findByPaymentStatusWithPaging() {
         AdminPaymentSearch adminPaymentSearch = new AdminPaymentSearch();
 //        adminPaymentSearch.setRicePaymentUsed(301);
-        adminPaymentSearch.setUserEmail("5");
+        adminPaymentSearch.setMemberEmail("5");
         Page<RicePayment> foundRicePayment = ricePaymentRepository.findByPaymentStatusWithPaging(adminPaymentSearch, RicePaymentType.충전, PageRequest.of(0, 5));
         foundRicePayment.stream().map(RicePayment::toString).forEach(log::info);
         log.info("=========================" + foundRicePayment.getTotalElements());
@@ -49,7 +49,7 @@ public class RicePaymentRepositoryTests {
 //    공양미 충전 내역 상세보기(충전한 사람 포함)
     @Test
     public void findByIdTest() {
-        ricePaymentRepository.findById(149L).ifPresent(ricePayment -> log.info(ricePayment.getUser().getUserName()));
+        ricePaymentRepository.findById(149L).ifPresent(ricePayment -> log.info(ricePayment.getMember().getMemberName()));
     }
 
 //    금일 결제 수 조회
@@ -79,30 +79,30 @@ public class RicePaymentRepositoryTests {
 //    공양미 조회
     @Test
     public void findByIdWithPayment(){
-        userRepository.findById(715L).ifPresent(user -> log.info(String.valueOf(user.getUserRice())));
+        memberRepository.findById(715L).ifPresent(member -> log.info(String.valueOf(member.getMemberRice())));
     }
 //    공양미 후원
 //    @Test
-//    public void updatePaymentByUserIdTest(){
-//         ricePaymentRepository.updatePaymentByUserId(716L,3000);
+//    public void updatePaymentByMemberIdTest(){
+//         ricePaymentRepository.updatePaymentByMemberId(716L,3000);
 //
 //         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 사용량 "+ricePayment.getRicePaymentUsed() + "==========="));
-//         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 남은 "+ricePayment.getUser().getUserRice() + " =========="));
+//         ricePaymentRepository.findById(716L).ifPresent(ricePayment -> log.info("================== 공양미 남은 "+ricePayment.getMember().getMemberRice() + " =========="));
 //    }
 
 
 
 //    @Test
-//    public void updatePaymentByUserIdAndSupportGongyangTest(){
-//        ricePaymentRepository.updatePaymentByUserIdAndSupportGongyang(716L, 3000);
+//    public void updatePaymentByMemberIdAndSupportGongyangTest(){
+//        ricePaymentRepository.updatePaymentByMemberIdAndSupportGongyang(716L, 3000);
 //
 //    }
 
     /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
       @Test
-      public void findByUserId(){
+      public void findByMemberId(){
           PageRequest pageRequest = PageRequest.of(0,3);
-          Page<RicePayment> ricePayments = ricePaymentRepository.findByUserId(pageRequest, 716L);
+          Page<RicePayment> ricePayments = ricePaymentRepository.findByMemberId(pageRequest, 716L);
           ricePayments.stream().map(RicePayment::toString).forEach(log::info);
           log.info("====================유저 아이디 6의 후원요청목록수=================" + ricePayments.getTotalElements());
       }

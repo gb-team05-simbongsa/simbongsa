@@ -26,21 +26,21 @@ public class SupportRepositoryTests {
     private SupportRequestRepository supportRequestRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     /* 후원요청목록 save */
     @Test
     public void saveTest(){
         for (int i = 1; i <= 5; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, userRepository.findById(143L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(143L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, userRepository.findById(144L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(144L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, userRepository.findById(145L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
             supportRequestRepository.save(supportRequest);
         }
 
@@ -48,9 +48,9 @@ public class SupportRepositoryTests {
 
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<SupportRequest> supportRequests = supportRequestRepository.findByUserId(pageRequest, 6L);
+        Page<SupportRequest> supportRequests = supportRequestRepository.findByMemberId(pageRequest, 6L);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + supportRequests.getTotalElements());
     }
@@ -79,7 +79,7 @@ public class SupportRepositoryTests {
     public void findAllWithPagingTest() {
         AdminSupportRequestSearch adminSupportRequestSearch = new AdminSupportRequestSearch();
         adminSupportRequestSearch.setRequestType(RequestType.대기);
-        adminSupportRequestSearch.setUserEmail("6");
+        adminSupportRequestSearch.setMemberEmail("6");
         Page<SupportRequest> foundSupportRequest = supportRequestRepository.findAllWithPaging(adminSupportRequestSearch, PageRequest.of(0, 5));
         foundSupportRequest.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("=======================" + foundSupportRequest.getTotalElements());

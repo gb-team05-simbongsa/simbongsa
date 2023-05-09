@@ -24,13 +24,13 @@ public class InquiryRepositoryTests {
     private InquiryRepository inquiryRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
 //    더미데이터 넣기
     @Test
     public void saveTest() {
         for (int i = 1; i <= 20; i++) {
-            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, userRepository.findById(145L).get());
+            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, memberRepository.findById(145L).get());
             inquiryRepository.save(inquiry);
         }
     }
@@ -40,7 +40,7 @@ public class InquiryRepositoryTests {
     public void findAllTest() {
         AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
 //        adminInquirySearch.setInquiryTitle("13");
-        adminBoardSearch.setUserEmail("18");
+        adminBoardSearch.setMemberEmail("18");
         Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(0, 5));
 
         inquiries.stream().map(Inquiry::toString).forEach(log::info);
@@ -76,9 +76,9 @@ public class InquiryRepositoryTests {
 
     /* 유저별 문의 목록 조회 (페이징처리) */
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<Inquiry> inquiries = inquiryRepository.findByUserId(pageRequest, 6L);
+        Page<Inquiry> inquiries = inquiryRepository.findByMemberId(pageRequest, 6L);
         inquiries.stream().map(Inquiry::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + inquiries.getTotalElements());
     }

@@ -30,7 +30,7 @@ public class VolunteerRepositoryTests {
     private VolunteerWorkFileRepository volunteerWorkFileRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Test
     public void saveTest(){
@@ -79,7 +79,7 @@ public class VolunteerRepositoryTests {
     @Test
     public void applySaveTest() {
         for(int i = 0; i < 5; i++) {
-            VolunteerWorkActivity volunteerWorkActivity = new VolunteerWorkActivity(LocalDate.of(2023,04,04),userRepository.findById(Long.valueOf(143+i)).get(),
+            VolunteerWorkActivity volunteerWorkActivity = new VolunteerWorkActivity(LocalDate.of(2023,04,04),memberRepository.findById(Long.valueOf(143+i)).get(),
                     volunteerWorkRepository.findById(401L).get());
             volunteerWorkActivityRepository.save(volunteerWorkActivity);
         }
