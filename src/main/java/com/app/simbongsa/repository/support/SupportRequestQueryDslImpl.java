@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.support;
 
-import com.app.simbongsa.domain.search.admin.AdminSupportRequestSearch;
+import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -17,17 +17,17 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
     @Override
-    public Page<SupportRequest> findByUserId(Pageable pageable, Long userId) {
+    public Page<SupportRequest> findByMemberId(Pageable pageable, Long memberId) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(supportRequest.user.id.eq(userId))
+                .where(supportRequest.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
-                .where(supportRequest.user.id.eq(userId))
+                .where(supportRequest.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest,pageable,count);
@@ -52,11 +52,11 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     @Override
     public Page<SupportRequest> findAllWithPaging(AdminSupportRequestSearch adminSupportRequestSearch, Pageable pageable) {
         BooleanExpression requestTypeEq = adminSupportRequestSearch.getRequestType() == null ? null : supportRequest.supportRequestStatus.eq(adminSupportRequestSearch.getRequestType());
-        BooleanExpression userEmailLike = adminSupportRequestSearch.getUserEmail() == null ? null : supportRequest.user.userEmail.like("%" + adminSupportRequestSearch.getUserEmail() + "%");
+        BooleanExpression memberEmailLike = adminSupportRequestSearch.getMemberEmail() == null ? null : supportRequest.member.memberEmail.like("%" + adminSupportRequestSearch.getMemberEmail() + "%");
 
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(requestTypeEq, userEmailLike)
+                .where(requestTypeEq, memberEmailLike)
                 .orderBy(supportRequest.createdDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

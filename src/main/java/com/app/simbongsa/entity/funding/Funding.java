@@ -1,7 +1,7 @@
 package com.app.simbongsa.entity.funding;
 
 import com.app.simbongsa.entity.file.FundingFile;
-import com.app.simbongsa.entity.user.User;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
 import com.sun.istack.NotNull;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = "user")
+@Getter @ToString(exclude = "member")
 @Table(name = "TBL_FUNDING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -42,11 +42,15 @@ public class Funding {
     @NotNull private FundingCreator fundingCreator;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    private User user;
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingFile> fundingFile;
+
+
+    public Funding(Member member) {
+        this.member = member;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingGift> fundingGifts;
@@ -54,12 +58,10 @@ public class Funding {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
     private List<FundingItem> fundingItems;
 
-    public Funding(User user) {
-        this.user = user;
     }
 
     // 테스트용 생성자
-    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, User user) {
+    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, Member member) {
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
         this.fundingShortTitle = fundingShortTitle;
@@ -73,7 +75,7 @@ public class Funding {
         this.fundingScheduleExplain = fundingScheduleExplain;
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingCreator = fundingCreator;
-        this.user = user;
+        this.member = member;
 
 
 

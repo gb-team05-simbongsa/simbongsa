@@ -1,10 +1,9 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
-import com.app.simbongsa.entity.board.QFreeBoard;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class FreeBoardRepositoryTests {
     private FreeBoardRepository freeBoardRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Autowired
     private  FreeBoardReplyRepository freeBoardReplyRepository;

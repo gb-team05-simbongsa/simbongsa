@@ -56,21 +56,21 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
     /* 내 펀딩 내역 조회(페이징처리) */
     @Override
-    public Page<Funding> findByUserId_QueryDSL(Pageable pageable, Long userId) {
+    public Page<Funding> findByMemberId_QueryDSL(Pageable pageable, Long memberId) {
         /*memberService.getPays((Long)session.getAttribute("memberId"));*/
 
         List<Funding> foundFunding = query.select(funding)
                 .from(funding)
                 .join(funding.fundingFile)
                 .fetchJoin()
-                .where(funding.user.id.eq(userId))
+                .where(funding.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(funding.count())
                 .from(funding)
-                .where(funding.user.id.eq(userId))
+                .where(funding.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundFunding, pageable, count);

@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface FundingPaymentQueryDsl {
     /* 내 펀딩 내역 조회 (페이징처리)*/
-    public Page<FundingPayment> findByUserId(Pageable pageable, Long userId);
+    public Page<FundingPayment> findByMemberId(Pageable pageable, Long memberId);
 }

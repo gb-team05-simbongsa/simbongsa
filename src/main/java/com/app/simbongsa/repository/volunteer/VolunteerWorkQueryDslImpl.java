@@ -1,6 +1,5 @@
 package com.app.simbongsa.repository.volunteer;
 
-import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.app.simbongsa.entity.user.QUser.user;
 import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 
 @RequiredArgsConstructor

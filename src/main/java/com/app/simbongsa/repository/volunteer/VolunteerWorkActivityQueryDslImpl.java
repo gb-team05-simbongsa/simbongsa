@@ -25,24 +25,24 @@ public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQ
         return query.select(volunteerWorkActivity)
                 .from(volunteerWorkActivity)
                 .where(volunteerWorkActivity.volunteerWork.id.eq(id))
-                .join(volunteerWorkActivity.user)
+                .join(volunteerWorkActivity.member)
                 .fetchJoin()
                 .fetch();
     }
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     @Override
-    public Page<VolunteerWorkActivity> findByUserId(Pageable pageable, Long userId) {
+    public Page<VolunteerWorkActivity> findByMemberId(Pageable pageable, Long memberId) {
         List<VolunteerWorkActivity> foundVolunteerWorkActivities = query.select(volunteerWorkActivity)
                 .from(volunteerWorkActivity)
-                .where(volunteerWorkActivity.user.id.eq(userId))
+                .where(volunteerWorkActivity.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(volunteerWorkActivity.count())
                 .from(volunteerWorkActivity)
-                .where(volunteerWorkActivity.user.id.eq(userId))
+                .where(volunteerWorkActivity.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWorkActivities,pageable,count);

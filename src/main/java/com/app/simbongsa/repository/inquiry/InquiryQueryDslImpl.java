@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.domain.search.admin.AdminBoardSearch;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.type.InquiryType;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -22,11 +22,11 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
     @Override
     public Page<Inquiry> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
         BooleanExpression inquiryTitleLike = adminBoardSearch.getBoardTitle() == null ? null : inquiry.inquiryTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
-        BooleanExpression userEmailLike = adminBoardSearch.getUserEmail() == null ? null : inquiry.user.userEmail.like("%" + adminBoardSearch.getUserEmail() + "%");
+        BooleanExpression memberEmailLike = adminBoardSearch.getMemberEmail() == null ? null : inquiry.member.memberEmail.like("%" + adminBoardSearch.getMemberEmail() + "%");
 
         List<Inquiry> foundInquiry = query.select(inquiry)
                 .from(inquiry)
-                .where(inquiryTitleLike, userEmailLike)
+                .where(inquiryTitleLike, memberEmailLike)
                 .orderBy(inquiry.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -60,17 +60,17 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
 
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
     @Override
-    public Page<Inquiry> findByUserId(Pageable pageable, Long userId) {
+    public Page<Inquiry> findByMemberId(Pageable pageable, Long memberId) {
         List<Inquiry> foundInquiries = query.select(inquiry)
                 .from(inquiry)
-                .where(inquiry.user.id.eq(userId))
+                .where(inquiry.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(inquiry.count())
                 .from(inquiry)
-                .where(inquiry.user.id.eq(userId))
+                .where(inquiry.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundInquiries,pageable,count);

@@ -2,7 +2,7 @@ package com.app.simbongsa.repository.volunteer;
 
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
-import com.app.simbongsa.repository.user.UserRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class VolunteerRepositoryTests {
     private VolunteerWorkFileRepository volunteerWorkFileRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Test
     public void saveTest(){
