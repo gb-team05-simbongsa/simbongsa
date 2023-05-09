@@ -75,6 +75,18 @@ public class ReviewRepositoryTests {
         }
     }
 
+//    댓글 삭제
+    @Test
+    public void deleteReplyTest() {
+        reviewReplyRepository.delete(reviewReplyRepository.findById(3L).get());
+    }
+
+//    댓글 수
+    @Test
+    public void findReplyCountTest() {
+        log.info("============================" + reviewReplyRepository.findReplyCountByReviewId(116L));
+    }
+
 //    리뷰게시판 파일 등록
     @Test
     public void saveFiles() {

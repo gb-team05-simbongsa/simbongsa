@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = "member")
+@Getter @ToString(exclude = {"member", "fundingFile", "fundingGifts", "fundingItems"})
 @Table(name = "TBL_FUNDING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -45,13 +45,13 @@ public class Funding {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
     private List<FundingFile> fundingFile;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
     private List<FundingGift> fundingGifts;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
     private List<FundingItem> fundingItems;
 
 
@@ -75,8 +75,9 @@ public class Funding {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingCreator = fundingCreator;
         this.member = member;
+    }
 
-
-
+    public void setFundingStatus(RequestType fundingStatus) {
+        this.fundingStatus = fundingStatus;
     }
 }

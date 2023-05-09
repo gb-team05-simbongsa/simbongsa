@@ -21,7 +21,7 @@ import java.util.List;
 @Transactional
 @Rollback(false)
 @Slf4j
-public class SupportRepositoryTests {
+public class SupportRequestRepositoryTests {
     @Autowired
     private SupportRequestRepository supportRequestRepository;
 
@@ -88,6 +88,13 @@ public class SupportRepositoryTests {
     @Test
     public void findSupportRequestDetail_QueryDSLTest(){
         log.info("======="+supportRequestRepository.findSupportRequestDetail_QueryDSL(441L).toString());
+    }
+
+//    후원요청 대기에서 승인으로
+    @Test
+    public void updateWaitToAccessTest() {
+        SupportRequest supportRequest = supportRequestRepository.findById(121L).get();
+        supportRequest.setSupportRequestStatus(RequestType.승인);
     }
 
 }
