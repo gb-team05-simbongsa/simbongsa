@@ -14,6 +14,7 @@ import org.springframework.test.annotation.Rollback;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -120,11 +121,20 @@ public class VolunteerRepositoryTests {
         volunteerWorks.stream().map(VolunteerWork::toString).forEach(log::info);
         log.info("=======================" + volunteerWorks.getTotalElements());
     }
+    /* */
     @Test
     public void findById_QueryDSLTest(){
         log.info(volunteerWorkRepository.findById_QueryDSL(40L).toString());
         volunteerWorkRepository.findById_QueryDSL(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
         volunteerWorkRepository.findById_QueryDSL(42L).stream().map(VolunteerWork::toString);
+    }
+    @Test
+    public void findByNextIdOrPrevIdTest(){
+
+        Optional<VolunteerWork> volunteerWork =volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
+        volunteerWork.map(VolunteerWork::toString);
+        volunteerWork.ifPresent(volunteerWork1 -> log.info(volunteerWork1.toString()));
+
     }
 
 }
