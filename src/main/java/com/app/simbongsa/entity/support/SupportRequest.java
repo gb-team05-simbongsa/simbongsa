@@ -32,6 +32,9 @@ public class SupportRequest extends Period {
     private Member member;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "supportRequest")
+    private List<Support> supports;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "supportRequest")
     private List<SupportRequestFile> supportRequestFiles;
 
     /* 단위 테스트용 생성자 생성 */
@@ -42,4 +45,5 @@ public class SupportRequest extends Period {
         this.supportRequestStatus = supportRequestStatus;
         this.member = member;
     }
+
 }
