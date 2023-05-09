@@ -21,9 +21,9 @@ public class VoluntterActvitiyRepositoryTests {
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     @Test
-    public void findByUserId() {
+    public void findByMemberId() {
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<VolunteerWorkActivity> foundVolunteerWorkActivities = volunteerWorkActivityRepository.findByUserId(pageRequest, 143L);
+        Page<VolunteerWorkActivity> foundVolunteerWorkActivities = volunteerWorkActivityRepository.findByMemberId(pageRequest, 143L);
         foundVolunteerWorkActivities.stream().map(VolunteerWorkActivity::toString).forEach(log::info);
         log.info("====================유저 아이디 143의  봉사 활동 목록수=================" + foundVolunteerWorkActivities.getTotalElements());
     }

@@ -26,7 +26,7 @@ public class FundingRepositoryTests {
     private FundingRepository fundingRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private FundingFileRepository fundingFileRepository;
@@ -49,7 +49,7 @@ public class FundingRepositoryTests {
                     ,"하이하이"
                     ,"헬로헬로"
                     ,fundingCreator
-                    ,userRepository.findById(555L).get());
+                    ,memberRepository.findById(555L).get());
 
 
         }
@@ -80,9 +80,9 @@ public class FundingRepositoryTests {
 
     /* 내 펀딩 내역 조회(페이징처리) */
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,9);
-        Page<Funding> myFunding = fundingRepository.findByUserId_QueryDSL(pageRequest,555L);
+        Page<Funding> myFunding = fundingRepository.findByMemberId_QueryDSL(pageRequest,555L);
         myFunding.stream().map(Funding::toString).forEach(log::info);
         log.info("====================유저 아이디 555의 내 펀딩 목록 수=================" + myFunding.getTotalElements());
     }

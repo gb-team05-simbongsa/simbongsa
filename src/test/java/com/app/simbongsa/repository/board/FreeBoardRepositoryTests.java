@@ -25,7 +25,7 @@ public class FreeBoardRepositoryTests {
     private FreeBoardRepository freeBoardRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private  FreeBoardReplyRepository freeBoardReplyRepository;
@@ -34,7 +34,7 @@ public class FreeBoardRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
-            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, userRepository.findById(542L).get());
+            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(542L).get());
             freeBoardRepository.save(freeBoard);
         }
     }
@@ -43,7 +43,7 @@ public class FreeBoardRepositoryTests {
     public void saveReplies(){
         for(int i =1; i<=2; i++){
             Optional<FreeBoard> byId = freeBoardRepository.findById(1183L);
-            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,userRepository.findById(145L).get(), byId.get());
+            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i,memberRepository.findById(145L).get(), byId.get());
             freeBoardReplyRepository.save(freeBoardReply);
         }
 
@@ -54,7 +54,7 @@ public class FreeBoardRepositoryTests {
     public void findAllWithPaging() {
         AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
 //        adminBoardSearch.setBoardTitle("3");
-        adminBoardSearch.setUserEmail("5");
+        adminBoardSearch.setMemberEmail("5");
         Page<FreeBoard> foundFreeBoard = freeBoardRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(0, 5));
         foundFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
         log.info("=====================" + foundFreeBoard.getTotalElements());
@@ -63,9 +63,9 @@ public class FreeBoardRepositoryTests {
 
     /* 유저별 자유게시판 목록 조회 (페이징처리) */
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,4);
-        Page<FreeBoard> freeBoards = freeBoardRepository.findByUserId(pageRequest, 146L);
+        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, 146L);
         freeBoards.stream().map(FreeBoard::toString).forEach(log::info);
         log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
     }

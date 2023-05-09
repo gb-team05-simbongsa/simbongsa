@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 @Slf4j
 public class ReviewRepositoryTests {
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -28,7 +28,7 @@ public class ReviewRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
-            Review review = new Review("제목" + i, "내용" + i, userRepository.findById(542L).get());
+            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(542L).get());
             reviewRepository.save(review);
         }
     }
@@ -38,7 +38,7 @@ public class ReviewRepositoryTests {
     public void findAllWithPaging() {
         AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
 //        adminBoardSearch.setBoardTitle("3");
-        adminBoardSearch.setUserEmail("5");
+        adminBoardSearch.setMemberEmail("5");
         Page<Review> foundReview = reviewRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(0, 5));
         foundReview.stream().map(review -> review.getBoardTitle()).forEach(log::info);
         log.info("=====================" + foundReview.getTotalElements());
@@ -46,9 +46,9 @@ public class ReviewRepositoryTests {
 
     /* 유저별 후기게시판 목록 조회 (페이징처리) */
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,4);
-        Page<Review> reviews = reviewRepository.findByUserId(pageRequest, 542L);
+        Page<Review> reviews = reviewRepository.findByMemberId(pageRequest, 542L);
         reviews.stream().map(Review::toString).forEach(log::info);
         log.info("----------------------유저 542L의 리뷰게시물 목록 수 --------------------" + reviews.getTotalElements());
     }

@@ -23,25 +23,25 @@ public class FundingPaymentRepositoryTests {
     private FundingPaymentRepository fundingPaymentRepository;
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private FundingRepository fundingRepository;
 
     @Test
     public void saveTest(){
-        FundingPayment fundingPayment1 = new FundingPayment(300, LocalDateTime.now(), userRepository.findById(542L).get(),fundingRepository.findById(53L).get());
+        FundingPayment fundingPayment1 = new FundingPayment(300, LocalDateTime.now(), memberRepository.findById(542L).get(),fundingRepository.findById(53L).get());
         fundingPaymentRepository.save(fundingPayment1);
 
-        FundingPayment fundingPayment2 = new FundingPayment(500, LocalDateTime.now(), userRepository.findById(542L).get(),fundingRepository.findById(54L).get());
+        FundingPayment fundingPayment2 = new FundingPayment(500, LocalDateTime.now(), memberRepository.findById(542L).get(),fundingRepository.findById(54L).get());
         fundingPaymentRepository.save(fundingPayment2);
     }
 
     /* 내 펀딩 내역 조회 (페이징처리)*/
     @Test
-    public void findByUserIdTest(){
+    public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,5);
-        Page<FundingPayment> fundingPayments = fundingPaymentRepository.findByUserId(pageRequest, 542L);
+        Page<FundingPayment> fundingPayments = fundingPaymentRepository.findByMemberId(pageRequest, 542L);
         fundingPayments.stream().map(FundingPayment::toString).forEach(log::info);
         log.info("====================유저 아이디 542의 펀딩 내역수=================" + fundingPayments.getTotalElements());
     }
