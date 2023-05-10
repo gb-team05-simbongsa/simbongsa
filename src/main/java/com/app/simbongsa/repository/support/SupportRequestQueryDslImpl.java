@@ -50,10 +50,21 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        return new SliceImpl<>(foundSupportRequest, pageable, true);
+        return checkLastPage(pageable, foundSupportRequest);
 //      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
 //      false로 설정되면 다음 페이지가 없는 것으로 간주
     }
+        //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
+        private Slice<SupportRequest> checkLastPage(Pageable pageable, List<SupportRequest> supportRequests) {
+            boolean hasNext = false;
+            // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
+            if (supportRequests.size() > pageable.getPageSize()) {
+                hasNext = true;
+                supportRequests.remove(pageable.getPageSize());
+            }
+            return new SliceImpl<>(supportRequests, pageable, hasNext);
+        }
+
 
 //    후원 요청 전체 조회(페이징)
     @Override

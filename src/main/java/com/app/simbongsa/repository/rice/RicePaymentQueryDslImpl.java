@@ -84,16 +84,16 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .where(ricePayment.member.id.eq(id))
                 .execute();
     }
-//    }
-//    @Override
-//    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGongyang) {
-//        query.update(member)
-//                .set(member.memberRice, member.memberRice.subtract(supportGongyang))
-//                .set(ricePayment.member.id.)
-////                .set(ricePayment.ricePaymentUsed, supportGongyang)
-//                .where(member.id.eq(id))
-//                .execute();
-//    }
+
+    @Override
+    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGongyang) {
+        query.update(member)
+                .set(member.memberRice, member.memberRice.subtract(supportGongyang))
+                .set(ricePayment.member.id.)
+//                .set(ricePayment.ricePaymentUsed, supportGongyang)
+                .where(member.id.eq(id))
+                .execute();
+    }
   /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
       @Override
       public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId) {

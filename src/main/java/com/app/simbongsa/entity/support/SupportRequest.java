@@ -47,6 +47,7 @@ public class SupportRequest extends Period {
     }
 
 
+
     public void setSupportRequestStatus(RequestType supportRequestStatus) {
         this.supportRequestStatus = supportRequestStatus;
     }

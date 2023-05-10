@@ -69,10 +69,8 @@ public class SupportRequestRepositoryTests {
     public void findAllSupportRequestTest(){
         // 페이지 요청 설정
         PageRequest pageRequest = PageRequest.of(0, 3);
-
         // findAllSupportRequest() 메서드 호출
         Slice<SupportRequest> supportRequests = supportRequestRepository.findAllSupportRequest(pageRequest);
-
         // 조회된 데이터 출력
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 
@@ -108,9 +106,11 @@ public class SupportRequestRepositoryTests {
         supportRequestRepository.updateWaitToAccessByIds(Arrays.asList(130L, 131L));
     }
 
+
+    /* 후원 상세페이지 모달 정보 */
     @Test
     public void findByIdWithSupportRequestInfo_QueryDslTest(){
-        log.info("===========" + supportRequestRepository.findByIdWithSupportRequestInfo_QueryDsl(121L).toString());
+        log.info("===========" + supportRequestRepository.findByIdWithSupportRequestInfo_QueryDsl(129L).toString());
     }
 
     
