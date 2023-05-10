@@ -23,4 +23,12 @@ public class Board extends Period {
         BoardTitle = boardTitle;
         BoardContent = boardContent;
     }
+
+    public void setBoardTitle(String boardTitle) {
+        BoardTitle = boardTitle;
+    }
+
+    public void setBoardContent(String boardContent) {
+        BoardContent = boardContent;
+    }
 }

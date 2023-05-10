@@ -69,10 +69,10 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 
     //    환전 요청 상태 승인으로 변경
     @Override
-    public void updatePaymentStatusToAccessById(Long id) {
+    public void updatePaymentStatusToAccessByIds(List<Long> ids) {
         query.update(ricePayment)
                 .set(ricePayment.ricePaymentStatus, RicePaymentType.환전승인)
-                .where(ricePayment.id.eq(id))
+                .where(ricePayment.id.in(ids))
                 .execute();
     }
 

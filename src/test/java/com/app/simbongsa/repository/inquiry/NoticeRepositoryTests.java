@@ -12,6 +12,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -24,7 +25,7 @@ public class NoticeRepositoryTests {
 //    공지사항 더미 넣기
     @Test
     public void saveTest() {
-        for(int i = 1; i <= 100; i++) {
+        for(int i = 1; i <= 15; i++) {
             Notice notice = new Notice("제목" + i, "내용" + i);
             noticeRepository.save(notice);
         }
@@ -52,5 +53,12 @@ public class NoticeRepositoryTests {
     public void deleteTest() {
         Long[] ids = {291L, 292L};
         noticeRepository.deleteAllById(Arrays.asList(ids));
+    }
+
+//    공지사항 수정
+    @Test
+    public void updateTest() {
+        Notice notice = noticeRepository.findById(443L).get();
+        notice.updateNotice("제목", "내용1");
     }
 }

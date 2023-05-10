@@ -15,6 +15,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -101,10 +102,10 @@ public class SupportRequestRepositoryTests {
 
 //    후원요청 대기에서 승인으로
     @Test
-    public void updateWaitToAccessTest() {
-        SupportRequest supportRequest = supportRequestRepository.findById(121L).get();
-        supportRequest.setSupportRequestStatus(RequestType.승인);
+    public void updateWaitToAccessByIdsTest() {
+        supportRequestRepository.updateWaitToAccessByIds(Arrays.asList(130L, 131L));
     }
+
 
     /* 후원 상세페이지 모달 정보 */
     @Test

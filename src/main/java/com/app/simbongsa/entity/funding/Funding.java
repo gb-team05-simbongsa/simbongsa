@@ -51,9 +51,6 @@ public class Funding {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
     private List<FundingGift> fundingGifts;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
-    private List<FundingItem> fundingItems;
-
 
     public Funding(Member member) {
         this.member = member;
@@ -79,5 +76,53 @@ public class Funding {
 
     public void setFundingStatus(RequestType fundingStatus) {
         this.fundingStatus = fundingStatus;
+    }
+
+    public void setFundingCategory(FundingCategoryType fundingCategory) {
+        this.fundingCategory = fundingCategory;
+    }
+
+    public void setFundingTitle(String fundingTitle) {
+        this.fundingTitle = fundingTitle;
+    }
+
+    public void setFundingShortTitle(String fundingShortTitle) {
+        this.fundingShortTitle = fundingShortTitle;
+    }
+
+    public void setFundingSummary(String fundingSummary) {
+        this.fundingSummary = fundingSummary;
+    }
+
+    public void setFundingTargetPrice(int fundingTargetPrice) {
+        this.fundingTargetPrice = fundingTargetPrice;
+    }
+
+    public void setFundingCurrentPrice(int fundingCurrentPrice) {
+        this.fundingCurrentPrice = fundingCurrentPrice;
+    }
+
+    public void setFundingStartDate(LocalDateTime fundingStartDate) {
+        this.fundingStartDate = fundingStartDate;
+    }
+
+    public void setFundingEndDate(LocalDateTime fundingEndDate) {
+        this.fundingEndDate = fundingEndDate;
+    }
+
+    public void setFundingIntroduce(String fundingIntroduce) {
+        this.fundingIntroduce = fundingIntroduce;
+    }
+
+    public void setFundingBudgetExplain(String fundingBudgetExplain) {
+        this.fundingBudgetExplain = fundingBudgetExplain;
+    }
+
+    public void setFundingGiftExplain(String fundingGiftExplain) {
+        this.fundingGiftExplain = fundingGiftExplain;
+    }
+
+    public void setFundingCreator(FundingCreator fundingCreator) {
+        this.fundingCreator = fundingCreator;
     }
 }

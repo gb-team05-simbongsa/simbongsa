@@ -14,6 +14,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 @Transactional
@@ -73,8 +74,8 @@ public class RicePaymentRepositoryTests {
 
 //    환전 요청 상태 승인으로 변경
     @Test
-    public void updatePaymentStatusToAccessByIdTest() {
-        ricePaymentRepository.updatePaymentStatusToAccessById(142L);
+    public void updatePaymentStatusToAccessByIdsTest() {
+        ricePaymentRepository.updatePaymentStatusToAccessByIds(Arrays.asList(405L, 406L));
     }
 //    공양미 조회
     @Test
