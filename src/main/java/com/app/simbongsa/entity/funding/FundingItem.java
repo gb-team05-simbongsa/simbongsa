@@ -23,6 +23,7 @@ public class FundingItem {
 
 
     //단위테스트용 생성자
+
     public FundingItem(String itemTitle, String itemContent) {
         this.itemTitle = itemTitle;
         this.itemContent = itemContent;
