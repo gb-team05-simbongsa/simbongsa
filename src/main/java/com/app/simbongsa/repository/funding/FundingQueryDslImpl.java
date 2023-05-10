@@ -58,6 +58,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                         .from(funding)
                         .join(funding.fundingFile)
                         .join(funding.fundingGifts)
+                        .join(funding.fundingItems)
                         .fetchJoin()
                         .where(funding.id.eq(fundingId))
                         .fetchOne()
