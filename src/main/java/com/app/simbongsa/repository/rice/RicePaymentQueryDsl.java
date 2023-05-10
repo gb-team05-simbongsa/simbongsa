@@ -28,6 +28,6 @@ public interface RicePaymentQueryDsl {
     /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
     public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId);
       
-    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGonynag);
+//    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGonynag);
 
 }
