@@ -17,6 +17,9 @@ public class CommunityController {
     @GetMapping("free-create")
     public String freeCreate() {return "community/free-create";}
 
+    @GetMapping("board-modify")
+    public String freeModify() {return "community/board-modify";}
+
     @GetMapping("free-detail")
     public String freeDetail() {return "community/free-detail";}
 

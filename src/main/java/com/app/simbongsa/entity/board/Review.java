@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter @ToString(callSuper = true, exclude = {"member", "reviewReplies", "reviewFiles"})
+@Getter @ToString(callSuper = true, exclude = {"member", "reviewReplies"})
 @Table(name = "TBL_REVIEW")
 @PrimaryKeyJoinColumn(name = "ID")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
