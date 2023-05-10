@@ -15,20 +15,21 @@ import javax.transaction.Transactional;
 @Transactional
 @Rollback(false)
 @Slf4j
-public class FreeBoardFileRepositoryTests {
-    @Autowired
-    private FreeBoardFileRepository freeBoardFileRepository;
+public class ReviewFileRepositoryTests {
 
     @Autowired
-    private FreeBoardRepository freeBoardRepository;
+    private ReviewFileRepository reviewFileRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Test
     public void saveTest(){
-        FreeBoardFile freeBoardFile1 = new FreeBoardFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,freeBoardRepository.findById(104L).get());
-        freeBoardFileRepository.save(freeBoardFile1);
+        ReviewFile reviewFile1 = new ReviewFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,reviewRepository.findById(118L).get());
+        reviewFileRepository.save(reviewFile1);
         for (int i = 1; i <= 5; i++) {
-            FreeBoardFile freeBoardFile2 = new FreeBoardFile("00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,freeBoardRepository.findById(104L).get());
-            freeBoardFileRepository.save(freeBoardFile2);
+            ReviewFile reviewFile2 = new ReviewFile("00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,reviewRepository.findById(118L).get());
+            reviewFileRepository.save(reviewFile2);
         }
     }
 }

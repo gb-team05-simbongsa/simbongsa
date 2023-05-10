@@ -2,6 +2,7 @@ package com.app.simbongsa.entity.file;
 
 import com.app.simbongsa.entity.board.Board;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,4 +26,5 @@ public class FreeBoardFile extends File {
         super(fileName, fileUuid, filePath, fileRepresentationalType);
         this.freeBoard = freeBoard;
     }
+
 }
