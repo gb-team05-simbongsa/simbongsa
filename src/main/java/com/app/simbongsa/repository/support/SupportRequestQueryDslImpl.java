@@ -42,6 +42,8 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Slice<SupportRequest> findAllSupportRequest(Pageable pageable) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
+                .join(supportRequest.supportRequestFiles)
+                .fetchJoin()
                 .orderBy(supportRequest.createdDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

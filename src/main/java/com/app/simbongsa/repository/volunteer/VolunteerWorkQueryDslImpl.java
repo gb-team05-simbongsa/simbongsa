@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.volunteer;
 import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
+import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -122,6 +123,24 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         }
 
 
+    }
+    // 봉사활동 카테고리별 목록조회
+    @Override
+    public Page<VolunteerWork> findAllByCategory_QueryDSL(VolunteerWorkCategoryType volunteerWorkCategoryType, Pageable pageable) {
+
+        List<VolunteerWork> foundVolunteerWork = query.select(volunteerWork)
+                .from(volunteerWork)
+                .where(volunteerWork.volunteerWorkCategory.eq(volunteerWorkCategoryType))
+                .orderBy(volunteerWork.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(volunteerWork.count())
+                .from(volunteerWork)
+                .fetchOne();
+
+        return new PageImpl<>(foundVolunteerWork, pageable, count);
     }
 
 }

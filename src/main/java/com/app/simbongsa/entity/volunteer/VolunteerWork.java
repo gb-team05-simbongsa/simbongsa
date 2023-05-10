@@ -28,7 +28,7 @@ public class VolunteerWork {
     @NotNull private LocalDate volunteerWorkJoinEndDate;
     @NotNull private int volunteerWorkRecruitNumber;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("'test'")
+    @ColumnDefault("'헌혈'")
     private VolunteerWorkCategoryType volunteerWorkCategory;
     @NotNull private String volunteerWorkRegisterAgency;
     @NotNull private String volunteerWorkPlace;

@@ -40,7 +40,7 @@ public class SupportRequestRepositoryTests {
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
+//            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
             supportRequestRepository.save(supportRequest);
         }
@@ -64,7 +64,7 @@ public class SupportRequestRepositoryTests {
         log.info("====================유저 아이디 6의 후원요청목록수=================" + supportRequests.getTotalElements());
     }
     @Test
-    public void findAllSupportRequest(){
+    public void findAllSupportRequestTest(){
         // 페이지 요청 설정
         PageRequest pageRequest = PageRequest.of(0, 3);
 

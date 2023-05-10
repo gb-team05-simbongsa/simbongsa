@@ -4,6 +4,7 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
+import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,13 +133,19 @@ public class VolunteerRepositoryTests {
         volunteerWorkRepository.findById_QueryDSL(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
         volunteerWorkRepository.findById_QueryDSL(42L).stream().map(VolunteerWork::toString);
     }
+    /* 이전글 다음글*/
     @Test
     public void findByNextIdOrPrevIdTest(){
-
-        Optional<VolunteerWork> volunteerWork =volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
+        Optional<VolunteerWork> volunteerWork = volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
         volunteerWork.map(VolunteerWork::toString);
         volunteerWork.ifPresent(volunteerWork1 -> log.info(volunteerWork1.toString()));
 
+    }
+    @Test
+    public void findAllByCategoryTest(){
+        Page<VolunteerWork> foundVolunteerWork = volunteerWorkRepository.findAllByCategory_QueryDSL(VolunteerWorkCategoryType.헌혈, PageRequest.of(0, 5));
+        foundVolunteerWork.stream().map(VolunteerWork::toString).forEach(log::info);
+        log.info("======================" + foundVolunteerWork.getTotalElements());
     }
 
 }

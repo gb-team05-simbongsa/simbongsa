@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.volunteer;
 
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
+import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,5 +22,7 @@ public interface VolunteerWorkQueryDsl {
     public Optional<VolunteerWork> findById_QueryDSL(Long volunteerWorkId);
     //    봉사활동 이전글 다음글 조회
     public Optional<VolunteerWork> findByNextIdOrPrevId(String keyword, Long id);
+    //    봉사활동 카테고리별 목록 조회
+    public Page<VolunteerWork> findAllByCategory_QueryDSL(VolunteerWorkCategoryType volunteerWorkCategoryType, Pageable pageable);
 
 }
