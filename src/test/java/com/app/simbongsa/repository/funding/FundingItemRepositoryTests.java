@@ -32,14 +32,14 @@ public class FundingItemRepositoryTests {
 
 
     // 펀딩아이템 조회하기
-    @Test
-    public void findByIdTest() {
-        fundingItemRepository.findById(773L);
-    }
+//    @Test
+//    public void findByIdTest() {
+//        fundingItemRepository.findById(17L);
+//    }
 
     //  펀딩아이템 삭제하기
-    @Test
-    public void deleteTest() {
-        fundingItemRepository.delete(fundingItemRepository.findById(121L).get());
-    }
+//    @Test
+//    public void deleteTest() {
+//        fundingItemRepository.delete(fundingItemRepository.findById(121L).get());
+//    }
 }

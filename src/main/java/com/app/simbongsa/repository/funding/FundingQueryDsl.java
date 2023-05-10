@@ -6,6 +6,7 @@ import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,7 @@ public interface FundingQueryDsl {
 
 //
 //    // 펀딩 후원하기
-    public List<Funding> findByIdsupport(Long FundingId, Long fundingGiftId);
+    public List<Funding> findByIdsupport(Long fundingGiftId);
 
     //    펀딩 상세페이지 조회
     public Optional<Funding> findByIdForDetail(Long fundingId);
@@ -33,5 +34,7 @@ public interface FundingQueryDsl {
 //    펀딩 대기를 승인으로 변경
     public void updateWaitToAcceptByIds(List<Long> ids);
 
+    // 펀딩 전체목록조회
+    public Slice<Funding> findAllWithSlice(Pageable pageable);
 
 }

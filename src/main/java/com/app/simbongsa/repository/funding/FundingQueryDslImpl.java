@@ -3,14 +3,13 @@ package com.app.simbongsa.repository.funding;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.QFunding;
+import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.RequestType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -104,18 +103,52 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .where(funding.id.in(ids))
                 .execute();
     }
+    //펀딩 후원하기
     @Override
-    public List<Funding> findByIdsupport(Long fundingId, Long fundingGiftId) {
+    public List<Funding> findByIdsupport(Long fundingGiftId) {
         return query.select(funding)
                 .from(funding)
                 .join(funding.fundingFile)
                 .fetchJoin()
                 .join(funding.fundingGifts)
                 .fetchJoin()
-                .where(funding.id.eq(fundingId))
+                .where(funding.id.eq(fundingGiftId))
                 .fetch();
 
-
-
     }
+
+
+    //    펀딩 전체 조회(무한스크롤)
+    @Override
+    public Slice<Funding> findAllWithSlice(Pageable pageable) {
+        List<Funding> foundFunding = query.select(funding)
+                .from(funding)
+                .join(funding.fundingFile)
+                .fetchJoin()
+                .orderBy(funding.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        // 펀딩 전체 목록 갯수
+        Long count = query.select(funding.count())
+                .from(funding)
+                .fetchOne();
+
+
+        return checkLastPage(pageable, foundFunding);
+//      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
+//      false로 설정되면 다음 페이지가 없는 것으로 간주
+    }
+    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
+    private Slice<Funding> checkLastPage(Pageable pageable,  List<Funding> fundings) {
+        boolean hasNext = false;
+        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
+        if (fundings.size() > pageable.getPageSize()) {
+            hasNext = true;
+            fundings.remove(pageable.getPageSize());
+        }
+        return new SliceImpl<>(fundings, pageable, hasNext);
+    }
+
 }
