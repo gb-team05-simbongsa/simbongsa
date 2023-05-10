@@ -15,4 +15,6 @@ public interface SupportQueryDsl {
 
     /* 총 후원 참여 내역*/
     public Long findAllSupportAttend_QueryDSL();
+
+
 }

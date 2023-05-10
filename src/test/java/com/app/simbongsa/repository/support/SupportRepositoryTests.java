@@ -68,4 +68,8 @@ public class SupportRepositoryTests {
         memberRepository.findSupportByRequestId(129L).stream().map(Member::toString).forEach(log::info);
     }
 
+//    공양미 후원하기
+
+
+
 }
