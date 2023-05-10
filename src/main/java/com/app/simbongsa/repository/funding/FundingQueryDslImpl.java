@@ -96,6 +96,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetchOne();
     }
 
+<<<<<<< HEAD
     //    펀딩 대기를 승인으로 변경
     @Override
     public void updateWaitToAcceptByIds(List<Long> ids) {
@@ -104,5 +105,18 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .where(funding.id.in(ids))
                 .execute();
     }
+    @Override
+    public List<Funding> findByIdsupport(Long fundingId, Long fundingGiftId) {
+        return query.select(funding)
+                .from(funding)
+                .join(funding.fundingFile)
+                .fetchJoin()
+                .join(funding.fundingGifts)
+                .fetchJoin()
+                .where(funding.id.eq(fundingId))
+                .fetch();
 
+
+
+    }
 }

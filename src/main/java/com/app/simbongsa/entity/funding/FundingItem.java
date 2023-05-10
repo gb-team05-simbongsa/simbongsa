@@ -4,9 +4,10 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = "funding")
+@Getter @ToString(exclude = "fundingGiftItems")
 @Table(name = "TBL_FUNDING_ITEM")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FundingItem {
@@ -16,14 +17,15 @@ public class FundingItem {
     @NotNull private String itemTitle;
     @NotNull private String itemContent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FUNDING_ID")
-    private Funding funding;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingItem")
+    private List<FundingGiftItem> fundingGiftItems;
+
+
 
     //단위테스트용 생성자
-    public FundingItem(String itemTitle, String itemContent, Funding funding) {
+    public FundingItem(String itemTitle, String itemContent) {
         this.itemTitle = itemTitle;
         this.itemContent = itemContent;
-        this.funding = funding;
+
     }
 }

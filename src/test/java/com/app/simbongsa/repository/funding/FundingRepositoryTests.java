@@ -129,4 +129,10 @@ public class FundingRepositoryTests {
     public void updateTest() {
 
     }
+
+    // 펀딩 후원하기
+    @Test
+    public void fundingSupportTest(){
+
+    }
 }
