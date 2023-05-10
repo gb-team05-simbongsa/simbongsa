@@ -25,7 +25,7 @@ public class FundingItemRepositoryTests {
             FundingItem fundingItem = new FundingItem(
                     "펀딩아이템" + i
              , "필름카메라2개"
-             ,fundingRepository.findById(141L).get()
+             ,fundingRepository.findById(143L).get()
             );
          fundingItemRepository.save(fundingItem);
         }

@@ -4,6 +4,7 @@ import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.funding.FundingGift;
+import com.app.simbongsa.entity.funding.FundingItem;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FundingCategoryType;
@@ -80,10 +81,11 @@ public class FundingRepositoryTests {
     //  펀딩 상세보기
     @Test
     public void findByIdTest() {
-        fundingRepository.findByIdForDetail(141L).ifPresent(funding -> {
+        fundingRepository.findByIdForDetail(143L).ifPresent(funding -> {
             log.info(funding.toString());
             funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
             funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
+            funding.getFundingItems().stream().map(FundingItem::toString).forEach(log::info);
         });
     }
 
