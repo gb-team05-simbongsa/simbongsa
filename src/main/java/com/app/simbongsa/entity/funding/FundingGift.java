@@ -26,10 +26,10 @@ public class FundingGift {
 
 
     //단위테스트용 생성자
-    public FundingGift(String fundingGiftExplain, int fundingGiftAmount, int fundingGiftPrice, Funding funding) {
+    public FundingGift(String fundingGiftExplain, int fundingGiftAmount, int fundingGiftPrice) {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingGiftAmount = fundingGiftAmount;
         this.fundingGiftPrice = fundingGiftPrice;
-//        this.funding = funding;
+        //this.funding = funding;
     }
 }

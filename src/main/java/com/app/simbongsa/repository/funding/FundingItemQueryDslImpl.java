@@ -16,7 +16,7 @@ public class FundingItemQueryDslImpl implements FundingItemQueryDsl {
 
     QFundingItem qFundingItem = fundingItem;
     @Override
-    public Optional<FundingItem> findByIdDetail(Long fundingItemId) {
+    public Optional<FundingItem> findById(Long fundingItemId) {
         return Optional.of(
                 query.select(fundingItem)
                     .from(fundingItem)

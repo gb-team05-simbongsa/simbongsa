@@ -86,7 +86,6 @@ public class FundingRepositoryTests {
             log.info(funding.toString());
             funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
             funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
-            funding.getFundingItems().stream().map(FundingItem::toString).forEach(log::info);
         });
     }
 

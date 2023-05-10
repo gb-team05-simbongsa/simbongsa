@@ -14,14 +14,14 @@ import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 public class FundingGiftQueryDslImpl implements FundingGiftQueryDsl {
     private final JPAQueryFactory query;
 
-     QFundingGift qFundingGift = fundingGift;
-
      @Override
-    public Optional<FundingGift> findByIdDetail(Long fundingGiftId) {
+    public Optional<FundingGift> findByIdDetail(Long fundingItemId) {
 
-         return Optional.of(query.select(fundingGift)
+         return Optional.of(
+                 query.select(fundingGift)
                 .from(fundingGift)
-                .where(fundingGift.id.eq(fundingGiftId))
+                 .join(fundingGift.fundingGiftItems)
+                .where(fundingGift.id.eq(fundingItemId))
                 .fetchOne());
     }
 
