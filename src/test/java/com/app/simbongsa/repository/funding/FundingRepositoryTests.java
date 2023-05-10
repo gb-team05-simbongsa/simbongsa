@@ -53,8 +53,8 @@ public class FundingRepositoryTests {
                     ,"안녕하십니까"
                     ,"하이하이"
                     ,"헬로헬로"
-                    ,fundingCreator
-                    ,memberRepository.findById(55L).get());
+                    ,fundingCreator);
+//                    ,memberRepository.findById(1L).get());
 
             fundingRepository.save(funding);
         }

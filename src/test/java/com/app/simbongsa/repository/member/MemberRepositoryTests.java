@@ -27,7 +27,7 @@ public class MemberRepositoryTests {
     private MemberRepository memberRepository;
 
     //member 더미데이터 넣기
-    @Test
+//    @Test
 //    public void saveTest() {
 //        for (int i = 1; i <= 100; i++) {
 //            Member member = new Member( "email" + i + "@naver.com",

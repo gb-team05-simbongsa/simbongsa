@@ -21,4 +21,8 @@ public class FundingGiftItem {
     private FundingGift fundingGift;
 
 
+    public FundingGiftItem(FundingItem fundingItem, FundingGift fundingGift) {
+        this.fundingItem = fundingItem;
+        this.fundingGift = fundingGift;
+    }
 }
