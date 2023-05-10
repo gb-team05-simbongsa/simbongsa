@@ -60,6 +60,8 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .from(freeBoard)
                 .join(freeBoard.freeBoardReplies, freeBoardReply)
                 .fetchJoin()
+                .join(freeBoard.freeBoardFiles)
+                .fetchJoin()
                 .orderBy(freeBoard.freeBoardReplies.size().desc())
                 .limit(8)
                 .fetch();
