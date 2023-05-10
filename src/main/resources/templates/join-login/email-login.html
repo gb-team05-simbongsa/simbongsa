@@ -24,12 +24,12 @@
                 <div class="login-inner-wrap">
                     <h3 class="login-title">이메일로 로그인</h3>
 
-                    <form action="" name="loginForm">
+                    <form th:action="@{/member/login}" name="loginForm" method="post">
                         <div class="input-div">
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="text" class="input-write" placeholder="이메일 주소를 입력해주세요">
+                                    <input type="text" class="input-write" placeholder="이메일 주소를 입력해주세요" name="memberEmail">
                                 </span>
                             </div>
                             <div class="email-error">이메일 주소를 입력해주세요</div>
@@ -38,7 +38,7 @@
                             <div class="input-title">비밀번호</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="password" class="input-write" placeholder="비밀번호를 입력해주세요">
+                                    <input type="password" class="input-write" placeholder="비밀번호를 입력해주세요" name="memberPassword">
                                 </span>
                             </div>
                             <div class="email-error">비밀번호를 입력해주세요</div>
