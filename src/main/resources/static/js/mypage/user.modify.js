@@ -105,3 +105,8 @@ function sample6_execDaumPostcode() {
         },
     }).open();
 }
+
+/* 회원탈퇴 버튼 클릭 */
+$('.modify-button').click( function () {
+    location.href = "/mypage/withdraw-check";
+})
