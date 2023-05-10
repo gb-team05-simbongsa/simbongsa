@@ -25,4 +25,6 @@ public class ReviewFile extends File {
         super(fileName, fileUuid, filePath, fileRepresentationalType);
         this.review = review;
     }
+
+
 }

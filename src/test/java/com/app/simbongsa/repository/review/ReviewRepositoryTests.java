@@ -1,8 +1,12 @@
 package com.app.simbongsa.repository.review;
 
 import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.entity.file.ReviewFile;
+import com.app.simbongsa.repository.board.ReviewFileRepository;
 import com.app.simbongsa.repository.board.ReviewRepository;
 import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.type.FileRepresentationalType;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static com.app.simbongsa.entity.board.QReview.review;
 
 
 @SpringBootTest
@@ -21,8 +33,17 @@ public class ReviewRepositoryTests {
     @Autowired
     private ReviewRepository reviewRepository;
 
+    @PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
+
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private ReviewFileRepository reviewFileRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Test
     public void saveTest() {
@@ -56,4 +77,17 @@ public class ReviewRepositoryTests {
     public void findByIdTest(){
         reviewRepository.findById(146L);
     }
+
+    /* 마이페이지 작성한 후기게시물 상세 조회*/
+    @Test
+    public void findByIdForMyDetailTest(){
+        log.info("======================="+reviewRepository.findByIdForMyDetail(116L));
+    }
+
+    /*후기게시판 삭제(파일, 댓글도 한번에)*/
+    @Test
+    public void deleteTest() {
+        reviewRepository.delete(reviewRepository.findById(117L).get());
+    }
+
 }

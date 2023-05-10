@@ -28,4 +28,7 @@ public interface ReviewQueryDsl {
 
     //    후기 게시판 상세페이지 조회
     public Optional<Review> findByIdForDetail(Long reviewId);
+
+    /* 마이페이지 작성한 후기게시물 상세 조회*/
+    public Optional<Review> findByIdForMyDetail(Long reviewId);
 }

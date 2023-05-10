@@ -88,4 +88,34 @@ public class MemberRepositoryTests {
     public void updatePasswordTest(){
         memberRepository.updatePassword(542L, "email101@naver.com");
     }
+
+    /* 내 공양미 환전 요청*/
+    @Test
+    public void updateChangeRiceByMemberIdTest(){
+        memberRepository.updateChangeRiceByMemberId(82L,300);
+
+        memberRepository.findById(82L).ifPresent(member -> log.info("================== 공양미 남은 "+member.getMemberRice() + "==========="));
+    }
+
+    /* 공양미 충전 */
+    @Test
+    public void updateChargeRiceByMemberIdTest(){
+        memberRepository.updateChargeRiceByMemberId(82L,300);
+        memberRepository.findById(82L).ifPresent(member -> log.info("================== 7900에서 더해진 공양미 "+member.getMemberRice() + "==========="));
+    }
+
+    /* 이메일 로그인 */
+    @Test
+    public void loginTest(){
+        Optional<Member> member1 = memberRepository.login("email82@naver.com", "12382");
+        member1.ifPresent(member -> log.info(member.toString()));
+    }
+
+    /*이메일 중복 검사*/
+    @Test
+    public void overlapByMemberEmailTest(){
+        memberRepository.overlapByMemberEmail("email82@naver.cm").map(Member::getMemberEmail).ifPresent(log::info);
+        log.info("@@@@@@@@@@@@@@@@@@");
+    }
+
 }
