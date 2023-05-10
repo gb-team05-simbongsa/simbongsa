@@ -24,4 +24,18 @@ public class Notice extends Period {
         this.noticeTitle = noticeTitle;
         this.noticeContent = noticeContent;
     }
+
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle;
+    }
+
+    public void setNoticeContent(String noticeContent) {
+        this.noticeContent = noticeContent;
+    }
+
+//    서비스에 넣기
+    public void updateNotice(String noticeTitle, String noticeContent) {
+        setNoticeTitle(noticeTitle);
+        setNoticeContent(noticeContent);
+    }
 }

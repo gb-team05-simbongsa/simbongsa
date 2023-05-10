@@ -19,6 +19,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Optional;
 
 @SpringBootTest
@@ -119,8 +120,13 @@ public class FundingRepositoryTests {
 
 //    펀딩 대기를 승인으로 변경
     @Test
-    public void updateWaitToAcceptByIdTest() {
-        Optional<Funding> byId = fundingRepository.findById(142L);
-        byId.get().setFundingStatus(RequestType.승인);
+    public void updateWaitToAcceptByIdsTest() {
+        fundingRepository.updateWaitToAcceptByIds(Arrays.asList(143L, 144L, 145L));
+    }
+
+//    펀딩 수정
+    @Test
+    public void updateTest() {
+
     }
 }
