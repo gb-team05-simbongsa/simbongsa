@@ -26,7 +26,7 @@ public class FundingGiftRepositoryTests {
                     "펀딩선물" + i
                 , 120 * i
                 ,12000* i
-                ,fundingRepository.findById(141L).get());
+                ,fundingRepository.findById(143L).get());
             fundingGiftRepository.save(fundingGift);
         }
     }
