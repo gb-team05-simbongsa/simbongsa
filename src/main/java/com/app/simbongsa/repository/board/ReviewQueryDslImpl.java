@@ -1,18 +1,18 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 
 import java.util.List;
 import java.util.Optional;
 
+import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QReview.review;
 
 
@@ -22,6 +22,40 @@ import static com.app.simbongsa.entity.board.QReviewReply.reviewReply;
 @RequiredArgsConstructor
 public class ReviewQueryDslImpl implements ReviewQueryDsl {
     private final JPAQueryFactory query;
+
+    //    최신순 목록 조회(무한스크롤)
+    @Override
+    public Slice<Review> findAllByIdReviewPaging_QueryDSL(Pageable pageable) {
+        List<Review> reviews = query.select(review)
+                .from(review)
+                .join(review.member)
+                .fetchJoin()
+                .join(review.reviewFiles)
+                .fetchJoin()
+                .orderBy(review.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        return checkLastPage(pageable, reviews);
+    }
+
+    //    인기순 목록 조회(무한스크롤)
+    @Override
+    public Slice<Review> findAllByLikeCountReviewPaging_QueryDSL(Pageable pageable) {
+        List<Review> reviews = query.select(review)
+                .from(review)
+                .join(review.member)
+                .fetchJoin()
+                .join(review.reviewFiles)
+                .fetchJoin()
+                .orderBy(review.reviewReplies.size().desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        return checkLastPage(pageable, reviews);
+    }
 
     /* 내 후기 게시물 목록 조회 (페이징처리) */
     @Override
@@ -44,7 +78,7 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         return new PageImpl<>(foundReview, pageable, count);
     }
 
-    //    후기 목록 전체 조회(페이징)
+    //    후기게시판 전체 조회(페이징)
     @Override
     public Page<Review> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
         BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : review.BoardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
@@ -77,13 +111,13 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
                 .fetch();
     }
 
-    //    인기순 목록 조회
+    //    메인 인기순 목록 조회
     @Override
     public List<Review> findAllWithPopularReview() {
         return query.selectFrom(review).limit(8).orderBy(reviewReply.id.desc()).fetch();
     }
 
-    //    후기 게시판 상세페이지 조회
+    //    후기게시판 상세페이지 조회
     @Override
     public Optional<Review> findByIdForDetail(Long reviewId) {
         return Optional.ofNullable(query.select(review)
@@ -101,6 +135,20 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
                 .fetchJoin()
                 .where(review.id.eq(reviewId))
                 .fetchOne());
+    }
+
+    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
+    private Slice<Review> checkLastPage(Pageable pageable, List<Review> reviews) {
+
+        boolean hasNext = false;
+
+        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
+        if (reviews.size() > pageable.getPageSize()) {
+            hasNext = true;
+            reviews.remove(pageable.getPageSize());
+        }
+
+        return new SliceImpl<>(reviews, pageable, hasNext);
     }
 
 }

@@ -13,10 +13,10 @@ public interface FreeBoardQueryDsl {
     // 메인 인기순 목록 조회
     public List<FreeBoard> findAllWithPopularFreeBoard();
 
-    //    인기순 목록 조회
+    //    인기순 목록 조회 - 무한스크롤
     public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable);
 
-    //    최신순 목록 조회
+    //    최신순 목록 조회 - 무한스크롤
     public Slice<FreeBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable);
 
     //    자유게시판 전체 조회(페이징)

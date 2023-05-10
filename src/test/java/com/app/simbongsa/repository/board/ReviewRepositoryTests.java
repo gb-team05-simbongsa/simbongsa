@@ -1,7 +1,5 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.entity.board.FreeBoard;
-import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.board.ReviewReply;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
