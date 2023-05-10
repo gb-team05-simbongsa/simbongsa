@@ -96,5 +96,21 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetchOne();
     }
 
+    //펀딩 후원하기
 
+
+    @Override
+    public List<Funding> findByIdsupport(Long fundingId, Long fundingGiftId) {
+        return query.select(funding)
+                .from(funding)
+                .join(funding.fundingFile)
+                .fetchJoin()
+                .join(funding.fundingGifts)
+                .fetchJoin()
+                .where(funding.id.eq(fundingId))
+                .fetch();
+
+
+
+    }
 }

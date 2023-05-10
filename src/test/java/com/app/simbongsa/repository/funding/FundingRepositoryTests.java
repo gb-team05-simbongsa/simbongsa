@@ -123,4 +123,10 @@ public class FundingRepositoryTests {
         Optional<Funding> byId = fundingRepository.findById(142L);
         byId.get().setFundingStatus(RequestType.승인);
     }
+
+    // 펀딩 후원하기
+    @Test
+    public void fundingSupportTest(){
+
+    }
 }

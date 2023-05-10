@@ -51,9 +51,6 @@ public class Funding {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
     private List<FundingGift> fundingGifts;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "funding", cascade = CascadeType.REMOVE)
-    private List<FundingItem> fundingItems;
-
 
     public Funding(Member member) {
         this.member = member;

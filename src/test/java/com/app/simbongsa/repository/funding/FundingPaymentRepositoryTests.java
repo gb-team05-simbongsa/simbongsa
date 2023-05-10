@@ -30,10 +30,10 @@ public class FundingPaymentRepositoryTests {
 
     @Test
     public void saveTest(){
-        FundingPayment fundingPayment1 = new FundingPayment(300, LocalDateTime.now(), memberRepository.findById(542L).get(),fundingRepository.findById(53L).get());
+        FundingPayment fundingPayment1 = new FundingPayment(300, LocalDateTime.now(), memberRepository.findById(9L).get(),fundingRepository.findById(143L).get());
         fundingPaymentRepository.save(fundingPayment1);
 
-        FundingPayment fundingPayment2 = new FundingPayment(500, LocalDateTime.now(), memberRepository.findById(542L).get(),fundingRepository.findById(54L).get());
+        FundingPayment fundingPayment2 = new FundingPayment(500, LocalDateTime.now(), memberRepository.findById(10L).get(),fundingRepository.findById(144L).get());
         fundingPaymentRepository.save(fundingPayment2);
     }
 
