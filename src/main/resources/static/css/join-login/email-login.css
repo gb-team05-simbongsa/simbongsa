@@ -336,6 +336,130 @@ input {
     display: none;
 }
 
+/* 로그인 유지 버튼 */
+
+.modal-login-addition {
+    margin-top: 12px;
+    display: flex;
+}
+
+.modal-keep-login-label {
+    font-size: 14px;
+    color: rgb(48, 52, 65);
+    cursor: pointer;
+}
+
+.modal-keep-login-span {
+    outline: none;
+    display: inline-flex;
+    position: relative;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.modal-keep-login {
+    position: absolute;
+    inset: 0px;
+    z-index: 19;
+    opacity: 0;
+    cursor: inherit;
+}
+
+.modal-checkbox-inner {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: rgb(200, 202, 210);
+    background-color: rgb(255, 255, 255);
+    transition: border-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s, background-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+}
+
+.modal-checkbox-inner-check {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    transition: border-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s, background-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+    border-color: rgb(248 100 83);
+    background-color: rgb(248 100 83);
+}
+
+.modal-checkbox-inner::after {
+    opacity: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    display: table;
+    width: 4px;
+    height: 8px;
+    border-width: 0px 2px 2px 0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-right-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-image: initial;
+    border-top-style: initial;
+    border-top-color: initial;
+    border-left-style: initial;
+    border-left-color: initial;
+    content: " ";
+    transition: opacity 0.3s ease 0s;
+}
+
+.modal-checkbox-inner-check::after {
+    opacity: 1;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    display: table;
+    width: 4px;
+    height: 8px;
+    border-width: 0px 2px 2px 0px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-right-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-image: initial;
+    border-top-style: initial;
+    border-top-color: initial;
+    border-left-style: initial;
+    border-left-color: initial;
+    content: " ";
+    transition: opacity 0.3s ease 0s;
+}
+
+.modal-keep-login-text {
+    margin: 0px 8px;
+}
+
+.modal-keep-find {
+    margin-left: auto;
+}
+
+.modal-keep-find-text {
+    font-size: 14px;
+    color: rgb(85, 89, 105);
+    text-decoration: none;
+}
+
+
 
 @media (min-width: 1080px) {
     .login-header {

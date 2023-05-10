@@ -3,6 +3,7 @@ const $password = $('.input-write').eq(1);
 const $emailError = $('.email-error').eq(0);
 const $passwordError = $('.email-error').eq(1);
 const emailRegex = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+const $modalKeepLogin = $('.modal-keep-login');
 
 $email.on('keyup', () => {
     $emailError.css('display', 'none');
@@ -38,4 +39,12 @@ $('.submit-button').on('click', () => {
     }
 
     document.loginForm.submit();
+});
+
+$modalKeepLogin.click(() => {
+    if($('.modal-checkbox-inner').attr('class') == 'modal-checkbox-inner') {
+        $('.modal-checkbox-inner').attr('class', 'modal-checkbox-inner-check');
+    } else {
+        $('.modal-checkbox-inner-check').attr('class', 'modal-checkbox-inner');
+    }
 });
