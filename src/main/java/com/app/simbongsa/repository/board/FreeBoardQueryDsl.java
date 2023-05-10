@@ -4,13 +4,20 @@ import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface FreeBoardQueryDsl {
-    //    인기순 목록 조회
+    // 메인 인기순 목록 조회
     public List<FreeBoard> findAllWithPopularFreeBoard();
+
+    //    인기순 목록 조회
+    public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable);
+
+    //    최신순 목록 조회
+    public Slice<FreeBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable);
 
     //    자유게시판 전체 조회(페이징)
     public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);

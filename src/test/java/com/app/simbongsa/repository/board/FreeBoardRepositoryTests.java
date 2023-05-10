@@ -82,16 +82,26 @@ public class FreeBoardRepositoryTests {
 
     /* 자유게시판 인기순 목록 조회*/
     @Test
-    public void findAllWithPopularFreeBoard(){
-        List<FreeBoard> allWithPopularFreeBoard = freeBoardRepository.findAllWithPopularFreeBoard();
-        allWithPopularFreeBoard.stream().map(FreeBoard::toString).forEach(log::info);
+    public void findAllByLikeCountDescWithPaging_QueryDSLTest(){
+        freeBoardRepository.findAllByLikeCountDescWithPaging_QueryDSL(
+                PageRequest.of(0, 3)
+        ).stream().map(FreeBoard::toString).forEach(log::info);
     }
 
-//    자유게시판 삭제(파일, 댓글도 한번에)
+    /* 자유게시판 최신순 목록 조회*/
+    @Test
+    public void findAllByIdDescWithPaging_QueryDSLTest(){
+        freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(
+                PageRequest.of(0, 2)
+        ).stream().map(FreeBoard::toString).forEach(log::info);
+    }
+
+    /*자유게시판 삭제(파일, 댓글도 한번에)*/
     @Test
     public void deleteTest() {
         freeBoardRepository.delete(freeBoardRepository.findById(103L).get());
     }
+
 
     /* 마이페이지 작성한 자유게시물 상세 조회*/
     @Test

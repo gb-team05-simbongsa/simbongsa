@@ -7,9 +7,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +20,40 @@ import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     private final JPAQueryFactory query;
 
-    //    인기순 목록 조회
+    //    최신순 목록 조회(무한스크롤)
+    @Override
+    public Slice<FreeBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
+        List<FreeBoard> freeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.member)
+                .fetchJoin()
+                .join(freeBoard.freeBoardFiles)
+                .fetchJoin()
+                .orderBy(freeBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        return checkLastPage(pageable, freeBoards);
+    }
+
+    //    인기순 목록 조회(무한스크롤)
+    @Override
+    public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable) {
+        List<FreeBoard> freeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.member)
+                .fetchJoin()
+                .join(freeBoard.freeBoardFiles)
+                .orderBy(freeBoardReply.count().desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        return checkLastPage(pageable, freeBoards);
+    }
+
+    //    메인 인기순 목록 조회
     @Override
     public List<FreeBoard> findAllWithPopularFreeBoard() {
         return query.select(freeBoard)
@@ -33,6 +64,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .limit(8)
                 .fetch();
     }
+
 
     //    자유게시판 전체 조회(페이징)
     @Override
@@ -107,5 +139,19 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchJoin()
                 .where(freeBoard.id.eq(freeBoardId))
                 .fetchOne());
+    }
+
+    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
+    private Slice<FreeBoard> checkLastPage(Pageable pageable, List<FreeBoard> freeBoards) {
+
+        boolean hasNext = false;
+
+        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
+        if (freeBoards.size() > pageable.getPageSize()) {
+            hasNext = true;
+            freeBoards.remove(pageable.getPageSize());
+        }
+
+        return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
 }
