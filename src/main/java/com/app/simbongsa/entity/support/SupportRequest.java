@@ -51,4 +51,15 @@ public class SupportRequest extends Period {
         this.supportRequestStatus = supportRequestStatus;
     }
 
+    public void setSupportRequestTitle(String supportRequestTitle) {
+        this.supportRequestTitle = supportRequestTitle;
+    }
+
+    public void setSupportRequestContent(String supportRequestContent) {
+        this.supportRequestContent = supportRequestContent;
+    }
+
+    public void setSupportRequestFiles(List<SupportRequestFile> supportRequestFiles) {
+        this.supportRequestFiles = supportRequestFiles;
+    }
 }

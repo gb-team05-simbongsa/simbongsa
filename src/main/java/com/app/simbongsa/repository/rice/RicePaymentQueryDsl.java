@@ -20,7 +20,7 @@ public interface RicePaymentQueryDsl {
     public List<RicePayment> findAllPaymentTypeCharge();
 
 //    환전 요청 상태 승인으로 변경
-    public void updatePaymentStatusToAccessById(Long id);
+    public void updatePaymentStatusToAccessByIds(List<Long> ids);
 
 //    memberId로 조회해서 공양미 후원
     public void updatePaymentByMemberId(Long id, int supportGongyang);

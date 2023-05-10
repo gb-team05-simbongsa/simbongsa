@@ -28,4 +28,8 @@ public class Review extends Board {
         super(boardTitle, boardContent);
         this.member = member;
     }
+
+    public void setReviewFiles(List<ReviewFile> reviewFiles) {
+        this.reviewFiles = reviewFiles;
+    }
 }

@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
+import com.app.simbongsa.type.RequestType;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -118,6 +119,15 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
         return new SliceImpl<>(foundSupportRequest, pageable, true);
 
+    }
+
+//    대기를 승인으로 변경
+    @Override
+    public void updateWaitToAccessByIds(List<Long> ids) {
+        query.update(supportRequest)
+                .set(supportRequest.supportRequestStatus, RequestType.승인)
+                .where(supportRequest.id.in(ids))
+                .execute();
     }
 
 }

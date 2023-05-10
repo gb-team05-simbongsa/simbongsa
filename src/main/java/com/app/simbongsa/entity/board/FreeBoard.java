@@ -32,4 +32,8 @@ public class FreeBoard extends Board {
         super(boardTitle, boardContent);
         this.member = member;
     }
+
+    public void setFreeBoardFiles(List<FreeBoardFile> freeBoardFiles) {
+        this.freeBoardFiles = freeBoardFiles;
+    }
 }
