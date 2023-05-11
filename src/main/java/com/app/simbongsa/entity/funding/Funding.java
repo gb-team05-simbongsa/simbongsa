@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = {"member", "fundingFile", "fundingGifts", "fundingItems"})
+@Getter @ToString(exclude = {"member", "fundingGifts"})
 @Table(name = "TBL_FUNDING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -57,7 +57,7 @@ public class Funding {
     }
 
     // 테스트용 생성자
-    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, Member member) {
+    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator) {
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
         this.fundingShortTitle = fundingShortTitle;
@@ -71,7 +71,7 @@ public class Funding {
         this.fundingScheduleExplain = fundingScheduleExplain;
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingCreator = fundingCreator;
-        this.member = member;
+//        this.member = member;
     }
 
     public void setFundingStatus(RequestType fundingStatus) {

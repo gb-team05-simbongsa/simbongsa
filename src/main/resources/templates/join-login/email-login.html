@@ -24,12 +24,12 @@
                 <div class="login-inner-wrap">
                     <h3 class="login-title">이메일로 로그인</h3>
 
-                    <form action="" name="loginForm">
+                    <form th:action="@{/member/login}" name="loginForm" method="post">
                         <div class="input-div">
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="text" class="input-write" placeholder="이메일 주소를 입력해주세요">
+                                    <input type="text" class="input-write" placeholder="이메일 주소를 입력해주세요" name="memberEmail">
                                 </span>
                             </div>
                             <div class="email-error">이메일 주소를 입력해주세요</div>
@@ -38,7 +38,7 @@
                             <div class="input-title">비밀번호</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="password" class="input-write" placeholder="비밀번호를 입력해주세요">
+                                    <input type="password" class="input-write" placeholder="비밀번호를 입력해주세요" name="memberPassword">
                                 </span>
                             </div>
                             <div class="email-error">비밀번호를 입력해주세요</div>
@@ -60,7 +60,7 @@
                         <div class="login-another-inner">
                             <span class="login-another-text">다른 방법으로 로그인</span>
                         </div>
-                        <button class="login-circle">
+                        <button type="button" class="login-circle">
                             <div class="kakao-login-wrap">
                                 <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="14.875" fill="#FEE500"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M17.0002 9.03125C12.0901 9.03125 8.146 12.0938 8.146 15.8415C8.30698 18.4205 9.91683 20.6369 12.2511 21.604L11.4059 24.6666C11.3657 24.7472 11.4059 24.8681 11.4864 24.908C11.5669 24.989 11.7279 24.989 11.8084 24.908L15.3903 22.5309C15.9135 22.6115 16.4367 22.6518 17.0002 22.6518C21.87 22.6518 25.8543 19.5892 25.8543 15.8415C25.8543 12.0938 21.9102 9.03125 17.0002 9.03125Z" fill="black" fill-opacity="0.9"></path></svg>
                             </div>
@@ -74,13 +74,13 @@
                     <div class="join-wrap">
                         아직 심봉사 계정이 없으신가요?
                         <span class="join-text">
-                            <a href="/user/join-select" class="join-page">회원가입</a>
+                            <a href="/member/join-select" class="join-page">회원가입</a>
                         </span>
                     </div>
                     <div class="change-password-wrap">
                         혹시 비밀번호를 잊으셨나요?
                         <span class="change-password-text">
-                            <a href="/user/find-password" class="change-password-page">비밀번호 변경</a>
+                            <a href="/member/find-password" class="change-password-page">비밀번호 변경</a>
                         </span>
                     </div>
                 </div>

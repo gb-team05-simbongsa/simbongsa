@@ -6,5 +6,6 @@ import com.app.simbongsa.entity.funding.FundingItem;
 import java.util.Optional;
 
 public interface FundingItemQueryDsl {
-    public Optional<FundingItem> findByIdDetail(Long fundingItemId);
+    public Optional<FundingItem> findById(Long fundingItemId);
+
 }

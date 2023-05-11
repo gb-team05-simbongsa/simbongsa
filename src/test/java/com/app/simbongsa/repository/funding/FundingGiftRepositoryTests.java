@@ -19,14 +19,21 @@ public class FundingGiftRepositoryTests {
     @Autowired
     FundingRepository fundingRepository;
 
+    @Autowired
+    FundingItemRepository fundingItemRepository;
+
+    @Autowired
+    FundingGiftItemRepository fundingGiftItemRepository;
+
     @Test
     public void saveTest() {
-        for (int i = 1; i <= 8; i++) {
+        for (int i = 1; i <= 12; i++) {
             FundingGift fundingGift = new FundingGift(
                     "펀딩선물" + i
                 , 120 * i
-                ,12000* i
-                ,fundingRepository.findById(143L).get());
+                ,12000* i);
+//                ,fundingRepository.findById(143L).get());
+
             fundingGiftRepository.save(fundingGift);
         }
     }
@@ -34,6 +41,9 @@ public class FundingGiftRepositoryTests {
     // 조회하기
     @Test
     public void findByIdTest() {
-        fundingGiftRepository.findById(773L);
+        fundingGiftRepository.findById(59L);
     }
+
+
+
 }

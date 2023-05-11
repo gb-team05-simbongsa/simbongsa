@@ -2,6 +2,10 @@ package com.app.simbongsa.repository.member;
 
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
+import com.app.simbongsa.type.MemberJoinType;
+import com.app.simbongsa.type.MemberStatus;
+import com.app.simbongsa.type.Role;
+import com.app.simbongsa.type.UserRankType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +26,26 @@ public class MemberRepositoryTests {
     @Autowired
     private MemberRepository memberRepository;
 
-//    member 더미데이터 넣기
-    @Test
-    public void saveTest() {
-        for (int i = 1; i <= 100; i++) {
-            Member member = new Member("이름" + i, "email" + i + "@naver.com",
-                    "123" + i, "역삼로" + i, 10 + i, "봉사",i+1, 100 * i);
-            memberRepository.save(member);
-        }
-    }
+    //member 더미데이터 넣기
+//    @Test
+//    public void saveTest() {
+//        for (int i = 1; i <= 100; i++) {
+//            Member member = new Member( "email" + i + "@naver.com",
+//                    "123" + i
+//                    , "역삼로" + i
+//                    , "101" +i
+//                    , 20 + i
+//                    ,"아무거나"
+//                    , MemberJoinType.네이버
+//            , UserRankType.금냥1티어
+//            ,1 + i
+//            ,1+i
+//            , "123456789"
+//            , Role.MEMBER
+//            , MemberStatus.가입);
+//            memberRepository.save(member);
+//        }
+//    }
 
 //    회원 전체조회(페이징)
     @Test

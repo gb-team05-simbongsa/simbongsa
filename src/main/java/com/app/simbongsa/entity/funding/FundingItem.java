@@ -17,9 +17,8 @@ public class FundingItem {
     @NotNull private String itemTitle;
     @NotNull private String itemContent;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingItem")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingItem", cascade = CascadeType.REMOVE)
     private List<FundingGiftItem> fundingGiftItems;
-
 
 
     //단위테스트용 생성자

@@ -53,8 +53,8 @@ public class FundingRepositoryTests {
                     ,"안녕하십니까"
                     ,"하이하이"
                     ,"헬로헬로"
-                    ,fundingCreator
-                    ,memberRepository.findById(55L).get());
+                    ,fundingCreator);
+//                    ,memberRepository.findById(1L).get());
 
             fundingRepository.save(funding);
         }
@@ -86,7 +86,6 @@ public class FundingRepositoryTests {
             log.info(funding.toString());
             funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
             funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
-            funding.getFundingItems().stream().map(FundingItem::toString).forEach(log::info);
         });
     }
 
