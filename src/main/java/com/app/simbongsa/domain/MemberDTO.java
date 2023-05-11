@@ -17,7 +17,6 @@ import javax.persistence.Enumerated;
 @Data
 @NoArgsConstructor
 public class MemberDTO {
-    @NotNull
     private Long id;
     private String memberName;
     private String memberEmail;
