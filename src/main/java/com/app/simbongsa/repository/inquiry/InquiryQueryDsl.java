@@ -19,4 +19,7 @@ public interface InquiryQueryDsl {
 
     /* 유저별 문의 목록 조회 (페이징처리) */
     public Page<Inquiry> findByMemberId(Pageable pageable, Long memberId);
+
+    /* 내 문의사항 수정 */
+    public void updateMyInquiry(String inquiryTitle, String inquiryContent);
 }

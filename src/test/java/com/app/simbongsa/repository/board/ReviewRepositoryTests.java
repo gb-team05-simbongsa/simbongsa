@@ -1,11 +1,13 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.entity.board.QReview;
 import com.app.simbongsa.entity.board.ReviewReply;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.type.FileRepresentationalType;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+
+import static com.app.simbongsa.entity.board.QReview.review;
 
 @SpringBootTest
 @Transactional
@@ -33,6 +40,12 @@ public class ReviewRepositoryTests {
 
     @Autowired
     private ReviewFileRepository reviewFileRepository;
+
+    @PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     /*후기게시판 등록*/
     @Test
