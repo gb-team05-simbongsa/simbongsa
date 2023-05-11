@@ -157,4 +157,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
         return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
+
+    /* 내 자유게시물 수정 */
+
 }

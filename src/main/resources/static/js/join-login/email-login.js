@@ -9,7 +9,7 @@ $email.on('keyup', () => {
     $emailError.css('display', 'none');
     $passwordError.css('display', 'none');
 });
-
+const loginSuccess = false;
 $('.submit-button').on('click', () => {
     if(!$email.val()) {
         $emailError.text('이메일 주소를 입력해주세요');
@@ -47,4 +47,14 @@ $modalKeepLogin.click(() => {
     } else {
         $('.modal-checkbox-inner-check').attr('class', 'modal-checkbox-inner');
     }
+});
+
+
+
+/* 비밀번호와 아이디 틀렸을 때 */
+
+// 입력 비밀번호 글자 수 검사 및 비어있지 않은지 검사
+$('.submit-button').on('click', () => {
+    console.log("로그인 버튼 눌림");
+    $('.modal-wrap').show();
 });
