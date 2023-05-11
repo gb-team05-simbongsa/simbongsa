@@ -1,5 +1,7 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.entity.board.QFreeBoard;
+import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 
