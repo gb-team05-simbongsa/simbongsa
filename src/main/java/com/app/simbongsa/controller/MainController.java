@@ -1,6 +1,8 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
+import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
     private final VolunteerWorkService volunteerWorkService;
-
+    private final MemberService memberService;
     @GetMapping("")
     public String main(Model model) {
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
+        List<MemberDTO> memberRankList = memberService.getMemberRankingList();
         model.addAttribute("volunteerList", volunteerList);
+        model.addAttribute("memberRankList", memberRankList);
         return "main/main";
     }
 }
