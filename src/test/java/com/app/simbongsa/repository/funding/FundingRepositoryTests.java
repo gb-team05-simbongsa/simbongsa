@@ -133,10 +133,10 @@ public class FundingRepositoryTests {
     }
 
     // 펀딩 후원하기
-//    @Test
-//    public void fundingSupportTest(){
-//    log.info("======="+fundingRepository.findByIdsupport(73L).toString());
-//
-//    }
+    @Test
+    public void fundingSupportTest(){
+    log.info("======="+fundingRepository.findByIdsupport(1L).toString());
+
+    }
 
 }
