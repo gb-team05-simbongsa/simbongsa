@@ -16,7 +16,7 @@ import javax.persistence.Enumerated;
 
 //@Component
 @Data
-@Builder
+
 public class MemberDTO {
     private Long id;
     private String memberName;
@@ -33,4 +33,11 @@ public class MemberDTO {
     private String randomKey;
     private MemberStatus memberStatus;
 
+    @Builder
+    public MemberDTO(Long id, String memberName, UserRankType memberRank, int memberVolunteerTime) {
+        this.id = id;
+        this.memberName = memberName;
+        this.memberRank = memberRank;
+        this.memberVolunteerTime = memberVolunteerTime;
+    }
 }

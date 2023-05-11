@@ -24,7 +24,6 @@ public class FundingItemRepositoryTests {
     FundingGiftItemRepository fundingGiftItemRepository;
     @Test
     public void saveTest() {
-<<<<<<< HEAD
         for(int i=1; i<=12; i++) {
             FundingItem fundingItem = new FundingItem(
                     "펀딩아이템" + i
@@ -32,22 +31,13 @@ public class FundingItemRepositoryTests {
             );
          fundingItemRepository.save(fundingItem);
         }
-=======
-//        for(int i=1; i<=12; i++) {
-//            FundingItem fundingItem = new FundingItem(
-//                    "펀딩아이템" + i
-//             , "필름카메라2개"
-//             ,fundingRepository.findById(143L).get()
-//            );
-//         fundingItemRepository.save(fundingItem);
-//        }
->>>>>>> back-end
+
     }
 
 
     @Test
     public void findAllTest() {
-        fundingItemRepository.findAllItemList().stream().map(FundingItem::toString).forEach(log::info);
+//        fundingItemRepository.findAllItemList().stream().map(FundingItem::toString).forEach(log::info);
     }
     // 펀딩아이템 조회하기
 //    @Test
