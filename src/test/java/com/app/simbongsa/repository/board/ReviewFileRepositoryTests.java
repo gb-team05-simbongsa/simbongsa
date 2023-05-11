@@ -25,10 +25,10 @@ public class ReviewFileRepositoryTests {
 
     @Test
     public void saveTest(){
-        ReviewFile reviewFile1 = new ReviewFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,reviewRepository.findById(118L).get());
+        ReviewFile reviewFile1 = new ReviewFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,reviewRepository.findById(91L).get());
         reviewFileRepository.save(reviewFile1);
         for (int i = 1; i <= 5; i++) {
-            ReviewFile reviewFile2 = new ReviewFile("00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,reviewRepository.findById(118L).get());
+            ReviewFile reviewFile2 = new ReviewFile("00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,reviewRepository.findById(91L).get());
             reviewFileRepository.save(reviewFile2);
         }
     }
