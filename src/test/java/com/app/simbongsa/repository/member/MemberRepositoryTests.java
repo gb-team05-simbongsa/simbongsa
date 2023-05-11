@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.member;
 
+import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
 import com.app.simbongsa.type.MemberJoinType;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
@@ -131,6 +134,19 @@ public class MemberRepositoryTests {
     public void overlapByMemberEmailTest(){
         memberRepository.overlapByMemberEmail("email82@naver.cm").map(Member::getMemberEmail).ifPresent(log::info);
         log.info("@@@@@@@@@@@@@@@@@@");
+    }
+
+    /* 회원정보수정 (마이페이지) */
+    @Test
+    public void updateMyPageTest() {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        memberRepository.updateMyPageMember(29L, "1234","주연","강남구",22,"수정", passwordEncoder);
+    }
+
+    /*회원 탈퇴*/
+    @Test
+    public void updateMemberStatusTest() {
+        memberRepository.updateMemberStatus(29L,MemberStatus.탈퇴);
     }
 
 }
