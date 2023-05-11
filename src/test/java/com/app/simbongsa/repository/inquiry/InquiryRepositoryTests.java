@@ -82,4 +82,10 @@ public class InquiryRepositoryTests {
         inquiries.stream().map(Inquiry::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + inquiries.getTotalElements());
     }
+    
+    /* 내 문의사항 수정 */
+    @Test
+    public void updateMyInquiry(){
+
+    }
 }
