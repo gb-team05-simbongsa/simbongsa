@@ -25,4 +25,8 @@ public class FundingGiftItem {
         this.fundingItem = fundingItem;
         this.fundingGift = fundingGift;
     }
+
+//    public static void setFundingItem(FundingItem fundingItem) {
+//        this.fundingItem = fundingItem;
+//    }
 }

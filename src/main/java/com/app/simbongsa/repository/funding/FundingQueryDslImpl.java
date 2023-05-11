@@ -103,6 +103,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .where(funding.id.in(ids))
                 .execute();
     }
+
     //펀딩 후원하기
     @Override
     public List<Funding> findByIdsupport(Long fundingGiftId) {

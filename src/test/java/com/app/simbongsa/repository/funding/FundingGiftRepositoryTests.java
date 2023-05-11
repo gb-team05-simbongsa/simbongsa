@@ -41,7 +41,7 @@ public class FundingGiftRepositoryTests {
     // 조회하기
     @Test
     public void findByIdTest() {
-        fundingGiftRepository.findById(59L);
+        log.info(fundingGiftRepository.findByIdGiftDetail(59L).toString());
     }
 
 

@@ -36,6 +36,9 @@ public class FundingRepositoryTests {
     @Autowired
     private FundingFileRepository fundingFileRepository;
 
+    @Autowired
+    private  FundingGiftRepository fundingGiftRepository;
+
     @Test
     public void saveTest() {
 
@@ -132,6 +135,7 @@ public class FundingRepositoryTests {
     // 펀딩 후원하기
     @Test
     public void fundingSupportTest(){
+
 
     }
 }

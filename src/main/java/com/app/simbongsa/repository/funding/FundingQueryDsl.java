@@ -17,8 +17,7 @@ public interface FundingQueryDsl {
     //    펀딩 전체 조회(페이징)
     public Page<Funding> findAllWithPaging(AdminFundingSearch adminFundingSearch, Pageable pageable);
 
-//
-//    // 펀딩 후원하기
+    // 펀딩 후원하기
     public List<Funding> findByIdsupport(Long fundingGiftId);
 
     //    펀딩 상세페이지 조회
@@ -34,7 +33,7 @@ public interface FundingQueryDsl {
 //    펀딩 대기를 승인으로 변경
     public void updateWaitToAcceptByIds(List<Long> ids);
 
-    // 펀딩 전체목록조회
+    // 펀딩 전체 목록조회(무한스크롤)
     public Slice<Funding> findAllWithSlice(Pageable pageable);
 
 }

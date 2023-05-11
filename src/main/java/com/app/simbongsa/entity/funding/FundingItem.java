@@ -27,4 +27,5 @@ public class FundingItem {
         this.itemContent = itemContent;
 
     }
+
 }
