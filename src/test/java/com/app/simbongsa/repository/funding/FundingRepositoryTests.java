@@ -82,12 +82,12 @@ public class FundingRepositoryTests {
     //  펀딩 상세보기
     @Test
     public void findByIdTest() {
-        fundingRepository.findByIdForDetail(143L).ifPresent(funding -> {
-            log.info(funding.toString());
-            funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
-            funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
-            funding.getFundingItems().stream().map(FundingItem::toString).forEach(log::info);
-        });
+//        fundingRepository.findByIdForDetail(143L).ifPresent(funding -> {
+//            log.info(funding.toString());
+//            funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
+//            funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
+//            funding.getFundingItems().stream().map(FundingItem::toString).forEach(log::info);
+//        });
     }
 
 

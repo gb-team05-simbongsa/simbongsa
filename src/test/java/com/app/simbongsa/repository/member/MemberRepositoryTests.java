@@ -25,11 +25,11 @@ public class MemberRepositoryTests {
 //    member 더미데이터 넣기
     @Test
     public void saveTest() {
-        for (int i = 1; i <= 100; i++) {
-            Member member = new Member("이름" + i, "email" + i + "@naver.com",
-                    "123" + i, "역삼로" + i, 10 + i, "봉사",i+1, 100 * i);
-            memberRepository.save(member);
-        }
+//        for (int i = 1; i <= 100; i++) {
+//            Member member = new Member("이름" + i, "email" + i + "@naver.com",
+//                    "123" + i, "역삼로" + i, 10 + i, "봉사",i+1, 100 * i);
+//            memberRepository.save(member);
+//        }
     }
 
 //    회원 전체조회(페이징)

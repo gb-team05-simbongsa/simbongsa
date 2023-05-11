@@ -32,6 +32,7 @@ public class VolunteerWork {
     private VolunteerWorkCategoryType volunteerWorkCategory;
     @NotNull private String volunteerWorkRegisterAgency;
     @NotNull private String volunteerWorkPlace;
+    @NotNull private String volunteerWorkTitle;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork")
     private List<VolunteerWorkFile> volunteerWorkFiles;
