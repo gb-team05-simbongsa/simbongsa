@@ -13,7 +13,7 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
-    private static final String REDIRECT_URL = "/error/400.html";
+    private static final String REDIRECT_URL = "/error/401.html";
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {

@@ -25,6 +25,7 @@ public class MemberController {
         return "join-login/email-join";
     }
 
+    /* 회원가입후 login 페이지로 이동*/
     @PostMapping("join")
     public RedirectView join(MemberDTO memberDTO) {
         memberService.join(memberDTO, passwordEncoder);
@@ -58,4 +59,8 @@ public class MemberController {
     public String changePassword() {
         return "join-login/change-password";
     }
+
+    /* 로그아웃 */
+    @GetMapping("logout")
+    public void goToLogout() {;}
 }
