@@ -1,13 +1,19 @@
 package com.app.simbongsa.service.member;
 
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.VolunteerWorkDTO;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 public interface MemberService extends UserDetailsService {
     //    회원가입
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder);
+    //    메인페이지
+    public List<MemberDTO> getMemberRankingList();
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())
@@ -26,4 +32,23 @@ public interface MemberService extends UserDetailsService {
                 .memberStatus(memberDTO.getMemberStatus())
                 .build();
     }
+
+//    default MemberDTO toMemberDTO(Member member){
+//        return MemberDTO.builder()
+//                .id(member.getId())
+//                .memberRank(member.getMemberRank())
+//                .memberName(member.getMemberName())
+//                .memberVolunteerTime(member.getMemberVolunteerTime())
+//                .memberAddress(member.getMemberAddress())
+//                .memberEmail(member.getMemberEmail())
+//                .memberAge(member.getMemberAge())
+//                .memberPassword(member.getMemberPassword())
+//                .memberInterest(member.getMemberInterest())
+//                .memberJoinType(member.getMemberJoinType())
+//                .memberRice(member.getMemberRice())
+//                .memberRole(member.getMemberRole())
+//                .memberStatus(member.getMemberStatus())
+//                .build();
+//    }
+
 }

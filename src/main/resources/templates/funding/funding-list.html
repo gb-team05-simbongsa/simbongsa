@@ -403,53 +403,19 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
 <script>
+
     const $fundingState1 = parseInt($('.fundingState').text());
     const $fundingState2= $('.fundingState');
-
-   console.log($fundingState1);
-//    console.log($fundingState2);
-    
     $(document).ready(function(){
-        
-                //    $('.percentBar').css('width', $fundingState1 + '%');
-              
-                // $('.percentBar').width('75');
-                // console.log($('.percentBar').width());
-                
-        // $fundingState2.each((i,e)=>{
 
-            var i = $fundingState2.index();
-             $('.percentBar').eq(i).width($fundingState1);
-             console.log($('.percentBar').eq(i).width($fundingState1));
-            
-            // $('.inputHidden').text($fundingState1);
-            // $('.inputHidden').eq(i).change(function(){
-            //     // let $percent = $('.inputHidden').text($fundingState1.eq(i));
-            //     // console.log($percent);
-                  
-            // });
-                        
-        });
-    // });
+        var i = $fundingState2.index();
+        for(var i =0; i<$fundingState2.length; i++){
 
-    $(document).ready(function() {
-        console.log($fundingState2.length);
-        for(var i=0; i < $fundingState2.length; i++){
-        
-            console.log("들어오나");
-             console.log($fundingState1.eq(i));
+            console.log(parseInt($fundingState2.eq(i).text()));
+            $('.percentBar').eq(i).width(parseInt($fundingState2.eq(i).text()) + "%")
         }
+
     });
-    
-
-
-//   let test = "20%";
-//   $('.percentByRed::after').css('content', "''");
-//   $('.percentByRed::after').css('width', '20%');
-//   $('.percentByRed').css('width', '120%');
-// });
-
-
 
 </script>
 </html>

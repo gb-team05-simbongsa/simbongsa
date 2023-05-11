@@ -5,6 +5,7 @@ import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.Role;
 import com.app.simbongsa.type.UserRankType;
 import com.sun.istack.NotNull;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -13,9 +14,9 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-@Component
+//@Component
 @Data
-@NoArgsConstructor
+@Builder
 public class MemberDTO {
     private Long id;
     private String memberName;
@@ -31,4 +32,5 @@ public class MemberDTO {
     private int memberVolunteerTime;
     private String randomKey;
     private MemberStatus memberStatus;
+
 }

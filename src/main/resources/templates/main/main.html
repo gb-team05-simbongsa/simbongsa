@@ -29,6 +29,7 @@
                 </svg>
             </div>
         </div>
+
         <header th:insert="~{main/header.html :: mainHeader}"></header>
         <div class="container">
             <div class="home-wrapper">
@@ -91,8 +92,9 @@
                             <div class="main-first-list-wrapper">
                                 <div class="main-first-list-layout">
 
-                                    <!-- 봉사추천 -->
-                                    <div class="list-wrapper">
+
+                                    <!-- 봉사추천  8 개-->
+                                    <div class="list-wrapper" th:each="volunteer : ${volunteerList}">
                                         <div></div>
                                         <div class="volunteer-percentage-wrapper">
                                             <div></div>
@@ -100,19 +102,19 @@
                                                 <div class="volunteer-image-wrapper">
                                                     <a href="#"></a>
                                                 </div>
-                                                <div class="info-wrapper">
+                                                <div class="info-wrapper" >
                                                     <dl>
                                                         <dd class="volunteer-sub-info">
+                                                        <span>
+                                                            <a href="#" th:text="${volunteer.volunteerWorkCategory}">봉사 카테고리</a>
+                                                        </span>
                                                             <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
+                                                            <a href="#" th:text="${volunteer.volunteerWorkPlace}">봉사 지역</a>
+                                                        </span>
                                                         </dd>
                                                         <dt>
                                                             <a href="">
-                                                                <strong>봉사 제목</strong>
+                                                                <strong th:text="${volunteer.volunteerWorkTitle}">봉사 제목</strong>
                                                             </a>
                                                         </dt>
                                                     </dl>
@@ -121,212 +123,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="list-wrapper">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                            <span>
-                                                                <a href="#">봉사 카테고리</a>
-                                                            </span>
-                                                            <span>
-                                                                <a href="#">봉사 지역</a>
-                                                            </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong>봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="main-popular-section">
                         <div class="main-popular-title-wrapper">
                             <div class="popular-list-title">
@@ -1356,14 +1157,14 @@
 <script src="/js/main/main.js"></script>
 <script src="/js/main/header.js"></script>
 <script type="text/javascript">
-/*    $(document).ready(function () {
-        $('#_header').load('../main/header.html');
-        $('#_footer').load('../main/footer.html');
-    });
+    // $(document).ready(function () {
+    //     $('#_header').load('../main/header.html');
+    //     $('#_footer').load('../main/footer.html');
+    // });
 
     $(".image-wrapper a").each((i,e) => {
         console.log($(e));
         $(e).eq(i).css('background-image', 'url("https://tumblbug-upi.imgix.net/default_avatar.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=250&mask=ellipse&w=250&s=80a07af0ffbe653137dd423ed1d5651c")');
-    } )*/
+    } )
 </script>
 </html>
