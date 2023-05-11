@@ -26,10 +26,10 @@ public class FundingGiftItemRepositoryTests {
     @Test
             public void saveTest() {
         for (int i = 1; i <= 15; i++) {
-            FundingGiftItem fundingGiftItem = new FundingGiftItem(
-                    fundingItemRepository.findById(18L)
-                    , fundingGiftRepository.findById(17L)
-            );
+//            FundingGiftItem fundingGiftItem = new FundingGiftItem(
+//                    fundingItemRepository.findById(18L)
+//                    , fundingGiftRepository.findById(17L)
+//            );
         }
     }
 }

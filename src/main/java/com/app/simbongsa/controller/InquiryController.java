@@ -25,9 +25,9 @@ public class InquiryController {
     @GetMapping("notice")
     public String notice(Model model) {
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
-        List<NoticeDTO> notice = noticeService.getNotice(adminNoticeSearch, PageRequest.of(0, 5));
+//        List<NoticeDTO> notice = noticeService.getNotice(adminNoticeSearch, PageRequest.of(0, 5));
 
-        model.addAttribute("notice", notice);
+//        model.addAttribute("notice", notice);
         return "customerCenter/notice";
     }
 
