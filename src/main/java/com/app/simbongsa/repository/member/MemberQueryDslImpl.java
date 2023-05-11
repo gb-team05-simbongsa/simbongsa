@@ -4,12 +4,14 @@ import com.app.simbongsa.entity.member.QMember;
 import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.type.MemberStatus;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -119,5 +121,28 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     @Override
     public Optional<Member> overlapByMemberEmail(String memberEmail) {
         return Optional.ofNullable(query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
+    }
+
+    /*마이페이지 회원 정보 수정*/
+
+    @Override
+    public void updateMyPageMember(Long id, String memberPassword, String memberName, String memberAddress, int memberAge, String memberInterest, PasswordEncoder passwordEncoder) {
+        query.update(member)
+                .set(member.memberPassword, passwordEncoder.encode(memberPassword))
+                .set(member.memberName, memberName)
+                .set(member.memberAddress, memberAddress)
+                .set(member.memberAge, memberAge)
+                .set(member.memberInterest, memberInterest)
+                .where(member.id.eq(id))
+                .execute();
+    }
+
+    /*회원 탈퇴*/
+    @Override
+    public void updateMemberStatus(Long id, MemberStatus memberStatus) {
+        query.update(member)
+                .set(member.memberStatus, memberStatus)
+                .where(member.id.eq(id))
+                .execute();
     }
 }
