@@ -10,7 +10,6 @@ public interface VolunteerWorkService {
     // 1. 메인페이지 - 봉사 활동 8개 TEST
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork) {
         return VolunteerWorkDTO.builder()
-                .id(volunteerWork.getId())
                 .volunteerWorkCategory(volunteerWork.getVolunteerWorkCategory())
                 .volunteerWorkPlace(volunteerWork.getVolunteerWorkPlace())
                 .volunteerWorkTitle(volunteerWork.getVolunteerWorkTitle())

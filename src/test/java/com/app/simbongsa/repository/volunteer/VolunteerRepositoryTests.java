@@ -47,7 +47,7 @@ public class VolunteerRepositoryTests {
                     ,LocalDate.of(2023,04,17)
                     ,1+i
                     ,"서울"
-                    ,"서울");
+                    ,"서울","심봉사 TEST");
             volunteerWorkRepository.save(volunteerWork);
         }
         for(int i = 0; i < 20; i++){
@@ -59,7 +59,7 @@ public class VolunteerRepositoryTests {
                     ,LocalDate.of(2023,04,17)
                     ,1+i
                     ,"전주"
-                    ,"전주" + i);
+                    ,"전주" + i,"심봉사 TEST");
             volunteerWorkRepository.save(volunteerWork);
         }
 

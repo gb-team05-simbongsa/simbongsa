@@ -38,7 +38,7 @@ public class VolunteerWork {
     private List<VolunteerWorkFile> volunteerWorkFiles;
 //    단위테스트용 생성자 생성
 
-    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace) {
+    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle) {
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
         this.volunteerWorkTime = volunteerWorkTime;
@@ -47,5 +47,6 @@ public class VolunteerWork {
         this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
+        this.volunteerWorkTitle = volunteerWorkTitle;
     }
 }

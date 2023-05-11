@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 
 
 @Data
-@Builder
 public class VolunteerWorkDTO {
     @NotNull
     private Long id;
@@ -25,4 +24,10 @@ public class VolunteerWorkDTO {
     private String volunteerWorkPlace;
     private String volunteerWorkTitle;
 
+    @Builder
+    public VolunteerWorkDTO(VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkPlace, String volunteerWorkTitle) {
+        this.volunteerWorkCategory = volunteerWorkCategory;
+        this.volunteerWorkPlace = volunteerWorkPlace;
+        this.volunteerWorkTitle = volunteerWorkTitle;
+    }
 }
