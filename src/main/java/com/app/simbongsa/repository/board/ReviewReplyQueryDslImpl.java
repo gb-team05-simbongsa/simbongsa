@@ -1,6 +1,6 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.domain.ReplyDTO;
+import com.app.simbongsa.domain.FreeBoardDTO;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,7 +15,7 @@ public class ReviewReplyQueryDslImpl implements ReviewReplyQueryDsl {
 
 
     @Override
-    public Page<ReplyDTO> findAllByReviewReplyWithPaging(Long Id, Pageable pageable) {
+    public Page<FreeBoardDTO> findAllByReviewReplyWithPaging(Long Id, Pageable pageable) {
         return null;
     }
 

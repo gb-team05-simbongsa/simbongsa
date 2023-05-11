@@ -33,7 +33,7 @@ public class FreeBoardRepositoryTests {
     @Test
     public void saveTest() {
         for (int i = 1; i <= 5; i++) {
-            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(50L).get());
+            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(29L).get());
             freeBoardRepository.save(freeBoard);
         }
     }
@@ -41,9 +41,9 @@ public class FreeBoardRepositoryTests {
     /*자유게시판 댓글 등록*/
     @Test
     public void saveReplies() {
-        for (int i = 1; i <= 2; i++) {
-            Optional<FreeBoard> byId = freeBoardRepository.findById(101L);
-            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i, memberRepository.findById(51L).get(), byId.get());
+        for (int i = 1; i <= 5; i++) {
+            Optional<FreeBoard> byId = freeBoardRepository.findById(52L);
+            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i, memberRepository.findById(29L).get(), byId.get());
             freeBoardReplyRepository.save(freeBoardReply);
         }
     }

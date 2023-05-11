@@ -38,7 +38,7 @@ public class ReviewRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
-            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(50L).get());
+            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(29L).get());
             reviewRepository.save(review);
         }
     }
@@ -67,8 +67,8 @@ public class ReviewRepositoryTests {
     @Test
     public void saveReplies(){
         for(int i =1; i<=2; i++){
-            Optional<Review> byId = reviewRepository.findById(116L);
-            ReviewReply reviewReply = new ReviewReply("댓글 테스트" + i, memberRepository.findById(51L).get(), byId.get());
+            Optional<Review> byId = reviewRepository.findById(91L);
+            ReviewReply reviewReply = new ReviewReply("댓글 테스트" + i, memberRepository.findById(29L).get(), byId.get());
             reviewReplyRepository.save(reviewReply);
         }
     }
