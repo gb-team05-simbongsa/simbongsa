@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FundingItemQueryDsl {
-    public Optional<FundingItem> findById(Long fundingItemId);
+
+    // 아이템 페이지 아이템 1개씩 조회
+    public FundingItem findByIdItem(Long fundingItemId);
 
 
-    public List<FundingGiftItem> findAllItemList();
+
 
 
 

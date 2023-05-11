@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.funding;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.QFunding;
+import com.app.simbongsa.entity.funding.QFundingGift;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.RequestType;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
+import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 
 @RequiredArgsConstructor
 public class FundingQueryDslImpl implements FundingQueryDsl {
@@ -105,18 +107,22 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
     }
 
     //펀딩 후원하기
-    @Override
-    public List<Funding> findByIdsupport(Long fundingGiftId) {
-        return query.select(funding)
-                .from(funding)
-                .join(funding.fundingFile)
-                .fetchJoin()
-                .join(funding.fundingGifts)
-                .fetchJoin()
-                .where(funding.id.eq(fundingGiftId))
-                .fetch();
-
-    }
+//    @Override
+//    public Funding findByIdsupport(Long fundingId, Long fundingGiftId) {
+//        return query.select(funding)
+//                .from(funding)
+//                .join(funding.fundingFile)
+//                .join(funding.member)
+//                .fetchJoin()
+//                .where(funding.id.eq(fundingId))
+//                .fetchOne();
+//
+//        query.select()
+//                .from(funding)
+//                .join(funding.fundingGifts)
+//                .where(funding.)
+//
+//    }
 
 
     //    펀딩 전체 조회(무한스크롤)
