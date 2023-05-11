@@ -7,6 +7,7 @@ import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,17 +60,11 @@ public class AdminController {
     @GetMapping("notice")
     public String notice(Integer page, Model model) {
         page = page == null ? 0 : page - 1;
-        log.info("===============" + page);
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
-        List<NoticeDTO> notice = noticeService.getNotice(adminNoticeSearch, PageRequest.of(page, 5));
-        PageDTO pageInfo = noticeService.getPageInfo(adminNoticeSearch, PageRequest.of(page, 5));
-        log.info("===============" + pageInfo.getStartPage());
-        log.info("===============" + pageInfo.getEndPage());
-        log.info("===============" + pageInfo.getCurrentNumber());
+        Page<NoticeDTO> notices = noticeService.getNotice(page);
 
-
-        model.addAttribute("notices", notice);
-        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("noticeDTOS", notices.getContent());
+        model.addAttribute("pageDTO", new PageDTO(notices));
         return "admin/notice";
     }
 
