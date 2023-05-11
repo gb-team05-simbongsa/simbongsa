@@ -18,7 +18,7 @@ public interface FundingQueryDsl {
     public Page<Funding> findAllWithPaging(AdminFundingSearch adminFundingSearch, Pageable pageable);
 
     // 펀딩 후원하기
-    public List<Funding> findByIdsupport(Long fundingGiftId);
+//    public Funding findByIdsupport(Long fundingGiftId);
 
     //    펀딩 상세페이지 조회
     public Optional<Funding> findByIdForDetail(Long fundingId);

@@ -17,26 +17,16 @@ import static com.app.simbongsa.entity.funding.QFundingItem.fundingItem;
 public class FundingItemQueryDslImpl implements FundingItemQueryDsl {
     private final JPAQueryFactory query;
 
-// 아이템 생성
+    // 아이템 페이지 아이템 1개씩 조회
     @Override
-    public Optional<FundingItem> findById(Long fundingItemId) {
-        return Optional.of(
+    public FundingItem findByIdItem(Long fundingItemId) {
+        return
                 query.select(fundingItem)
                     .from(fundingItem)
                     .where(fundingItem.id.eq(fundingItemId))
-                        .fetchOne());
+                        .fetchOne();
     }
 
 
-    //  선물 리스트
-    @Override
-    public List<FundingGiftItem> findAllItemList() {
-        return query.select(fundingGiftItem)
-                .from(fundingGiftItem)
-                .join(fundingGiftItem.fundingItem)
-                .join(fundingGiftItem.fundingGift)
-                .fetchJoin()
-                .fetch();
 
-    }
 }
