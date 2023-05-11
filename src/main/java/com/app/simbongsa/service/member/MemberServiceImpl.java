@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Qualifier("member") @Primary
@@ -38,4 +40,13 @@ public class MemberServiceImpl implements MemberService {
                 .memberRole(member.getMemberRole())
                 .build();
     }
+
+//    메인페이지 유저랭킹
+    @Override
+    public List<MemberDTO> getMemberRankingList() {
+            List<Member> members = memberRepository.findMemberWithVolunteerTime();
+        return null;
+    }
+
+
 }

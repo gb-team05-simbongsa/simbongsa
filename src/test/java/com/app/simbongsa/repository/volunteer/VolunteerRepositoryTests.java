@@ -38,7 +38,7 @@ public class VolunteerRepositoryTests {
 
     @Test
     public void saveTest(){
-        for(int i = 0; i < 50; i++){
+       for(int i = 0; i < 50; i++){
             VolunteerWork volunteerWork = new VolunteerWork(
                     LocalDateTime.of(2023,4,12,12,00)
                     ,LocalDateTime.of(2023,5,12,12,00)
@@ -59,7 +59,7 @@ public class VolunteerRepositoryTests {
                     ,LocalDate.of(2023,04,17)
                     ,1+i
                     ,"전주"
-                    ,"전주");
+                    ,"전주" + i);
             volunteerWorkRepository.save(volunteerWork);
         }
 
