@@ -2,8 +2,10 @@ package com.app.simbongsa.repository.member;
 
 import com.app.simbongsa.search.admin.AdminMemberSearch;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.type.MemberStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,4 +42,9 @@ public interface MemberQueryDsl {
     /* 공양미 충전 */
     public void updateChargeRiceByMemberId(Long memberId, int chargeRice);
 
+    /*마이페이지 회원 정보 수정*/
+    public void updateMyPageMember(Long id, String memberPassword, String memberName, String memberAddress, int memberAge, String memberInterest, PasswordEncoder passwordEncoder);
+
+    /*회원 탈퇴*/
+    public void updateMemberStatus(Long id, MemberStatus memberStatus);
 }
