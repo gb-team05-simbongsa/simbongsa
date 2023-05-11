@@ -77,7 +77,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
-                .antMatchers(FUNDING_PATH).hasRole(Role.MEMBER.name())
+                /*.antMatchers(FUNDING_PATH).hasRole(Role.MEMBER.name())*/
                 .antMatchers(SUPPORT_PAGE).hasRole(Role.MEMBER.name())
                 .antMatchers(COMMUNITY_FREE_PAGE).hasRole(Role.MEMBER.name())
                 .antMatchers(COMMUNITY_REVIEW_PAGE).hasRole(Role.MEMBER.name())
