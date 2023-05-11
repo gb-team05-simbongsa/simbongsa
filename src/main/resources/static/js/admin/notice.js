@@ -1,5 +1,46 @@
+// 공지사항 목록 출력
+notices.forEach((notice, i) => {
+    let text;
+
+    text = `
+        <tr class="table__content">
+            <td>
+                <label class="check-label">
+                   <input type="checkbox" name="check" />
+                </label>
+            </td>
+            <td class="content__id">${notice.id}</td>
+            <td class="notice-content">${notice.noticeTitle}</td>
+            <td>${notice.createdDate}</td>
+            <td>${notice.updatedDate}</td>
+            <td>관리자</td>
+            <td>
+                <button class="content__detail__btn button__type_2 button__color__green show-detail">
+                    상세보기
+                </button>
+            </td>
+        </tr>
+    `;
+
+    $('.table').append(text);
+});
+
+$('.show-detail').on('click', function() {
+    $.ajax({
+        url: "/admin/notice-detail",
+        type: "post",
+        data: { id : $(this).parent().find('.content__id') },
+        success: function(result) {
+            if(callback) {
+                callback(result);
+            }
+        }
+    });
+});
+
+
 /* 공지 사항 작성 버튼 */
-$('#create-button').on('click', function(){
+$('#create-button').on('click', function () {
     $(".modal-stage").html(
         `
        <section class="modal" id="modal" th:fragment="notice-modal">
@@ -43,27 +84,27 @@ $('#create-button').on('click', function(){
         </section>
         `
     );
-$('#summernote').summernote({
-placeholder: '공지사항 내용 작성',
-tabsize: 2,
-height: 300,
-width: '100%',
-toolbar: [
-    ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol', 'paragraph']],
-    ['table', ['table']],
-    ['insert', ['link']],
-],
-});
+    $('#summernote').summernote({
+        placeholder: '공지사항 내용 작성',
+        tabsize: 2,
+        height: 300,
+        width: '100%',
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link']],
+        ],
+    });
 
-$modalStage.show();
-$('.modal-close').on('click', function () {
-    $modalStage.fadeOut(500);
+    $modalStage.show();
+    $('.modal-close').on('click', function () {
+        $modalStage.fadeOut(500);
     });
 
     $('.modal-close').on('click', function (e) {
-      $modalStage.fadeOut(500);
-    });   
+        $modalStage.fadeOut(500);
+    });
 })

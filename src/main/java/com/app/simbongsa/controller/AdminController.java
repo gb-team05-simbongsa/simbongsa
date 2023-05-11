@@ -1,16 +1,30 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.NoticeDTO;
+import com.app.simbongsa.domain.PageDTO;
+import com.app.simbongsa.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.service.inquiry.InquiryService;
+import com.app.simbongsa.service.inquiry.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/*")
 @RequiredArgsConstructor
 @Slf4j
 public class AdminController {
+    private final NoticeService noticeService;
+    private final InquiryService inquiryService;
+
 //    회원관리 - user.html
 //    봉사관리 - volunteer.html
 //    문의관리 - inquiry.html
@@ -43,8 +57,26 @@ public class AdminController {
     }
 
     @GetMapping("notice")
-    public String notice() {
+    public String notice(Integer page, Model model) {
+        page = page == null ? 0 : page - 1;
+        log.info("===============" + page);
+        AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
+        List<NoticeDTO> notice = noticeService.getNotice(adminNoticeSearch, PageRequest.of(page, 5));
+        PageDTO pageInfo = noticeService.getPageInfo(adminNoticeSearch, PageRequest.of(page, 5));
+        log.info("===============" + pageInfo.getStartPage());
+        log.info("===============" + pageInfo.getEndPage());
+        log.info("===============" + pageInfo.getCurrentNumber());
+
+
+        model.addAttribute("notices", notice);
+        model.addAttribute("pageInfo", pageInfo);
         return "admin/notice";
+    }
+
+    @PostMapping("notice-detail")
+    @ResponseBody
+    public void noticeDetail() {
+//        noticeService.getNoticeDetail(291L);
     }
 
     @GetMapping("payment")
