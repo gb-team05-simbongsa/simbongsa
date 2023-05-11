@@ -21,7 +21,7 @@ public class FundingGift {
     @ManyToOne(fetch = FetchType.LAZY)
     private Funding funding;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingGift", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingGift")
     private List<FundingGiftItem> fundingGiftItems;
 
 

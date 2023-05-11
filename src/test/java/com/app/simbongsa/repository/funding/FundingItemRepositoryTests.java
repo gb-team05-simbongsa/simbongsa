@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.funding;
 
+import com.app.simbongsa.entity.funding.FundingGiftItem;
 import com.app.simbongsa.entity.funding.FundingItem;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,8 @@ public class FundingItemRepositoryTests {
     @Autowired
     FundingRepository fundingRepository;
 
+    @Autowired
+    FundingGiftItemRepository fundingGiftItemRepository;
     @Test
     public void saveTest() {
         for(int i=1; i<=12; i++) {
@@ -31,6 +34,10 @@ public class FundingItemRepositoryTests {
     }
 
 
+    @Test
+    public void findAllTest() {
+        fundingItemRepository.findAllItemList().stream().map(FundingItem::toString).forEach(log::info);
+    }
     // 펀딩아이템 조회하기
 //    @Test
 //    public void findByIdTest() {
