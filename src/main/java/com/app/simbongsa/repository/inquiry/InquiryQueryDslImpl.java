@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.type.InquiryType;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -60,7 +62,8 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
 
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
     @Override
-    public Page<Inquiry> findByMemberId(Pageable pageable, Long memberId) {
+    public Page<Inquiry> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
+        Long memberId = userDetail.getId();
         List<Inquiry> foundInquiries = query.select(inquiry)
                 .from(inquiry)
                 .where(inquiry.member.id.eq(memberId))

@@ -1,10 +1,12 @@
 package com.app.simbongsa.repository.inquiry;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.type.InquiryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 public interface InquiryQueryDsl {
 
@@ -18,7 +20,7 @@ public interface InquiryQueryDsl {
     public void updateInquiryStatus(Long id);
 
     /* 유저별 문의 목록 조회 (페이징처리) */
-    public Page<Inquiry> findByMemberId(Pageable pageable, Long memberId);
+    public Page<Inquiry> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
 
     /* 내 문의사항 수정 */
     public void updateMyInquiry(String inquiryTitle, String inquiryContent);
