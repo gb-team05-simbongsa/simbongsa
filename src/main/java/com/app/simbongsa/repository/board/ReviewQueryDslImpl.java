@@ -81,7 +81,7 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
     //    후기게시판 전체 조회(페이징)
     @Override
     public Page<Review> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
-        BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : review.BoardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
+        BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : review.boardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
         BooleanExpression memberEmailLike = adminBoardSearch.getMemberEmail() == null ? null : review.member.memberEmail.like("%" + adminBoardSearch.getMemberEmail() + "%");
 
         List<Review> foundReview = query.select(review)
