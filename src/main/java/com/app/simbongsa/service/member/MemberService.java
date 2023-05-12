@@ -27,6 +27,9 @@ public interface MemberService extends UserDetailsService {
 //    회원 탈퇴(관리자)
     public void updateStatusByIds(List<Long> ids, MemberStatus memberStatus);
 
+//    후원 명단 조회
+    public List<Member> getSupportList(Long id);
+
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())
                 .memberName(memberDTO.getMemberName())
@@ -53,5 +56,4 @@ public interface MemberService extends UserDetailsService {
                 .memberVolunteerTime(member.getMemberVolunteerTime())
                 .build();
     }
-
 }
