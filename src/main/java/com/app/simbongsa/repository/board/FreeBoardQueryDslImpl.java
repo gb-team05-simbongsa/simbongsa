@@ -56,7 +56,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return checkLastPage(pageable, freeBoards);
     }
 
-    //    메인 인기순 목록 조회
+    //    메인페이지 인기순 목록 조회
     @Override
     public List<FreeBoard> findAllWithPopularFreeBoard() {
         return query.select(freeBoard)

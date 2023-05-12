@@ -16,7 +16,7 @@ import javax.persistence.Enumerated;
 
 //@Component
 @Data
-
+@NoArgsConstructor
 public class MemberDTO {
     private Long id;
     private String memberName;
@@ -33,6 +33,8 @@ public class MemberDTO {
     private String randomKey;
     private MemberStatus memberStatus;
 
+
+//    메이페이지 봉사시간 순 랭킹
     @Builder
     public MemberDTO(Long id, String memberName, UserRankType memberRank, int memberVolunteerTime) {
         this.id = id;
@@ -58,4 +60,6 @@ public class MemberDTO {
         this.randomKey = randomKey;
         this.memberStatus = memberStatus;
     }
+
+
 }
