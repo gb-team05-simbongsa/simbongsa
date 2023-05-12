@@ -76,4 +76,13 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
         return new PageImpl<>(foundInquiries,pageable,count);
     }
 
+    /* 내 문의사항 수정 */
+    @Override
+    public void updateMyInquiry(String inquiryTitle, String inquiryContent) {
+        query.update(inquiry)
+                .set(inquiry.inquiryTitle, inquiryTitle)
+                .set(inquiry.inquiryContent, inquiryContent)
+                .execute();
+    }
+
 }

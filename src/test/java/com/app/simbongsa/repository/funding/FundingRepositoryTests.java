@@ -63,7 +63,7 @@ public class FundingRepositoryTests {
         }
 
     }
-//    메인페이지 달성률로 인기펀딩 목록 조회
+    //    메인페이지 달성률로 인기펀딩 목록 조회
     @Test
     public void findAllWithPopularTest(){
         fundingRepository.findAllWithPopular().stream()
@@ -71,7 +71,7 @@ public class FundingRepositoryTests {
                 .forEach(log::info);
     }
 
-//    펀딩 전체 조회(페이징)
+    //    펀딩 전체 조회(페이징)
     @Test
     public void findAllWithPagingTest() {
         AdminFundingSearch adminFundingSearch = new AdminFundingSearch();
@@ -90,7 +90,6 @@ public class FundingRepositoryTests {
             funding.getFundingFile().stream().map(FundingFile::toString).forEach(log::info);
             funding.getFundingGifts().stream().map(FundingGift::toString).forEach(log::info);
         });
-
     }
 
 
@@ -108,26 +107,26 @@ public class FundingRepositoryTests {
         log.info(fundingFileRepository.findAll() + "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
     }
 
-//    펀딩 삭제(fk도 같이 삭제)
+    //    펀딩 삭제(fk도 같이 삭제)
     @Test
     public void deleteTest() {
         fundingRepository.delete(fundingRepository.findById(141L).get());
     }
 
-//    펀딩 승인, 펀딩 대기 수 구하기
+    //    펀딩 승인, 펀딩 대기 수 구하기
     @Test
     public void findCountAcceptOrWaitTest() {
         log.info("==========================" + fundingRepository.findCountAcceptOrWait(RequestType.승인));
         log.info("==========================" + fundingRepository.findCountAcceptOrWait(RequestType.대기));
     }
 
-//    펀딩 대기를 승인으로 변경
+    //    펀딩 대기를 승인으로 변경
     @Test
     public void updateWaitToAcceptByIdsTest() {
         fundingRepository.updateWaitToAcceptByIds(Arrays.asList(143L, 144L, 145L));
     }
 
-//    펀딩 수정
+    //    펀딩 수정
     @Test
     public void updateTest() {
 
@@ -136,7 +135,8 @@ public class FundingRepositoryTests {
     // 펀딩 후원하기
     @Test
     public void fundingSupportTest(){
-
+    log.info("======="+fundingRepository.findByIdsupport(1L).toString());
 
     }
+
 }

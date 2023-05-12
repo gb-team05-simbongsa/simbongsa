@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.funding;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.QFunding;
+import com.app.simbongsa.entity.funding.QFundingGift;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.RequestType;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
+import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 
 @RequiredArgsConstructor
 public class FundingQueryDslImpl implements FundingQueryDsl {
@@ -106,17 +108,16 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
     //펀딩 후원하기
     @Override
-    public List<Funding> findByIdsupport(Long fundingGiftId) {
+    public Funding findByIdsupport(Long fundingId) {
         return query.select(funding)
                 .from(funding)
                 .join(funding.fundingFile)
+                .join(funding.member)
                 .fetchJoin()
-                .join(funding.fundingGifts)
-                .fetchJoin()
-                .where(funding.id.eq(fundingGiftId))
-                .fetch();
-
+                .where(funding.id.eq(fundingId))
+                .fetchOne();
     }
+
 
 
     //    펀딩 전체 조회(무한스크롤)
