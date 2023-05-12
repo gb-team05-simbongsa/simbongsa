@@ -15,20 +15,20 @@ public class Board extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private String BoardTitle;
-    @NotNull private String BoardContent;
+    @NotNull private String boardTitle;
+    @NotNull private String boardContent;
 
     /* 단위테스트 위한 생성자 생성 */
     public Board(String boardTitle, String boardContent) {
-        BoardTitle = boardTitle;
-        BoardContent = boardContent;
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
     }
 
     public void setBoardTitle(String boardTitle) {
-        BoardTitle = boardTitle;
+        this.boardTitle = boardTitle;
     }
 
     public void setBoardContent(String boardContent) {
-        BoardContent = boardContent;
+        this.boardContent = boardContent;
     }
 }

@@ -1,14 +1,28 @@
 package com.app.simbongsa.domain;
 
-import com.querydsl.core.annotations.QueryProjection;
-import lombok.Getter;
-import lombok.ToString;
+import com.app.simbongsa.entity.board.FreeBoardReply;
+import com.app.simbongsa.entity.file.FreeBoardFile;
+import lombok.Builder;
+import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
-@Getter @ToString
+@Data
 public class FreeBoardDTO {
     private Long id;
+    private String boardTitle;
+    private String boardContent;
+    private MemberDTO memberDTO;
+    private List<FreeBoardReply> freeBoardReplies;
+    private List<FreeBoardFile> freeBoardFiles;
 
-
+    @Builder
+    public FreeBoardDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, List<FreeBoardReply> freeBoardReplies, List<FreeBoardFile> freeBoardFiles) {
+        this.id = id;
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
+        this.memberDTO = memberDTO;
+        this.freeBoardReplies = freeBoardReplies;
+        this.freeBoardFiles = freeBoardFiles;
+    }
 }
