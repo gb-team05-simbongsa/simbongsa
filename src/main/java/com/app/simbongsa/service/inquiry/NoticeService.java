@@ -23,7 +23,7 @@ public interface NoticeService {
     public void setNotice(NoticeDTO noticeDTO);
 
 //    공지사항 삭제
-    public void deleteNotice(Long id);
+    public void deleteNotice(List<Long> ids);
 
 
 //    default NoticeDTO toNoticeDTO(Notice notice, Long noticeCount) {

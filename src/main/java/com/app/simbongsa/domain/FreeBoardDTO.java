@@ -1,34 +1,28 @@
 package com.app.simbongsa.domain;
 
-import com.querydsl.core.annotations.QueryProjection;
-import com.sun.istack.NotNull;
+import com.app.simbongsa.entity.board.FreeBoardReply;
+import com.app.simbongsa.entity.file.FreeBoardFile;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-//@Component
 public class FreeBoardDTO {
     private Long id;
-    private String BoardTitle;
-    private String BoardContent;
-
+    private String boardTitle;
+    private String boardContent;
     private MemberDTO memberDTO;
-    private FileDTO fileDTO;
-    private FreeBoardReplyDTO freeBoardReplyDTO;
+    private List<FreeBoardReply> freeBoardReplies;
+    private List<FreeBoardFile> freeBoardFiles;
 
     @Builder
-
-    public FreeBoardDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, FileDTO fileDTO, FreeBoardReplyDTO freeBoardReplyDTO) {
+    public FreeBoardDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, List<FreeBoardReply> freeBoardReplies, List<FreeBoardFile> freeBoardFiles) {
         this.id = id;
-        this.BoardTitle = boardTitle;
-        this.BoardContent = boardContent;
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
         this.memberDTO = memberDTO;
-        this.fileDTO = fileDTO;
-        this.freeBoardReplyDTO = freeBoardReplyDTO;
+        this.freeBoardReplies = freeBoardReplies;
+        this.freeBoardFiles = freeBoardFiles;
     }
 }

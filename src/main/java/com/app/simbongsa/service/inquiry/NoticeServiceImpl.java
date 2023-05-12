@@ -42,18 +42,13 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public void setNotice(NoticeDTO noticeDTO) {
-//        Notice notice = noticeRepository.findById(id).get();
         Notice notice = toNoticeEntity(noticeDTO);
         updateNotice(notice, notice.getNoticeTitle(), notice.getNoticeContent());
-//        updateNotice(noticeTitle, noticeContent);
-//        notice.setNoticeTitle("noticeTitle");
-//        notice.setNoticeContent("noticeContent");
-//        log.info(notice.toString());
-//        updateNotice(noticeRepository.findById(id).get(), noticeTitle, noticeContent);
+        noticeRepository.save(notice);
     }
 
     @Override
-    public void deleteNotice(Long id) {
-        noticeRepository.deleteById(id);
+    public void deleteNotice(List<Long> ids) {
+        noticeRepository.deleteAllById(ids);
     }
 }
