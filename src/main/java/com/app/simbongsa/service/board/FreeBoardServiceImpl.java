@@ -17,6 +17,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,6 +72,18 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     @Override
     public void deleteFreeBoardByIds(List<Long> ids) {
         freeBoardRepository.deleteAllById(ids);
+    }
+
+    @Override
+    public List<FreeBoardDTO> findAllWithPopularFreeBoard() {
+        List<FreeBoard> freeBoards = freeBoardRepository.findAllWithPopularFreeBoard();
+        List<FreeBoardDTO> freeBoardDTOS = new ArrayList<>();
+        for (FreeBoard freeBoard : freeBoards){
+            FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
+            freeBoardDTOS.add(freeBoardDTO);
+
+        }
+        return freeBoardDTOS;
     }
 
 }
