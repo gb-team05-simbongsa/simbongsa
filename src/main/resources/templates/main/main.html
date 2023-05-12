@@ -212,7 +212,7 @@
                                             <div class="main-content-swiper-container">
                                                 <div class="swiper-wrapper">
 
-                                                    
+
                                                     <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
                                                         <div></div>
                                                         <div class="volunteer-percentage-wrapper">
@@ -576,8 +576,8 @@
                                             <div class="main-content-swiper-container">
                                                 <div class="swiper-wrapper">
 
-                                                    
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
+                                                    <!--인기 펀딩 순 -->
+                                                    <div class="swiper-slide swiper-slide-active" th:each="fundingListOrderByPopularList : ${fundingListOrderByPopularList}" style= "width:220.8px; margin-right: 14px;">
                                                         <div></div>
                                                         <div class="volunteer-percentage-wrapper">
                                                             <div></div>
@@ -589,312 +589,26 @@
                                                                     <dl>
                                                                         <dd class="volunteer-sub-info">
                                                                             <span>
-                                                                                <a href="#">펀딩 카테고리</a>
+                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCategory}">펀딩 카테고리</a>
                                                                             </span>
                                                                             <span>
-                                                                                <a href="#">창작자이름</a>
+                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCreator.fundingCreatorNickname}">창작자이름</a>
                                                                             </span>
                                                                         </dd>
                                                                         <dt>
                                                                             <a href="">
-                                                                                <strong>펀딩제목</strong>
+                                                                                <strong th:text="${fundingListOrderByPopularList.fundingTitle}">펀딩제목</strong>
                                                                             </a>
                                                                         </dt>
                                                                     </dl>
                                                                     <div class="funding-status">
-                                                                        <span class="percentage">1336% 달성</span>
+                                                                        <span class="percentage" th:text="${fundingListOrderByPopularList.fundingPercent} +'% 달성'">1336% 달성</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 2</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 3</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 4</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 5</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!-- ---------------------------------- -->
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 6</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 7</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 8</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 9</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">창작자 이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>펀딩 제목 10</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage">36% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

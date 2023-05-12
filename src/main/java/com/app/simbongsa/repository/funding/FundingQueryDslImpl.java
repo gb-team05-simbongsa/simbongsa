@@ -23,12 +23,15 @@ import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 public class FundingQueryDslImpl implements FundingQueryDsl {
     private final JPAQueryFactory query;
 
+    //    메인페이지 인기펀딩
     @Override
     public List<Funding> findAllWithPopular() {
-        return query.selectFrom(funding).join(funding.fundingFile).fetchJoin()
+        return query.select(funding)
+                .from(funding)
                 .orderBy(funding.fundingCurrentPrice.divide(funding.fundingTargetPrice).multiply(100).desc())
                 .fetch();
     }
+    /*.join(funding.fundingFile).fetchJoin()*/
 
     //    펀딩 전체 조회(페이징)
     @Override

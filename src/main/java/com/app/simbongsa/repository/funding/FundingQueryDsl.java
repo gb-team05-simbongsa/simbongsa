@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FundingQueryDsl {
+    //     메인 페이지 (인기펀딩)
     public List<Funding> findAllWithPopular();
 
     //    펀딩 전체 조회(페이징)
