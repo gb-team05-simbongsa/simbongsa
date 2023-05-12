@@ -12,7 +12,6 @@ import java.util.Collection;
 @Component
 @Getter
 @ToString
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserDetail implements UserDetails {
 
     private Long id;
@@ -63,5 +62,8 @@ public class UserDetail implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public UserDetail() {
     }
 }

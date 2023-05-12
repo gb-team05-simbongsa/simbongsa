@@ -96,15 +96,15 @@
         <div class="content-wrap">
             <div class="support-request-wrap">
                 <div class="support-request-inner-wrap">
-                    <div>
+                    <div th:each="inquiry : ${myInquiries}">
                         <div class="support-request-one-wrap">
                             <div class="support-request">
                                 <div class="support-request-place">
                                     <div class="support-request-title-wrap">
-                                        <div class="support-request-title">높이 올라가</div>
+                                        <div class="support-request-title" th:text="${inquiry.inquiryTitle}">높이 올라가</div>
                                     </div>
-                                    <div class="support-request-content">세상을 다 가져봐</div>
-                                    <div class="support-request-reply">공양미 100석 후원</div>
+                                    <div class="support-request-content" th:text="${inquiry.inquiryContent}">세상을 다 가져봐</div>
+                                    <div class="support-request-reply" th:text="${inquiry.inquiryStatus}">공양미 100석 후원</div>
                                 </div>
                                 <div class="button-class">
                                     <div class="support-request-detail update">
@@ -132,7 +132,7 @@
                             <div class="support-request-reply">공양미 100석 후원</div>
                         </div>
                     </div>
-                    <div>
+                    <!--<div>
                         <div class="support-request-one-wrap">
                             <div class="support-request">
                                 <div class="support-request-place">
@@ -189,7 +189,7 @@
                             <div class="support-request-content">반 페르시 부합해 루시퍼 베드신 발포해 리스폰 페스시아 완패를 켜</div>
                             <div class="support-request-reply">공양미 100석 후원</div>
                         </div>
-                    </div>
+                    </div>-->
 
 
                     <div class="page-wrap">

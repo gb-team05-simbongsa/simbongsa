@@ -32,11 +32,11 @@ public class SupportRequestRepositoryTests {
     /* 후원요청목록 save */
     @Test
     public void saveTest(){
-        for (int i = 1; i <= 5; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(143L).get());
+        for (int i = 1; i <= 23; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(321L).get());
             supportRequestRepository.save(supportRequest);
         }
-        for (int i = 1; i <= 3; i++) {
+        /*for (int i = 1; i <= 3; i++) {
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(144L).get());
             supportRequestRepository.save(supportRequest);
         }
@@ -53,7 +53,7 @@ public class SupportRequestRepositoryTests {
         for (int i = 1; i <= 3; i++) {
             SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(81L).get());
             supportRequestRepository.save(supportRequest);
-        }
+        }*/
 
     }
 
