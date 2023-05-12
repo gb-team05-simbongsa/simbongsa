@@ -35,4 +35,13 @@ public class Inquiry extends Period {
         this.inquiryContent = inquiryContent;
         this.member = member;
     }
+
+    @Builder
+    public Inquiry(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, Member member) {
+        this.id = id;
+        this.inquiryTitle = inquiryTitle;
+        this.inquiryContent = inquiryContent;
+        this.inquiryStatus = inquiryStatus;
+        this.member = member;
+    }
 }

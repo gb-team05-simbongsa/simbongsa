@@ -41,5 +41,22 @@ public class MemberDTO {
         this.memberVolunteerTime = memberVolunteerTime;
     }
 
-
+    
+    @Builder
+    public MemberDTO(Long id, String memberName, String memberEmail, String memberPassword, String memberAddress, Integer memberAge, String memberInterest, Role memberRole, MemberJoinType memberJoinType, UserRankType memberRank, int memberRice, int memberVolunteerTime, String randomKey, MemberStatus memberStatus) {
+        this.id = id;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPassword = memberPassword;
+        this.memberAddress = memberAddress;
+        this.memberAge = memberAge;
+        this.memberInterest = memberInterest;
+        this.memberRole = memberRole;
+        this.memberJoinType = memberJoinType;
+        this.memberRank = memberRank;
+        this.memberRice = memberRice;
+        this.memberVolunteerTime = memberVolunteerTime;
+        this.randomKey = randomKey;
+        this.memberStatus = memberStatus;
+    }
 }
