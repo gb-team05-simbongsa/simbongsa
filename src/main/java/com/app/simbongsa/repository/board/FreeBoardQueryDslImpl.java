@@ -74,7 +74,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     //    자유게시판 전체 조회(페이징)
     @Override
     public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable) {
-        BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : freeBoard.BoardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
+        BooleanExpression boardTitleLike = adminBoardSearch.getBoardTitle() == null ? null : freeBoard.boardTitle.like("%" + adminBoardSearch.getBoardTitle() + "%");
         BooleanExpression memberEmailLike = adminBoardSearch.getMemberEmail() == null ? null : freeBoard.member.memberEmail.like("%" + adminBoardSearch.getMemberEmail() + "%");
 
         List<FreeBoard> foundFreeBoard = query.select(freeBoard)

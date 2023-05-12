@@ -69,12 +69,6 @@ public class AdminController {
         return "admin/notice";
     }
 
-    @PostMapping("notice-detail")
-    @ResponseBody
-    public NoticeDTO noticeDetail(Long id) {
-        return noticeService.getNoticeDetail(id);
-    }
-
     @PostMapping("notice-update")
     public RedirectView noticeUpdate(Long id, String noticeTitle, String noticeContent) {
         NoticeDTO noticeDTO = NoticeDTO.builder().id(id).noticeTitle(noticeTitle).noticeContent(noticeContent).build();
