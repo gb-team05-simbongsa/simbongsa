@@ -51,34 +51,7 @@ public interface MemberService extends UserDetailsService {
                 .memberRank(member.getMemberRank())
                 .memberName(member.getMemberName())
                 .memberVolunteerTime(member.getMemberVolunteerTime())
-                .memberAddress(member.getMemberAddress())
-                .memberEmail(member.getMemberEmail())
-                .memberAge(member.getMemberAge())
-                .memberPassword(member.getMemberPassword())
-                .memberInterest(member.getMemberInterest())
-                .memberJoinType(member.getMemberJoinType())
-                .memberRice(member.getMemberRice())
-                .memberRole(member.getMemberRole())
-                .memberStatus(member.getMemberStatus())
                 .build();
     }
-
-//    default MemberDTO toMemberDTO(Member member){
-//        return MemberDTO.builder()
-//                .id(member.getId())
-//                .memberRank(member.getMemberRank())
-//                .memberName(member.getMemberName())
-//                .memberVolunteerTime(member.getMemberVolunteerTime())
-//                .memberAddress(member.getMemberAddress())
-//                .memberEmail(member.getMemberEmail())
-//                .memberAge(member.getMemberAge())
-//                .memberPassword(member.getMemberPassword())
-//                .memberInterest(member.getMemberInterest())
-//                .memberJoinType(member.getMemberJoinType())
-//                .memberRice(member.getMemberRice())
-//                .memberRole(member.getMemberRole())
-//                .memberStatus(member.getMemberStatus())
-//                .build();
-//    }
 
 }
