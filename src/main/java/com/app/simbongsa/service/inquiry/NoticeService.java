@@ -10,14 +10,21 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface NoticeService {
-//    목록 전체 조회(페이징)
-    public Page<NoticeDTO> getNotice(Integer page);
+//    공지사항 등록
+    public void saveNotice(NoticeDTO noticeDTO);
 
-//    페이지 정보 따로 들고가기
-//    public PageDTO getPageInfo(AdminNoticeSearch adminNoticeSearch, Pageable pageable);
+//    목록 전체 조회(페이징)
+    public Page<NoticeDTO> getNotice(Integer page, AdminNoticeSearch adminNoticeSearch);
 
 //    공지사항 상세보기
-//    public NoticeDTO getNoticeDetail(Long id);
+    public NoticeDTO getNoticeDetail(Long id);
+
+//    공지사항 수정
+    public void setNotice(NoticeDTO noticeDTO);
+
+//    공지사항 삭제
+    public void deleteNotice(Long id);
+
 
 //    default NoticeDTO toNoticeDTO(Notice notice, Long noticeCount) {
 //        return NoticeDTO.builder()
@@ -38,6 +45,19 @@ public interface NoticeService {
                 .createdDate(notice.getCreatedDate())
                 .updatedDate(notice.getUpdatedDate())
                 .build();
+    }
+
+    default Notice toNoticeEntity(NoticeDTO noticeDTO) {
+        return Notice.builder()
+                .id(noticeDTO.getId())
+                .noticeTitle(noticeDTO.getNoticeTitle())
+                .noticeContent(noticeDTO.getNoticeContent())
+                .build();
+    }
+
+    default void updateNotice(Notice notice, String noticeTitle, String noticeContent) {
+        notice.setNoticeTitle(noticeTitle);
+        notice.setNoticeContent(noticeContent);
     }
 
 //    default PageDTO toPageDTO(Page<Notice> notices) {

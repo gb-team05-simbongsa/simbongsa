@@ -1,7 +1,6 @@
 package com.app.simbongsa.service.inquiry;
 
 import com.app.simbongsa.domain.NoticeDTO;
-import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.repository.inquiry.NoticeRepository;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
@@ -12,10 +11,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,28 +24,36 @@ public class NoticeServiceImpl implements NoticeService {
     private final NoticeRepository noticeRepository;
 
     @Override
-    public Page<NoticeDTO> getNotice(Integer page) {
-        AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
+    public void saveNotice(NoticeDTO noticeDTO) {
+        noticeRepository.save(toNoticeEntity(noticeDTO));
+    }
+
+    @Override
+    public Page<NoticeDTO> getNotice(Integer page, AdminNoticeSearch adminNoticeSearch) {
         Page<Notice> notices = noticeRepository.findAllWithPaging(adminNoticeSearch, PageRequest.of(page, 5));
         List<NoticeDTO> noticeDTOS = notices.getContent().stream().map(this::toNoticeDTO).collect(Collectors.toList());
         return new PageImpl<>(noticeDTOS, notices.getPageable(), notices.getTotalElements());
     }
 
-//    @Override
-//    public PageDTO getPageInfo(AdminNoticeSearch adminNoticeSearch, Pageable pageable) {
-//        Page<Notice> notices = noticeRepository.findAllWithPaging(adminNoticeSearch, pageable);
-//        PageDTO pageDTO = toPageDTO(notices);
-//
-//        if(pageable.getOffset() % 5 == notices.getTotalPages()) {
-//            pageDTO.setEndPage(notices.getTotalPages());
-//        }
-//
-//        return pageDTO;
-//    }
+    @Override
+    public NoticeDTO getNoticeDetail(Long id) {
+        return toNoticeDTO(noticeRepository.findById(id).get());
+    }
 
+    @Override
+    public void setNotice(NoticeDTO noticeDTO) {
+//        Notice notice = noticeRepository.findById(id).get();
+        Notice notice = toNoticeEntity(noticeDTO);
+        updateNotice(notice, notice.getNoticeTitle(), notice.getNoticeContent());
+//        updateNotice(noticeTitle, noticeContent);
+//        notice.setNoticeTitle("noticeTitle");
+//        notice.setNoticeContent("noticeContent");
+//        log.info(notice.toString());
+//        updateNotice(noticeRepository.findById(id).get(), noticeTitle, noticeContent);
+    }
 
-//    @Override
-//    public NoticeDTO getNoticeDetail(Long id) {
-//        toNoticeDTO(noticeRepository.findById(id).get());
-//    }
+    @Override
+    public void deleteNotice(Long id) {
+        noticeRepository.deleteById(id);
+    }
 }

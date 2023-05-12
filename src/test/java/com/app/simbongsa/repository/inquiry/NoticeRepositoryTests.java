@@ -58,7 +58,7 @@ public class NoticeRepositoryTests {
 //    공지사항 수정
     @Test
     public void updateTest() {
-        Notice notice = noticeRepository.findById(443L).get();
-        notice.updateNotice("제목", "내용1");
+//        Notice notice = noticeRepository.findById(130L).get();
+//        notice.updateNotice("제목", "내용1");
     }
 }

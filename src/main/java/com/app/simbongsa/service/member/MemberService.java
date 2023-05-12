@@ -4,6 +4,9 @@ import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
+import com.app.simbongsa.search.admin.AdminMemberSearch;
+import com.app.simbongsa.type.MemberStatus;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -14,6 +17,15 @@ public interface MemberService extends UserDetailsService {
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder);
     //    메인페이지
     public List<MemberDTO> getMemberRankingList();
+
+//    회원 전체 조회
+    public Page<MemberDTO> getMembers(Integer page, AdminMemberSearch adminMemberSearch);
+
+//    회원 상세보기
+    public MemberDTO getMemberById(Long id);
+
+//    회원 탈퇴(관리자)
+    public void updateStatusByIds(List<Long> ids, MemberStatus memberStatus);
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())
