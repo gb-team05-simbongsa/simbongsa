@@ -1,7 +1,9 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
+import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import lombok.RequiredArgsConstructor;
@@ -18,12 +20,16 @@ import java.util.List;
 public class MainController {
     private final VolunteerWorkService volunteerWorkService;
     private final MemberService memberService;
+    private final FundingService fundingService;
     @GetMapping("")
     public String main(Model model) {
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
         List<MemberDTO> memberRankList = memberService.getMemberRankingList();
+        List<FundingDTO> fundingListOrderByPopularList = fundingService.getAllPopularFundingList();
+
         model.addAttribute("volunteerList", volunteerList);
         model.addAttribute("memberRankList", memberRankList);
+        model.addAttribute("fundingListOrderByPopularList",fundingListOrderByPopularList);
         return "main/main";
     }
 }
