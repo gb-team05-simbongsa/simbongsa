@@ -41,7 +41,7 @@
                                     <div class="status-item-name">총 공지사항</div>
                                 </div>
                                 <div class="status-item-count">
-<!--                                    <div th:text="${pageInfo.totalElements}">1</div>-->
+                                    <div th:text="${pageDTO.total}">1</div>
                                 </div>
                               </li>
                             <div class="clock">
@@ -178,24 +178,26 @@
                         </svg>
                     </a>
                 </div>
-                <form class="storage_form" action="">
+                <form class="storage_form" th:action="@{/admin/notice-update}" method="post" name="updateForm">
                     <main class="modal__main">
                         <div class="modal__content">
                             <div class="content__title">
+                                <input type="hidden" name="id">
+                                <input type="hidden" name="noticeContent">
                                 <h4>공지사항 제목</h4>
                                 <div class="content__intput notice__title">
-                                    <input type="text" name="" value="공지사항 테스트용 제목" />
+                                    <input type="text" name="noticeTitle" value="공지사항 테스트용 제목" />
                                 </div>
                                 <div class="content__intput date" style="flex: 0">
-                                    <input type="date" />
+                                    <input type="date"/>
                                 </div>
                             </div>
                             <div class="notice__content">
-                                <textarea id="summernote" name="editordata"></textarea>
+                                <textarea id="summernote" name="editordata" class="notice-detail-content"></textarea>
                             </div>
                         </div>
                         <div class="user__profile__button">
-                            <button id="completeBtn" class="button__type_2 button__color__green">
+                            <button id="completeBtn" class="button__type_2 button__color__green" type="button">
                                 작성완료
                             </button>
                         </div>
@@ -209,9 +211,6 @@
     let notices = [[${noticeDTOS}]];
 </script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/admin/notice.js"></script>
-<script src="/js/admin/app.js"></script>
-<script src="/js/admin/events.js"></script>
 <!-- 웹에디터 API -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
@@ -230,4 +229,7 @@
         ],
     });
 </script>
+<script src="/js/admin/notice.js"></script>
+<script src="/js/admin/app.js"></script>
+<script src="/js/admin/events.js"></script>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class AdminController {
     public String notice(Integer page, Model model) {
         page = page == null ? 0 : page - 1;
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
-        Page<NoticeDTO> notices = noticeService.getNotice(page);
+        Page<NoticeDTO> notices = noticeService.getNotice(page, adminNoticeSearch);
 
         model.addAttribute("noticeDTOS", notices.getContent());
         model.addAttribute("pageDTO", new PageDTO(notices));
@@ -70,8 +71,15 @@ public class AdminController {
 
     @PostMapping("notice-detail")
     @ResponseBody
-    public void noticeDetail() {
-//        noticeService.getNoticeDetail(291L);
+    public NoticeDTO noticeDetail(Long id) {
+        return noticeService.getNoticeDetail(id);
+    }
+
+    @PostMapping("notice-update")
+    public RedirectView noticeUpdate(Long id, String noticeTitle, String noticeContent) {
+        NoticeDTO noticeDTO = NoticeDTO.builder().id(id).noticeTitle(noticeTitle).noticeContent(noticeContent).build();
+        noticeService.setNotice(noticeDTO);
+        return new RedirectView("/admin/notice");
     }
 
     @GetMapping("payment")

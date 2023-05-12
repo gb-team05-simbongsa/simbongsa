@@ -1,14 +1,14 @@
 package com.app.simbongsa.entity.inquiry;
 
 import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter @ToString(exclude = "inquiry")
 @Table(name = "TBL_ANSWER")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Answer {
     @Id @GeneratedValue
     private Long id;
@@ -26,7 +26,11 @@ public class Answer {
         this.inquiry = inquiry;
     }
 
-    public Answer() {
+    @Builder
+    public Answer(Long id, String answerTitle, String answerContent, Inquiry inquiry) {
+        this.id = id;
+        this.answerTitle = answerTitle;
+        this.answerContent = answerContent;
+        this.inquiry = inquiry;
     }
-
 }

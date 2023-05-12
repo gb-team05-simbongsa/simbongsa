@@ -25,19 +25,11 @@ notices.forEach((notice, i) => {
     $('.table').append(text);
 });
 
-$('.show-detail').on('click', function() {
-    $.ajax({
-        url: "/admin/notice-detail",
-        type: "post",
-        data: { id : $(this).parent().find('.content__id') },
-        success: function(result) {
-            if(callback) {
-                callback(result);
-            }
-        }
-    });
-});
 
+$('#completeBtn').on('click', () => {
+    $('input[name=noticeContent]').val($('.notice-detail-content').summernote('code'));
+    document.updateForm.submit();
+});
 
 /* 공지 사항 작성 버튼 */
 $('#create-button').on('click', function () {

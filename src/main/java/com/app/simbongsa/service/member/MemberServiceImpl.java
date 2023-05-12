@@ -1,20 +1,28 @@
 package com.app.simbongsa.service.member;
 
+import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.search.admin.AdminMemberSearch;
+import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +54,23 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberDTO> getMemberRankingList() {
             List<Member> members = memberRepository.findMemberWithVolunteerTime();
         return null;
+    }
+
+    @Override
+    public Page<MemberDTO> getMembers(Integer page, AdminMemberSearch adminMemberSearch) {
+        Page<Member> members = memberRepository.findAllWithPaging(adminMemberSearch, PageRequest.of(page, 5));
+        List<MemberDTO> memberDTOS = members.getContent().stream().map(this::toMemberDTO).collect(Collectors.toList());
+        return new PageImpl<>(memberDTOS, members.getPageable(), members.getTotalElements());
+    }
+
+    @Override
+    public MemberDTO getMemberById(Long id) {
+        return toMemberDTO(memberRepository.findById(id).get());
+    }
+
+    @Override
+    public void updateStatusByIds(List<Long> ids, MemberStatus memberStatus) {
+        ids.forEach(id -> memberRepository.updateMemberStatus(id, memberStatus));
     }
 
 
