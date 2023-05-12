@@ -6,6 +6,7 @@ import com.app.simbongsa.repository.funding.FundingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,5 +28,15 @@ public class FundingServiceImpl implements FundingService {
             fundingDTOS.add(fundingDTO);
         }
         return fundingDTOS;
+    }
+
+    @Override
+    public Slice<FundingDTO> getFundingList() {
+    
+    }
+
+    @Override
+    public FundingDTO getFundingDetail(Long id) {
+        return null;
     }
 }

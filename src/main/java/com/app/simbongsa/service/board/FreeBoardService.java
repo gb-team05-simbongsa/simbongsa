@@ -36,6 +36,10 @@ public interface FreeBoardService {
 //    게시판 삭제
     public void deleteFreeBoardByIds(List<Long> ids);
 
+//    게시판 인기순 조회 - 메인 페이지
+    public List<FreeBoardDTO> findAllWithPopularFreeBoard();
+
+
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
         return FreeBoardDTO.builder()
                 .id(freeBoard.getId())
@@ -64,5 +68,6 @@ public interface FreeBoardService {
                 .memberStatus(member.getMemberStatus())
                 .build();
     }
+
 
 }

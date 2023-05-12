@@ -41,8 +41,8 @@ public class FreeBoardRepositoryTests {
     /*자유게시판 댓글 등록*/
     @Test
     public void saveReplies() {
-        for (int i = 1; i <= 5; i++) {
-            Optional<FreeBoard> byId = freeBoardRepository.findById(52L);
+        for (int i = 1; i <= 2; i++) {
+            Optional<FreeBoard> byId = freeBoardRepository.findById(850L);
             FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i, memberRepository.findById(29L).get(), byId.get());
             freeBoardReplyRepository.save(freeBoardReply);
         }
@@ -116,5 +116,12 @@ public class FreeBoardRepositoryTests {
     @Test
     public void findReplyCountTest() {
         log.info("============================" + freeBoardRepository.findById(116L));
+    }
+
+    @Test
+    public void findAllWithPopularFreeBoardTest(){
+        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::getFreeBoardReplies).map(v->v.size()).forEach(v -> log.info(v.toString()));
+
+
     }
 }

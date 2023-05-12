@@ -213,7 +213,7 @@
                                                 <div class="swiper-wrapper">
 
 
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
+                                                    <div class="swiper-slide swiper-slide-active" th:each="freeBoardList : ${freeBoardList}" style= "width:220.8px; margin-right: 14px;">
                                                         <div></div>
                                                         <div class="volunteer-percentage-wrapper">
                                                             <div></div>
@@ -230,10 +230,10 @@
                                                                     <dl>
                                                                         <dd class="volunteer-sub-info">
                                                                             <span>
-                                                                                <a href="#">조회수</a>
+                                                                                <a href="#">댓글수</a>
                                                                             </span>
                                                                             <span>
-                                                                                <a href="#">150</a>
+                                                                                <a href="#" th:text="${freeBoardList.replyCount}">150</a>
                                                                             </span>
                                                                             <span>
                                                                                 <a href="#">자유게시판</a>
@@ -241,7 +241,7 @@
                                                                         </dd>
                                                                         <dt>
                                                                             <a href="">
-                                                                                <strong>게시판제목 1</strong>
+                                                                                <strong th:text="${freeBoardList.boardTitle}">게시판제목 1</strong>
                                                                             </a>
                                                                         </dt>
                                                                     </dl>
@@ -253,292 +253,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 2</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 3</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 4</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 5</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <!-- ---------------------------------- -->
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 6</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 7</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 8</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 9</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide swiper-slide-active" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
-                                                                    <a href="#"></a>
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">조회수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong>게시판제목 10</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
                                                 </div>
