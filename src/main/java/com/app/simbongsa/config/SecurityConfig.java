@@ -75,7 +75,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                /*.antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())*/
+                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
                 /*.antMatchers(FUNDING_PATH).hasRole(Role.MEMBER.name())*/
                 .antMatchers(SUPPORT_PAGE).hasRole(Role.MEMBER.name())

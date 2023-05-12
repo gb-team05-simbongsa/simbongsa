@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5 {
     font-weight: bold;
     padding: 0em;
 }
-
+modal
 h3 {
     font-size: 1.28rem;
 }
@@ -543,7 +543,7 @@ input {
     background: rgba(13, 13, 13, 0.65);
 }
 
-.modal {
+.modal-check {
     max-width: 60%;
     min-width: 328px;
     position: absolute;
