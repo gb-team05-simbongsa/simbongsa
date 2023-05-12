@@ -40,4 +40,9 @@ public class RicePaymentServiceImpl implements RicePaymentService {
     public void deleteRicePaymentByIds(List<Long> ids) {
         ricePaymentRepository.deleteAllById(ids);
     }
+
+    @Override
+    public void updatePaymentStatusToAccessByIds(List<Long> ids) {
+        ricePaymentRepository.updatePaymentStatusToAccessByIds(ids);
+    }
 }

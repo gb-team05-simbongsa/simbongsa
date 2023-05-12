@@ -30,11 +30,11 @@ public class ReviewServiceImpl implements ReviewService{
 
     @Override
     public ReviewDTO getReviewDetail(Long id) {
-        return null;
+        return toReviewDTO(reviewRepository.findById(id).get());
     }
 
     @Override
     public void deleteReviewByIds(List<Long> ids) {
-
+        reviewRepository.deleteAllById(ids);
     }
 }
