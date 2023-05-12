@@ -80,5 +80,10 @@ public class MemberServiceImpl implements MemberService {
         ids.forEach(id -> memberRepository.updateMemberStatus(id, memberStatus));
     }
 
+    @Override
+    public List<Member> getSupportList(Long id) {
+        return memberRepository.findSupportByRequestId(id);
+    }
+
 
 }
