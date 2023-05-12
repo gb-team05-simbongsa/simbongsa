@@ -41,6 +41,7 @@ public class MemberDTO {
         this.memberVolunteerTime = memberVolunteerTime;
     }
 
+    
     @Builder
     public MemberDTO(Long id, String memberName, String memberEmail, String memberPassword, String memberAddress, Integer memberAge, String memberInterest, Role memberRole, MemberJoinType memberJoinType, UserRankType memberRank, int memberRice, int memberVolunteerTime, String randomKey, MemberStatus memberStatus) {
         this.id = id;
