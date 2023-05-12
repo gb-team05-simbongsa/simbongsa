@@ -1,18 +1,10 @@
 package com.app.simbongsa.domain;
 
-import com.querydsl.core.annotations.QueryProjection;
-import com.sun.istack.NotNull;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Data
 //@Component
-public class FreeBoardDTO {
+public class ReviewDTO {
     private Long id;
     private String BoardTitle;
     private String BoardContent;
@@ -21,9 +13,7 @@ public class FreeBoardDTO {
     private FileDTO fileDTO;
     private FreeBoardReplyDTO freeBoardReplyDTO;
 
-    @Builder
-
-    public FreeBoardDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, FileDTO fileDTO, FreeBoardReplyDTO freeBoardReplyDTO) {
+    public ReviewDTO(Long id, String boardTitle, String boardContent, MemberDTO memberDTO, FileDTO fileDTO, FreeBoardReplyDTO freeBoardReplyDTO) {
         this.id = id;
         this.BoardTitle = boardTitle;
         this.BoardContent = boardContent;

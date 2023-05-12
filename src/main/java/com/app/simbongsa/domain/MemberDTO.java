@@ -40,4 +40,6 @@ public class MemberDTO {
         this.memberRank = memberRank;
         this.memberVolunteerTime = memberVolunteerTime;
     }
+
+
 }
