@@ -2,6 +2,7 @@ package com.app.simbongsa.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,12 @@ public class PageDTO {
         this.endPage = (int)(Math.ceil(pageNum / (double)AMOUNT)) * AMOUNT;
         this.startPage = this.endPage - 4;
 
-        int realEnd = (int) (Math.ceil(total * 1.0) / list.getSize());
+        int listSize = list.getSize();
+
+        if(total < 5) {
+            listSize = total;
+        }
+        int realEnd = (int) (Math.ceil(total * 1.0) / listSize);
 
         if(realEnd < this.endPage) {
             this.endPage = realEnd;

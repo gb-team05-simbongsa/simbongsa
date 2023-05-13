@@ -4,6 +4,7 @@ import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import lombok.RequiredArgsConstructor;
@@ -25,18 +26,11 @@ public class MypageController {
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
     public String notice(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail) {
-        page = page == null ? 0: page - 1;
-        Long memberId = userDetail.getId();
-        log.info(page + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
-
+        page = page == null ? 0 : page - 1;
         Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
 
-        PageDTO pageDTO = new PageDTO(myInquiries);
-
         model.addAttribute("myInquiries", myInquiries.getContent());
-        model.addAttribute("pageDTO", pageDTO);
-        log.info(pageDTO.getStartPage() + "..............................");
-        log.info(pageDTO.getEndPage() + "..............................");
+        model.addAttribute("pageDTO", new PageDTO(myInquiries));
         return "mypage/my-question";
     }
 
