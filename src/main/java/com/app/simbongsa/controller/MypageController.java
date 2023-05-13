@@ -27,12 +27,16 @@ public class MypageController {
     public String notice(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail) {
         page = page == null ? 0: page - 1;
         Long memberId = userDetail.getId();
-        log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        log.info(page + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
 
         Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
 
+        PageDTO pageDTO = new PageDTO(myInquiries);
+
         model.addAttribute("myInquiries", myInquiries.getContent());
-        model.addAttribute("pageDTO", new PageDTO(myInquiries));
+        model.addAttribute("pageDTO", pageDTO);
+        log.info(pageDTO.getStartPage() + "..............................");
+        log.info(pageDTO.getEndPage() + "..............................");
         return "mypage/my-question";
     }
 

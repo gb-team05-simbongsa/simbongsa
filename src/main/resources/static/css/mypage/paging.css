@@ -1,0 +1,42 @@
+.paging {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.paging a {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  color: #e0e0e0;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  font-family: inherit;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.paging a code {
+  font-family: inherit;
+}
+
+.paging a:hover {
+  background-color: #e0e0e0;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-color: #e0e0e0;
+}
+.paging a:hover code {
+  color: rgb(0, 0, 0);
+}
+
+.paging #currentPage {
+  color: rgb(3, 3, 3);
+  background-color: #dfdfdf;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  font-family: inherit;
+}
