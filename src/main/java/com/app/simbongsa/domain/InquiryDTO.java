@@ -15,6 +15,7 @@ public class InquiryDTO {
     private InquiryType inquiryStatus;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private AnswerDTO answerDTO;
     private MemberDTO memberDTO;
 
     @Builder
