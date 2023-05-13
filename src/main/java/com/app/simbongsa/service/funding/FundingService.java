@@ -22,7 +22,7 @@ public interface FundingService {
     public Slice<FundingDTO> getFundingList();
 
     // 펀딩 상세보기
-    public FundingDTO getFundingDetail(Long id);
+    public FundingDTO getFundingDetail(Long fundingId);
 
 //    펀딩 전체 목록 조회
     public Page<FundingDTO> getFunding(Integer page, AdminFundingSearch adminFundingSearch);
