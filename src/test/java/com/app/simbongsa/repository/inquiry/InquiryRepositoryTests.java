@@ -30,7 +30,7 @@ public class InquiryRepositoryTests {
     @Test
     public void saveTest() {
         for (int i = 1; i <= 20; i++) {
-            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, memberRepository.findById(145L).get());
+            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, memberRepository.findById(50L).get());
             inquiryRepository.save(inquiry);
         }
     }

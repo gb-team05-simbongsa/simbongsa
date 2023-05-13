@@ -4,6 +4,8 @@ import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
+import com.app.simbongsa.search.admin.AdminFundingSearch;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public interface FundingService {
 
     // 펀딩 상세보기
     public FundingDTO getFundingDetail(Long id);
+
+//    펀딩 전체 목록 조회
+    public Page<FundingDTO> getFunding(Integer page, AdminFundingSearch adminFundingSearch);
 
     default FundingDTO toFundingDTO(Funding funding) {
         return FundingDTO.builder()

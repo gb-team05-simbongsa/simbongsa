@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Data
 public class VolunteerWorkDTO {
-    @NotNull
     private Long id;
     private LocalDateTime volunteerWorkStartDate;
     private LocalDateTime volunteerWorkEndDate;
