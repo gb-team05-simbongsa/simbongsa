@@ -76,7 +76,13 @@ public class AdminController {
     }
 
     @GetMapping("gongyangmi-refund")
-    public String gongyangmiRefund() {
+    public String gongyangmiRefund(Integer page, Model model) {
+        page = page == null ? 0 : page - 1;
+        AdminPaymentSearch adminPaymentSearch = new AdminPaymentSearch();
+        Page<RicePaymentDTO> ricePaymentDTOS = ricePaymentService.getRicePayment(page, adminPaymentSearch, RicePaymentType.환전대기, RicePaymentType.환전승인);
+
+        model.addAttribute("ricePaymentDTOS", ricePaymentDTOS.getContent());
+        model.addAttribute("pageDTO", new PageDTO(ricePaymentDTOS));
         return "admin/gongyangmi-refund";
     }
 

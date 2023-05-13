@@ -32,6 +32,13 @@ public class RicePaymentServiceImpl implements RicePaymentService {
     }
 
     @Override
+    public Page<RicePaymentDTO> getRicePayment(Integer page, AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentFirstType, RicePaymentType ricePaymentSecondType) {
+        Page<RicePayment> ricePayments = ricePaymentRepository.findByPaymentStatusWithPaging(adminPaymentSearch, ricePaymentFirstType, ricePaymentSecondType, PageRequest.of(page, 5));
+        List<RicePaymentDTO> ricePaymentDTOS = ricePayments.getContent().stream().map(this::toRicePaymentDTO).collect(Collectors.toList());
+        return new PageImpl<>(ricePaymentDTOS, ricePayments.getPageable(), ricePayments.getTotalElements());
+    }
+
+    @Override
     public RicePaymentDTO getRicePaymentDetail(Long id) {
         return toRicePaymentDTO(ricePaymentRepository.findById(id).get());
     }
