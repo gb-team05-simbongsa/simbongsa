@@ -4,6 +4,8 @@ import com.app.simbongsa.type.InquiryType;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 
 @Data
 public class InquiryDTO {
@@ -11,16 +13,19 @@ public class InquiryDTO {
     private String inquiryTitle;
     private String inquiryContent;
     private InquiryType inquiryStatus;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
     private MemberDTO memberDTO;
 
     @Builder
-    public InquiryDTO(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, MemberDTO memberDTO) {
+    public InquiryDTO(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO) {
         this.id = id;
         this.inquiryTitle = inquiryTitle;
         this.inquiryContent = inquiryContent;
         this.inquiryStatus = inquiryStatus;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
         this.memberDTO = memberDTO;
     }
-
     //    private Member member;
 }

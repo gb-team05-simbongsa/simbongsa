@@ -5,7 +5,10 @@ import com.app.simbongsa.domain.VolunteerWorkDTO;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
+import com.app.simbongsa.type.MemberJoinType;
 import com.app.simbongsa.type.MemberStatus;
+import com.app.simbongsa.type.Role;
+import com.app.simbongsa.type.UserRankType;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -51,9 +54,19 @@ public interface MemberService extends UserDetailsService {
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder()
                 .id(member.getId())
-                .memberRank(member.getMemberRank())
                 .memberName(member.getMemberName())
+                .memberEmail(member.getMemberEmail())
+                .memberPassword(member.getMemberPassword())
+                .memberAddress(member.getMemberAddress())
+                .memberAge(member.getMemberAge())
+                .memberInterest(member.getMemberInterest())
+                .memberRole(member.getMemberRole())
+                .memberJoinType(member.getMemberJoinType())
+                .memberRank(member.getMemberRank())
+                .memberRice(member.getMemberRice())
                 .memberVolunteerTime(member.getMemberVolunteerTime())
+                .randomKey(member.getRandomKey())
+                .memberStatus(member.getMemberStatus())
                 .build();
     }
 }

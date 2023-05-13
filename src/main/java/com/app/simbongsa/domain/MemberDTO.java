@@ -34,16 +34,6 @@ public class MemberDTO {
     private MemberStatus memberStatus;
 
 
-//    메이페이지 봉사시간 순 랭킹
-    @Builder
-    public MemberDTO(Long id, String memberName, UserRankType memberRank, int memberVolunteerTime) {
-        this.id = id;
-        this.memberName = memberName;
-        this.memberRank = memberRank;
-        this.memberVolunteerTime = memberVolunteerTime;
-    }
-
-    
     @Builder
     public MemberDTO(Long id, String memberName, String memberEmail, String memberPassword, String memberAddress, Integer memberAge, String memberInterest, Role memberRole, MemberJoinType memberJoinType, UserRankType memberRank, int memberRice, int memberVolunteerTime, String randomKey, MemberStatus memberStatus) {
         this.id = id;
