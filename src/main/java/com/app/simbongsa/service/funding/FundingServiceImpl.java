@@ -39,9 +39,9 @@ public class FundingServiceImpl implements FundingService {
 
     @Override
     public Slice<FundingDTO> getFundingList() {
-        return null;
-    }
 
+    return null;
+    }
     @Override
     public FundingDTO getFundingDetail(Long id) {
         return null;

@@ -144,23 +144,70 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
-<!-- 웹에디터 API -->
+<!--&lt;!&ndash; 웹에디터 API &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>-->
+<!--<script>-->
+<!--  console.log('썸머노트');-->
+<!--  $('#summernote').summernote({-->
+<!--    placeholder: '내용을 입력하세요',-->
+<!--    tabsize: 2,-->
+<!--    height: 300,-->
+<!--    width: '100%',-->
+<!--    toolbar: [-->
+<!--      ['style', ['style']],-->
+<!--      ['font', ['bold', 'underline', 'clear']],-->
+<!--      ['color', ['color']],-->
+<!--      ['para', ['ul', 'ol', 'paragraph']],-->
+<!--      ['table', ['table']],-->
+<!--      ['insert', ['link', 'picture', 'video']],-->
+<!--    ],-->
+<!--  });-->
+<!--</script>-->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
-  console.log('썸머노트');
-  $('#summernote').summernote({
-    placeholder: '내용을 입력하세요',
-    tabsize: 2,
-    height: 300,
-    width: '100%',
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-      ['insert', ['link', 'picture', 'video']],
-    ],
-  });
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: '내용을 입력하세요',
+            tabsize: 2,
+            height: 300,
+            width: '100%',
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+            ],
+            callbacks: {
+                onImageUpload: function(files) {
+                    // 이미지 업로드를 처리하는 부분
+                    uploadImage(files[0]);
+                }
+            }
+        });
+
+        // 이미지 업로드 함수
+        function uploadImage(file) {
+            var formData = new FormData();
+            formData.append('file', file);
+
+            $.ajax({
+                url: '/api/summernote/image',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    // 업로드된 이미지 URL을 에디터에 삽입
+                    $('#summernote').summernote('insertImage', url);
+                },
+                error: function() {
+                    // 업로드 실패 시 처리
+                    alert('이미지 업로드에 실패했습니다.');
+                }
+            });
+        }
+    });
 </script>
 </html>

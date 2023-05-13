@@ -3,7 +3,6 @@ package com.app.simbongsa.repository.support;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
-import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -13,7 +12,6 @@ import org.springframework.data.domain.*;
 import java.util.List;
 import java.util.Optional;
 
-import static com.app.simbongsa.entity.support.QSupport.support;
 import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
 
 @RequiredArgsConstructor
@@ -87,6 +85,8 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         return new PageImpl<>(foundSupportRequest, pageable, count);
     }
 
+
+
     /* 후원 상세페이지, 후원 상세 정보 조회*/
     @Override
     public SupportRequest findByIdWithSupportRequestInfo_QueryDsl(Long id) {
@@ -124,15 +124,45 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         foundSupportRequest = query.select(supportRequest)
                     .from(supportRequest)
                     .orderBy(result)
-                    .offset(pageable.getOffset())
+                    .offset(pageable.getOffset()-1)
                     .limit(pageable.getPageSize())
                     .fetch();
 
         return new SliceImpl<>(foundSupportRequest, pageable, true);
 
     }
+    //    후원 요청 전체조회 - 페이징(후원 목록 페이지)
+    @Override
+    public Page<SupportRequest> findAllWithPagingSearch(String keyword , Pageable pageable) {
+        OrderSpecifier result;
 
-//    대기를 승인으로 변경
+        if(keyword == "후원 많은순"){
+            result = supportRequest.supports.any().supportPrice.desc();
+
+        }else if(keyword == "후원 적은순"){
+
+            result = supportRequest.supports.any().supportPrice.asc();
+
+        }else  {
+            result = supportRequest.id.desc();
+        }
+        List<SupportRequest> foundSupportRequest = query.select(supportRequest)
+                .from(supportRequest)
+                .orderBy(result)
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(supportRequest.count())
+                .from(supportRequest)
+                .fetchOne();
+
+        return new PageImpl<>(foundSupportRequest, pageable, count);
+    }
+
+
+
+    //    대기를 승인으로 변경
     @Override
     public void updateWaitToAccessByIds(List<Long> ids) {
         query.update(supportRequest)
