@@ -31,7 +31,7 @@ public class RicePaymentRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 10; i++) {
-            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, memberRepository.findById(716L).get());
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.충전, "국민", "123412-1234123" + i, memberRepository.findById(1L).get());
             ricePaymentRepository.save(ricePayment);
         }
     }

@@ -11,8 +11,11 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface RicePaymentService {
-//    공양미 충전 목록, 환전 요청 조회
+//    공양미 충전 목록
     public Page<RicePaymentDTO> getRicePayment(Integer page, AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType);
+
+//    환전 요청 조회
+    public Page<RicePaymentDTO> getRicePayment(Integer page, AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentFirstType, RicePaymentType ricePaymentSecondType);
 
 //    공양미 충전 상세보기
     public RicePaymentDTO getRicePaymentDetail(Long id);
@@ -31,7 +34,9 @@ public interface RicePaymentService {
                 .ricePaymentUsed(ricePayment.getRicePaymentUsed())
                 .ricePaymentExchangeBank(ricePayment.getRicePaymentExchangeBank())
                 .ricePaymentExchangeAccount(ricePayment.getRicePaymentExchangeAccount())
+                .ricePaymentStatus(ricePayment.getRicePaymentStatus())
                 .memberDTO(toMemberDTO(ricePayment.getMember()))
+                .createdDate(ricePayment.getCreatedDate())
                 .build();
     }
 

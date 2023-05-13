@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>공양미 충전 내역</title>
-    <link
-            href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
-            rel="stylesheet"/>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/admin/default.css"/>
     <link rel="stylesheet" href="/css/admin/sidebar.css"/>
     <link rel="stylesheet" href="/css/admin/content.css"/>
@@ -147,54 +145,56 @@
                                 </label>
                             </th>
                             <th class="content__id">결제번호</th>
-                            <th>아이디</th>
+                            <th>이름</th>
                             <th>이메일</th>
                             <th>공양미 충전</th>
                             <th>충전일</th>
                             <th></th>
                         </tr>
-                        <tr class="table__content">
-                            <td>
-                                <label class="check-label">
-                                    <input type="checkbox" name="check"/>
-                                </label>
-                            </td>
-                            <td class="content__id">1</td>
-                            <td>kmg2331</td>
-                            <td>kmg2331@gmail.com</td>
-                            <td>300개</td>
-                            <td>2023-01-01</td>
-                            <td>
-                                <button class="content__detail__btn button__type_2 button__color__green">
-                                    상세보기
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="table__content">
-                            <td>
-                                <label class="check-label">
-                                    <input type="checkbox" name="check"/>
-                                </label>
-                            </td>
-                            <td class="content__id">1</td>
-                            <td>kmg2331</td>
-                            <td>kmg2331@gmail.com</td>
-                            <td>3000개</td>
-                            <td>2023-01-01</td>
-                            <td>
-                                <button class="content__detail__btn button__type_2 button__color__green">
-                                    상세보기
-                                </button>
-                            </td>
-                        </tr>
+<!--                        <tr class="table__content">-->
+<!--                            <td>-->
+<!--                                <label class="check-label">-->
+<!--                                    <input type="checkbox" name="check"/>-->
+<!--                                </label>-->
+<!--                            </td>-->
+<!--                            <td class="content__id">1</td>-->
+<!--                            <td>kmg2331</td>-->
+<!--                            <td>kmg2331@gmail.com</td>-->
+<!--                            <td>300개</td>-->
+<!--                            <td>2023-01-01</td>-->
+<!--                            <td>-->
+<!--                                <button class="content__detail__btn button__type_2 button__color__green">-->
+<!--                                    상세보기-->
+<!--                                </button>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr class="table__content">-->
+<!--                            <td>-->
+<!--                                <label class="check-label">-->
+<!--                                    <input type="checkbox" name="check"/>-->
+<!--                                </label>-->
+<!--                            </td>-->
+<!--                            <td class="content__id">1</td>-->
+<!--                            <td>kmg2331</td>-->
+<!--                            <td>kmg2331@gmail.com</td>-->
+<!--                            <td>3000개</td>-->
+<!--                            <td>2023-01-01</td>-->
+<!--                            <td>-->
+<!--                                <button class="content__detail__btn button__type_2 button__color__green">-->
+<!--                                    상세보기-->
+<!--                                </button>-->
+<!--                            </td>-->
+<!--                        </tr>-->
                     </table>
                     <!-- default.css > pagenation -->
                     <div>
                         <div class="paging" style="text-align: center">
-                            <a class="changePage" style="color: black"><code><</code></a>
-                            <code id="currentPage">1</code>
-                            <a class="changePage" style="color: black"><code>2</code></a>
-                            <a class="changePage" style="color: black"><code>></code></a>
+                            <a th:if="${pageDTO.prev}" th:href="@{/admin/payment} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                            <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                                <a th:href="@{/admin/payment} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                                <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
+                            </th:block>
+                            <a th:if="${pageDTO.next}" th:href="@{/admin/payment} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
                         </div>
                         <form name="pageForm">
                             <input type="hidden">
@@ -284,6 +284,10 @@
 </section>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let ricePayments = [[${ricePaymentDTOS}]];
+</script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>
+<script src="/js/admin/rice-payment.js"></script>
 </html>

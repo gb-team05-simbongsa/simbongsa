@@ -11,7 +11,10 @@ import java.util.List;
 public interface RicePaymentQueryDsl {
 
 //    공양미 내역 전체 조회(페이징), 상태에 따른 변화
-    public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType, Pageable pageable);
+    public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType,  Pageable pageable);
+
+//    환전요청 페이지 조회(페이징)
+    public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentFirstType, RicePaymentType ricePaymentSecondType, Pageable pageable);
 
 //    금일 결제 수 조회
     public Long findByCreateDateToday();
