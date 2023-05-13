@@ -1,15 +1,18 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.NoticeDTO;
+import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,16 +26,21 @@ public class InquiryController {
     private final InquiryService inquiryService;
 
     @GetMapping("notice")
-    public String notice(Model model) {
+    public String notice(Integer page, Model model) {
+        page = page == null ? 0 : page - 1;
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
-//        List<NoticeDTO> notice = noticeService.getNotice(adminNoticeSearch, PageRequest.of(0, 5));
+        Page<NoticeDTO> noticeDTOS = noticeService.getNotice(page, adminNoticeSearch);
 
-//        model.addAttribute("notice", notice);
+        model.addAttribute("noticeDTOS", noticeDTOS.getContent());
+        model.addAttribute("pageDTO", new PageDTO(noticeDTOS));
         return "customerCenter/notice";
     }
 
-    @GetMapping("notice-detail")
-    public String noticeDetail() {
+    @GetMapping("notice-detail/{id}")
+    public String noticeDetail(@PathVariable Long id, Model model) {
+        NoticeDTO noticeDetail = noticeService.getNoticeDetail(id);
+
+        model.addAttribute("notice", noticeDetail);
         return "customerCenter/notice-detail";
     }
 

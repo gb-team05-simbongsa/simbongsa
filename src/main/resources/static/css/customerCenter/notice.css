@@ -293,13 +293,31 @@ li {
 }
 
 paging-prev-wrap > li.paging-item {
-        background-color: rgb(109, 109, 109) !important;
+    background-color: rgb(109, 109, 109) !important;
 }
 
 @media only screen and (min-width: 1080px) {
     .paging-wrap > li {
         margin: 0px 6px;
     }
+}
+
+.paging-item-selected {
+    cursor: pointer;
+    border-radius: 6px;
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    border: 1px solid #d9d9d9;
+    background-color:rgb(245, 239, 239);
+    margin-right: 8px;
+}
+
+.paging-item-selected a {
+    color: rgb(254, 95, 76) !important;
 }
 
 .paging-item {
@@ -342,7 +360,7 @@ paging-prev-wrap > li.paging-item {
     font-size: 14px;
     line-height: 19px;
     letter-spacing: -0.01em;
-    color: rgb(158, 158, 158) !important;
+    color: rgb(158, 158, 158);
 }
 
 .paging-item:hover {

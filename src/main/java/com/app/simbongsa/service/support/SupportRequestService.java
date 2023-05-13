@@ -32,6 +32,8 @@ public interface SupportRequestService {
                 .supportRequestTitle(supportRequest.getSupportRequestTitle())
                 .supportRequestContent(supportRequest.getSupportRequestContent())
                 .supportRequestStatus(supportRequest.getSupportRequestStatus())
+                .createdDate(supportRequest.getCreatedDate())
+                .updatedDate(supportRequest.getUpdatedDate())
                 .memberDTO(toMemberDTO(supportRequest.getMember()))
                 .supports(supportRequest.getSupports())
                 .supportRequestFiles(supportRequest.getSupportRequestFiles())
