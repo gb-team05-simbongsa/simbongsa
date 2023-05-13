@@ -6,9 +6,12 @@ import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 public interface InquiryService {
 //    문의 목록 조회
@@ -21,6 +24,9 @@ public interface InquiryService {
     public void deleteInquiry(Long id);
 
 //    문의 검색
+
+    /* 유저아이디로 문의 페이징처리해서 불러오기 */
+    public Page<InquiryDTO> getMyInquiry(Integer page, @AuthenticationPrincipal UserDetail userDetail);
 
     default InquiryDTO toInquiryDTO(Inquiry inquiry) {
         return InquiryDTO.builder()

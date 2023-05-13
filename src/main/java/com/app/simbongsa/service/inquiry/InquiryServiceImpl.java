@@ -5,6 +5,7 @@ import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.inquiry.Notice;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.inquiry.InquiryRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +42,13 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public void deleteInquiry(Long id) {
         inquiryRepository.deleteById(id);
+    }
+
+    /* 유저아이디로 문의 페이징처리해서 불러오기 */
+    @Override
+    public Page<InquiryDTO> getMyInquiry(Integer page, UserDetail userDetail) {
+        Page<Inquiry> myInquiries = inquiryRepository.findByMemberId(PageRequest.of(page,5),userDetail);
+        List<InquiryDTO> inquiryDTOS = myInquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
+        return new PageImpl<>(inquiryDTOS, myInquiries.getPageable(), myInquiries.getTotalElements());
     }
 }

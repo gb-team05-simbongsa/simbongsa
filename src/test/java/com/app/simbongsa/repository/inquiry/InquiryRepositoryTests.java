@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.inquiry;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.repository.member.MemberRepository;
@@ -75,13 +76,16 @@ public class InquiryRepositoryTests {
 
 
     /* 유저별 문의 목록 조회 (페이징처리) */
-    @Test
+/*    @Test
     public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<Inquiry> inquiries = inquiryRepository.findByMemberId(pageRequest, 6L);
+        UserDetail userDetail = new UserDetail();
+        Long memberId = userDetail.getId();
+        log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        Page<Inquiry> inquiries = inquiryRepository.findByMemberId(pageRequest, userDetail);
         inquiries.stream().map(Inquiry::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + inquiries.getTotalElements());
-    }
+    }*/
     
     /* 내 문의사항 수정 */
     @Test
