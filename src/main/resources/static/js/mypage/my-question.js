@@ -35,6 +35,67 @@ $('.modal-cancel').on('click', () => {
     $modal.hide();
 });
 
+
+
+// 내 문의 목록
+myInquiries.forEach((inquiry, i) => {
+    let text;
+
+    text = `
+        <div>
+            <div class="support-request-one-wrap">
+                <div class="support-request">
+                    <div class="support-request-place">
+                        <div class="support-request-title-wrap">
+                            <div class="support-request-title">${inquiry.inquiryTitle}</div>
+                        </div>
+                        <div class="support-request-content">${inquiry.inquiryContent}</div>
+                        <div class="support-request-reply">${inquiry.inquiryStatus}</div>
+                    </div>
+                 <div class="button-class">
+                        <div class="support-request-detail">
+                            <button class="show-answer">
+                                <span class="request-detail">
+                                    <div class="detail-text">답변확인</div>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!--<div class="button-class">
+                        <div class="support-request-detail update">
+                            <button class="go-support-request">
+                                <span class="request-detail">
+                                    <div class="detail-text">수정</div>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="support-request-detail">
+                            <button class="go-support-request-delete">
+                                <span class="request-detail">
+                                    <div class="detail-text">삭제</div>
+                                </span>
+                            </button>
+                        </div>
+                    </div>-->
+                    
+                    
+                </div>
+            </div>
+            <div class="show-answer-wrap">
+                <div class="support-request-title-wrap">
+                    <div class="support-request-title">${inquiry.answerDTO.answerTitle}</div>
+                </div>
+                <div class="support-request-content">${inquiry.answerDTO.answerContent}</div>
+                <div class="support-request-reply">공양미 100석 후원</div>
+            </div>
+        </div>
+    `;
+
+    $('.support-request-inner-wrap').prepend(text);
+});
+
+
 // 답변확인 버튼 눌렀을 때 답변이 있을 경우
 $('.show-answer').on('click', function() {
     if($(this).parent().parent().parent().parent().next().css('display') == 'none') {
@@ -43,3 +104,8 @@ $('.show-answer').on('click', function() {
         $(this).parent().parent().parent().parent().next().hide();
     }
 });
+/*    if(result.paginationDTO.pageDTO.prev) {
+        paging += `
+                        <a class="changePage" data-page="${result.paginationDTO.pageDTO.startPage - 1}" onclick="preventDefault(this)" style="color: black"><code><</code></a>
+                        `;
+    }*/

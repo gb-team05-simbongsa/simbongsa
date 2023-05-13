@@ -7,9 +7,22 @@ import com.app.simbongsa.entity.inquiry.Answer;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
 
+import java.util.Optional;
+
 public interface AnswerService {
     //    답변 작성
     public void saveAnswer(AnswerDTO answerDTO);
+
+    /* 질문에 대한 답변 조회*/
+    public AnswerDTO findByInquiryId(Long inquiryId);
+
+    default AnswerDTO toAnswerDTO(Answer answer){
+        return AnswerDTO.builder()
+                .id(answer.getId())
+                .answerTitle(answer.getAnswerTitle())
+                .answerContent(answer.getAnswerContent())
+                .build();
+    }
 
     default Answer toAnswerEntity(AnswerDTO answerDTO) {
         return Answer.builder()
@@ -47,4 +60,5 @@ public interface AnswerService {
                 .memberStatus(memberDTO.getMemberStatus())
                 .build();
     }
+
 }

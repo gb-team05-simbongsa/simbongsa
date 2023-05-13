@@ -25,14 +25,14 @@ public class AnswerRepositoryTests {
 
     @Test
     public void saveTest() {
-        Answer answer = new Answer("제목1", "내용1", inquiryRepository.findById(422L).get());
+        Answer answer = new Answer("제목2", "내용2", inquiryRepository.findById(24L).get());
         answerRepository.save(answer);
     }
 
     /* 질문에 대한 답변 조회*/
     @Test
     public void findByInquiryIdTest(){
-        answerRepository.findByInquiryId(422L).ifPresent(answer -> log.info(answer.toString()));
+        answerRepository.findByInquiryId_QueryDSL(422L).ifPresent(answer -> log.info(answer.toString()));
     }
 
 }

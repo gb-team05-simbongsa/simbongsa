@@ -25,6 +25,9 @@ public class Inquiry extends Period {
     @ColumnDefault("'답변대기'")
     @NotNull private InquiryType inquiryStatus;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "inquiry", cascade = CascadeType.REMOVE)
+    private Answer answer;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private Member member;

@@ -16,7 +16,6 @@ public class Answer {
     @NotNull private String answerContent;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "INQUIRY_ID")
     private Inquiry inquiry;
 
     /* 단위테스트용 */
