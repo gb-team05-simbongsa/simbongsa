@@ -34,6 +34,8 @@ public interface InquiryService {
                 .inquiryTitle(inquiry.getInquiryTitle())
                 .inquiryContent(inquiry.getInquiryContent())
                 .inquiryStatus(inquiry.getInquiryStatus())
+                .createdDate(inquiry.getCreatedDate())
+                .updatedDate(inquiry.getUpdatedDate())
                 .memberDTO(toMemberDTO(inquiry.getMember()))
                 .build();
     }
