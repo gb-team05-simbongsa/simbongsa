@@ -97,7 +97,7 @@
         <div class="content-wrap">
             <div class="support-request-wrap">
                 <div class="support-request-inner-wrap">
-                    <div th:each="inquiry : ${myInquiries}">
+                    <!--<div th:each="inquiry : ${myInquiries}">
                         <div class="support-request-one-wrap">
                             <div class="support-request">
                                 <div class="support-request-place">
@@ -132,7 +132,7 @@
                             <div class="support-request-content">반 페르시 부합해 루시퍼 베드신 발포해 리스폰 페스시아 완패를 지켜</div>
                             <div class="support-request-reply">공양미 100석 후원</div>
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div>
                         <div class="support-request-one-wrap">
                             <div class="support-request">
@@ -318,6 +318,9 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let myInquiries = [[${myInquiries}]];
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/my-question.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>
