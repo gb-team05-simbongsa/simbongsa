@@ -31,3 +31,6 @@ spring:
   summernote:
     image:
       upload-dir: C:\uploads
+  app:
+    file:
+      upload-dir: C:\uploads

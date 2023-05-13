@@ -33,25 +33,25 @@ public class SupportRequestRepositoryTests {
     @Test
     public void saveTest(){
         for (int i = 1; i <= 5; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(143L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(321L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(144L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(29L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
 
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(145L).get());
-            SupportRequest supportRequest1 = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(80L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(24L).get());
+//            SupportRequest supportRequest1 = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(20L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(79L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(321L).get());
             supportRequestRepository.save(supportRequest);
         }
         for (int i = 1; i <= 3; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(81L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(321L).get());
             supportRequestRepository.save(supportRequest);
         }
 

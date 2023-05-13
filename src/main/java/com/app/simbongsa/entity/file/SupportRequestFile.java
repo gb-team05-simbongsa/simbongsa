@@ -21,6 +21,7 @@ public class SupportRequestFile extends File {
         this.supportRequest = supportRequest;
     }
 
+    @Builder
     public SupportRequestFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, SupportRequest supportRequest) {
         super(fileName, fileUuid, filePath, fileRepresentationalType);
         this.supportRequest = supportRequest;

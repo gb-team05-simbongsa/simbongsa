@@ -23,6 +23,9 @@ public interface SupportRequestService {
 //    후원 요청 승인
     public void updateWaitToAccess(List<Long> ids);
 
+//    후원 목록 전체 조회(후원 목록 페이지)
+    public Page<SupportRequestDTO> getSupportRequestAllWithPaging(Integer page, String keyword);
+
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {
         return SupportRequestDTO.builder()
                 .id(supportRequest.getId())

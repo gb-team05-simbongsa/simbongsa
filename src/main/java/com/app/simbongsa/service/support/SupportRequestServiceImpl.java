@@ -46,4 +46,11 @@ public class SupportRequestServiceImpl implements SupportRequestService {
     public void updateWaitToAccess(List<Long> ids) {
         supportRequestRepository.updateWaitToAccessByIds(ids);
     }
+
+    @Override
+    public Page<SupportRequestDTO> getSupportRequestAllWithPaging(Integer page, String keyword) {
+        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch(keyword, PageRequest.of(page, 5));
+        List<SupportRequestDTO> noticeDTOS = supportRequests.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
+        return new PageImpl<>(noticeDTOS, supportRequests.getPageable(), supportRequests.getTotalElements());
+    }
 }
