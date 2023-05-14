@@ -17,8 +17,6 @@ $('#selectOp').change(function () {
     console.log($('#inputOp').val(keyword))
     ;
     document.goForm.submit();
-
-
 })
 
 

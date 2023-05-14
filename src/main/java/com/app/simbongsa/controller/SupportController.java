@@ -27,6 +27,9 @@ public class SupportController {
     @GetMapping("support-list")
     public String supportList(Integer page, Model model, String keyword){
         log.info(keyword);
+        if(keyword == null){
+            keyword = "";
+        }
         page = page == null ? 0 : page -1;
 
         Page<SupportRequestDTO> supportRequestDTOs = supportRequestService.getSupportRequestAllWithPaging(page, keyword);
