@@ -2,11 +2,13 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.entity.support.Support;
+import com.app.simbongsa.provider.UserDetail;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -18,17 +20,17 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
 
     /* 내 후원 내역 조회 (페이징처리)*/
     @Override
-    public Page<Support> findByMemberId(Pageable pageable, Long memberId) {
+    public Page<Support> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
         List<Support> foundSupports = query.select(support)
                 .from(support)
-                .where(support.member.id.eq(memberId))
+                .where(support.member.id.eq(userDetail.getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(support.count())
                 .from(support)
-                .where(support.member.id.eq(memberId))
+                .where(support.member.id.eq(userDetail.getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundSupports,pageable,count);

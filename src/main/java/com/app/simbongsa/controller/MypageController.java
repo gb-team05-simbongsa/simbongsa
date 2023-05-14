@@ -1,14 +1,12 @@
 package com.app.simbongsa.controller;
 
-import com.app.simbongsa.domain.AnswerDTO;
-import com.app.simbongsa.domain.InquiryDTO;
-import com.app.simbongsa.domain.NoticeDTO;
-import com.app.simbongsa.domain.PageDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
+import com.app.simbongsa.service.support.SupportRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -27,8 +25,9 @@ import java.util.List;
 public class MypageController {
     private final InquiryService inquiryService;
     private final AnswerService answerService;
+    private final SupportRequestService supportRequestService;
 
-    /* 유저아이디로 문의 페이징처리해서 불러오기 */
+    /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
     public String notice(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail) {
         page = page == null ? 0 : page - 1;
@@ -36,13 +35,26 @@ public class MypageController {
 
         for (InquiryDTO myInquiry: myInquiries.getContent()) {
             AnswerDTO answerAboutInquiry = answerService.findByInquiryId(myInquiry.getId());
-            log.info(answerAboutInquiry + "%%%%%%%%%%%5문의에 대한 답변%%%%%%%%%%%%%");
+            /*log.info(answerAboutInquiry + "%%%%%%%%%%%5문의에 대한 답변%%%%%%%%%%%%%");*/
             myInquiry.setAnswerDTO(answerAboutInquiry);
         }
 
         model.addAttribute("myInquiries", myInquiries.getContent());
         model.addAttribute("pageDTO", new PageDTO(myInquiries));
         return "mypage/my-question";
+    }
+
+    /* 내 후원요청목록 페이징처리해서 불러오기 */
+    @GetMapping("support-request")
+    public String supportRequest(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
+        Long memberId = userDetail.getId();
+        log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        page = page == null ? 0 : page - 1;
+        Page<SupportRequestDTO> mySupportRequests = supportRequestService.getMySupportRequest(page, userDetail);
+
+        model.addAttribute("mySupportRequests", mySupportRequests.getContent());
+        model.addAttribute("pageDTO",new PageDTO(mySupportRequests));
+        return "mypage/support-request";
     }
 
     @GetMapping("exchange-request")
@@ -80,10 +92,10 @@ public class MypageController {
         return "mypage/rice-list";
     }
 
-    @GetMapping("support-request")
+/*    @GetMapping("support-request")
     public String supportRequest(){
         return "mypage/support-request";
-    }
+    }*/
 
     @GetMapping("user-modify")
     public String userModify(){

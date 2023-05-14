@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
@@ -8,6 +9,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,17 +22,17 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
     @Override
-    public Page<SupportRequest> findByMemberId(Pageable pageable, Long memberId) {
+    public Page<SupportRequest> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(memberId))
+                .where(supportRequest.member.id.eq(userDetail.getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(memberId))
+                .where(supportRequest.member.id.eq(userDetail.getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest,pageable,count);
