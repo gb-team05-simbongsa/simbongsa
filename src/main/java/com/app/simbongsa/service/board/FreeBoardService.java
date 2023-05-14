@@ -4,15 +4,18 @@ import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.FreeBoardReplyDTO;
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -53,6 +56,9 @@ public interface FreeBoardService {
 
 //    게시판 인기순 조회 - 메인 페이지
     public List<FreeBoardDTO> findAllWithPopularFreeBoard();
+
+    /* 유저가 작성한 자유게시물 조회(페이징처리) */
+    Page<FreeBoardDTO> getMyFreeBoards(Integer page, UserDetail userDetail);
 
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
