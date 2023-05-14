@@ -138,10 +138,10 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Page<SupportRequest> findAllWithPagingSearch(String keyword , Pageable pageable) {
         OrderSpecifier result;
 
-        if(keyword == "후원 많은순"){
+        if(keyword.equals("후원 많은순")){
             result = supportRequest.supports.any().supportPrice.desc();
 
-        }else if(keyword == "후원 적은순"){
+        }else if(keyword.equals("후원 적은순")){
 
             result = supportRequest.supports.any().supportPrice.asc();
 
@@ -150,6 +150,8 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         }
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
+                .leftJoin(supportRequest.supports)
+                .fetchJoin()
                 .orderBy(result)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
