@@ -20,6 +20,9 @@ public interface FundingService {
     // 메인페이지 - 인기펀딩
     public List<FundingDTO> getAllPopularFundingList();
 
+    // 펀딩 기본정보 저장
+    public void fundingRegister(FundingDTO fundingDTO);
+
     //펀딩 전체 목록 조회
     public Slice<FundingDTO> getFundingList(Pageable pageable);
 
@@ -61,5 +64,15 @@ public interface FundingService {
                 .build();
     }
 
+    default Funding toFundingEntity(FundingDTO fundingDTO) {
+        return Funding.builder()
+                .id(fundingDTO.getId())
+                .fundingCategory(fundingDTO.getFundingCategory())
+                .fundingTitle(fundingDTO.getFundingTitle())
+                .fundingShortTitle(fundingDTO.getFundingShortTitle())
+                .fundingSummary(fundingDTO.getFundingSummary())
+                .build();
+
+    }
 
 }
