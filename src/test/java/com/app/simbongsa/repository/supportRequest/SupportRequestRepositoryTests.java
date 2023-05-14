@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.supportRequest;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
@@ -61,7 +62,8 @@ public class SupportRequestRepositoryTests {
     @Test
     public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<SupportRequest> supportRequests = supportRequestRepository.findByMemberId(pageRequest, 6L);
+        UserDetail userDetail = new UserDetail();
+        Page<SupportRequest> supportRequests = supportRequestRepository.findByMemberId(pageRequest, userDetail);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + supportRequests.getTotalElements());
     }

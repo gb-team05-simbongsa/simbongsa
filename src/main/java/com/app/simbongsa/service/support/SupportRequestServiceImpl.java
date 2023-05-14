@@ -1,9 +1,12 @@
 package com.app.simbongsa.service.support;
 
+import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.entity.support.SupportRequest;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +16,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,5 +56,13 @@ public class SupportRequestServiceImpl implements SupportRequestService {
         Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch(keyword, PageRequest.of(page, 5));
         List<SupportRequestDTO> noticeDTOS = supportRequests.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
         return new PageImpl<>(noticeDTOS, supportRequests.getPageable(), supportRequests.getTotalElements());
+    }
+
+    /* 내 후원요청목록 페이징처리해서 불러오기 */
+    @Override
+    public Page<SupportRequestDTO> getMySupportRequest(Integer page, UserDetail userDetail) {
+        Page<SupportRequest> mySupportRequest = supportRequestRepository.findByMemberId(PageRequest.of(page, 5), userDetail);
+        List<SupportRequestDTO> mySupportRequestDTOS = mySupportRequest.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
+        return new PageImpl<>(mySupportRequestDTOS, mySupportRequest.getPageable(), mySupportRequest.getTotalElements());
     }
 }

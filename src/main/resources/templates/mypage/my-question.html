@@ -209,21 +209,6 @@
                                 <input type="hidden">
                             </form>
                         </div>
-
-<!--                        <div class="paging-div">-->
-<!--                            <div class="paging" style="text-align: center">-->
-<!--                                <a class="changePage" th:href="@{/mypage/my-question(page=${pageDTO.startPage-1})}" th:if="${pageDTO.prev}" style="color: black"><code><</code></a>-->
-<!--                                <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">-->
-<!--                                    <a class="changePage" style="color: black" th:href="@{/mypage/my-question(page=${page})}" th:if="${pageDTO.pageNum != page}">-->
-<!--                                        <code th:text="${page}"></code></a>-->
-<!--                                    <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>-->
-<!--                                </th:block>-->
-<!--                                <a class="changePage" onclick="findPage(this)" th:href="@{/mypage/my-question(page=${pageDTO.endPage+1})}" th:if="${pageDTO.next}" style="color: black"><code>></code></a>-->
-<!--                            </div>-->
-<!--                            <form th:action="@{/mypage/my-question}" th:method="get" name="pageForm">-->
-<!--                                <input type="hidden" name="page" th:value="${pageDTO.pageNum}"/>-->
-<!--                            </form>-->
-<!--                        </div>-->
                     </div>
             </div>
         </div>
