@@ -128,6 +128,17 @@ public class SupportRequestRepositoryTests {
         log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
     }
+    @Test
+    public void findAllWithPagingSearchTest(){
+        PageRequest pageRequest = PageRequest.of(0, 3);
+        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch(null, pageRequest);
+        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+
+        List<SupportRequest> supportRequestList = supportRequests.getContent();
+        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
+        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
+        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+    }
 
 //    후원요청 삭제
     @Test

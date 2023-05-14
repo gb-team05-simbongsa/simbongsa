@@ -177,6 +177,29 @@
       }
   });
   // 이미지 업로드 함수
+  // function uploadImage(file) {
+  //     var formData = new FormData();
+  //     formData.append('file', file);
+  //
+  //     $.ajax({
+  //         url: '/api/summernote/image',
+  //         method: "POST",
+  //         data: formData,
+  //         contentType: false,
+  //         processData: false,
+  //         success: function(url) {
+  //             // 업로드된 이미지 URL을 에디터에 삽입
+  //             var image = $('<img>').attr('src', url);
+  //             $('#summernote').summernote('insertNode', image[0]);
+  //             $('#summernote').summernote('insertImage', url);
+  //         },
+  //         error: function() {
+  //             // 업로드 실패 시 처리
+  //             alert('이미지 업로드에 실패했습니다.');
+  //         }
+  //     });
+  // }
+  // 이미지 업로드 함수
   function uploadImage(file) {
       var formData = new FormData();
       formData.append('file', file);
@@ -187,18 +210,37 @@
           data: formData,
           contentType: false,
           processData: false,
-          success: function(url) {
+          success: function (formData) {
               // 업로드된 이미지 URL을 에디터에 삽입
-              var image = $('<img>').attr('src', url);
+              var image = $('<img>').attr('src', formData);
               $('#summernote').summernote('insertNode', image[0]);
-              $('#summernote').summernote('insertImage', url);
+              $('#summernote').summernote('insertImage', formData.url);
           },
-          error: function() {
+          error: function () {
               // 업로드 실패 시 처리
               alert('이미지 업로드에 실패했습니다.');
           }
       });
   }
+
+
+      // $.ajax({
+      //     url: '/api/summernote/images',
+      //     method: "POST",
+      //     data: formData,
+      //     contentType: false,
+      //     processData: false,
+      //     success: function(url) {
+      //         // 업로드된 이미지 URL을 에디터에 삽입
+      //         $('#summernote').summernote('insertNode', url);
+      //         $('#summernote').summernote('insertImage', url);
+      //     },
+      //     error: function() {
+      //         // 업로드 실패 시 처리
+      //         alert('이미지 업로드에 실패했습니다.');
+      //     }
+      // });
+  // }
 
 
   // // 이미지 삭제 함수

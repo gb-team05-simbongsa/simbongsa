@@ -30,13 +30,13 @@ public class SupportRepositoryTests {
 
     @Test
     public void saveTest(){
-        Support support1 = new Support(9000,memberRepository.findById(80L).get(), supportRequestRepository.findById(121L).get());
+        Support support1 = new Support(9000,memberRepository.findById(1L).get(), supportRequestRepository.findById(295L).get());
         supportRepository.save(support1);
 
-        Support support2 = new Support(12000,memberRepository.findById(81L).get(), supportRequestRepository.findById(129L).get());
+        Support support2 = new Support(12000,memberRepository.findById(2L).get(), supportRequestRepository.findById(296L).get());
         supportRepository.save(support2);
 
-        Support support3 = new Support(17000,memberRepository.findById(79L).get(), supportRequestRepository.findById(126L).get());
+        Support support3 = new Support(17000,memberRepository.findById(2L).get(), supportRequestRepository.findById(297L).get());
         supportRepository.save(support3);
     }
 
