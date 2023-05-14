@@ -44,8 +44,8 @@ public class ReviewRepositoryTests {
     /*후기게시판 등록*/
     @Test
     public void saveTest() {
-        for(int i = 1; i <= 5; i++) {
-            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(29L).get());
+        for(int i = 1; i <= 13; i++) {
+            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(50L).get());
             reviewRepository.save(review);
         }
     }

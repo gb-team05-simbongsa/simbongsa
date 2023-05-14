@@ -45,6 +45,8 @@ public interface FreeBoardService {
                 .id(freeBoard.getId())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
+                .createdDate(freeBoard.getCreatedDate())
+                .updatedDate(freeBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
                 .freeBoardReplies(freeBoard.getFreeBoardReplies())
                 .freeBoardFiles(freeBoard.getFreeBoardFiles())

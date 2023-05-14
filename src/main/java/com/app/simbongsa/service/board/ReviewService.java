@@ -28,6 +28,8 @@ public interface ReviewService {
                 .id(review.getId())
                 .boardTitle(review.getBoardTitle())
                 .boardContent(review.getBoardContent())
+                .createdDate(review.getCreatedDate())
+                .updatedDate(review.getUpdatedDate())
                 .memberDTO(toMemberDTO(review.getMember()))
                 .reviewReplies(review.getReviewReplies())
                 .reviewFiles(review.getReviewFiles())
