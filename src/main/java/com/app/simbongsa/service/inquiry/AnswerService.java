@@ -38,7 +38,6 @@ public interface AnswerService {
                 .id(inquiryDTO.getId())
                 .inquiryTitle(inquiryDTO.getInquiryTitle())
                 .inquiryContent(inquiryDTO.getInquiryContent())
-                .inquiryStatus(inquiryDTO.getInquiryStatus())
                 .member(toMemberEntity(inquiryDTO.getMemberDTO()))
                 .build();
     }

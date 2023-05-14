@@ -28,6 +28,11 @@ public class InquiryServiceImpl implements InquiryService {
     private final InquiryRepository inquiryRepository;
 
     @Override
+    public void saveInquiry(InquiryDTO inquiryDTO) {
+        inquiryRepository.save(toInquiryEntity(inquiryDTO));
+    }
+
+    @Override
     public Page<InquiryDTO> getInquiry(Integer page, AdminBoardSearch adminBoardSearch) {
         Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(page, 5));
         List<InquiryDTO> inquiryDTOS = inquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
