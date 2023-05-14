@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심봉사 | 봉사 목록</title>
+    <title>심봉사 | 후 목록</title>
     <link rel="stylesheet" href="/css/volunteer-work/work.css">
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/main/header.css">
@@ -41,31 +41,30 @@
                         <h4 class="service-header">
                             진행 중인 봉사 정보
                         </h4>
-                        <select class="select-region">
-                            <option value="">전체보기</option>
-                            <option value="">서울특별시</option>
-                            <option value="">경기도</option>
-                            <option value="">충청북도</option>
-                            <option value="">충청남도</option>
-                            <option value="">경상남도</option>
-                            <option value="">경상북도</option>
-                            <option value="">전라남도</option>
-                            <option value="">전라북도</option>
-                        </select>
+                            <form name="goForm" action="/support/support-list" style="height: 34px;">
+                                <input name="keyword" type="hidden" value="" id="inputOp">
+                                <select class="select-region" id="selectOp">
+                                    <option value="">전체보기</option>
+                                    <option value="후원 많은순">후원 많은순</option>
+                                    <option value="후원 적은순">후원 적은순</option>
+                                    <option value="최신순">최신순</option>
+                                </select>
+                            </form>
                             <!-- <button type="button" class="button">지원</button> -->
                         </div>
                     </div>
                     <!--  -->
-                    <div>
+                    <div class="test"></div>
+                    <div th:each="support : ${supportRequestDTOs}">
                         
                         <div class="service-items">
                             <div class="service-items-wrapper">
                                 <div class="service-items-content">
                                     <div class="name">
-                                        <span class="cruit">[모집중]</span>
+                                        <span class="cruit" th:text="${support.id}">[모집중]</span>
                                         [마감 <span class="last-date-text">3</span> 일전]
                                     </div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
+                                    <div class="title" th:text="${support.supportRequestContent}">서울시 환경정화 봉사자 모집</div>
                                     <div class="dates">
                                         <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
                                         <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
@@ -77,107 +76,23 @@
                         </div>
                     </div>
                     <!--  -->
-                    <div>
-                       
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">
-                                        <span class="cruit">[모집중]</span>
-                                        [마감 <span class="last-date-text">3</span> 일전]
-                                    </div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                        <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div>
-                       
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">
-                                        <span class="cruit">[모집중]</span>
-                                        [마감 <span class="last-date-text">3</span> 일전]
-                                    </div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                        <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div>
-                        
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">
-                                        <span class="cruit">[모집중]</span>
-                                        [마감 <span class="last-date-text">3</span> 일전]
-                                    </div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                        <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                   
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div>
-                        
-                        <div class="service-items">
-                            <div class="service-items-wrapper">
-                                <div class="service-items-content">
-                                    <div class="name">심봉사(SimBongSa)
-                                        <span class="cruit">[모집중]</span>
-                                    </div>
-                                    <div class="title">서울시 환경정화 봉사자 모집</div>
-                                    <div class="dates">
-                                        <span class="dates-text">
-                                            [모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                        <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
-                                    </div>
-                                    
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
+
                     <!--  -->
                 </section>
             </div>
             <div>
                 <div class="paging" style="text-align: center">
-                    <a class="changePrev" style="color: black">
-                        <code>&lt;</code>
-                    </a>
-                    <code id="currentPage" class="currentPage">1</code>
-                    <a class="changePage" style="color: black">
-                        <code>2</code>
-                    </a>
-                    <a class="changeNext" style="color: black">
-                        <code>&gt;</code>
-                    </a>
+                    <a th:if="${pageDTO.prev}" th:href="@{/support/support-list} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                    <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                        <a th:href="@{/support/support-list} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                        <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
+                    </th:block>
+                    <a th:if="${pageDTO.next}" th:href="@{/support/support-list} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
                 </div>
-                <!-- <form name="pageForm">
-                  <input type="hidden">
-                  <input type="hidden">
-                </form> -->
+                <form name="pageForm">
+                    <input type="hidden">
+                    <input type="hidden">
+                </form>
             </div>
             <div class="service-help">
                 <p>마지막 정보 수정 : 2023-04-19</p>
@@ -191,4 +106,8 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let supports = [[${supportRequestDTOs}]];
+</script>
+<script src="/js/support/support-list.js"></script>
 </html>
