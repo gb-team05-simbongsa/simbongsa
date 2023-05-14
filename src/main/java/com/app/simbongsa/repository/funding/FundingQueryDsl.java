@@ -35,6 +35,6 @@ public interface FundingQueryDsl {
     public void updateWaitToAcceptByIds(List<Long> ids);
 
     // 펀딩 전체 목록조회(무한스크롤)
-    public Slice<Funding> findAllWithSlice(Pageable pageable);
+    public Slice<Funding> findAllWithSlice_QueryDsl(Pageable pageable);
 
 }

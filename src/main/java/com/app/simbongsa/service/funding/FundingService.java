@@ -8,7 +8,9 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
+import org.hibernate.type.StringNVarcharType;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
 import java.time.LocalDateTime;
@@ -19,7 +21,7 @@ public interface FundingService {
     public List<FundingDTO> getAllPopularFundingList();
 
     //펀딩 전체 목록 조회
-    public Slice<FundingDTO> getFundingList();
+    public Slice<FundingDTO> getFundingList(Pageable pageable);
 
     // 펀딩 상세보기
     public FundingDTO getFundingDetail(Long fundingId);
@@ -58,4 +60,6 @@ public interface FundingService {
                 .fundingPercent((int)((double)funding.getFundingCurrentPrice() / funding.getFundingTargetPrice() * 100))
                 .build();
     }
+
+
 }

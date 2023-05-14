@@ -9,10 +9,7 @@ import com.app.simbongsa.search.admin.AdminFundingSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,9 +35,12 @@ public class FundingServiceImpl implements FundingService {
     }
 
     @Override
-    public Slice<FundingDTO> getFundingList() {
+    public Slice<FundingDTO> getFundingList(Pageable pageable) {
+        Slice<Funding> fundingList = fundingRepository.findAllWithSlice_QueryDsl(pageable);
 
-    return null;
+        List<FundingDTO> fundingDTOS = fundingList.getContent().stream().map(this::toFundingDTO).collect(Collectors.toList());
+        return new SliceImpl<>(fundingDTOS, pageable, fundingList.hasNext());
+
     }
 
     //펀딩 상세보기 파일빼고 controller 완성

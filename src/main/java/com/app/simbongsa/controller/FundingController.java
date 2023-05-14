@@ -1,15 +1,16 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.FundingDTO;
+import com.app.simbongsa.domain.FundingItemDTO;
+import com.app.simbongsa.service.funding.FundingItemService;
 import com.app.simbongsa.service.funding.FundingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/funding/*")
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FundingController {
     private final FundingService fundingService;
 
+    private final FundingItemService fundingItemService;
+
+
     @GetMapping("funding-creater-info")
     public String fundingCreate() {return "funding/funding-creater-info.html";}
 
@@ -25,9 +29,9 @@ public class FundingController {
 //    public String fundingDetail() {return "funding/funding-detail.html";}
 
 
-    @GetMapping("funding-detail{id}")
-    public String fundingDetail(@PathVariable Long id, Model model) {
-        model.addAttribute("funding", fundingService.getFundingDetail(id));
+    @GetMapping("funding-detail{fundingId}")
+    public String fundingDetail(@PathVariable Long fundingId, Model model) {
+        model.addAttribute("funding", fundingService.getFundingDetail(fundingId));
 
         return "/funding/funding-detail";}
 
@@ -39,10 +43,23 @@ public class FundingController {
     public String fundingInitial() {return "funding/funding-initial-info.html";}
 
     @GetMapping("funding-item")
-    public String fundingItem() {return "funding/funding-item.html";}
+    public String fundingItemForm() {return "funding/funding-item.html";}
+
+//    @PostMapping("funding-item")
+//    public String fundingItem(FundingItemDTO fundingItemDTO){
+//        fundingItemService.ItemSave(fundingItemDTO);
+//        return
+//    }
+
+//    @GetMapping("funding-list")
+//    public String fundinglist() {return "funding/funding-list.html";}
 
     @GetMapping("funding-list")
-    public String fundinglist() {return "funding/funding-list.html";}
+    @ResponseBody
+    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page) {
+    PageRequest pageRequest = PageRequest.of(page, 12);
+        return fundingService.getFundingList(pageRequest);
+    }
 
     @GetMapping("funding-payment")
     public String fundingPayment() {return "funding/funding-payment.html";}
