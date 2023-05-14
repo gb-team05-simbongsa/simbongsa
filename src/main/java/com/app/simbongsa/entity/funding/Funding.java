@@ -57,6 +57,7 @@ public class Funding {
     }
 
     // 테스트용 생성자
+
     public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator) {
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
