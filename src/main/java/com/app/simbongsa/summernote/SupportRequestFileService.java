@@ -1,10 +1,12 @@
 package com.app.simbongsa.summernote;
 
-import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.support.SupportRequest;
+import com.app.simbongsa.repository.support.SupportRepository;
+import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.type.FileRepresentationalType;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,34 +16,34 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class SupportRequestFileService {
     private final SupportRequestFileRepository supportRequestFileRepository;
-
-    @Autowired
-    public SupportRequestFileService(SupportRequestFileRepository supportRequestFileRepository) {
-        this.supportRequestFileRepository = supportRequestFileRepository;
-    }
-
+    private final SupportRequestRepository supportRequestRepository;
     // 이미지 파일 저장 기능 구현
-    public SupportRequestFile saveImage(MultipartFile imageFile, SupportRequest supportRequest) {
+    public SupportRequestFile saveImage(MultipartFile imageFile) {
+        log.info("이미지 저장 요청 받음");
+
         try {
             // 이미지 파일을 저장하는 로직 구현
             String fileName = imageFile.getOriginalFilename();
             String fileUuid = UUID.randomUUID().toString();
-            String filePath = "/uploads/" + fileUuid;
+            String filePath = "/Users/hyun/uploads/" + fileUuid; /*/uploads/*/
             FileRepresentationalType fileRepresentationalType = FileRepresentationalType.NORMAL;
 
-
-            Path savePath = Paths.get("C:/uploads/" + fileUuid);
+            Path savePath = Paths.get("/Users/hyun/uploads/" + fileUuid); /*C:/uploads/*/
             try (InputStream inputStream = imageFile.getInputStream()) {
                 Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
             }
 
             // SupportRequestFile 엔티티 생성 및 저장
-            SupportRequestFile supportRequestFile = new SupportRequestFile(fileName, fileUuid, filePath, fileRepresentationalType, supportRequest);
+            SupportRequestFile supportRequestFile = new SupportRequestFile(fileName, fileUuid, filePath, fileRepresentationalType, supportRequestRepository.findById(144L).get());
+
             return supportRequestFileRepository.save(supportRequestFile);
         } catch (IOException e) {
             // 예외 처리
@@ -58,10 +60,9 @@ public class SupportRequestFileService {
         String filePath = supportRequestFile.getFilePath();
 
         try {
-
-            Path imagePath = Paths.get("C:" + filePath);
-            byte[] fileBytes = Files.readAllBytes(imagePath);
-            return fileBytes;
+//            Path imagePath = Paths.get("/Users/hyun" + filePath); /*"C:*/
+            Path imagePath = Paths.get(filePath);
+            return Files.readAllBytes(imagePath);
         } catch (IOException e) {
             // 예외 처리
             e.printStackTrace();
@@ -71,14 +72,14 @@ public class SupportRequestFileService {
 
     // 써머노트에서 이미지 파일 저장 기능 구현
     public String saveSummernoteImage(MultipartFile imageFile) {
+        log.info("써머노트 이미지 저장 요청 받음");
         try {
             // 이미지 파일을 저장하는 로직 구현
             String fileName = imageFile.getOriginalFilename();
             String fileUuid = UUID.randomUUID().toString();
-            String filePath = "/uploads/" + fileUuid;
+            String filePath = "/Users/hyun/uploads/" + fileUuid; /*/uploads/*/
 
-
-            Path savePath = Paths.get("C:/uploads/" + fileUuid);
+            Path savePath = Paths.get("/Users/hyun/uploads/" + fileUuid);/*C:uploads/*/
             try (InputStream inputStream = imageFile.getInputStream()) {
                 Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
             }
@@ -89,5 +90,25 @@ public class SupportRequestFileService {
             e.printStackTrace();
             throw new RuntimeException("Failed to save Summernote image file.");
         }
+    }
+
+    public SupportRequestFileDTO toDTO(SupportRequestFile supportRequestFile) {
+        return SupportRequestFileDTO.builder()
+                .fileName(supportRequestFile.getFileName())
+                .fileUuid(supportRequestFile.getFileUuid())
+                .filePath(supportRequestFile.getFilePath())
+                .fileRepresentationalType(supportRequestFile.getFileRepresentationalType())
+                .supportRequest(supportRequestFile.getSupportRequest())
+                .build();
+    }
+
+    public SupportRequestFile toEntity(SupportRequestFileDTO supportRequestFileDTO){
+        return SupportRequestFile.builder()
+                .fileName(supportRequestFileDTO.getFileName())
+                .filePath(supportRequestFileDTO.getFilePath())
+                .fileRepresentationalType(supportRequestFileDTO.getFileRepresentationalType())
+                .fileUuid(supportRequestFileDTO.getFileUuid())
+                .supportRequest(supportRequestFileDTO.getSupportRequest())
+                .build();
     }
 }
