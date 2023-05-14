@@ -27,11 +27,19 @@ public interface MemberService extends UserDetailsService {
 //    회원 상세보기
     public MemberDTO getMemberById(Long id);
 
+    public MemberDTO getMemberByEmail(String memberEmail);
+
 //    회원 탈퇴(관리자)
     public void updateStatusByIds(List<Long> ids, MemberStatus memberStatus);
 
 //    후원 명단 조회
     public List<Member> getSupportList(Long id);
+
+    /* 카카오 토큰 접근 */
+    public String getKaKaoAccessToken(String code, String type);
+
+    /* 카카오 사용자 정보 불러오기 */
+    public MemberDTO getKakaoInfo(String token) throws Exception;
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())

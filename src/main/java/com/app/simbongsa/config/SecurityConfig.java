@@ -67,6 +67,8 @@ public class SecurityConfig {
                 .antMatchers(IGNORE_VOLUNTEER_WORK_PATH)
                 .antMatchers(IGNORE_CALENDAR_PATH)
                 .antMatchers(IGNORE_WELFARECENTER_PATH)
+                /*일단 admin 편하게 들어갈 수 있게 한건데 나중에 수정하기*/
+                .antMatchers(ADMIN_PATH)
                 /*.antMatchers(IGNORE_MEMBER_PATH)*/
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
@@ -76,7 +78,14 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+                .antMatchers(MYPAGE_PATH).hasRole(Role.ADMIN.name())
+                .antMatchers(SUPPORT_PAGE).hasRole(Role.ADMIN.name())
+                .antMatchers(COMMUNITY_FREE_PAGE).hasRole(Role.ADMIN.name())
+                .antMatchers(COMMUNITY_REVIEW_PAGE).hasRole(Role.ADMIN.name())
+                .antMatchers(INQUIRY_PAGE).hasRole(Role.ADMIN.name())
+
                 .antMatchers(MYPAGE_PATH).hasRole(Role.MEMBER.name())
+                /*일단 funding 편하게 들어갈 수 있게 한건데 나중에 수정하기*/
                 /*.antMatchers(FUNDING_PATH).hasRole(Role.MEMBER.name())*/
                 .antMatchers(SUPPORT_PAGE).hasRole(Role.MEMBER.name())
                 .antMatchers(COMMUNITY_FREE_PAGE).hasRole(Role.MEMBER.name())

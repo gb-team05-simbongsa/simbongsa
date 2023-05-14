@@ -37,7 +37,6 @@ $('.submit-button').on('click', () => {
         $emailError.css('display', 'block');
         return;
     }
-    $('.modal-check').css('transform', 'translate(-150%, -800%)');
     document.loginForm.submit();
 });
 
@@ -53,9 +52,12 @@ $modalKeepLogin.click(() => {
 
 
 // login 실패시 모달창 띄우기
-/*$(!document.loginForm.submit() {
-    $('.modal-check').css('transform', 'translate(-150%, -800%)');
-}*/
+// $(!document.loginForm.submit() {
+    if(new URLSearchParams(location.search).get("check") == "false") {
+        $('.modal-check').css('transform', 'translate(-150%, -800%)');
+    }
+// }
+
 $('.modal-ok').on('click', () => {
     $('.modal-check').css('transform', 'translate(-50%, -50%)');
 })
