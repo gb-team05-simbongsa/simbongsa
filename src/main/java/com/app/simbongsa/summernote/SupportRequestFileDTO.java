@@ -8,7 +8,6 @@ import lombok.Data;
 
 @Data
 public class SupportRequestFileDTO {
-    private Long id;
     private String fileName;
     private String fileUuid;
     private String filePath;
@@ -19,7 +18,6 @@ public class SupportRequestFileDTO {
     // ...
     @Builder
     public SupportRequestFileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, SupportRequest supportRequest) {
-        this.id = id;
         this.fileName = fileName;
         this.fileUuid = fileUuid;
         this.filePath = filePath;
@@ -29,7 +27,6 @@ public class SupportRequestFileDTO {
 
     public static SupportRequestFileDTO toDTO(SupportRequestFile supportRequestFile) {
         return SupportRequestFileDTO.builder()
-                .id(supportRequestFile.getId())
                 .fileName(supportRequestFile.getFileName())
                 .fileUuid(supportRequestFile.getFileUuid())
                 .filePath(supportRequestFile.getFilePath())

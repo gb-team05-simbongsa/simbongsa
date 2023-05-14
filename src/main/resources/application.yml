@@ -30,7 +30,7 @@ spring:
   #Summernote
   summernote:
     image:
-      upload-dir: C:\uploads
+      upload-dir: /Users/hyun/uploads
 
   security:
     oauth2:
@@ -52,5 +52,5 @@ spring:
 
   app:
     file:
-      upload-dir: C:\uploads
+      upload-dir: /Users/hyun/uploads
 
