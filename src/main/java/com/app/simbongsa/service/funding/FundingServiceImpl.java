@@ -42,9 +42,12 @@ public class FundingServiceImpl implements FundingService {
 
     return null;
     }
+
+    //펀딩 상세보기 파일빼고 controller 완성
     @Override
-    public FundingDTO getFundingDetail(Long id) {
-        return null;
+    public FundingDTO getFundingDetail(Long fundingId) {
+        return toFundingDTO(fundingRepository.findById(fundingId).get());
+
     }
 
     @Override
@@ -54,3 +57,4 @@ public class FundingServiceImpl implements FundingService {
         return new PageImpl<>(fundingDTOS, fundings.getPageable(), fundings.getTotalElements());
     }
 }
+

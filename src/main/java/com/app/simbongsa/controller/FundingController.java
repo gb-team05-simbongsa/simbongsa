@@ -1,9 +1,14 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.FundingDTO;
+import com.app.simbongsa.service.funding.FundingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -11,11 +16,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Slf4j
 public class FundingController {
+    private final FundingService fundingService;
+
     @GetMapping("funding-creater-info")
     public String fundingCreate() {return "funding/funding-creater-info.html";}
 
-    @GetMapping("funding-detail")
-    public String fundingDetail() {return "funding/funding-detail.html";}
+//    @GetMapping("funding-detail")
+//    public String fundingDetail() {return "funding/funding-detail.html";}
+
+
+    @GetMapping("funding-detail{id}")
+    public String fundingDetail(@PathVariable Long id, Model model) {
+        model.addAttribute("funding", fundingService.getFundingDetail(id));
+
+        return "/funding/funding-detail";}
+
 
     @GetMapping("funding-gift")
     public String fundingGift() {return "funding/funding-gift.html";}

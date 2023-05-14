@@ -22,7 +22,6 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
     private final JPAQueryFactory query;
 
 
-    //    공양미 충전 내역 전체 조회(페이징), 상태에 따른 변화
     @Override
     public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType, Pageable pageable) {
         BooleanExpression ricePaymentUsedEq = adminPaymentSearch.getRicePaymentUsed() == null ? null : ricePayment.ricePaymentUsed.eq(adminPaymentSearch.getRicePaymentUsed());
@@ -42,6 +41,31 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
         Long count = query.select(ricePayment.count())
                 .from(ricePayment)
                 .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
+                .fetchOne();
+
+        return new PageImpl<>(foundRicePayment, pageable, count);
+    }
+
+    //    공양미 충전 내역 전체 조회(페이징), 상태에 따른 변화
+    @Override
+    public Page<RicePayment> findByPaymentStatusWithPaging(AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentFirstType, RicePaymentType ricePaymentSecondType, Pageable pageable) {
+        BooleanExpression ricePaymentUsedEq = adminPaymentSearch.getRicePaymentUsed() == null ? null : ricePayment.ricePaymentUsed.eq(adminPaymentSearch.getRicePaymentUsed());
+        BooleanExpression memberEmailLike = adminPaymentSearch.getMemberEmail() == null ? null : ricePayment.member.memberEmail.like("%" + adminPaymentSearch.getMemberEmail() + "%");
+        BooleanExpression riceRefundRequestPriceLt = adminPaymentSearch.getRiceRefundRequestPrice() == null ? null : ricePayment.ricePaymentUsed.lt(adminPaymentSearch.getRiceRefundRequestPrice());
+
+
+        List<RicePayment> foundRicePayment = query.select(ricePayment)
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(ricePaymentFirstType).or(ricePayment.ricePaymentStatus.eq(ricePaymentSecondType)))
+                .where(ricePaymentUsedEq, memberEmailLike)
+                .orderBy(ricePayment.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(ricePayment.count())
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(ricePaymentFirstType).or(ricePayment.ricePaymentStatus.eq(ricePaymentSecondType)))
                 .fetchOne();
 
         return new PageImpl<>(foundRicePayment, pageable, count);
