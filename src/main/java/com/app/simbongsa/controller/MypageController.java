@@ -1,21 +1,28 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
+import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.repository.board.FreeBoardRepository;
+import com.app.simbongsa.repository.rice.RicePaymentRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.xml.ws.Service;
 import java.util.List;
 
 @Controller
@@ -26,6 +33,8 @@ public class MypageController {
     private final InquiryService inquiryService;
     private final AnswerService answerService;
     private final SupportRequestService supportRequestService;
+    private final FreeBoardService freeBoardService;
+    private final FreeBoardRepository freeBoardRepository;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -72,8 +81,19 @@ public class MypageController {
         return "mypage/my-question";
     }*/
 
+    /* 내 자유 게시글 목록 */
     @GetMapping("my-review")
-    public String myReview(){
+    public String myReview(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
+        Long memberId = userDetail.getId();
+        log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        page = page == null ? 0 : page - 1;
+        log.info(page + "pagepagepagepapgapgagpdspagpsdgpasdpgapsppage");
+        Page<FreeBoard> myFreeB = freeBoardRepository.findByMemberId(PageRequest.of(page, 5), userDetail);
+        log.info(myFreeB + "이거 나온망로 ㅏㅇㅁ널이ㅓ ㅁ니;ㅏ어ㅏ림ㄴㅇㄻㅇㄴㄻㄴㅇㄻㅇㄻㅇㄴㄹㄴㅇㅁ");
+        Page<FreeBoardDTO> myFreeBoards = freeBoardService.getMyFreeBoards(page, userDetail);
+
+        model.addAttribute("myFreedBoards", myFreeBoards.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
         return "mypage/my-review";
     }
 

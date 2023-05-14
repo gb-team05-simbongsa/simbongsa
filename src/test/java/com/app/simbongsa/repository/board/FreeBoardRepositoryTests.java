@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
@@ -64,7 +65,8 @@ public class FreeBoardRepositoryTests {
     @Test
     public void findByMemberIdTest() {
         PageRequest pageRequest = PageRequest.of(0, 4);
-        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, 50L);
+        UserDetail userDetail = new UserDetail();
+        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, userDetail);
         freeBoards.stream().map(FreeBoard::toString).forEach(log::info);
 
         log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
