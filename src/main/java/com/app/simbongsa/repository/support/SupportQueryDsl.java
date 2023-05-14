@@ -13,10 +13,10 @@ public interface SupportQueryDsl {
     public Page<Support> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
 
     /* 후원 참여 내역 조회(페이징처리) - 후원 상세페이지 */
-    public Page<Support> findAllSupportAttendWithMember_QueryDSL(Pageable pageable);
+    public Page<Support> findAllSupportAttendWithMember_QueryDSL(Pageable pageable, Long id);
 
     /* 총 후원 참여 내역*/
-    public Long findAllSupportAttend_QueryDSL();
+    public Long findAllSupportAttend_QueryDSL(Long id);
 
 
 }

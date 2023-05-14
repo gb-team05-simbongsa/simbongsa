@@ -6,6 +6,7 @@ import com.app.simbongsa.type.RequestType;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class SupportRequestDTO {
     private MemberDTO memberDTO;
     private List<Support> supports;
     private List<SupportRequestFile> supportRequestFiles;
+    private int totalSupportPrice;
 
     @Builder
     public SupportRequestDTO(Long id, String supportRequestTitle, String supportRequestContent, RequestType supportRequestStatus, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO, List<Support> supports, List<SupportRequestFile> supportRequestFiles) {
@@ -32,5 +34,15 @@ public class SupportRequestDTO {
         this.memberDTO = memberDTO;
         this.supports = supports;
         this.supportRequestFiles = supportRequestFiles;
+        this.totalSupportPrice = calculateTotalSupportPrice();
     }
+
+    private int calculateTotalSupportPrice() {
+        int total = 0;
+        for (Support support : supports) {
+            total += support.getSupportPrice();
+        }
+        return total;
+    }
+
 }

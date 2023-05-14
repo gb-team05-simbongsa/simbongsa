@@ -53,7 +53,7 @@ public class SupportRepositoryTests {
     @Test
     public void findAllSupportAttendWithMember_QueryDSLTest(){
         PageRequest pageRequest = PageRequest.of(0, 5);
-        Page<Support> supports = supportRepository.findAllSupportAttendWithMember_QueryDSL(pageRequest);
+        Page<Support> supports = supportRepository.findAllSupportAttendWithMember_QueryDSL(pageRequest, 295L);
         supports.stream().map(Support::toString).forEach(log::info);
         log.info("====================" + supports.getTotalElements() + "===========================");
     }
