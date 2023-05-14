@@ -73,9 +73,9 @@ public class ReviewRepositoryTests {
 //    리뷰게시판 댓글 등록
     @Test
     public void saveReplies(){
-        for(int i =1; i<=2; i++){
-            Optional<Review> byId = reviewRepository.findById(91L);
-            ReviewReply reviewReply = new ReviewReply("댓글 테스트" + i, memberRepository.findById(29L).get(), byId.get());
+        for(int i =1; i<=5; i++){
+            Optional<Review> byId = reviewRepository.findById(169L);
+            ReviewReply reviewReply = new ReviewReply("댓글 테스트" + i, memberRepository.findById(50L).get(), byId.get());
             reviewReplyRepository.save(reviewReply);
         }
     }
@@ -83,7 +83,7 @@ public class ReviewRepositoryTests {
 //    댓글 삭제
     @Test
     public void deleteReplyTest() {
-        reviewReplyRepository.delete(reviewReplyRepository.findById(3L).get());
+        reviewReplyRepository.delete(reviewReplyRepository.findById(326L).get());
     }
 
 //    댓글 수

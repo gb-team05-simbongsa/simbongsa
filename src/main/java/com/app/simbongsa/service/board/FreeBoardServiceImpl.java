@@ -1,13 +1,17 @@
 package com.app.simbongsa.service.board;
 
 import com.app.simbongsa.domain.FreeBoardDTO;
+import com.app.simbongsa.domain.FreeBoardReplyDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
@@ -19,36 +23,73 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Qualifier("freeBoard") @Primary
+@Slf4j
 public class FreeBoardServiceImpl implements FreeBoardService{
     private final FreeBoardRepository freeBoardRepository;
+    private final MemberRepository memberRepository;
+//    private final FreeBoardRepository freeBoardRepository;
 
-    /*저장*/
+    /*댓글 저장*/
     @Override
-    public void register(FreeBoardDTO freeBoardDTO, Long memberId) {
+    public void registerReply(FreeBoardReplyDTO freeBoardReplyDTO) {
+//        memberRepository.findById(freeBoardReplyDTO.getId()).ifPresent(
+//                member ->
+//                        freeBoardRepository.findById(freeBoardReplyDTO.getId()).ifPresent(
+//                                freeBoard -> {
+//                                    FreeBoardReply freeBoardReply = FreeBoardReply
+//                                }
+//                        )
+//        );
+    }
 
+    /*댓글 삭제*/
+    @Override
+    public void deleteReply(Long replyId) {
+
+    }
+
+    /*댓글 목록*/
+    @Override
+    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, Pageable pageable) {
+        return null;
+    }
+
+    /*댓글 갯수수*/
+   @Override
+    public Integer getReplyCount(Long freeBoardId) {
+        return null;
     }
 
     /*최신순 무한스크롤 전체 목록*/
     @Override
     public Slice<FreeBoardDTO> getNewList(Pageable pageable) {
-        return null;
+        Slice<FreeBoard> freeBoards =
+                freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(PageRequest.of(0,10));
+        List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
+
+        return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
     }
 
     /*인기순 무한스크롤 전체 목록*/
     @Override
     public Slice<FreeBoardDTO> getLikesList(Pageable pageable) {
-        return null;
+        Slice<FreeBoard> freeBoards =
+                freeBoardRepository.findAllByLikeCountDescWithPaging_QueryDSL(PageRequest.of(0,10));
+        List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
+        return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
     }
 
     /*상세*/
     @Override
-    public FreeBoardDTO getDetail(Long memberId) {
-        return null;
+    public FreeBoardDTO getDetail(Long freeBoardId) {
+        Optional<FreeBoard> freeBoard = freeBoardRepository.findByIdForDetail_QueryDsl(freeBoardId);
+        return toFreeBoardDTO(freeBoard.get());
     }
 
     /*작성*/

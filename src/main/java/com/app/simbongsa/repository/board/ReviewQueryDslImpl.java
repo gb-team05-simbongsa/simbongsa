@@ -119,9 +119,11 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
     //    후기게시판 상세페이지 조회
     @Override
-    public Optional<Review> findByIdForDetail(Long reviewId) {
+    public Optional<Review> findByIdForDetail_QueryDsl(Long reviewId) {
         return Optional.ofNullable(query.select(review)
                 .from(review)
+                .join(review.reviewFiles)
+                .fetchJoin()
                 .where(review.id.eq(reviewId))
                 .fetchOne());
     }

@@ -1,17 +1,32 @@
 package com.app.simbongsa.service.board;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.ReviewDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 import java.util.List;
 
 public interface ReviewService {
+    /*상세보기*/
+    public ReviewDTO getDetail(Long reviewId);
+
+    /*작성하기*/
+    public void write(Review review);
+
+    /*최신순 목록*/
+    public Slice<ReviewDTO> getNewReviewList(Pageable pageable);
+
+    /*인기순 목록*/
+    public Slice<ReviewDTO> getLikesReviewList(Pageable pageable);
 
 //    목록 전체 조회(페이징)
     public Page<ReviewDTO> getReview(Integer page, AdminBoardSearch adminBoardSearch);
@@ -53,4 +68,13 @@ public interface ReviewService {
                 .memberStatus(member.getMemberStatus())
                 .build();
     }
+
+    default FileDTO fileToDTO(FreeBoardFile freeBoardFile){
+        return FileDTO.builder()
+                .fileUuid(freeBoardFile.getFileUuid())
+                .filePath(freeBoardFile.getFilePath())
+                .fileName(freeBoardFile.getFileName())
+                .build();
+    }
+
 }
