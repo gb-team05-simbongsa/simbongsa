@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,8 @@ public class SupportRepositoryTests {
     @Test
     public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<Support> supports = supportRepository.findByMemberId(pageRequest, 542L);
+        UserDetail userDetail = new UserDetail();
+        Page<Support> supports = supportRepository.findByMemberId(pageRequest, userDetail);
         supports.stream().map(Support::toString).forEach(log::info);
         log.info("====================유저 아이디 542의 후원목록수=================" + supports.getTotalElements());
     }

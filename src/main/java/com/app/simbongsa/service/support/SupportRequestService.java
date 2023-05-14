@@ -1,9 +1,11 @@
 package com.app.simbongsa.service.support;
 
+import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.SupportRequest;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import org.springframework.data.domain.Page;
 
@@ -25,6 +27,9 @@ public interface SupportRequestService {
 
 //    후원 목록 전체 조회(후원 목록 페이지)
     public Page<SupportRequestDTO> getSupportRequestAllWithPaging(Integer page, String keyword);
+
+    /* 내 후원요청목록 페이징처리해서 불러오기 */
+    Page<SupportRequestDTO> getMySupportRequest(Integer page, UserDetail userDetail);
 
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {
         return SupportRequestDTO.builder()

@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.supportRequest;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
@@ -32,8 +33,8 @@ public class SupportRequestRepositoryTests {
     /* 후원요청목록 save */
     @Test
     public void saveTest(){
-        for (int i = 1; i <= 23; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(321L).get());
+        for (int i = 1; i <= 25; i++) {
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(278L).get());
             supportRequestRepository.save(supportRequest);
         }
         /*for (int i = 1; i <= 3; i++) {
@@ -61,7 +62,8 @@ public class SupportRequestRepositoryTests {
     @Test
     public void findByMemberIdTest(){
         PageRequest pageRequest = PageRequest.of(0,3);
-        Page<SupportRequest> supportRequests = supportRequestRepository.findByMemberId(pageRequest, 6L);
+        UserDetail userDetail = new UserDetail();
+        Page<SupportRequest> supportRequests = supportRequestRepository.findByMemberId(pageRequest, userDetail);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
         log.info("====================유저 아이디 6의 후원요청목록수=================" + supportRequests.getTotalElements());
     }

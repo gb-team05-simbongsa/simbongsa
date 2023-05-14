@@ -1,17 +1,19 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface SupportRequestQueryDsl {
     /* 유저별 후원 요청 조회 */
-    public Page<SupportRequest> findByMemberId(Pageable pageable, Long id);
+    public Page<SupportRequest> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
     // 후원 요청 목록
     public Slice<SupportRequest> findAllSupportRequest(Pageable pageable);
 
