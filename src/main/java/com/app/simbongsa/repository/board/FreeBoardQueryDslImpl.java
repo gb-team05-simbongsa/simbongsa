@@ -128,9 +128,11 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     //    자유게시판 상세페이지 조회
     @Override
-    public Optional<FreeBoard> findByIdForDetail(Long freeBoardId) {
+    public Optional<FreeBoard> findByIdForDetail_QueryDsl(Long freeBoardId) {
         return Optional.ofNullable(query.select(freeBoard)
                 .from(freeBoard)
+                .join(freeBoard.freeBoardFiles)
+                .fetchJoin()
                 .where(freeBoard.id.eq(freeBoardId))
                 .fetchOne());
     }
