@@ -2,6 +2,7 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.service.member.MemberService;
+import com.app.simbongsa.type.MemberJoinType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member/*")
@@ -27,7 +31,7 @@ public class MemberController {
 
     /* 회원가입후 login 페이지로 이동*/
     @PostMapping("join")
-    public RedirectView join(MemberDTO memberDTO) {
+    public RedirectView join(MemberDTO memberDTO, String joinType) {
         memberService.join(memberDTO, passwordEncoder);
         return new RedirectView("/member/login");
     }
@@ -63,4 +67,43 @@ public class MemberController {
     /* 로그아웃 */
     @GetMapping("logout")
     public void goToLogout() {;}
+
+    /* 카카오 회원가입 */
+    @GetMapping("kakao")
+    public RedirectView kakaoJoin(String code, RedirectAttributes redirectAttributes) throws Exception {
+        String token = memberService.getKaKaoAccessToken(code, "join");
+        MemberDTO kakaoInfo = memberService.getKakaoInfo(token);
+
+        kakaoInfo.setMemberJoinType(MemberJoinType.카카오);
+
+        MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
+
+        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+        if (memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오) {
+            redirectAttributes.addFlashAttribute("kakaoInfo", kakaoInfo.getMemberEmail());
+            return new RedirectView("/member/join");
+        }
+
+        return new RedirectView("/member/join-select?join=false");
+    }
+
+    /* 카카오 로그인 */
+    @GetMapping("kakao-login")
+    public RedirectView kakaoLogin(String code) throws Exception {
+        /*String userIdentification = null;*/
+
+        String token = memberService.getKaKaoAccessToken(code, "login");
+        memberService.getKakaoInfo(token);
+
+        MemberDTO kakaoInfo = memberService.getKakaoInfo(token);
+        MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
+
+        if(memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오){
+            return new RedirectView("/member/login?check=false");
+        }
+
+        /*session.setAttribute("user", userVO);*/
+        return new RedirectView("/main/");
+    }
+
 }

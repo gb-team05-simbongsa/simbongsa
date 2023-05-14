@@ -26,6 +26,7 @@
                     <h1 class="join-title">이메일로 가입하기</h1>
 
                     <form th:action="@{/member/join}" method="post" name="joinForm">
+                        <input type="hidden" name="memberJoinType" th:if="${kakaoInfo} != null" value="카카오">
                         <div class="input-div">
                             <div class="input-title">이름</div>
                             <div class="input-include-div">
@@ -39,13 +40,15 @@
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="text" name="memberEmail" class="input-write" placeholder="이메일 주소를 입력해주세요">
+                                    <input th:if="${kakaoInfo == null}" type="text" name="memberEmail" class="input-write" placeholder="이메일 주소를 입력해주세요">
+                                    <input th:if="${kakaoInfo != null}" type="text" name="memberEmail" class="input-write" placeholder="이메일 주소를 입력해주세요" th:value="${kakaoInfo}" readonly>
                                 </span>
                             </div>
                             <div class="email-error">비워놓을 수 없습니다.</div>
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="text" class="input-write" placeholder="이메일 주소를 확인합니다">
+                                    <input th:if="${kakaoInfo == null}" type="text" class="input-write" placeholder="이메일 주소를 확인합니다">
+                                    <input th:if="${kakaoInfo != null}" type="text" class="input-write" placeholder="이메일 주소를 확인합니다" th:value="${kakaoInfo}" readonly>
                                 </span>
                             </div>
                             <div class="email-error">비워놓을 수 없습니다.</div>
