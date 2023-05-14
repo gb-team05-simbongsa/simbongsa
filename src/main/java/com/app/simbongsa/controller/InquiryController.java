@@ -1,18 +1,23 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.domain.PageDTO;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
+import com.app.simbongsa.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -24,6 +29,7 @@ import java.util.List;
 public class InquiryController {
     private final NoticeService noticeService;
     private final InquiryService inquiryService;
+    private final MemberService memberService;
 
     @GetMapping("notice")
     public String notice(Integer page, Model model) {
@@ -55,8 +61,15 @@ public class InquiryController {
     }
 
     @GetMapping("inquiry-write")
-    public String inquiryWrite() {
+    public String gotoInquiryWrite(InquiryDTO inquiryDTO) {
         return "customerCenter/inquiry-write";
+    }
+
+    @PostMapping("inquiry-write")
+    public String inquiryWrite(InquiryDTO inquiryDTO, @AuthenticationPrincipal UserDetail userDetail){
+        inquiryDTO.setMemberDTO(memberService.getMemberById(userDetail.getId()));
+        inquiryService.saveInquiry(inquiryDTO);
+        return "mypage/my-question";
     }
 
     @GetMapping("search")
