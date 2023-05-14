@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/mypage/paging.css">
 </head>
 <body>
     <!-- 헤더 -->
@@ -55,18 +56,18 @@
                     </div>
                     <!--  -->
                     <div class="test"></div>
-                    <div th:each="support : ${supportRequestDTOs}">
+                    <div th:each="supportRequest : ${supportRequestDTOs}">
                         
                         <div class="service-items">
                             <div class="service-items-wrapper">
                                 <div class="service-items-content">
                                     <div class="name">
-                                        <span class="cruit" th:text="${support.id}">[모집중]</span>
-                                        [마감 <span class="last-date-text">3</span> 일전]
+                                        <span class="cruit" >[모집중]</span>
+                                        <span class="last-date-text" th:text="${supportRequest.id}">3</span>번 게시물
                                     </div>
-                                    <div class="title" th:text="${support.supportRequestContent}">서울시 환경정화 봉사자 모집</div>
+                                    <div class="title" th:text="${supportRequest.supportRequestContent}">서울시 환경정화 봉사자 모집</div>
                                     <div class="dates">
-                                        <span class="dates-text">[모집기간] 2023-04-19 ~ 2023-04-30</span>
+                                        <span class="dates-text" th:text="${supportRequest.totalSupportPrice}">[모집기간] 2023-04-19 ~ 2023-04-30</span>
                                         <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
                                     </div>
                                    

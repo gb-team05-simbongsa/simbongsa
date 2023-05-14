@@ -131,7 +131,7 @@ public class SupportRequestRepositoryTests {
     @Test
     public void findAllWithPagingSearchTest(){
         PageRequest pageRequest = PageRequest.of(0, 3);
-        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch("후원 적은순", pageRequest);
+        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch("후원 많은순", pageRequest);
         supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 
         List<SupportRequest> supportRequestList = supportRequests.getContent();

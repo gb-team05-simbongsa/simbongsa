@@ -37,10 +37,11 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
     }
     /* 후원 참여 내역 조회(페이징처리) - 후원 상세페이지 */
     @Override
-    public Page<Support> findAllSupportAttendWithMember_QueryDSL(Pageable pageable) {
+    public Page<Support> findAllSupportAttendWithMember_QueryDSL(Pageable pageable, Long id) {
         List<Support> foundSupports = query.select(support)
                 .from(support)
                 .join(support.member)
+                .where(support.supportRequest.id.eq(id))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchJoin()
@@ -54,9 +55,10 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
 
     /* 후원 총 참여 내역 수*/
     @Override
-    public Long findAllSupportAttend_QueryDSL() {
+    public Long findAllSupportAttend_QueryDSL(Long id) {
         Long allSupportAttend = query.select(support.count())
                 .from(support)
+                .where(support.supportRequest.id.eq(id))
                 .fetchOne();
         return allSupportAttend;
     }
