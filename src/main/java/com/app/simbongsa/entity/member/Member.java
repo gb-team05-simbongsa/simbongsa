@@ -47,6 +47,7 @@ public class Member {
 //    security용 생성자 생성 (봉사시간 추가)
     @Builder
     public Member(Long id, String memberName, String memberEmail, String memberPassword, String memberAddress, Integer memberAge, String memberInterest, MemberJoinType memberJoinType, UserRankType memberRank, int memberRice, int memberVolunteerTime, String randomKey, Role memberRole, MemberStatus memberStatus) {
+        this.id = id;
         this.memberName = memberName;
         this.memberEmail = memberEmail;
         this.memberPassword = memberPassword;

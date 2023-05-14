@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.entity.board.QFreeBoard;
 import com.app.simbongsa.entity.file.FreeBoardFile;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 
@@ -10,6 +11,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
@@ -95,19 +97,19 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
     @Override
-    public Page<FreeBoard> findByMemberId(Pageable pageable, Long memberId) {
+    public Page<FreeBoard> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
         List<FreeBoard> foundFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .join(freeBoard.freeBoardFiles)
+                .leftJoin(freeBoard.freeBoardFiles)
                 .fetchJoin()
-                .where(freeBoard.member.id.eq(memberId))
+                .where(freeBoard.member.id.eq(userDetail.getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(freeBoard.count())
                 .from(freeBoard)
-                .where(freeBoard.member.id.eq(memberId))
+                .where(freeBoard.member.id.eq(userDetail.getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundFreeBoards,pageable,count);
@@ -128,9 +130,11 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     //    자유게시판 상세페이지 조회
     @Override
-    public Optional<FreeBoard> findByIdForDetail(Long freeBoardId) {
+    public Optional<FreeBoard> findByIdForDetail_QueryDsl(Long freeBoardId) {
         return Optional.ofNullable(query.select(freeBoard)
                 .from(freeBoard)
+                .join(freeBoard.freeBoardFiles)
+                .fetchJoin()
                 .where(freeBoard.id.eq(freeBoardId))
                 .fetchOne());
     }

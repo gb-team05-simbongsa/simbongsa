@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.funding;
 
 import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.entity.file.QFundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.QFunding;
 import com.app.simbongsa.entity.funding.QFundingGift;
@@ -125,14 +126,14 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
     //    펀딩 전체 조회(무한스크롤)
     @Override
-    public Slice<Funding> findAllWithSlice(Pageable pageable) {
-        List<Funding> foundFunding = query.select(funding)
+    public Slice<Funding> findAllWithSlice_QueryDsl(Pageable pageable) {
+        List<Funding> fundings = query.select(funding)
                 .from(funding)
                 .join(funding.fundingFile)
                 .fetchJoin()
                 .orderBy(funding.id.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .limit(pageable.getPageSize() + 1)
                 .fetch();
 
         // 펀딩 전체 목록 갯수
@@ -140,20 +141,32 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .from(funding)
                 .fetchOne();
 
-
-        return checkLastPage(pageable, foundFunding);
-//      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
-//      false로 설정되면 다음 페이지가 없는 것으로 간주
-    }
-    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
-    private Slice<Funding> checkLastPage(Pageable pageable,  List<Funding> fundings) {
+        //  hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
+        //   false로 설정되면 다음 페이지가 없는 것으로 간주
+        //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
         boolean hasNext = false;
-        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
         if (fundings.size() > pageable.getPageSize()) {
-            hasNext = true;
             fundings.remove(pageable.getPageSize());
+            hasNext = true;
         }
+
         return new SliceImpl<>(fundings, pageable, hasNext);
     }
 
 }
+//        return checkLastPage(pageable, foundFunding);
+////      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
+////      false로 설정되면 다음 페이지가 없는 것으로 간주
+//    }
+//    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
+//    private Slice<Funding> checkLastPage(Pageable pageable,  List<Funding> fundings) {
+//        boolean hasNext = false;
+//        // 조회한 결과 개수가 요청한 페이지 사이즈보다 크면 뒤에 더 있음, next = true
+//        if (fundings.size() > pageable.getPageSize()) {
+//            hasNext = true;
+//            fundings.remove(pageable.getPageSize());
+//        }
+//        return new SliceImpl<>(fundings, pageable, hasNext);
+//    }
+//
+//}

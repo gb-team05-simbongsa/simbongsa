@@ -57,7 +57,9 @@ public class Funding {
     }
 
     // 테스트용 생성자
-    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator) {
+    @Builder
+    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, Member member) {
+        this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
         this.fundingShortTitle = fundingShortTitle;
@@ -71,8 +73,9 @@ public class Funding {
         this.fundingScheduleExplain = fundingScheduleExplain;
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingCreator = fundingCreator;
-//        this.member = member;
+       this.member = member;
     }
+
 
     public void setFundingStatus(RequestType fundingStatus) {
         this.fundingStatus = fundingStatus;

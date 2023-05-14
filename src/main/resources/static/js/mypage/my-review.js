@@ -38,3 +38,68 @@ $('.modal-cancel').on('click', () => {
     $('.delete-modal-wrap').hide();
     $deleteModal.hide();
 });
+
+myFreeBoards.forEach((myFreeBoard, i) => {
+    let text;
+
+    text = `
+        <div>
+            <div class="review-header">
+                <div class="review-title">
+                    <div class="review-title-text">
+                        ${myFreeBoard.boardTitle}
+                    </div>
+                    <div>
+                        <span class="review-modify">수정</span>
+                        <span class="review-delete">삭제</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-main">
+                <div class="review-main-img-wrap">
+                    <div class="review-main-img">
+                        <div class="review-img">
+                            <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="review-main-img">
+                        <div class="review-img">
+                            <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="review-main-img">
+                        <div class="review-img">
+                            <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="review-main-img">
+                        <div class="review-img">
+                            <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="review-main-img">
+                        <div class="review-img">
+                            <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="review-main-img">
+                        <div class="review-img">
+                            <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="review-content">
+                    ${myFreeBoard.boardContent}
+                </div>
+            </div>
+            <div class="review-main-footer">
+                <div class="review-write-date">
+                    <span>${myFreeBoard.updatedDate}</span>
+                    <span>자유게시판</span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    $('.my-review-list').prepend(text);
+});

@@ -29,7 +29,7 @@ public class Inquiry extends Period {
     private Answer answer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
 //    단위 테스트용 생성자 생성
@@ -40,11 +40,10 @@ public class Inquiry extends Period {
     }
 
     @Builder
-    public Inquiry(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, Member member) {
+    public Inquiry(Long id, String inquiryTitle, String inquiryContent, Member member) {
         this.id = id;
         this.inquiryTitle = inquiryTitle;
         this.inquiryContent = inquiryContent;
-        this.inquiryStatus = inquiryStatus;
         this.member = member;
     }
 }
