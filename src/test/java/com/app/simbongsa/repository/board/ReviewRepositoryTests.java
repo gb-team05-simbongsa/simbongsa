@@ -44,8 +44,8 @@ public class ReviewRepositoryTests {
     /*후기게시판 등록*/
     @Test
     public void saveTest() {
-        for(int i = 1; i <= 13; i++) {
-            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(50L).get());
+        for(int i = 1; i <= 5; i++) {
+            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(2L).get());
             reviewRepository.save(review);
         }
     }
@@ -74,8 +74,8 @@ public class ReviewRepositoryTests {
     @Test
     public void saveReplies(){
         for(int i =1; i<=5; i++){
-            Optional<Review> byId = reviewRepository.findById(169L);
-            ReviewReply reviewReply = new ReviewReply("댓글 테스트" + i, memberRepository.findById(50L).get(), byId.get());
+            Optional<Review> byId = reviewRepository.findById(76L);
+            ReviewReply reviewReply = new ReviewReply("댓글 테스트" + i, memberRepository.findById(25L).get(), byId.get());
             reviewReplyRepository.save(reviewReply);
         }
     }

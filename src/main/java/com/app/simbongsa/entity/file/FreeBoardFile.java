@@ -4,10 +4,7 @@ import com.app.simbongsa.entity.board.Board;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.type.FileRepresentationalType;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -24,6 +21,12 @@ public class FreeBoardFile extends File {
 
     public FreeBoardFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
         super(fileName, fileUuid, filePath, fileRepresentationalType);
+        this.freeBoard = freeBoard;
+    }
+
+    @Builder
+    public FreeBoardFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
+        super(id, fileName, fileUuid, filePath, fileRepresentationalType);
         this.freeBoard = freeBoard;
     }
 

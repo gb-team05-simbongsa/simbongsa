@@ -1,5 +1,6 @@
 package com.app.simbongsa.service.board;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.FreeBoardReplyDTO;
 import com.app.simbongsa.domain.NoticeDTO;
@@ -9,10 +10,13 @@ import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.repository.board.FreeBoardFileRepository;
+import com.app.simbongsa.repository.board.FreeBoardReplyRepository;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,6 +29,7 @@ import org.springframework.data.domain.SliceImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +42,31 @@ import java.util.stream.Collectors;
 public class FreeBoardServiceImpl implements FreeBoardService{
     private final FreeBoardRepository freeBoardRepository;
     private final MemberRepository memberRepository;
-//    private final FreeBoardRepository freeBoardRepository;
+    private final FreeBoardReplyRepository freeBoardReplyRepository;
+    private final FreeBoardFileRepository freeBoardFileRepository;
+
+    /*저장*/
+    @Override @Transactional
+    public void register(FreeBoardDTO freeBoardDTO, Long memberId) {
+        List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> freeBoardDTO.setMemberDTO(toMemberDTO(member))
+        );
+
+        freeBoardRepository.save(toFreeBoardEntity(freeBoardDTO));
+        if (fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++){
+                if (1 == 0){
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                }else {
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+                }
+                fileDTOS.get(i).setFreeBoard(getCurrentSequence());
+                freeBoardFileRepository.save(toSuggestFileEntity(fileDTOS.get(i)));
+            }
+        }
+    }
 
     /*댓글 저장*/
     @Override
@@ -64,7 +93,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         return null;
     }
 
-    /*댓글 갯수수*/
+    /*댓글 갯수*/
    @Override
     public Integer getReplyCount(Long freeBoardId) {
         return null;
@@ -91,9 +120,15 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*상세*/
     @Override
-    public FreeBoardDTO getDetail(Long freeBoardId) {
+    public FreeBoardDTO getFreeBoard(Long freeBoardId) {
         Optional<FreeBoard> freeBoard = freeBoardRepository.findByIdForDetail_QueryDsl(freeBoardId);
         return toFreeBoardDTO(freeBoard.get());
+    }
+
+    /*시퀀스*/
+    @Override
+    public FreeBoard getCurrentSequence() {
+        return freeBoardRepository.getCurrentSequence_QueryDsl();
     }
 
     /*작성*/

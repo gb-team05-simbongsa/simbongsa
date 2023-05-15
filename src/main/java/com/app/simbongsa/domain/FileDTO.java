@@ -7,7 +7,6 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 @Data
 //@Component
@@ -50,7 +49,7 @@ public class FileDTO {
         this.fileRepresentationalType = fileRepresentationalType;
         this.funding = funding;
     }
-//    자유게시
+//    자유게시판
     @Builder
     public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
         this.id = id;

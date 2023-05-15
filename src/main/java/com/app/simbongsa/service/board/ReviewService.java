@@ -1,7 +1,6 @@
 package com.app.simbongsa.service.board;
 
 import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.ReviewDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
@@ -16,8 +15,12 @@ import org.springframework.data.domain.Slice;
 import java.util.List;
 
 public interface ReviewService {
+
+    /*저징*/
+    public void register(ReviewDTO reviewDTO, Long memberId);
+
     /*상세보기*/
-    public ReviewDTO getDetail(Long reviewId);
+    public ReviewDTO getReview(Long reviewId);
 
     /*작성하기*/
     public void write(Review review);
@@ -46,8 +49,6 @@ public interface ReviewService {
                 .createdDate(review.getCreatedDate())
                 .updatedDate(review.getUpdatedDate())
                 .memberDTO(toMemberDTO(review.getMember()))
-                .reviewReplies(review.getReviewReplies())
-                .reviewFiles(review.getReviewFiles())
                 .build();
     }
 
@@ -74,6 +75,24 @@ public interface ReviewService {
                 .fileUuid(freeBoardFile.getFileUuid())
                 .filePath(freeBoardFile.getFilePath())
                 .fileName(freeBoardFile.getFileName())
+                .build();
+    }
+
+    default Review toReviewEntity(ReviewDTO reviewDTO){
+        return Review.builder()
+                .id(reviewDTO.getId())
+                .boardTitle(reviewDTO.getBoardTitle())
+                .boardContent(reviewDTO.getBoardContent())
+                .member(toMemberEntity(reviewDTO.getMemberDTO()))
+                .build();
+    }
+
+    default Member toMemberEntity(MemberDTO memberDTO){
+        return Member.builder()
+                .id(memberDTO.getId())
+                .memberRank(memberDTO.getMemberRank())
+                .memberName(memberDTO.getMemberName())
+                .memberJoinType(memberDTO.getMemberJoinType())
                 .build();
     }
 
