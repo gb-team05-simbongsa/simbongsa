@@ -1,5 +1,6 @@
 package com.app.simbongsa.service.board;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.FreeBoardReplyDTO;
 import com.app.simbongsa.domain.NoticeDTO;
@@ -34,6 +35,16 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     private final FreeBoardRepository freeBoardRepository;
     private final MemberRepository memberRepository;
 //    private final FreeBoardRepository freeBoardRepository;
+
+    /*저장*/
+    @Override
+    public void register(FreeBoardDTO freeBoardDTO, Long memberId) {
+        List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> freeBoardDTO.setMemberDTO(toMemberDTO(member))
+        );
+    }
 
     /*댓글 저장*/
     @Override

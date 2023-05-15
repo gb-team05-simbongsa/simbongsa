@@ -18,6 +18,9 @@ import java.util.List;
 
 public interface FreeBoardService {
 
+    // 저장
+    public void register(FreeBoardDTO freeBoardDTO, Long memberId);
+
     // 댓글 저장
     public void registerReply(FreeBoardReplyDTO freeBoardReplyDTO);
 

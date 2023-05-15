@@ -22,7 +22,7 @@ public class FreeBoardReply extends Period {
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "FREE_BOARD_ID")
+    @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
 
@@ -33,4 +33,5 @@ public class FreeBoardReply extends Period {
         this.member = member;
         this.freeBoard = freeBoard;
     }
+
 }
