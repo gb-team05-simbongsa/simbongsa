@@ -29,53 +29,56 @@ public class SupportRequestFileService {
 
     // 이미지 파일 저장 기능 구현
     public SupportRequestFile saveImage(MultipartFile imageFile) {
-        log.info("이미지 저장 요청 받음");
-
-        try {
-            // 이미지 파일을 저장하는 로직 구현
-            String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
-            String fileUuid = UUID.randomUUID().toString();
-            String fileExtension = StringUtils.getFilenameExtension(fileName);
-            String filePath = "/Users/hyun/uploads/" + fileUuid + "." + fileExtension;
-            FileRepresentationalType fileRepresentationalType = FileRepresentationalType.NORMAL;
-
-            // Validate file format
-            if (!isSupportedFileFormat(fileExtension)) {
-                throw new IllegalArgumentException("Unsupported file format.");
-            }
-
-            Path savePath = Paths.get(filePath);
-            try (InputStream inputStream = imageFile.getInputStream()) {
-                Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            // SupportRequestFile 엔티티 생성 및 저장
-            SupportRequestFile supportRequestFile = new SupportRequestFile(fileName, fileUuid, filePath, fileRepresentationalType, supportRequestRepository.findById(144L).orElseThrow(() -> new RuntimeException("Support request not found.")));
-
-            return supportRequestFileRepository.save(supportRequestFile);
-        } catch (IOException e) {
-            // 예외 처리
-            e.printStackTrace();
-            throw new RuntimeException("Failed to save image file.");
-        }
+        return null;
     }
-
-    // 이미지 파일 불러오기 기능 구현
-    public byte[] loadImage(Long fileId) {
-        // 파일 ID를 기반으로 이미지 파일을 불러오는 로직 구현
-        SupportRequestFile supportRequestFile = supportRequestFileRepository.findById(fileId)
-                .orElseThrow(() -> new RuntimeException("File not found."));
-        String filePath = supportRequestFile.getFilePath();
-
-        try {
-            Path imagePath = Paths.get(filePath);
-            return Files.readAllBytes(imagePath);
-        } catch (IOException e) {
-            // 예외 처리
-            e.printStackTrace();
-            throw new RuntimeException("Failed to load image file.");
-        }
-    }
+}
+//        log.info("이미지 저장 요청 받음");
+//
+//        try {
+//            // 이미지 파일을 저장하는 로직 구현
+//            String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
+//            String fileUuid = UUID.randomUUID().toString();
+//            String fileExtension = StringUtils.getFilenameExtension(fileName);
+//            String filePath = "/Users/hyun/uploads/" + fileUuid + "." + fileExtension;
+//            FileRepresentationalType fileRepresentationalType = FileRepresentationalType.NORMAL;
+//
+//            // Validate file format
+//            if (!isSupportedFileFormat(fileExtension)) {
+//                throw new IllegalArgumentException("Unsupported file format.");
+//            }
+//
+//            Path savePath = Paths.get(filePath);
+//            try (InputStream inputStream = imageFile.getInputStream()) {
+//                Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
+//            }
+//
+//            // SupportRequestFile 엔티티 생성 및 저장
+//            SupportRequestFile supportRequestFile = new SupportRequestFile(fileName, fileUuid, filePath, fileRepresentationalType, supportRequestRepository.findById(144L).orElseThrow(() -> new RuntimeException("Support request not found.")));
+//
+//            return supportRequestFileRepository.save(supportRequestFile);
+//        } catch (IOException e) {
+//            // 예외 처리
+//            e.printStackTrace();
+//            throw new RuntimeException("Failed to save image file.");
+//        }
+//    }
+//
+//    // 이미지 파일 불러오기 기능 구현
+//    public byte[] loadImage(Long fileId) {
+//        // 파일 ID를 기반으로 이미지 파일을 불러오는 로직 구현
+//        SupportRequestFile supportRequestFile = supportRequestFileRepository.findById(fileId)
+//                .orElseThrow(() -> new RuntimeException("File not found."));
+//        String filePath = supportRequestFile.getFilePath();
+//
+//        try {
+//            Path imagePath = Paths.get(filePath);
+//            return Files.readAllBytes(imagePath);
+//        } catch (IOException e) {
+//            // 예외 처리
+//            e.printStackTrace();
+//            throw new RuntimeException("Failed to load image file.");
+//        }
+//    }
 
     // 써머노트에서 이미지 파일 저장 기능 구현
 //    public String saveSummernoteImage(MultipartFile imageFile) {
@@ -104,61 +107,61 @@ public class SupportRequestFileService {
 //            throw new RuntimeException("Failed to save Summernote image file.");
 //        }
 //    }
-    public String saveSummernoteImage(MultipartFile imageFile) {
-        log.info("써머노트 이미지 저장 요청 받음");
-        try {
-            // 이미지 파일을 저장하는 로직 구현
-            String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
-            String fileUuid = UUID.randomUUID().toString();
-            String fileExtension = StringUtils.getFilenameExtension(fileName);
-            String filePath = "/Users/hyun/uploads/" + fileUuid + "." + fileExtension;
-            FileRepresentationalType fileRepresentationalType = FileRepresentationalType.NORMAL;
-
-            // Validate file format
-            if (!isSupportedFileFormat(fileExtension)) {
-                throw new IllegalArgumentException("Unsupported file format.");
-            }
-
-            Path savePath = Paths.get(filePath);
-            try (InputStream inputStream = imageFile.getInputStream()) {
-                Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            // SupportRequestFile 엔티티 생성 및 저장
-            SupportRequestFile supportRequestFile = new SupportRequestFile(fileName, fileUuid, filePath, fileRepresentationalType, supportRequestRepository.findById(144L).orElseThrow(() -> new RuntimeException("Support request not found.")));
-            supportRequestFileRepository.save(supportRequestFile);
-
-            // 이미지 파일의 경로를 반환
-            return "/uploads/" + fileUuid + "." + fileExtension;
-        } catch (IOException e) {
-            // 예외 처리
-            e.printStackTrace();
-            throw new RuntimeException("Failed to save Summernote image file.");
-        }
-    }
-
-    public SupportRequestFileDTO toDTO(SupportRequestFile supportRequestFile) {
-        return SupportRequestFileDTO.builder()
-                .fileName(supportRequestFile.getFileName())
-                .fileUuid(supportRequestFile.getFileUuid())
-                .filePath(supportRequestFile.getFilePath())
-                .fileRepresentationalType(supportRequestFile.getFileRepresentationalType())
-                .supportRequest(supportRequestFile.getSupportRequest())
-                .build();
-    }
-
-    public SupportRequestFile toEntity(SupportRequestFileDTO supportRequestFileDTO){
-        return SupportRequestFile.builder()
-                .fileName(supportRequestFileDTO.getFileName())
-                .filePath(supportRequestFileDTO.getFilePath())
-                .fileRepresentationalType(supportRequestFileDTO.getFileRepresentationalType())
-                .fileUuid(supportRequestFileDTO.getFileUuid())
-                .supportRequest(supportRequestFileDTO.getSupportRequest())
-                .build();
-    }
-
-    private boolean isSupportedFileFormat(String fileExtension) {
-        String lowerCaseExtension = fileExtension.toLowerCase();
-        return lowerCaseExtension.equals("jpg") || lowerCaseExtension.equals("jpeg") || lowerCaseExtension.equals("png");
-    }
-}
+//    public String saveSummernoteImage(MultipartFile imageFile) {
+//        log.info("써머노트 이미지 저장 요청 받음");
+//        try {
+//            // 이미지 파일을 저장하는 로직 구현
+//            String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
+//            String fileUuid = UUID.randomUUID().toString();
+//            String fileExtension = StringUtils.getFilenameExtension(fileName);
+//            String filePath = "/Users/hyun/uploads/" + fileUuid + "." + fileExtension;
+//            FileRepresentationalType fileRepresentationalType = FileRepresentationalType.NORMAL;
+//
+//            // Validate file format
+//            if (!isSupportedFileFormat(fileExtension)) {
+//                throw new IllegalArgumentException("Unsupported file format.");
+//            }
+//
+//            Path savePath = Paths.get(filePath);
+//            try (InputStream inputStream = imageFile.getInputStream()) {
+//                Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
+//            }
+//
+//            // SupportRequestFile 엔티티 생성 및 저장
+//            SupportRequestFile supportRequestFile = new SupportRequestFile(fileName, fileUuid, filePath, fileRepresentationalType, supportRequestRepository.findById(144L).orElseThrow(() -> new RuntimeException("Support request not found.")));
+//            supportRequestFileRepository.save(supportRequestFile);
+//
+//            // 이미지 파일의 경로를 반환
+//            return "/uploads/" + fileUuid + "." + fileExtension;
+//        } catch (IOException e) {
+//            // 예외 처리
+//            e.printStackTrace();
+//            throw new RuntimeException("Failed to save Summernote image file.");
+//        }
+//    }
+//
+//    public SupportRequestFileDTO toDTO(SupportRequestFile supportRequestFile) {
+//        return SupportRequestFileDTO.builder()
+//                .fileName(supportRequestFile.getFileName())
+//                .fileUuid(supportRequestFile.getFileUuid())
+//                .filePath(supportRequestFile.getFilePath())
+//                .fileRepresentationalType(supportRequestFile.getFileRepresentationalType())
+//                .supportRequest(supportRequestFile.getSupportRequest())
+//                .build();
+//    }
+//
+//    public SupportRequestFile toEntity(SupportRequestFileDTO supportRequestFileDTO){
+//        return SupportRequestFile.builder()
+//                .fileName(supportRequestFileDTO.getFileName())
+//                .filePath(supportRequestFileDTO.getFilePath())
+//                .fileRepresentationalType(supportRequestFileDTO.getFileRepresentationalType())
+//                .fileUuid(supportRequestFileDTO.getFileUuid())
+//                .supportRequest(supportRequestFileDTO.getSupportRequest())
+//                .build();
+//    }
+//
+//    private boolean isSupportedFileFormat(String fileExtension) {
+//        String lowerCaseExtension = fileExtension.toLowerCase();
+//        return lowerCaseExtension.equals("jpg") || lowerCaseExtension.equals("jpeg") || lowerCaseExtension.equals("png");
+//    }
+//}

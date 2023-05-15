@@ -1,9 +1,14 @@
 package com.app.simbongsa.service.funding;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FundingDTO;
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
+import com.app.simbongsa.entity.file.File;
+import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FundingCategoryType;
@@ -14,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface FundingService {
@@ -63,6 +69,40 @@ public interface FundingService {
                 .fundingPercent((int)((double)funding.getFundingCurrentPrice() / funding.getFundingTargetPrice() * 100))
                 .build();
     }
+    default MemberDTO toMemberDTO(Member member){
+        return MemberDTO.builder()
+                .id(member.getId())
+                .memberName(member.getMemberName())
+                .memberEmail(member.getMemberEmail())
+                .memberPassword(member.getMemberPassword())
+                .memberAddress(member.getMemberAddress())
+                .memberAge(member.getMemberAge())
+                .memberInterest(member.getMemberInterest())
+                .memberRole(member.getMemberRole())
+                .memberJoinType(member.getMemberJoinType())
+                .memberRank(member.getMemberRank())
+                .memberRice(member.getMemberRice())
+                .memberVolunteerTime(member.getMemberVolunteerTime())
+                .randomKey(member.getRandomKey())
+                .memberStatus(member.getMemberStatus())
+                .build();
+    }
+    default List<FileDTO> FileToDTO(List<FundingFile> fundingFiles){
+        List<FileDTO> fundingFileList = new ArrayList<>();
+        fundingFiles.forEach(
+                fundingFile -> {
+                    FileDTO fileDTO = FileDTO.builder()
+                            .id(fundingFile.getId())
+                            .fileName(fundingFile.getFileName())
+                            .filePath(fundingFile.getFilePath())
+                            .fileRepresentationalType(fundingFile.getFileRepresentationalType())
+                            .fileUuid(fundingFile.getFileUuid())
+                            .build();
+                    fundingFileList.add(fileDTO);
+                }
+        );
+        return fundingFileList;
+    }
 
     default Funding toFundingEntity(FundingDTO fundingDTO) {
         return Funding.builder()
@@ -74,5 +114,51 @@ public interface FundingService {
                 .build();
 
     }
+
+    default Member toMemberEntity(MemberDTO memberDTO){
+        return Member.builder()
+                .id(memberDTO.getId())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberJoinType(memberDTO.getMemberJoinType())
+                .memberName(memberDTO.getMemberName())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberRank(memberDTO.getMemberRank())
+                .memberRice(memberDTO.getMemberRice())
+                .memberRole(memberDTO.getMemberRole())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
+                .build();
+    }
+
+    default FundingFile toFundingFileEntity(FileDTO fileDTO){
+        return FundingFile.builder()
+                .fileName(fileDTO.getFileName())
+                .filePath(fileDTO.getFilePath())
+                .fileRepresentationalType(fileDTO.getFileRepresentationalType())
+                .fileUuid(fileDTO.getFileUuid())
+                .build();
+    }
+
+    default List<FundingFile> toFundingFileListEntity(List<FileDTO> fileDTOS){
+        List<FundingFile> fundingFiles = new ArrayList<>();
+
+        fileDTOS.forEach(
+                fileDTO ->{
+                    FundingFile fundingFile = FundingFile.builder()
+                            .fileName(fileDTO.getFileName())
+                            .filePath(fileDTO.getFilePath())
+                            .fileRepresentationalType(fileDTO.getFileRepresentationalType())
+                            .fileUuid(fileDTO.getFileUuid())
+                            .build();
+                    fundingFiles.add(fundingFile);
+                }
+        );
+        return fundingFiles;
+    }
+
 
 }
