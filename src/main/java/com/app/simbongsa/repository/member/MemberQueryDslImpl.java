@@ -1,7 +1,5 @@
 package com.app.simbongsa.repository.member;
 
-import com.app.simbongsa.entity.member.QMember;
-import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.type.MemberStatus;
@@ -18,7 +16,6 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.member.QMember.member;
 import static com.app.simbongsa.entity.support.QSupport.support;
-import static com.app.simbongsa.entity.rice.QRicePayment.ricePayment;
 
 
 @RequiredArgsConstructor
@@ -119,12 +116,14 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
 
     /*이메일 중복 검사*/
     @Override
-    public Optional<Member> overlapByMemberEmail(String memberEmail) {
-        return Optional.ofNullable(query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
+    public Long overlapByMemberEmail(String memberEmail) {
+        return query.select(member.count())
+                .from(member)
+                .where(member.memberEmail.eq(memberEmail))
+                .fetchOne();
     }
 
     /*마이페이지 회원 정보 수정*/
-
     @Override
     public void updateMyPageMember(Long id, String memberPassword, String memberName, String memberAddress, int memberAge, String memberInterest, PasswordEncoder passwordEncoder) {
         query.update(member)

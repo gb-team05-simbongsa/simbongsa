@@ -2,14 +2,10 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
-import com.app.simbongsa.domain.PageDTO;
-import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
 import com.app.simbongsa.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

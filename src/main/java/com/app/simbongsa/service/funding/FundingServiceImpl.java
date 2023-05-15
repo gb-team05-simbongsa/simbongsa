@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 public class FundingServiceImpl implements FundingService {
     private final FundingRepository fundingRepository;
 
+//    메인페이지 펀딩 인기순
     @Override
     public List<FundingDTO> getAllPopularFundingList() {
         List<Funding> fundings = fundingRepository.findAllWithPopular();
