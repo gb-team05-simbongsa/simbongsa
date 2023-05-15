@@ -1,11 +1,16 @@
 package com.app.simbongsa.service.board;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.ReviewDTO;
 import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.repository.board.ReviewFileRepository;
+import com.app.simbongsa.repository.board.ReviewReplyRepository;
 import com.app.simbongsa.repository.board.ReviewRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
@@ -18,12 +23,25 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Qualifier("review") @Primary
+@Slf4j
 public class ReviewServiceImpl implements ReviewService{
     private final ReviewRepository reviewRepository;
+    private final MemberRepository memberRepository;
+    private final ReviewReplyRepository reviewReplyRepository;
+    private final ReviewFileRepository reviewFileRepository;
+
+    @Override
+    public void register(ReviewDTO reviewDTO, Long memberId) {
+        List<FileDTO> fileDTOS = reviewDTO.getFileDTOS();
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> reviewDTO.setMemberDTO(toMemberDTO(member))
+        );
+    }
 
     /*상세*/
     @Override
-    public ReviewDTO getDetail(Long reviewId) {
+    public ReviewDTO getReview(Long reviewId) {
         Optional<Review> review = reviewRepository.findByIdForDetail_QueryDsl(reviewId);
         return toReviewDTO(review.get());
     }

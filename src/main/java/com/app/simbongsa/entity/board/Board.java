@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "TBL_BOARD")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Board extends Period {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include

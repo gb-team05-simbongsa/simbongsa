@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FreeBoardQueryDsl {
+
+    // 시퀀스
+    public FreeBoard getCurrentSequence_QueryDsl();
+
     // 메인 인기순 목록 조회
     public List<FreeBoard> findAllWithPopularFreeBoard();
 

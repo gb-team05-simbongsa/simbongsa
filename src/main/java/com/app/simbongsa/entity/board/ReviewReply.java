@@ -1,21 +1,16 @@
 package com.app.simbongsa.entity.board;
 
-import com.app.simbongsa.audit.Period;
 import com.app.simbongsa.entity.member.Member;
-import com.sun.istack.NotNull;
+import com.app.simbongsa.entity.reply.Reply;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString(exclude = {"member", "review"})
+@Getter @ToString(callSuper = true,exclude = "review")
 @Table(name = "TBL_REVIEW_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ReviewReply extends Period {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    @NotNull private String reviewReplyContent;
+public class ReviewReply extends Reply {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
@@ -25,14 +20,23 @@ public class ReviewReply extends Period {
     @JoinColumn(name = "REVIEW_ID")
     private Review review;
 
-    public ReviewReply(String reviewReplyContent) {
-        this.reviewReplyContent = reviewReplyContent;
-    }
 
     // 단위 테스트용 생성자
-    public ReviewReply(String reviewReplyContent, Member member, Review review) {
-        this.reviewReplyContent = reviewReplyContent;
+    public ReviewReply(String replyContent, Member member, Review review) {
+        super(replyContent);
         this.member = member;
         this.review = review;
+    }
+
+    public void setReviewReplyContent(String replyContent) {
+        super.setReplyContent(replyContent);
+    }
+
+
+    @Builder
+    public ReviewReply(Long id, String replyContent, Review review, Member member) {
+        super(id, replyContent);
+        this.review = review;
+        this.member = member;
     }
 }

@@ -4,10 +4,7 @@ import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.FreeBoardReplyDTO;
 import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
-import com.app.simbongsa.entity.board.FreeBoardReply;
-import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
@@ -15,7 +12,6 @@ import com.app.simbongsa.search.admin.AdminBoardSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -23,6 +19,12 @@ public interface FreeBoardService {
 
     // 저장
     public void register(FreeBoardDTO freeBoardDTO, Long memberId);
+
+    // 상세 보기
+    public FreeBoardDTO getFreeBoard(Long freeBoardId);
+
+    // 시퀀스 가져오기
+    public FreeBoard getCurrentSequence();
 
     // 댓글 저장
     public void registerReply(FreeBoardReplyDTO freeBoardReplyDTO);
@@ -41,9 +43,6 @@ public interface FreeBoardService {
 
     // 인기순 목록
     public Slice<FreeBoardDTO> getLikesList(Pageable pageable);
-
-    // 상세 보기
-    public FreeBoardDTO getDetail(Long freeBoardId);
 
     // 작성하기
     public void write(FreeBoard freeBoard);
@@ -72,8 +71,6 @@ public interface FreeBoardService {
                 .createdDate(freeBoard.getCreatedDate())
                 .updatedDate(freeBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
-                .freeBoardReplies(freeBoard.getFreeBoardReplies())
-                .freeBoardFiles(freeBoard.getFreeBoardFiles())
                 .build();
     }
 
@@ -95,13 +92,6 @@ public interface FreeBoardService {
                 .build();
     }
 
-    default FileDTO fileToDTO(FreeBoardFile freeBoardFile){
-        return FileDTO.builder()
-                .fileUuid(freeBoardFile.getFileUuid())
-                .filePath(freeBoardFile.getFilePath())
-                .fileName(freeBoardFile.getFileName())
-                .build();
-    }
 
     default FreeBoardDTO freeBoardToDTO(FreeBoard freeBoard){
         return FreeBoardDTO.builder()
@@ -111,8 +101,6 @@ public interface FreeBoardService {
                 .updatedDate(freeBoard.getUpdatedDate())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
-                .freeBoardFiles(freeBoard.getFreeBoardFiles())
-                .freeBoardReplies(freeBoard.getFreeBoardReplies())
                 .replyCount(freeBoard.hashCode())
                 .build();
     }
@@ -122,10 +110,27 @@ public interface FreeBoardService {
                 .id(memberDTO.getId())
                 .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
-                .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())
                 .build();
     }
 
+    default FreeBoard toFreeBoardEntity(FreeBoardDTO freeBoardDTO){
+        return FreeBoard.builder()
+                .id(freeBoardDTO.getId())
+                .boardTitle(freeBoardDTO.getBoardTitle())
+                .boardContent(freeBoardDTO.getBoardContent())
+                .member(toMemberEntity(freeBoardDTO.getMemberDTO()))
+                .build();
+    }
 
+    default FreeBoardFile toSuggestFileEntity(FileDTO fileDTO){
+        return FreeBoardFile.builder()
+                .id(fileDTO.getId())
+                .fileName(fileDTO.getFileName())
+                .fileUuid(fileDTO.getFileUuid())
+                .filePath(fileDTO.getFilePath())
+                .freeBoard(fileDTO.getFreeBoard())
+                .fileRepresentationalType(fileDTO.getFileRepresentationalType())
+                .build();
+    }
 }

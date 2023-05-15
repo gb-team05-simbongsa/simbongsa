@@ -60,6 +60,15 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return checkLastPage(pageable, freeBoards);
     }
 
+    @Override
+    public FreeBoard getCurrentSequence_QueryDsl() {
+        return query.select(freeBoard)
+                .from(freeBoard)
+                .orderBy(freeBoard.id.desc())
+                .limit(1)
+                .fetchOne();
+    }
+
     //    메인페이지 인기순 목록 조회
     @Override
     public List<FreeBoard> findAllWithPopularFreeBoard() {

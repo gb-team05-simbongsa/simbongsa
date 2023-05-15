@@ -1,11 +1,10 @@
 package com.app.simbongsa.domain;
 
-import com.app.simbongsa.entity.board.ReviewReply;
-import com.app.simbongsa.entity.file.ReviewFile;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,16 +14,15 @@ public class ReviewDTO {
     private String boardContent;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-
-    // 댓글 총
-    private int replyCount;
+    private Integer replyCount;
     private MemberDTO memberDTO;
-    private List<ReviewReply> reviewReplies;
-    private List<ReviewFile> reviewFiles;
+    private List<FileDTO> fileDTOS;
+
+    public ReviewDTO(){this.fileDTOS = new ArrayList<>();}
 
 
     @Builder
-    public ReviewDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, int replyCount, MemberDTO memberDTO, List<ReviewReply> reviewReplies, List<ReviewFile> reviewFiles) {
+    public ReviewDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, int replyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
@@ -32,7 +30,6 @@ public class ReviewDTO {
         this.updatedDate = updatedDate;
         this.replyCount = replyCount;
         this.memberDTO = memberDTO;
-        this.reviewReplies = reviewReplies;
-        this.reviewFiles = reviewFiles;
+        this.fileDTOS = fileDTOS;
     }
 }

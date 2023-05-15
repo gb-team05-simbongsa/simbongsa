@@ -1,21 +1,16 @@
 package com.app.simbongsa.entity.board;
 
-import com.app.simbongsa.audit.Period;
 import com.app.simbongsa.entity.member.Member;
-import com.sun.istack.NotNull;
+import com.app.simbongsa.entity.reply.Reply;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString(exclude = {"member", "freeBoard"})
+@Getter @ToString(callSuper = true,exclude = "freeBoard")
 @Table(name = "TBL_FREE_BOARD_REPLY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FreeBoardReply extends Period {
-    @Id @GeneratedValue
-    @EqualsAndHashCode.Include
-    private Long id;
-    @NotNull private String freeBoardReplyContent;
+public class FreeBoardReply extends Reply {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
@@ -28,10 +23,21 @@ public class FreeBoardReply extends Period {
 
 
     // 단위 테스트용 생성자
-    public FreeBoardReply(String freeBoardReplyContent, Member member, FreeBoard freeBoard) {
-        this.freeBoardReplyContent = freeBoardReplyContent;
+    public FreeBoardReply(String replyContent, Member member, FreeBoard freeBoard) {
+        super(replyContent);
         this.member = member;
         this.freeBoard = freeBoard;
     }
 
+    public void setFreeBoardReplyContent(String replyContent) {
+        super.setReplyContent(replyContent);
+    }
+
+
+    @Builder
+    public FreeBoardReply(Long id, String replyContent, FreeBoard freeBoard, Member member) {
+        super(id, replyContent);
+        this.freeBoard = freeBoard;
+        this.member = member;
+    }
 }
