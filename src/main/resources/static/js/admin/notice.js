@@ -26,7 +26,6 @@ notices.forEach((notice, i) => {
 });
 
 $('.content__detail__btn').on('click', function () {
-    console.log("다좋아")
     var i = $detailButton.index($(this));
 
     /* 해당 컨텐츠 번호 */
@@ -36,7 +35,7 @@ $('.content__detail__btn').on('click', function () {
     adminService.getNoticeDetail(contentId, function(result) {
         $('input[name=id]').val(contentId);
         $('input[name=noticeTitle]').val(result.noticeTitle);
-        $('.notice-detail-content').summernote('code', result.noticeContent);
+        $('.notice-detail-content').val(result.noticeContent);
     });
 
     /* 추후 타임리프로 대체할 예정 */
@@ -49,16 +48,19 @@ $('.content__detail__btn').on('click', function () {
     });
 });
 
-$('#delete-button').on('click', function() {
-    $('input[name=check]').each((i, e) => {
-
-    });
-});
+// $('#delete-button').on('click', function() {
+//     let check = [];
+//     $('input[name=check]').each((i, e) => {
+//         if($(e).is('checked')) {
+//             check[]
+//         }
+//     });
+// });
 
 
 
 $('#completeBtn').on('click', () => {
-    $('input[name=noticeContent]').val($('.notice-detail-content').summernote('code'));
+    $('input[name=noticeContent]').val($('.notice-detail-content').val());
     document.updateForm.submit();
 });
 
@@ -95,8 +97,8 @@ $('#create-button').on('click', function () {
                 <div class="content__intput date" style="flex: 0">
                     <input type="date" name="noticeRegist">
                   </div></div>
-                <div class="notice__content">
-                  <textarea id="summernote" name="noticeContent"></textarea>
+                <div class="content__intput input_box_shadow" style="margin-left: 6px;">
+                    <textarea></textarea>
                 </div>
               </div>
               <div id="#completeBtn" class="user__profile__button">
@@ -107,20 +109,20 @@ $('#create-button').on('click', function () {
         </section>
         `
     );
-    $('#summernote').summernote({
-        placeholder: '공지사항 내용 작성',
-        tabsize: 2,
-        height: 300,
-        width: '100%',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link']],
-        ],
-    });
+    // $('#summernote').summernote({
+    //     placeholder: '공지사항 내용 작성',
+    //     tabsize: 2,
+    //     height: 300,
+    //     width: '100%',
+    //     toolbar: [
+    //         ['style', ['style']],
+    //         ['font', ['bold', 'underline', 'clear']],
+    //         ['color', ['color']],
+    //         ['para', ['ul', 'ol', 'paragraph']],
+    //         ['table', ['table']],
+    //         ['insert', ['link']],
+    //     ],
+    // });
 
     $modalStage.show();
     $('.modal-close').on('click', function () {

@@ -77,7 +77,7 @@
                                                 <!-- <div class="inquiry-currentTime">오전 4:28</div> -->
 
                                                 <!-- 컨텐츠 -->
-                                                    <form>
+                                                    <form th:action="@{/inquiry/inquiry-write}" th:object="${inquiryDTO}" method="post">
                                                         <div class="content-layout" tabindex="0">
                                                             <div class="content-container"></div>
                                                                 <div class="inquiry-text-layout">
@@ -86,16 +86,14 @@
                                                                         <div class="inquiry-text-wrap">
                                                                             <div class="inquiry-text-input-layout">
                                                                                 <span> * 제목</span>
-                                                                                <input type="text" placeholder="제목을 입력하세요" value="">
+                                                                                <input type="text" placeholder="제목을 입력하세요" value="" th:field="*{inquiryTitle}">
                                                                                 <div class="inquiry-textarea">
                                                                                     <div class="inquiry-contents-wrap">
                                                                                         <span> * 내용</span>
                                                                                     </div>
                                                                                         <div class="write-content-contents-textarea">
-                                                                                             <textarea id="inquiry-contents" class="write-content-contents"
-                                                                                            name="inquiryContent" inputmode="text" cols="30" rows="10"
-                                                                                            style="resize: none;" maxlength=""
-                                                                                            placeholder="전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다."></textarea>
+                                                                                             <textarea id="inquiry-contents" class="write-content-contents" name="inquiryContent" inputmode="text" cols="30" rows="10"
+                                                                                            style="resize: none;" maxlength="" th:field="*{inquiryContent}" placeholder="전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다."></textarea>
                                                                              
                                                                                     <!-- <span class="content-length-counter">
                                                                                        <span>
@@ -108,11 +106,11 @@
                                                                                    </span> -->
 
                                                                                    <div class="inquiry-regist-btn-layout">
-                                                                                       <button type="button" class="inquiry-regist-btn">등록</button>
+                                                                                       <button type="submit" class="inquiry-regist-btn" style="cursor: pointer">등록</button>
                                                                                    </div>
 
-                                                                                    </div>
-                                                                               </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

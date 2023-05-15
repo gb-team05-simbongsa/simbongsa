@@ -98,9 +98,10 @@ $('#completeBtn').on('click', function (e) {
     return new Promise(
         function () {
           $modalStage.fadeOut(500);
+          $('.storage_form').submit();
         },
         () => {
-          $('.storage_form').submit();
+
         }
     );
 });
@@ -177,4 +178,64 @@ confirmButton.click(function () {
 
 cancelButton.click(function () {
   modal.css('display', 'none');
+});
+
+
+
+
+
+
+
+
+//-------------------------------------------------
+/*=====================  목록 삭제 이벤트 =====================*/
+/* 개별 체크박스  */
+// const $checkAll = $('#checkAll');
+// const $check = $("input[name='check']");
+let $checkArr = [];
+$('input[name=check]').on('click', function() {
+    if ($(this).is(':checked')) {
+        $checkArr.push($(this).parent().parent().next().text());
+    } else {
+        var toRemove = $(this).parent().parent().next().text();
+        $checkArr = $checkArr.filter(function (item) {
+            return item !== toRemove;
+        });
+    }
+    console.log($checkArr);
+});
+
+/* 전체 체크박스 이벤트 */
+$checkAll.click(function () {
+    if ($checkAll.is(':checked')) {
+        $check.prop('checked', true);
+        $check.each((i,e)=> {
+            var toRemove = $check.eq(i).parent().parent().next().text();
+            $checkArr = $checkArr.filter(function (item) {
+              return item !== toRemove;
+            });
+            $checkArr.push($check.eq(i).parent().parent().next().text());
+        });
+    }
+    else {
+        $check.prop('checked', false);
+        $check.each((i, e) => {
+            var toRemove = $check.eq(i).parent().parent().next().text();
+            $checkArr = $checkArr.filter(function (item) {
+                return item !== toRemove;
+            });
+        });
+    }
+    console.log($checkArr);
+});
+
+$check.click(function () {
+    var total = $check.length;
+    var checked = $('input[name=check]:checked').length;
+    if (total != checked) {
+        $checkAll.prop('checked', false);
+    }
+    else {
+        $checkAll.prop('checked', true);
+    }
 });

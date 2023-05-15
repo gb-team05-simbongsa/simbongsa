@@ -23,3 +23,33 @@ members.forEach(member => {
 
     $('.table').append(text);
 });
+
+$('.content__detail__btn').on('click', function () {
+    var i = $detailButton.index($(this));
+
+    /* 해당 컨텐츠 번호 */
+    var contentId = $detailButton.eq(i).parent().siblings('.content__id').text();
+
+    /* ajax 에 콜백 넘겨주는 코드 작성해야 함 (검색기능 ajax로)*/
+    adminService.getMemberDetail(contentId, function(result) {
+        console.log(result)
+        $('input[name=id]').val(result.id);
+        $('#email').val(result.memberEmail);
+        $('#age').val(result.memberAge);
+        $('#joinType').val(result.memberJoinType);
+        $('#name').val(result.memberName);
+        $('#rice').val(result.memberRice);
+        $('#address').val(result.memberAddress);
+        $('#interest').val(result.memberInterest);
+        $('#volunteerTime').val(result.memberVolunteerTime);
+    });
+
+    /* 추후 타임리프로 대체할 예정 */
+    $modalStage.show();
+
+    /* 모달 닫는 이벤트 */
+    /* 추후 외부로 빼야함 */
+    $('.modal-close').on('click', function (e) {
+        $modalStage.fadeOut(500);
+    });
+});

@@ -261,26 +261,27 @@
                     </svg>
                 </a>
             </div>
-            <form class="storage_form" action="">
+            <form class="storage_form" th:action="@{/admin/user} + '?page=' + ${pageDTO.pageNum}" method="post">
+                <input type="hidden" name="id">
                 <main class="modal__main">
                     <div class="modal__profile__top">
                         <h4>수정 불가</h4>
                         <div class="user__profile">
                             <h5>이메일</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="example1234@gmail.com" readonly/>
+                                <input type="text" id="email" name="memberEmail" value="example1234@gmail.com" readonly/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>나이</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="24" readonly/>
+                                <input type="text" id="age" name="memberAge" value="24" readonly/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>회원가입 방식</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="일반" readonly/>
+                                <input type="text" id="joinType" name="memberJoinType" value="일반" readonly/>
                             </div>
                         </div>
                     </div>
@@ -289,31 +290,31 @@
                         <div class="user__profile">
                             <h5>이름</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="홍길동"/>
+                                <input type="text" id="name" name="memberName" value="홍길동"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>공양미 갯수</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="3000개"/>
+                                <input type="text" id="rice" name="memberRice" value="3000개"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>주소</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="주소"/>
+                                <input type="text" id="address" name="memberAddress" value="주소"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>관심 봉사</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="관심 봉사"/>
+                                <input type="text" id="interest" name="memberInterest" value="관심 봉사"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>봉사활동 시간</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="봉사활동 시간"/>
+                                <input type="text" id="volunteerTime" name="memberVolunteerTime" value="봉사활동 시간"/>
                             </div>
                         </div>
                     </div>
@@ -333,8 +334,8 @@
 <script th:inline="javascript">
     let members = [[${memberDTOS}]];
 </script>
+<script src="/js/admin/ajax.js"></script>
+<script src="/js/admin/user.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>
-<script src="/js/admin/user.js"></script>
-
 </html>

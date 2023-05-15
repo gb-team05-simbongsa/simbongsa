@@ -4,6 +4,7 @@ import com.app.simbongsa.domain.AnswerDTO;
 import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
+import com.app.simbongsa.entity.inquiry.Answer;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
@@ -14,6 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 public interface InquiryService {
+//    문의 등록
+    public void saveInquiry(InquiryDTO inquiryDTO);
+
 //    문의 목록 조회
     public Page<InquiryDTO> getInquiry(Integer page, AdminBoardSearch adminBoardSearch);
 
@@ -27,6 +31,34 @@ public interface InquiryService {
 
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
     public Page<InquiryDTO> getMyInquiry(Integer page, @AuthenticationPrincipal UserDetail userDetail);
+
+    default Inquiry toInquiryEntity(InquiryDTO inquiryDTO) {
+        return Inquiry.builder()
+                .id(inquiryDTO.getId())
+                .inquiryTitle(inquiryDTO.getInquiryTitle())
+                .inquiryContent(inquiryDTO.getInquiryContent())
+                .member(toMemberEntity(inquiryDTO.getMemberDTO()))
+                .build();
+    }
+
+    default Member toMemberEntity(MemberDTO memberDTO) {
+        return Member.builder()
+                .id(memberDTO.getId())
+                .memberName(memberDTO.getMemberName())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberRice(memberDTO.getMemberRice())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
+                .memberRole(memberDTO.getMemberRole())
+                .memberStatus(memberDTO.getMemberStatus())
+                .build();
+    }
 
     default InquiryDTO toInquiryDTO(Inquiry inquiry) {
         return InquiryDTO.builder()

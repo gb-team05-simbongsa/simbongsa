@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -14,6 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import java.util.List;
 import java.util.Optional;
 
+import static com.app.simbongsa.entity.support.QSupport.support;
 import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
 
 @RequiredArgsConstructor
@@ -140,18 +142,22 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
         if(keyword.equals("후원 많은순")){
             result = supportRequest.supports.any().supportPrice.desc();
+//            result = supportRequest.supports.any().supportPrice.sum().desc();
+//            result = support.supportPrice.sum().desc();
 
         }else if(keyword.equals("후원 적은순")){
 
             result = supportRequest.supports.any().supportPrice.asc();
-
+//            result = supportRequest.supports.any().supportPrice.sum().asc();
+//            result = support.supportPrice.sum().asc();
         }else  {
             result = supportRequest.id.desc();
         }
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .leftJoin(supportRequest.supports)
+                .leftJoin(supportRequest.supports, support)
                 .fetchJoin()
+//                .groupBy(supportRequest.id)
                 .orderBy(result)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
