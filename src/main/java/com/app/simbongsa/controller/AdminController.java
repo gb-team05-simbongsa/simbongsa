@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +42,7 @@ public class AdminController {
     private final SupportRequestService supportRequestService;
     private final ReviewService reviewService;
     private final FreeBoardService freeBoardService;
+    private final PasswordEncoder passwordEncoder;
 
 //    회원관리 - user.html
 //    봉사관리 - volunteer.html
@@ -156,6 +158,26 @@ public class AdminController {
         model.addAttribute("memberDTOS", memberDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(memberDTOS));
         return "admin/user";
+    }
+
+    @PostMapping("user")
+    public RedirectView user(Integer page, Long id, String memberName, int memberRice, String memberAddress, String memberInterest, int memberVolunteerTime, Model model) {
+        MemberDTO memberDTO = memberService.getMemberById(id);
+        memberDTO.setMemberName(memberName);
+        memberDTO.setMemberRice(memberRice);
+        memberDTO.setMemberAddress(memberAddress);
+        memberDTO.setMemberInterest(memberInterest);
+        memberDTO.setMemberVolunteerTime(memberVolunteerTime);
+        memberService.join(memberDTO, passwordEncoder);
+
+        page = page == null ? 0 : page - 1;
+        AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
+        Page<MemberDTO> memberDTOS = memberService.getMembers(page, adminMemberSearch);
+        PageDTO pageDTO = new PageDTO(memberDTOS);
+
+        model.addAttribute("memberDTOS", memberDTOS.getContent());
+        model.addAttribute("pageDTO", pageDTO);
+        return new RedirectView("/admin/user?page=" + pageDTO.getPageNum());
     }
 
     @GetMapping("volunteer")

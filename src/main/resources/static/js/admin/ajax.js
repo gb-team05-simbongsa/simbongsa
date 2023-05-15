@@ -12,19 +12,19 @@ const adminService = (function() {
         });
     }
 
-    // function checkEmail(userEmail, callback) {
-    //     $.ajax({
-    //         url: "/users/emails-duplicate",
-    //         type: "post",
-    //         data: { userEmail : userEmail },
-    //         success: function(result) {
-    //             if(callback) {
-    //                 callback(result);
-    //             }
-    //         }
-    //     });
-    // }
-    //
+    function getMemberDetail(contentId, callback) {
+        $.ajax({
+            url: "/admins/member-details",
+            type: "post",
+            data: { id : contentId },
+            success: function(result) {
+                if(callback) {
+                    callback(result);
+                }
+            }
+        });
+    }
+
     // function sendSMS(callback) {
     //     $.ajax({
     //         url: "/users/send-sms",
@@ -108,6 +108,5 @@ const adminService = (function() {
     //         });
     //     }
     // }
-    return { getNoticeDetail : getNoticeDetail/*, checkEmail : checkEmail, sendSMS : sendSMS, startTimer: startTimer,
-        findByPhone : findByPhone, checkAuthNumber : checkAuthNumber, checkPhone : checkPhone*/ };
+    return { getNoticeDetail : getNoticeDetail, getMemberDetail : getMemberDetail };
 })();

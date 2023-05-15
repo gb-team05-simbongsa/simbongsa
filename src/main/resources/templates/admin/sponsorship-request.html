@@ -300,7 +300,7 @@
                     <div class="modal__profile__bottom">
                         <h4>테스트 후원요청 제목</h4>
                         <div class="notice__content">
-                            <textarea id="summernote" name="editordata"></textarea>
+                            <textarea></textarea>
                         </div>
                     </div>
 
@@ -397,27 +397,27 @@
     let supportRequests = [[${supportRequestDTOS}]];
 </script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script>
-    console.log('썸머노트');
-    $('#summernote').summernote({
-        placeholder: '후원요청 내용',
-        tabsize: 2,
-        height: 300,
-        width: '100%',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-        ],
-    });
+<!--<script>-->
+<!--    console.log('썸머노트');-->
+<!--    $('#summernote').summernote({-->
+<!--        placeholder: '후원요청 내용',-->
+<!--        tabsize: 2,-->
+<!--        height: 300,-->
+<!--        width: '100%',-->
+<!--        toolbar: [-->
+<!--            ['style', ['style']],-->
+<!--            ['font', ['bold', 'underline', 'clear']],-->
+<!--            ['color', ['color']],-->
+<!--            ['para', ['ul', 'ol', 'paragraph']],-->
+<!--            ['table', ['table']],-->
+<!--            ['insert', ['link', 'picture', 'video']],-->
+<!--        ],-->
+<!--    });-->
 
-</script>
+<!--</script>-->
+<script src="/js/admin/support-request.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>
-<script src="/js/admin/support-request.js"></script>
 <script>
     $('.volunteer_button').on('click', () => {
         $('.volunteer-modal').show();
