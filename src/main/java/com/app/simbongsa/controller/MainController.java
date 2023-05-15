@@ -38,4 +38,5 @@ public class MainController {
         model.addAttribute("freeBoardList", freeBoardList);
         return "main/main";
     }
+
 }

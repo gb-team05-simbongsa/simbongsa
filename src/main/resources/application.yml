@@ -28,9 +28,9 @@ spring:
       enabled: always
 
   #Summernote
-  summernote:
-    image:
-      upload-dir: /Users/hyun/uploads
+#  summernote:
+#    image:
+#      upload-dir: /Users/hyun/uploads
 
   #kakao OAuth
   security:
@@ -51,7 +51,21 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
 
-  app:
-    file:
-      upload-dir: /Users/hyun/uploads
+#  app:
+#    file:
+#      upload-dir: /Users/hyun/uploads
+
+  # 이미지 용량
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 20MB
+
+#      location: c:\\upload
+      location: /Users/hyun/uploads
+      enabled: true
+
+  session:
+    store-type: redis
+
 

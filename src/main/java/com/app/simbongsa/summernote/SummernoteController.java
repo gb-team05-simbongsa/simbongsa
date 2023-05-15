@@ -16,25 +16,25 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 @Slf4j
 public class SummernoteController {
-    private final SupportRequestFileService supportRequestFileService;
-    private final SupportRequestRepository supportRequestRepository;
-
-
-    @PostMapping(value = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String saveSummernoteImage(@RequestParam("file") MultipartFile imageFile) {
-        log.info("들어와");
-        return supportRequestFileService.saveSummernoteImage(imageFile);
-    }
-
-    @GetMapping(value = "/image/{fileId}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public byte[] loadSummernoteImage(@PathVariable Long fileId) {
-        return supportRequestFileService.loadImage(fileId);
-    }
-
-    @PostMapping(value = "/images", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public SupportRequestFileDTO saveImage(@RequestParam("file") MultipartFile imageFile) {
-        log.info("이미지 저장 요청 받음");
-        SupportRequestFile savedFile = supportRequestFileService.saveImage(imageFile);
-        return supportRequestFileService.toDTO(savedFile);
-    }
+//    private final SupportRequestFileService supportRequestFileService;
+//    private final SupportRequestRepository supportRequestRepository;
+//
+//
+//    @PostMapping(value = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public String saveSummernoteImage(@RequestParam("file") MultipartFile imageFile) {
+//        log.info("들어와");
+//        return supportRequestFileService.saveSummernoteImage(imageFile);
+//    }
+//
+//    @GetMapping(value = "/image/{fileId}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+//    public byte[] loadSummernoteImage(@PathVariable Long fileId) {
+//        return supportRequestFileService.loadImage(fileId);
+//    }
+//
+//    @PostMapping(value = "/images", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public SupportRequestFileDTO saveImage(@RequestParam("file") MultipartFile imageFile) {
+//        log.info("이미지 저장 요청 받음");
+//        SupportRequestFile savedFile = supportRequestFileService.saveImage(imageFile);
+//        return supportRequestFileService.toDTO(savedFile);
+//    }
 }

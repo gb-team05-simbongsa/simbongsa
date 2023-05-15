@@ -15,6 +15,11 @@ import javax.persistence.*;
 public class VolunteerWorkFile extends File {
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "VOLUNTEER_WORK_ID")
     private VolunteerWork volunteerWork;
+
+
+    public VolunteerWorkFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, VolunteerWork volunteerWork) {
+        super(fileName, fileUuid, filePath, fileRepresentationalType);
+        this.volunteerWork = volunteerWork;
+    }
 }
