@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.Optional;
 
 @SpringBootTest
@@ -97,7 +98,7 @@ public class FreeBoardRepositoryTests {
     /*자유게시판 삭제(파일, 댓글도 한번에)*/
     @Test
     public void deleteTest() {
-        freeBoardRepository.delete(freeBoardRepository.findById(103L).get());
+        freeBoardRepository.deleteAllById(Arrays.asList(187L,186L,185L,184L,183L,182L,181L,180L));
     }
 
 
