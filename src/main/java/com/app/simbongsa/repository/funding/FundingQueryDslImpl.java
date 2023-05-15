@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QReview.review;
+import static com.app.simbongsa.entity.file.QFundingFile.fundingFile;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
 import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 
@@ -29,6 +30,8 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
     public List<Funding> findAllWithPopular() {
         return query.select(funding)
                 .from(funding)
+                .leftJoin(funding.fundingFile, fundingFile)
+                .fetchJoin()
                 .orderBy(funding.fundingCurrentPrice.divide(funding.fundingTargetPrice).multiply(100).desc())
                 .fetch();
     }

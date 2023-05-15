@@ -216,4 +216,9 @@ public class MemberServiceImpl implements MemberService {
         return kakaoInfo;
     }
 
+    /*이메일 중복 검사*/
+    @Override
+    public Long overlapByMemberEmail(String memberEmail) {
+        return memberRepository.overlapByMemberEmail(memberEmail);
+    }
 }

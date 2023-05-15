@@ -2,6 +2,8 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
 import com.app.simbongsa.service.member.MemberService;
