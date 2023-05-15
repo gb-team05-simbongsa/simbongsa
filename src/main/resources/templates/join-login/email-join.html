@@ -39,16 +39,10 @@
                         <div class="input-div">
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
-                                <span class="input-include-span">
-                                    <input th:if="${kakaoInfo == null}" type="text" name="memberEmail" class="input-write" placeholder="이메일 주소를 입력해주세요">
-                                    <input th:if="${kakaoInfo != null}" type="text" name="memberEmail" class="input-write" placeholder="이메일 주소를 입력해주세요" th:value="${kakaoInfo}" readonly>
-                                </span>
-                            </div>
-                            <div class="email-error">비워놓을 수 없습니다.</div>
-                            <div class="input-include-div">
-                                <span class="input-include-span">
-                                    <input th:if="${kakaoInfo == null}" type="text" class="input-write" placeholder="이메일 주소를 확인합니다">
-                                    <input th:if="${kakaoInfo != null}" type="text" class="input-write" placeholder="이메일 주소를 확인합니다" th:value="${kakaoInfo}" readonly>
+                                <span class="input-include-span" style="padding: 0px 0px 0px 12px;">
+                                    <input th:if="${kakaoInfo == null}" type="text" name="memberEmail" class="input-write input-email" placeholder="이메일 주소를 입력해주세요">
+                                    <input th:if="${kakaoInfo != null}" type="text" name="memberEmail" class="input-write input-email" placeholder="이메일 주소를 입력해주세요" th:value="${kakaoInfo}" readonly>
+                                    <button class="email-check" type="button" onclick="">중복확인</button>
                                 </span>
                             </div>
                             <div class="email-error">비워놓을 수 없습니다.</div>
@@ -195,6 +189,19 @@
                     </form>
                 </div>
             </div>
+
+            <div class="modal-wrap">
+                <div class="modal-container">
+                    <div class="modal">
+                        <div class="modal-content">사용가능한 이메일 입니다.</div>
+                        <div class="modal-ok-div">
+                            <button type="button" class="modal-ok">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="join-footer">© 2023 SimBongSa Inc.</div>
         </div>
 

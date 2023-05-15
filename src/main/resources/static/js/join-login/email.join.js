@@ -5,8 +5,9 @@ const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@#$%^&*_-]
 const $checkboxes = $('.agree').find('input');
 const $all = $('.agree-all');
 const $checks = $('.agree');
+let emailCheck = false;
 
-$('.submit-button').on('click', function() {
+$('.submit-button').on('click', function(event) {
     // 비어있는 input 태그가 있을 시 에러 메시지 출력
     $inputs.each((i, e) => {
         if(!$(e).val()) {
@@ -23,25 +24,25 @@ $('.submit-button').on('click', function() {
         $errorMessage.eq(1).show();
     }
     
-    // 이메일 주소 확인 시 위에와 일치하지 않으면 에러 메시지 출력
+/*    // 이메일 주소 확인 시 위에와 일치하지 않으면 에러 메시지 출력
     if($inputs.eq(2).val()) {
         if($inputs.eq(1).val() != $inputs.eq(2).val()) {
             $errorMessage.eq(2).text('이메일이 일치하지 않습니다.');
             $errorMessage.eq(2).show();
         }
-    }
+    }*/
 
     // 비밀번호가 정규식에 맞지 않으면 에러 메시지 출력
-    if($inputs.eq(3).val() && !passwordRegex.test($inputs.eq(3).val())) {
-        $errorMessage.eq(3).text('영문 대소문자, 숫자, 특수문자 포함 8자 이상으로 설정해주세요.');
-        $errorMessage.eq(3).show();
+    if($inputs.eq(2).val() && !passwordRegex.test($inputs.eq(3).val())) {
+        $errorMessage.eq(2).text('영문 대소문자, 숫자, 특수문자 포함 8자 이상으로 설정해주세요.');
+        $errorMessage.eq(2).show();
     }
 
     // 비밀번호 확인 시 위에와 일치하지 않으면 에러 메시지 출력
-    if($inputs.eq(4).val()) {
-        if($inputs.eq(3).val() != $inputs.eq(4).val()) {
-            $errorMessage.eq(4).text('비밀번호가 일치하지 않습니다.');
-            $errorMessage.eq(4).show();
+    if($inputs.eq(3).val()) {
+        if($inputs.eq(2).val() != $inputs.eq(3).val()) {
+            $errorMessage.eq(3).text('비밀번호가 일치하지 않습니다.');
+            $errorMessage.eq(3).show();
         }
     }
 
@@ -59,10 +60,44 @@ $('.submit-button').on('click', function() {
         }
     }
 
+    if(!emailCheck) {
+        $('.modal-content').text('이메일 중복을 확인해주세요.');
+        $('.modal-wrap').show();
+        return;
+    }
+
     // 다 통과했다면 submit
     document.joinForm.submit();
 
 });
+
+
+//이메일 중복
+$('.email-check').on("click", function(){
+    $.ajax({
+        url:"/members/check-email" ,
+        data: { memberEmail: $('.input-email').val() },
+        type: "post",
+        success: function(result){
+            if(result >= 1) {
+                $errorMessage.eq(1).text('사용 불가능한 이메일입니다.');
+                $errorMessage.eq(1).show();
+            } else {
+                emailCheck = true;
+                $('.modal-content').text('사용 가능한 이메일입니다.');
+                $('.modal-wrap').show();
+                $errorMessage.eq(1).hide();
+
+            }
+        }
+    });
+});
+
+// 모달에 확인 버튼 누르면 모달 끄기
+$('.modal-ok').on('click', () => {
+    $('.modal-wrap').hide();
+});
+
 
 // 관심봉사활동을 선택하는 인풋쪽을 클릭했을 때 드롭다운 보여주거나 숨기기
 $('label[for=drop-span]').on('click', function() {

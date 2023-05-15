@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberService extends UserDetailsService {
     //    회원가입
@@ -40,6 +41,9 @@ public interface MemberService extends UserDetailsService {
 
     /* 카카오 사용자 정보 불러오기 */
     public MemberDTO getKakaoInfo(String token) throws Exception;
+
+    /*이메일 중복 검사*/
+    public Long overlapByMemberEmail(String memberEmail);
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())

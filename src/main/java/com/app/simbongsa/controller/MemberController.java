@@ -1,6 +1,7 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.type.MemberJoinType;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/member/*")
