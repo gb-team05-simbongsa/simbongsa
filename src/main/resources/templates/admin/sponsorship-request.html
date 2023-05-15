@@ -368,23 +368,24 @@
                                 <input type="text" name="" value="kmg2331" readonly="true"/>
                             </div>
                         </div>
-                        <div>
-                            <div class="paging" style="margin-top: 28px; margin-bottom: -57px; text-align: center;">
-                                <a class="changePage" style="color: black"><code><</code></a>
-                                <code id="currentPage">1</code>
-                                <a class="changePage" style="color: black"><code>2</code></a>
-                                <a class="changePage" style="color: black"><code>></code></a>
-                            </div>
-                            <form name="pageForm">
-                                <input type="hidden">
-                                <input type="hidden">
-                            </form>
+                    </div>
+                    <div>
+                        <div class="paging" style="margin-top: 28px; margin-bottom: -57px; text-align: center;">
+                            <a class="changePage" style="color: black"><code><</code></a>
+                            <code id="currentPage">1</code>
+                            <a class="changePage" style="color: black"><code>2</code></a>
+                            <a class="changePage" style="color: black"><code>></code></a>
                         </div>
-                        <div class="user__profile__button" style="margin-top: 20px;">
-                            <button id="completeBtn" class="button__type_2 button__color__green">
-                                작성완료
-                            </button>
-                        </div>
+                        <form name="pageForm">
+                            <input type="hidden">
+                            <input type="hidden">
+                        </form>
+                    </div>
+                    <div class="user__profile__button" style="margin-top: 20px;">
+                        <button id="completeBtn" class="button__type_2 button__color__green">
+                            작성완료
+                        </button>
+                    </div>
                     </div>
                 </main>
             </form>
@@ -415,28 +416,29 @@
 <!--    });-->
 
 <!--</script>-->
+<script src="/js/admin/ajax.js"></script>
 <script src="/js/admin/support-request.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>
-<script>
-    $('.volunteer_button').on('click', () => {
-        $('.volunteer-modal').show();
-        $('.modal-stage').fadeOut(500);
+<!--<script>-->
+<!--    $('.volunteer_button').on('click', () => {-->
+<!--        $('.volunteer-modal').show();-->
+<!--        $('.modal-stage').fadeOut(500);-->
 
 
-        $('.modal-close').on('click', function () {
-            $('.volunteer-modal').fadeOut(500);
-        });
+<!--        $('.modal-close').on('click', function () {-->
+<!--            $('.volunteer-modal').fadeOut(500);-->
+<!--        });-->
 
-    })
-    $detailButton.on('click', () => {
-        $('.modal-stage').show();
-        $('.volunteer-modal').fadeOut(500);
+<!--    })-->
+<!--    $detailButton.on('click', () => {-->
+<!--        $('.modal-stage').show();-->
+<!--        $('.volunteer-modal').fadeOut(500);-->
 
-        $('.modal-close').on('click', function () {
-            $('.modal-stage').fadeOut(500);
-        });
+<!--        $('.modal-close').on('click', function () {-->
+<!--            $('.modal-stage').fadeOut(500);-->
+<!--        });-->
 
-    })
-</script>
+<!--    })-->
+<!--</script>-->
 </html>

@@ -32,7 +32,7 @@ $('.content__detail__btn').on('click', function () {
     var contentId = $detailButton.eq(i).parent().siblings('.content__id').text();
 
     /* ajax 에 콜백 넘겨주는 코드 작성해야 함 (검색기능 ajax로)*/
-    adminService.getNoticeDetail(contentId, function(result) {
+    adminService.getDetail("/admins/notice-details", contentId, function(result) {
         $('input[name=id]').val(contentId);
         $('input[name=noticeTitle]').val(result.noticeTitle);
         $('.notice-detail-content').val(result.noticeContent);
@@ -48,14 +48,11 @@ $('.content__detail__btn').on('click', function () {
     });
 });
 
-// $('#delete-button').on('click', function() {
-//     let check = [];
-//     $('input[name=check]').each((i, e) => {
-//         if($(e).is('checked')) {
-//             check[]
-//         }
-//     });
-// });
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/notices-delete", $checkArr, function() {
+        location.reload();
+    });
+});
 
 
 

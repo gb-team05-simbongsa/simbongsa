@@ -63,6 +63,13 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
         return allSupportAttend;
     }
 
+    @Override
+    public List<Support> findByIdList(Long id) {
+        return query.select(support)
+                .from(support)
+                .where(support.id.eq(id))
+                .fetch();
+    }
 
 
 }

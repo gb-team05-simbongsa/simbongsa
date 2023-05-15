@@ -260,19 +260,13 @@
                         <div class="user__profile">
                             <h5>이름</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="example1234" readonly="true"/>
+                                <input type="text" id="name" name="memberName" value="example1234" readonly="true"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>이메일</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="example@gmail.com" readonly="true"/>
-                            </div>
-                        </div>
-                        <div class="user__profile">
-                            <h5>전화번호</h5>
-                            <div class="user__profile__input">
-                                <input type="text" name="" value="01012341234" readonly="true"/>
+                                <input type="text" id="email" name="memberEmail" value="example@gmail.com" readonly="true"/>
                             </div>
                         </div>
                     </div>
@@ -281,20 +275,20 @@
                         <div class="user__profile">
                             <h5>요청 날짜</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="2023-04-12" readonly="true"/>
+                                <input type="text" id="createdDate" name="createdDate" value="2023-04-12" readonly="true"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>계좌번호</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="국민은행" readonly="true" style="width: 50px;"/>
-                                <input type="text" name="" value="61250201378228" readonly="true"/>
+                                <input type="text" id="exchangeBank" name="ricePaymentExchangeBank" value="국민은행" readonly="true" style="width: 50px;"/>
+                                <input type="text" id="exchangeAccount" name="ricePaymentExchangeAccount" value="61250201378228" readonly="true"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>환전 요청한 공양미</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="2000" readonly="true"/>
+                                <input type="text" id="price" name="ricePaymentUsed" value="2000" readonly="true"/>
                             </div>
                         </div>
                     </div>
@@ -314,6 +308,7 @@
 <script th:inline="javascript">
   let ricePayments = [[${ricePaymentDTOS}]];
 </script>
+<script src="/js/admin/ajax.js"></script>
 <script src="/js/admin/gongyangmi-refund.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>

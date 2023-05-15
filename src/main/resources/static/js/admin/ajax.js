@@ -1,35 +1,9 @@
 const adminService = (function() {
-    function getNoticeDetail(contentId, callback) {
-        $.ajax({
-            url: "/admins/notice-details",
-            type: "post",
-            data: { id : contentId },
-            success: function(result) {
-                if(callback) {
-                    callback(result);
-                }
-            }
-        });
-    }
-
-    function getMemberDetail(contentId, callback) {
-        $.ajax({
-            url: "/admins/member-details",
-            type: "post",
-            data: { id : contentId },
-            success: function(result) {
-                if(callback) {
-                    callback(result);
-                }
-            }
-        });
-    }
-
-    // function sendSMS(callback) {
+    // function getNoticeDetail(contentId, callback) {
     //     $.ajax({
-    //         url: "/users/send-sms",
-    //         type: "get",
-    //         data: { userPhone : $('input[name=userPhone]').val() },
+    //         url: "/admins/notice-details",
+    //         type: "post",
+    //         data: { id : contentId },
     //         success: function(result) {
     //             if(callback) {
     //                 callback(result);
@@ -37,7 +11,35 @@ const adminService = (function() {
     //         }
     //     });
     // }
-    //
+
+    function getDetail(url, contentId, callback) {
+        $.ajax({
+            url: url,
+            type: "post",
+            data: { id : contentId },
+            success: function(result) {
+                if(callback) {
+                    callback(result);
+                }
+            }
+        });
+    }
+
+    function deleteAllById(url, contentIds, callback) {
+        console.log(contentIds);
+        $.ajax({
+            url: url,
+            type: "post",
+            data: { ids : contentIds },
+            traditional : true,
+            success: function() {
+                if(callback) {
+                    callback();
+                }
+            }
+        });
+    }
+
     // function checkPhone(userPhone, callback) {
     //     $.ajax({
     //         url: "/users/userPhones-duplicate",
@@ -108,5 +110,5 @@ const adminService = (function() {
     //         });
     //     }
     // }
-    return { getNoticeDetail : getNoticeDetail, getMemberDetail : getMemberDetail };
+    return { getDetail : getDetail, deleteAllById : deleteAllById };
 })();

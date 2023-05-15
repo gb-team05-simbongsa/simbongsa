@@ -13,7 +13,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = {"member", "supportRequestFiles"})
+@Getter @ToString(exclude = {"member", "supportRequestFiles", "supports"})
 @Table(name = "TBL_SUPPORT_REQUEST")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert

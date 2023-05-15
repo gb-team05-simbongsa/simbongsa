@@ -31,8 +31,7 @@ $('.content__detail__btn').on('click', function () {
     var contentId = $detailButton.eq(i).parent().siblings('.content__id').text();
 
     /* ajax 에 콜백 넘겨주는 코드 작성해야 함 (검색기능 ajax로)*/
-    adminService.getMemberDetail(contentId, function(result) {
-        console.log(result)
+    adminService.getDetail("/admins/member-details", contentId, function(result) {
         $('input[name=id]').val(result.id);
         $('#email').val(result.memberEmail);
         $('#age').val(result.memberAge);

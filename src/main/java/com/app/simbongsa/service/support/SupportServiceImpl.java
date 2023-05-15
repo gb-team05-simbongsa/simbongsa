@@ -38,5 +38,10 @@ public class SupportServiceImpl implements SupportService {
         return supportRepository.findAllSupportAttend_QueryDSL(id);
     }
 
+    @Override
+    public List<SupportDTO> getSupportList(Long id) {
+        return supportRepository.findByIdList(id).stream().map(this::toSupportDTO).collect(Collectors.toList());
+    }
+
 
 }
