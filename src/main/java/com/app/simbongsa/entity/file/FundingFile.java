@@ -20,8 +20,15 @@ public class FundingFile extends File{
     private Funding funding;
 
     /* 단위테스트 위한 생성자 생성 */
+    @Builder
+    public FundingFile(Funding funding) {
+        this.funding = funding;
+    }
+
+    @Builder
     public FundingFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Funding funding) {
         super(fileName, fileUuid, filePath, fileRepresentationalType);
         this.funding = funding;
     }
+
 }

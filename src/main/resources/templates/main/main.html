@@ -169,7 +169,7 @@
                                                     </dt>
                                                 </dl>
                                                 <div class="funding-status">
-                                                    <span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">달성</span>
+                                                    <span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">시 달성</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -354,14 +354,22 @@
 <script src="/js/main/main.js"></script>
 <script src="/js/main/header.js"></script>
 <script type="text/javascript">
-    // $(document).ready(function () {
-    //     $('#_header').load('../main/header.html');
-    //     $('#_footer').load('../main/footer.html');
-    // });
-
     $(".image-wrapper a").each((i,e) => {
         console.log($(e));
         $(e).eq(i).css('background-image', 'url("https://tumblbug-upi.imgix.net/default_avatar.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=250&mask=ellipse&w=250&s=80a07af0ffbe653137dd423ed1d5651c")');
     } )
+</script>
+<script th:inline="javascript">
+    const fundingDTO = [[${fundingListOrderByPopularList}]];
+    let fileDTOs = fundingDTO.fileDTOs;
+    fileDTOs.forEach((fileDTO, i) => {
+        let text = `
+            <div class="volunteer-image-wrapper">
+                <a href="#"></a>
+                <img src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+            </div>
+        `;
+        $('.volunteer-image-wrapper').append(text);
+    })
 </script>
 </html>

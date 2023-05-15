@@ -1,10 +1,13 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.domain.SupportDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
+import com.app.simbongsa.service.member.MemberService;
+import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import lombok.RequiredArgsConstructor;
@@ -23,18 +26,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SupportController {
     private final SupportRequestService supportRequestService;
     private final SupportService supportService;
+    private final RicePaymentService ricePaymentService;
+    private final MemberService memberService;
 
 //    참여내역 페이징 처리
-    @GetMapping("support-detail/{supportRequestId}")
-    public String supportDetail(Integer page, Model model, @PathVariable("supportRequestId") Long supportRequestId){
-        page = page == null ? 0 : page -1;
-        Page<SupportDTO> attendList = supportService.getAllSupportAttendWithMember_QueryDSL(page, supportRequestId);
-        Long attendCount = supportService.getAllSupportAttend_QueryDSL(supportRequestId);
-        SupportRequestDTO getSupportRequestDetail = supportRequestService.getSupportRequestDetail(supportRequestId);
-        model.addAttribute("attendCount", attendCount);
-        model.addAttribute("supportDTOS", attendList);
-        model.addAttribute("pageDTO", new PageDTO(attendList));
-        model.addAttribute("getSupportRequestDetail", getSupportRequestDetail);
+    @GetMapping("support-detail")
+    public String supportDetail(/*Integer page, Model model*//*, @PathVariable("supportRequestId") Long supportRequestId, Long memberId*/){
+//        page = page == null ? 0 : page -1;
+//        Page<SupportDTO> attendList = supportService.getAllSupportAttendWithMember_QueryDSL(page, supportRequestId);
+//        Long attendCount = supportService.getAllSupportAttend_QueryDSL(supportRequestId);
+//        SupportRequestDTO getSupportRequestDetail = supportRequestService.getSupportRequestDetail(supportRequestId);
+//        MemberDTO memberRice = memberService.getMemberById(memberId);
+//
+//        model.addAttribute("memberRice", memberRice);
+//        model.addAttribute("attendCount", attendCount);
+//        model.addAttribute("supportDTOS", attendList);
+//        model.addAttribute("pageDTO", new PageDTO(attendList));
+//        model.addAttribute("getSupportRequestDetail", getSupportRequestDetail);
         return "support/support-detail";
     }
 
