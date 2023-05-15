@@ -387,11 +387,11 @@
                         </div>
                         <h4 style="margin-top: 40px; margin-bottom: -15px;">프로젝트 소개</h4>
                         <div class="notice__content">
-                            <textarea id="introduce" name="editordata"></textarea>
+                            <textarea id="introduce"></textarea>
                         </div>
                         <h4 style="margin-top: 40px; margin-bottom: -15px;">프로젝트 예산</h4>
                         <div class="notice__content">
-                            <textarea id="budget" name="editordata"></textarea>
+                            <textarea id="budget"></textarea>
                         </div>
                         <div class="user__profile__button" style="margin-top: 20px;">
                             <button id="completeBtn" class="button__type_2 button__color__green">
@@ -411,35 +411,35 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
-    console.log('썸머노트');
-    $('#introduce').summernote({
-        placeholder: '프로젝트 소개',
-        tabsize: 2,
-        height: 300,
-        width: '100%',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-        ],
-    });
-    $('#budget').summernote({
-        placeholder: '프로젝트 예산 계획 내용',
-        tabsize: 2,
-        height: 300,
-        width: '100%',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-        ],
-    });
+    // console.log('썸머노트');
+    // $('#introduce').summernote({
+    //     placeholder: '프로젝트 소개',
+    //     tabsize: 2,
+    //     height: 300,
+    //     width: '100%',
+    //     toolbar: [
+    //         ['style', ['style']],
+    //         ['font', ['bold', 'underline', 'clear']],
+    //         ['color', ['color']],
+    //         ['para', ['ul', 'ol', 'paragraph']],
+    //         ['table', ['table']],
+    //         ['insert', ['link', 'picture', 'video']],
+    //     ],
+    // });
+    // $('#budget').summernote({
+    //     placeholder: '프로젝트 예산 계획 내용',
+    //     tabsize: 2,
+    //     height: 300,
+    //     width: '100%',
+    //     toolbar: [
+    //         ['style', ['style']],
+    //         ['font', ['bold', 'underline', 'clear']],
+    //         ['color', ['color']],
+    //         ['para', ['ul', 'ol', 'paragraph']],
+    //         ['table', ['table']],
+    //         ['insert', ['link', 'picture', 'video']],
+    //     ],
+    // });
 
     $('.registVolunteer').on('click', () => {
         $modalStage.show();
@@ -457,9 +457,9 @@
     // })
 
 </script>
+<script src="/js/admin/funding.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>
-<script src="/js/admin/funding.js"></script>
 <script>
     $('.volunteer_button').on('click', () => {
         $('.volunteer-modal').show();

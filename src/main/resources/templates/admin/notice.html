@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="/css/admin/status.css" />
     <link rel="stylesheet" href="/css/admin/notice-modal.css" />
     <link rel="stylesheet" href="/css/admin/paging.css">
+    <link rel="stylesheet" href="/css/admin/storage-modal.css">
     <!-- 웹에디터 API -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
+<!--    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />-->
 </head>
 <body>
     <section class="main">
@@ -192,8 +193,8 @@
                                     <input type="date"/>
                                 </div>
                             </div>
-                            <div class="notice__content">
-                                <textarea id="summernote" name="editordata" class="notice-detail-content"></textarea>
+                            <div class="content__intput input_box_shadow" style="margin-left: 6px;">
+                                <textarea class="notice-detail-content"></textarea>
                             </div>
                         </div>
                         <div class="user__profile__button">
@@ -212,23 +213,23 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- 웹에디터 API -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script>
-    $('#summernote').summernote({
-        placeholder: '공지사항 내용 작성',
-        tabsize: 2,
-        height: 300,
-        width: '100%',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-        ],
-    });
-</script>
+<!--<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>-->
+<!--<script>-->
+<!--    $('#summernote').summernote({-->
+<!--        placeholder: '공지사항 내용 작성',-->
+<!--        tabsize: 2,-->
+<!--        height: 300,-->
+<!--        width: '100%',-->
+<!--        toolbar: [-->
+<!--            ['style', ['style']],-->
+<!--            ['font', ['bold', 'underline', 'clear']],-->
+<!--            ['color', ['color']],-->
+<!--            ['para', ['ul', 'ol', 'paragraph']],-->
+<!--            ['table', ['table']],-->
+<!--            ['insert', ['link', 'picture', 'video']],-->
+<!--        ],-->
+<!--    });-->
+<!--</script>-->
 <script src="/js/admin/ajax.js"></script>
 <script src="/js/admin/notice.js"></script>
 <script src="/js/admin/app.js"></script>
