@@ -32,7 +32,9 @@ public class SupportRequestServiceImpl implements SupportRequestService {
     @Override
     public Page<SupportRequestDTO> getSupportRequest(Integer page, AdminSupportRequestSearch adminSupportRequestSearch) {
         Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPaging(adminSupportRequestSearch, PageRequest.of(page, 5));
+        log.info("서울사이버 대학을 다니고");
         List<SupportRequestDTO> noticeDTOS = supportRequests.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
+        log.info("내인생이 달라졌다");
         return new PageImpl<>(noticeDTOS, supportRequests.getPageable(), supportRequests.getTotalElements());
     }
 

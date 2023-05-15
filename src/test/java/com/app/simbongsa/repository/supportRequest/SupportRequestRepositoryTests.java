@@ -34,7 +34,7 @@ public class SupportRequestRepositoryTests {
     @Test
     public void saveTest(){
         for (int i = 1; i <= 23; i++) {
-            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.승인, memberRepository.findById(50L).get());
+            SupportRequest supportRequest = new SupportRequest("후원요청제목" + i,"후원요청내용" + i, RequestType.대기, memberRepository.findById(2L).get());
             supportRequestRepository.save(supportRequest);
         }
         /*for (int i = 1; i <= 3; i++) {

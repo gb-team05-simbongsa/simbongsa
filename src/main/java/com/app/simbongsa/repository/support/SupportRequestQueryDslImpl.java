@@ -77,7 +77,7 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
                 .where(requestTypeEq, memberEmailLike)
-                .orderBy(supportRequest.createdDate.desc())
+                .orderBy(supportRequest.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

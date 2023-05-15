@@ -25,7 +25,7 @@ public class NoticeRepositoryTests {
 //    공지사항 더미 넣기
     @Test
     public void saveTest() {
-        for(int i = 1; i <= 15; i++) {
+        for(int i = 1; i <= 18; i++) {
             Notice notice = new Notice("제목" + i, "내용" + i);
             noticeRepository.save(notice);
         }

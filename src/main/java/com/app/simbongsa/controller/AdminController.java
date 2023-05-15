@@ -139,6 +139,7 @@ public class AdminController {
         AdminSupportRequestSearch adminSupportRequestSearch = new AdminSupportRequestSearch();
         Page<SupportRequestDTO> supportRequestDTOS = supportRequestService.getSupportRequest(page, adminSupportRequestSearch);
 
+        log.info(supportRequestDTOS.getContent().toString());
         model.addAttribute("supportRequestDTOS", supportRequestDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(supportRequestDTOS));
         return "admin/sponsorship-request";
