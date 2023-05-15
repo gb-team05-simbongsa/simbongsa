@@ -61,7 +61,7 @@ public class SupportRepositoryTests {
     /* 후원 총 참여 내역 수*/
     @Test
     public void findAllSupportAttend_QueryDSLTest() {
-        log.info("================== 총 개수 : "+supportRepository.findAllSupportAttend_QueryDSL().toString() + " ============");
+//        log.info("================== 총 개수 : "+supportRepository.findAllSupportAttend_QueryDSL().toString() + " ============");
     }
 
 //    해당 후원 명단 조회

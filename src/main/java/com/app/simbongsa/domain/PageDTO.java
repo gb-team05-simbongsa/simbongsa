@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
+@Slf4j
 public class PageDTO {
     private int startPage;
     private int endPage;
@@ -28,9 +29,10 @@ public class PageDTO {
         int listSize = list.getSize();
 
         if(total < 5) {
+            log.info("???");
             listSize = total;
         }
-        int realEnd = (int) (Math.ceil(total * 1.0) / listSize);
+        int realEnd = (int) Math.ceil(Math.ceil(total * 1.0) / listSize);
 
         if(realEnd < this.endPage) {
             this.endPage = realEnd;
