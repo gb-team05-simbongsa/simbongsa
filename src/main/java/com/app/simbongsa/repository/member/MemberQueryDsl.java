@@ -34,7 +34,7 @@ public interface MemberQueryDsl {
     public List<Member> findSupportByRequestId(Long id);
 
     /*이메일 중복 검사*/
-    public Optional<Member> overlapByMemberEmail(String memberEmail);
+    public Long overlapByMemberEmail(String memberEmail);
 
     /* 내 공양미 환전 요청*/
     public void updateChangeRiceByMemberId(Long memberId, int changeRice);
