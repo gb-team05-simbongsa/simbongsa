@@ -34,6 +34,7 @@ public class VolunteerWork {
     @NotNull private String volunteerWorkPlace;
     @NotNull private String volunteerWorkTitle;
 
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork")
     private List<VolunteerWorkFile> volunteerWorkFiles;
 //    단위테스트용 생성자 생성
@@ -48,5 +49,21 @@ public class VolunteerWork {
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
+    }
+
+    @Builder
+    public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, List<VolunteerWorkFile> volunteerWorkFiles) {
+        this.id = id;
+        this.volunteerWorkStartDate = volunteerWorkStartDate;
+        this.volunteerWorkEndDate = volunteerWorkEndDate;
+        this.volunteerWorkTime = volunteerWorkTime;
+        this.volunteerWorkJoinStartDate = volunteerWorkJoinStartDate;
+        this.volunteerWorkJoinEndDate = volunteerWorkJoinEndDate;
+        this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
+        this.volunteerWorkCategory = volunteerWorkCategory;
+        this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
+        this.volunteerWorkPlace = volunteerWorkPlace;
+        this.volunteerWorkTitle = volunteerWorkTitle;
+        this.volunteerWorkFiles = volunteerWorkFiles;
     }
 }

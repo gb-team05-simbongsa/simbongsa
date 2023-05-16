@@ -73,7 +73,7 @@ public class Funding {
         this.fundingScheduleExplain = fundingScheduleExplain;
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingCreator = fundingCreator;
-       this.member = member;
+        this.member = member;
     }
 
 
