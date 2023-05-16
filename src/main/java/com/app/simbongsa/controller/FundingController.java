@@ -56,10 +56,17 @@ public class FundingController {
 //    @GetMapping("funding-list")
 //    public String fundinglist() {return "funding/funding-list.html";}
 
+    @GetMapping("funding")
+    public String goToFundingList(){
+        return "/funding/funding-list";
+    }
+
     @GetMapping("funding-list")
     @ResponseBody
-    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page, Model model) {
+    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page) {
     PageRequest pageRequest = PageRequest.of(page, 12);
+
+
     return fundingService.getFundingList(pageRequest);
 
     }

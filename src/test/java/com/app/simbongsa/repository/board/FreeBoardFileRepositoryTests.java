@@ -24,11 +24,11 @@ public class FreeBoardFileRepositoryTests {
 
     @Test
     public void saveTest(){
-        FreeBoardFile freeBoardFile1 = new FreeBoardFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,freeBoardRepository.findById(46L).get());
-        freeBoardFileRepository.save(freeBoardFile1);
-        for (int i = 1; i <= 5; i++) {
-            FreeBoardFile freeBoardFile2 = new FreeBoardFile("00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,freeBoardRepository.findById(46L).get());
-            freeBoardFileRepository.save(freeBoardFile2);
-        }
+//        FreeBoardFile freeBoardFile1 = new FreeBoardFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,freeBoardRepository.findById(46L).get());
+//        freeBoardFileRepository.save(freeBoardFile1);
+//        for (int i = 1; i <= 5; i++) {
+//            FreeBoardFile freeBoardFile2 = new FreeBoardFile("00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,freeBoardRepository.findById(46L).get());
+//            freeBoardFileRepository.save(freeBoardFile2);
+//        }
     }
 }

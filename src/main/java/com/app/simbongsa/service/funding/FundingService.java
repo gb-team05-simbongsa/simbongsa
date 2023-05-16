@@ -109,7 +109,7 @@ public interface FundingService {
 
     default Funding toFundingEntity(FundingDTO fundingDTO) {
         return Funding.builder()
-                .id(fundingDTO.getId())
+//                .id(fundingDTO.getId())
                 .fundingCategory(fundingDTO.getFundingCategory())
                 .fundingTitle(fundingDTO.getFundingTitle())
                 .fundingShortTitle(fundingDTO.getFundingShortTitle())

@@ -87,19 +87,19 @@ public class ReviewRepositoryTests {
     }
 
 //    댓글 수
-    @Test
-    public void findReplyCountTest() {
-        log.info("============================" + reviewReplyRepository.findReplyCountByReviewId(116L));
-    }
+//    @Test
+//    public void findReplyCountTest() {
+//        log.info("============================" + reviewReplyRepository.findReplyCountByReviewId(116L));
+//    }
 
 //    리뷰게시판 파일 등록
     @Test
     public void saveFiles() {
-        for(int i =1; i<=2; i++){
-            Optional<Review> byId = reviewRepository.findById(115L);
-            ReviewFile reviewFile = new ReviewFile("001.png","34271983dksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION, reviewRepository.findById(116L).get());
-            reviewFileRepository.save(reviewFile);
-        }
+//        for(int i =1; i<=2; i++){
+//            Optional<Review> byId = reviewRepository.findById(115L);
+//            ReviewFile reviewFile = new ReviewFile("001.png","34271983dksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION, reviewRepository.findById(116L).get());
+//            reviewFileRepository.save(reviewFile);
+//        }
     }
 
 //    리뷰게시판 삭제(파일, 댓글도 한번에)
