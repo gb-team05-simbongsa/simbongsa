@@ -25,7 +25,7 @@ public class AnswerServiceImpl implements AnswerService {
     /* 질문에 대한 답변 조회*/
     @Override
     public AnswerDTO findByInquiryId(Long inquiryId) {
-        return toAnswerDTO(answerRepository.findByInquiryId_QueryDSL(inquiryId).get());
+        return toAnswerDTO(answerRepository.findByInquiryId_QueryDSL(inquiryId));
 
     }
 }

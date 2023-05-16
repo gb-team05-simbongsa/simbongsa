@@ -32,7 +32,7 @@ public class AnswerRepositoryTests {
     /* 질문에 대한 답변 조회*/
     @Test
     public void findByInquiryIdTest(){
-        answerRepository.findByInquiryId_QueryDSL(422L).ifPresent(answer -> log.info(answer.toString()));
+        answerRepository.findByInquiryId_QueryDSL(422L);
     }
 
 }

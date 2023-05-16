@@ -20,7 +20,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.xml.ws.Service;
 import java.util.List;
@@ -51,6 +53,13 @@ public class MypageController {
         model.addAttribute("myInquiries", myInquiries.getContent());
         model.addAttribute("pageDTO", new PageDTO(myInquiries));
         return "mypage/my-question";
+    }
+
+    @PostMapping("my-question-update")
+    public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent) {
+        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).build();
+        inquiryService.setInquiry(inquiryDTO);
+        return new RedirectView("mypage/my-question");
     }
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */

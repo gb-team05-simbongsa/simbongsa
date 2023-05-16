@@ -17,11 +17,11 @@ public class AnswerQueryDslImpl implements AnswerQueryDsl {
 
     /* 질문에 대한 답변 조회*/
     @Override
-    public Optional<Answer> findByInquiryId_QueryDSL(Long inquiryId) {
-        return Optional.ofNullable(query.select(answer)
+    public Answer findByInquiryId_QueryDSL(Long inquiryId) {
+        return query.select(answer)
                 .from(answer)
                 .where(answer.inquiry.id.eq(inquiryId))
-                .fetchOne());
+                .fetchOne();
     }
 
 }

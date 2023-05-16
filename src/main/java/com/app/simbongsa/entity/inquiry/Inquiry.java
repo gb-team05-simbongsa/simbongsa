@@ -11,7 +11,7 @@ import org.hibernate.annotations.DynamicInsert;
 import javax.persistence.*;
 
 @Entity
-@Getter @ToString(exclude = "member")
+@Getter @Setter @ToString(exclude = "member")
 @Table(name = "TBL_INQUIRY")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
