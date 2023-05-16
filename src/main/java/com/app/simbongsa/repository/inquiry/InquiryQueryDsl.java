@@ -24,4 +24,7 @@ public interface InquiryQueryDsl {
 
     /* 내 문의사항 수정 */
     public void updateMyInquiry(String inquiryTitle, String inquiryContent);
+
+//    문의 상세보기
+    public Inquiry findInquiryAndAnswerById(Long id);
 }

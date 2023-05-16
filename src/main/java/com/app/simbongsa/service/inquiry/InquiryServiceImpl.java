@@ -10,6 +10,7 @@ import com.app.simbongsa.repository.inquiry.InquiryRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Qualifier("inquiry") @Primary
+@Slf4j
 public class InquiryServiceImpl implements InquiryService {
     private final InquiryRepository inquiryRepository;
 
@@ -35,17 +37,14 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public Page<InquiryDTO> getInquiry(Integer page, AdminBoardSearch adminBoardSearch) {
         Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(page, 5));
-        List<InquiryDTO> inquiryDTOS = inquiries.getContent().stream().map(this::toAdminInquiryDTO).collect(Collectors.toList());
+        List<InquiryDTO> inquiryDTOS = inquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
         return new PageImpl<>(inquiryDTOS, inquiries.getPageable(), inquiries.getTotalElements());
     }
 
     @Override
     public InquiryDTO getInquiryDetail(Long id) {
-        Inquiry inquiry = inquiryRepository.findById(id).get();
-        if(inquiry.getAnswer() != null) {
-            return toInquiryDTO(inquiry);
-        }
-        return toAdminInquiryDTO(inquiry);
+        Inquiry inquiry = inquiryRepository.findInquiryAndAnswerById(id);
+        return toInquiryDTO(inquiry);
     }
 
     @Override
