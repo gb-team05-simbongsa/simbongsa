@@ -1,9 +1,9 @@
 const adminService = (function() {
-    // function getNoticeDetail(contentId, callback) {
+    // function getList(url, callback) {
     //     $.ajax({
-    //         url: "/admins/notice-details",
+    //         url: url,
     //         type: "post",
-    //         data: { id : contentId },
+    //         data: { page : page },
     //         success: function(result) {
     //             if(callback) {
     //                 callback(result);

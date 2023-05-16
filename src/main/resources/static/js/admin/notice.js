@@ -1,26 +1,26 @@
 // 공지사항 목록 출력
-notices.forEach((notice, i) => {
+notices.forEach(notice => {
     let text;
 
     text = `
-        <tr class="table__content">
-            <td>
-                <label class="check-label">
-                   <input type="checkbox" name="check" />
-                </label>
-            </td>
-            <td class="content__id">${notice.id}</td>
-            <td class="notice-content">${notice.noticeTitle}</td>
-            <td>${notice.createdDate}</td>
-            <td>${notice.updatedDate}</td>
-            <td>관리자</td>
-            <td>
-                <button class="content__detail__btn button__type_2 button__color__green show-detail">
-                    상세보기
-                </button>
-            </td>
-        </tr>
-    `;
+    <tr class="table__content">
+        <td>
+            <label class="check-label">
+               <input type="checkbox" name="check" />
+            </label>
+        </td>
+        <td class="content__id">${notice.id}</td>
+        <td class="notice-content">${notice.noticeTitle}</td>
+        <td>${notice.createdDate}</td>
+        <td>${notice.updatedDate}</td>
+        <td>관리자</td>
+        <td>
+            <button class="content__detail__btn button__type_2 button__color__green show-detail">
+                상세보기
+            </button>
+        </td>
+    </tr>
+`;
 
     $('.table').append(text);
 });
@@ -50,7 +50,35 @@ $('.content__detail__btn').on('click', function () {
 
 $('#confirm-delete').on('click', function() {
     adminService.deleteAllById("/admins/notices-delete", $checkArr, function() {
-        location.reload();
+        document.location.reload(true);
+        // adminService.getList("/admins/notice-lists", function(results) {
+        //     console.log(results)
+        //     let text = ``;
+        //     results.forEach(result => {
+        //
+        //         text += `
+        //             <tr class="table__content">
+        //                 <td>
+        //                     <label class="check-label">
+        //                        <input type="checkbox" name="check" />
+        //                     </label>
+        //                 </td>
+        //                 <td class="content__id">${result.id}</td>
+        //                 <td class="notice-content">${result.noticeTitle}</td>
+        //                 <td>${result.createdDate}</td>
+        //                 <td>${result.updatedDate}</td>
+        //                 <td>관리자</td>
+        //                 <td>
+        //                     <button class="content__detail__btn button__type_2 button__color__green show-detail">
+        //                         상세보기
+        //                     </button>
+        //                 </td>
+        //             </tr>
+        //         `;
+        //
+        //     });
+        //     $('.table').html(text);
+        // });
     });
 });
 

@@ -163,18 +163,18 @@ function initClock() {
 /* 확인 모달창 */
 const deleteButton = $('#delete-button');
 const modal = $('#confirm-modal');
-const confirmButton = $('#confirm-delete');
+// const confirmButton = $('#confirm-delete');
 const cancelButton = $('#cancel-delete');
 
 deleteButton.click(function () {
   modal.css('display', 'block');
 });
 
-confirmButton.click(function () {
-  // 삭제를 실행하는 코드 작성
-  location.reload();
-  modal.css('display', 'none');
-});
+// confirmButton.click(function () {
+//   // 삭제를 실행하는 코드 작성
+//   location.reload();
+//   modal.css('display', 'none');
+// });
 
 cancelButton.click(function () {
   modal.css('display', 'none');

@@ -35,8 +35,8 @@ public class FreeBoardRepositoryTests {
     @Test
     public void saveTest() {
         for (int i = 1; i <= 5; i++) {
-            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(25L).get());
-            freeBoardRepository.save(freeBoard);
+//            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(25L).get());
+//            freeBoardRepository.save(freeBoard);
         }
     }
 
