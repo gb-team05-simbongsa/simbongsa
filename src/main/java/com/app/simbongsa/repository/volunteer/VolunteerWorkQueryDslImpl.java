@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.volunteer;
 
+import com.app.simbongsa.entity.file.QVolunteerWorkFile;
 import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.app.simbongsa.entity.file.QVolunteerWorkFile.volunteerWorkFile;
 import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 
 @RequiredArgsConstructor
@@ -26,7 +28,12 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     // 봉사활동 목록 조회 (메인페이지)
     @Override
     public List<VolunteerWork> findVolunteerWorkList() {
-        return query.select(volunteerWork).from(volunteerWork)/*.join(volunteerWork.volunteerWorkFiles)*/.orderBy(volunteerWork.id.desc()).limit(8).fetch();
+        return query.select(volunteerWork)
+                .from(volunteerWork)
+                .leftJoin(volunteerWork.volunteerWorkFiles, volunteerWorkFile)
+                .orderBy(volunteerWork.id.desc())
+                .limit(8)
+                .fetch();
     }
 
 

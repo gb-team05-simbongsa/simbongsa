@@ -1,12 +1,19 @@
 package com.app.simbongsa.domain;
 
+import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Data
@@ -23,10 +30,34 @@ public class VolunteerWorkDTO {
     private String volunteerWorkPlace;
     private String volunteerWorkTitle;
 
+    private List<VolunteerWorkFile> volunteerWorkFiles;
+
+    private List<FileDTO> fileDTOs;
+
+    public VolunteerWorkDTO(List<FileDTO> fileDTOs) {
+        this.fileDTOs = fileDTOs;
+    }
+
     @Builder
     public VolunteerWorkDTO(VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkPlace, String volunteerWorkTitle) {
         this.volunteerWorkCategory = volunteerWorkCategory;
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
+    }
+
+    @Builder
+    public VolunteerWorkDTO(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, List<VolunteerWorkFile> volunteerWorkFiles, List<FileDTO> fileDTOs) {
+        this.id = id;
+        this.volunteerWorkStartDate = volunteerWorkStartDate;
+        this.volunteerWorkEndDate = volunteerWorkEndDate;
+        this.volunteerWorkTime = volunteerWorkTime;
+        this.volunteerWorkJoinStartDate = volunteerWorkJoinStartDate;
+        this.volunteerWorkJoinEndDate = volunteerWorkJoinEndDate;
+        this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
+        this.volunteerWorkCategory = volunteerWorkCategory;
+        this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
+        this.volunteerWorkPlace = volunteerWorkPlace;
+        this.volunteerWorkTitle = volunteerWorkTitle;
+        this.fileDTOs = fileDTOs;
     }
 }

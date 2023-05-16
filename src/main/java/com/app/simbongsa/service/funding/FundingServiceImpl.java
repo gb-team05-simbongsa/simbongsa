@@ -30,15 +30,6 @@ public class FundingServiceImpl implements FundingService {
 //    여기에서 FileDTOs에 파일이 안들어가
     @Override
     public List<FundingDTO> getAllPopularFundingList() {
-//        List<Funding> fundings = fundingRepository.findAllWithPopular();
-//        fundings.stream().map(Funding::getFundingFile).forEach(v -> log.info(v.toString() + "================== 여기 봐주세요 1 =========="));
-//        List<FundingDTO> fundingDTOS = new ArrayList<>();
-//        for(Funding funding : fundings){
-//            FundingDTO fundingDTO = toFundingDTO(funding);
-//            fundingDTOS.add(fundingDTO);
-//            fundingDTOS.stream().map(FundingDTO::toString).forEach(log::info);
-//        }
-
         List<Funding> fundingList = fundingRepository.findAllWithPopular();
         List<FundingDTO> fundingDTOS = fundingList.stream()
                 .map(funding -> {

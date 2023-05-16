@@ -19,4 +19,5 @@ public class VolunteerWorkActivityServiceImpl implements VolunteerWorkActivitySe
     public List<VolunteerWorkActivity> getVolunteerWorkActivity(Long id) {
         return volunteerWorkActivityRepository.findApplyByVolunteerWorkId(id);
     }
+
 }

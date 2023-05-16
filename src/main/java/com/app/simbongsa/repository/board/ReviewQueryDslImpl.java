@@ -57,6 +57,11 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         return checkLastPage(pageable, reviews);
     }
 
+//    @Override
+//    public Review getCurrentSequence_QueryDsl() {
+//        return null;
+//    }
+
     @Override
     public Review getCurrentSequence_QueryDsl() {
         return query.select(review)

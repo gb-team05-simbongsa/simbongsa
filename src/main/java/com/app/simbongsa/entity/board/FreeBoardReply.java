@@ -17,7 +17,6 @@ public class FreeBoardReply extends Reply {
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
 
 
