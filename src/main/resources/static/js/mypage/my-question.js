@@ -52,7 +52,7 @@ myInquiries.forEach((inquiry, i) => {
                         <div class="support-request-content">${inquiry.inquiryContent}</div>
                         <div class="support-request-reply">${inquiry.inquiryStatus}</div>
                     </div>
-                 <div class="button-class">
+                    <div class="button-class">
                         <div class="support-request-detail">
                             <button class="show-answer">
                                 <span class="request-detail">
@@ -61,24 +61,6 @@ myInquiries.forEach((inquiry, i) => {
                             </button>
                         </div>
                     </div>
-                    
-                    <!--<div class="button-class">
-                        <div class="support-request-detail update">
-                            <button class="go-support-request">
-                                <span class="request-detail">
-                                    <div class="detail-text">수정</div>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="support-request-detail">
-                            <button class="go-support-request-delete">
-                                <span class="request-detail">
-                                    <div class="detail-text">삭제</div>
-                                </span>
-                            </button>
-                        </div>
-                    </div>-->
-                    
                     
                 </div>
             </div>
@@ -89,8 +71,7 @@ myInquiries.forEach((inquiry, i) => {
                 <div class="support-request-content">${inquiry.answerDTO.answerContent}</div>
                 <div class="support-request-reply">공양미 100석 후원</div>
             </div>
-        </div>
-    `;
+        </div>`;
 
     $('.support-request-inner-wrap').prepend(text);
 });

@@ -32,6 +32,11 @@ public interface InquiryService {
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
     public Page<InquiryDTO> getMyInquiry(Integer page, @AuthenticationPrincipal UserDetail userDetail);
 
+    /* 문의 수정 */
+    public void setInquiry(InquiryDTO inquiryDTO);
+
+
+
     default Inquiry toInquiryEntity(InquiryDTO inquiryDTO) {
         return Inquiry.builder()
                 .id(inquiryDTO.getId())
@@ -88,5 +93,10 @@ public interface InquiryService {
                 .memberRole(member.getMemberRole())
                 .memberStatus(member.getMemberStatus())
                 .build();
+    }
+
+    default void updateInquiry(Inquiry inquiry ,String inquiryTitle, String inquiryContent) {
+        inquiry.setInquiryTitle(inquiryTitle);
+        inquiry.setInquiryContent(inquiryContent);
     }
 }

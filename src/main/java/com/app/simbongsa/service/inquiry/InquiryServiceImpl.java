@@ -56,4 +56,12 @@ public class InquiryServiceImpl implements InquiryService {
         List<InquiryDTO> inquiryDTOS = myInquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
         return new PageImpl<>(inquiryDTOS, myInquiries.getPageable(), myInquiries.getTotalElements());
     }
+
+    /* 문의수정 */
+    @Override
+    public void setInquiry(InquiryDTO inquiryDTO) {
+        Inquiry inquiry = toInquiryEntity(inquiryDTO);
+        updateInquiry(inquiry, inquiry.getInquiryTitle(),inquiry.getInquiryContent());
+        inquiryRepository.save(inquiry);
+    }
 }

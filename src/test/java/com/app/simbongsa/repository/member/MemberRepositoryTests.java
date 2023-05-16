@@ -132,7 +132,7 @@ public class MemberRepositoryTests {
     /*이메일 중복 검사*/
     @Test
     public void overlapByMemberEmailTest(){
-        memberRepository.overlapByMemberEmail("2678ju@naver.com").map(Member::getMemberEmail).ifPresent(log::info);
+        memberRepository.overlapByMemberEmail("2678ju@naver.com");
         log.info("@@@@@@@@@@@@@@@@@@");
     }
 
