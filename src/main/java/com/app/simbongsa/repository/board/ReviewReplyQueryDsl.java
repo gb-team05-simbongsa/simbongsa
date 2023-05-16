@@ -1,15 +1,17 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.domain.FreeBoardDTO;
-import org.springframework.data.domain.Page;
-
-import java.awt.print.Pageable;
+import com.app.simbongsa.entity.board.ReviewReply;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 public interface ReviewReplyQueryDsl {
 
     // 전체 조회 ( 페이징 )
-    public Page<FreeBoardDTO> findAllByReviewReplyWithPaging(Long Id, Pageable pageable);
+    public Slice<ReviewReply> findAllByReviewReplyWithPaging(Long reviewId, Pageable pageable);
 
     // 댓글 갯수
-    public Long findReplyCountByReviewId(Long id);
+    public Long getReplyCount_QueryDsl(Long reviewId);
+
+    // 댓글 삭제
+    public void deleteByReviewId(Long reviewId);
 }

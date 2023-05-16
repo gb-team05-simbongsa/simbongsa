@@ -3,19 +3,15 @@ package com.app.simbongsa.service.board;
 import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.FreeBoardReplyDTO;
-import com.app.simbongsa.domain.NoticeDTO;
-import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.domain.ReplyDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
-import com.app.simbongsa.entity.inquiry.Notice;
-import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardFileRepository;
 import com.app.simbongsa.repository.board.FreeBoardReplyRepository;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
-import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +22,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -63,7 +58,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
                     fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
                 }
                 fileDTOS.get(i).setFreeBoard(getCurrentSequence());
-                freeBoardFileRepository.save(toSuggestFileEntity(fileDTOS.get(i)));
+                freeBoardFileRepository.save(toFreeBoardFileEntity(fileDTOS.get(i)));
             }
         }
     }
@@ -71,32 +66,52 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     /*댓글 저장*/
     @Override
     public void registerReply(FreeBoardReplyDTO freeBoardReplyDTO) {
-//        memberRepository.findById(freeBoardReplyDTO.getId()).ifPresent(
-//                member ->
-//                        freeBoardRepository.findById(freeBoardReplyDTO.getId()).ifPresent(
-//                                freeBoard -> {
-//                                    FreeBoardReply freeBoardReply = FreeBoardReply
-//                                }
-//                        )
-//        );
+        memberRepository.findById(freeBoardReplyDTO.getMemberId()).ifPresent(
+                member ->
+                        freeBoardRepository.findById(freeBoardReplyDTO.getBoardId()).ifPresent(
+                                freeBoard -> {
+                                    FreeBoardReply freeBoardReply = FreeBoardReply.builder()
+                                            .freeBoard(freeBoard)
+                                            .member(member)
+                                            .replyContent(freeBoardReplyDTO.getReplyContent())
+                                            .build();
+                                    freeBoardReplyRepository.save(freeBoardReply);
+                                    freeBoard.setFreeBoardReplyCount(getReplyCount(freeBoardReplyDTO.getBoardId()));
+                                    freeBoardRepository.save(freeBoard);
+                                }
+                        )
+        );
     }
 
     /*댓글 삭제*/
     @Override
     public void deleteReply(Long replyId) {
-
+        freeBoardReplyRepository.findById(replyId).ifPresent(
+                freeBoardReply -> {
+                    freeBoardReplyRepository.delete(freeBoardReply);
+                    freeBoardRepository.findById(freeBoardReply.getFreeBoard().getId()).ifPresent(
+                            freeBoard -> {
+                                freeBoard.setFreeBoardReplyCount(getReplyCount(replyId));
+                                freeBoardRepository.save(freeBoard);
+                            }
+                    );
+                }
+        );
     }
 
     /*댓글 목록*/
     @Override
-    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, Pageable pageable) {
-        return null;
+    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable) {
+        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(freeBoardId, pageable);
+
+        List<ReplyDTO> replyDTOS = freeBoardReplyList.getContent().stream().map(this::toReplyDTO).collect(Collectors.toList());
+        return new SliceImpl<>(replyDTOS, pageable, freeBoardReplyList.hasNext());
     }
 
     /*댓글 갯수*/
    @Override
     public Integer getReplyCount(Long freeBoardId) {
-        return null;
+        return freeBoardReplyRepository.getReplyCount_QueryDsl(freeBoardId).intValue();
     }
 
     /*최신순 무한스크롤 전체 목록*/

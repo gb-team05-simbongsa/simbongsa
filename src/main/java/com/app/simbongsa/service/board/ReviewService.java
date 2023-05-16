@@ -1,11 +1,9 @@
 package com.app.simbongsa.service.board;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.domain.ReviewDTO;
-import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.Review;
-import com.app.simbongsa.entity.file.FreeBoardFile;
+import com.app.simbongsa.entity.board.ReviewReply;
+import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import org.springframework.data.domain.Page;
@@ -22,14 +20,29 @@ public interface ReviewService {
     /*상세보기*/
     public ReviewDTO getReview(Long reviewId);
 
-    /*작성하기*/
-    public void write(Review review);
+    /*시퀀스 가져오기*/
+    public Review getCurrentSequence();
+
+    /*댓글 저장*/
+    public void registerReply(ReviewReplyDTO reviewReplyDTO);
+
+    /*댓글 삭제*/
+    public void deleteReply(Long replyId);
+
+    /*댓글 목록*/
+    public Slice<ReplyDTO> getReplyList(Long reviewId, Pageable pageable);
+
+    /*댓글 갯수*/
+    public Integer getReplyCount(Long reviewId);
 
     /*최신순 목록*/
     public Slice<ReviewDTO> getNewReviewList(Pageable pageable);
 
     /*인기순 목록*/
     public Slice<ReviewDTO> getLikesReviewList(Pageable pageable);
+
+    /*작성하기*/
+    public void write(Review review);
 
 //    목록 전체 조회(페이징)
     public Page<ReviewDTO> getReview(Integer page, AdminBoardSearch adminBoardSearch);
@@ -70,11 +83,15 @@ public interface ReviewService {
                 .build();
     }
 
-    default FileDTO fileToDTO(FreeBoardFile freeBoardFile){
-        return FileDTO.builder()
-                .fileUuid(freeBoardFile.getFileUuid())
-                .filePath(freeBoardFile.getFilePath())
-                .fileName(freeBoardFile.getFileName())
+    default ReviewDTO reviewToDTO(Review review){
+        return ReviewDTO.builder()
+                .id(review.getId())
+                .memberDTO(toMemberDTO(review.getMember()))
+                .createdDate(review.getCreatedDate())
+                .updatedDate(review.getUpdatedDate())
+                .boardTitle(review.getBoardTitle())
+                .boardContent(review.getBoardContent())
+                .replyCount(review.getReviewReplyCount())
                 .build();
     }
 
@@ -93,6 +110,26 @@ public interface ReviewService {
                 .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())
+                .build();
+    }
+
+    default ReviewFile toReviewFileEntity(FileDTO fileDTO){
+        return ReviewFile.builder()
+                .id(fileDTO.getId())
+                .fileName(fileDTO.getFileName())
+                .fileUuid(fileDTO.getFileUuid())
+                .filePath(fileDTO.getFilePath())
+                .fileRepresentationalType(fileDTO.getFileRepresentationalType())
+                .review(fileDTO.getReview())
+                .build();
+    }
+
+    default ReplyDTO toReplyDTO(ReviewReply reviewReply){
+        return ReplyDTO.builder()
+                .id(reviewReply.getId())
+                .memberDTO(toMemberDTO(reviewReply.getMember()))
+                .registerDate(reviewReply.getCreatedDate())
+                .replyContent(reviewReply.getReplyContent())
                 .build();
     }
 

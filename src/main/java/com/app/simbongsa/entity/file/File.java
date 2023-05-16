@@ -23,7 +23,8 @@ public class File {
     @Enumerated(EnumType.STRING)
     @NotNull private FileRepresentationalType fileRepresentationalType;
 
-    public File(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType) {
+    public File(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType) {
+        this.id = id;
         this.fileName = fileName;
         this.fileUuid = fileUuid;
         this.filePath = filePath;
