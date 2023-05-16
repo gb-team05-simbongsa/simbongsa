@@ -24,10 +24,14 @@ public class FreeBoardFile extends File {
         this.freeBoard = freeBoard;
     }
 
+
+
     @Builder
     public FreeBoardFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
-        super(id, fileName, fileUuid, filePath, fileRepresentationalType);
+//        super(id, fileName, fileUuid, filePath, fileRepresentationalType);
+
         this.freeBoard = freeBoard;
     }
+
 
 }

@@ -18,13 +18,13 @@
         <div class="common-Layer tbb"></div>
         <div class="introBackGround hklIjO">
             <div class="introContainer">
-                <div class="introWrapper">
+                <div class="introWrapper" th:object="${funding}">
                     <div class="projectOutline">
                         <div class="outlineInner">
                             <a href="/discover?tab=category&amp;category=board-games">
-                                <span class="projectCategory">보드게임</span>
+                                <span class="projectCategory" th:text="*{fundingCategory}" >보드게임</span>
                             </a>
-                            <h1 class="projectTitle">정통 추리 게임, 트위스티드 클루</h1>
+                            <h1 class="projectTitle" th:text="*{fundingTitle}">정통 추리 게임, 트위스티드 클루</h1>
                         </div>
                     </div>
                     <div class="introMainColumn">
@@ -92,15 +92,15 @@
                             <div class="metric">
                                 <div class="statusTitle">모인금액</div>
                                 <div class="statusValue">
-                                    <span class="price">16,895,200
+                                    <span class="price" th:text="*{fundingCurrentPrice}">16,895,200
                                         <span class="small">원</span>
                                     </span>
-                                    <span class="fundingRage">563%</span>
+                                    <span class="fundingRage" th:text="*{fundingPercent}">563%</span>
                                 </div>
                             </div>
                             <div class="metric">
                                 <div class="statusTitle">남은시간</div>
-                                <div class="statusValue">27<span
+                                <div class="statusValue" >27<span
                                         class="small">일</span></div>
                             </div>
                             <div class="metric">
