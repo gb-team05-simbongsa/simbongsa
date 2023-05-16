@@ -47,3 +47,9 @@ $('.content__detail__btn').on('click', function () {
         $modalStage.fadeOut(500);
     });
 });
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/inquiries-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});

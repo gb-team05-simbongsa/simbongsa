@@ -42,6 +42,9 @@ public interface FundingService {
 //    펀딩 전체 목록 조회
     public Page<FundingDTO> getFunding(Integer page, AdminFundingSearch adminFundingSearch);
 
+//    펀딩 삭제
+    public void deleteFunding(List<Long> ids);
+
 //    default FundingDTO toFundingDTO(Funding funding) {
 //        return FundingDTO.builder()
 //                .fundingCategory(funding.getFundingCategory())
