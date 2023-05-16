@@ -8,5 +8,5 @@ import org.springframework.data.domain.Pageable;
 public interface NoticeQueryDsl {
 
 //    공지사항 전체 조회(페이징)
-    public Page<Notice> findAllWithPaging(AdminNoticeSearch adminNoticeSearch, Pageable pageable);
+    public Page<Notice> findAllWithPaging_QueryDSL(AdminNoticeSearch adminNoticeSearch, Pageable pageable);
 }

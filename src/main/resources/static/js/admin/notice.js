@@ -144,4 +144,8 @@ function save() {
     adminService.saveNotice("/admins/notice-save", noticeDTO, function() {
         document.location.reload(true);
     })
-};
+}
+
+$('.search').on('click', () => {
+    location.href = "/admin/notice?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});
