@@ -57,6 +57,11 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         return checkLastPage(pageable, reviews);
     }
 
+    @Override
+    public Review getCurrentSequence_QueryDsl() {
+        return null;
+    }
+
     /* 내 후기 게시물 목록 조회 (페이징처리) */
     @Override
     public Page<Review> findByMemberId(Pageable pageable, Long memberId) {

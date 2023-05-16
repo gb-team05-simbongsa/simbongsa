@@ -31,14 +31,13 @@ public class AdminRestController {
     private final RicePaymentService ricePaymentService;
     private final SupportService supportService;
 
-//    @GetMapping("notice-lists")
-//    public void noticeList(Integer page, Model model) {
-//        AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
-//        Page<NoticeDTO> notices = noticeService.getNotice(page, adminNoticeSearch);
-//
-//        model.addAttribute("noticeDTOS", notices.getContent());
-//        model.addAttribute("pageDTO", new PageDTO(notices));
-//    }
+    @PostMapping("notice-lists")
+    public List<NoticeDTO> noticeList(Integer page) {
+        AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
+        Page<NoticeDTO> notices = noticeService.getNotice(page, adminNoticeSearch);
+
+        return notices.getContent();
+    }
 
     @PostMapping("member-details")
     public MemberDTO memberDetail(Long id) {

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Controller
@@ -43,6 +44,7 @@ public class AdminController {
     private final ReviewService reviewService;
     private final FreeBoardService freeBoardService;
     private final PasswordEncoder passwordEncoder;
+    private EntityManager entityManager;
 
 //    회원관리 - user.html
 //    봉사관리 - volunteer.html
