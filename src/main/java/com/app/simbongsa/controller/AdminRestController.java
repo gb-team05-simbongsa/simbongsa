@@ -1,6 +1,7 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
+import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
@@ -31,12 +32,10 @@ public class AdminRestController {
     private final RicePaymentService ricePaymentService;
     private final SupportService supportService;
 
-    @PostMapping("notice-lists")
-    public List<NoticeDTO> noticeList(Integer page) {
-        AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
-        Page<NoticeDTO> notices = noticeService.getNotice(page, adminNoticeSearch);
-
-        return notices.getContent();
+    @PostMapping("notice-save")
+    public void noticeSave(@RequestBody NoticeDTO noticeDTO) {
+        log.info(noticeDTO.toString());
+        noticeService.saveNotice(noticeDTO);
     }
 
     @PostMapping("member-details")

@@ -33,7 +33,7 @@ public class CommunityController {
         return freeBoardService.getNewList(pageRequest);
     }
 
-    @GetMapping("free-board-content")
+    @GetMapping("free-board-content-likes")
     @ResponseBody
     public Slice<FreeBoardDTO> getFreeLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
         PageRequest pageRequest = PageRequest.of(page,8);
@@ -75,7 +75,7 @@ public class CommunityController {
         return reviewService.getNewReviewList(pageRequest);
     }
 
-    @GetMapping("review-board-content")
+    @GetMapping("review-board-content-likes")
     @ResponseBody
     public Slice<ReviewDTO> getReviewLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
         PageRequest pageRequest = PageRequest.of(page,8);
@@ -119,15 +119,15 @@ public class CommunityController {
 
 
     /*활동후기 댓글*/
-    @PostMapping("save")
+    @PostMapping("review-save")
     public void saveReply(@RequestParam ReviewReplyDTO reviewReplyDTO){
         reviewService.registerReply(reviewReplyDTO);
     }
 
-    @DeleteMapping("delete")
+    @DeleteMapping("revew-delete")
     public void deleteReviewReply(@RequestParam("replyId") Long replyId){reviewService.deleteReply(replyId);}
 
-    @GetMapping("list")
+    @GetMapping("review-list")
     public Slice<ReplyDTO> getReviewList(@RequestParam("boardId") Long reviewId, @RequestParam(defaultValue = "0", name = "page") int page){
         PageRequest pageable = PageRequest.of(page, 8);
         return reviewService.getReplyList(reviewId, pageable);

@@ -1,16 +1,17 @@
 const adminService = (function() {
-    // function getList(url, callback) {
-    //     $.ajax({
-    //         url: url,
-    //         type: "post",
-    //         data: { page : page },
-    //         success: function(result) {
-    //             if(callback) {
-    //                 callback(result);
-    //             }
-    //         }
-    //     });
-    // }
+    function saveNotice(url, noticeDTO, callback) {
+        $.ajax({
+            url: url,
+            type: "post",
+            data: JSON.stringify(noticeDTO),
+            contentType: 'application/json',
+            success: function() {
+                if(callback) {
+                    callback();
+                }
+            }
+        });
+    }
 
     function getDetail(url, contentId, callback) {
         $.ajax({
@@ -110,5 +111,5 @@ const adminService = (function() {
     //         });
     //     }
     // }
-    return { getDetail : getDetail, deleteAllById : deleteAllById };
+    return { saveNotice : saveNotice, getDetail : getDetail, deleteAllById : deleteAllById };
 })();
