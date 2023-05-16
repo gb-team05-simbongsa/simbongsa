@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -142,6 +143,16 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
         query.update(member)
                 .set(member.memberStatus, memberStatus)
                 .where(member.id.eq(id))
+                .execute();
+    }
+
+    /* 랜덤키 값 변경 */
+    @Override
+    @Transactional
+    public void updateRandomKey(String memberEmail, String randomKey) {
+        query.update(member)
+                .set(member.randomKey, randomKey)
+                .where(member.randomKey.eq(randomKey))
                 .execute();
     }
 }

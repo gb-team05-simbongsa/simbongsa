@@ -1,5 +1,6 @@
 package com.app.simbongsa.service.member;
 
+import com.app.simbongsa.domain.MailDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
 import com.app.simbongsa.entity.member.Member;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 public interface MemberService extends UserDetailsService {
     //    회원가입
@@ -44,6 +46,15 @@ public interface MemberService extends UserDetailsService {
 
     /*이메일 중복 검사*/
     public Long overlapByMemberEmail(String memberEmail);
+    
+    /* 랜덤키 생성 */
+    public String randomKey();
+
+    /* 랜덤키 변경 */
+    public void updateRandomKey(String memberEmail, String randomKey);
+
+    /* 메일보내기 */
+    public void sendMail(MailDTO mail);
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())

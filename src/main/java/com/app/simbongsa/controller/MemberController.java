@@ -1,5 +1,6 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.MailDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.service.member.MemberService;
@@ -106,6 +107,36 @@ public class MemberController {
 
         /*session.setAttribute("user", userVO);*/
         return new RedirectView("/main/");
+    }
+
+    /* 이메일 보내기 */
+    @GetMapping("find-password-email-send")
+    public String findPasswordEmailSend() {
+        return "/join-login/find-password-email-send";
+    }
+
+    /* 비밀번호 이메일로 변경 */
+    @PostMapping("find-password-email")
+    public RedirectView findPasswordEmail(String memberEmail, RedirectAttributes redirectAttributes) {
+
+        if(memberService.overlapByMemberEmail(memberEmail) == 0) {
+            return new RedirectView("/member/find-password-email?result=fail");
+        }
+
+        String randomKey = memberService.randomKey();
+
+        //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
+        //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
+        memberService.updateRandomKey(memberEmail, randomKey);
+
+        MailDTO mailDTO = new MailDTO();
+        mailDTO.setAddress(memberEmail);
+        mailDTO.setTitle("새 비밀번호 설정 링크입니다.");
+        mailDTO.setMessage("링크: http://localhost:10000/member/changePassword?memberEmail=" + memberEmail + "&randomKey=" + randomKey);
+        memberService.sendMail(mailDTO);
+
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        return new RedirectView("/member/find-password-email-send");
     }
 
 }
