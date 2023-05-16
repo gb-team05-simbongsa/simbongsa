@@ -26,8 +26,8 @@ public class FundingFile extends File{
     }
 
     @Builder
-    public FundingFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Funding funding) {
-        super(id, fileName, fileUuid, filePath, fileRepresentationalType);
+    public FundingFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Funding funding) {
+        super(fileName, fileUuid, filePath, fileRepresentationalType);
         this.funding = funding;
     }
 

@@ -109,7 +109,7 @@
                                         <div class="volunteer-percentage-wrapper">
                                             <div></div>
                                             <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper">
+                                                <div class="volunteer-image-wrapper volunteerImg">
                                                     <a href="#"></a>
                                                 </div>
                                                 <div class="info-wrapper" >
@@ -376,14 +376,22 @@
 <script th:inline="javascript">
     FileList.prototype.forEach = Array.prototype.forEach;
     let fileDTO =[[${fileDTO}]];
+    let volunteerFile = [[${volunteerFileDTO}]];
 
     console.log(fileDTO);
+    console.log(volunteerFile);
 
     fileDTO.forEach((fileDTO, i) => {
         let text = `
            <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
         `;
         $(".funding-image a").html(text);
+    });
+    volunteerFile.forEach((fileDTO, i) => {
+        let text = `
+           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+        `;
+        $(".volunteerImg a").html(text);
     });
 </script>
 </html>

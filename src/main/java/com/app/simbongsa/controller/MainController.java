@@ -37,9 +37,14 @@ public class MainController {
                 .stream()
                 .flatMap(funding -> funding.getFileDTOs().stream())
                 .collect(Collectors.toList());
-        fundingListOrderByPopularList.stream().map(FundingDTO::getFileDTOs).forEach(v -> log.info(v.toString()));
+        List<FileDTO> volunteerFileDTO = volunteerWorkService.getVolunteerList()
+                .stream()
+                .flatMap(volunteer -> volunteer.getFileDTOs().stream())
+                .collect(Collectors.toList());
+        volunteerFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
         model.addAttribute("fileDTO", fileDTO);
+        model.addAttribute("volunteerFileDTO", volunteerFileDTO);
         model.addAttribute("volunteerList", volunteerList);
         model.addAttribute("memberRankList", memberRankList);
         model.addAttribute("fundingListOrderByPopularList",fundingListOrderByPopularList);

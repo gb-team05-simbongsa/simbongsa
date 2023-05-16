@@ -63,7 +63,7 @@ public interface FreeBoardService {
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
         return FreeBoardDTO.builder()
-                .id(freeBoard.getId())
+//                .id(freeBoard.getId())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
                 .createdDate(freeBoard.getCreatedDate())
@@ -74,7 +74,7 @@ public interface FreeBoardService {
 
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder()
-                .id(member.getId())
+//                .id(member.getId())
                 .memberRank(member.getMemberRank())
                 .memberName(member.getMemberName())
                 .memberVolunteerTime(member.getMemberVolunteerTime())
@@ -93,7 +93,7 @@ public interface FreeBoardService {
 
     default FreeBoardDTO freeBoardToDTO(FreeBoard freeBoard){
         return FreeBoardDTO.builder()
-                .id(freeBoard.getId())
+//                .id(freeBoard.getId())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
                 .createdDate(freeBoard.getCreatedDate())
                 .updatedDate(freeBoard.getUpdatedDate())
@@ -105,7 +105,7 @@ public interface FreeBoardService {
 
     default Member toMemberEntity(MemberDTO memberDTO){
         return Member.builder()
-                .id(memberDTO.getId())
+//                .id(memberDTO.getId())
                 .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())
@@ -123,7 +123,7 @@ public interface FreeBoardService {
 
     default FreeBoardFile toFreeBoardFileEntity(FileDTO fileDTO){
         return FreeBoardFile.builder()
-                .id(fileDTO.getId())
+//                .id(fileDTO.getId())
                 .fileName(fileDTO.getFileName())
                 .fileUuid(fileDTO.getFileUuid())
                 .filePath(fileDTO.getFilePath())

@@ -21,13 +21,13 @@ public class FundingFileRepositoryTests {
     @Autowired
     private FundingRepository fundingRepository;
 
-    @Test
-    public void saveTest(){
-        FundingFile fundingFile1 = new FundingFile("001.png","34271983dksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION, fundingRepository.findById(29L).get());
-        fundingFileRepository.save(fundingFile1);
-        FundingFile fundingFile2 = new FundingFile("002.png","4271asdfdksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION, fundingRepository.findById(30L).get());
-        fundingFileRepository.save(fundingFile2);
-    }
+//    @Test
+//    public void saveTest(){
+//        FundingFile fundingFile1 = new FundingFile("001.png","34271983dksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION, fundingRepository.findById(29L).get());
+//        fundingFileRepository.save(fundingFile1);
+//        FundingFile fundingFile2 = new FundingFile("002.png","4271asdfdksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION, fundingRepository.findById(30L).get());
+//        fundingFileRepository.save(fundingFile2);
+//    }
     
 
 
