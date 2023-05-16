@@ -66,6 +66,8 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
         Long memberId = userDetail.getId();
         List<Inquiry> foundInquiries = query.select(inquiry)
                 .from(inquiry)
+                .leftJoin(inquiry.answer)
+                .fetchJoin()
                 .where(inquiry.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

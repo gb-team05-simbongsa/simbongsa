@@ -1,6 +1,5 @@
 package com.app.simbongsa.audit;
 
-import com.querydsl.core.types.Expression;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,18 +12,9 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter
 public abstract class Period {
+    @Column(updatable = false)
+    @CreatedDate
     private LocalDateTime createdDate;
+    @LastModifiedDate
     private LocalDateTime updatedDate;
-
-    @PrePersist
-    public void create(){
-        this.createdDate = LocalDateTime.now();
-        this.updatedDate = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void update(){
-        this.updatedDate = LocalDateTime.now();
-    }
-
 }

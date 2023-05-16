@@ -45,9 +45,11 @@ public class MypageController {
         Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
 
         for (InquiryDTO myInquiry: myInquiries.getContent()) {
+            log.info("set하기 전 left join으로 가져온 myInquiry"+myInquiry.toString());
             AnswerDTO answerAboutInquiry = answerService.findByInquiryId(myInquiry.getId());
-            /*log.info(answerAboutInquiry + "%%%%%%%%%%%5문의에 대한 답변%%%%%%%%%%%%%");*/
+            log.info(answerAboutInquiry + "%%%%%%%%%%%5문의에 대한 답변%%%%%%%%%%%%%");
             myInquiry.setAnswerDTO(answerAboutInquiry);
+            log.info("set 해서 가져온 inquiryDTO빼고 가져온 AnswerDTO"+myInquiry.toString());
         }
 
         model.addAttribute("myInquiries", myInquiries.getContent());
@@ -55,11 +57,13 @@ public class MypageController {
         return "mypage/my-question";
     }
 
+    /* 내 문의 게시글 수정 */
     @PostMapping("my-question-update")
     public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent) {
         InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).build();
         inquiryService.setInquiry(inquiryDTO);
-        return new RedirectView("mypage/my-question");
+        log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO+toString());
+        return new RedirectView("mypages/inquiry-details");
     }
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
