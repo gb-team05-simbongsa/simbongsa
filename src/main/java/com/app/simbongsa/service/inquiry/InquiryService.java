@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import java.util.List;
+
 public interface InquiryService {
 //    문의 등록
     public void saveInquiry(InquiryDTO inquiryDTO);
@@ -25,7 +27,7 @@ public interface InquiryService {
     public InquiryDTO getInquiryDetail(Long id);
 
 //    문의 삭제
-    public void deleteInquiry(Long id);
+    public void deleteInquiry(List<Long> ids);
 
 //    문의 검색
 
@@ -75,6 +77,18 @@ public interface InquiryService {
                 .updatedDate(inquiry.getUpdatedDate())
                 .memberDTO(toMemberDTO(inquiry.getMember()))
                 .answerDTO(toAnswerDTO(inquiry.getAnswer()))
+                .build();
+    }
+
+    default InquiryDTO toAdminInquiryDTO(Inquiry inquiry) {
+        return InquiryDTO.builder()
+                .id(inquiry.getId())
+                .inquiryTitle(inquiry.getInquiryTitle())
+                .inquiryContent(inquiry.getInquiryContent())
+                .inquiryStatus(inquiry.getInquiryStatus())
+                .createdDate(inquiry.getCreatedDate())
+                .updatedDate(inquiry.getUpdatedDate())
+                .memberDTO(toMemberDTO(inquiry.getMember()))
                 .build();
     }
 
