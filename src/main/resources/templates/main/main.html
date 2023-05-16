@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
 </head>
+<style>
+    .fundingImg{
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 <body>
     <div class="full-screen">
         <div class="scroll-top-btn-wrapper animate">
@@ -296,9 +306,13 @@
                                                         <div class="volunteer-percentage-wrapper">
                                                             <div></div>
                                                             <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper">
+                                                                <div class="volunteer-image-wrapper funding-image">
                                                                     <a href="#"></a>
+<!--                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">-->
                                                                 </div>
+<!--                                                                <div class="info-wrapper">-->
+<!--                                                                    <dl>-->
+<!--                                                                </div>-->
                                                                 <div class="info-wrapper">
                                                                     <dl>
                                                                         <dd class="volunteer-sub-info">
@@ -360,16 +374,16 @@
     } )
 </script>
 <script th:inline="javascript">
-    const fundingDTO = [[${fundingListOrderByPopularList}]];
-    let fileDTOs = fundingDTO.fileDTOs;
-    fileDTOs.forEach((fileDTO, i) => {
+    FileList.prototype.forEach = Array.prototype.forEach;
+    let fileDTO =[[${fileDTO}]];
+
+    console.log(fileDTO);
+
+    fileDTO.forEach((fileDTO, i) => {
         let text = `
-            <div class="volunteer-image-wrapper">
-                <a href="#"></a>
-                <img src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
-            </div>
+           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
         `;
-        $('.volunteer-image-wrapper').append(text);
-    })
+        $(".funding-image a").html(text);
+    });
 </script>
 </html>

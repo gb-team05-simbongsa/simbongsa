@@ -51,6 +51,7 @@ public class FundingDTO {
         this.fundingSummary = fundingSummary;
         this.fundingTargetPrice = fundingTargetPrice;
         this.fundingCurrentPrice = fundingCurrentPrice;
+        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
         this.fundingStartDate = fundingStartDate;
         this.fundingEndDate = fundingEndDate;
         this.fundingIntroduce = fundingIntroduce;
@@ -93,7 +94,7 @@ public class FundingDTO {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
-        this.fundingPercent = fundingPercent;
+        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
     }
 }
 
