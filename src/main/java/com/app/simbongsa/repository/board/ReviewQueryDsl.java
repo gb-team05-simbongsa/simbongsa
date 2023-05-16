@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReviewQueryDsl {
-//    // 시퀀스
-//    public Review getCurrentSequence_QueryDsl();
+    /*시퀀스*/
+    public Review getCurrentSequence_QueryDsl();
 
     /* 유저별 후기게시판 목록 조회 */
     public Page<Review> findByMemberId(Pageable pageable, Long memberId);

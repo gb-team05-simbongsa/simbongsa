@@ -18,8 +18,8 @@ public class VolunteerWorkFile extends File {
     private VolunteerWork volunteerWork;
 
 
-    public VolunteerWorkFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, VolunteerWork volunteerWork) {
-        super(fileName, fileUuid, filePath, fileRepresentationalType);
+    public VolunteerWorkFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, VolunteerWork volunteerWork) {
+        super(id, fileName, fileUuid, filePath, fileRepresentationalType);
         this.volunteerWork = volunteerWork;
     }
 }
