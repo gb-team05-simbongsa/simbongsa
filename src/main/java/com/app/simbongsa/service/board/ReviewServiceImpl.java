@@ -1,14 +1,15 @@
 package com.app.simbongsa.service.board;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.FreeBoardDTO;
-import com.app.simbongsa.domain.ReviewDTO;
+import com.app.simbongsa.domain.*;
+import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.board.Review;
+import com.app.simbongsa.entity.board.ReviewReply;
 import com.app.simbongsa.repository.board.ReviewFileRepository;
 import com.app.simbongsa.repository.board.ReviewReplyRepository;
 import com.app.simbongsa.repository.board.ReviewRepository;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,13 +32,27 @@ public class ReviewServiceImpl implements ReviewService{
     private final ReviewReplyRepository reviewReplyRepository;
     private final ReviewFileRepository reviewFileRepository;
 
-    @Override
+    /*저장*/
+    @Override @Transactional
     public void register(ReviewDTO reviewDTO, Long memberId) {
         List<FileDTO> fileDTOS = reviewDTO.getFileDTOS();
 
         memberRepository.findById(memberId).ifPresent(
                 member -> reviewDTO.setMemberDTO(toMemberDTO(member))
         );
+
+        reviewRepository.save(toReviewEntity(reviewDTO));
+        if (fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++){
+                if (1 == 0){
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                }else {
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+                }
+                fileDTOS.get(i).setReview(getCurrentSequence());
+                reviewFileRepository.save(toReviewFileEntity(fileDTOS.get(i)));
+            }
+        }
     }
 
     /*상세*/
@@ -44,6 +60,63 @@ public class ReviewServiceImpl implements ReviewService{
     public ReviewDTO getReview(Long reviewId) {
         Optional<Review> review = reviewRepository.findByIdForDetail_QueryDsl(reviewId);
         return toReviewDTO(review.get());
+    }
+
+    /*시퀀스*/
+    @Override
+    public Review getCurrentSequence(){
+        return reviewRepository.getCurrentSequence_QueryDsl();
+    }
+
+    /*댓글 저장*/
+    @Override
+    public void registerReply(ReviewReplyDTO reviewReplyDTO) {
+        memberRepository.findById(reviewReplyDTO.getMemberId()).ifPresent(
+                member ->
+                        reviewRepository.findById(reviewReplyDTO.getBoardId()).ifPresent(
+                                review -> {
+                                    ReviewReply reviewReply = ReviewReply.builder()
+                                            .review(review)
+                                            .member(member)
+                                            .replyContent(reviewReplyDTO.getReplyContent())
+                                            .build();
+                                    reviewReplyRepository.save(reviewReply);
+                                    review.setReviewReplyCount(getReplyCount(reviewReplyDTO.getBoardId()));
+                                    reviewRepository.save(review);
+                                }
+                        )
+        );
+    }
+
+    /*댓글 삭제*/
+    @Override
+    public void deleteReply(Long replyId) {
+        reviewReplyRepository.findById(replyId).ifPresent(
+                reviewReply -> {
+                    reviewReplyRepository.delete(reviewReply);
+                    reviewRepository.findById(reviewReply.getReview().getId()).ifPresent(
+                            review -> {
+                                review.setReviewReplyCount(getReplyCount(replyId));
+                                reviewRepository.save(review);
+                            }
+                    );
+                }
+        );
+    }
+
+    /*댓글 목록*/
+    @Override
+    public Slice<ReplyDTO> getReplyList(Long reviewId, Pageable pageable) {
+        Slice<ReviewReply> reviewReplyList = reviewReplyRepository.findAllByReviewReplyWithPaging(reviewId, pageable);
+
+        List<ReplyDTO> replyDTOS = reviewReplyList.getContent().stream().map(this::toReplyDTO).collect(Collectors.toList());
+        return new SliceImpl<>(replyDTOS, pageable, reviewReplyList.hasNext());
+    }
+
+    /*댓글 갯수*/
+    @Override
+    public Integer getReplyCount(Long reviewId) {
+        return reviewReplyRepository.getReplyCount_QueryDsl(reviewId).intValue();
     }
 
     /*작성*/

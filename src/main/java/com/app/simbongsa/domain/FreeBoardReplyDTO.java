@@ -11,28 +11,8 @@ import java.time.LocalDateTime;
 @Component
 @NoArgsConstructor
 public class FreeBoardReplyDTO {
-    private Long id;
-    private String freeBoardReplyContent;
-    private LocalDateTime registerDate;
+    private Long memberId;
+    private Long boardId;
+    private String replyContent;
 
-    private MemberDTO memberDTO;
-    private FreeBoardDTO freeBoardDTO;
-
-
-    @Builder
-    public FreeBoardReplyDTO(Long id, String freeBoardReplyContent, LocalDateTime registerDate, MemberDTO memberDTO, FreeBoardDTO freeBoardDTO) {
-        this.id = id;
-        this.freeBoardReplyContent = freeBoardReplyContent;
-        this.registerDate = registerDate;
-        this.memberDTO = memberDTO;
-        this.freeBoardDTO = freeBoardDTO;
-    }
-
-    @Builder
-    public FreeBoardReplyDTO(Long id, String freeBoardReplyContent, LocalDateTime registerDate, MemberDTO memberDTO) {
-        this.id = id;
-        this.freeBoardReplyContent = freeBoardReplyContent;
-        this.registerDate = registerDate;
-        this.memberDTO = memberDTO;
-    }
 }
