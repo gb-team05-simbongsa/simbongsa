@@ -40,7 +40,7 @@ public class Review extends Board {
         this.reviewFiles = reviewFiles;
     }
 
-    public void setSuggestReplyCount(Integer suggestReplyCount) {
-        this.reviewReplyCount = suggestReplyCount;
+    public void setReviewReplyCount(Integer reviewReplyCount) {
+        this.reviewReplyCount = reviewReplyCount;
     }
 }

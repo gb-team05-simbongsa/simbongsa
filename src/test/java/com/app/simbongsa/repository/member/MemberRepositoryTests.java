@@ -134,6 +134,8 @@ public class MemberRepositoryTests {
     public void overlapByMemberEmailTest(){
         memberRepository.overlapByMemberEmail("2678ju@naver.com");
         log.info("@@@@@@@@@@@@@@@@@@");
+//        memberRepository.overlapByMemberEmail("2678ju@naver.com").map(Member::getMemberEmail).ifPresent(log::info);
+//        log.info("@@@@@@@@@@@@@@@@@@");
     }
 
     /* 회원정보수정 (마이페이지) */

@@ -1,10 +1,8 @@
 package com.app.simbongsa.service.board;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.FreeBoardDTO;
-import com.app.simbongsa.domain.FreeBoardReplyDTO;
-import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
@@ -33,7 +31,7 @@ public interface FreeBoardService {
     public void deleteReply(Long replyId);
 
     // 댓글 목록
-    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
+    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
 
     // 댓글 갯수
     public Integer getReplyCount(Long freeBoardId);
@@ -59,7 +57,7 @@ public interface FreeBoardService {
 //    게시판 인기순 조회 - 메인 페이지
     public List<FreeBoardDTO> findAllWithPopularFreeBoard();
 
-    /* 유저가 작성한 자유게시물 조회(페이징처리) */
+//    유저가 작성한 자유게시물 조회(페이징처리)
     Page<FreeBoardDTO> getMyFreeBoards(Integer page, UserDetail userDetail);
 
 
@@ -101,7 +99,7 @@ public interface FreeBoardService {
                 .updatedDate(freeBoard.getUpdatedDate())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
-                .replyCount(freeBoard.hashCode())
+                .replyCount(freeBoard.getFreeBoardReplyCount())
                 .build();
     }
 
@@ -123,7 +121,7 @@ public interface FreeBoardService {
                 .build();
     }
 
-    default FreeBoardFile toSuggestFileEntity(FileDTO fileDTO){
+    default FreeBoardFile toFreeBoardFileEntity(FileDTO fileDTO){
         return FreeBoardFile.builder()
                 .id(fileDTO.getId())
                 .fileName(fileDTO.getFileName())
@@ -133,4 +131,14 @@ public interface FreeBoardService {
                 .fileRepresentationalType(fileDTO.getFileRepresentationalType())
                 .build();
     }
+
+    default ReplyDTO toReplyDTO(FreeBoardReply freeBoardReply){
+        return ReplyDTO.builder()
+                .id(freeBoardReply.getId())
+                .memberDTO(toMemberDTO(freeBoardReply.getMember()))
+                .registerDate(freeBoardReply.getCreatedDate())
+                .replyContent(freeBoardReply.getReplyContent())
+                .build();
+    }
+
 }

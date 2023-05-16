@@ -11,27 +11,7 @@ import java.time.LocalDateTime;
 @Component
 @NoArgsConstructor
 public class ReviewReplyDTO {
-    private Long id;
-    private String freeBoardReplyContent;
-    private LocalDateTime registerDate;
-
-    private MemberDTO memberDTO;
-    private ReviewDTO reviewDTO;
-
-    @Builder
-    public ReviewReplyDTO(Long id, String freeBoardReplyContent, LocalDateTime registerDate, MemberDTO memberDTO) {
-        this.id = id;
-        this.freeBoardReplyContent = freeBoardReplyContent;
-        this.registerDate = registerDate;
-        this.memberDTO = memberDTO;
-    }
-
-    @Builder
-    public ReviewReplyDTO(Long id, String freeBoardReplyContent, LocalDateTime registerDate, MemberDTO memberDTO, ReviewDTO reviewDTO) {
-        this.id = id;
-        this.freeBoardReplyContent = freeBoardReplyContent;
-        this.registerDate = registerDate;
-        this.memberDTO = memberDTO;
-        this.reviewDTO = reviewDTO;
-    }
+    private Long memberId;
+    private Long boardId;
+    private String replyContent;
 }

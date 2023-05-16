@@ -43,7 +43,7 @@ public class FreeBoard extends Board {
         this.freeBoardFiles = freeBoardFiles;
     }
 
-    public void setSuggestReplyCount(Integer suggestReplyCount) {
-        this.freeBoardReplyCount = suggestReplyCount;
+    public void setFreeBoardReplyCount(Integer freeBoardReplyCount) {
+        this.freeBoardReplyCount = freeBoardReplyCount;
     }
 }
