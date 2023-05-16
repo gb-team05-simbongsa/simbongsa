@@ -63,7 +63,8 @@ public class AdminRestController {
 
     @PostMapping("inquiry-details")
     public InquiryDTO inquiryDetail(Long id) {
-        return inquiryService.getInquiryDetail(id);
+        InquiryDTO inquiryDetail = inquiryService.getInquiryDetail(id);
+        return inquiryDetail;
     }
 
     @PostMapping("rice-exchange-details")

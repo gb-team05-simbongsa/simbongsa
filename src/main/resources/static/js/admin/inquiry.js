@@ -35,7 +35,7 @@ $('.content__detail__btn').on('click', function () {
         $('#memberEmail').val(result.memberDTO.memberEmail);
         $('#inquiryContent').val(result.inquiryContent);
 
-        result.answerDTO.answerContent == null ? $('#answerContent').val('') : $('#answerContent').val(result.answerDTO.answerContent);
+        result.answerDTO.answerContent == undefined ? $('#answerContent').val('') : $('#answerContent').val(result.answerDTO.answerContent);
     });
 
     /* 추후 타임리프로 대체할 예정 */
