@@ -68,15 +68,6 @@ public class FundingDTO {
 
 
 
-    //    @Builder
-//    public FundingDTO(FundingCategoryType fundingCategory, String fundingTitle, int fundingTargetPrice, int fundingCurrentPrice, FundingCreator fundingCreator, int fundingPercent) {
-//        this.fundingCategory = fundingCategory;
-//        this.fundingTitle = fundingTitle;
-//        this.fundingTargetPrice = fundingTargetPrice;
-//        this.fundingCurrentPrice = fundingCurrentPrice;
-//        this.fundingCreator = fundingCreator;
-//        this.fundingPercent = fundingPercent;
-//    }
 
     @Builder
     public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, int fundingPercent, Integer fundingCount) {
@@ -97,7 +88,6 @@ public class FundingDTO {
         this.fundingCreator = fundingCreator;
         this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
         this.fundingCount = fundingCount;
-
     }
 }
 
