@@ -32,14 +32,9 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
     /*메인페이지 - 봉사 활동 8개 띄우기*/
     @Override
     public List<VolunteerWorkDTO> getVolunteerList() {
-//        List<VolunteerWork> volunteerWorks = volunteerWorkRepository.findVolunteerWorkList();
-//        List<VolunteerWorkDTO> volunteerWorkDTOS = new ArrayList<>();
-//        for (VolunteerWork volunteerWork : volunteerWorks) {
-//            VolunteerWorkDTO volunteerWorkDTO = toVolunteerWorkDTO(volunteerWork);
-//            volunteerWorkDTOS.add(volunteerWorkDTO);
-//        }
-//        return volunteerWorkDTOS;
+
         List<VolunteerWork> volunteerWorkList = volunteerWorkRepository.findVolunteerWorkList();
+
         List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkList.stream()
                 .map(volunteerWork -> {
                     VolunteerWorkDTO volunteerWorkDTO = toVolunteerWorkDTO(volunteerWork);
@@ -48,6 +43,9 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
                     volunteerWorkDTO.setFileDTOs(fileDTOS);
                     return volunteerWorkDTO;
                 }).collect(Collectors.toList());
+
+//        List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkList.stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
+        volunteerWorkList.stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(v -> log.info(v.toString()));
         volunteerWorkDTOS.stream().map(VolunteerWorkDTO::toString).forEach(v -> log.info(v + "여기야!!!!!!!!!!!!!!!!!!!!!!=================="));
         return volunteerWorkDTOS;
     }

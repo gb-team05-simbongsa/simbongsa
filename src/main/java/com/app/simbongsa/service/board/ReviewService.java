@@ -115,7 +115,7 @@ public interface ReviewService {
 
     default ReviewFile toReviewFileEntity(FileDTO fileDTO){
         return ReviewFile.builder()
-                .id(fileDTO.getId())
+//                .id(fileDTO.getId())
                 .fileName(fileDTO.getFileName())
                 .fileUuid(fileDTO.getFileUuid())
                 .filePath(fileDTO.getFilePath())

@@ -65,9 +65,12 @@ public class VolunteerRepositoryTests {
 
     }
 
+    //  봉사활동 목록 조회 (메인페이지)
     @Test
     public void findVolunteerWorkListTest(){
-        volunteerWorkRepository.findVolunteerWorkList().stream().map(VolunteerWork::toString).forEach(log::info);
+        volunteerWorkRepository.findVolunteerWorkList().stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(v -> log.info(v.toString()));
+//        volunteerWorkRepository.findVolunteerWorkList().stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(log::info);
+        log.info(volunteerWorkFileRepository.findAll()+ "===============");
     }
 
 

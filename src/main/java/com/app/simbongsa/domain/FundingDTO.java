@@ -66,9 +66,6 @@ public class FundingDTO {
         this.fundingGifts = fundingGifts;
     }
 
-
-
-
     @Builder
     public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, int fundingPercent, Integer fundingCount) {
         this.id = id;

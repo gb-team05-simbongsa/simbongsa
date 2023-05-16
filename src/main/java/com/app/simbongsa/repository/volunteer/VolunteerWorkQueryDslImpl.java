@@ -30,7 +30,8 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     public List<VolunteerWork> findVolunteerWorkList() {
         return query.select(volunteerWork)
                 .from(volunteerWork)
-                .leftJoin(volunteerWork.volunteerWorkFiles, volunteerWorkFile)
+                .join(volunteerWork.volunteerWorkFiles, volunteerWorkFile)
+                .fetchJoin()
                 .orderBy(volunteerWork.id.desc())
                 .limit(8)
                 .fetch();

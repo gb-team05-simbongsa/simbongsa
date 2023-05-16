@@ -30,19 +30,10 @@ public class VolunteerWorkDTO {
     private String volunteerWorkPlace;
     private String volunteerWorkTitle;
 
-    private List<VolunteerWorkFile> volunteerWorkFiles;
-
     private List<FileDTO> fileDTOs;
 
     public VolunteerWorkDTO(List<FileDTO> fileDTOs) {
         this.fileDTOs = fileDTOs;
-    }
-
-    @Builder
-    public VolunteerWorkDTO(VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkPlace, String volunteerWorkTitle) {
-        this.volunteerWorkCategory = volunteerWorkCategory;
-        this.volunteerWorkPlace = volunteerWorkPlace;
-        this.volunteerWorkTitle = volunteerWorkTitle;
     }
 
     @Builder
@@ -60,4 +51,5 @@ public class VolunteerWorkDTO {
         this.volunteerWorkTitle = volunteerWorkTitle;
         this.fileDTOs = fileDTOs;
     }
+
 }

@@ -9,6 +9,7 @@ spring:
     url: jdbc:oracle:thin:@15.164.250.198:1521:XE
     username: hr
     password: hr
+    #15.164.250.198
 
   #jpa
   jpa:
