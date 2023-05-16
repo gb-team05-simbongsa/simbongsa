@@ -237,31 +237,25 @@
                     <div class="modal__profile__top">
                         <h4>회원정보</h4>
                         <div class="user__profile">
-                            <h5>아이디</h5>
+                            <h5>이름</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="example1234" readonly="true"/>
+                                <input type="text" name="memberName" id="memberName" value="example1234" readonly="true"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>이메일</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="" value="example@gmail.com" readonly="true"/>
-                            </div>
-                        </div>
-                        <div class="user__profile">
-                            <h5>전화번호</h5>
-                            <div class="user__profile__input">
-                                <input type="text" name="" value="01012341234" readonly="true"/>
+                                <input type="text" name="memberEmail" id="memberEmail" value="example@gmail.com" readonly="true"/>
                             </div>
                         </div>
                     </div>
                     <div class="modal__profile__bottom">
-                        <h4>테스트 문의 제목</h4>
-                        <textarea cols="30" rows="10" readonly="true">테스트 문의 내용</textarea>
+                        <h4>문의 내용</h4>
+                        <textarea cols="30" rows="10" id="inquiryContent" readonly="true">문의 내용</textarea>
                     </div>
                     <div class="modal__profile__bottom">
                         <h4>답변 작성</h4>
-                        <textarea cols="20" rows="10" placeholder="답변 내용 작성"></textarea>
+                        <textarea cols="20" rows="10" id="answerContent" placeholder="답변 내용 작성"></textarea>
                     </div>
                     <div class="user__profile__button">
                         <button id="completeBtn" class="button__type_2 button__color__green">
@@ -278,6 +272,7 @@
 <script th:inline="javascript">
     let inquiries = [[${inquiryDTOS}]];
 </script>
+<script src="/js/admin/ajax.js"></script>
 <script src="/js/admin/inquiry.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>

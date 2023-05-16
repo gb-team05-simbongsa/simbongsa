@@ -18,6 +18,18 @@ public class InquiryDTO {
     private AnswerDTO answerDTO;
     private MemberDTO memberDTO;
 
+
+    @Builder
+    public InquiryDTO(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO) {
+        this.id = id;
+        this.inquiryTitle = inquiryTitle;
+        this.inquiryContent = inquiryContent;
+        this.inquiryStatus = inquiryStatus;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.memberDTO = memberDTO;
+    }
+
     @Builder
     public InquiryDTO(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, LocalDateTime createdDate, LocalDateTime updatedDate, AnswerDTO answerDTO, MemberDTO memberDTO) {
         this.id = id;
@@ -29,5 +41,4 @@ public class InquiryDTO {
         this.answerDTO = answerDTO;
         this.memberDTO = memberDTO;
     }
-    //    private Member member;
 }

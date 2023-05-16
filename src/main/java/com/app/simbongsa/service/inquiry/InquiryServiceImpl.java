@@ -35,19 +35,22 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public Page<InquiryDTO> getInquiry(Integer page, AdminBoardSearch adminBoardSearch) {
         Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(page, 5));
-        List<InquiryDTO> inquiryDTOS = inquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
+        List<InquiryDTO> inquiryDTOS = inquiries.getContent().stream().map(this::toAdminInquiryDTO).collect(Collectors.toList());
         return new PageImpl<>(inquiryDTOS, inquiries.getPageable(), inquiries.getTotalElements());
-
     }
 
     @Override
     public InquiryDTO getInquiryDetail(Long id) {
-        return toInquiryDTO(inquiryRepository.findById(id).get());
+        Inquiry inquiry = inquiryRepository.findById(id).get();
+        if(inquiry.getAnswer() != null) {
+            return toInquiryDTO(inquiry);
+        }
+        return toAdminInquiryDTO(inquiry);
     }
 
     @Override
-    public void deleteInquiry(Long id) {
-        inquiryRepository.deleteById(id);
+    public void deleteInquiry(List<Long> ids) {
+        inquiryRepository.deleteAllById(ids);
     }
 
     /* 유저아이디로 문의 페이징처리해서 불러오기 */

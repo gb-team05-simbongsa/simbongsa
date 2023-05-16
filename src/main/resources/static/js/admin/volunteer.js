@@ -27,3 +27,9 @@ volunteers.forEach(volunteer => {
 
     $('.table').append(text);
 });
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/volunteers-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});
