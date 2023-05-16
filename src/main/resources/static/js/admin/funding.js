@@ -32,3 +32,11 @@ fundings.forEach(funding => {
 
     $('.table').append(text);
 });
+
+
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/fundings-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});

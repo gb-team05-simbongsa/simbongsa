@@ -90,4 +90,14 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
                 .execute();
     }
 
+    @Override
+    public Inquiry findInquiryAndAnswerById(Long id) {
+        return query.select(inquiry)
+                .from(inquiry)
+                .leftJoin(inquiry.answer)
+                .fetchJoin()
+                .where(inquiry.id.eq(id))
+                .fetchOne();
+    }
+
 }

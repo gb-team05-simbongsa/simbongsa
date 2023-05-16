@@ -29,5 +29,4 @@ public class InquiryDTO {
         this.answerDTO = answerDTO;
         this.memberDTO = memberDTO;
     }
-    //    private Member member;
 }

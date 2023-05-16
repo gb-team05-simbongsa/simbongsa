@@ -78,5 +78,10 @@ public class FundingServiceImpl implements FundingService {
         List<FundingDTO> fundingDTOS = fundings.getContent().stream().map(this::toFundingDTO).collect(Collectors.toList());
         return new PageImpl<>(fundingDTOS, fundings.getPageable(), fundings.getTotalElements());
     }
+
+    @Override
+    public void deleteFunding(List<Long> ids) {
+        fundingRepository.deleteAllById(ids);
+    }
 }
 
