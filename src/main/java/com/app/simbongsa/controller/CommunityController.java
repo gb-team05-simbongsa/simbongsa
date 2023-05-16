@@ -1,9 +1,6 @@
 package com.app.simbongsa.controller;
 
-import com.app.simbongsa.domain.FreeBoardDTO;
-import com.app.simbongsa.domain.FreeBoardReplyDTO;
-import com.app.simbongsa.domain.ReplyDTO;
-import com.app.simbongsa.domain.ReviewReplyDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.board.ReviewService;
@@ -28,6 +25,19 @@ public class CommunityController {
     @GetMapping("free-board")
     public void goToFreeBoard(@AuthenticationPrincipal UserDetail userDetail, Model model){
         model.addAttribute("userDerail", userDetail);
+    }
+    @GetMapping("free-board-content")
+    @ResponseBody
+    public Slice<FreeBoardDTO> getFreeNewList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page,8);
+        return freeBoardService.getNewList(pageRequest);
+    }
+
+    @GetMapping("free-board-content")
+    @ResponseBody
+    public Slice<FreeBoardDTO> getFreeLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page,8);
+        return freeBoardService.getLikesList(pageRequest);
     }
 
     @GetMapping("free-create")
@@ -54,13 +64,43 @@ public class CommunityController {
     }
 
     @GetMapping("review-board")
-    public String reviewBoard() {return "community/review-board";}
+    public void goToReviewBoard(@AuthenticationPrincipal UserDetail userDetail, Model model){
+        model.addAttribute("userDerail", userDetail);
+    }
+
+    @GetMapping("review-board-content")
+    @ResponseBody
+    public Slice<ReviewDTO> getReviewNewList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page,8);
+        return reviewService.getNewReviewList(pageRequest);
+    }
+
+    @GetMapping("review-board-content")
+    @ResponseBody
+    public Slice<ReviewDTO> getReviewLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page,8);
+        return reviewService.getLikesReviewList(pageRequest);
+    }
 
     @GetMapping("review-create")
-    public String reviewCreate() {return "community/review-create";}
+    public void goToReviewCreate(ReviewDTO reviewDTO) {}
 
-    @GetMapping("review-detail")
-    public String reviewDerail() {return "community/review-detail";}
+    @PostMapping("review-create")
+    public RedirectView reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, @AuthenticationPrincipal UserDetail userDetail){
+
+        Long memberId = userDetail.getId();
+        reviewService.register(reviewDTO, memberId);
+        return new RedirectView("community/review-create");
+    }
+
+    @GetMapping("review-detail/{boardId}")
+    public String goToReviewDerail(Model model, @PathVariable("boardId") Long boardId, @AuthenticationPrincipal UserDetail userDetail) {
+        ReviewDTO reviewDTO = reviewService.getReview(boardId);
+
+        model.addAttribute("reviewDTO", reviewDTO);
+        model.addAttribute("userDetail", userDetail);
+        return "community/review-detail";
+    }
 
     /* 자유게시판 댓글*/
     @PostMapping("save")
