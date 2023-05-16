@@ -11,12 +11,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +30,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public Page<NoticeDTO> getNotice(Integer page, AdminNoticeSearch adminNoticeSearch) {
-        Page<Notice> notices = noticeRepository.findAllWithPaging(adminNoticeSearch, PageRequest.of(page, 5));
+        Page<Notice> notices = noticeRepository.findAllWithPaging_QueryDSL(adminNoticeSearch, PageRequest.of(page, 5));
         List<NoticeDTO> noticeDTOS = notices.getContent().stream().map(this::toNoticeDTO).collect(Collectors.toList());
         return new PageImpl<>(noticeDTOS, notices.getPageable(), notices.getTotalElements());
     }

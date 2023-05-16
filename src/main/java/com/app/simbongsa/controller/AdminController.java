@@ -102,13 +102,23 @@ public class AdminController {
     }
 
     @GetMapping("notice")
-    public String notice(Integer page, Model model) {
+    public String notice(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
+
+        if(searchType.equals("제목")) {
+            adminNoticeSearch.setNoticeTitle(searchContent);
+        } else if(searchType.equals("내용")) {
+            adminNoticeSearch.setNoticeContent(searchContent);
+        }
+
         Page<NoticeDTO> noticeDTOS = noticeService.getNotice(page, adminNoticeSearch);
 
         model.addAttribute("noticeDTOS", noticeDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(noticeDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/notice";
     }
 

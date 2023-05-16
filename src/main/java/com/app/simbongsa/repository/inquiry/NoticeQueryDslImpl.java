@@ -19,7 +19,7 @@ public class NoticeQueryDslImpl implements NoticeQueryDsl {
 
 //    공지사항 전체조회(페이징)
     @Override
-    public Page<Notice> findAllWithPaging(AdminNoticeSearch adminNoticeSearch, Pageable pageable) {
+    public Page<Notice> findAllWithPaging_QueryDSL(AdminNoticeSearch adminNoticeSearch, Pageable pageable) {
         BooleanExpression noticeTitleLike = adminNoticeSearch.getNoticeTitle() == null ? null : notice.noticeTitle.like("%" + adminNoticeSearch.getNoticeTitle() + "%");
         BooleanExpression noticeContentLike = adminNoticeSearch.getNoticeContent() == null ? null : notice.noticeContent.like("%" + adminNoticeSearch.getNoticeContent() + "%");
 
@@ -33,6 +33,7 @@ public class NoticeQueryDslImpl implements NoticeQueryDsl {
 
         Long count = query.select(notice.count())
                 .from(notice)
+                .where(noticeTitleLike, noticeContentLike)
                 .fetchOne();
 
         return new PageImpl<>(foundNotice, pageable, count);

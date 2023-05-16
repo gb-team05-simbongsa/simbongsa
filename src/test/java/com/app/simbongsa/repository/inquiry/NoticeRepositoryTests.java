@@ -12,7 +12,6 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;
-import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -26,7 +25,7 @@ public class NoticeRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 18; i++) {
-            Notice notice = new Notice("제목" + i, "내용" + i);
+            Notice notice = new Notice("제목3", "내용" + i);
             noticeRepository.save(notice);
         }
     }
@@ -37,7 +36,7 @@ public class NoticeRepositoryTests {
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
 //        adminNoticeSearch.setNoticeTitle("3");
         adminNoticeSearch.setNoticeTitle("5");
-        Page<Notice> foundNotice = noticeRepository.findAllWithPaging(adminNoticeSearch, PageRequest.of(0, 5));
+        Page<Notice> foundNotice = noticeRepository.findAllWithPaging_QueryDSL(adminNoticeSearch, PageRequest.of(0, 5));
         foundNotice.stream().map(Notice::toString).forEach(log::info);
         log.info("=============================" + foundNotice.getTotalElements());
     }
