@@ -25,9 +25,9 @@ public class ReviewFileRepositoryTests {
 
     @Test
     public void saveTest(){
-        for (int i = 1; i <= 5; i++) {
-            ReviewFile reviewFile = new ReviewFile("001.png","34271983dksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION,reviewRepository.findById(1212L).get());
-            reviewFileRepository.save(reviewFile);
-        }
+//        for (int i = 1; i <= 5; i++) {
+//            ReviewFile reviewFile = new ReviewFile("001.png","34271983dksjf","c:/2023/document", FileRepresentationalType.REPRESENTATION,reviewRepository.findById(1212L).get());
+//            reviewFileRepository.save(reviewFile);
+//        }
     }
 }

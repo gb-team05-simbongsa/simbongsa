@@ -44,25 +44,25 @@ public class FundingRepositoryTests {
 
         for (int i = 1; i <= 30; i++) {
             FundingCreator fundingCreator = new FundingCreator("test" + i,"test Introduce" + i,"test","test");
-//            Funding funding = new Funding(FundingCategoryType.승인
-//                    , "큰제목"
-//                    , "소제목"
-//                    , "안녕하세요"
-//                    , 10000 + 100 * i
-//                    , 3000 + 100 * i
-//                    , LocalDateTime.now()
-//                    , LocalDateTime.now()
-//                    ,"어서오세요"
-//                    ,"안녕하십니까"
-//                    ,"하이하이"
-//                    ,"헬로헬로"
-//                    ,fundingCreator);
-//                    ,memberRepository.findById(1L).get());
-
-//            fundingRepository.save(funding);
+            Funding funding = new Funding(FundingCategoryType.만화, "큰제목"
+                    , "소제목"
+                    , "안녕하세요"
+                    , 10000 + 100 * i
+                    , 3000 + 100 * i
+                    , LocalDateTime.now()
+                    , LocalDateTime.now()
+                    , "어서오세요"
+                    ,"안녕하십니까"
+                    ,"하이하이"
+                    ,"헬로헬로"
+                    , RequestType.대기
+                    ,fundingCreator
+                    ,memberRepository.findById(1L).get());
+            fundingRepository.save(funding);
         }
 
     }
+
     //    메인페이지 달성률로 인기펀딩 목록 조회
     @Test
     public void findAllWithPopularTest(){
