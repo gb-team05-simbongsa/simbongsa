@@ -123,8 +123,8 @@ public class FreeBoardRepositoryTests {
 
     @Test
     public void findAllWithPopularFreeBoardTest(){
-        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::getFreeBoardReplies).map(v->v.size()).forEach(v -> log.info(v.toString()));
-
+//        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::getFreeBoardReplies).map(v->v.size()).forEach(v -> log.info(v.toString()));
+        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::toString).forEach(log::info);
 
     }
 }

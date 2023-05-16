@@ -16,7 +16,7 @@ public interface FreeBoardQueryDsl {
     // 시퀀스
     public FreeBoard getCurrentSequence_QueryDsl();
 
-    // 메인 인기순 목록 조회
+    // 메인페이지 인기순 목록 조회
     public List<FreeBoard> findAllWithPopularFreeBoard();
 
     //    인기순 목록 조회 - 무한스크롤
