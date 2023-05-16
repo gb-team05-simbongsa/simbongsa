@@ -30,12 +30,12 @@ public class FundingGiftRepositoryTests {
 
     @Test
     public void saveTest() {
-        for (int i = 1; i <= 12; i++) {
+        for (int i = 1; i <= 20; i++) {
             FundingGift fundingGift = new FundingGift(
                     "펀딩선물" + i
                     , 120 * i
-                    ,12000* i);
-//                ,fundingRepository.findById(143L).get());
+                    ,12000* i
+                            ,fundingRepository.findById(235L).get());
 
             fundingGiftRepository.save(fundingGift);
         }
@@ -49,9 +49,8 @@ public class FundingGiftRepositoryTests {
 
 
     @Test
-    public  void findByIdGiftChooseTest() {
-        fundingGiftRepository.findByIdGiftChoose(73L).stream().map(FundingGiftItem::toString).forEach(log::info);;
-
+    public  void findGiftChooseTest() {
+       fundingRepository.findSupport_QueryDsl(444L);
     }
 
     @Test

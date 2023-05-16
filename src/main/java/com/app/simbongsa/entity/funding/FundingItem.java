@@ -23,8 +23,8 @@ public class FundingItem {
 
     //단위테스트용 생성자
     @Builder
-    public FundingItem(Long id, String itemTitle, String itemContent) {
-        this.id = id;
+    public FundingItem( String itemTitle, String itemContent) {
+
         this.itemTitle = itemTitle;
         this.itemContent = itemContent;
 

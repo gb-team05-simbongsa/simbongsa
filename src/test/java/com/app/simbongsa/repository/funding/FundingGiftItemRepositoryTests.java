@@ -25,11 +25,14 @@ public class FundingGiftItemRepositoryTests {
 
     @Test
             public void saveTest() {
-        for (int i = 1; i <= 15; i++) {
-//            FundingGiftItem fundingGiftItem = new FundingGiftItem(
-//                    fundingItemRepository.findById(18L)
-//                    , fundingGiftRepository.findById(17L)
-//            );
+        for (int i = 1; i <= 10; i++) {
+            FundingGiftItem fundingGiftItem = new FundingGiftItem(
+                    fundingItemRepository.findById(425L).get()
+                    , fundingGiftRepository.findAll().get(i)
+            );
+            fundingGiftItemRepository.save(fundingGiftItem);
         }
     }
+
+
 }

@@ -15,7 +15,7 @@ public interface FundingItemService {
 
     // dto -> entity로 변환
     default FundingItem toFundingItemEntity(FundingItemDTO fundingItemDTO) {
-        return FundingItem.builder().id(fundingItemDTO.getId())
+        return FundingItem.builder()/*.id(fundingItemDTO.getId())*/
                 .itemTitle(fundingItemDTO.getItemTitle())
                 .itemContent(fundingItemDTO.getItemContent())
                 .build();

@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.funding;
 
 import com.app.simbongsa.entity.funding.Funding;
+import com.app.simbongsa.entity.funding.FundingGift;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.RequestType;
@@ -19,7 +20,7 @@ public interface FundingQueryDsl {
     public Page<Funding> findAllWithPaging(AdminFundingSearch adminFundingSearch, Pageable pageable);
 
     // 펀딩 후원하기
-    public Funding findByIdsupport(Long fundingId);
+    public FundingGift findSupport_QueryDsl(Long fundingId);
 
     //    펀딩 상세페이지 조회
     public Optional<Funding> findByIdForDetail(Long fundingId);

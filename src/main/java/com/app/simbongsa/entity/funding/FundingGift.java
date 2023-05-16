@@ -25,11 +25,15 @@ public class FundingGift {
     private List<FundingGiftItem> fundingGiftItems;
 
 
+
+
     //단위테스트용 생성자
-    public FundingGift(String fundingGiftExplain, int fundingGiftAmount, int fundingGiftPrice) {
+    public FundingGift(String fundingGiftExplain, int fundingGiftAmount, int fundingGiftPrice, Funding funding) {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingGiftAmount = fundingGiftAmount;
         this.fundingGiftPrice = fundingGiftPrice;
-        //this.funding = funding;
+        this.funding = funding;
+
+
     }
 }
