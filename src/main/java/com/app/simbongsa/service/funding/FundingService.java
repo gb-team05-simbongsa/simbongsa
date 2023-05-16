@@ -70,7 +70,6 @@ public interface FundingService {
                 .fundingGiftExplain(funding.getFundingGiftExplain())
                 .fundingStatus(funding.getFundingStatus())
                 .fundingCreator(funding.getFundingCreator())
-                .fundingPercent((int)((double)funding.getFundingCurrentPrice() / funding.getFundingTargetPrice() * 100))
                 .build();
     }
     default MemberDTO toMemberDTO(Member member){
