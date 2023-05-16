@@ -59,7 +59,11 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
     @Override
     public Review getCurrentSequence_QueryDsl() {
-        return null;
+        return query.select(review)
+                .from(review)
+                .orderBy(review.id.desc())
+                .limit(1)
+                .fetchOne();
     }
 
     /* 내 후기 게시물 목록 조회 (페이징처리) */
