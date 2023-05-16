@@ -1,7 +1,7 @@
 const $div = $('.listWrapper');
 let page = 0;
 list(page);
-
+var totalCount = 0;
 
 
 function list(page) {
@@ -13,7 +13,8 @@ function list(page) {
         success: function (list) {
             console.log(list.content);
             $div.append(listText(list));
-            $(".count").text(list.content.length);
+              // $(".count").text(list.content.length)
+
 
         }
     });
@@ -29,7 +30,7 @@ function list(page) {
 
         fundingDTOS.forEach((fundingDTO, i) => {
             text += `
-                 <div class="listByinfinity" id="${i++}">
+                 <div class="listByinfinity" id="${i}">
                                 <div></div>
                                 <div class="project-card project-card">
                                     <div></div>

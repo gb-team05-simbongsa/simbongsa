@@ -57,14 +57,18 @@ public class FundingController {
 //    public String fundinglist() {return "funding/funding-list.html";}
 
     @GetMapping("funding")
-    public String goToFundingList(){
+    public String goToFundingList(Model model, Long fundingId){
+            model.addAttribute("count", fundingService.getFundingCount(fundingId));
+
         return "/funding/funding-list";
     }
 
     @GetMapping("funding-list")
     @ResponseBody
-    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page) {
+    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page, Long fundingId) {
     PageRequest pageRequest = PageRequest.of(page, 12);
+
+
 
 
     return fundingService.getFundingList(pageRequest);
