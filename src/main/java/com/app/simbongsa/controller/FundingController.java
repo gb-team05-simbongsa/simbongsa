@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/funding/*")
 @RequiredArgsConstructor
@@ -25,15 +27,15 @@ public class FundingController {
     @GetMapping("funding-creater-info")
     public String fundingCreate() {return "funding/funding-creater-info.html";}
 
-//    @GetMapping("funding-detail")
-//    public String fundingDetail() {return "funding/funding-detail.html";}
+    @GetMapping("funding-detail")
+    public String fundingDetail() {return "funding/funding-detail.html";}
 
 
-    @GetMapping("funding-detail{fundingId}")
-    public String fundingDetail(@PathVariable Long fundingId, Model model) {
-        model.addAttribute("funding", fundingService.getFundingDetail(fundingId));
-
-        return "/funding/funding-detail";}
+//    @GetMapping("funding-detail{fundingId}")
+//    public String fundingDetail(@PathVariable Long fundingId, Model model) {
+//        model.addAttribute("funding", fundingService.getFundingDetail(fundingId));
+//
+//        return "/funding/funding-detail";}
 
 
     @GetMapping("funding-gift")
@@ -56,9 +58,10 @@ public class FundingController {
 
     @GetMapping("funding-list")
     @ResponseBody
-    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page) {
+    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page, Model model) {
     PageRequest pageRequest = PageRequest.of(page, 12);
-        return fundingService.getFundingList(pageRequest);
+    return fundingService.getFundingList(pageRequest);
+
     }
 
     @GetMapping("funding-payment")

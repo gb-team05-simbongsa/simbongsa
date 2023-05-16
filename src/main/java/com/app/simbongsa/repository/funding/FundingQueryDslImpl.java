@@ -132,7 +132,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
     public Slice<Funding> findAllWithSlice_QueryDsl(Pageable pageable) {
         List<Funding> fundings = query.select(funding)
                 .from(funding)
-                .join(funding.fundingFile)
+                .leftJoin(funding.fundingFile, fundingFile)
                 .fetchJoin()
                 .orderBy(funding.id.desc())
                 .offset(pageable.getOffset())
@@ -140,9 +140,9 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetch();
 
         // 펀딩 전체 목록 갯수
-        Long count = query.select(funding.count())
-                .from(funding)
-                .fetchOne();
+//        Long count = query.select(funding.count())
+//                .from(funding)
+//                .fetchOne();
 
         //  hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
         //   false로 설정되면 다음 페이지가 없는 것으로 간주
@@ -156,6 +156,13 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
         return new SliceImpl<>(fundings, pageable, hasNext);
     }
 
+    @Override
+    public Long getFundingCount_QueryDsl(Long fundingId) {
+        return query.select(funding.count())
+                .from(funding)
+                .fetchOne();
+
+    }
 }
 //        return checkLastPage(pageable, foundFunding);
 ////      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,

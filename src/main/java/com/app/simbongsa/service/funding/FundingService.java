@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,9 @@ public interface FundingService {
 
     //펀딩 전체 목록 조회
     public Slice<FundingDTO> getFundingList(Pageable pageable);
+
+    //펀딩 전체 갯수
+    public Integer getFundingCount(Long fundingId);
 
     // 펀딩 상세보기
     public FundingDTO getFundingDetail(Long fundingId);

@@ -51,6 +51,11 @@ public class FundingServiceImpl implements FundingService {
 
     }
 
+    @Override
+    public Integer getFundingCount(Long fundingId) {
+        return fundingRepository.getFundingCount_QueryDsl(fundingId).intValue();
+    }
+
     //펀딩 상세보기 파일빼고 controller 완성
     @Override
     public FundingDTO getFundingDetail(Long fundingId) {

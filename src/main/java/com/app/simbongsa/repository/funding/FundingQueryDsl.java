@@ -37,4 +37,6 @@ public interface FundingQueryDsl {
     // 펀딩 전체 목록조회(무한스크롤)
     public Slice<Funding> findAllWithSlice_QueryDsl(Pageable pageable);
 
+    // 펀딩 전체 갯수
+     public Long getFundingCount_QueryDsl(Long fundingId);
 }
