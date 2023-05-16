@@ -74,6 +74,15 @@ public interface InquiryService {
                 .createdDate(inquiry.getCreatedDate())
                 .updatedDate(inquiry.getUpdatedDate())
                 .memberDTO(toMemberDTO(inquiry.getMember()))
+                .answerDTO(toAnswerDTO(inquiry.getAnswer()))
+                .build();
+    }
+
+    default AnswerDTO toAnswerDTO(Answer answer){
+        return AnswerDTO.builder()
+                .id(answer.getId())
+                .answerTitle(answer.getAnswerTitle())
+                .answerContent(answer.getAnswerContent())
                 .build();
     }
 
