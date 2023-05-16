@@ -65,7 +65,8 @@ public class ReviewServiceImpl implements ReviewService{
     /*시퀀스*/
     @Override
     public Review getCurrentSequence(){
-        return reviewRepository.getCurrentSequence_QueryDsl();
+//        reviewRepository.getCurrentSequence_QueryDsl();
+        return null;
     }
 
     /*댓글 저장*/

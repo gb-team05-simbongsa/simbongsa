@@ -51,34 +51,6 @@ $('.content__detail__btn').on('click', function () {
 $('#confirm-delete').on('click', function() {
     adminService.deleteAllById("/admins/notices-delete", $checkArr, function() {
         document.location.reload(true);
-        // adminService.getList("/admins/notice-lists", function(results) {
-        //     console.log(results)
-        //     let text = ``;
-        //     results.forEach(result => {
-        //
-        //         text += `
-        //             <tr class="table__content">
-        //                 <td>
-        //                     <label class="check-label">
-        //                        <input type="checkbox" name="check" />
-        //                     </label>
-        //                 </td>
-        //                 <td class="content__id">${result.id}</td>
-        //                 <td class="notice-content">${result.noticeTitle}</td>
-        //                 <td>${result.createdDate}</td>
-        //                 <td>${result.updatedDate}</td>
-        //                 <td>관리자</td>
-        //                 <td>
-        //                     <button class="content__detail__btn button__type_2 button__color__green show-detail">
-        //                         상세보기
-        //                     </button>
-        //                 </td>
-        //             </tr>
-        //         `;
-        //
-        //     });
-        //     $('.table').html(text);
-        // });
     });
 });
 
@@ -107,27 +79,28 @@ $('#create-button').on('click', function () {
               </svg>
             </a>
           </div>
-          <form class="storage_form" name="noticeForm" method="" action="">
+          <form class="storage_form" name="noticeForm">
             <main class="modal__main">
               <div class="modal__content">
                 <div class="content__title">
                   <h4>공지사항 제목</h4>
                   <div class="content__intput notice__title" style="margin-left: 11px;">
-                    <input type="text" name="noticeTitle" placeholder="공지사항 제목">
+                    <input type="text" name="noticeTitle" id="noticeTitle" placeholder="공지사항 제목">
                   </div>
-                     <h4 style="margin-left: 37px;">작성자</h4>
-                  <div class="content__intput notice__title" style="margin-right: 17px; margin-left: -33px;">
-                    <input type="text" name="noticeWriter" placeholder="작성자">
+<!--                     <h4 style="margin-left: 37px;">작성자</h4>-->
+<!--                  <div class="content__intput notice__title" style="margin-right: 17px; margin-left: -33px;">-->
+<!--                    <input type="text" name="noticeWriter" placeholder="작성자">-->
+<!--                  </div>-->
+<!--                <div class="content__intput date" style="flex: 0">-->
+<!--                    <input type="date" name="noticeRegist">-->
+<!--                  </div>-->
                   </div>
-                <div class="content__intput date" style="flex: 0">
-                    <input type="date" name="noticeRegist">
-                  </div></div>
                 <div class="content__intput input_box_shadow" style="margin-left: 6px;">
-                    <textarea></textarea>
+                    <textarea id="noticeContent"></textarea>
                 </div>
               </div>
               <div id="#completeBtn" class="user__profile__button">
-                <button class="button__type_2 button__color__green">작성완료</button>
+                <button class="button__type_2 button__color__green" type="button" id="saveButton" onclick="save()">작성완료</button>
               </div>
             </main>
           </form>
@@ -158,3 +131,17 @@ $('#create-button').on('click', function () {
         $modalStage.fadeOut(500);
     });
 })
+
+function save() {
+    let noticeDTO = {
+        id : 0,
+        noticeTitle : $('#noticeTitle').val(),
+        noticeContent : $('#noticeContent').val(),
+        createdDate : null,
+        updatedDate : null
+    };
+
+    adminService.saveNotice("/admins/notice-save", noticeDTO, function() {
+        document.location.reload(true);
+    })
+};
