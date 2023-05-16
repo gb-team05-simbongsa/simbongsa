@@ -37,6 +37,7 @@ public class InquiryServiceImpl implements InquiryService {
         Page<Inquiry> inquiries = inquiryRepository.findAllWithPaging(adminBoardSearch, PageRequest.of(page, 5));
         List<InquiryDTO> inquiryDTOS = inquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
         return new PageImpl<>(inquiryDTOS, inquiries.getPageable(), inquiries.getTotalElements());
+
     }
 
     @Override

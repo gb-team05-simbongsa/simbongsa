@@ -6,6 +6,22 @@ $('.go-support-request').on('click', function() {
         e.preventDefault();
         e.stopPropagation();
     });
+    var i = $(this).find('.inquiryId').index();
+
+    /* 해당 문의 번호 */
+    var inquiryId = $('.inquiryId').eq(i).val();
+    console.log("inquiryId: "+inquiryId);
+
+    /* 상세보기 ajax */
+    $.ajax({
+        url: "/mypages/inquiry-details",
+        type: "post",
+        data: { id : inquiryId },
+        success: function(result) {
+            $('.change-modal-form-title-input').val(result.inquiryTitle);
+            $('.change-modal-form-field-text').val(result.inquiryContent);
+        }
+    });
 
     $modal.show();
 });
@@ -16,6 +32,11 @@ $('.modal-close').on('click', () => {
 
     $('.full-screen').off('scroll touchmove mousewheel');
 });
+
+// 수정 모달이 띄워졌을 때 수정버튼 누르면 수정 하기
+$('.change-modal-ok-btn').on('click', () => {
+    document.updateForm.submit();
+})
 
 // 수정 모달이 띄워졌을 때 취소버튼 누르면 모달 닫기
 $('.change-modal-delete-btn').on('click', () => {
@@ -51,6 +72,7 @@ myInquiries.forEach((inquiry, i) => {
                         </div>
                         <div class="support-request-content">${inquiry.inquiryContent}</div>
                         <div class="support-request-reply">${inquiry.inquiryStatus}</div>
+                        <input class="inquiryId" type="hidden" value="${inquiry.id}"> 
                     </div>
                     <div class="button-class">
                         <div class="support-request-detail">
@@ -74,6 +96,7 @@ myInquiries.forEach((inquiry, i) => {
         </div>`;
 
     $('.support-request-inner-wrap').prepend(text);
+
 });
 
 
@@ -85,8 +108,39 @@ $('.show-answer').on('click', function() {
         $(this).parent().parent().parent().parent().next().hide();
     }
 });
-/*    if(result.paginationDTO.pageDTO.prev) {
-        paging += `
-                        <a class="changePage" data-page="${result.paginationDTO.pageDTO.startPage - 1}" onclick="preventDefault(this)" style="color: black"><code><</code></a>
-                        `;
-    }*/
+
+
+/*
+$('.go-support-request').on('click', function () {
+    /!* 해당 컨텐츠 번호 *!/
+    var inquiryId = $('.inquiryId').val();
+    console.log("inquiryId: "+inquiryId);
+
+    /!* 상세보기 ajax *!/
+    function getInquiryDetail(inquiryId, callback) {
+        $.ajax({
+            url: "/mypages/inquiry-details",
+            type: "post",
+            data: { id : inquiryId },
+            success: function(result) {
+
+            }
+        });
+    }
+
+    /!* ajax 에 콜백 넘겨주는 코드 작성해야 함 (검색기능 ajax로)*!/
+    adminService.getInquiryDetail(contentId, function(result) {
+        $('input[name=id]').val(contentId);
+        $('input[name=noticeTitle]').val(result.noticeTitle);
+        $('.notice-detail-content').val(result.noticeContent);
+    });
+
+    /!* 추후 타임리프로 대체할 예정 *!/
+    $modalStage.show();
+
+    /!* 모달 닫는 이벤트 *!/
+    /!* 추후 외부로 빼야함 *!/
+    $('.modal-close').on('click', function (e) {
+        $modalStage.fadeOut(500);
+    });
+});*/

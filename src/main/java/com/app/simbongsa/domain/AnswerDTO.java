@@ -11,11 +11,10 @@ public class AnswerDTO {
     private InquiryDTO inquiryDTO;
 
     @Builder
-    public AnswerDTO(Long id, String answerTitle, String answerContent, InquiryDTO inquiryDTO) {
+    public AnswerDTO(Long id, String answerTitle, String answerContent) {
         this.id = id;
         this.answerTitle = answerTitle;
         this.answerContent = answerContent;
-        this.inquiryDTO = inquiryDTO;
     }
 
 
