@@ -25,14 +25,6 @@ public interface VolunteerWorkService {
 //    봉사 삭제
     public void deleteVolunteerWorkByIds(List<Long> ids);
 
-//    default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork) {
-//        return VolunteerWorkDTO.builder()
-//                .volunteerWorkCategory(volunteerWork.getVolunteerWorkCategory())
-//                .volunteerWorkPlace(volunteerWork.getVolunteerWorkPlace())
-//                .volunteerWorkTitle(volunteerWork.getVolunteerWorkTitle())
-//                .build();
-//    }
-
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork){
         return VolunteerWorkDTO.builder()
                 .volunteerWorkTitle(volunteerWork.getVolunteerWorkTitle())
@@ -52,7 +44,7 @@ public interface VolunteerWorkService {
 
     default List<FileDTO> FileToDTO(List<VolunteerWorkFile> volunteerWorkFiles){
         List<FileDTO> volunteerFileList = new ArrayList<>();
-        volunteerFileList.forEach(
+        volunteerWorkFiles.forEach(
                 volunteerFile->{
                     FileDTO fileDTO = FileDTO.builder()
                             .id(volunteerFile.getId())
@@ -72,7 +64,7 @@ public interface VolunteerWorkService {
                 .volunteerWorkEndDate(volunteerWorkDTO.getVolunteerWorkEndDate())
                 .volunteerWorkJoinEndDate(volunteerWorkDTO.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWorkDTO.getVolunteerWorkJoinStartDate())
-                .volunteerWorkFiles(volunteerWorkDTO.getVolunteerWorkFiles())
+//                .volunteerWorkFiles(volunteerWorkDTO.getVolunteerWorkFiles())
                 .volunteerWorkPlace(volunteerWorkDTO.getVolunteerWorkPlace())
                 .volunteerWorkRecruitNumber(volunteerWorkDTO.getVolunteerWorkRecruitNumber())
                 .volunteerWorkRegisterAgency(volunteerWorkDTO.getVolunteerWorkRegisterAgency())
@@ -81,29 +73,5 @@ public interface VolunteerWorkService {
                 .volunteerWorkTitle(volunteerWorkDTO.getVolunteerWorkTitle())
                 .volunteerWorkRegisterAgency(volunteerWorkDTO.getVolunteerWorkRegisterAgency())
                 .build();
-    }
-    default VolunteerWorkFile toVolunteerWorkFileEntity(FileDTO fileDTO){
-        return VolunteerWorkFile.builder()
-                .fileName(fileDTO.getFileName())
-                .filePath(fileDTO.getFilePath())
-                .fileRepresentationalType(fileDTO.getFileRepresentationalType())
-                .fileUuid(fileDTO.getFileUuid())
-                .build();
-    }
-    default List<VolunteerWorkFile> toVolunteerWorkFileListEntity(List<FileDTO> fileDTOS){
-        List<VolunteerWorkFile> volunteerWorkFiles = new ArrayList<>();
-
-        fileDTOS.forEach(
-                fileDTO -> {
-                    VolunteerWorkFile volunteerWorkFile = VolunteerWorkFile.builder()
-                            .fileName(fileDTO.getFileName())
-                            .filePath(fileDTO.getFilePath())
-                            .fileRepresentationalType(fileDTO.getFileRepresentationalType())
-                            .fileUuid(fileDTO.getFileUuid())
-                            .build();
-                    volunteerWorkFiles.add(volunteerWorkFile);
-                }
-        );
-        return volunteerWorkFiles;
     }
 }

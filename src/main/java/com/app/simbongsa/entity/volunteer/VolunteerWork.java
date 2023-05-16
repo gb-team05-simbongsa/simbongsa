@@ -35,10 +35,11 @@ public class VolunteerWork {
     @NotNull private String volunteerWorkTitle;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade=CascadeType.REMOVE)
     private List<VolunteerWorkFile> volunteerWorkFiles;
 //    단위테스트용 생성자 생성
 
+    @Builder
     public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle) {
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
@@ -64,6 +65,5 @@ public class VolunteerWork {
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
-        this.volunteerWorkFiles = volunteerWorkFiles;
     }
 }
