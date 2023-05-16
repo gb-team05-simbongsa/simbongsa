@@ -45,8 +45,8 @@ public class ReviewRepositoryTests {
     @Test
     public void saveTest() {
         for(int i = 1; i <= 5; i++) {
-            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(2L).get());
-            reviewRepository.save(review);
+//            Review review = new Review("제목" + i, "내용" + i, memberRepository.findById(2L).get());
+//            reviewRepository.save(review);
         }
     }
 

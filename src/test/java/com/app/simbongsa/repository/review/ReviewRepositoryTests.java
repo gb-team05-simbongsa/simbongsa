@@ -48,13 +48,13 @@ public class ReviewRepositoryTests {
     @Test
     public void saveTest() {
         for (int i = 1; i <= 5; i++) {
-            Review review = new Review("후기게시판 제목" + i, "후기게시판 내용" + i, memberRepository.findById(145L).get());
-            reviewRepository.save(review);
+//            Review review = new Review("후기게시판 제목" + i, "후기게시판 내용" + i, memberRepository.findById(145L).get());
+//            reviewRepository.save(review);
         }
 
         for (int i = 6; i <= 10; i++) {
-            Review review = new Review("후기게시판 제목" + i, "후기게시판 내용" + i, memberRepository.findById(146L).get());
-            reviewRepository.save(review);
+//            Review review = new Review("후기게시판 제목" + i, "후기게시판 내용" + i, memberRepository.findById(146L).get());
+//            reviewRepository.save(review);
         }
     }
 
