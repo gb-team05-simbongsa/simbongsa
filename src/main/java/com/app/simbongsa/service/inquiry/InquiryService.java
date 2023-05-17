@@ -37,7 +37,8 @@ public interface InquiryService {
     /* 문의 수정 */
     public void setInquiry(InquiryDTO inquiryDTO);
 
-
+    /* 문의 삭제 */
+    public void deleteByInquiryId(Long id);
 
     default Inquiry toInquiryEntity(InquiryDTO inquiryDTO) {
         return Inquiry.builder()

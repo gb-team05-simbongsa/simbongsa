@@ -251,7 +251,8 @@
                                 <span class="change-modal-form-label">제목</span>
                                 <div class="change-modal-form-field">
                                     <div class="change-modal-form-title">
-                                        <input type="text" placeholder="제목을 입력해주세요." class="change-modal-form-title-input">
+                                        <input name="inquiryTitle" type="text" placeholder="제목을 입력해주세요." class="change-modal-form-title-input">
+                                        <input type="hidden" name="id">
                                     </div>
                                 </div>
                             </div>
@@ -259,9 +260,9 @@
                                 <span class="change-modal-form-label">내용</span>
                                 <div class="change-modal-form-field">
                                     <div class="change-modal-form-field-container">
-                                        <textarea inputmode="text" class="change-modal-form-field-text"></textarea>
+                                        <textarea name="inquiryContent" inputmode="text" class="change-modal-form-field-text"></textarea>
                                         <span class="change-modal-form-field-content">
-                                            <span style="color: rgb(51, 51, 51);">0자</span>
+                                            <!--<span style="color: rgb(51, 51, 51);">0자</span>-->
                                             <span style="color: rgb(153, 153, 153);"></span>
                                         </span>
                                     </div>
@@ -288,7 +289,9 @@
                 <div class="modal">
                     <div class="modal-content">정말로 삭제하시겠습니까?</div>
                     <div class="modal-ok-div">
-                        <button type="button" class="modal-button modal-ok">확인</button>
+                        <button type="button" class="modal-button modal-ok">확인
+                            <input name="myInquiryId" type="hidden" value="${myInquiries.id}">
+                        </button>
                         <button type="button" class="modal-button modal-cancel">취소</button>
                     </div>
                 </div>
