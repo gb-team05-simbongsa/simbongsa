@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>활동 후기 게시판 관리</title>
-    <link
-            href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
-            rel="stylesheet"/>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/admin/default.css"/>
     <link rel="stylesheet" href="/css/admin/sidebar.css"/>
     <link rel="stylesheet" href="/css/admin/content.css"/>
@@ -34,19 +32,10 @@
                     <ul class="status-list">
                         <li class="status-list-item">
                             <div class="status-item-wrapper">
-                                <svg
-                                        width="36"
-                                        height="36"
-                                        viewBox="0 0 36 36"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                    <path
-                                            d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
-                                            fill="#11CA2D"></path>
-                                    <path
-                                            d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
-                                            fill="#11CA2D"></path>
+                                    <path d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z" fill="#11CA2D"></path>
+                                    <path d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z" fill="#11CA2D"></path>
                                 </svg>
                                 <div class="status-item-name">총 게시판 수</div>
                             </div>
@@ -63,27 +52,19 @@
                 <div class="table__box">
                     <div class="table__search__form">
                         <div>
-                            <button
-                                    id="delete-button"
-                                    class="button__type_2 button__color__red"
-                                    style="width: 120px">
+                            <button id="delete-button" class="button__type_2 button__color__red" style="width: 120px">
                                 게시판 삭제
                             </button>
-                            <button
-                                    id="create-button"
-                                    class="button__type_3 button__color__green"
-                                    style="width: 120px;">
+                            <button id="create-button" class="button__type_3 button__color__green" style="width: 120px;">
                                 게시판 작성
                             </button>
                         </div>
                         <!-- default.css -->
                         <div class="search-box-wrap">
                             <div class="select-box">
-                                <button class="listbox-selecter">검색조건 선택</button>
+                                <button class="listbox-selecter" th:if="${searchType != ''}" th:text="${searchType}">검색조건 선택</button>
+                                <button class="listbox-selecter" th:if="${searchType == ''}">검색조건 선택</button>
                                 <ul class="listbox displayNone" id="listbox">
-                                    <li>
-                                        <button class="list">전체</button>
-                                    </li>
                                     <li>
                                         <button class="list">제목</button>
                                     </li>
@@ -94,25 +75,13 @@
                                 <input type="text" name="searchType" style="display: none" value="all"/>
                             </div>
                             <div class="search-box">
-                                <input
-                                        type="text"
-                                        name="userId"
-                                        class="input__type_1 search-input"
-                                        placeholder="검색"/>
-                                <span>
-                      <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                              enable-background="new 0 0 32 32"
-                              id="Glyph"
-                              version="1.1"
-                              viewBox="0 0 32 32"
-                              xml:space="preserve">
-                        <path
-                                d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"
-                                id="XMLID_223_"/>
-                      </svg>
-                    </span>
+                                <input type="text" th:if="${searchContent != ''}" class="input__type_1 search-input" placeholder="검색" th:value="${searchContent}"/>
+                                <input type="text" th:if="${searchContent == ''}" class="input__type_1 search-input" placeholder="검색"/>
+                                <span class="search" style="cursor: pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve">
+                                        <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/>
+                                    </svg>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -171,12 +140,12 @@
                     <!-- default.css > pagenation -->
                     <div>
                         <div class="paging" style="text-align: center">
-                            <a th:if="${pageDTO.prev}" th:href="@{/admin/activity-review-board} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                            <a th:if="${pageDTO.prev}" th:href="@{/admin/activity-review-board} + '?page=' + ${pageDTO.startPage - 1} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" class="changePage" style="color: black"><code><</code></a>
                             <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
-                                <a th:href="@{/admin/activity-review-board} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                                <a th:href="@{/admin/activity-review-board} + '?page=' + ${page} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
                                 <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
                             </th:block>
-                            <a th:if="${pageDTO.next}" th:href="@{/admin/activity-review-board} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
+                            <a th:if="${pageDTO.next}" th:href="@{/admin/activity-review-board} + '?page=' + ${pageDTO.endPage + 1} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" class="changePage" style="color: black"><code>></code></a>
                         </div>
                         <form name="pageForm">
                             <input type="hidden">
@@ -311,6 +280,7 @@
 <script th:inline="javascript">
     let boards = [[${reviewDTOS}]];
 </script>
+<script src="/js/admin/ajax.js"></script>
 <script src="/js/admin/active-review-board.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>

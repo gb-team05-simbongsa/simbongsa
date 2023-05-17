@@ -115,27 +115,18 @@
                         <!-- default.css -->
                         <div class="search-box-wrap">
                             <div class="select-box">
-                                <button class="listbox-selecter">검색조건 선택</button>
+                                <button class="listbox-selecter" th:if="${searchType != ''}" th:text="${searchType}">검색조건 선택</button>
+                                <button class="listbox-selecter" th:if="${searchType == ''}">검색조건 선택</button>
                                 <ul class="listbox displayNone" id="listbox">
-                                    <li>
-                                        <button class="list">전체</button>
-                                    </li>
-                                    <li>
-                                        <button class="list">검색조건1</button>
-                                    </li>
-                                    <li>
-                                        <button class="list">검색조건2</button>
-                                    </li>
+                                    <li><button class="list">봉사위치</button></li>
+                                    <li><button class="list">등록기관</button></li>
                                 </ul>
-                                <input type="text" name="searchType" style="display: none" value="all"/>
+                                <input type="text" name="searchType" id="searchType" style="display: none"/>
                             </div>
                             <div class="search-box">
-                                <input
-                                        type="text"
-                                        name="userId"
-                                        class="input__type_1 search-input"
-                                        placeholder="검색"/>
-                                <span>
+                                <input type="text" th:if="${searchContent != ''}" class="input__type_1 search-input" placeholder="검색" th:value="${searchContent}"/>
+                                <input type="text" th:if="${searchContent == ''}" class="input__type_1 search-input" placeholder="검색"/>
+                                <span class="search" style="cursor: pointer">
                       <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -213,12 +204,12 @@
                     <!-- default.css > pagenation -->
                     <div>
                         <div class="paging" style="text-align: center">
-                            <a th:if="${pageDTO.prev}" th:href="@{/admin/volunteer} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                            <a th:if="${pageDTO.prev}" th:href="@{/admin/volunteer} + '?page=' + ${pageDTO.startPage - 1} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" class="changePage" style="color: black"><code><</code></a>
                             <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
-                                <a th:href="@{/admin/volunteer} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                                <a th:href="@{/admin/volunteer} + '?page=' + ${page} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
                                 <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
                             </th:block>
-                            <a th:if="${pageDTO.next}" th:href="@{/admin/volunteer} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
+                            <a th:if="${pageDTO.next}" th:href="@{/admin/volunteer} + '?page=' + ${pageDTO.endPage + 1} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" class="changePage" style="color: black"><code>></code></a>
                         </div>
                         <form name="pageForm">
                             <input type="hidden">

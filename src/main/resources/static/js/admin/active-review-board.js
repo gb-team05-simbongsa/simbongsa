@@ -95,3 +95,13 @@ $('.modal-close').on('click', function (e) {
   $modalStage.fadeOut(500); 
 });    
 })
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/reviews-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});
+
+$('.search').on('click', () => {
+    location.href = "/admin/activity-review-board?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});

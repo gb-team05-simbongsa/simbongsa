@@ -106,11 +106,9 @@
                         <!-- default.css -->
                         <div class="search-box-wrap">
                             <div class="select-box">
-                                <button class="listbox-selecter">검색조건 선택</button>
+                                <button class="listbox-selecter" th:if="${searchType != ''}" th:text="${searchType}">검색조건 선택</button>
+                                <button class="listbox-selecter" th:if="${searchType == ''}">검색조건 선택</button>
                                 <ul class="listbox displayNone" id="listbox">
-                                    <li>
-                                        <button class="list">전체</button>
-                                    </li>
                                     <li>
                                         <button class="list">제목</button>
                                     </li>
@@ -118,11 +116,12 @@
                                         <button class="list">이메일</button>
                                     </li>
                                 </ul>
-                                <input type="text" name="searchType" style="display: none" value="all"/>
+                                <input type="text" name="searchType" id="searchType" style="display: none"/>
                             </div>
                             <div class="search-box">
-                                <input type="text" name="userId" class="input__type_1 search-input" placeholder="검색"/>
-                                <span>
+                                <input type="text" th:if="${searchContent != ''}" class="input__type_1 search-input" placeholder="검색" th:value="${searchContent}"/>
+                                <input type="text" th:if="${searchContent == ''}" class="input__type_1 search-input" placeholder="검색"/>
+                                <span class="search" style="cursor: pointer">
                                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve">
                                         <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/>
                                      </svg>
@@ -184,12 +183,12 @@
                     <!-- default.css > pagenation -->
                     <div>
                         <div class="paging" style="text-align: center">
-                            <a th:if="${pageDTO.prev}" th:href="@{/admin/inquiry} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                            <a th:if="${pageDTO.prev}" th:href="@{/admin/inquiry} + '?page=' + ${pageDTO.startPage - 1} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" class="changePage" style="color: black"><code><</code></a>
                             <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
-                                <a th:href="@{/admin/inquiry} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                                <a th:href="@{/admin/inquiry} + '?page=' + ${page} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
                                 <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
                             </th:block>
-                            <a th:if="${pageDTO.next}" th:href="@{/admin/inquiry} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
+                            <a th:if="${pageDTO.next}" th:href="@{/admin/inquiry} + '?page=' + ${pageDTO.endPage + 1} + '&searchType=' + ${searchType} + '&searchContent=' + ${searchContent}" class="changePage" style="color: black"><code>></code></a>
                         </div>
                         <form name="pageForm">
                             <input type="hidden">

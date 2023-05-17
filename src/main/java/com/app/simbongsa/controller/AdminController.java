@@ -1,7 +1,6 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
-import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.search.admin.*;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.board.ReviewService;
@@ -12,18 +11,17 @@ import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
+import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.EntityManager;
@@ -58,46 +56,90 @@ public class AdminController {
 //    봉사모집자유게시판(자유게시판) - volunteer-recruitment-board.html
 
     @GetMapping("activity-review-board")
-    public String activityReviewBoard(Integer page, Model model) {
+    public String activityReviewBoard(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
+
+        if(searchType.equals("제목")) {
+            adminBoardSearch.setBoardTitle(searchContent);
+        } else if(searchType.equals("이메일")) {
+            adminBoardSearch.setMemberEmail(searchContent);
+        }
+
         Page<ReviewDTO> reviewDTOS = reviewService.getReview(page, adminBoardSearch);
 
         model.addAttribute("reviewDTOS", reviewDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(reviewDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/activity-review-board";
     }
 
     @GetMapping("funding")
-    public String funding(Integer page, Model model) {
+    public String funding(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminFundingSearch adminFundingSearch = new AdminFundingSearch();
+
+        if(searchType.equals("제목")) {
+            adminFundingSearch.setFundingTitle(searchContent);
+        } else if(searchType.equals("창작자 이름")) {
+            adminFundingSearch.setCreatorNickName(searchContent);
+        }
+
         Page<FundingDTO> fundingDTOS = fundingService.getFunding(page, adminFundingSearch);
 
         model.addAttribute("fundingDTOS", fundingDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(fundingDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/funding";
     }
 
     @GetMapping("gongyangmi-refund")
-    public String gongyangmiRefund(Integer page, Model model) {
+    public String gongyangmiRefund(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminPaymentSearch adminPaymentSearch = new AdminPaymentSearch();
+
+        if(searchType.equals("요청 공양미(미만)")) {
+            adminPaymentSearch.setRicePaymentUsed(Integer.parseInt(searchContent));
+        } else if(searchType.equals("이메일")) {
+            adminPaymentSearch.setMemberEmail(searchContent);
+        }
+
         Page<RicePaymentDTO> ricePaymentDTOS = ricePaymentService.getRicePayment(page, adminPaymentSearch, RicePaymentType.환전대기, RicePaymentType.환전승인);
 
         model.addAttribute("ricePaymentDTOS", ricePaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(ricePaymentDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/gongyangmi-refund";
     }
 
     @GetMapping("inquiry")
-    public String inquiry(Integer page, Model model) {
+    public String inquiry(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
+
+        if(searchType.equals("제목")) {
+            adminBoardSearch.setBoardTitle(searchContent);
+        } else if(searchType.equals("이메일")) {
+            adminBoardSearch.setMemberEmail(searchContent);
+        }
+
         Page<InquiryDTO> inquiryDTOS = inquiryService.getInquiry(page, adminBoardSearch);
 
         model.addAttribute("inquiryDTOS", inquiryDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(inquiryDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/inquiry";
     }
 
@@ -105,6 +147,7 @@ public class AdminController {
     public String notice(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
         searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
 
         if(searchType.equals("제목")) {
@@ -130,13 +173,24 @@ public class AdminController {
     }
 
     @GetMapping("payment")
-    public String payment(Integer page, Model model) {
+    public String payment(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminPaymentSearch adminPaymentSearch = new AdminPaymentSearch();
+
+        if(searchType.equals("공양미 충전 수")) {
+            adminPaymentSearch.setRicePaymentUsed(Integer.parseInt(searchContent));
+        } else if(searchType.equals("이메일")) {
+            adminPaymentSearch.setMemberEmail(searchContent);
+        }
+
         Page<RicePaymentDTO> ricePaymentDTOS = ricePaymentService.getRicePayment(page, adminPaymentSearch, RicePaymentType.충전);
 
         model.addAttribute("ricePaymentDTOS", ricePaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(ricePaymentDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/payment";
     }
 
@@ -146,14 +200,25 @@ public class AdminController {
     }
 
     @GetMapping("sponsorship-request")
-    public String sponsorshipRequest(Integer page, Model model) {
+    public String sponsorshipRequest(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminSupportRequestSearch adminSupportRequestSearch = new AdminSupportRequestSearch();
+
+        if(searchType.equals("승인/대기")) {
+            adminSupportRequestSearch.setRequestType(RequestType.valueOf(searchContent));
+        } else if(searchType.equals("이메일")) {
+            adminSupportRequestSearch.setMemberEmail(searchContent);
+        }
+
         Page<SupportRequestDTO> supportRequestDTOS = supportRequestService.getSupportRequest(page, adminSupportRequestSearch);
 
         log.info(supportRequestDTOS.getContent().toString());
         model.addAttribute("supportRequestDTOS", supportRequestDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(supportRequestDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/sponsorship-request";
     }
 
@@ -163,13 +228,24 @@ public class AdminController {
     }
 
     @GetMapping("user")
-    public String user(Integer page, Model model) {
+    public String user(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminMemberSearch adminMemberSearch = new AdminMemberSearch();
+
+        if(searchType.equals("이메일")) {
+            adminMemberSearch.setMemberEmail(searchContent);
+        } else if(searchType.equals("주소")) {
+            adminMemberSearch.setMemberAddress(searchContent);
+        }
+
         Page<MemberDTO> memberDTOS = memberService.getMembers(page, adminMemberSearch);
 
         model.addAttribute("memberDTOS", memberDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(memberDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/user";
     }
 
@@ -194,24 +270,46 @@ public class AdminController {
     }
 
     @GetMapping("volunteer")
-    public String volunteer(Integer page, Model model) {
+    public String volunteer(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminVolunteerSearch adminVolunteerSearch = new AdminVolunteerSearch();
+
+        if(searchType.equals("봉사위치")) {
+            adminVolunteerSearch.setVolunteerWorkPlace(searchContent);
+        } else if(searchType.equals("등록기관")) {
+            adminVolunteerSearch.setVolunteerWorkRegisterAgency(searchContent);
+        }
+
         Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.getVolunteerWork(page, adminVolunteerSearch);
 
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/volunteer";
     }
 
     @GetMapping("volunteer-recruitment-board")
-    public String volunteerRecruitmentBoard(Integer page, Model model) {
+    public String volunteerRecruitmentBoard(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchType = searchType == null ? "" : searchType;
+        searchContent = searchContent == null ? "" : searchContent;
         AdminBoardSearch adminBoardSearch = new AdminBoardSearch();
+
+        if(searchType.equals("제목")) {
+            adminBoardSearch.setBoardTitle(searchContent);
+        } else if(searchType.equals("이메일")) {
+            adminBoardSearch.setMemberEmail(searchContent);
+        }
+
         Page<FreeBoardDTO> freeBoardDTOS = freeBoardService.getFreeBoard(page, adminBoardSearch);
 
         model.addAttribute("freeBoardDTOS", freeBoardDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(freeBoardDTOS));
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchContent", searchContent);
         return "admin/volunteer-recruitment-board";
     }
 }
