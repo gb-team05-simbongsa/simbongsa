@@ -84,6 +84,7 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
+                .where(requestTypeEq, memberEmailLike)
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest, pageable, count);

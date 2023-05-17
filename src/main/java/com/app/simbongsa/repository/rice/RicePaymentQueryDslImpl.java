@@ -41,6 +41,7 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
         Long count = query.select(ricePayment.count())
                 .from(ricePayment)
                 .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
+                .where(ricePaymentUsedEq, memberEmailLike)
                 .fetchOne();
 
         return new PageImpl<>(foundRicePayment, pageable, count);
@@ -66,6 +67,7 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
         Long count = query.select(ricePayment.count())
                 .from(ricePayment)
                 .where(ricePayment.ricePaymentStatus.eq(ricePaymentFirstType).or(ricePayment.ricePaymentStatus.eq(ricePaymentSecondType)))
+                .where(ricePaymentUsedEq, memberEmailLike)
                 .fetchOne();
 
         return new PageImpl<>(foundRicePayment, pageable, count);

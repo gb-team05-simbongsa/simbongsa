@@ -27,7 +27,7 @@ public interface FundingService {
     // 메인페이지 - 인기펀딩
     public List<FundingDTO> getAllPopularFundingList();
 
-    // 펀딩 기본정보 저장
+    // 펀딩 저장
     public void fundingRegister(FundingDTO fundingDTO);
 
     //펀딩 전체 목록 조회
@@ -117,6 +117,7 @@ public interface FundingService {
                 .fundingTitle(fundingDTO.getFundingTitle())
                 .fundingShortTitle(fundingDTO.getFundingShortTitle())
                 .fundingSummary(fundingDTO.getFundingSummary())
+                .fundingCreator(fundingDTO.getFundingCreator())
                 .build();
 
     }

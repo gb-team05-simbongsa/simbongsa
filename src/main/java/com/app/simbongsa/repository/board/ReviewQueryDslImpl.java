@@ -108,6 +108,7 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
         Long count = query.select(review.count())
                 .from(review)
+                .where(boardTitleLike, memberEmailLike)
                 .fetchOne();
 
         return new PageImpl<>(foundReview, pageable, count);

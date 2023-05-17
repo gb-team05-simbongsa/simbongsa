@@ -36,6 +36,7 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
 
         Long count = query.select(inquiry.count())
                 .from(inquiry)
+                .where(inquiryTitleLike, memberEmailLike)
                 .fetchOne();
 
         return new PageImpl<>(foundInquiry, pageable, count);

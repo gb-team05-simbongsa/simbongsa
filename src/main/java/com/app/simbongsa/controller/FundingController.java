@@ -2,10 +2,13 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.FundingItemDTO;
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.service.funding.FundingItemService;
 import com.app.simbongsa.service.funding.FundingService;
+import com.app.simbongsa.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.Member;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
@@ -20,15 +23,23 @@ import java.util.List;
 @Slf4j
 public class FundingController {
     private final FundingService fundingService;
+    private  final MemberService memberService;
 
     private final FundingItemService fundingItemService;
 
 
     @GetMapping("funding-creater-info")
-    public String fundingCreate() {return "funding/funding-creater-info.html";}
+    public String fundingCreateForm() {return "funding/funding-creater-info.html";}
+
+    @PostMapping("funding-creater-info")
+    public String fundingCreate(FundingDTO fundingDTO) {
+        fundingService.fundingRegister(fundingDTO);
+
+        return "funding/funding-creater-info";
+    }
 
     @GetMapping("funding-detail")
-    public String fundingDetail() {return "funding/funding-detail.html";}
+    public String fundingDetail() {return "funding/funding-detail";}
 
 
 //    @GetMapping("funding-detail{fundingId}")
@@ -75,8 +86,19 @@ public class FundingController {
 
     }
 
+//    @GetMapping("funding-payment")
+//    public String fundingPayment() {return "funding/funding-payment.html";}
+
     @GetMapping("funding-payment")
-    public String fundingPayment() {return "funding/funding-payment.html";}
+    public String fundingPayment(Model model, Long memberId, Long fundingId) {
+        MemberDTO memberDTO = memberService.getMemberById(memberId);
+        FundingDTO fundingDTO = fundingService.getFundingDetail(fundingId);
+
+        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("fundingDTO", fundingDTO);
+
+
+        return "funding/funding-payment";}
 
     @GetMapping("funding-plan")
     public String fundingPlan() {return "funding/funding-plan.html";}
