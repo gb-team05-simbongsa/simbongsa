@@ -31,7 +31,7 @@ public interface MemberService extends UserDetailsService {
     public MemberDTO getMemberByEmail(String memberEmail);
 
 //    회원 탈퇴(관리자)
-    public void updateStatusByIds(List<Long> ids, MemberStatus memberStatus);
+    public void updateStatusByIds(List<Long> ids);
 
 //    후원 명단 조회
     public List<Member> getSupportList(Long id);

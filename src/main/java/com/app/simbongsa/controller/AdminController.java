@@ -13,6 +13,7 @@ import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
+import com.app.simbongsa.type.UserRankType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -257,6 +258,29 @@ public class AdminController {
         memberDTO.setMemberAddress(memberAddress);
         memberDTO.setMemberInterest(memberInterest);
         memberDTO.setMemberVolunteerTime(memberVolunteerTime);
+
+        UserRankType userRankType = null;
+        if(memberVolunteerTime >= 0 && memberVolunteerTime < 10) {
+            userRankType = UserRankType.동냥1티어;
+        } else if(memberVolunteerTime >= 10 && memberVolunteerTime < 30) {
+            userRankType = UserRankType.동냥2티어;
+        } else if(memberVolunteerTime >= 30 && memberVolunteerTime < 50) {
+            userRankType = UserRankType.동냥3티어;
+        } else if(memberVolunteerTime >= 50 && memberVolunteerTime < 80) {
+            userRankType = UserRankType.은냥1티어;
+        } else if(memberVolunteerTime >= 80 && memberVolunteerTime < 100) {
+            userRankType = UserRankType.은냥2티어;
+        } else if(memberVolunteerTime >= 100 && memberVolunteerTime < 150) {
+            userRankType = UserRankType.은냥3티어;
+        } else if(memberVolunteerTime >= 150 && memberVolunteerTime < 200) {
+            userRankType = UserRankType.금냥1티어;
+        } else if(memberVolunteerTime >= 200 && memberVolunteerTime < 300) {
+            userRankType = UserRankType.금냥2티어;
+        } else if(memberVolunteerTime >= 300) {
+            userRankType = UserRankType.금냥3티어;
+        }
+
+        memberDTO.setMemberRank(userRankType);
         memberService.join(memberDTO, passwordEncoder);
 
         page = page == null ? 0 : page - 1;
