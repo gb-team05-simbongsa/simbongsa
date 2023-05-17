@@ -1,10 +1,8 @@
 package com.app.simbongsa.service.member;
 
-import com.app.simbongsa.domain.InquiryDTO;
+import com.app.simbongsa.domain.MailDTO;
 import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
-import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
@@ -12,11 +10,14 @@ import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,6 +33,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,6 +42,9 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Override
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
@@ -227,5 +232,38 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Long overlapByMemberEmail(String memberEmail) {
         return memberRepository.overlapByMemberEmail(memberEmail);
+    }
+
+    /* 랜덤키생성 */
+    @Override
+    public String randomKey() {
+        Random random = new Random();
+        String randomNum = "";
+
+        for(int i = 0; i < 6; i++) {
+            String number = Integer.toString(random.nextInt(10));
+            randomNum += number;
+        }
+
+        return randomNum;
+    }
+
+    /* 랜덤키 변경 */
+    @Override
+    public void updateRandomKey(String memberEmail, String randomKey) {
+        memberRepository.updateRandomKey(memberEmail,randomKey);
+    }
+
+    /* 메일보내기 */
+    @Override
+    public void sendMail(MailDTO mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(mail.getAddress());
+        message.setFrom("simbongsa300@gmail.com");
+//        from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
+        message.setSubject(mail.getTitle());
+        message.setText(mail.getMessage());
+
+        mailSender.send(message);
     }
 }
