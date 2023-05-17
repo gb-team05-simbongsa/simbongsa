@@ -27,4 +27,7 @@ public interface InquiryQueryDsl {
 
 //    문의 상세보기
     public Inquiry findInquiryAndAnswerById(Long id);
+
+    /* 문의 삭제하기 */
+    public void deleteByInquiryId(Long id);
 }

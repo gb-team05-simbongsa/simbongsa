@@ -67,4 +67,10 @@ public class InquiryServiceImpl implements InquiryService {
         updateInquiry(inquiry, inquiry.getInquiryTitle(),inquiry.getInquiryContent());
         inquiryRepository.save(inquiry);
     }
+
+    /* 문의 삭제 */
+    @Override
+    public void deleteByInquiryId(Long id) {
+        inquiryRepository.deleteByInquiryId(id);
+    }
 }
