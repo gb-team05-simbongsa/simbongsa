@@ -137,10 +137,13 @@ public class AdminController {
 
         Page<InquiryDTO> inquiryDTOS = inquiryService.getInquiry(page, adminBoardSearch);
 
+        List<Long> counts = inquiryService.countStatusWaitAndComplete();
+
         model.addAttribute("inquiryDTOS", inquiryDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(inquiryDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
+        model.addAttribute("counts", counts);
         return "admin/inquiry";
     }
 

@@ -8,9 +8,14 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface VolunteerWorkService {
     // 1. 메인페이지 - 봉사 활동 8개 TEST
@@ -24,6 +29,14 @@ public interface VolunteerWorkService {
 
 //    봉사 삭제
     public void deleteVolunteerWorkByIds(List<Long> ids);
+
+//    봉사 파일 업로드
+    public Map<String, Object> uploadFile(List<MultipartFile> multipartFiles) throws IOException;
+
+    //    현재 날짜 경로 구하기
+//    private String getPath() {
+//        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+//    }
 
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork){
         return VolunteerWorkDTO.builder()
