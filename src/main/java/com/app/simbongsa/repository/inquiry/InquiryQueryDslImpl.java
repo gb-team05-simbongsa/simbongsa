@@ -100,4 +100,10 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
                 .fetchOne();
     }
 
+    @Override
+    public void deleteByInquiryId(Long id) {
+        query.delete(inquiry)
+                .where(inquiry.id.eq(id))
+                .execute();
+    }
 }

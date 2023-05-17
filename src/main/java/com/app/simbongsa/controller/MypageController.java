@@ -11,6 +11,7 @@ import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
+import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,7 @@ public class MypageController {
     private final SupportRequestService supportRequestService;
     private final FreeBoardService freeBoardService;
     private final FreeBoardRepository freeBoardRepository;
+    private final MemberService memberService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -44,13 +46,14 @@ public class MypageController {
         page = page == null ? 0 : page - 1;
         Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
 
-        for (InquiryDTO myInquiry: myInquiries.getContent()) {
+        log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
+   /*     for (InquiryDTO myInquiry: myInquiries.getContent()) {
             log.info("set하기 전 left join으로 가져온 myInquiry"+myInquiry.toString());
             AnswerDTO answerAboutInquiry = answerService.findByInquiryId(myInquiry.getId());
             log.info(answerAboutInquiry + "%%%%%%%%%%%5문의에 대한 답변%%%%%%%%%%%%%");
             myInquiry.setAnswerDTO(answerAboutInquiry);
             log.info("set 해서 가져온 inquiryDTO빼고 가져온 AnswerDTO"+myInquiry.toString());
-        }
+        }*/
 
         model.addAttribute("myInquiries", myInquiries.getContent());
         model.addAttribute("pageDTO", new PageDTO(myInquiries));
@@ -59,11 +62,11 @@ public class MypageController {
 
     /* 내 문의 게시글 수정 */
     @PostMapping("my-question-update")
-    public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent) {
-        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).build();
+    public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent, @AuthenticationPrincipal UserDetail userDetail) {
+        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(userDetail.getId())).build();
         inquiryService.setInquiry(inquiryDTO);
-        log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO+toString());
-        return new RedirectView("mypages/inquiry-details");
+        log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO.toString());
+        return new RedirectView("my-question");
     }
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
