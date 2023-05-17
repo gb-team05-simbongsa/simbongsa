@@ -1,11 +1,8 @@
 package com.app.simbongsa.service.member;
 
-import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MailDTO;
 import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
-import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminMemberSearch;
@@ -46,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private JavaMailSender mailSender;
 
     @Override
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
@@ -255,11 +252,11 @@ public class MemberServiceImpl implements MemberService {
     public void sendMail(MailDTO mail) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(mail.getAddress());
-        message.setFrom("test.2678ju@gmail.com");
+        message.setFrom("simbongsa300@gmail.com");
 //        from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
         message.setSubject(mail.getTitle());
         message.setText(mail.getMessage());
 
-        javaMailSender.send(message);
+        mailSender.send(message);
     }
 }

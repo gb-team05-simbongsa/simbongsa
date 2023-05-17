@@ -63,8 +63,12 @@ public class MemberController {
 
     /* 비밀번호 재설정 페이지 */
     @GetMapping("change-password")
-    public String changePassword() {
-        return "join-login/change-password";
+    public String changePassword(String memberEmail, String randomKey) {
+        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
+            return "/member/login";
+        }
+        memberService.updateRandomKey(memberEmail, null);
+        return "/join-login/change-password";
     }
 
     /* 로그아웃 */
@@ -120,7 +124,7 @@ public class MemberController {
     public RedirectView findPasswordEmail(String memberEmail, RedirectAttributes redirectAttributes) {
 
         if(memberService.overlapByMemberEmail(memberEmail) == 0) {
-            return new RedirectView("/member/find-password-email?result=fail");
+            return new RedirectView("/member/find-password?result=fail");
         }
 
         String randomKey = memberService.randomKey();
@@ -132,7 +136,7 @@ public class MemberController {
         MailDTO mailDTO = new MailDTO();
         mailDTO.setAddress(memberEmail);
         mailDTO.setTitle("새 비밀번호 설정 링크입니다.");
-        mailDTO.setMessage("링크: http://localhost:10000/member/changePassword?memberEmail=" + memberEmail + "&randomKey=" + randomKey);
+        mailDTO.setMessage("링크: http://localhost:10000/member/change-password?memberEmail=" + memberEmail + "&randomKey=" + randomKey);
         memberService.sendMail(mailDTO);
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);

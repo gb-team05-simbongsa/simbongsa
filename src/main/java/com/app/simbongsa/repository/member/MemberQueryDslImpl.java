@@ -152,7 +152,7 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     public void updateRandomKey(String memberEmail, String randomKey) {
         query.update(member)
                 .set(member.randomKey, randomKey)
-                .where(member.randomKey.eq(randomKey))
+                .where(member.memberEmail.eq(memberEmail))
                 .execute();
     }
 }
