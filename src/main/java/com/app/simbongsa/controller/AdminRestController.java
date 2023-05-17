@@ -5,12 +5,15 @@ import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
+import com.app.simbongsa.service.board.FreeBoardService;
+import com.app.simbongsa.service.board.ReviewService;
 import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
+import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +40,9 @@ public class AdminRestController {
     private final SupportService supportService;
     private final VolunteerWorkService volunteerWorkService;
     private final FundingService fundingService;
+    private final SupportRequestService supportRequestService;
+    private final FreeBoardService freeBoardService;
+    private final ReviewService reviewService;
 
     @PostMapping("notice-save")
     public void noticeSave(@RequestBody NoticeDTO noticeDTO) {
@@ -87,6 +93,24 @@ public class AdminRestController {
         fundingService.deleteFunding(idList);
     }
 
+    @PostMapping("payments-delete")
+    public void paymentsDelete(Long[] ids) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+        ricePaymentService.deleteRicePaymentByIds(idList);
+    }
+
+    @PostMapping("rice-exchanges-delete")
+    public void riceExchangesDelete(Long[] ids) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+        ricePaymentService.deleteRicePaymentByIds(idList);
+    }
+
     @PostMapping("rice-exchange-details")
     public RicePaymentDTO riceExchangeDetail(Long id) {
         return ricePaymentService.getRicePaymentDetail(id);
@@ -97,6 +121,15 @@ public class AdminRestController {
         return supportService.getSupportList(id);
     }
 
+    @PostMapping("support-requests-delete")
+    public void supportRequestsDelete(Long[] ids) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+        supportRequestService.deleteSupportRequest(idList);
+    }
+
     @PostMapping("volunteers-delete")
     public void volunteersDelete(Long[] ids) {
         List<Long> idList = new ArrayList<>();
@@ -104,5 +137,23 @@ public class AdminRestController {
             idList.add(id);
         }
         volunteerWorkService.deleteVolunteerWorkByIds(idList);
+    }
+
+    @PostMapping("reviews-delete")
+    public void reviewsDelete(Long[] ids) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+        reviewService.deleteReviewByIds(idList);
+    }
+    
+    @PostMapping("free-boards-delete")
+    public void freeBoardsDelete(Long[] ids) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+        freeBoardService.deleteFreeBoardByIds(idList);
     }
 }

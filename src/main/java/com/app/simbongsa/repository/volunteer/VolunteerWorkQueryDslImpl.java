@@ -54,6 +54,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
 
         Long count = query.select(volunteerWork.count())
                 .from(volunteerWork)
+                .where(volunteerWorkPlaceLike, volunteerWorkRegisterAgencyLike)
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWork, pageable, count);

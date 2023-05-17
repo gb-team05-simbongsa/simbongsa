@@ -23,3 +23,13 @@ ricePayments.forEach(ricePayment => {
 
     $('.table').append(text);
 });
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/payments-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});
+
+$('.search').on('click', () => {
+    location.href = "/admin/payment?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});
