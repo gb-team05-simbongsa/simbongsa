@@ -44,10 +44,10 @@ public class FundingServiceImpl implements FundingService {
         return fundingDTOS;
     }
 
-    // 펀딩 기본정보 저장
+    // 펀딩 저장
     @Override
     public void fundingRegister(FundingDTO fundingDTO) {
-//        fundingRepository.save(toFundingEntity(fundingDTO));
+        fundingRepository.save(toFundingEntity(fundingDTO));
     }
 
     // 펀딩 전체 목록 조회(무한스크롤)

@@ -49,8 +49,8 @@ public class FundingGiftRepositoryTests {
 
 
     @Test
-    public  void findGiftChooseTest() {
-       fundingRepository.findSupport_QueryDsl(444L);
+    public void findGiftChooseTest() {
+       log.info("=================="+fundingRepository.findSupport_QueryDsl(444L).toString());
     }
 
     @Test

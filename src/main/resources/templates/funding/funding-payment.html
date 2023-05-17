@@ -69,13 +69,13 @@
                             </a>
                         </div>
                         <div class="projectInfo">
-                            <span class="intro">보드게임 | 딜라이트</span>
+                            <span class="intro" th:text="${fundingDTO.fundingCategory}">보드게임 | 딜라이트</span>
                             <h3 class="title">
-                                <a href="/twistedclue1">정통 추리 게임, 트위스티드 클루</a>
+                                <a href="/twistedclue1" th:text="${fundingDTO.fundingTitle}">정통 추리 게임, 트위스티드 클루</a>
                             </h3>
                             <div>
-                                <strong class="account">16,158,300원</strong>
-                                <span class="achivement">538%</span>
+                                <strong class="account" th:text="${fundingDTO.fundingCurrentPrice}">16,158,300원</strong>
+                                <span class="achivement" th:text="${fundingDTO.fundingPercent}" >538%</span>
                                 <span class="state">28일 남음</span>
                             </div>
                         </div>
@@ -115,18 +115,18 @@
                             <div class="formHeader fnt-p1">
                                 <p class="formTitle">후원자 정보</p>
                             </div>
-                            <div class="roundWrapper">
+                            <div class="roundWrapper" th:object="${memberDTO}">
                                 <div class="backerWrapper">
                                     <table>
                                         <tbody>
-                                            <tr>
-                                                <th>연락처</th>
-                                                <td style="color: rgb(61, 61, 61);">010-5121-3284</td>
-                                            </tr>
+<!--                                            <tr>-->
+<!--                                                <th>연락처</th>-->
+<!--                                                <td style="color: rgb(61, 61, 61);" >010-5121-3284</td>-->
+<!--                                            </tr>-->
                                             <tr>
                                                 <th>이메일</th>
                                                 <td style="color: rgb(61, 61, 61);">
-                                                    <div>ailak@naver.com</div>
+                                                    <div th:text="*{memberEmail}">ailak@naver.com</div>
                                                 </td>
                                             </tr>
                                         </tbody>

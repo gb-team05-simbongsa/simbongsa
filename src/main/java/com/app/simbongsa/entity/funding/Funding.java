@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = {"member", "fundingGifts"})
+@Getter @ToString/*(exclude = {})*/
 @Table(name = "TBL_FUNDING")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
