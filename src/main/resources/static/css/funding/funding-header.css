@@ -20,7 +20,8 @@ body {
     padding: 0px;
     overflow-x: hidden;
     min-width: 320px;
-    background: #f6f5f5;
+    /*background: #f6f5f5;*/
+    background: rgb(252, 252, 252);
     font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.7em;

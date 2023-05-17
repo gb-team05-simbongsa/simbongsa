@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.funding;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.file.QFundingFile;
 import com.app.simbongsa.entity.funding.Funding;
+import com.app.simbongsa.entity.funding.FundingGift;
 import com.app.simbongsa.entity.funding.QFunding;
 import com.app.simbongsa.entity.funding.QFundingGift;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -116,13 +117,15 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
     //펀딩 후원하기
     @Override
-    public Funding findByIdsupport(Long fundingId) {
-        return query.select(funding)
-                .from(funding)
-                .join(funding.fundingFile)
-                .join(funding.member)
+    public FundingGift findSupport_QueryDsl(Long giftId) {
+        return query.select(fundingGift)
+                .from(fundingGift)
+                .join(fundingGift.funding, funding)
+                .leftJoin(fundingGift.funding.fundingFile)
+                .join(fundingGift.funding.member)
+                .leftJoin(fundingGift.fundingGiftItems)
                 .fetchJoin()
-                .where(funding.id.eq(fundingId))
+                .where(fundingGift.id.eq(giftId))
                 .fetchOne();
     }
 
