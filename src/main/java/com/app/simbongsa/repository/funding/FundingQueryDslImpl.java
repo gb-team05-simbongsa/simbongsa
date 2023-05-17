@@ -54,6 +54,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
         Long count = query.select(funding.count())
                 .from(funding)
+                .where(fundingTitleLike, creatorNameLike)
                 .fetchOne();
 
         return new PageImpl<>(foundFunding, pageable, count);

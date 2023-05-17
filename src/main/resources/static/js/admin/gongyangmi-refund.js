@@ -57,3 +57,13 @@ $('.content__detail__btn').on('click', function () {
         $modalStage.fadeOut(500);
     });
 });
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/rice-exchanges-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});
+
+$('.search').on('click', () => {
+    location.href = "/admin/gongyangmi-refund?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});

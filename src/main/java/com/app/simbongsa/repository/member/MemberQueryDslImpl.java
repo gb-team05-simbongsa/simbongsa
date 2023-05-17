@@ -39,6 +39,7 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
 
         Long count = query.select(member.count())
                 .from(member)
+                .where(memberEmailLike, memberAddressLike)
                 .fetchOne();
 
         return new PageImpl<>(foundMember, pageable, count);

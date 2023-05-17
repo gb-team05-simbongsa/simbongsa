@@ -53,3 +53,7 @@ $('#confirm-delete').on('click', function() {
         document.location.reload(true);
     });
 });
+
+$('.search').on('click', () => {
+    location.href = "/admin/inquiry?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});

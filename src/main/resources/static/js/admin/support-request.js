@@ -78,3 +78,13 @@ $('.volunteer_button').on('click', function() {
 //     });
 //
 // })
+
+$('#confirm-delete').on('click', function() {
+    adminService.deleteAllById("/admins/support-requests-delete", $checkArr, function() {
+        document.location.reload(true);
+    });
+});
+
+$('.search').on('click', () => {
+    location.href = "/admin/sponsorship-request?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});

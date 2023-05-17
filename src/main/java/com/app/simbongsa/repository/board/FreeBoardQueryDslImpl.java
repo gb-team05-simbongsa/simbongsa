@@ -100,6 +100,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
         Long count = query.select(freeBoard.count())
                 .from(freeBoard)
+                .where(boardTitleLike, memberEmailLike)
                 .fetchOne();
 
         return new PageImpl<>(foundFreeBoard, pageable, count);

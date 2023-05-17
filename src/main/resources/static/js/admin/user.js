@@ -52,3 +52,7 @@ $('.content__detail__btn').on('click', function () {
         $modalStage.fadeOut(500);
     });
 });
+
+$('.search').on('click', () => {
+    location.href = "/admin/user?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});
