@@ -25,6 +25,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import javax.transaction.Transactional;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -89,8 +90,14 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void updateStatusByIds(List<Long> ids, MemberStatus memberStatus) {
-        ids.forEach(id -> memberRepository.updateMemberStatus(id, memberStatus));
+    @Transactional
+    public void updateStatusByIds(List<Long> ids) {
+        ids.forEach(id -> {
+            MemberStatus memberStatus;
+            memberRepository.findById(id).get().getMemberStatus();
+            memberStatus = memberRepository.findById(id).get().getMemberStatus() == MemberStatus.가입 ? MemberStatus.탈퇴 : MemberStatus.가입;
+            memberRepository.updateMemberStatus(id, memberStatus);
+        });
     }
 
     /* 카카오 토큰 접근 */

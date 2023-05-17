@@ -27,7 +27,6 @@ const adminService = (function() {
     }
 
     function deleteAllById(url, contentIds, callback) {
-        console.log(contentIds);
         $.ajax({
             url: url,
             type: "post",
@@ -41,20 +40,21 @@ const adminService = (function() {
         });
     }
 
-    // function checkPhone(userPhone, callback) {
-    //     $.ajax({
-    //         url: "/users/userPhones-duplicate",
-    //         type: "post",
-    //         data: { userPhone : userPhone },
-    //         async: false,
-    //         success: function(result) {
-    //             if(callback) {
-    //                 callback(result);
-    //             }
-    //         }
-    //     });
-    // }
-    //
+    function updateStatus(contentIds, callback) {
+        console.log(contentIds)
+        $.ajax({
+            url: "/admins/update-member-status",
+            type: "post",
+            data: { ids : contentIds },
+            traditional : true,
+            success: function() {
+                if(callback) {
+                    callback();
+                }
+            }
+        });
+    }
+
     // function startTimer(count, display) {
     //     var minutes, seconds;
     //     timer = setInterval(function () {
@@ -111,5 +111,5 @@ const adminService = (function() {
     //         });
     //     }
     // }
-    return { saveNotice : saveNotice, getDetail : getDetail, deleteAllById : deleteAllById };
+    return { saveNotice : saveNotice, getDetail : getDetail, deleteAllById : deleteAllById, updateStatus : updateStatus };
 })();

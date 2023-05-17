@@ -12,7 +12,14 @@ members.forEach(member => {
             <td>${member.memberName}</td>
             <td>${member.memberEmail}</td>
             <td>${member.memberRank}</td>
-            <td>${member.memberRice}석</td>
+            `;
+    if(`${member.memberStatus}` == '가입') {
+        text += `<td class="enquiryOk">가입</td>`;
+    } else if(`${member.memberStatus}` == '탈퇴') {
+        text += `<td class="enquiryNo">탈퇴</td>`;
+    }
+    text += `
+<!--            <td>${member.memberStatus}</td>-->
             <td>
                 <button class="content__detail__btn button__type_2 button__color__green">
                     상세보기
@@ -55,4 +62,10 @@ $('.content__detail__btn').on('click', function () {
 
 $('.search').on('click', () => {
     location.href = "/admin/user?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
+});
+
+$('#confirm-delete').on('click', () => {
+    adminService.updateStatus($checkArr, function () {
+        document.location.reload(true);
+    })
 });

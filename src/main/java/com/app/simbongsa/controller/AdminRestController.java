@@ -16,6 +16,7 @@ import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
+import com.app.simbongsa.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -53,6 +54,15 @@ public class AdminRestController {
     @PostMapping("member-details")
     public MemberDTO memberDetail(Long id) {
         return memberService.getMemberById(id);
+    }
+
+    @PostMapping("update-member-status")
+    public void updateMemberStatus(Long[] ids) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id: ids) {
+            idList.add(id);
+        }
+        memberService.updateStatusByIds(idList);
     }
 
     @PostMapping("notice-details")
