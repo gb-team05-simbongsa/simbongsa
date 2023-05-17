@@ -56,14 +56,16 @@
                     </div>
                     <!--  -->
                     <div class="test"></div>
-                    <div th:each="supportRequest : ${supportRequestDTOs}">
-                        
+
+                    <!-- 후원요청 목록  -->
+                    <div class="supportList" th:each="supportRequest : ${supportRequestDTOs}">
+                        <a th:href="@{/support/support-detail/{supportRequestId}(supportRequestId=${supportRequest.id})}">
                         <div class="service-items">
                             <div class="service-items-wrapper">
                                 <div class="service-items-content">
                                     <div class="name">
                                         <span class="cruit" >[모집중]</span>
-                                        <span class="last-date-text" th:text="${supportRequest.id}">3</span>번 게시물
+                                        <span class="last-date-text" th:name="supportRequestId" th:text="${supportRequest.id}">3</span>번 게시물
                                     </div>
                                     <div class="title" th:text="${supportRequest.supportRequestContent}">서울시 환경정화 봉사자 모집</div>
                                     <div class="dates">
@@ -75,12 +77,14 @@
                                 
                             </div>
                         </div>
+                        </a>
                     </div>
-                    <!--  -->
 
-                    <!--  -->
+
                 </section>
             </div>
+
+            <!-- 페이징 처리 -->
             <div>
                 <div class="paging" style="text-align: center">
                     <a th:if="${pageDTO.prev}" th:href="@{/support/support-list} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
@@ -95,6 +99,8 @@
                     <input type="hidden">
                 </form>
             </div>
+            <!--페이징 end -->
+
             <div class="service-help">
                 <p>마지막 정보 수정 : 2023-04-19</p>
                 <p style="line-height: 1.5em;">심봉사 관리자의 도움이 필요할 땐 여기서 문의해주세요</p>
@@ -108,6 +114,26 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
+
+    // console.log($('.title'));
+    // console.log(i);
+    // $supportList.eq(i).on('click', function () {
+    //
+    // })
+
+    // $(document).ready(function () {
+    //     // 이벤트 핸들러 등록
+    //     $('.last-date-text').click(function () {
+    //         // supportRequest.id 가져오기
+    //         var supportRequestId = $(this).text();
+    //
+    //         // supportRequestController로 이동하는 링크 생성
+    //         var link = '/support/support-detail/' + supportRequestId;
+    //
+    //         // 링크 이동
+    //         window.location.href = link;
+    //     });
+    // });
 </script>
 <script src="/js/support/support-list.js"></script>
 </html>
