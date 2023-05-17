@@ -69,4 +69,15 @@ spring:
   session:
     store-type: redis
 
+    #mail
+    spring:
+      mail:
+      host: smtp.gmail.com
+      port: 587
+      username: 'simbongsa300@gmail.com'
+      password: 'xtkwswcvlrrpvien'
+      properties:
+        mail.smtp.auth: true
+        mail.smtp.starttls.enable: true
+
 

@@ -27,3 +27,11 @@ $('.submit-button').on('click', () => {
     // 위 검사를 성공적으로 완료하였을 때 submit
     document.findPasswordForm.submit();
 });
+
+if(new URLSearchParams(location.search).get("result") == "fail") {
+    $('.modal-wrap').show();
+}
+
+$('.modal-ok').on('click', () => {
+    $('.modal-wrap').hide();
+})

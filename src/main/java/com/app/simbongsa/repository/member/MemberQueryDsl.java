@@ -47,4 +47,8 @@ public interface MemberQueryDsl {
 
     /*회원 탈퇴*/
     public void updateMemberStatus(Long id, MemberStatus memberStatus);
+
+    /* 랜덤키 값 변경 */
+    public void updateRandomKey(String memberEmail, String randomKey);
+
 }

@@ -54,10 +54,10 @@ $modalKeepLogin.click(() => {
 // login 실패시 모달창 띄우기
 // $(!document.loginForm.submit() {
     if(new URLSearchParams(location.search).get("check") == "false") {
-        $('.modal-check').css('transform', 'translate(-150%, -800%)');
+        $('.modal-wrap').show();
     }
 // }
 
 $('.modal-ok').on('click', () => {
-    $('.modal-check').css('transform', 'translate(-50%, -50%)');
+    $('.modal-wrap').hide();
 })
