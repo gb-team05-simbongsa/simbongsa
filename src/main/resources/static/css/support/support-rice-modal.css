@@ -193,7 +193,7 @@ input::placeholder {
     padding: 0.625em;
     overflow-x: hidden;
     transition: background-color .1s;
-    backdrop-filter: blur(2px);
+    /*backdrop-filter: blur(2px);*/
 }
 .support-layout-error{
     display: flex;

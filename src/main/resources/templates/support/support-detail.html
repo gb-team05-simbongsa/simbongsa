@@ -11,10 +11,22 @@
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
 </head>
+<style>
+    .error{
+        color: rgb(248, 100, 83);
+        font-weight: bold;
+        font-style: normal;
+        text-align: center;
+    }
+</style>
 <body class="full">
 <header th:insert="~{main/header.html :: mainHeader}"></header>
-<div th:insert="~{support/support-rice-modal.html :: supportRiceLayout}"></div>
-<div th:insert="~{support/support-rice-result.html :: supportRiceLayoutError}"></div>
+<!--<div th:insert="~{support/support-rice-result.html :: supportRiceLayoutError}"></div>-->
+<!--<div th:insert="~{support/support-rice-modal.html :: supportRiceLayout}"></div>-->
+<div class="support-layout" style="display: none;">
+    <div class="support-rice-layout"></div>
+</div>
+<!--        <div class="support-rice-layout" style="display: none;"></div>-->
 
 <div id="wrap">
         <div id="container">
@@ -23,7 +35,7 @@
                     <h2 class="theme">
                         <a class="theme" style="text-decoration:none" href="#">장애인 > 생계 및 기초생활지원</a>
                     </h2>
-                    <h3 class="tit">
+                    <h3 class="tit"  th:text="${supportDetail.supportRequestTitle}">
                         아빠의 간병을 위해 엄마는 일을 정리했습니다
                     </h3>
                     <ul class="collect-tab" id="collect-tab"></ul>
@@ -51,8 +63,8 @@
                         <ul class="intro-list editor-base">
                             <li>
                                 <dl>
-                                    <dt id="paragraph-title">“아빠의 진단 이후, 가족의 삶이 달라졌어요.”</dt>
-                                    <dd id="paragraph-content">
+                                    <dt id="paragraph-title" th:text="${supportDetail.supportRequestContent}">“아빠의 진단 이후, 가족의 삶이 달라졌어요.”</dt>
+                                    <dd id="paragraph-content" >
                                         “아빠가 응급실로 실려 간 후, 상상도 못한 루게릭병이라는 진단을 받고 기관절개와 콧줄을 삽입하게 된 건 한순간이었어요. 가족끼리 대공원에 가자는 약속을 미루고만 있었는데, 아빠는 이제 움직일 수 없고, 대화도 할 수 없고 음식도 못 드시게 되어서 하루 종일 누워만 계세요.” -환우 가족의 루게릭병 수기공모전 수상작 ‘아빠, 사랑해요!’ 中
                                         <br> 
                                         아빠의 루게릭병 진단 이후, 채경이(가명) 가족은 이전과 완전히 달라졌습니다. 아빠의 24시간 간병을 위해 엄마는 한 번도 쉬지 않았던 일을 정리했고, 365일 매일 같이 장사를 나가던 아빠도, 엄마도 하루아침에 온전히 집을 떠날 수 없는 상황이 되었습니다. 채경이에게 늘 건강하게만 커달라던 아빠는 지금 이 순간에도 가장 자주 하는 문자가 ‘건강해라’지만, 이제는 너무 가슴 아픈 말이 되어버렸습니다.</dd>
@@ -69,16 +81,7 @@
                                     </dd>
                                 </dl>
                             </li>
-                            <li>
-                                <dl>
-                                    <dt id="paragraph-title">채경이 가족이 평범한 일상을 되찾을 수 있도록 함께 해주세요.</dt>
-                                    <dd id="paragraph-content">
-                                        이렇듯 환우 가정에서는 높은 간병 비용으로 인해 가족이 대신하여 간병을 전담하는 경우가 많습니다. 고정 수입이 없어지고, 계속해서 지출되는 의료비와 생활비 등으로 인해 경제적 악순환을 겪게 되는 것은 물론, 장기적으로는 경력의 단절로 인해 다시 일자리를 구하는 것조차 어렵게 됩니다.
-                                        <br> 
-                                        이에 승일희망재단에서는 환우가 전문 간병 서비스를 받고, 가족은 일상적인 삶을 회복할 수 있도록 채경이 가족을 비롯해 한 가정당 100만원의 간병비를 총 9가정에 지원 드리고자 합니다. 채경이 아빠는 간병인의 서비스를 받고, 엄마는 다시 직장을 다니며 이전의 평범한 일상을 되찾을 수 있도록 함께 힘을 보태주세요! 모금해주신 소중한 금액은 올바르고 투명하게 사용할 것을 약속드립니다.
-                                    </dd>
-                                </dl>
-                            </li>
+
                         </ul>
                         <div class="thumbnail-section" style="visibility: visible;">
                             <div class="view">
@@ -109,17 +112,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="button-area">
-                            <a href="#" class="button donate support-donate">후원하기</a>
-                            <div class="sns-area">
-                                <div class="social-plugin-wrap" id="spiLayer" style="position:relative">
-                                    <a href="#" id="spiButton2" class="naver-splugin" data-option="{baseElement:'spiButton2', layerPosition:'outside-bottom', align:'right', top:4, left:0, marginLeft:8, marginTop:10}" data-url="https://happybean.naver.com/donations/H000000189407" data-title="아빠의 간병을 위해, 엄마는 일을 정리했습니다" data-source-name="아빠의 간병을 위해, 엄마는 일을 정리했습니다" title="보내기" data-style="unity-v2" data-blog-source-form="2" splugin-id="165927493">
-                                        <span class="naver-splugin-c"></span>
-                                    </a>
-                                </div> -->
-                                <!-- 소셜 플러그인 -->
-                           <!--  </div>
-                        </div> -->
                         <div class="action-area">
                             <ul class="tab-list">
                                 <li class="tab-item">
@@ -278,7 +270,7 @@
                                 <div class="history-title">
                                     <p class="history-title-inner">
                                         총
-                                        <strong>1411</strong>
+                                        <strong th:text="${attendCount}">1411</strong>
                                         건이 후원되었습니다.
                                     </p>
                                 </div>
@@ -348,16 +340,6 @@
                                         <li title="2" class="paging-item" tabindex="0">
                                             <a rel="nofollow">2</a>
                                         </li>
-                                        <li title="3" class="paging-item" tabindex="0">
-                                            <a rel="nofollow">3</a>
-                                        </li>
-                                        <li title="4" class="paging-item" tabindex="0">
-                                            <a rel="nofollow">4</a>
-                                        </li>
-                                        <li title="5" class="paging-item" tabindex="0">
-                                            <a rel="nofollow">5</a>
-                                        </li>
-                
                                         <li title="다음 페이지" tabindex="0" class="paging-next" aria-disabled="false">
                                             <div  class="next">
                                                 <svg viewBox="0 0 48 48">
@@ -420,13 +402,13 @@
                             <div class="graph-wrap">
                                 <div class="graph-status">
                                     <span class="per">
-                                        <strong class="num">367</strong>개</span>
+                                        <strong class="num" th:text="${totalPrice}">367</strong>개</span>
                                 </div>
 
                             </div>
                             <div class="term-area">
                                 <p>
-                                    <strong>
+                                    <strong th:text="${createDate}">
 
                                         2023.03.30
 
@@ -440,7 +422,7 @@
                             </div>
                             <div class="num-area">
                                 <p class="status-num">
-                                    <strong>36700</strong>
+                                    <strong th:text="${originalPrice}">36700</strong>
                                     <span>원</span>
                                 </p>
 
@@ -458,7 +440,10 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/support/supportDetail.js"></script>
+<script th:inline="javascript">
+    let memberDTO = [[${memberDTO}]];
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/support/support-rice-modal.js"></script>
+<script src="/js/support/supportDetail.js"></script>
 </html>
