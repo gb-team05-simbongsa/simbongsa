@@ -102,36 +102,38 @@
                             <div class="main-first-list-wrapper">
                                 <div class="main-first-list-layout">
 
+<!--                                    봉사추천  8 개-->
 
-                                    <!-- 봉사추천  8 개-->
-                                    <div class="list-wrapper" th:each="volunteer : ${volunteerList}">
-                                        <div></div>
-                                        <div class="volunteer-percentage-wrapper">
-                                            <div></div>
-                                            <div class="volunteer-link-wrapper">
-                                                <div class="volunteer-image-wrapper volunteerImg">
-                                                    <a href="#"></a>
-                                                </div>
-                                                <div class="info-wrapper" >
-                                                    <dl>
-                                                        <dd class="volunteer-sub-info">
-                                                        <span>
-                                                            <a href="#" th:text="${volunteer.volunteerWorkCategory}">봉사 카테고리</a>
-                                                        </span>
-                                                            <span>
-                                                            <a href="#" th:text="${volunteer.volunteerWorkPlace}">봉사 지역</a>
-                                                        </span>
-                                                        </dd>
-                                                        <dt>
-                                                            <a href="">
-                                                                <strong th:text="${volunteer.volunteerWorkTitle}">봉사 제목</strong>
-                                                            </a>
-                                                        </dt>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    <div class="list-wrapper" th:each="volunteer : ${volunteerList}">-->
+<!--                                        <div></div>-->
+<!--                                        <div class="volunteer-percentage-wrapper">-->
+<!--                                            <div></div>-->
+<!--                                            <div class="volunteer-link-wrapper">-->
+
+<!--                                                <div class="volunteer-image-wrapper volunteerImg">-->
+<!--                                                    <a href="#"></a>-->
+
+<!--                                                </div>-->
+<!--                                                <div class="info-wrapper" >-->
+<!--                                                    <dl>-->
+<!--                                                        <dd class="volunteer-sub-info">-->
+<!--                                                        <span>-->
+<!--                                                            <a href="#" th:text="${volunteer.volunteerWorkCategory}">봉사 카테고리</a>-->
+<!--                                                        </span>-->
+<!--                                                            <span>-->
+<!--                                                            <a href="#" th:text="${volunteer.volunteerWorkPlace}">봉사 지역</a>-->
+<!--                                                        </span>-->
+<!--                                                        </dd>-->
+<!--                                                        <dt>-->
+<!--                                                            <a href="">-->
+<!--                                                                <strong th:text="${volunteer.volunteerWorkTitle}">봉사 제목</strong>-->
+<!--                                                            </a>-->
+<!--                                                        </dt>-->
+<!--                                                    </dl>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                 </div>
                             </div>
@@ -159,7 +161,7 @@
                                         <div></div>
                                         <div class="popular-percentage-layout" th:each="memberRankList, state : ${memberRankList}">
                                             <div class="image-wrapper">
-                                                <a href="#"></a>
+                                                <a href="#" style="background-size: 96px;"></a>
                                             </div>
                                             <span class="rank-layout-top" th:text="${state.count}">1</span>
                                             <div class="info-wrapper">
@@ -168,8 +170,8 @@
                                                         <span>
                                                             <a href="#" >엽전</a>
                                                         </span>
-                                                        <span>
-                                                            <a href="#" th:text="${memberRankList.memberRank}">3티어</a>
+                                                        <span >
+                                                            <a href="#" th:text="${memberRankList.memberRank}" class="rank">3티어</a>
                                                         </span>
                                                     </dd>
                                                     <dt>
@@ -179,7 +181,7 @@
                                                     </dt>
                                                 </dl>
                                                 <div class="funding-status">
-                                                    <span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">시 달성</span>
+                                                    <span class="percentage">누적 </span><span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">시간 달성</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -306,7 +308,7 @@
                                                         <div class="volunteer-percentage-wrapper">
                                                             <div></div>
                                                             <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper funding-image">
+                                                                <div class="volunteer-image-wrapper funding">
                                                                     <a href="#"></a>
 <!--                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">-->
                                                                 </div>
@@ -377,21 +379,221 @@
     FileList.prototype.forEach = Array.prototype.forEach;
     let fileDTO =[[${fileDTO}]];
     let volunteerFile = [[${volunteerFileDTO}]];
+    let volunteerList = [[${volunteerList}]];
 
-    console.log(fileDTO);
-    console.log(volunteerFile);
 
-    fileDTO.forEach((fileDTO, i) => {
-        let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
-        `;
-        $(".funding-image a").html(text);
+
+    // fileDTO.forEach((fileDTO, i) => {
+    //     let text = `
+    //        <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+    //     `;
+    //     $(".funding-image a").html(text);
+    // });
+    // volunteerFile.forEach((fileDTO, i) => {
+    //     let text = `
+    //        <img class="fundingImg" src="/file/display?fileName=${fileDTO[i].filePath}/${fileDTO[i].fileUuid}_${fileDTO[i].fileName}">
+    //     `;
+    //     $(".volunteerImg a").html(text);
+    // });
+</script>
+<script th:inline="javascript">
+
+    const $volunteerAppend = $('.main-first-list-layout');
+    const $memberAppend = $('.main-popular-list-layout');
+    const $boardAppend = $('.freeboard-append');
+    const $fundingAppend = $('.funding-append');
+
+    volunteerList.forEach(volunteer => {
+        let text;
+        console.log("옴?");
+        text = `
+    <div class="list-wrapper">
+         <div></div>
+           <div class="volunteer-percentage-wrapper">
+            <div></div>
+            <div class="volunteer-link-wrapper">
+             <div class="volunteer-image-wrapper volunteerImg">
+             <a href="#"></a>
+            </div>
+            <div class="info-wrapper" >
+            <dl>
+                <dd class="volunteer-sub-info">
+                    <span>
+                        <a href="#">${volunteer.volunteerWorkCategory}</a>
+                    </span>
+                    <span>
+                        <a href="#" >${volunteer.volunteerWorkPlace}</a>
+                    </span>
+                </dd>
+                <dt>
+                    <a href="">
+                        <strong>${volunteer.volunteerWorkTitle}</strong>
+                    </a>
+                </dt>
+            </dl>
+        </div>
+        </div>
+    </div>
+</div>
+`;
+        $volunteerAppend.append(text);
     });
+
     volunteerFile.forEach((fileDTO, i) => {
         let text = `
            <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
         `;
-        $(".volunteerImg a").html(text);
+        $(".volunteerImg a").eq(i).html(text);
     });
+
+    fileDTO.forEach((fileDTO, i) =>{
+        let text = `
+           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+        `;
+        $(".funding a").eq(i).html(text);
+    })
+    const $rank = $('.rank');
+    const $image = $('.image-wrapper a');
+
+    $(document).ready(function () {
+        $rank.each(function (index) {
+            const text = $(this).text();
+            if (text === "동냥1티어") {
+                $image.eq(index).css("background-image", "url(/image/main/bronze1.png)");
+            } else if (text === "동냥2티어") {
+                $image.eq(index).css("background-image", "url(/image/main/bronze2.png)");
+            } else if (text === "동냥3티어") {
+                $image.eq(index).css("background-image", "url(/image/main/bronze3.png)");
+            } else if (text === "은냥1티어") {
+                $image.eq(index).css("background-image", "url(/image/main/silver1.png)");
+            } else if (text === "은냥2티어") {
+                $image.eq(index).css("background-image", "url(/image/main/silver2.png)");
+            } else if (text === "은냥3티어") {
+                $image.eq(index).css("background-image", "url(/image/main/silver3.png)");
+            } else if (text === "금냥1티어") {
+                $image.eq(index).css("background-image", "url(/image/main/gold1.png)");
+            } else if (text === "금냥2티어") {
+                $image.eq(index).css("background-image", "url(/image/main/gold2.png)");
+            } else if (text === "금냥3티어") {
+                $image.eq(index).css("background-image", "url(/image/main/gold3.png)");
+            }
+        });
+    });
+
+    /*
+    text=`<div class="list-wrapper">
+                                        <div></div>
+                                        <div class="volunteer-percentage-wrapper">
+                                            <div></div>
+                                            <div class="popular-percentage-layout" th:each="memberRankList, state : ${memberRankList}">
+                                                <div class="image-wrapper">
+                                                    <a href="#"></a>
+                                                </div>
+                                                <span class="rank-layout-top" th:text="${state.count}">1</span>
+                                                <div class="info-wrapper">
+                                                    <dl>
+                                                        <dd class="volunteer-sub-info">
+                                                            <span>
+                                                                <a href="#" >엽전</a>
+                                                            </span>
+                                                            <span>
+                                                                <a href="#" th:text="${memberRankList.memberRank}">3티어</a>
+                                                            </span>
+                                                        </dd>
+                                                        <dt>
+                                                            <a href="#">
+                                                                <strong th:text="${memberRankList.memberName}">황자현</strong>
+                                                            </a>
+                                                        </dt>
+                                                    </dl>
+                                                    <div class="funding-status">
+                                                        <span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">시 달성</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    `
+
+    text = `<div class="swiper-slide swiper-slide-active" th:each="freeBoardList : ${freeBoardList}" style= "width:220.8px; margin-right: 14px;">
+                                                            <div></div>
+                                                            <div class="volunteer-percentage-wrapper">
+                                                                <div></div>
+                                                                <div class="volunteer-link-wrapper">
+                                                                    <div class="volunteer-image-wrapper">
+                                                                        <a href="#"></a>
+                                                                        <!-- <div class="like-button-wrapper">
+                                                                            <button  class="like-button" type="button">
+                                                                                <span>좋아요</span>
+                                                                            </button>
+                                                                        </div> -->
+                                                                    </div>
+                                                                    <div class="info-wrapper">
+                                                                        <dl>
+                                                                            <dd class="volunteer-sub-info">
+                                                                                <span>
+                                                                                    <a href="#">댓글수</a>
+                                                                                </span>
+                                                                                <span>
+                                                                                    <a href="#" th:text="${freeBoardList.replyCount}">150</a>
+                                                                                </span>
+                                                                                <span>
+                                                                                    <a href="#">자유게시판</a>
+                                                                                </span>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <a href="">
+                                                                                    <strong th:text="${freeBoardList.boardTitle}">게시판제목 1</strong>
+                                                                                </a>
+                                                                            </dt>
+                                                                        </dl>
+                                                                        <!-- <div class="funding-status">
+                                                                            <span class="percentage">150</span>
+                                                                        </div> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    `
+
+
+    text = `
+    <div class="swiper-slide swiper-slide-active" th:each="fundingListOrderByPopularList : ${fundingListOrderByPopularList}" style= "width:220.8px; margin-right: 14px;">
+                                                            <div></div>
+                                                            <div class="volunteer-percentage-wrapper">
+                                                                <div></div>
+                                                                <div class="volunteer-link-wrapper">
+                                                                    <div class="volunteer-image-wrapper funding-image">
+                                                                        <a href="#"></a>
+    <!--                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">-->
+                                                                    </div>
+    <!--                                                                <div class="info-wrapper">-->
+    <!--                                                                    <dl>-->
+    <!--                                                                </div>-->
+                                                                    <div class="info-wrapper">
+                                                                        <dl>
+                                                                            <dd class="volunteer-sub-info">
+                                                                                <span>
+                                                                                    <a href="#" th:text="${fundingListOrderByPopularList.fundingCategory}">펀딩 카테고리</a>
+                                                                                </span>
+                                                                                <span>
+                                                                                    <a href="#" th:text="${fundingListOrderByPopularList.fundingCreator.fundingCreatorNickname}">창작자이름</a>
+                                                                                </span>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <a href="">
+                                                                                    <strong th:text="${fundingListOrderByPopularList.fundingTitle}">펀딩제목</strong>
+                                                                                </a>
+                                                                            </dt>
+                                                                        </dl>
+                                                                        <div class="funding-status">
+                                                                            <span class="percentage" th:text="${fundingListOrderByPopularList.fundingPercent} +'% 달성'">1336% 달성</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    `*/
+
 </script>
 </html>
