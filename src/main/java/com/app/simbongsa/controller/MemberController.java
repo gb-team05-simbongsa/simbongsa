@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -71,6 +72,15 @@ public class MemberController {
         return "/join-login/change-password";
     }
 
+    /* 비밀번호 재설정 */
+    @PostMapping("change-password")
+    public RedirectView changePasswordOK(String memberEmail, String memberPassword){
+        log.info("memberEmail" + memberEmail);
+        memberService.updatePassword(memberEmail, memberPassword);
+        log.info("들어옴");
+        return new RedirectView("/member/login");
+    }
+
     /* 로그아웃 */
     @GetMapping("logout")
     public void goToLogout() {;}
@@ -113,13 +123,13 @@ public class MemberController {
         return new RedirectView("/main/");
     }
 
-    /* 이메일 보내기 */
+    /* 이메일 형식으로 화면이동 */
     @GetMapping("find-password-email-send")
     public String findPasswordEmailSend() {
         return "/join-login/find-password-email-send";
     }
 
-    /* 비밀번호 이메일로 변경 */
+    /* 이메일 보내기 */
     @PostMapping("find-password-email")
     public RedirectView findPasswordEmail(String memberEmail, RedirectAttributes redirectAttributes) {
 
