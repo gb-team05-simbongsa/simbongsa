@@ -3,6 +3,7 @@ package com.app.simbongsa.controller;
 import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.FundingItemDTO;
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.service.funding.FundingItemService;
 import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.member.MemberService;
@@ -28,12 +29,15 @@ public class FundingController {
     private final FundingItemService fundingItemService;
 
 
-    @GetMapping("funding-creater-info")
-    public String fundingCreateForm() {return "funding/funding-creater-info.html";}
+    @GetMapping("funding-creator-info")
+    public String fundingCreateForm() {return "funding/funding-creater-info";}
 
-    @PostMapping("funding-creater-info")
-    public String fundingCreate(FundingDTO fundingDTO) {
-        fundingService.fundingRegister(fundingDTO);
+    @PostMapping("funding-creator-info")
+    public String fundingCreate(Model model, FundingDTO fundingDTO) {
+
+//        fundingDTO.getFundingCreator().setFundingCreatorNickname();
+//        fundingDTO.getFundingCreator().setFundingCreatorIntroduce();
+//        fundingService.fundingRegister(fundingDTO);
 
         return "funding/funding-creater-info";
     }
@@ -53,7 +57,12 @@ public class FundingController {
     public String fundingGift() {return "funding/funding-gift.html";}
 
     @GetMapping("funding-initial-info")
-    public String fundingInitial() {return "funding/funding-initial-info.html";}
+    public String fundingInitialForm() {return "funding/funding-initial-info.html";}
+
+    @PostMapping("funding-initial-info")
+    @ResponseBody
+    public String fundingInitial() {
+        return "funding/funding-initial-info";}
 
     @GetMapping("funding-item")
     public String fundingItemForm() {return "funding/funding-item.html";}
@@ -76,11 +85,8 @@ public class FundingController {
 
     @GetMapping("funding-list")
     @ResponseBody
-    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page, Long fundingId) {
+    public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page) {
     PageRequest pageRequest = PageRequest.of(page, 12);
-
-
-
 
     return fundingService.getFundingList(pageRequest);
 
@@ -107,9 +113,24 @@ public class FundingController {
     public String fundingPlanMain() {return "funding/funding-plan-main.html";}
 
     @GetMapping("funding-project-plan")
-    public String fundingProjectPlan() {return "funding/funding-project-plan.html";}
+    public String fundingProjectPlanForm() {return "funding/funding-project-plan";}
 
-    @GetMapping("funding-result")
+    @PostMapping("funding-project-plan")
+    public String fundingProjectPlan(FundingDTO fundingDTO, Long fundingId) {
+
+        String fundingCreatorName = fundingDTO.getFundingCreator().getFundingCreatorNickname();
+        String fundingIntroduce = fundingDTO.getFundingCreator().getFundingCreatorIntroduce();
+
+        fundingDTO.getFundingCreator().setFundingCreatorNickname(fundingCreatorName);
+        fundingDTO.getFundingCreator().setFundingCreatorIntroduce(fundingIntroduce);
+
+        fundingService.fundingRegister(fundingDTO, fundingId);
+        return "funding/funding-project-plan";}
+
+
+
+
+        @GetMapping("funding-result")
     public String fundingResult() {return "funding/funding-result.html";}
 
     @GetMapping("funding-start")

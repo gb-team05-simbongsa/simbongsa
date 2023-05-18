@@ -8,6 +8,7 @@ import com.app.simbongsa.entity.funding.QFunding;
 import com.app.simbongsa.entity.funding.QFundingGift;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
+import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -22,6 +23,8 @@ import static com.app.simbongsa.entity.file.QFundingFile.fundingFile;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
 import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 
+//        return checkLastPage(pageable, foundFunding);
+////      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
 @RequiredArgsConstructor
 public class FundingQueryDslImpl implements FundingQueryDsl {
     private final JPAQueryFactory query;
@@ -96,7 +99,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
         return new PageImpl<>(foundFunding, pageable, count);
     }
 
-//    펀딩 승인, 펀딩 대기 수 구하기
+    //    펀딩 승인, 펀딩 대기 수 구하기
     @Override
     public Long findCountAcceptOrWait(RequestType requestType) {
         return query.select(funding.count())
@@ -128,7 +131,6 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .where(fundingGift.id.eq(giftId))
                 .fetchOne();
     }
-
 
 
     //    펀딩 전체 조회(무한스크롤)
@@ -167,9 +169,6 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .fetchOne();
 
     }
-}
-//        return checkLastPage(pageable, foundFunding);
-////      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
 ////      false로 설정되면 다음 페이지가 없는 것으로 간주
 //    }
 //    //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
@@ -184,3 +183,13 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 //    }
 //
 //}
+
+//
+//    @Override
+//    public Long updateFunding(Long fundingId) {
+//        query.update(funding)
+//                .set(funding.fundingCategory, funding.fundingTitle, funding.fundingShortTitle)
+//                .where(funding.id.in(ids))
+//                .execute();
+//    }
+}
