@@ -12,14 +12,16 @@ fundings.forEach(funding => {
             <td class="content__id">${funding.id}</td>
             <td>${funding.fundingCategory}</td>
             <td>${funding.fundingTitle}</td>
-            <td>${funding.fundingStartDate}</td>
-            <td>${funding.fundingEndDate}</td>
+            <td>` + adminService.dateFormat(`${funding.fundingStartDate}`) + `</td>
+            <td>` + adminService.dateFormat(`${funding.fundingEndDate}`) + `</td>
             <td>${funding.fundingCreator.fundingCreatorNickname}</td>
             `;
         if(`${funding.fundingStatus}` == '승인') {
             text += `<td class="enquiryOk">승인</td>`;
         } else if(`${funding.fundingStatus}` == '대기') {
-            text += `<td class="enquiryNo">대기</td>`;
+            text += `<td class="enquiryNo" style="color: #0d0d0d">대기</td>`;
+        } else if(`${funding.fundingStatus}` == '반려') {
+            text += `<td class="enquiryNo">반려</td>`;
         }
     text += `
             <td>
@@ -62,6 +64,12 @@ $('#confirm-delete').on('click', function() {
         document.location.reload(true);
     });
 });
+
+$('#accept-check, #denied-check').on('click', function() {
+    adminService.updateStatus("/admins/update-fundings-status", $checkArr, $(this).text().substr(-2),function() {
+        document.location.reload(true);
+    })
+})
 
 $('.search').on('click', () => {
     location.href = "/admin/funding?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();

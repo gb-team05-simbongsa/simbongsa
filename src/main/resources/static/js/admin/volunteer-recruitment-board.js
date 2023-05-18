@@ -10,8 +10,8 @@ boards.forEach(board => {
             </td>
             <td class="content__id">${board.id}</td>
             <td class="notice-content">${board.boardTitle}</td>
-            <td>${board.createdDate}</td>
-            <td>${board.updatedDate}</td>
+            <td>` + adminService.dateFormat(`${board.createdDate}`) + `</td>
+            <td>` + adminService.dateFormat(`${board.updatedDate}`) + `</td>
             <td>${board.memberDTO.memberEmail}</td>
             <td>${board.memberDTO.memberName}</td>
             <td>

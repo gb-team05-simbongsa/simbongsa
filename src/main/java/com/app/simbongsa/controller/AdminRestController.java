@@ -98,14 +98,14 @@ public class AdminRestController {
     }
 
     @PostMapping("answer-registration")
-    public void answerRegistration(@RequestBody HashMap<String, Object> map) {
-//        log.info(map.get("answerDTO").toString());
-//        log.info(map.get("inquiryId").toString());
-//        ObjectMapper mapper = new ObjectMapper();
-//        AnswerDTO answerDTO = mapper.convertValue(map.get("answerDTO"), AnswerDTO.class);
-//        answerDTO.setInquiryDTO(inquiryService.getInquiryDetail(Long.valueOf(map.get("inquiryId").toString())));
-//        answerService.saveAnswer(answerDTO);
-//        inquiryService.updateStatusById(answerDTO.getInquiryDTO().getId());
+    public void answerRegistration(String answerTitle, String answerContent, Long inquiryId) {
+        AnswerDTO answerDTO = new AnswerDTO();
+        answerDTO.setAnswerTitle(answerTitle);
+        answerDTO.setAnswerContent(answerContent);
+        answerDTO.setInquiryDTO(inquiryService.getInquiryDetail(inquiryId));
+
+        answerService.saveAnswer(answerDTO);
+        inquiryService.updateStatusById(answerDTO.getInquiryDTO().getId());
     }
 
     @PostMapping("funding-details")
@@ -120,6 +120,17 @@ public class AdminRestController {
             idList.add(id);
         }
         fundingService.deleteFunding(idList);
+    }
+
+    @PostMapping("update-fundings-status")
+    public void updateFundingsStatus(Long[] ids, String status) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+
+        RequestType requestType = status.equals("승인") ? RequestType.승인 : RequestType.반려;
+        fundingService.updateFundingStatus(idList, requestType);
     }
 
     @PostMapping("payments-delete")

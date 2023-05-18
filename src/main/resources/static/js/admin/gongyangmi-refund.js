@@ -13,7 +13,7 @@ ricePayments.forEach(ricePayment => {
             <td>${ricePayment.memberDTO.memberName}</td>
             <td>${ricePayment.memberDTO.memberEmail}</td>
             <td>${ricePayment.ricePaymentUsed}</td>
-            <td>${ricePayment.createdDate}</td>
+            <td>` + adminService.dateFormat(`${ricePayment.createdDate}`) + `</td>
             `;
     if(`${ricePayment.ricePaymentStatus}` == '환전승인') {
         text += `<td class="enquiryOk">환전승인</td>`;
@@ -42,7 +42,7 @@ $('.content__detail__btn').on('click', function () {
     adminService.getDetail("/admins/rice-exchange-details", contentId, function(result) {
         $('#name').val(result.memberDTO.memberName);
         $('#email').val(result.memberDTO.memberEmail);
-        $('#createdDate').val(result.createdDate);
+        $('#createdDate').val(adminService.dateFormat(result.createdDate));
         $('#exchangeBank').val(result.ricePaymentExchangeBank);
         $('#exchangeAccount').val(result.ricePaymentExchangeAccount);
         $('#price').val(result.ricePaymentUsed);
