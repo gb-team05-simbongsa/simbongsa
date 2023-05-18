@@ -47,47 +47,15 @@
                     <ul class="status-list">
                         <li class="status-list-item">
                             <div class="status-item-wrapper">
-                                <svg
-                                        width="36"
-                                        height="36"
-                                        viewBox="0 0 36 36"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                    <path
-                                            d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
-                                            fill="#11CA2D"></path>
-                                    <path
-                                            d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
-                                            fill="#11CA2D"></path>
+                                    <path d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z" fill="#11CA2D"></path>
+                                    <path d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z" fill="#11CA2D"></path>
                                 </svg>
-                                <div class="status-item-name">펀딩 내역</div>
-                            </div>
-                            <div class="status-item-count">
-                                <div th:text="${pageDTO.total}">1</div>
-                            </div>
-                        </li>
-                        <li class="status-list-item">
-                            <div class="status-item-wrapper">
-                                <div class="problem-icon-wrapper">
-                                    <div class="problem-icon">
-                                        <div>
-                                            <div>
-                                                <span>
-                                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                                        <path d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z" fill="#11CA2D"></path>
-                                                        <path d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z" fill="#11CA2D"></path>
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="status-item-name">펀딩 승인</div>
                             </div>
                             <div class="status-item-count">
-                                <a href="">0</a>
+                                <div th:text="${counts[0]}">1</div>
                             </div>
                         </li>
                         <li class="status-list-item">
@@ -110,7 +78,30 @@
                                 <div class="status-item-name">펀딩 대기</div>
                             </div>
                             <div class="status-item-count">
-                                <a href="">0</a>
+                                <div th:text="${counts[1]}">1</div>
+                            </div>
+                        </li>
+                        <li class="status-list-item">
+                            <div class="status-item-wrapper">
+                                <div class="problem-icon-wrapper">
+                                    <div class="problem-icon">
+                                        <div>
+                                            <div>
+                                                <span>
+                                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
+                                                        <path d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z" fill="#11CA2D"></path>
+                                                        <path d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z" fill="#11CA2D"></path>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="status-item-name">펀딩 반려</div>
+                            </div>
+                            <div class="status-item-count">
+                                <div th:text="${counts[2]}">1</div>
                             </div>
                         </li>
                         <div class="clock">
@@ -122,12 +113,9 @@
                 <div class="table__box">
                     <div class="table__search__form">
                         <div>
-                            <button id="delete-button" class="button__type_2 button__color__red" style="width: 120px">
-                                펀딩내역 삭제
-                            </button>
-                            <button id="funding-check" class="button__type_2 button__color__red registVolunteer" style="width: 120px">
-                                펀딩 승인
-                            </button>
+                            <button id="delete-button" class="button__type_2 button__color__red" style="width: 120px">펀딩내역 삭제</button>
+                            <button id="accept-check" class="button__type_2 button__color__red" style="width: 120px">펀딩 승인</button>
+                            <button id="denied-check" class="button__type_2 button__color__red" style="width: 120px">펀딩 반려</button>
                         </div>
                         <!-- default.css -->
                         <div class="search-box-wrap">
@@ -410,7 +398,7 @@
     // })
 
 </script>
-<script src="/js/admin/ajax.js"></script>
+<script src="/js/admin/admin-service.js"></script>
 <script src="/js/admin/funding.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>

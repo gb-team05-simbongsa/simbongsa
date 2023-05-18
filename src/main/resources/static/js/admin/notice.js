@@ -11,8 +11,8 @@ notices.forEach(notice => {
         </td>
         <td class="content__id">${notice.id}</td>
         <td class="notice-content">${notice.noticeTitle}</td>
-        <td>${notice.createdDate}</td>
-        <td>${notice.updatedDate}</td>
+        <td>` + adminService.dateFormat(`${notice.createdDate}`) +`</td>
+        <td>` + adminService.dateFormat(`${notice.updatedDate}`) +`</td>
         <td>관리자</td>
         <td>
             <button class="content__detail__btn button__type_2 button__color__green show-detail">

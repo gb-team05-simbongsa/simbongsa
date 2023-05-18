@@ -12,7 +12,7 @@ supportRequests.forEach(supportRequest => {
             <td>${supportRequest.memberDTO.memberEmail}</td>
             <td>${supportRequest.memberDTO.memberName}</td>
             <td>${supportRequest.supportRequestTitle}</td>
-            <td>${supportRequest.createdDate}</td>
+            <td>` + adminService.dateFormat(`${supportRequest.createdDate}`) + `</td>
             `;
             <!-- default.css -->
     if(`${supportRequest.supportRequestStatus}` == '승인') {

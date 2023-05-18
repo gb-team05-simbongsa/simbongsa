@@ -111,9 +111,9 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
     //    펀딩 대기를 승인으로 변경
     @Override
-    public void updateWaitToAcceptByIds(List<Long> ids) {
+    public void updateWaitToAcceptByIds(List<Long> ids, RequestType requestType) {
         query.update(funding)
-                .set(funding.fundingStatus, RequestType.승인)
+                .set(funding.fundingStatus, requestType)
                 .where(funding.id.in(ids))
                 .execute();
     }

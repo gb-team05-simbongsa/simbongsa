@@ -34,7 +34,7 @@ public interface FundingQueryDsl {
     public Long findCountAcceptOrWait(RequestType requestType);
 
 //    펀딩 대기를 승인으로 변경
-    public void updateWaitToAcceptByIds(List<Long> ids);
+    public void updateWaitToAcceptByIds(List<Long> ids, RequestType requestType);
 
     // 펀딩 전체 목록조회(무한스크롤)
     public Slice<Funding> findAllWithSlice_QueryDsl(Pageable pageable);

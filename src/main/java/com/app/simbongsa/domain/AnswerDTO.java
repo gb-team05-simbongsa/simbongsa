@@ -2,8 +2,10 @@ package com.app.simbongsa.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class AnswerDTO {
     private Long id;
     private String answerTitle;

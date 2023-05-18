@@ -45,6 +45,12 @@ public interface FundingService {
 //    펀딩 삭제
     public void deleteFunding(List<Long> ids);
 
+//    펀딩 승인
+    public void updateFundingStatus(List<Long> ids, RequestType requestType);
+
+//    펀딩 승인, 대기 수 조회
+    public List<Long> countAcceptAndWait();
+
 //    default FundingDTO toFundingDTO(Funding funding) {
 //        return FundingDTO.builder()
 //                .fundingCategory(funding.getFundingCategory())

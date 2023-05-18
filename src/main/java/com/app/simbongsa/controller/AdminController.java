@@ -94,10 +94,13 @@ public class AdminController {
 
         Page<FundingDTO> fundingDTOS = fundingService.getFunding(page, adminFundingSearch);
 
+        List<Long> counts = fundingService.countAcceptAndWait();
+
         model.addAttribute("fundingDTOS", fundingDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(fundingDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
+        model.addAttribute("counts", counts);
         return "admin/funding";
     }
 

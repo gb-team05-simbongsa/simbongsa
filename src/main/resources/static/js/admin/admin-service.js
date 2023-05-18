@@ -55,13 +55,11 @@ const adminService = (function() {
         });
     }
 
-    function answerRegistration(answerDTO, inquiryId, callback) {
-        console.log(answerDTO)
+    function answerRegistration(answerTitle, answerContent, inquiryId, callback) {
         $.ajax({
             url: "/admins/answer-registration",
             type: "post",
-            data: JSON.stringify({ answerDTO : answerDTO, inquiryId : inquiryId }),
-            contentType: 'application/json',
+            data: { answerTitle : answerTitle, answerContent : answerContent, inquiryId : inquiryId },
             success: function() {
                 if(callback) {
                     callback();
@@ -88,6 +86,11 @@ const adminService = (function() {
         });
     }
 
+    function dateFormat(date) {
+        var date = new Date(date);
+        return date.toLocaleString();
+    }
+
     return { saveNotice : saveNotice, getDetail : getDetail, deleteOrUpdate : deleteOrUpdate, updateStatus : updateStatus,
-        answerRegistration : answerRegistration, volunteerFile : volunteerFile };
+        answerRegistration : answerRegistration, volunteerFile : volunteerFile, dateFormat : dateFormat };
 })();
