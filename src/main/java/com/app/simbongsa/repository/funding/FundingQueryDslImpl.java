@@ -15,6 +15,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.file.QFundingFile.fundingFile;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
 import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
+import static com.app.simbongsa.entity.member.QMember.member;
 
 //        return checkLastPage(pageable, foundFunding);
 ////      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
@@ -185,11 +187,13 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 //}
 
 
-//    @Override
-//    public Long updateFunding(Long fundingId) {
-//        query.update(funding)
-////                .set(funding.)
-//                .where(funding.id.eq(fundingId))
-//                .execute();
-//    }
+    @Override
+    public Long updateFunding_QueryDsl(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
+      return  query.update(funding)
+                .set(funding.fundingTargetPrice, fundingTargetPrice)
+                .set( funding.fundingStartDate, fundingStartDate)
+                .set(funding.fundingEndDate, fundingEndDate)
+                .where(funding.id.eq(fundingId))
+                .execute();
+    }
 }
