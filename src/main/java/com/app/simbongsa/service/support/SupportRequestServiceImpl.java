@@ -9,6 +9,8 @@ import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
+import com.app.simbongsa.type.MemberStatus;
+import com.app.simbongsa.type.RequestType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,6 +21,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,8 +53,9 @@ public class SupportRequestServiceImpl implements SupportRequestService {
     }
 
     @Override
-    public void updateWaitToAccess(List<Long> ids) {
-        supportRequestRepository.updateWaitToAccessByIds(ids);
+    @Transactional
+    public void updateWaitToAccessOrDenied(List<Long> ids, RequestType requestType) {
+        supportRequestRepository.updateWaitToAccessByIds(ids, requestType);
     }
 
     @Override
@@ -66,5 +71,12 @@ public class SupportRequestServiceImpl implements SupportRequestService {
         Page<SupportRequest> mySupportRequest = supportRequestRepository.findByMemberId(PageRequest.of(page, 5), userDetail);
         List<SupportRequestDTO> mySupportRequestDTOS = mySupportRequest.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
         return new PageImpl<>(mySupportRequestDTOS, mySupportRequest.getPageable(), mySupportRequest.getTotalElements());
+    }
+
+    @Override
+    public List<Long> countStatusWaitAccessDenied() {
+        return Arrays.asList(supportRequestRepository.countStatusWaitAccessDenied(RequestType.승인),
+                supportRequestRepository.countStatusWaitAccessDenied(RequestType.대기),
+                supportRequestRepository.countStatusWaitAccessDenied(RequestType.반려));
     }
 }

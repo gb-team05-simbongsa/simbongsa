@@ -58,7 +58,7 @@ $('.content__detail__btn').on('click', function () {
 
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/fundings-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/fundings-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });

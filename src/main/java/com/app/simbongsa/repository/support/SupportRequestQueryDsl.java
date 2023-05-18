@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.support;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
+import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -31,5 +32,8 @@ public interface SupportRequestQueryDsl {
     public Page<SupportRequest> findAllWithPagingSearch(String keyword, Pageable pageable);
 
 //    대기를 승인으로 변경
-    public void updateWaitToAccessByIds(List<Long> ids);
+    public void updateWaitToAccessByIds(List<Long> ids, RequestType requestType);
+
+//    대기 승인 반려 수 조회
+    public Long countStatusWaitAccessDenied(RequestType requestType);
 }

@@ -28,6 +28,12 @@ public interface RicePaymentService {
 //    공양미 환전 요청 승인
     public void updatePaymentStatusToAccessByIds(List<Long> ids);
 
+//    승인, 반려, 대기 수 조회
+    public List<Long> countStatusWaitAccessDenied();
+
+//    금일 결제 수, 결제 총 금액 조회
+    public List<Long> getPaymentPriceAndPaymentCount();
+
     default RicePaymentDTO toRicePaymentDTO(RicePayment ricePayment) {
         return RicePaymentDTO.builder()
                 .id(ricePayment.getId())

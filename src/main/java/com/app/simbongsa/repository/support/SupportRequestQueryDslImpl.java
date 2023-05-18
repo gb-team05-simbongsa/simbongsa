@@ -175,11 +175,19 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
     //    대기를 승인으로 변경
     @Override
-    public void updateWaitToAccessByIds(List<Long> ids) {
+    public void updateWaitToAccessByIds(List<Long> ids, RequestType requestType) {
         query.update(supportRequest)
-                .set(supportRequest.supportRequestStatus, RequestType.승인)
+                .set(supportRequest.supportRequestStatus, requestType)
                 .where(supportRequest.id.in(ids))
                 .execute();
+    }
+
+    @Override
+    public Long countStatusWaitAccessDenied(RequestType requestType) {
+        return query.select(supportRequest.count())
+                .from(supportRequest)
+                .where(supportRequest.supportRequestStatus.eq(requestType))
+                .fetchOne();
     }
 
 }

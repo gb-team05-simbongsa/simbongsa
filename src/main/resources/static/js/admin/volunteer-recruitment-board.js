@@ -97,7 +97,7 @@ $('.modal-close').on('click', function (e) {
 })
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/free-boards-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/free-boards-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });
