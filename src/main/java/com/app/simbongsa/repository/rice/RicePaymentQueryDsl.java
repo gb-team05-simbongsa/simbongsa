@@ -1,11 +1,13 @@
 package com.app.simbongsa.repository.rice;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -29,8 +31,8 @@ public interface RicePaymentQueryDsl {
 //    memberId로 조회해서 공양미 후원
     public void updatePaymentByMemberId(Long id, int supportGongyang);
 
-    /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
-    public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId);
+    /* 내 공양미 조회(페이징) */
+    public Page<RicePayment> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
       
 //    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGonynag);
 
