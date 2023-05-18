@@ -7,11 +7,8 @@ import com.app.simbongsa.domain.ReplyDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
-<<<<<<< HEAD
-=======
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.exception.UserNotFoundException;
->>>>>>> 4705d5b002315af133c530fc80184e96e4af7365
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardFileRepository;
 import com.app.simbongsa.repository.board.FreeBoardReplyRepository;
