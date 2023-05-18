@@ -80,6 +80,14 @@
     
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:inline="javascript">
+    let fileDTOS = null;
+    let freeBoardDTO = [[${freeBoardDTO}]];
+    if (freeBoardDTO == null || freeBoardDTO == undefined){
+    }else {
+        fileDTOS = freeBoardDTO.fileDTOS;
+    }
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/community/free-create.js"></script>
 </html>

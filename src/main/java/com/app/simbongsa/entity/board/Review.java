@@ -4,6 +4,7 @@ import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Review extends Board {
 
-    @Column(columnDefinition = "integer default 0")
+    @ColumnDefault(value="0")
     private Integer reviewReplyCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,10 +31,11 @@ public class Review extends Board {
     private List<ReviewFile> reviewFiles = new ArrayList<>();
 
     @Builder
-    public Review(Long id, String boardTitle, String boardContent, Member member, List<ReviewFile> reviewFiles) {
+    public Review(Long id, String boardTitle, String boardContent, Member member, List<ReviewFile> reviewFiles, Integer reviewReplyCount) {
         super(id, boardTitle, boardContent);
         this.member = member;
         this.reviewFiles = reviewFiles;
+        this.reviewReplyCount = reviewReplyCount;
     }
 
     public void setReviewFiles(List<ReviewFile> reviewFiles) {
@@ -42,5 +44,9 @@ public class Review extends Board {
 
     public void setReviewReplyCount(Integer reviewReplyCount) {
         this.reviewReplyCount = reviewReplyCount;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

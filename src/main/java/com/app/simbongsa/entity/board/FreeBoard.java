@@ -1,8 +1,10 @@
 package com.app.simbongsa.entity.board;
 
+import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.member.Member;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -19,7 +21,7 @@ import java.util.List;
 @DynamicInsert
 public class FreeBoard extends Board {
 
-    @Column(columnDefinition = "integer default 0")
+    @ColumnDefault(value="0")
     private Integer freeBoardReplyCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,10 +35,11 @@ public class FreeBoard extends Board {
     private List<FreeBoardFile> freeBoardFiles = new ArrayList<>();
 
     @Builder
-    public FreeBoard(Long id, String boardTitle, String boardContent, Member member, List<FreeBoardFile> freeBoardFiles) {
+    public FreeBoard(Long id, String boardTitle, String boardContent, Member member, List<FreeBoardFile> freeBoardFiles, Integer freeBoardReplyCount) {
         super(id, boardTitle, boardContent);
         this.member = member;
         this.freeBoardFiles = freeBoardFiles;
+        this.freeBoardReplyCount = freeBoardReplyCount;
     }
 
     public void setFreeBoardFiles(List<FreeBoardFile> freeBoardFiles) {
@@ -46,4 +49,9 @@ public class FreeBoard extends Board {
     public void setFreeBoardReplyCount(Integer freeBoardReplyCount) {
         this.freeBoardReplyCount = freeBoardReplyCount;
     }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
 }

@@ -11,6 +11,9 @@ import lombok.Data;
 @Data
 //@Component
 public class FileDTO {
+    private FreeBoardDTO freeBoardDTO;
+    private ReviewDTO reviewDTO;
+
     private Long id;
     private String fileName;
     private String fileUuid;
@@ -69,5 +72,13 @@ public class FileDTO {
         this.filePath = filePath;
         this.fileRepresentationalType = fileRepresentationalType;
         this.review = review;
+    }
+
+    public void setFreeBoardDTO(FreeBoardDTO freeBoardDTO){
+        this.freeBoardDTO = freeBoardDTO;
+    }
+
+    public void setReviewDTO(ReviewDTO reviewDTO){
+        this.reviewDTO = reviewDTO;
     }
 }
