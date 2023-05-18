@@ -28,7 +28,7 @@ public interface FundingService {
     public List<FundingDTO> getAllPopularFundingList();
 
     // 펀딩 저장
-    public void fundingRegister(FundingDTO fundingDTO, Long fundingId);
+    public void fundingRegister(FundingDTO fundingDTO);
 
     //펀딩 전체 목록 조회
     public Slice<FundingDTO> getFundingList(Pageable pageable);
@@ -44,6 +44,12 @@ public interface FundingService {
 
 //    펀딩 삭제
     public void deleteFunding(List<Long> ids);
+
+//    펀딩 승인
+    public void updateFundingStatus(List<Long> ids, RequestType requestType);
+
+//    펀딩 승인, 대기 수 조회
+    public List<Long> countAcceptAndWait();
 
 //    default FundingDTO toFundingDTO(Funding funding) {
 //        return FundingDTO.builder()

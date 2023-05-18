@@ -15,6 +15,7 @@ public class FundingItem {
     @EqualsAndHashCode.Include
     private Long id;
     @NotNull private String itemTitle;
+    @NotNull private String itemType;
     @NotNull private String itemContent;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingItem", cascade = CascadeType.REMOVE)
@@ -23,11 +24,9 @@ public class FundingItem {
 
     //단위테스트용 생성자
     @Builder
-    public FundingItem( String itemTitle, String itemContent) {
-
+    public FundingItem(String itemTitle, String itemType, String itemContent) {
         this.itemTitle = itemTitle;
+        this.itemType = itemType;
         this.itemContent = itemContent;
-
     }
-
 }

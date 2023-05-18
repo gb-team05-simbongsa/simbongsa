@@ -42,7 +42,7 @@ public interface ReviewService {
     public Slice<ReviewDTO> getLikesReviewList(Pageable pageable);
 
     /*작성하기*/
-    public void write(Review review);
+    public void write(ReviewDTO reviewDTO, Long memberId);
 
 //    목록 전체 조회(페이징)
     public Page<ReviewDTO> getReview(Integer page, AdminBoardSearch adminBoardSearch);

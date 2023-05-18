@@ -12,7 +12,7 @@ ricePayments.forEach(ricePayment => {
             <td>${ricePayment.memberDTO.memberName}</td>
             <td>${ricePayment.memberDTO.memberEmail}</td>
             <td>${ricePayment.ricePaymentUsed}</td>
-            <td>${ricePayment.createdDate}</td>
+            <td>` + adminService.dateFormat(`${ricePayment.createdDate}`) + `</td>
             <td>
                 <button class="content__detail__btn button__type_2 button__color__green">
                     상세보기
@@ -25,7 +25,7 @@ ricePayments.forEach(ricePayment => {
 });
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/payments-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/payments-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });

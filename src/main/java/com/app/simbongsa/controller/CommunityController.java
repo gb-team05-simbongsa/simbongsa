@@ -7,12 +7,16 @@ import com.app.simbongsa.service.board.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/community/*")
@@ -23,65 +27,88 @@ public class CommunityController {
     private final ReviewService reviewService;
 
     @GetMapping("free-board")
-    public void goToFreeBoard(@AuthenticationPrincipal UserDetail userDetail, Model model){
-        model.addAttribute("userDerail", userDetail);
+    public String goFreeList(){return "community/free-board";}
+
+    /*자유게시판 최신순*/
+    @GetMapping("free-board/new")
+    public String goFreeNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable) {
+        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize()));
+        log.info(freeBoardDTOS.getContent().get(0).getId() + "=======================================");
+        model.addAttribute("freeBoardList", freeBoardDTOS.getContent());
+        return "community/free-board";
     }
-    @GetMapping("free-board-content")
+    @GetMapping("free-board/newList")
     @ResponseBody
-    public Slice<FreeBoardDTO> getFreeNewList(@RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageRequest = PageRequest.of(page,8);
-        return freeBoardService.getNewList(pageRequest);
+    public List<FreeBoardDTO> goToFreeNewList(@PageableDefault(page=1, size=10) Pageable pageable){
+        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize()));
+        return freeBoardDTOS.getContent();
     }
 
-    @GetMapping("free-board-content-likes")
+    /*자유게시판 인기순*/
+    @GetMapping("free-board/likes")
     @ResponseBody
-    public Slice<FreeBoardDTO> getFreeLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageRequest = PageRequest.of(page,8);
-        return freeBoardService.getLikesList(pageRequest);
+    public List<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
+        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize()));
+        return freeBoardDTOS.getContent();
     }
 
+    /*자유게시판 작성하기*/
     @GetMapping("free-create")
     public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
 
     @PostMapping("free-create")
-    public RedirectView freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
+    public RedirectView FreeWrite(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
 
         Long memberId = userDetail.getId();
-        freeBoardService.register(freeBoardDTO, memberId);
-        return new RedirectView("community/free-create");
+        freeBoardService.write(freeBoardDTO, memberId);
+        return new RedirectView("/community/freeBoard/newList");
     }
 
+    /*자유게시판 수정하기*/
     @GetMapping("board-modify")
     public String freeModify() {return "community/board-modify";}
 
-    @GetMapping("free-detail/{boardId}")
-    public String goToFreeDetail(Model model, @PathVariable("boardId") Long boardId, @AuthenticationPrincipal UserDetail userDetail) {
-        FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(boardId);
-
-        model.addAttribute("freeBoardDTO", freeBoardDTO);
-        model.addAttribute("userDetail", userDetail);
+    /*자유게시판 상세보가*/
+    @GetMapping("free-detail/{id}")
+    public String goToFreeDetail(Model model, @PathVariable Long id) {
+        model.addAttribute("freeBoard", freeBoardService.getFreeBoardDetail(id));
         return "community/free-detail";
     }
 
+/*=========================================================================================================================*/
     @GetMapping("review-board")
-    public void goToReviewBoard(@AuthenticationPrincipal UserDetail userDetail, Model model){
-        model.addAttribute("userDerail", userDetail);
+    public String goToReviewBoard(){return "community/review-board";}
+
+    /*활동후기 최신순*/
+    @GetMapping("review-board/new")
+    public String getReviewNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable){
+        Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize()));
+        model.addAttribute("reviewBoardList", reviewDTOS.getContent());
+        return "community/review-board";
     }
 
-    @GetMapping("review-board-content")
+    @GetMapping("review-board/newList")
     @ResponseBody
-    public Slice<ReviewDTO> getReviewNewList(@RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageRequest = PageRequest.of(page,8);
-        return reviewService.getNewReviewList(pageRequest);
+    public List<ReviewDTO> getToReviewNewList(@PageableDefault(page=1, size=10) Pageable pageable){
+        Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize()));
+        return reviewDTOS.getContent();
     }
 
-    @GetMapping("review-board-content-likes")
+    /*황동후기 인기순*/
+    @GetMapping("review-board/likes")
     @ResponseBody
-    public Slice<ReviewDTO> getReviewLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageRequest = PageRequest.of(page,8);
-        return reviewService.getLikesReviewList(pageRequest);
+    public List<ReviewDTO> getReviewLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
+        Slice<ReviewDTO> reviewDTOS = reviewService.getLikesReviewList(PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize()));
+        return reviewDTOS.getContent();
     }
 
+    /*활동후기 작성하기*/
     @GetMapping("review-create")
     public void goToReviewCreate(ReviewDTO reviewDTO) {}
 
@@ -93,12 +120,10 @@ public class CommunityController {
         return new RedirectView("community/review-create");
     }
 
-    @GetMapping("review-detail/{boardId}")
-    public String goToReviewDerail(Model model, @PathVariable("boardId") Long boardId, @AuthenticationPrincipal UserDetail userDetail) {
-        ReviewDTO reviewDTO = reviewService.getReview(boardId);
-
-        model.addAttribute("reviewDTO", reviewDTO);
-        model.addAttribute("userDetail", userDetail);
+    /*활동후기 상세보기*/
+    @GetMapping("review-detail/{id}")
+    public String goToReviewDerail(Model model, @PathVariable Long id) {
+        model.addAttribute("review", reviewService.getReviewDetail(id));
         return "community/review-detail";
     }
 

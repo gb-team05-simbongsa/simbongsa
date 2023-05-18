@@ -111,9 +111,9 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
     //    펀딩 대기를 승인으로 변경
     @Override
-    public void updateWaitToAcceptByIds(List<Long> ids) {
+    public void updateWaitToAcceptByIds(List<Long> ids, RequestType requestType) {
         query.update(funding)
-                .set(funding.fundingStatus, RequestType.승인)
+                .set(funding.fundingStatus, requestType)
                 .where(funding.id.in(ids))
                 .execute();
     }
@@ -184,12 +184,12 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 //
 //}
 
-//
+
 //    @Override
 //    public Long updateFunding(Long fundingId) {
 //        query.update(funding)
-//                .set(funding.fundingCategory, funding.fundingTitle, funding.fundingShortTitle)
-//                .where(funding.id.in(ids))
+////                .set(funding.)
+//                .where(funding.id.eq(fundingId))
 //                .execute();
 //    }
 }

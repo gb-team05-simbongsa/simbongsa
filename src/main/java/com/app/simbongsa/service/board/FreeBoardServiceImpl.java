@@ -7,6 +7,11 @@ import com.app.simbongsa.domain.ReplyDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
+<<<<<<< HEAD
+=======
+import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.exception.UserNotFoundException;
+>>>>>>> 4705d5b002315af133c530fc80184e96e4af7365
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardFileRepository;
 import com.app.simbongsa.repository.board.FreeBoardReplyRepository;
@@ -23,9 +28,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -119,7 +125,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     @Override
     public Slice<FreeBoardDTO> getNewList(Pageable pageable) {
         Slice<FreeBoard> freeBoards =
-                freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(PageRequest.of(0,10));
+                freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(pageable);
         List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
 
         return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
@@ -149,8 +155,34 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*작성*/
     @Override
-    public void write(FreeBoard freeBoard) {
+    @Transactional(rollbackFor = Exception.class)
+    public void write(FreeBoardDTO freeBoardDTO, Long memberId) {
+        List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
+
+        Member member = memberRepository.findById(memberId).orElseThrow(UserNotFoundException::new);
+
+        FreeBoard freeBoard = toFreeBoardEntity(freeBoardDTO);
+        freeBoard.setMember(member);
         freeBoardRepository.save(freeBoard);
+
+        int count = 0;
+
+        for (int i = 0; i < fileDTOS.size(); i++){
+            if (fileDTOS.get(i) == null) continue;
+
+            if (count == 0){
+                fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                count++;
+            }else {
+                fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+            }
+
+            fileDTOS.get(i).setFreeBoardDTO(freeBoardToDTO(getCurrentSequence()));
+            FreeBoardFile freeBoardFile = toFreeBoardFileEntity(fileDTOS.get(i));
+
+            freeBoardFile.setFreeBoard(freeBoard);
+            freeBoardFileRepository.save(freeBoardFile);
+        }
     }
 
     @Override

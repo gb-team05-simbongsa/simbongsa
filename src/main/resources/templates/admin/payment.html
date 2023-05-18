@@ -38,17 +38,13 @@
                                         fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                     <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                    <path
-                                            d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
-                                            fill="#11CA2D"></path>
-                                    <path
-                                            d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
-                                            fill="#11CA2D"></path>
+                                    <path d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z" fill="#11CA2D"></path>
+                                    <path d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z" fill="#11CA2D"></path>
                                 </svg>
                                 <div class="status-item-name">금일 결제수</div>
                             </div>
                             <div class="status-item-count">
-                                <a href="">0</a>
+                                <div th:text="${payment}">1</div>
                             </div>
                         </li>
                         <li class="status-list-item">
@@ -57,22 +53,13 @@
                                     <div class="problem-icon">
                                         <div>
                                             <div>
-                            <span>
-                              <svg
-                                      width="36"
-                                      height="36"
-                                      viewBox="0 0 36 36"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
-                                <path
-                                        d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
-                                        fill="#11CA2D"></path>
-                                <path
-                                        d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
-                                        fill="#11CA2D"></path>
-                              </svg>
-                            </span>
+                                                <span>
+                                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
+                                                        <path d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z" fill="#11CA2D"></path>
+                                                        <path d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z" fill="#11CA2D"></path>
+                                                    </svg>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +67,7 @@
                                 <div class="status-item-name">결제 총 금액</div>
                             </div>
                             <div class="status-item-count">
-                                <a href="">0</a>
+                                <div th:text="${price}">1</div>
                             </div>
                         </li>
                         <div class="clock">
@@ -91,10 +78,7 @@
                 </section>
                 <div class="table__box">
                     <div class="table__search__form">
-                        <button
-                                id="delete-button"
-                                class="button__type_2 button__color__red"
-                                style="width: 120px">
+                        <button id="delete-button" class="button__type_2 button__color__red" style="width: 120px">
                             결제내역 삭제
                         </button>
                         <!-- default.css -->
@@ -269,7 +253,7 @@
 <script th:inline="javascript">
     let ricePayments = [[${ricePaymentDTOS}]];
 </script>
-<script src="/js/admin/ajax.js"></script>
+<script src="/js/admin/admin-service.js"></script>
 <script src="/js/admin/rice-payment.js"></script>
 <script src="/js/admin/app.js"></script>
 <script src="/js/admin/events.js"></script>

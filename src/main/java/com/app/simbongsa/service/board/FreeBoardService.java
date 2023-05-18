@@ -45,7 +45,7 @@ public interface FreeBoardService {
     public Slice<FreeBoardDTO> getLikesList(Pageable pageable);
 
     // 작성하기
-    public void write(FreeBoard freeBoard);
+    public void write(FreeBoardDTO freeBoardDTO, Long memberId);
 
 //    목록 전체 조회(페이징)
     public Page<FreeBoardDTO> getFreeBoard(Integer page, AdminBoardSearch adminBoardSearch);
@@ -66,7 +66,7 @@ public interface FreeBoardService {
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
         return FreeBoardDTO.builder()
-//                .id(freeBoard.getId())
+                .id(freeBoard.getId())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
                 .createdDate(freeBoard.getCreatedDate())
@@ -108,7 +108,7 @@ public interface FreeBoardService {
 
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder()
-//                .id(member.getId())
+                .id(member.getId())
                 .memberRank(member.getMemberRank())
                 .memberName(member.getMemberName())
                 .memberVolunteerTime(member.getMemberVolunteerTime())
@@ -127,7 +127,7 @@ public interface FreeBoardService {
 
     default FreeBoardDTO freeBoardToDTO(FreeBoard freeBoard){
         return FreeBoardDTO.builder()
-//                .id(freeBoard.getId())
+                .id(freeBoard.getId())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
                 .createdDate(freeBoard.getCreatedDate())
                 .updatedDate(freeBoard.getUpdatedDate())
@@ -139,7 +139,7 @@ public interface FreeBoardService {
 
     default Member toMemberEntity(MemberDTO memberDTO){
         return Member.builder()
-//                .id(memberDTO.getId())
+                .id(memberDTO.getId())
                 .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())

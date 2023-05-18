@@ -9,6 +9,7 @@ import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.repository.funding.FundingRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
+import com.app.simbongsa.type.RequestType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +17,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,9 +50,9 @@ public class FundingServiceImpl implements FundingService {
 
     // 펀딩 저장
     @Override
-    public void fundingRegister(FundingDTO fundingDTO, Long fundingId) {
+    public void fundingRegister(FundingDTO fundingDTO) {
 
-        fundingRepository.findById(fundingId);
+
         fundingRepository.save(toFundingEntity(fundingDTO));
     }
 
@@ -85,6 +88,19 @@ public class FundingServiceImpl implements FundingService {
     @Override
     public void deleteFunding(List<Long> ids) {
         fundingRepository.deleteAllById(ids);
+    }
+
+    @Override
+    @Transactional
+    public void updateFundingStatus(List<Long> ids, RequestType requestType) {
+        fundingRepository.updateWaitToAcceptByIds(ids, requestType);
+    }
+
+    @Override
+    public List<Long> countAcceptAndWait() {
+        return Arrays.asList(fundingRepository.findCountAcceptOrWait(RequestType.승인),
+                fundingRepository.findCountAcceptOrWait(RequestType.대기),
+                fundingRepository.findCountAcceptOrWait(RequestType.반려));
     }
 }
 

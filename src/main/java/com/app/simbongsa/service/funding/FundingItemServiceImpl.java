@@ -17,8 +17,8 @@ public class FundingItemServiceImpl implements FundingItemService {
 
     @Override
     public void ItemSave(FundingItemDTO fundingItemDTO) {
-        fundingItemDTO.setItemTitle(fundingItemDTO.getItemTitle());
-        fundingItemDTO.setItemContent(fundingItemDTO.getItemContent());
+//        fundingItemDTO.setItemTitle(fundingItemDTO.getItemTitle());
+//        fundingItemDTO.setItemContent(fundingItemDTO.getItemContent());
 
         fundingItemRepository.save(toFundingItemEntity(fundingItemDTO));
 

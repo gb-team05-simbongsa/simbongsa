@@ -1,9 +1,14 @@
 package com.app.simbongsa.service.board;
 
 import com.app.simbongsa.domain.*;
+import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.board.ReviewReply;
+import com.app.simbongsa.entity.file.FreeBoardFile;
+import com.app.simbongsa.entity.file.ReviewFile;
+import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.exception.UserNotFoundException;
 import com.app.simbongsa.repository.board.ReviewFileRepository;
 import com.app.simbongsa.repository.board.ReviewReplyRepository;
 import com.app.simbongsa.repository.board.ReviewRepository;
@@ -16,8 +21,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -122,8 +127,34 @@ public class ReviewServiceImpl implements ReviewService{
 
     /*작성*/
     @Override
-    public void write(Review review){
+    @Transactional(rollbackFor = Exception.class)
+    public void write(ReviewDTO reviewDTO, Long memberId) {
+        List<FileDTO> fileDTOS = reviewDTO.getFileDTOS();
+
+        Member member = memberRepository.findById(memberId).orElseThrow(UserNotFoundException::new);
+
+        Review review = toReviewEntity(reviewDTO);
+        review.setMember(member);
         reviewRepository.save(review);
+
+        int count = 0;
+
+        for (int i = 0; i < fileDTOS.size(); i++){
+            if (fileDTOS.get(i) == null) continue;
+
+            if (count == 0){
+                fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                count++;
+            }else {
+                fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+            }
+
+            fileDTOS.get(i).setReviewDTO(reviewToDTO(getCurrentSequence()));
+            ReviewFile reviewFile = toReviewFileEntity(fileDTOS.get(i));
+
+            reviewFile.setReview(review);
+            reviewFileRepository.save(reviewFile);
+        }
     }
 
 
@@ -131,7 +162,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public Slice<ReviewDTO> getNewReviewList(Pageable pageable) {
         Slice<Review> reviews =
-                reviewRepository.findAllByIdReviewPaging_QueryDSL(PageRequest.of(0,10));
+                reviewRepository.findAllByIdReviewPaging_QueryDSL(pageable);
         List<ReviewDTO> collect = reviews.get().map(review -> toReviewDTO(review)).collect(Collectors.toList());
 
         return new SliceImpl<>(collect, pageable, reviews.hasNext());

@@ -10,8 +10,7 @@ inquiries.forEach(inquiry => {
             <td class="content__id">${inquiry.id}</td>
             <td>${inquiry.memberDTO.memberName}</td>
             <td>${inquiry.memberDTO.memberEmail}</td>
-            <td>${inquiry.createdDate}</td>
-            <!-- default.css -->
+            <td>` + adminService.dateFormat(`${inquiry.createdDate}`) + `</td>
             `;
     if(`${inquiry.inquiryStatus}` == '답변완료') {
         text += `<td class="enquiryOk">답변완료</td>`;
@@ -59,7 +58,7 @@ $('.content__detail__btn').on('click', function () {
 });
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/inquiries-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/inquiries-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });
@@ -69,13 +68,13 @@ $('.search').on('click', () => {
 });
 
 $('#completeBtn').on('click', () => {
-    let answerDTO = {
-        id : 0,
-        answerTitle : $('#answerTitle').val(),
-        answerContent : $('#answerContent').val(),
-    };
+    // let answerDTO = {
+    //     id : 0,
+    //     answerTitle : $('#answerTitle').val(),
+    //     answerContent : $('#answerContent').val()
+    // };
 
-    adminService.answerRegistration(answerDTO, $('#inquiryId').val(),function() {
+    adminService.answerRegistration($('#answerTitle').val(), $('#answerContent').val(), $('#inquiryId').val(),function() {
         document.location.reload(true);
     });
 });

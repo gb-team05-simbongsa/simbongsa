@@ -13,6 +13,10 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreeBoardFile extends File {
 
+    @EqualsAndHashCode.Include
+    @Id @GeneratedValue
+    private Long id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FREE_BOARD_ID")
     private FreeBoard freeBoard;
@@ -20,6 +24,11 @@ public class FreeBoardFile extends File {
     @Builder
     public FreeBoardFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
         super(fileName, fileUuid, filePath, fileRepresentationalType);
+        this.id = id;
+        this.freeBoard = freeBoard;
+    }
+
+    public void setFreeBoard(FreeBoard freeBoard){
         this.freeBoard = freeBoard;
     }
 
