@@ -56,6 +56,9 @@ public interface MemberService extends UserDetailsService {
     /* 메일보내기 */
     public void sendMail(MailDTO mail);
 
+    /* 비밀번호변경 */
+    public void updatePassword(String memberEmail, String memberPassword);
+
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())
                 .memberName(memberDTO.getMemberName())

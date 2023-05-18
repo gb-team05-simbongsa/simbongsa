@@ -5,6 +5,7 @@ import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
+import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.repository.funding.FundingRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
@@ -46,7 +47,9 @@ public class FundingServiceImpl implements FundingService {
 
     // 펀딩 저장
     @Override
-    public void fundingRegister(FundingDTO fundingDTO) {
+    public void fundingRegister(FundingDTO fundingDTO, Long fundingId) {
+
+        fundingRepository.findById(fundingId);
         fundingRepository.save(toFundingEntity(fundingDTO));
     }
 

@@ -266,4 +266,10 @@ public class MemberServiceImpl implements MemberService {
 
         mailSender.send(message);
     }
+
+    /* 비밀번호변경 */
+    @Override
+    public void updatePassword(String memberEmail, String memberPassword) {
+       memberRepository.updatePassword(memberEmail, memberPassword);
+    }
 }

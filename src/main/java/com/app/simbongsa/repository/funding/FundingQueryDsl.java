@@ -4,6 +4,7 @@ import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingGift;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
+import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,4 +41,7 @@ public interface FundingQueryDsl {
 
     // 펀딩 전체 갯수
      public Long getFundingCount_QueryDsl(Long fundingId);
+
+//     // 펀딩 기본정보 수정하기
+//     public Long updateFunding(Long fundingId);
 }

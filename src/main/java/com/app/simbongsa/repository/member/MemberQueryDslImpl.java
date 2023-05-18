@@ -73,9 +73,8 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
 
     //    비밀 번호 변경
     @Override
-    public void updatePassword(Long id, String memberPassword) {
-        query.update(member).set(member.memberPassword, memberPassword).where(member.id.eq(id)).execute();
-
+    public void updatePassword(String memberEmail, String memberPassword) {
+        query.update(member).set(member.memberPassword, memberPassword).where(member.memberEmail.eq(memberEmail)).execute();
     }
 
 //    해당 후원 명단 조회

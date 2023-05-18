@@ -1,7 +1,6 @@
 const $div = $('.listWrapper');
 let page = 0;
 list(page);
-var totalCount = 0;
 
 
 function list(page) {
