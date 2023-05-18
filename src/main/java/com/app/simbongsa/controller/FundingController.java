@@ -53,25 +53,33 @@ public class FundingController {
 //        return "/funding/funding-detail";}
 
 
-    @GetMapping("funding-gift")
-    public String fundingGift() {return "funding/funding-gift.html";}
+    @GetMapping("funding-item")
+    public String fundingItemForm() {return "funding/funding-item.html";}
+
+
+    @PostMapping("funding-item")
+    public String fundingItem(FundingItemDTO fundingItemDTO) {
+
+        fundingItemService.ItemSave(fundingItemDTO);
+        return "funding/funding-item";}
 
     @GetMapping("funding-initial-info")
     public String fundingInitialForm() {return "funding/funding-initial-info.html";}
 
     @PostMapping("funding-initial-info")
-    @ResponseBody
-    public String fundingInitial() {
+    public String fundingInitial(FundingDTO fundingDTO) {
+
+        fundingService.fundingRegister(fundingDTO);
         return "funding/funding-initial-info";}
 
-    @GetMapping("funding-item")
-    public String fundingItemForm() {return "funding/funding-item.html";}
+    @GetMapping("funding-gift")
+    public String fundingGiftForm() {return "funding/funding-gift.html";}
 
-//    @PostMapping("funding-item")
-//    public String fundingItem(FundingItemDTO fundingItemDTO){
-//        fundingItemService.ItemSave(fundingItemDTO);
-//        return
-//    }
+    @PostMapping("funding-gift")
+    public String fundingGift(FundingItemDTO fundingItemDTO){
+        fundingItemService.ItemSave(fundingItemDTO);
+        return "funding/funding-gift";
+    }
 
 //    @GetMapping("funding-list")
 //    public String fundinglist() {return "funding/funding-list.html";}
@@ -116,7 +124,7 @@ public class FundingController {
     public String fundingProjectPlanForm() {return "funding/funding-project-plan";}
 
     @PostMapping("funding-project-plan")
-    public String fundingProjectPlan(FundingDTO fundingDTO, Long fundingId) {
+    public String fundingProjectPlan(FundingDTO fundingDTO) {
 
         String fundingCreatorName = fundingDTO.getFundingCreator().getFundingCreatorNickname();
         String fundingIntroduce = fundingDTO.getFundingCreator().getFundingCreatorIntroduce();
@@ -124,18 +132,18 @@ public class FundingController {
         fundingDTO.getFundingCreator().setFundingCreatorNickname(fundingCreatorName);
         fundingDTO.getFundingCreator().setFundingCreatorIntroduce(fundingIntroduce);
 
-        fundingService.fundingRegister(fundingDTO, fundingId);
+        fundingService.fundingRegister(fundingDTO);
         return "funding/funding-project-plan";}
 
 
 
-
-        @GetMapping("funding-result")
+// 후원자 수
+     @GetMapping("funding-result")
     public String fundingResult() {return "funding/funding-result.html";}
 
     @GetMapping("funding-start")
     public String fundingStart() {return "funding/funding-start.html";}
 
-    @GetMapping("funding-topContent")
-    public String fundingTopContent() {return "funding/funding-topContent.html";}
+//    @GetMapping("funding-topContent")
+//    public String fundingTopContent() {return "funding/funding-topContent.html";}
 }

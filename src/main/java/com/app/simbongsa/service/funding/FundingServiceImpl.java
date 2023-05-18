@@ -50,9 +50,9 @@ public class FundingServiceImpl implements FundingService {
 
     // 펀딩 저장
     @Override
-    public void fundingRegister(FundingDTO fundingDTO, Long fundingId) {
+    public void fundingRegister(FundingDTO fundingDTO) {
 
-        fundingRepository.findById(fundingId);
+
         fundingRepository.save(toFundingEntity(fundingDTO));
     }
 

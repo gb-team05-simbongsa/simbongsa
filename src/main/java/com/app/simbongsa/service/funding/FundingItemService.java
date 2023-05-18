@@ -13,10 +13,22 @@ public interface FundingItemService {
 //    public void getItem(Long itemId);
 
 
+
+    default FundingItemDTO toFundingItemDTO(FundingItem fundingItem) {
+        return FundingItemDTO.builder()
+                .id(fundingItem.getId())
+                .itemTitle(fundingItem.getItemTitle())
+                .itemType(fundingItem.getItemType())
+                .itemContent(fundingItem.getItemContent())
+                .build();
+    }
+
+
     // dto -> entity로 변환
     default FundingItem toFundingItemEntity(FundingItemDTO fundingItemDTO) {
         return FundingItem.builder()/*.id(fundingItemDTO.getId())*/
                 .itemTitle(fundingItemDTO.getItemTitle())
+                .itemType(fundingItemDTO.getItemType())
                 .itemContent(fundingItemDTO.getItemContent())
                 .build();
     }
