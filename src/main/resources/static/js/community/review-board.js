@@ -1,15 +1,15 @@
-freeBoardList.forEach(freeboard => {
+reviewBoardList.forEach(review => {
     let text;
 
     text = `
-        <a href="/community/free-detail/${freeboard.id}">
+        <a href="/community/review-detail/${review.id}">
             <li class="contant-list-container" style="margin-top: 10px">
                 <div>
                     <button class="contant-btn">
                         <div class="contant-title-container">
                             <div class="contant-title-wrapper">
-                                <h2 class="contant-title">${freeboard.boardTitle}</h2>
-                                <p class="contant-contant">${freeboard.boardContent}</p>
+                                <h2 class="contant-title">${review.boardTitle}</h2>
+                                <p class="contant-contant">${review.boardContent}</p>
                             </div>
                             <div class="contant-img">
                                     <span class="contant-img-span">
@@ -19,11 +19,11 @@ freeBoardList.forEach(freeboard => {
                         </div>
                         <div class="contant-user">
                             <div class="user-profile">
-                                <span class="user-name">${freeboard.memberDTO.memberName}</span>
+                                <span class="user-name">${review.memberDTO.memberName}</span>
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                <span class="user-time">${freeboard.createdDate}</span>
+                                <span class="user-time">${review.createdDate}</span>
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                <span class="user-see">댓글수 ${freeboard.replyCount}</span>
+                                <span class="user-see">댓글수 ${review.replyCount}</span>
                             </div>
                         </div>
                     </button>
@@ -82,23 +82,22 @@ headerTitle2.addEventListener('click', () => {
     categoriNew.style.fill = '#1d1d1e';
     categoriBest.style.color = '#8a8a8b';
     categoriBest.style.fill = '#8a8a8b';
-
      $.ajax({
-         url: "/community/free-board/newList",
+         url: "/community/review-board/newList",
          type: "get",
-         success: function(result) {
+         success: function(results) {
              let text = ``;
-             result.forEach(freeboards => {
+             results.forEach(reviews => {
 
                  text += `
-                            <a href="/community/free-detail/${freeboards.id}">
+                            <a href="/community/review-detail/${reviews.id}">
                                 <li class="contant-list-container" style="margin-top: 10px">
                                     <div>
                                         <button class="contant-btn">
                                             <div class="contant-title-container">
                                                 <div class="contant-title-wrapper">
-                                                    <h2 class="contant-title">${freeboards.boardTitle}</h2>
-                                                    <p class="contant-contant">${freeboards.boardContent}</p>
+                                                    <h2 class="contant-title">${reviews.boardTitle}</h2>
+                                                    <p class="contant-contant">${reviews.boardContent}</p>
                                                 </div>
                                                 <div class="contant-img">
                                                         <span class="contant-img-span">
@@ -108,11 +107,11 @@ headerTitle2.addEventListener('click', () => {
                                             </div>
                                             <div class="contant-user">
                                                 <div class="user-profile">
-                                                    <span class="user-name">${freeboards.memberDTO.memberName}</span>
+                                                    <span class="user-name">${reviews.memberDTO.memberName}</span>
                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                                    <span class="user-time">${freeboards.createdDate}</span>
+                                                    <span class="user-time">${reviews.createdDate}</span>
                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                                    <span class="user-see">댓글수 ${freeboards.replyCount}</span>
+                                                    <span class="user-see">댓글수 ${reviews.replyCount}</span>
                                                 </div>
                                             </div>
                                         </button>
@@ -131,48 +130,45 @@ headerTitle2.addEventListener('click', () => {
     categoriBest.style.fill = '#1d1d1e';
    categoriNew.style.color = '#8a8a8b';
    categoriNew.style.fill = '#8a8a8b';
-
      $.ajax({
-         url: "/community/free-board/likes",
+         url: "/community/review-board/likes",
          type: "get",
-         success: function(results) {
+         success: function(result) {
              let text = ``;
-             results.forEach(freeboard => {
+             result.forEach(review => {
 
                  text += `
-                        <a href="/community/free-detail/${freeboard.id}">
-                            <li class="contant-list-container" style="margin-top: 10px">
-                                <div>
-                                    <button class="contant-btn">
-                                        <div class="contant-title-container">
-                                            <div class="contant-title-wrapper">
-                                                <h2 class="contant-title">${freeboard.boardTitle}</h2>
-                                                <p class="contant-contant">${freeboard.boardContent}</p>
+                            <a href="/community/review-detail/${review.id}">
+                                <li class="contant-list-container" style="margin-top: 10px">
+                                    <div>
+                                        <button class="contant-btn">
+                                            <div class="contant-title-container">
+                                                <div class="contant-title-wrapper">
+                                                    <h2 class="contant-title">${review.boardTitle}</h2>
+                                                    <p class="contant-contant">${review.boardContent}</p>
+                                                </div>
+                                                <div class="contant-img">
+                                                        <span class="contant-img-span">
+                                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                                        </span>
+                                                </div>
                                             </div>
-                                            <div class="contant-img">
-                                                    <span class="contant-img-span">
-                                                        <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                                    </span>
+                                            <div class="contant-user">
+                                                <div class="user-profile">
+                                                    <span class="user-name">${review.memberDTO.memberName}</span>
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                                    <span class="user-time">${review.createdDate}</span>
+                                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+                                                    <span class="user-see">댓글수 ${review.replyCount}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="contant-user">
-                                            <div class="user-profile">
-                                                <span class="user-name">${freeboard.memberDTO.memberName}</span>
-                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                                <span class="user-time">${freeboard.createdDate}</span>
-                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                                <span class="user-see">댓글수 ${freeboard.replyCount}</span>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                            </li>
-                        </a>
-                    `;
+                                        </button>
+                                    </div>
+                                </li>
+                            </a>
+                        `;
              });
              $('.contant').html(text);
          }
      });
  });
-
-

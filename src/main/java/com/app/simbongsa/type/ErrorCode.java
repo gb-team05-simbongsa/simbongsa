@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ErrorCode {
+    USER_NOT_FOUND("NOT_FOUND_001", "USER_NOT_FOUND", 404),
     LOGIN_FAILED("AUTH_001", "LOGIN_FAILED.", 401),
     AUTHENTICATION_FAILED("AUTH_002", "AUTHENTICATION_FAILED", 401);
 
