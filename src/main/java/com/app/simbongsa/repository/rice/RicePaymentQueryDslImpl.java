@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.rice;
 
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 
 import com.app.simbongsa.entity.rice.RicePayment;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -124,17 +126,19 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 //    }
   /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
       @Override
-      public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId) {
+      public Page<RicePayment> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
           List<RicePayment> foundRice = query.select(ricePayment)
                   .from(ricePayment)
-                  .where(ricePayment.member.id.eq(memberId))
+                  .join(ricePayment.member)
+                  .fetchJoin()
+                  .where(ricePayment.member.id.eq(userDetail.getId()))
                   .offset(pageable.getOffset())
                   .limit(pageable.getPageSize())
                   .fetch();
 
           Long count = query.select(ricePayment.count())
                   .from(ricePayment)
-                  .where(ricePayment.member.id.eq(memberId))
+                  .where(ricePayment.member.id.eq(userDetail.getId()))
                   .fetchOne();
 
           return new PageImpl<>(foundRice, pageable, count);

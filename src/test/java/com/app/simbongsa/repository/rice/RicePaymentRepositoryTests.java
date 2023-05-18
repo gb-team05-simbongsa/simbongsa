@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.rice;
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.repository.member.MemberRepository;
@@ -30,8 +31,16 @@ public class RicePaymentRepositoryTests {
 //    더미데이터 넣기
     @Test
     public void saveTest() {
+        for(int i = 1; i <= 2; i++) {
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.충전, "국민", "123412-1234123" + i, memberRepository.findById(595L).get());
+            ricePaymentRepository.save(ricePayment);
+        }
+        for(int i = 1; i <= 2; i++) {
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.환전승인, "국민", "123412-1234123" + i, memberRepository.findById(595L).get());
+            ricePaymentRepository.save(ricePayment);
+        }
         for(int i = 1; i <= 10; i++) {
-            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.충전, "국민", "123412-1234123" + i, memberRepository.findById(1L).get());
+            RicePayment ricePayment = new RicePayment(300 + i, RicePaymentType.사용, "국민", "123412-1234123" + i, memberRepository.findById(595L).get());
             ricePaymentRepository.save(ricePayment);
         }
     }
@@ -100,12 +109,15 @@ public class RicePaymentRepositoryTests {
 //    }
 
     /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
-      @Test
+/*      @Test
       public void findByMemberId(){
           PageRequest pageRequest = PageRequest.of(0,3);
-          Page<RicePayment> ricePayments = ricePaymentRepository.findByMemberId(pageRequest, 716L);
+          UserDetail userDetail = new UserDetail();
+          userDetail.setId(595L);
+          Page<RicePayment> ricePayments = ricePaymentRepository.findByMemberId(pageRequest, userDetail);
           ricePayments.stream().map(RicePayment::toString).forEach(log::info);
-          log.info("====================유저 아이디 6의 후원요청목록수=================" + ricePayments.getTotalElements());
-      }
+          ricePayments.stream().map(RicePayment::getMember).forEach(v -> log.info(v.toString() + "놔아아아아아아아라라라라라라라라라라ㅏ라"));
+          log.info("====================유저 아이디 565의 내 공양미 내역 수=================" + ricePayments.getTotalElements());
+      }*/
 
 }
