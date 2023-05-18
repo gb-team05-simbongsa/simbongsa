@@ -8,6 +8,10 @@ const $checks = $('.agree');
 let emailCheck = false;
 
 $('.submit-button').on('click', function(event) {
+    if(kakaoinfo != null) {
+        emailCheck = true;
+    }
+
     // 비어있는 input 태그가 있을 시 에러 메시지 출력
     $inputs.each((i, e) => {
         if(!$(e).val()) {
@@ -64,6 +68,7 @@ $('.submit-button').on('click', function(event) {
         $('.modal-content').text('이메일 중복을 확인해주세요.');
         $('.modal-wrap').show();
         return;
+
     }
 
     // 다 통과했다면 submit

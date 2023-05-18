@@ -1,6 +1,5 @@
 package com.app.simbongsa.repository.support;
 
-import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -27,14 +26,14 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Page<SupportRequest> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(userDetail.getId()))
+                .where(supportRequest.member.id.eq(userDetail.getMember().getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(userDetail.getId()))
+                .where(supportRequest.member.id.eq(userDetail.getMember().getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest,pageable,count);

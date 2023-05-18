@@ -3,15 +3,12 @@ package com.app.simbongsa.service.inquiry;
 import com.app.simbongsa.domain.AnswerDTO;
 import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.entity.inquiry.Answer;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
-import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;

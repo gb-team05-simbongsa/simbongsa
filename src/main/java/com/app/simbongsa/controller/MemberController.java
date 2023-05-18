@@ -96,7 +96,7 @@ public class MemberController {
         MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
 
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        if (memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오) {
+        if (memberDTO == null/* || memberDTO.getMemberJoinType() != MemberJoinType.카카오*/) {
             redirectAttributes.addFlashAttribute("kakaoInfo", kakaoInfo.getMemberEmail());
             return new RedirectView("/member/join");
         }
@@ -108,12 +108,13 @@ public class MemberController {
     @GetMapping("kakao-login")
     public RedirectView kakaoLogin(String code) throws Exception {
         /*String userIdentification = null;*/
-
+        log.info("------------------이리로 들어오나?------------------------" + code);
         String token = memberService.getKaKaoAccessToken(code, "login");
         memberService.getKakaoInfo(token);
 
         MemberDTO kakaoInfo = memberService.getKakaoInfo(token);
         MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 무슨 값이야 : " + memberDTO);
 
         if(memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오){
             return new RedirectView("/member/login?check=false");

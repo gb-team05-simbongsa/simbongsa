@@ -1,8 +1,5 @@
 package com.app.simbongsa.repository.board;
 
-import com.app.simbongsa.entity.board.QFreeBoard;
-import com.app.simbongsa.entity.file.FreeBoardFile;
-import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
@@ -19,7 +16,6 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
-import static com.app.simbongsa.entity.inquiry.QInquiry.inquiry;
 
 
 @RequiredArgsConstructor
@@ -110,7 +106,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
     @Override
     public Page<FreeBoard> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         List<FreeBoard> foundFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
                 .leftJoin(freeBoard.freeBoardFiles)

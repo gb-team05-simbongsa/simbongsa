@@ -1,6 +1,5 @@
 package com.app.simbongsa.service.support;
 
-import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.member.Member;

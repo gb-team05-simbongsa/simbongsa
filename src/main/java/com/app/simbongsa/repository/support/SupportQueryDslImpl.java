@@ -1,6 +1,5 @@
 package com.app.simbongsa.repository.support;
 
-import com.app.simbongsa.entity.support.QSupport;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -23,14 +22,14 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
     public Page<Support> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
         List<Support> foundSupports = query.select(support)
                 .from(support)
-                .where(support.member.id.eq(userDetail.getId()))
+                .where(support.member.id.eq(userDetail.getMember().getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(support.count())
                 .from(support)
-                .where(support.member.id.eq(userDetail.getId()))
+                .where(support.member.id.eq(userDetail.getMember().getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundSupports,pageable,count);

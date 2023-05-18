@@ -1,14 +1,10 @@
 package com.app.simbongsa.service.inquiry;
 
-import com.app.simbongsa.domain.AnswerDTO;
 import com.app.simbongsa.domain.InquiryDTO;
-import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.inquiry.InquiryRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
-import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.type.InquiryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +13,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

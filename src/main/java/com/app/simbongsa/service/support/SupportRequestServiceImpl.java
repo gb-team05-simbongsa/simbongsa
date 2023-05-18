@@ -1,10 +1,6 @@
 package com.app.simbongsa.service.support;
 
-import com.app.simbongsa.domain.InquiryDTO;
-import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
-import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.entity.inquiry.Notice;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
@@ -16,7 +12,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

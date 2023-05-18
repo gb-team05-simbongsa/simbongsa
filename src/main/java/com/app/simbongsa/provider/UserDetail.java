@@ -1,47 +1,70 @@
 package com.app.simbongsa.provider;
 
-import com.app.simbongsa.type.Role;
+import com.app.simbongsa.entity.member.Member;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 @Component
 @Getter
 @ToString
-public class UserDetail implements UserDetails {
+public class UserDetail implements UserDetails, OAuth2User {
 
-    private Long id;
-    private String memberEmail;
-    private String memberPassword;
-    private Role memberRole;
-    private Collection<? extends GrantedAuthority> authorities;
+    private Member member;
+    private Map<String, Object> attributes;
 
-    @Builder
-    public UserDetail(Long id, String memberEmail, String memberPassword, Role memberRole, Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
-        this.memberEmail = memberEmail;
-        this.memberPassword = memberPassword;
-        this.memberRole = memberRole;
-        this.authorities = AuthorityUtils.createAuthorityList(memberRole.getSecurityRole());
+    /* 일반 로그인 생성자 */
+    public UserDetail(Member member) {
+        this.member = member;
     }
 
+    /* OAuth 로그인 생성자 */
+    public UserDetail(Member member, Map<String, Object> attributes) {
+        this.member = member;
+        this.attributes = attributes;
+    }
+
+    /**
+     * OAuth2User 인터페이스 메소드
+     */
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    /**
+     * UserDetails 인터페이스 메소드
+     */
+    // 해당 User의 권한을 리턴하는 곳!(role)
+    // SecurityFilterChain에서 권한을 체크할 때 사용됨
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        Collection<GrantedAuthority> collection = new ArrayList();
+        collection.add(new GrantedAuthority() {
+            @Override
+            public String getAuthority() {
+
+                return String.valueOf(member.getMemberRole());
+            }
+        });
+        return collection;
     }
 
     @Override
     public String getPassword() {
-        return memberPassword;
+        return member.getMemberPassword();
     }
 
     @Override
     public String getUsername() {
-        return memberEmail;
+        return member.getMemberName();
     }
 
     @Override
@@ -64,6 +87,10 @@ public class UserDetail implements UserDetails {
         return true;
     }
 
-    public UserDetail() {
+    @Override
+    public String getName() {
+        return null;
     }
+
+    public UserDetail() {}
 }

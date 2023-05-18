@@ -2,12 +2,8 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
-import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
-import com.app.simbongsa.repository.rice.RicePaymentRepository;
-import com.app.simbongsa.search.admin.AdminBoardSearch;
-import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
@@ -22,9 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
-import javax.xml.ws.Service;
-import java.util.List;
 
 @Controller
 @RequestMapping("/mypage/*")
@@ -54,7 +47,7 @@ public class MypageController {
     /* 내 문의 게시글 수정 */
     @PostMapping("my-question-update")
     public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent, @AuthenticationPrincipal UserDetail userDetail) {
-        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(userDetail.getId())).build();
+        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(userDetail.getMember().getId())).build();
         inquiryService.setInquiry(inquiryDTO);
         log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO.toString());
         return new RedirectView("my-question");
@@ -63,7 +56,7 @@ public class MypageController {
     /* 내 후원요청목록 페이징처리해서 불러오기 */
     @GetMapping("support-request")
     public String supportRequest(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
         page = page == null ? 0 : page - 1;
         Page<SupportRequestDTO> mySupportRequests = supportRequestService.getMySupportRequest(page, userDetail);
@@ -91,7 +84,7 @@ public class MypageController {
     /* 내 자유 게시글 목록 */
     @GetMapping("my-review")
     public String myReview(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
         page = page == null ? 0 : page - 1;
         log.info(page + "pagepagepagepapgapgagpdspagpsdgpasdpgapsppage");

@@ -5,9 +5,7 @@ import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.domain.SupportDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
-import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
@@ -37,7 +35,7 @@ public class SupportController {
     public String supportDetail(Integer page, Model model, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
         log.info("들어오나?");
         page = page == null ? 0 : page -1;
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         log.info(memberId + "내 로그인한 아이디");
 //        후원 참여 수 페이징 REST로 처리할 예정
         Page<SupportDTO> attendList = supportService.getAllSupportAttendWithMember_QueryDSL(page, supportRequestId);

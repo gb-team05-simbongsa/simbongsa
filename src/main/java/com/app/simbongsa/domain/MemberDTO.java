@@ -1,5 +1,6 @@
 package com.app.simbongsa.domain;
 
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.type.MemberJoinType;
 import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.Role;
@@ -13,11 +14,12 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.io.Serializable;
 
 //@Component
 @Data
 @NoArgsConstructor
-public class MemberDTO {
+public class MemberDTO implements Serializable {
     private Long id;
     private String memberName;
     private String memberEmail;
@@ -52,5 +54,8 @@ public class MemberDTO {
         this.memberStatus = memberStatus;
     }
 
-
+    public MemberDTO(Member member) {
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+    }
 }
