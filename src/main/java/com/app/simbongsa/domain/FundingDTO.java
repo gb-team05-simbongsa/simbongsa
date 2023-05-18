@@ -14,7 +14,10 @@ import org.hibernate.annotations.ColumnDefault;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.swing.text.DateFormatter;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 @Component
 @Data
@@ -37,6 +40,7 @@ public class FundingDTO {
     private FundingCreator fundingCreator;
     private int fundingPercent;
     private Integer fundingCount;
+
 
     private MemberDTO memberDTO;
     private List<FileDTO> fileDTOs;
@@ -84,6 +88,7 @@ public class FundingDTO {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
+
 //        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
 
     }

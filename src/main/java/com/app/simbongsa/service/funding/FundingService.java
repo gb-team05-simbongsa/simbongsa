@@ -28,7 +28,7 @@ public interface FundingService {
     public List<FundingDTO> getAllPopularFundingList();
 
     // 펀딩 저장
-    public void fundingRegister(FundingDTO fundingDTO, Long fundingId);
+    public void fundingRegister(FundingDTO fundingDTO);
 
     //펀딩 전체 목록 조회
     public Slice<FundingDTO> getFundingList(Pageable pageable);

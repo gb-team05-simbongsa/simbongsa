@@ -184,12 +184,12 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 //
 //}
 
-//
+
 //    @Override
 //    public Long updateFunding(Long fundingId) {
 //        query.update(funding)
-//                .set(funding.fundingCategory, funding.fundingTitle, funding.fundingShortTitle)
-//                .where(funding.id.in(ids))
+////                .set(funding.)
+//                .where(funding.id.eq(fundingId))
 //                .execute();
 //    }
 }

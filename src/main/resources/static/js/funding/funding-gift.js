@@ -1,7 +1,19 @@
 $('.itemOpCard').eq(0).css('border', '1px solid red');
+$('.itemOpCard').eq(0).prop('checked', true);
 
 var count = 0;
 var $selectType;
+const $innerInput = $('.innerInput');
+const $titleVal = $innerInput.val();
+
+// $('input[name=itemTitle]').on('keyup', () => {
+//     if($('.checkInput').eq(0).is('checked') && $(this).val()) {
+//         $('.saveButton').attr('disabled', false);
+//     } else {
+//         $('.saveButton').attr('disabled', true);
+//     }
+// })
+
 
 $('.itemOpCard').on('click', function() {
     $(this).children().prop('checked', true);
@@ -14,6 +26,8 @@ $('.itemOpCard').on('click', function() {
         $('.itemOpCard').eq(i).css('border', 'none');
         $('.itemOpCard').eq(i).children().prop('checked', false);
     }
+
+
 
     if($(this).find('.option-text').text() == '주관식') {
         $('.sectionStyle').eq(2).show();
@@ -48,6 +62,13 @@ $('.innerInput, .textareaJu').on('keyup', () => {
 $('.innerInput').on('input', function() {
     var countText = $(this).val().length;
     $('.countLength').eq(0).text(countText);
+
+    if($('.itemOpCard').eq(0).prop('checked') && $(this).val()) {
+        $('.saveButton').attr('disabled', false);
+    } else {
+        $('.saveButton').attr('disabled', true);
+    }
+
 });
 
 $('.textareaJu').on('input', function() {

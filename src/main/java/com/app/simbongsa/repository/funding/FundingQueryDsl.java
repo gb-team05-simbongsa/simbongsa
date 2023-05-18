@@ -42,6 +42,6 @@ public interface FundingQueryDsl {
     // 펀딩 전체 갯수
      public Long getFundingCount_QueryDsl(Long fundingId);
 
-//     // 펀딩 기본정보 수정하기
-//     public Long updateFunding(Long fundingId);
+     // 펀딩 기본정보 수정하기
+    // public Long updateFunding_QueryDsl(Long fundingId);
 }
