@@ -9,13 +9,16 @@ import com.app.simbongsa.type.RequestType;
 import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Component
 @Data
+@NoArgsConstructor
 public class FundingDTO {
     private Long id;
     private FundingCategoryType fundingCategory;
@@ -42,9 +45,30 @@ public class FundingDTO {
     public FundingDTO(List<FileDTO> fileDTOs) {
         this.fileDTOs = fileDTOs;
     }
+//
+//    @Builder
+//    public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, MemberDTO memberDTO, List<FileDTO> fileDTOs, List<FundingGift> fundingGifts) {
+//        this.id = id;
+//        this.fundingCategory = fundingCategory;
+//        this.fundingTitle = fundingTitle;
+//        this.fundingShortTitle = fundingShortTitle;
+//        this.fundingSummary = fundingSummary;
+//        this.fundingTargetPrice = fundingTargetPrice;
+//        this.fundingCurrentPrice = fundingCurrentPrice;
+//        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
+//        this.fundingStartDate = fundingStartDate;
+//        this.fundingEndDate = fundingEndDate;
+//        this.fundingIntroduce = fundingIntroduce;
+//        this.fundingBudgetExplain = fundingBudgetExplain;
+//        this.fundingScheduleExplain = fundingScheduleExplain;
+//        this.fundingGiftExplain = fundingGiftExplain;
+//        this.fundingStatus = fundingStatus;
+//
+//
+//    }
 
     @Builder
-    public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, MemberDTO memberDTO, List<FileDTO> fileDTOs, List<FundingGift> fundingGifts) {
+    public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator/*, int fundingPercent*/) {
         this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
@@ -52,7 +76,6 @@ public class FundingDTO {
         this.fundingSummary = fundingSummary;
         this.fundingTargetPrice = fundingTargetPrice;
         this.fundingCurrentPrice = fundingCurrentPrice;
-        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
         this.fundingStartDate = fundingStartDate;
         this.fundingEndDate = fundingEndDate;
         this.fundingIntroduce = fundingIntroduce;
@@ -61,30 +84,8 @@ public class FundingDTO {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
-        this.memberDTO = memberDTO;
-        this.fileDTOs = fileDTOs;
-        this.fundingGifts = fundingGifts;
-    }
+//        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
 
-    @Builder
-    public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, int fundingPercent, Integer fundingCount) {
-        this.id = id;
-        this.fundingCategory = fundingCategory;
-        this.fundingTitle = fundingTitle;
-        this.fundingShortTitle = fundingShortTitle;
-        this.fundingSummary = fundingSummary;
-        this.fundingTargetPrice = fundingTargetPrice;
-        this.fundingCurrentPrice = fundingCurrentPrice;
-        this.fundingStartDate = fundingStartDate;
-        this.fundingEndDate = fundingEndDate;
-        this.fundingIntroduce = fundingIntroduce;
-        this.fundingBudgetExplain = fundingBudgetExplain;
-        this.fundingScheduleExplain = fundingScheduleExplain;
-        this.fundingGiftExplain = fundingGiftExplain;
-        this.fundingStatus = fundingStatus;
-        this.fundingCreator = fundingCreator;
-        this.fundingPercent = (int)((double)(fundingCurrentPrice / fundingTargetPrice * 100));
-        this.fundingCount = fundingCount;
     }
 }
 
