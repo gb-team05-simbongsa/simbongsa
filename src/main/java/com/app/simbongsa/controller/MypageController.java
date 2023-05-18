@@ -12,6 +12,7 @@ import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.member.MemberService;
+import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,7 @@ public class MypageController {
     private final FreeBoardService freeBoardService;
     private final FreeBoardRepository freeBoardRepository;
     private final MemberService memberService;
+    private final RicePaymentService ricePaymentService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -114,8 +116,31 @@ public class MypageController {
         return "mypage/rice-charge";
     }
 
+    /* 내 공양미 조회(페이징) */
+    /*public String notice(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail) {
+        page = page == null ? 0 : page - 1;
+        Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
+
+        log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
+
+        model.addAttribute("myInquiries", myInquiries.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myInquiries));
+        return "mypage/my-question";
+    }*/
+
     @GetMapping("rice-list")
-    public String riceList(){
+    public String riceList(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
+        page = page == null ? 0 : page - 1;
+        Page<RicePaymentDTO> myRice = ricePaymentService.getMyRicePayment(page, userDetail);
+
+        log.info(myRice.toString() + "------------내 공양미 리스트-------------- ");
+        myRice.getContent().stream()
+                .map(RicePaymentDTO::getMemberDTO)
+                .map(MemberDTO::getMemberRice)
+                .map(String::valueOf)
+                .forEach(log::info);
+        model.addAttribute("myRicePayments", myRice.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myRice));
         return "mypage/rice-list";
     }
 
