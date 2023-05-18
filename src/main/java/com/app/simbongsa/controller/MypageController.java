@@ -20,9 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.xml.ws.Service;
@@ -47,13 +45,6 @@ public class MypageController {
         Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
 
         log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
-   /*     for (InquiryDTO myInquiry: myInquiries.getContent()) {
-            log.info("set하기 전 left join으로 가져온 myInquiry"+myInquiry.toString());
-            AnswerDTO answerAboutInquiry = answerService.findByInquiryId(myInquiry.getId());
-            log.info(answerAboutInquiry + "%%%%%%%%%%%5문의에 대한 답변%%%%%%%%%%%%%");
-            myInquiry.setAnswerDTO(answerAboutInquiry);
-            log.info("set 해서 가져온 inquiryDTO빼고 가져온 AnswerDTO"+myInquiry.toString());
-        }*/
 
         model.addAttribute("myInquiries", myInquiries.getContent());
         model.addAttribute("pageDTO", new PageDTO(myInquiries));
