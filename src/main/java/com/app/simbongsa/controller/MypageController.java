@@ -14,6 +14,8 @@ import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
+import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
+import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -39,6 +41,7 @@ public class MypageController {
     private final FreeBoardRepository freeBoardRepository;
     private final MemberService memberService;
     private final RicePaymentService ricePaymentService;
+    private final VolunteerWorkActivityService volunteerWorkActivityService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -134,11 +137,6 @@ public class MypageController {
         Page<RicePaymentDTO> myRice = ricePaymentService.getMyRicePayment(page, userDetail);
 
         log.info(myRice.toString() + "------------내 공양미 리스트-------------- ");
-        myRice.getContent().stream()
-                .map(RicePaymentDTO::getMemberDTO)
-                .map(MemberDTO::getMemberRice)
-                .map(String::valueOf)
-                .forEach(log::info);
         model.addAttribute("myRicePayments", myRice.getContent());
         model.addAttribute("pageDTO", new PageDTO(myRice));
         return "mypage/rice-list";
@@ -155,7 +153,11 @@ public class MypageController {
     }
 
     @GetMapping("volunteer-work-list")
-    public String volunteerWorkList(){
+    public String volunteerWorkList(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
+        page = page == null ? 0 : page - 1;
+        Page<VolunteerWorkActivityDTO> myActivity = volunteerWorkActivityService.getMyVolunteerWork(page, userDetail);
+        model.addAttribute("myActivity",myActivity.getContent());
+        model.addAttribute("pageDTO",new PageDTO(myActivity));
         return "mypage/volunteer-work-list";
     }
 
