@@ -4,6 +4,7 @@ import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
+import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface FreeBoardService {
@@ -55,7 +57,8 @@ public interface FreeBoardService {
     public void deleteFreeBoardByIds(List<Long> ids);
 
 //    게시판 인기순 조회 - 메인 페이지
-    public List<FreeBoardDTO> findAllWithPopularFreeBoard();
+    public List<FreeBoardDTO> getAllWithPopularFreeBoard();
+    public List<FreeBoardDTO> getAllWithFile();
 
 //    유저가 작성한 자유게시물 조회(페이징처리)
     Page<FreeBoardDTO> getMyFreeBoards(Integer page, UserDetail userDetail);
@@ -69,7 +72,38 @@ public interface FreeBoardService {
                 .createdDate(freeBoard.getCreatedDate())
                 .updatedDate(freeBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
+                .replyCount(freeBoard.getFreeBoardReplyCount())
                 .build();
+    }
+    default List<FileDTO> FileToDTO(List<FreeBoardFile> freeBoardFiles){
+        List<FileDTO> freeBoardFileList = new ArrayList<>();
+        freeBoardFiles.forEach(
+                freeBoardFile -> {
+                    FileDTO fileDTO = FileDTO.builder()
+                            .id(freeBoardFile.getId())
+                            .fileName(freeBoardFile.getFileName())
+                            .filePath(freeBoardFile.getFilePath())
+                            .fileUuid(freeBoardFile.getFileUuid())
+                            .build();
+                    freeBoardFileList.add(fileDTO);
+                }
+        );
+        return freeBoardFileList;
+    }
+    default List<FreeBoardFile> toFreeBoardListEntity(List<FileDTO> fileDTOS){
+        List<FreeBoardFile> freeBoardFiles = new ArrayList<>();
+
+        fileDTOS.forEach(
+                fileDTO ->{
+                    FreeBoardFile freeBoardFile = FreeBoardFile.builder()
+                            .fileName(fileDTO.getFileName())
+                            .filePath(fileDTO.getFilePath())
+                            .fileUuid(fileDTO.getFileUuid())
+                            .build();
+                    freeBoardFiles.add(freeBoardFile);
+                }
+        );
+        return freeBoardFiles;
     }
 
     default MemberDTO toMemberDTO(Member member){

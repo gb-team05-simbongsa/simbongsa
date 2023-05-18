@@ -6,6 +6,7 @@ import com.app.simbongsa.domain.FreeBoardReplyDTO;
 import com.app.simbongsa.domain.ReplyDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
+import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardFileRepository;
 import com.app.simbongsa.repository.board.FreeBoardReplyRepository;
@@ -169,14 +170,28 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         freeBoardRepository.deleteAllById(ids);
     }
 
+
     @Override
-    public List<FreeBoardDTO> findAllWithPopularFreeBoard() {
+    public List<FreeBoardDTO> getAllWithFile() {
+//        List<FreeBoard> freeBoardList = freeBoardRepository.findAllWithFile();
+//        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.stream()
+//                .map(freeBoard -> {
+//                    FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
+//                    List<FreeBoardFile> freeBoardFiles = freeBoard.getFreeBoardFiles();
+//                    List<FileDTO> fileDTOs = FileToDTO(freeBoardFiles);
+//                    freeBoardDTO.setFileDTOS(fileDTOs);
+//                    return freeBoardDTO;
+//                })
+        return null;
+    }
+
+    @Override
+    public List<FreeBoardDTO> getAllWithPopularFreeBoard() {
         List<FreeBoard> freeBoards = freeBoardRepository.findAllWithPopularFreeBoard();
         List<FreeBoardDTO> freeBoardDTOS = new ArrayList<>();
         for (FreeBoard freeBoard : freeBoards) {
             FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
             freeBoardDTOS.add(freeBoardDTO);
-
         }
         return freeBoardDTOS;
     }

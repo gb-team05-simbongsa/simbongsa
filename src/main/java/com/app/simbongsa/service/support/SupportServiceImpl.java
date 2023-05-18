@@ -25,11 +25,17 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SupportServiceImpl implements SupportService {
     private final SupportRepository supportRepository;
+//    @Override
+//    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id) {
+//        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5),id);
+//        List<SupportDTO> supportDTOS = getAttendMember.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
+//        return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
+//    }
     @Override
-    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id) {
-        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5),id);
-        List<SupportDTO> supportDTOS = getAttendMember.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
-        return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
+    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Pageable pageable, Long id) {
+        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(pageable,id);
+        List<SupportDTO> supportDTOS = getAttendMember.get().map(this::toSupportDTO).collect(Collectors.toList());
+        return new PageImpl<>(supportDTOS, pageable, getAttendMember.getTotalElements());
     }
 
     @Override

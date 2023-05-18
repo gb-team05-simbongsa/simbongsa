@@ -35,12 +35,10 @@ public class SupportController {
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
     public String supportDetail(Integer page, Model model, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
-        log.info("들어오나?");
-        page = page == null ? 0 : page -1;
+
         Long memberId = userDetail.getId();
         log.info(memberId + "내 로그인한 아이디");
-//        후원 참여 수 페이징 REST로 처리할 예정
-        Page<SupportDTO> attendList = supportService.getAllSupportAttendWithMember_QueryDSL(page, supportRequestId);
+
 //        후원 총 참여 수
         Long attendCount = supportService.getAllSupportAttend_QueryDSL(supportRequestId);
 //        후원 상세페이지 조회
@@ -58,8 +56,8 @@ public class SupportController {
 
         model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("attendCount", attendCount);
-        model.addAttribute("attendList", attendList.getContent());
-        model.addAttribute("pageDTO", new PageDTO(attendList));
+//        model.addAttribute("attendList", attendList.getContent());
+//        model.addAttribute("pageDTO", new PageDTO(attendList));
         model.addAttribute("supportDetail", supportDetail);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("originalPrice", originalPrice);
