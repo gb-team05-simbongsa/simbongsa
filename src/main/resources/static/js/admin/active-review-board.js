@@ -97,7 +97,7 @@ $('.modal-close').on('click', function (e) {
 })
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/reviews-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/reviews-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });

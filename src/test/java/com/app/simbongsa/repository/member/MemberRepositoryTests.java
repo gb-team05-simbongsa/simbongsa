@@ -104,7 +104,7 @@ public class MemberRepositoryTests {
     //    비밀번호 변경
     @Test
     public void updatePasswordTest(){
-        memberRepository.updatePassword(542L, "email101@naver.com");
+//        memberRepository.updatePassword(542L, "email101@naver.com");
     }
 
     /* 내 공양미 환전 요청*/

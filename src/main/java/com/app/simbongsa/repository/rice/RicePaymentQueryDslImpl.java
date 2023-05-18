@@ -4,6 +4,7 @@ package com.app.simbongsa.repository.rice;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 
 import com.app.simbongsa.entity.rice.RicePayment;
+import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.app.simbongsa.entity.rice.QRicePayment.ricePayment;
+import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
 
 @RequiredArgsConstructor
 public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
@@ -137,5 +139,32 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 
           return new PageImpl<>(foundRice, pageable, count);
       }
+
+    @Override
+    public Long countStatusWaitAccessDenied(RicePaymentType ricePaymentType) {
+        return query.select(ricePayment.count())
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(ricePaymentType))
+                .fetchOne();
+    }
+
+    @Override
+    public Long countTodayPayment() {
+        LocalDateTime todayStart = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0); // 오늘 날짜 시작 시간
+        LocalDateTime todayEnd = LocalDateTime.now().withHour(23).withMinute(59).withSecond(59); // 오늘 날짜 종료 시간
+
+        return query.select(ricePayment.count())
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.충전).and(ricePayment.createdDate.between(todayStart, todayEnd)))
+                .fetchOne();
+    }
+
+    @Override
+    public Long getAllPaymentPrice() {
+        return Long.valueOf(query.select(ricePayment.ricePaymentUsed.sum())
+                  .from(ricePayment)
+                  .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.충전))
+                  .fetchOne());
+    }
 
 }

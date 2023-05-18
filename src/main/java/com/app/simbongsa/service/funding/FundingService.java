@@ -28,7 +28,7 @@ public interface FundingService {
     public List<FundingDTO> getAllPopularFundingList();
 
     // 펀딩 저장
-    public void fundingRegister(FundingDTO fundingDTO);
+    public void fundingRegister(FundingDTO fundingDTO, Long fundingId);
 
     //펀딩 전체 목록 조회
     public Slice<FundingDTO> getFundingList(Pageable pageable);
@@ -117,9 +117,15 @@ public interface FundingService {
                 .fundingTitle(fundingDTO.getFundingTitle())
                 .fundingShortTitle(fundingDTO.getFundingShortTitle())
                 .fundingSummary(fundingDTO.getFundingSummary())
-                .fundingCreator(fundingDTO.getFundingCreator())
                 .build();
 
+    }
+
+    default FundingCreator toFundingCreatorEntity(FundingCreator fundingCreator) {
+        return FundingCreator.builder()
+                .fundingCreatorNickname(fundingCreator.getFundingCreatorNickname())
+                .fundingCreatorIntroduce(fundingCreator.getFundingCreatorIntroduce())
+                .build();
     }
 
     default Member toMemberEntity(MemberDTO memberDTO){

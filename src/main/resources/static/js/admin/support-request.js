@@ -18,7 +18,9 @@ supportRequests.forEach(supportRequest => {
     if(`${supportRequest.supportRequestStatus}` == '승인') {
         text += `<td class="enquiryOk">승인</td>`;
     } else if(`${supportRequest.supportRequestStatus}` == '대기') {
-        text += `<td class="enquiryNo">대기</td>`;
+        text += `<td class="enquiryNo" style="color: #0d0d0d">대기</td>`;
+    } else if(`${supportRequest.supportRequestStatus}` == '반려') {
+        text += `<td class="enquiryNo">반려</td>`;
     }
     text += `
             <td>
@@ -79,8 +81,14 @@ $('.volunteer_button').on('click', function() {
 //
 // })
 
+$('#answer-check, #denied-check').on('click', function() {
+    adminService.updateStatus("/admins/update-requests-status", $checkArr, $(this).text().substr(-2), function() {
+        document.location.reload(true);
+    });
+});
+
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/support-requests-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/support-requests-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });

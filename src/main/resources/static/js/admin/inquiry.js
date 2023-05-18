@@ -12,7 +12,14 @@ inquiries.forEach(inquiry => {
             <td>${inquiry.memberDTO.memberEmail}</td>
             <td>${inquiry.createdDate}</td>
             <!-- default.css -->
-            <td class="enquiryOk">답변완료</td>
+            `;
+    if(`${inquiry.inquiryStatus}` == '답변완료') {
+        text += `<td class="enquiryOk">답변완료</td>`;
+    } else if(`${inquiry.inquiryStatus}` == '답변대기') {
+        text += `<td class="enquiryNo">답변대기</td>`;
+    }
+    text += `
+<!--            <td class="enquiryOk">답변완료</td>-->
             <td>
                 <button class="content__detail__btn button__type_2 button__color__green">
                     상세보기
@@ -31,11 +38,14 @@ $('.content__detail__btn').on('click', function () {
 
     /* ajax 에 콜백 넘겨주는 코드 작성해야 함 (검색기능 ajax로)*/
     adminService.getDetail("/admins/inquiry-details", contentId, function(result) {
+        $('#inquiryId').val(result.id);
         $('#memberName').val(result.memberDTO.memberName);
         $('#memberEmail').val(result.memberDTO.memberEmail);
+        $('#inquiryTitle').val(result.inquiryTitle);
         $('#inquiryContent').val(result.inquiryContent);
 
-        result.answerDTO.answerContent == undefined ? $('#answerContent').val('') : $('#answerContent').val(result.answerDTO.answerContent);
+        result.answerDTO.answerTitle == null ? $('#answerTitle').val('') : $('#answerTitle').val(result.answerDTO.answerTitle);
+        result.answerDTO.answerContent == null ? $('#answerContent').val('') : $('#answerContent').val(result.answerDTO.answerContent);
     });
 
     /* 추후 타임리프로 대체할 예정 */
@@ -49,7 +59,7 @@ $('.content__detail__btn').on('click', function () {
 });
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/inquiries-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/inquiries-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });
@@ -57,3 +67,16 @@ $('#confirm-delete').on('click', function() {
 $('.search').on('click', () => {
     location.href = "/admin/inquiry?searchType=" + $('.listbox-selecter').text() + "&searchContent=" + $('.search-input').val();
 });
+
+$('#completeBtn').on('click', () => {
+    let answerDTO = {
+        id : 0,
+        answerTitle : $('#answerTitle').val(),
+        answerContent : $('#answerContent').val(),
+    };
+
+    adminService.answerRegistration(answerDTO, $('#inquiryId').val(),function() {
+        document.location.reload(true);
+    });
+});
+

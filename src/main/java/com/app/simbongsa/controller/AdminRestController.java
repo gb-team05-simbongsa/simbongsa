@@ -17,16 +17,21 @@ import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.MemberStatus;
+import com.app.simbongsa.type.RequestType;
+import com.app.simbongsa.type.RicePaymentType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/admins/*")
@@ -47,7 +52,6 @@ public class AdminRestController {
 
     @PostMapping("notice-save")
     public void noticeSave(@RequestBody NoticeDTO noticeDTO) {
-        log.info(noticeDTO.toString());
         noticeService.saveNotice(noticeDTO);
     }
 
@@ -81,8 +85,7 @@ public class AdminRestController {
 
     @PostMapping("inquiry-details")
     public InquiryDTO inquiryDetail(Long id) {
-        InquiryDTO inquiryDetail = inquiryService.getInquiryDetail(id);
-        return inquiryDetail;
+        return inquiryService.getInquiryDetail(id);
     }
 
     @PostMapping("inquiries-delete")
@@ -92,6 +95,22 @@ public class AdminRestController {
             idList.add(id);
         }
         inquiryService.deleteInquiry(idList);
+    }
+
+    @PostMapping("answer-registration")
+    public void answerRegistration(@RequestBody HashMap<String, Object> map) {
+//        log.info(map.get("answerDTO").toString());
+//        log.info(map.get("inquiryId").toString());
+//        ObjectMapper mapper = new ObjectMapper();
+//        AnswerDTO answerDTO = mapper.convertValue(map.get("answerDTO"), AnswerDTO.class);
+//        answerDTO.setInquiryDTO(inquiryService.getInquiryDetail(Long.valueOf(map.get("inquiryId").toString())));
+//        answerService.saveAnswer(answerDTO);
+//        inquiryService.updateStatusById(answerDTO.getInquiryDTO().getId());
+    }
+
+    @PostMapping("funding-details")
+    public FundingDTO fundingDetail(Long id) {
+        return fundingService.getFundingDetail(id);
     }
 
     @PostMapping("fundings-delete")
@@ -126,9 +145,30 @@ public class AdminRestController {
         return ricePaymentService.getRicePaymentDetail(id);
     }
 
+    @PostMapping("update-rice-requests-status")
+    public void updateRiceRequestsStatus(Long[] ids, String status) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+
+        ricePaymentService.updatePaymentStatusToAccessByIds(idList);
+    }
+
     @PostMapping("support-list")
     public List<SupportDTO> supportList(Long id) {
         return supportService.getSupportList(id);
+    }
+
+    @PostMapping("update-requests-status")
+    public void updateRequestsStatus(Long[] ids, String status) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+
+        RequestType requestType = status.equals("승인") ? RequestType.승인 : RequestType.반려;
+        supportRequestService.updateWaitToAccessOrDenied(idList, requestType);
     }
 
     @PostMapping("support-requests-delete")
@@ -165,5 +205,15 @@ public class AdminRestController {
             idList.add(id);
         }
         freeBoardService.deleteFreeBoardByIds(idList);
+    }
+
+    @PostMapping("files/upload")
+    public Map<String, Object> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
+        return volunteerWorkService.uploadFile(multipartFiles);
+    }
+
+    @GetMapping("files/display")
+    public byte[] display(String fileName) throws IOException {
+        return FileCopyUtils.copyToByteArray(new File("/C:/upload", fileName));
     }
 }

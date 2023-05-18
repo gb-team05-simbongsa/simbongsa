@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.EntityManager;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -115,10 +116,13 @@ public class AdminController {
 
         Page<RicePaymentDTO> ricePaymentDTOS = ricePaymentService.getRicePayment(page, adminPaymentSearch, RicePaymentType.환전대기, RicePaymentType.환전승인);
 
+        List<Long> counts = ricePaymentService.countStatusWaitAccessDenied();
+
         model.addAttribute("ricePaymentDTOS", ricePaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(ricePaymentDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
+        model.addAttribute("counts", counts);
         return "admin/gongyangmi-refund";
     }
 
@@ -137,10 +141,13 @@ public class AdminController {
 
         Page<InquiryDTO> inquiryDTOS = inquiryService.getInquiry(page, adminBoardSearch);
 
+        List<Long> counts = inquiryService.countStatusWaitAndComplete();
+
         model.addAttribute("inquiryDTOS", inquiryDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(inquiryDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
+        model.addAttribute("counts", counts);
         return "admin/inquiry";
     }
 
@@ -188,10 +195,16 @@ public class AdminController {
 
         Page<RicePaymentDTO> ricePaymentDTOS = ricePaymentService.getRicePayment(page, adminPaymentSearch, RicePaymentType.충전);
 
+        List<Long> counts = ricePaymentService.getPaymentPriceAndPaymentCount();
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+
         model.addAttribute("ricePaymentDTOS", ricePaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(ricePaymentDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
+        model.addAttribute("payment", counts.get(0));
+        model.addAttribute("price", decimalFormat.format(counts.get(1)));
         return "admin/payment";
     }
 
@@ -215,11 +228,13 @@ public class AdminController {
 
         Page<SupportRequestDTO> supportRequestDTOS = supportRequestService.getSupportRequest(page, adminSupportRequestSearch);
 
-        log.info(supportRequestDTOS.getContent().toString());
+        List<Long> counts = supportRequestService.countStatusWaitAccessDenied();
+
         model.addAttribute("supportRequestDTOS", supportRequestDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(supportRequestDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
+        model.addAttribute("counts", counts);
         return "admin/sponsorship-request";
     }
 

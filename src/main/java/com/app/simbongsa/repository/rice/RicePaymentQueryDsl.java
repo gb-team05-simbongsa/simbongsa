@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.rice;
 
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.entity.rice.RicePayment;
+import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,5 +33,14 @@ public interface RicePaymentQueryDsl {
     public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId);
       
 //    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGonynag);
+
+//    승인, 대기, 반려 수 조회
+    public Long countStatusWaitAccessDenied(RicePaymentType ricePaymentType);
+
+//    금일 결제 수 조회
+    public Long countTodayPayment();
+
+//    결제 총 금액
+    public Long getAllPaymentPrice();
 
 }

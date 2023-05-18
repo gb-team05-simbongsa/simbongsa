@@ -65,7 +65,7 @@ $('.search').on('click', () => {
 });
 
 $('#confirm-delete').on('click', () => {
-    adminService.updateStatus($checkArr, function () {
+    adminService.deleteOrUpdate("/admins/update-member-status", $checkArr, function () {
         document.location.reload(true);
     })
 });
