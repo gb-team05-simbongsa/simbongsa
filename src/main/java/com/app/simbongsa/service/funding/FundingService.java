@@ -51,6 +51,9 @@ public interface FundingService {
 //    펀딩 승인, 대기 수 조회
     public List<Long> countAcceptAndWait();
 
+// 펀딩 계획 등록
+    public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate);
+
 //    default FundingDTO toFundingDTO(Funding funding) {
 //        return FundingDTO.builder()
 //                .fundingCategory(funding.getFundingCategory())
@@ -118,11 +121,15 @@ public interface FundingService {
 
     default Funding toFundingEntity(FundingDTO fundingDTO) {
         return Funding.builder()
-//                .id(fundingDTO.getId())
+                .id(fundingDTO.getId())
                 .fundingCategory(fundingDTO.getFundingCategory())
                 .fundingTitle(fundingDTO.getFundingTitle())
                 .fundingShortTitle(fundingDTO.getFundingShortTitle())
                 .fundingSummary(fundingDTO.getFundingSummary())
+                .fundingBudgetExplain(fundingDTO.getFundingBudgetExplain())
+                .fundingIntroduce(fundingDTO.getFundingIntroduce())
+                .fundingScheduleExplain(fundingDTO.getFundingScheduleExplain())
+                .fundingGiftExplain(fundingDTO.getFundingGiftExplain())
                 .build();
 
     }
