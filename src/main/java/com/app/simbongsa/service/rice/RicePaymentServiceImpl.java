@@ -6,6 +6,7 @@ import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.repository.rice.RicePaymentRepository;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
+import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +16,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,7 +52,19 @@ public class RicePaymentServiceImpl implements RicePaymentService {
     }
 
     @Override
+    @Transactional
     public void updatePaymentStatusToAccessByIds(List<Long> ids) {
         ricePaymentRepository.updatePaymentStatusToAccessByIds(ids);
+    }
+
+    @Override
+    public List<Long> countStatusWaitAccessDenied() {
+        return Arrays.asList(ricePaymentRepository.countStatusWaitAccessDenied(RicePaymentType.환전승인),
+                ricePaymentRepository.countStatusWaitAccessDenied(RicePaymentType.환전대기));
+    }
+
+    @Override
+    public List<Long> getPaymentPriceAndPaymentCount() {
+        return Arrays.asList(ricePaymentRepository.countTodayPayment(), ricePaymentRepository.getAllPaymentPrice() * 110);
     }
 }

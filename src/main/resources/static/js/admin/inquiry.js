@@ -59,7 +59,7 @@ $('.content__detail__btn').on('click', function () {
 });
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/inquiries-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/inquiries-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });

@@ -17,6 +17,8 @@ import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.MemberStatus;
+import com.app.simbongsa.type.RequestType;
+import com.app.simbongsa.type.RicePaymentType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -143,9 +145,30 @@ public class AdminRestController {
         return ricePaymentService.getRicePaymentDetail(id);
     }
 
+    @PostMapping("update-rice-requests-status")
+    public void updateRiceRequestsStatus(Long[] ids, String status) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+
+        ricePaymentService.updatePaymentStatusToAccessByIds(idList);
+    }
+
     @PostMapping("support-list")
     public List<SupportDTO> supportList(Long id) {
         return supportService.getSupportList(id);
+    }
+
+    @PostMapping("update-requests-status")
+    public void updateRequestsStatus(Long[] ids, String status) {
+        List<Long> idList = new ArrayList<>();
+        for (Long id : ids) {
+            idList.add(id);
+        }
+
+        RequestType requestType = status.equals("승인") ? RequestType.승인 : RequestType.반려;
+        supportRequestService.updateWaitToAccessOrDenied(idList, requestType);
     }
 
     @PostMapping("support-requests-delete")

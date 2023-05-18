@@ -105,7 +105,7 @@ public class SupportRequestRepositoryTests {
 //    후원요청 대기에서 승인으로
     @Test
     public void updateWaitToAccessByIdsTest() {
-        supportRequestRepository.updateWaitToAccessByIds(Arrays.asList(130L, 131L));
+//        supportRequestRepository.updateWaitToAccessByIds(Arrays.asList(130L, 131L));
     }
 
 

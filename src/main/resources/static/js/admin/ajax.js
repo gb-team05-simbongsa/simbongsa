@@ -26,7 +26,7 @@ const adminService = (function() {
         });
     }
 
-    function deleteAllById(url, contentIds, callback) {
+    function deleteOrUpdate(url, contentIds, callback) {
         $.ajax({
             url: url,
             type: "post",
@@ -40,12 +40,12 @@ const adminService = (function() {
         });
     }
 
-    function updateStatus(contentIds, callback) {
+    function updateStatus(url, contentIds, status, callback) {
         console.log(contentIds)
         $.ajax({
-            url: "/admins/update-member-status",
+            url: url,
             type: "post",
-            data: { ids : contentIds },
+            data: { ids : contentIds, status : status },
             traditional : true,
             success: function() {
                 if(callback) {
@@ -88,6 +88,6 @@ const adminService = (function() {
         });
     }
 
-    return { saveNotice : saveNotice, getDetail : getDetail, deleteAllById : deleteAllById, updateStatus : updateStatus,
+    return { saveNotice : saveNotice, getDetail : getDetail, deleteOrUpdate : deleteOrUpdate, updateStatus : updateStatus,
         answerRegistration : answerRegistration, volunteerFile : volunteerFile };
 })();

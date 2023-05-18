@@ -25,7 +25,7 @@ ricePayments.forEach(ricePayment => {
 });
 
 $('#confirm-delete').on('click', function() {
-    adminService.deleteAllById("/admins/payments-delete", $checkArr, function() {
+    adminService.deleteOrUpdate("/admins/payments-delete", $checkArr, function() {
         document.location.reload(true);
     });
 });
