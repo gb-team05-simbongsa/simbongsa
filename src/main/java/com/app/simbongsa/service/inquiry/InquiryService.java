@@ -40,6 +40,12 @@ public interface InquiryService {
     /* 문의 삭제 */
     public void deleteByInquiryId(Long id);
 
+//    답변대기를 완료로 바꾸기
+    public void updateStatusById(Long id);
+
+//    답변 대기, 답변 완료 수 조회
+    public List<Long> countStatusWaitAndComplete();
+
     default Inquiry toInquiryEntity(InquiryDTO inquiryDTO) {
         return Inquiry.builder()
                 .id(inquiryDTO.getId())

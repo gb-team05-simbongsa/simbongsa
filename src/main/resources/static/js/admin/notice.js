@@ -139,11 +139,11 @@ function save() {
         noticeContent : $('#noticeContent').val(),
         createdDate : null,
         updatedDate : null
-    };
+    }
 
     adminService.saveNotice("/admins/notice-save", noticeDTO, function() {
         document.location.reload(true);
-    })
+    });
 }
 
 $('.search').on('click', () => {

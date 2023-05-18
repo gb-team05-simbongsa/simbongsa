@@ -9,6 +9,7 @@ import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.inquiry.InquiryRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminNoticeSearch;
+import com.app.simbongsa.type.InquiryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,5 +74,15 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public void deleteByInquiryId(Long id) {
         inquiryRepository.deleteByInquiryId(id);
+    }
+
+    @Override
+    public void updateStatusById(Long id) {
+        inquiryRepository.updateInquiryStatus(id);
+    }
+
+    @Override
+    public List<Long> countStatusWaitAndComplete() {
+        return Arrays.asList(inquiryRepository.findInquiryStatusCount(InquiryType.답변대기), inquiryRepository.findInquiryStatusCount(InquiryType.답변완료));
     }
 }
