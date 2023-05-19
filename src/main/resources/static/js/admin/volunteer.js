@@ -36,6 +36,113 @@ $('#confirm-delete').on('click', function() {
 
 $('.content__detail__btn').on('click', function() {
 
+    var i = $detailButton.index($(this));
+
+    /* 해당 컨텐츠 번호 */
+    var contentId = $detailButton.eq(i).parent().siblings('.content__id').text();
+
+    adminService.getDetail("/admins/volunteer-work-details", contentId, function(result) {
+        let text;
+
+        text = `
+            <section class="modal">
+                <div class="modal__header">
+                    <h3 class="modal__title">봉사 상세보기</h3>
+                    <a class="modal-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" data-name="Capa 1" id="Capa_1" viewBox="0 0 20 19.84">
+                            <path d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"/>
+                        </svg>
+                    </a>
+                </div>
+                <form class="storage_form" name="registForm">
+                    <main class="modal__main">
+                        <div class="modal__profile__top">
+                            <h4>봉사 정보</h4>
+                            <div class="user__profile">
+                                <h5>게시글 제목</h5>
+                                <div class="user__profile__input">
+                                    <input type="text" name="volunteerWorkTitle" value="${result.volunteerWorkTitle}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>봉사기간</h5>
+                                <div class="user__profile__input_volunteer_modal">
+                                    <input type="datetime-local" name="volunteerWorkStartDate" value="${result.volunteerWorkStartDate}" readonly/>
+                                    <input type="datetime-local" name="volunteerWorkEndDate" value="${result.volunteerWorkEndDate}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>봉시시간</h5>
+                                <div class="user__profile__input">
+                                    <input type="text" name="volunteerWorkTime" value="${result.volunteerWorkTime}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>모집기간</h5>
+                                <div class="user__profile__input">
+                                    <input type="date" name="volunteerWorkJoinStartDate" value="${result.volunteerWorkJoinStartDate}" readonly/>
+                                    <input type="date" name="volunteerWorkJoinEndDate" value="${result.volunteerWorkJoinEndDate}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>모집인원</h5>
+                                <div class="user__profile__input">
+                                    <input type="text" name="volunteerWorkRecruitNumber" value="${result.volunteerWorkRecruitNumber}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>봉사분야</h5>
+                                <div class="user__profile__input">
+                                    <input type="text" name="volunteerWorkCategory" value="${result.volunteerWorkCategory}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>봉사장소</h5>
+                                <div class="user__profile__input">
+                                    <input type="text" name="volunteerWorkPlace" value="${result.volunteerWorkPlace}" readonly/>
+                                </div>
+                            </div>
+                            <div class="user__profile">
+                                <h5>등록기관</h5>
+                                <div class="user__profile__input">
+                                    <input type="text" name="volunteerWorkRegisterAgency" value="${result.volunteerWorkRegisterAgency}" readonly/>
+                                </div>
+                            </div>
+                            <h4 style="margin-top: 20px;">이미지</h4>
+                            <!-- 이미지 파일 -->
+                            <div class="content__img__wrap">
+                                <!-- 임시로 name='file' 해둠 -->
+                                <label>
+                                    <div class="content__img">
+                                        <img src="/file/display?fileName=${result.fileDTO.filePath}"/>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="modal__profile__bottom">
+                                <h4>게시물 내용</h4>
+                                <textarea cols="20" rows="10" name="volunteerWorkContent" readonly>${result.volunteerWorkContent}</textarea>
+                            </div>
+                            <div class="user__profile__button" style="margin-top: 20px;">
+                                <button id="submitBtn" class="button__type_2 button__color__green" type="button">
+                                    닫기
+                                </button>
+                            </div>
+                        </div>
+                    </main>
+                </form>
+            </section>
+        `;
+
+        $('.modal-stage').html(text);
+    });
+
+
+    $('.modal-stage').show();
+    $('.volunteer-modal').fadeOut(500);
+
+    $('.modal-close').on('click', function () {
+        $('.modal-stage').fadeOut(500);
+    });
 });
 
 $('.search').on('click', () => {
