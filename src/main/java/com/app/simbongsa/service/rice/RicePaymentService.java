@@ -4,9 +4,11 @@ import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.RicePaymentDTO;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.rice.RicePayment;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.type.RicePaymentType;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -33,6 +35,9 @@ public interface RicePaymentService {
 
 //    금일 결제 수, 결제 총 금액 조회
     public List<Long> getPaymentPriceAndPaymentCount();
+
+    /* 내 공양미 조회(페이징) */
+    public Page<RicePaymentDTO> getMyRicePayment(Integer page, @AuthenticationPrincipal UserDetail userDetail);
 
     default RicePaymentDTO toRicePaymentDTO(RicePayment ricePayment) {
         return RicePaymentDTO.builder()

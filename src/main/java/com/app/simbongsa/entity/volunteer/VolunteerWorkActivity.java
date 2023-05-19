@@ -31,4 +31,14 @@ public class VolunteerWorkActivity {
         this.member = member;
         this.volunteerWork = volunteerWork;
     }
+
+    @Builder
+    public VolunteerWorkActivity(Long id, LocalDate volunteerWorkActivityDate, Member member, VolunteerWork volunteerWork) {
+        this.id = id;
+        this.volunteerWorkActivityDate = volunteerWorkActivityDate;
+        this.member = member;
+        this.volunteerWork = volunteerWork;
+    }
+
+
 }

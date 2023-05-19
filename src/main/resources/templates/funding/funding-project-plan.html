@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="storyWrapper">
+                    <form class="storyWrapper">
                         <div class="guidewrapper">
                             <div class="guideInfo">
                                 <div class="guideTitle">
@@ -70,6 +70,8 @@
                                 <p><em>· 본문 텍스트와 이미지는 되도록 분리해서 작성해주세요. 통 이미지 사용은 불가합니다.</em></p>
                             </div>
                         </div>
+
+                <form th:action="@{/funding/funding-project-plan}" method="post" enctype="multipart/form-data">
                         <div class="editoerWrapper">
                             <div name="purpose" class="planSelection">
                                 <div>
@@ -86,17 +88,18 @@
                                     <div open="" class="toggleContent">
                                         <p style="height: 40px;" class="editorDescription ">무엇을 만들기 위한 프로젝트인지 분명히 알려주세요.</p>
                                         <div class="editorPreview">
-                                            <textarea id="projectIntroduction" name="editordata">
-                                                막연하다면 아래의 질문에 대한 답이 내용에 포함되도록 작성해보세요.<br><br>
+                                            <textarea id="projectIntroduction" name="fundingIntroduce"
+                                               placeholder=" 막연하다면 아래의 질문에 대한 답이 내용에 포함되도록 작성해보세요.<br><br>
                                                 Q. 무엇을 만들기 위한 프로젝트인가요?<br>
                                                 Q. 프로젝트를 간단히 소개한다면?<br>
                                                 Q. 이 프로젝트가 왜 의미있나요?<br>
-                                                Q. 이 프로젝트를 시작하게 된 배경이 무엇인가요?<br>
+                                                Q. 이 프로젝트를 시작하게 된 배경이 무엇인가요?<br>">
                                             </textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div name="budget" class="planSelection">
                                 <div><button open="" class="accorationTitle">프로젝트 예산<i>
                                             <div name="arrow2-down" class="icon-svg">
@@ -111,8 +114,8 @@
                                     <div open="" class="toggleContent">
                                         <div class="editorPreview">
                                             <p style="height: 40px;" class="editorDescription ">무엇을 만들기 위한 프로젝트인지 분명히 알려주세요.</p>
-                                            <textarea id="projectBudget" name="editordata">
-                                                설정하신 목표 금액을 어디에 사용 예정이신지 구체적인 지출 항목으로 적어 주세요.<br>
+                                            <textarea id="projectBudget" name="fundingBudgetExplain"
+                                               placeholder=" 설정하신 목표 금액을 어디에 사용 예정이신지 구체적인 지출 항목으로 적어 주세요.<br>
                                                 <br>
                                                     예산은 ‘제작비’가 아닌 구체적인 ‘항목’으로 적어 주세요.<br>
                                                     이번 프로젝트의 실행에 필요한 비용으로만 작성해 주세요.<br>
@@ -126,8 +129,7 @@
                                                     배송비
                                                     발주비
                                                     디자인 의뢰비
-                                                    수수료>
-                                                </ul>
+                                                    수수료">
                                             </textarea>
                                         </div>
                                     </div>
@@ -145,8 +147,8 @@
                                     <div open="" class="toggleContent">
                                         <div class="editorPreview">
                                             <p style="height: 70px;" class="editorDescription ">작업 일정을 구체적인 날짜와 함께 작성하세요. 후원자가 일정을 보면서 어떤 작업이 진행될지 알 수 있어야 합니다. 펀딩 종료 이후의 제작 일정을 반드시 포함하세요.</p>
-                                            <textarea id="projectSchedule" name="editordata">
-
+                                            <textarea id="projectSchedule" name="fundingScheduleExplain"
+                                                placeholder="
                                                 아래의 양식을 참고하여 작성해보세요.<br>
                                                 ( 예시 )<br>
                                                 
@@ -158,8 +160,7 @@
                                                 0월 0일: 제품 디테일 보완<br>
                                                 0월 0일: 제품 발주 시작<br>
                                                 0월 0일: 후가공 처리 및 포장 작업<br>
-                                                0월 0일: 선물 예상 전달일<br>
-                                                </ul>
+                                                0월 0일: 선물 예상 전달일<br>">
                                             </textarea>
                                         </div>
                                     </div>
@@ -182,12 +183,20 @@
                                     <div open="" class="toggleContent">
                                         <div class="editorPreview">
                                             <p style="height: 70px;" class="editorDescription">후원자가 후원 금액별로 받을 수 있는 선물을 상세하게 알려주세요. 표로 정리하거나 예시 이미지를 포함하는 것도 방법입니다.</p>
-                                            <textarea id="projectGift" name="editordata">작성된 내용이 없습니다.</textarea>
+                                            <textarea id="projectGift" name="fundingGiftExplain">작성된 내용이 없습니다.</textarea>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!--등록버튼-->
+                                <div class="buttonWrap">
+                                    <button  class="solidButton pdc-btn-l"  color="mainEditorP80">
+                                        <span>등록</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -196,12 +205,11 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
+<!--<script>
     $(document).ready(function() {
         $("#_header").load("/templates/funding/funding-plan-header.html");
         $("#_topContent").load("/templates/funding/funding-topContent.html");
     });
-</script>
-<!-- 웹에디터 API -->
+</script>-->
 
 </html>

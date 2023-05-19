@@ -18,6 +18,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -101,6 +102,12 @@ public class FundingServiceImpl implements FundingService {
         return Arrays.asList(fundingRepository.findCountAcceptOrWait(RequestType.승인),
                 fundingRepository.findCountAcceptOrWait(RequestType.대기),
                 fundingRepository.findCountAcceptOrWait(RequestType.반려));
+    }
+
+    @Override
+    @Transactional
+    public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
+        fundingRepository.updateFunding_QueryDsl(fundingId, fundingTargetPrice, fundingStartDate, fundingEndDate);
     }
 }
 
