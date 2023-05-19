@@ -65,7 +65,7 @@
             <div id="_topContent"></div>
             
             <div class="contents" size="228">
-                <form class="plan-content" th:action="@{/funding/funding-initial-info}" method="post" enctype="multipart/form-data" name="initialForm">
+                <form class="plan-content" th:action="@{/funding/funding-initial-info}" method="post" name="initialForm" enctype="multipart/form-data">
                     <div class="project-itemWrap">
                         <dl class="project-info">
                             <dt class="project-infoTitle">프로젝트 카테고리
@@ -456,7 +456,7 @@
                                         <p>파일 형식: jpg 또는 png / 사이즈: 가로 1,240px, 세로 930px 이상)</p>
                                         <strong>※ 이미지를 등록하면 즉시 반영됩니다.</strong>
                                     </div>
-                                    <input type="file" id="imageFile" accept=".jpg, .jpeg, .png" multiple="">
+                                    <input type="file" id="imageFile"  accept=".jpg, .jpeg, .png" multiple>
                                 </div>
                                         <li class="ImgStyleList firstTest imgList">
                                             <!--썸네일 이미지-->
@@ -478,19 +478,9 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script th:inline="javascript">
     const fundingDTO = [[${fundingDTO}]];
-
-   /* let fileDTOS = fundingDTO.fileDTOs;*/
-
     globalThis.uuids;
-
-    let fileDTOS = null;
-    if(fundingDTO == null || fundingDTO == undefined){
-    }else {
-        fileDTOS = fundingDTO.fileDTOs;
-    }
     //===========================================
     FileList.prototype.forEach = Array.prototype.forEach;
 
@@ -498,20 +488,12 @@
     const alertMsg = ['사진은 최소 4개이상 넣어 주세요.', '제목을 입력해주세요.', '내용을 입력해주세요.'];
 
     let $li = $(".imgList");
-    let files = [];
-    if(fileDTOS != null && fileDTOS != undefined){
-        files.push(fileDTOS[0]);
-          /*  files.push(file);*/
-
-    }
+    let $file = null;
 
     $("input[type=file]").on("change", function () {
-        const $file = $("input[type=file]")[0].files[0];
+        $file = $("input[type=file]")[0].files[0];
         let formData = new FormData();
-
-
         formData.append("file", $file);
-
 
         $.ajax({
             url: "/file/upload",
@@ -521,14 +503,9 @@
             processData: false,
             success: function (uuids) {
                 globalThis.uuids = uuids;
-                console.log(uuids);
-
-                if (file.type.startsWith("image")) {
+                if ($file.type.startsWith("image")) {
                     let text = `
-
-                             <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}" class="inserted_img">
-
-
+                             <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids}_${$file.name}" class="inserted_img">
                 `;
                     $li.html(text);
                 }
@@ -545,46 +522,33 @@
             let fileArray = Array.from(files);
             let ul = target.parent();
             let i = ul.find("li").index(target);
-            files = [];
-
-            fileArray.splice(i, 1);
-            fileArray.forEach(file => {
-                if(file.filelName == null && file.fileName == undefined){
-                    dataTransfer.items.add(file);
-                }else {
-                    files.push(file);
-                }
-            })
 
             target.remove();
-            dataTransfer.files.forEach((file, i) =>{
-                files.push(file);
-            });
 
-            console.log(files);
+            console.log($file);
         });
 
         $(".save-button").click(() => {
-            const $files = $("input[type=file]")[0].files;
+
+            console.log($file);
+            console.log("test!!!!!!!!!!!!!!!!!!!!!!1");
+
+            console.log(globalThis.uuids[0]);
             let text = "";
 
-            let fundingCategory = $("input[name='fundingCategory']").val();
-            let fundingShortTitle = $("input[name='fundingShortTitle']").val();
-            let fundingTitle = $("input[name='fundingTitle']").val();
-
-            FileList.prototype.forEach = Array.prototype.forEach;
-            files.forEach((file, i) => {
-                text +=
-                    `
-                <input type="hidden" name="fileDTOS[${i}].fileName" value="${file.name}">
-                <input type="hidden" name="fileDTOS[${i}].fileUuid" value="${globalThis.uuids[i]}">
-                <input type="hidden" name="fileDTOS[${i}].filePath" value="${toStringByFormatting(new Date())}">
+                text +=`
+                <input type="hidden" name="fileDTOs[0].fileName" value="${$file.name}">
+                <input type="hidden" name="fileDTOs[0].fileUuid" value="${globalThis.uuids[0]}">
+                <input type="hidden" name="fileDTOs[0].filePath" value="${toStringByFormatting(new Date())}">
 
                 `;
-            });
+                console.log($file);
+                console.log($file.name);
+                console.log(globalThis.uuids[0]);
+                console.log(toStringByFormatting(new Date()));
 
-            $("form[name=initialForm]").append(text);
-            $("form[name=initialForm]").submit();
+            $("form[name=initialForm]").html(text);
+           //  $("form[name=initialForm]").submit();
         })
         /*****************************************************/
 
