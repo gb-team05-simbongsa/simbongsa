@@ -11,7 +11,6 @@ import com.app.simbongsa.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/inquiry/*")
@@ -72,7 +69,7 @@ public class InquiryController {
 
     @PostMapping("inquiry-write")
     public String inquiryWrite(InquiryDTO inquiryDTO, @AuthenticationPrincipal UserDetail userDetail){
-        inquiryDTO.setMemberDTO(memberService.getMemberById(userDetail.getId()));
+        inquiryDTO.setMemberDTO(memberService.getMemberById(userDetail.getMember().getId()));
         inquiryService.saveInquiry(inquiryDTO);
         return "mypage/my-question";
     }

@@ -1,8 +1,7 @@
 package com.app.simbongsa.repository.support;
 
+
 import com.app.simbongsa.domain.SupportRequestDTO;
-import com.app.simbongsa.entity.support.QSupport;
-import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -31,14 +30,14 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Page<SupportRequest> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(userDetail.getId()))
+                .where(supportRequest.member.id.eq(userDetail.getMember().getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(userDetail.getId()))
+                .where(supportRequest.member.id.eq(userDetail.getMember().getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest,pageable,count);
@@ -177,35 +176,36 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     @Override
     public Page<SupportRequestDTO> findAllTest(Pageable pageable) {
 
-        List<Tuple> foundSupportRequest = query
-                .select(supportRequest, support.supportPrice.sum().as("totalSupportPrice"))
-                .from(supportRequest)
-                .leftJoin(supportRequest.supports, support)
-                .groupBy(supportRequest)
-                .orderBy(support.supportPrice.sum().desc()) // supportPrice 합계가 많은 순으로 정렬
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-
-        Long count = query
-                .select(supportRequest.count())
-                .from(supportRequest)
-                .fetchOne();
-
-        List<SupportRequestDTO> mappedSupportRequests = foundSupportRequest.stream()
-                .map(tuple -> {
-                    SupportRequest supportRequestEntity = tuple.get(supportRequest);
-                    int totalSupportPrice = tuple.get("totalSupportPrice", Long.class).intValue();
-
-                    SupportRequestDTO dto = SupportRequestDTO.builder()
-                            .supportRequestContent(supportRequestEntity.getSupportRequestContent())
-                            .supportRequestTitle(supportRequestEntity.getSupportRequestTitle())
-                            .supportRequestStatus(supportRequestEntity.getSupportRequestStatus())
-                    return dto;
-                })
-                .collect(Collectors.toList());
-
-        return new PageImpl<>(mappedSupportRequests, pageable, count);
+//        List<Tuple> foundSupportRequest = query
+//                .select(supportRequest, support.supportPrice.sum().as("totalSupportPrice"))
+//                .from(supportRequest)
+//                .leftJoin(supportRequest.supports, support)
+//                .groupBy(supportRequest)
+//                .orderBy(support.supportPrice.sum().desc()) // supportPrice 합계가 많은 순으로 정렬
+//                .offset(pageable.getOffset())
+//                .limit(pageable.getPageSize())
+//                .fetch();
+//
+//        Long count = query
+//                .select(supportRequest.count())
+//                .from(supportRequest)
+//                .fetchOne();
+//
+//        List<SupportRequestDTO> mappedSupportRequests = foundSupportRequest.stream()
+//                .map(tuple -> {
+//                    SupportRequest supportRequestEntity = tuple.get(supportRequest);
+//                    int totalSupportPrice = tuple.get("totalSupportPrice", Long.class).intValue();
+//
+//                    SupportRequestDTO dto = SupportRequestDTO.builder()
+//                            .supportRequestContent(supportRequestEntity.getSupportRequestContent())
+//                            .supportRequestTitle(supportRequestEntity.getSupportRequestTitle())
+//                            .supportRequestStatus(supportRequestEntity.getSupportRequestStatus())
+//                    return dto;
+//                })
+//                .collect(Collectors.toList());
+//
+//        return new PageImpl<>(mappedSupportRequests, pageable, count);
+        return null;
     }
 
 

@@ -70,11 +70,11 @@ function list(page) {
                                                     <input class="inputHidden" type="hidden" value="">
                                                     <span class="funding-amount"><em>${fundingDTO.fundingCurrentPrice}</em>원</span>
                                                 </div>
-                                                <span class="rest-day">20일 남음</span>
+<!--                                                <span class="rest-day">20일 남음</span>-->
                                             </div>
                                                 <div class="percentByRed">
                                                  ${fundingDTO.fundingPercent}
-                                                    <div class="percentBar">${fundingDTO.fundingPercent}%</div>
+                                                    <div class="percentBar">${fundingDTO.fundingPercent}</div>
                                                 </div>
                                         </div>
                                     </div>

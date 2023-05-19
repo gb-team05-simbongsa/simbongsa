@@ -101,7 +101,7 @@ const adminService = (function() {
 
     function saveVolunteerWork(volunteerWorkDTO, callback) {
         $.ajax({
-            url: "/admins/volunteer-work-regist",
+            url: "/admins/volunteer-works-register",
             type: 'post',
             data: JSON.stringify(volunteerWorkDTO),
             contentType: "application/json; charset=utf-8",

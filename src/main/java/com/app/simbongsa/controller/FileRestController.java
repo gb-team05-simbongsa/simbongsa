@@ -8,10 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.*;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.UUID;
 
 
 @RestController
@@ -20,16 +18,21 @@ import java.util.UUID;
 public class FileRestController {
     //    파일 업로드
     @PostMapping("upload")
-    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
+    public Map<String, Object> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
+        Map<String, Object> map = new HashMap<>();
+
         List<String> uuids = new ArrayList<>();
-        String path = "C:/upload/" + getPath();
+        List<String> filePaths = new ArrayList<>();
+        String path = "/C:/upload/" + getPath();
+        String filePath = "";
         File file = new File(path);
         if(!file.exists()) {file.mkdirs();}
 
 
         for(int i=0; i<multipartFiles.size(); i++){
             uuids.add(UUID.randomUUID().toString());
-            multipartFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
+            filePath = uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename();
+            multipartFiles.get(i).transferTo(new File(path, filePath));
 
             InputStream inputStream = new FileInputStream("C:\\upload\\" + getPath() + "\\" + uuids.get(i)+ "_" + multipartFiles.get(i).getOriginalFilename());
 
@@ -38,8 +41,14 @@ public class FileRestController {
                 Thumbnailator.createThumbnail(inputStream, out, 400, 400);
                 out.close();
             }
+
+            filePaths.add(getPath() + "/" + filePath);
         }
-        return uuids;
+
+        map.put("uuids", uuids);
+        map.put("paths", filePaths);
+
+        return map;
     }
 
     //    파일 불러오기

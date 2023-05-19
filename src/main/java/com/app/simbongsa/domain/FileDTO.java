@@ -7,9 +7,12 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Data
-//@Component
+@Component
+@NoArgsConstructor
 public class FileDTO {
     private FreeBoardDTO freeBoardDTO;
     private ReviewDTO reviewDTO;
