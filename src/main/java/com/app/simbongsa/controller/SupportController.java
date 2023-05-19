@@ -5,9 +5,7 @@ import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.domain.SupportDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
-import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
@@ -36,7 +34,9 @@ public class SupportController {
     @GetMapping("support-detail/{supportRequestId}")
     public String supportDetail(Integer page, Model model, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
 
-        Long memberId = userDetail.getId();
+        log.info("들어오나?");
+        page = page == null ? 0 : page -1;
+        Long memberId = userDetail.getMember().getId();
         log.info(memberId + "내 로그인한 아이디");
 
 //        후원 총 참여 수

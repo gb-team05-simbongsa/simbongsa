@@ -1,6 +1,5 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.repository.member.MemberRepository;

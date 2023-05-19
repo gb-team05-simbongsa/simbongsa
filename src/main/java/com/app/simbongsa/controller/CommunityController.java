@@ -65,6 +65,9 @@ public class CommunityController {
         Long memberId = userDetail.getId();
         freeBoardService.write(freeBoardDTO, memberId);
         return new RedirectView("/community/freeBoard/newList");
+/*        Long memberId = userDetail.getMember().getId();
+        freeBoardService.register(freeBoardDTO, memberId);
+        return new RedirectView("community/free-create");*/
     }
 
     /*자유게시판 수정하기*/
@@ -118,7 +121,7 @@ public class CommunityController {
     @PostMapping("review-create")
     public RedirectView reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, @AuthenticationPrincipal UserDetail userDetail){
 
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         reviewService.register(reviewDTO, memberId);
         return new RedirectView("community/review-create");
     }

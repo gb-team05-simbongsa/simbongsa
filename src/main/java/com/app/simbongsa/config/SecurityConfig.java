@@ -1,5 +1,6 @@
 package com.app.simbongsa.config;
 
+import com.app.simbongsa.service.member.MemberOAuthService;
 import com.app.simbongsa.type.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +52,7 @@ public class SecurityConfig {
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final AuthenticationFailureHandler authenticationFailureHandler;
     private final UserDetailsService userDetailsService;
+    private final MemberOAuthService memberOAuthService;
 
 //    비밀번호 암호화
     @Bean
@@ -63,10 +65,10 @@ public class SecurityConfig {
 //        WebSecurity에서 관여하지 않을 경로
         return web -> web.ignoring()
                 .mvcMatchers(IGNORE_FAVICON) //favicon은 필터에서 제외
-                .antMatchers(IGNORE_MAIN_PATH)
+                /*.antMatchers(IGNORE_MAIN_PATH)
                 .antMatchers(IGNORE_VOLUNTEER_WORK_PATH)
                 .antMatchers(IGNORE_CALENDAR_PATH)
-                .antMatchers(IGNORE_WELFARECENTER_PATH)
+                .antMatchers(IGNORE_WELFARECENTER_PATH)*/
                 /*일단 admin 편하게 들어갈 수 있게 한건데 나중에 수정하기*/
                 .antMatchers(ADMIN_PATH)
                 /*.antMatchers(IGNORE_MEMBER_PATH)*/
@@ -117,7 +119,11 @@ public class SecurityConfig {
                 .key(REMEMBER_ME_TOKEN_KEY)
                 .tokenValiditySeconds(REMEMBER_ME_TOKEN_EXPIRED)
                 .userDetailsService(userDetailsService)
-                .authenticationSuccessHandler(authenticationSuccessHandler);
+                .authenticationSuccessHandler(authenticationSuccessHandler)
+                .and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(memberOAuthService);
 
         return http.build();
     }

@@ -28,8 +28,7 @@
                         <br>
                         심봉사를 이용해보세요</p>
                     </div>
-                    <button class="kakao-login" onclick="javascript:location.href='https://kauth.kakao.com/oauth/authorize?client_id=7d1b8d2a934aea81ad94f34bb0bee10c&redirect_uri=\n'+
-'http://localhost:10000/member/kakao-login&response_type=code'">
+                    <button class="kakao-login" onclick="location.href='/oauth2/authorization/kakao'">
                         <div class="kakao-login-wrap">
                             <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13 3.25C6.99238 3.25 2.16663 6.99718 2.16663 11.5825C2.3636 14.7381 4.33329 17.4498 7.18935 18.6332L6.15526 22.3803C6.10602 22.4789 6.15526 22.6269 6.25375 22.6757C6.35223 22.7748 6.5492 22.7748 6.64769 22.6757L11.0303 19.7672C11.6704 19.8658 12.3106 19.9151 13 19.9151C18.9583 19.9151 23.8333 16.1679 23.8333 11.5825C23.8333 6.99718 19.0075 3.25 13 3.25" fill="black" fill-opacity="0.9"></path>
@@ -41,7 +40,7 @@
                         <div class="login-another-inner">
                             <span class="login-another-text">다른 방법으로 로그인</span>
                         </div>
-                        <button type="button" class="login-circle">
+                        <button onclick="location.href='/oauth2/authorization/naver'" type="button" class="login-circle">
                             <div class="naver-login-wrap">
                                 <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><g clip-path="url(#clip0_226_6574)"><path d="M17 31.875C8.81875 31.875 2.125 25.1812 2.125 17C2.125 8.81875 8.81875 2.125 17 2.125C25.1812 2.125 31.875 8.81875 31.875 17C31.875 25.1812 25.1812 31.875 17 31.875Z" fill="#03C75A"></path><path d="M18.9338 17.3825L14.9105 11.6167H11.5742V22.3834H15.0663V16.6175L19.0896 22.3834H22.4259V11.6167H18.9338V17.3825Z" fill="white"></path></g><defs><clipPath id="clip0_226_6574"><rect width="29.75" height="29.75" fill="white" transform="translate(2.125 2.125)"></rect></clipPath></defs></svg>
                             </div>
