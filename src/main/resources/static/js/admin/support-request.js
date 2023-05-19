@@ -27,51 +27,160 @@ supportRequests.forEach(supportRequest => {
                 <button class="content__detail__btn button__type_2 button__color__green">
                     상세보기
                 </button>
-                <button class="button__type_2 volunteer_button button__color__green">
-                    후원명단
-                </button>
-            </td>
-        </tr>
-    `;
+                `
+        if(`${supportRequest.totalSupportPrice}` != 0) {
+            text += `
+                        <button class="button__type_2 volunteer_button button__color__green">
+                            후원명단
+                        </button>`;
+        }
+
+        text += `
+                    </td>
+                </tr>
+            `;
 
     $('.table').append(text);
 });
+
+let goPage = 0;
+let contentId = 0;
 
 $('.volunteer_button').on('click', function() {
     $('.volunteer-modal').show();
     $('.modal-stage').fadeOut(500);
 
     /* 해당 컨텐츠 번호 */
-    var contentId = $(this).parent().parent().siblings('.content__id').text();
-    console.log(contentId);
+    contentId = $(this).parent().parent().find('.content__id').text();
 
-    adminService.getDetail("/admins/support-list", contentId, function(results) {
-        results.forEach(result => {
-            let text;
-
-            text = `
-                <div class="user__profile volunteer_profile">
-                    <h5>회원정보</h5>
-                    <div class="user__profile__input volunteer_input">
-                        <input type="text" name="id" readonly="true" value="${result.memberDTO.id}"/>
-                        <input type="text" name="memberName" value="${result.memberDTO.memberName}" readonly="true"/>
-                        <input type="text" name="memberEmail" value="${result.memberDTO.memberEmail}" readonly="true"/>
-                        <input type="text" name="supportPrice" value="${result.supportPrice}" readonly="true"/>
-                    </div>
-                </div>
-            `;
-
-            $('.modal__profile__top').append(text);
-        });
-    })
+    getList(contentId, goPage);
 
     $('.modal-close').on('click', function () {
         $('.volunteer-modal').fadeOut(500);
     });
 
 })
-//
+
+function getList(contentId, page) {
+    adminService.getDetailList("/admins/support-list", contentId, page,function(results) {
+        let supportRequestDTOS = results.content;
+
+        let text = ``;
+
+        supportRequestDTOS.forEach(supportRequest => {
+
+            text += `
+                <div class="user__profile">
+                    <h5></h5>
+                    <div class="user__profile__input volunteer_input">
+                        <input type="text" name="id" readonly="true" value="${supportRequest.memberDTO.id}"/>
+                        <input type="text" name="memberName" value="${supportRequest.memberDTO.memberName}" readonly="true"/>
+                        <input type="text" name="memberEmail" value="${supportRequest.memberDTO.memberEmail}" readonly="true"/>
+                        <input type="text" name="supportPrice" value="${supportRequest.supportPrice}" readonly="true"/>
+                    </div>
+                </div>
+            `;
+        });
+        $('.append-div').html(text);
+
+        //여기가 문제
+        const $pagination = $(".paging-modal");
+        $pagination.empty();
+
+        const maxDisplayedPages = 5; // 한 번에 표시할 페이지 수
+        console.log(goPage)
+        const total = results.totalElements;
+
+        let endPage = Math.ceil( ++goPage / 5.0) * maxDisplayedPages;
+        const startPage = endPage - 4; // 시작 페이지 번호
+
+        let listSize = total < 5 ? total : 5;
+        // if(total < 5) {
+        //     listSize = total;
+        // } else {
+        //     listSize = 5;
+        // }
+        // listSize = supportRequestDTOS.length;
+        const realEnd = Math.ceil(Math.ceil(total * 1.0) / listSize);
+
+        if(realEnd < endPage) {
+            endPage = realEnd;
+        }
+
+        if (startPage > 1) {
+            $pagination.prepend(`<a class="changePage-modal arrow-right" style="color: black"><code><</code></a>`);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            if (i === goPage) {
+                $pagination.append(`<code id="currentPage-modal">` + goPage +`</code>`);
+            } else {
+                $pagination.append(`<a class="changePage-modal count" style="color: black"><code>` + i + `</code></a>`);
+            }
+        }
+
+        if (endPage < realEnd) {
+            $pagination.append(`<a class="changePage-modal arrow-right" style="color: black"><code>></code></a>`);
+        }
+    });
+}
+
+$(".paging-modal").on("click", ".changePage-modal", function(e) {
+    e.preventDefault();
+    $('.append-div').empty();
+    $(".paging-modal").empty();
+    const targetPage = $(this).text();
+    console.log(targetPage)
+    console.log(this)
+
+    if (targetPage == '<') {
+        console.log($('.count').eq(0))
+        goPage = parseInt($('.count').eq(0).children().text()) - 1;
+        // goPage-- ;
+    } else if (targetPage == '>') {
+        console.log(this.previousElementSibling)
+        goPage = parseInt($('.count').eq(4).children().text()) + 1;
+        // goPage++;
+    } else {
+        console.log("여보게 저기 저게보여")
+        goPage = parseInt(targetPage) - 1;
+    }
+    console.log("여보 안경안보여")
+    // if ($(this).hasClass("arrow-left")) {
+    //     if (goPage > 0) {
+    //         goPage--;
+    //     }
+    // } else if ($(this).hasClass("arrow-right")) {
+    //     goPage++;
+    // } else {
+    //     goPage = parseInt(targetPage) - 1;
+    // }
+
+    console.log(goPage)
+    getList(contentId, goPage);
+});
+
 // $detailButton.on('click', () => {
+//     adminService.getDetailList("/admins/support-list", page, function(results) {
+//         results.forEach(result => {
+//             let text;
+//
+//             text = `
+//                 <div class="user__profile volunteer_profile">
+//                     <h5>회원정보</h5>
+//                     <div class="user__profile__input volunteer_input">
+//                         <input type="text" name="" value="회원번호" readonly="true"/>
+//                         <input type="text" name="" value="이름" readonly="true"/>
+//                         <input type="text" name="" value="전화번호" readonly="true"/>
+//                         <input type="text" name="" value="아이디" readonly="true"/>
+//                     </div>
+//                 </div>
+//             `;
+//
+//
+//         });
+//     });
+//
 //     $('.modal-stage').show();
 //     $('.volunteer-modal').fadeOut(500);
 //

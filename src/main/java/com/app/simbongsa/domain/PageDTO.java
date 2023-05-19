@@ -29,7 +29,6 @@ public class PageDTO {
         int listSize = list.getSize();
 
         if(total < 5) {
-            log.info("???");
             listSize = total;
         }
         int realEnd = (int) Math.ceil(Math.ceil(total * 1.0) / listSize);

@@ -231,6 +231,7 @@ public class AdminController {
 
         Page<SupportRequestDTO> supportRequestDTOS = supportRequestService.getSupportRequest(page, adminSupportRequestSearch);
 
+        log.info(supportRequestDTOS.getContent().toString());
         List<Long> counts = supportRequestService.countStatusWaitAccessDenied();
 
         model.addAttribute("supportRequestDTOS", supportRequestDTOS.getContent());

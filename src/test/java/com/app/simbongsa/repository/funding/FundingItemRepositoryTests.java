@@ -22,8 +22,11 @@ public class FundingItemRepositoryTests {
 
     @Autowired
     FundingGiftItemRepository fundingGiftItemRepository;
+
+
 //    @Test
 //    public void saveTest() {
+
 //        for(int i=1; i<=25; i++) {
 //            FundingItem fundingItem = new FundingItem(
 //                    "펀딩아이템" + i
@@ -33,6 +36,7 @@ public class FundingItemRepositoryTests {
 //        }
 //
 //    }
+
 
 
     @Test

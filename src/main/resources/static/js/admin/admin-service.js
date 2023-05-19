@@ -86,11 +86,24 @@ const adminService = (function() {
         });
     }
 
+    function getDetailList(url, contentId, page, callback) {
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: { id : contentId, page : page }, // 수정: page를 객체 형태로 전달
+            success: function(result) {
+                if (callback) {
+                    callback(result);
+                }
+            }
+        });
+    }
+
     function dateFormat(date) {
         var date = new Date(date);
         return date.toLocaleString();
     }
 
     return { saveNotice : saveNotice, getDetail : getDetail, deleteOrUpdate : deleteOrUpdate, updateStatus : updateStatus,
-        answerRegistration : answerRegistration, volunteerFile : volunteerFile, dateFormat : dateFormat };
+        answerRegistration : answerRegistration, volunteerFile : volunteerFile, getDetailList : getDetailList, dateFormat : dateFormat };
 })();

@@ -32,10 +32,10 @@ public class SupportServiceImpl implements SupportService {
 //        return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
 //    }
     @Override
-    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Pageable pageable, Long id) {
-        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(pageable,id);
-        List<SupportDTO> supportDTOS = getAttendMember.get().map(this::toSupportDTO).collect(Collectors.toList());
-        return new PageImpl<>(supportDTOS, pageable, getAttendMember.getTotalElements());
+    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id) {
+        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5), id);
+        List<SupportDTO> supportDTOS = getAttendMember.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
+        return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
     }
 
     @Override
@@ -44,10 +44,10 @@ public class SupportServiceImpl implements SupportService {
         return supportRepository.findAllSupportAttend_QueryDSL(id);
     }
 
-    @Override
-    public List<SupportDTO> getSupportList(Long id) {
-        return supportRepository.findByIdList(id).stream().map(this::toSupportDTO).collect(Collectors.toList());
-    }
+//    @Override
+//    public List<SupportDTO> getSupportListWithPaging(Long id) {
+//        return supportRepository.findAllSupportAttend_QueryDSL(id).stream().map(this::toSupportDTO).collect(Collectors.toList());
+//    }
 
 
 }

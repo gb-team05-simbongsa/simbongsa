@@ -48,19 +48,19 @@ public class SupportController {
         log.info(memberDTO.getMemberRice() + " ================");
 
 //        후원된 공양미
-        int totalPrice = supportDetail.getSupports()
-                .stream()
-                .mapToInt(Support::getSupportPrice)
-                .sum();
-        int originalPrice = totalPrice * 100;
+//        int totalPrice = supportDetail.getSupports()
+//                .stream()
+//                .mapToInt(Support::getSupportPrice)
+//                .sum();
+//        int originalPrice = totalPrice * 100;
 
         model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("attendCount", attendCount);
 //        model.addAttribute("attendList", attendList.getContent());
 //        model.addAttribute("pageDTO", new PageDTO(attendList));
         model.addAttribute("supportDetail", supportDetail);
-        model.addAttribute("totalPrice", totalPrice);
-        model.addAttribute("originalPrice", originalPrice);
+//        model.addAttribute("totalPrice", totalPrice);
+//        model.addAttribute("originalPrice", originalPrice);
 //        등록된 날짜.
         model.addAttribute("createDate", supportDetail.getCreatedDate().toString().substring(0,10));
         return "support/support-detail";

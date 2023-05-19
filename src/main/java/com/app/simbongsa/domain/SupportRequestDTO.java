@@ -2,6 +2,7 @@ package com.app.simbongsa.domain;
 
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.support.Support;
+import com.app.simbongsa.summernote.SupportRequestFileDTO;
 import com.app.simbongsa.type.RequestType;
 import lombok.Builder;
 import lombok.Data;
@@ -19,12 +20,12 @@ public class SupportRequestDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
     private MemberDTO memberDTO;
-    private List<Support> supports;
-    private List<SupportRequestFile> supportRequestFiles;
+    private List<SupportDTO> supportDTOS;
+    private List<FileDTO> fileDTOS;
     private int totalSupportPrice;
 
     @Builder
-    public SupportRequestDTO(Long id, String supportRequestTitle, String supportRequestContent, RequestType supportRequestStatus, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO, List<Support> supports, List<SupportRequestFile> supportRequestFiles) {
+    public SupportRequestDTO(Long id, String supportRequestTitle, String supportRequestContent, RequestType supportRequestStatus, LocalDateTime createdDate, LocalDateTime updatedDate, MemberDTO memberDTO, List<SupportDTO> supportDTOS, List<FileDTO> fileDTOS) {
         this.id = id;
         this.supportRequestTitle = supportRequestTitle;
         this.supportRequestContent = supportRequestContent;
@@ -32,14 +33,18 @@ public class SupportRequestDTO {
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.memberDTO = memberDTO;
-        this.supports = supports;
-        this.supportRequestFiles = supportRequestFiles;
+        this.supportDTOS = supportDTOS;
+        this.fileDTOS = fileDTOS;
         this.totalSupportPrice = calculateTotalSupportPrice();
     }
 
     private int calculateTotalSupportPrice() {
+        if (supportDTOS == null) {
+            return 0;
+        }
+
         int total = 0;
-        for (Support support : supports) {
+        for (SupportDTO support : supportDTOS) {
             total += support.getSupportPrice();
         }
         return total;
