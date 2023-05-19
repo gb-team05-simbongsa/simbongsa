@@ -30,4 +30,3 @@ cancelBtn.addEventListener('click', hideModal);
 modalBack.addEventListener('click', hideModal);
 
 /*====================================================================================================*/
-
