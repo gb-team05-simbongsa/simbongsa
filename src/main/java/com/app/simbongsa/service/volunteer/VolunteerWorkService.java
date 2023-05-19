@@ -45,13 +45,22 @@ public interface VolunteerWorkService {
                 .volunteerWorkCategory(volunteerWork.getVolunteerWorkCategory())
                 .id(volunteerWork.getId())
                 .volunteerWorkEndDate(volunteerWork.getVolunteerWorkEndDate())
-                .volunteerWorkFiles(volunteerWork.getVolunteerWorkFiles())
+                .fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()))
                 .volunteerWorkJoinEndDate(volunteerWork.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWork.getVolunteerWorkJoinStartDate())
                 .volunteerWorkRecruitNumber(volunteerWork.getVolunteerWorkRecruitNumber())
                 .volunteerWorkRegisterAgency(volunteerWork.getVolunteerWorkRegisterAgency())
                 .volunteerWorkStartDate(volunteerWork.getVolunteerWorkStartDate())
                 .volunteerWorkTime(volunteerWork.getVolunteerWorkTime())
+                .build();
+    }
+
+    default FileDTO toFileDTO(VolunteerWorkFile volunteerWorkFile) {
+        return FileDTO.builder()
+                .fileName(volunteerWorkFile.getFileName())
+                .filePath(volunteerWorkFile.getFilePath())
+                .fileUuid(volunteerWorkFile.getFileUuid())
+                .fileRepresentationalType(volunteerWorkFile.getFileRepresentationalType())
                 .build();
     }
 

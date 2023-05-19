@@ -1,6 +1,7 @@
 package com.app.simbongsa.service.volunteer;
 
 import com.app.simbongsa.domain.*;
+import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
@@ -42,6 +43,7 @@ public interface VolunteerWorkActivityService {
                 .memberStatus(member.getMemberStatus())
                 .build();
     }
+
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork){
         return VolunteerWorkDTO.builder()
                 .volunteerWorkTitle(volunteerWork.getVolunteerWorkTitle())
@@ -49,13 +51,22 @@ public interface VolunteerWorkActivityService {
                 .volunteerWorkCategory(volunteerWork.getVolunteerWorkCategory())
                 .id(volunteerWork.getId())
                 .volunteerWorkEndDate(volunteerWork.getVolunteerWorkEndDate())
-                .volunteerWorkFiles(volunteerWork.getVolunteerWorkFiles())
+                .fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()))
                 .volunteerWorkJoinEndDate(volunteerWork.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWork.getVolunteerWorkJoinStartDate())
                 .volunteerWorkRecruitNumber(volunteerWork.getVolunteerWorkRecruitNumber())
                 .volunteerWorkRegisterAgency(volunteerWork.getVolunteerWorkRegisterAgency())
                 .volunteerWorkStartDate(volunteerWork.getVolunteerWorkStartDate())
                 .volunteerWorkTime(volunteerWork.getVolunteerWorkTime())
+                .build();
+    }
+
+    default FileDTO toFileDTO(VolunteerWorkFile volunteerWorkFile) {
+        return FileDTO.builder()
+                .fileName(volunteerWorkFile.getFileName())
+                .filePath(volunteerWorkFile.getFilePath())
+                .fileUuid(volunteerWorkFile.getFileUuid())
+                .fileRepresentationalType(volunteerWorkFile.getFileRepresentationalType())
                 .build();
     }
 }
