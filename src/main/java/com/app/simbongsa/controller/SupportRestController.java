@@ -18,9 +18,8 @@ public class SupportRestController {
     @GetMapping("attend-list") //멤버 목록
     public Page<SupportDTO> getAttendList(@RequestParam(value = "page") int page, Long supportRequestId){
 
-        PageRequest pageRequest = PageRequest.of(page, 5);
         //        후원 참여 수 페이징 REST로 처리할 예정
-        Page<SupportDTO> attendList = supportService.getAllSupportAttendWithMember_QueryDSL(pageRequest, 380L);
+        Page<SupportDTO> attendList = supportService.getAllSupportAttendWithMember_QueryDSL(page, 380L);
         attendList.stream().map(SupportDTO::toString).forEach(log::info);
         log.info("들어오나?");
 //        page = page == null ? 0 : page -1;

@@ -42,24 +42,24 @@ public class FundingRepositoryTests {
     @Test
     public void saveTest() {
 
-        for (int i = 1; i <= 30; i++) {
-            FundingCreator fundingCreator = new FundingCreator("test" + i,"test Introduce" + i,"test","test");
-            Funding funding = new Funding(FundingCategoryType.만화, "큰제목"
-                    , "소제목"
-                    , "안녕하세요"
-                    , 10000 + 100 * i
-                    , 3000 + 100 * i
-                    , LocalDateTime.now()
-                    , LocalDateTime.now()
-                    , "어서오세요"
-                    ,"안녕하십니까"
-                    ,"하이하이"
-                    ,"헬로헬로"
-                    , RequestType.대기
-                    ,fundingCreator
-                    ,memberRepository.findById(1L).get());
-            fundingRepository.save(funding);
-        }
+//        for (int i = 1; i <= 30; i++) {
+//            FundingCreator fundingCreator = new FundingCreator("test" + i,"test Introduce" + i,"test","test");
+//            Funding funding = new Funding(FundingCategoryType.만화, "큰제목"
+//                    , "소제목"
+//                    , "안녕하세요"
+//                    , 10000 + 100 * i
+//                    , 3000 + 100 * i
+//                    , LocalDateTime.now()
+//                    , LocalDateTime.now()
+//                    , "어서오세요"
+//                    ,"안녕하십니까"
+//                    ,"하이하이"
+//                    ,"헬로헬로"
+//                    , RequestType.대기
+//                    ,fundingCreator
+//                    ,memberRepository.findById(1L).get());
+//            fundingRepository.save(funding);
+//        }
 
     }
 

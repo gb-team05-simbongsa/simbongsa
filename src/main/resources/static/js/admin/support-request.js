@@ -61,6 +61,10 @@ $('.volunteer_button').on('click', function() {
 
 })
 
+let total;
+let endPage;
+let startPage;
+
 function getList(contentId, page) {
     adminService.getDetailList("/admins/support-list", contentId, page,function(results) {
         let supportRequestDTOS = results.content;
@@ -88,11 +92,10 @@ function getList(contentId, page) {
         $pagination.empty();
 
         const maxDisplayedPages = 5; // 한 번에 표시할 페이지 수
-        console.log(goPage)
-        const total = results.totalElements;
+        total = results.totalElements;
 
-        let endPage = Math.ceil( ++goPage / 5.0) * maxDisplayedPages;
-        const startPage = endPage - 4; // 시작 페이지 번호
+        endPage = Math.ceil( ++goPage / 5.0) * maxDisplayedPages;
+        startPage = endPage - 4; // 시작 페이지 번호
 
         let listSize = total < 5 ? total : 5;
         // if(total < 5) {
@@ -130,22 +133,15 @@ $(".paging-modal").on("click", ".changePage-modal", function(e) {
     $('.append-div').empty();
     $(".paging-modal").empty();
     const targetPage = $(this).text();
-    console.log(targetPage)
-    console.log(this)
 
     if (targetPage == '<') {
-        console.log($('.count').eq(0))
-        goPage = parseInt($('.count').eq(0).children().text()) - 1;
-        // goPage-- ;
+        console.log(startPage)
+        goPage = startPage - 6;
     } else if (targetPage == '>') {
-        console.log(this.previousElementSibling)
-        goPage = parseInt($('.count').eq(4).children().text()) + 1;
-        // goPage++;
+        goPage = endPage;
     } else {
-        console.log("여보게 저기 저게보여")
         goPage = parseInt(targetPage) - 1;
     }
-    console.log("여보 안경안보여")
     // if ($(this).hasClass("arrow-left")) {
     //     if (goPage > 0) {
     //         goPage--;
@@ -156,7 +152,6 @@ $(".paging-modal").on("click", ".changePage-modal", function(e) {
     //     goPage = parseInt(targetPage) - 1;
     // }
 
-    console.log(goPage)
     getList(contentId, goPage);
 });
 
