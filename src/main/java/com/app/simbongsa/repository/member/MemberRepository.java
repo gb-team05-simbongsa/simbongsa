@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Member, Long>, MemberQueryDsl {
     //    아이디로 전체 정보 조회 (MemberDetailService)
     public Optional<Member> findByMemberEmail(String memberEmail);
+    public Member findMemberById(Long Id);
 }

@@ -3,6 +3,8 @@ package com.app.simbongsa.service.support;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.SupportRequestFile;
+import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;

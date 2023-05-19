@@ -1,9 +1,6 @@
 package com.app.simbongsa.service.board;
 
-import com.app.simbongsa.provider.UserDetail;
-import com.app.simbongsa.repository.board.FreeBoardRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
