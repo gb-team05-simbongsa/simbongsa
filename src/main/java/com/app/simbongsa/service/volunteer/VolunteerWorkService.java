@@ -38,20 +38,25 @@ public interface VolunteerWorkService {
     public void deleteVolunteerWorkByIds(List<Long> ids);
 
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork){
-        return VolunteerWorkDTO.builder()
+        VolunteerWorkDTO.VolunteerWorkDTOBuilder builder = VolunteerWorkDTO.builder()
+                .id(volunteerWork.getId())
                 .volunteerWorkTitle(volunteerWork.getVolunteerWorkTitle())
+                .volunteerWorkContent(volunteerWork.getVolunteerWorkContent())
                 .volunteerWorkPlace(volunteerWork.getVolunteerWorkPlace())
                 .volunteerWorkCategory(volunteerWork.getVolunteerWorkCategory())
-                .id(volunteerWork.getId())
                 .volunteerWorkEndDate(volunteerWork.getVolunteerWorkEndDate())
-//                .fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()))
                 .volunteerWorkJoinEndDate(volunteerWork.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWork.getVolunteerWorkJoinStartDate())
                 .volunteerWorkRecruitNumber(volunteerWork.getVolunteerWorkRecruitNumber())
                 .volunteerWorkRegisterAgency(volunteerWork.getVolunteerWorkRegisterAgency())
                 .volunteerWorkStartDate(volunteerWork.getVolunteerWorkStartDate())
-                .volunteerWorkTime(volunteerWork.getVolunteerWorkTime())
-                .build();
+                .volunteerWorkTime(volunteerWork.getVolunteerWorkTime());
+
+        if (volunteerWork.getVolunteerWorkFile() != null) {
+            builder.fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()));
+        }
+
+        return builder.build();
     }
 
     default FileDTO toFileDTO(VolunteerWorkFile volunteerWorkFile) {
@@ -92,6 +97,7 @@ public interface VolunteerWorkService {
                 .volunteerWorkStartDate(volunteerWorkDTO.getVolunteerWorkStartDate())
                 .volunteerWorkTime(volunteerWorkDTO.getVolunteerWorkTime())
                 .volunteerWorkTitle(volunteerWorkDTO.getVolunteerWorkTitle())
+                .volunteerWorkContent(volunteerWorkDTO.getVolunteerWorkContent())
                 .volunteerWorkRegisterAgency(volunteerWorkDTO.getVolunteerWorkRegisterAgency())
                 .build();
     }

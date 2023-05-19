@@ -211,6 +211,11 @@ public class AdminRestController {
         volunteerWorkService.deleteVolunteerWorkByIds(idList);
     }
 
+    @PostMapping("volunteer-work-details")
+    public VolunteerWorkDTO volunteerDetails(Long id) {
+        return volunteerWorkService.getVolunteerWorkDetail(id);
+    }
+
     @PostMapping("reviews-delete")
     public void reviewsDelete(Long[] ids) {
         List<Long> idList = new ArrayList<>();
