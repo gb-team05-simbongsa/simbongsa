@@ -63,10 +63,8 @@ public class Member {
         this.memberStatus = memberStatus;
     }
 
-    public Member update(String memberName, String memberEmail) {
-        this.memberName = memberName;
+    public Member update(String memberEmail) {
         this.memberEmail = memberEmail;
-
         return this;
     }
 }
