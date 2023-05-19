@@ -41,7 +41,9 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
         List<Support> foundSupports = query.select(support)
                 .from(support)
                 .join(support.member)
+                .fetchJoin()
                 .where(support.supportRequest.id.eq(id))
+                .orderBy(support.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchJoin()
@@ -49,6 +51,7 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
 
         Long count = query.select(support.count())
                 .from(support)
+                .where(support.supportRequest.id.eq(id))
                 .fetchOne();
         return new PageImpl<>(foundSupports, pageable, count);
     }
@@ -63,13 +66,13 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
         return allSupportAttend;
     }
 
-    @Override
-    public List<Support> findByIdList(Long id) {
-        return query.select(support)
-                .from(support)
-                .where(support.id.eq(id))
-                .fetch();
-    }
+//    @Override
+//    public List<Support> findByIdList(Long id) {
+//        query.select(support)
+//                .from(support)
+//                .where(support.id.eq(id))
+//                .fetch();
+//    }
 
 
 }

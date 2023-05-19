@@ -123,7 +123,7 @@ public class FundingRepositoryTests {
     //    펀딩 대기를 승인으로 변경
     @Test
     public void updateWaitToAcceptByIdsTest() {
-        fundingRepository.updateWaitToAcceptByIds(Arrays.asList(143L, 144L, 145L));
+//        fundingRepository.updateWaitToAcceptByIds(Arrays.asList(143L, 144L, 145L));
     }
 
     //    펀딩 수정

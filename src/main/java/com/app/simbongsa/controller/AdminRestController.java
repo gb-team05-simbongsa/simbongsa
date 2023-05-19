@@ -133,6 +133,11 @@ public class AdminRestController {
         fundingService.updateFundingStatus(idList, requestType);
     }
 
+    @PostMapping("payments-details")
+    public RicePaymentDTO paymentDetail(Long id) {
+        return ricePaymentService.getRicePaymentDetail(id);
+    }
+
     @PostMapping("payments-delete")
     public void paymentsDelete(Long[] ids) {
         List<Long> idList = new ArrayList<>();
@@ -167,8 +172,8 @@ public class AdminRestController {
     }
 
     @PostMapping("support-list")
-    public List<SupportDTO> supportList(Long id) {
-        return supportService.getSupportList(id);
+    public Page<SupportDTO> supportList(Long id, Integer page) {
+        return supportService.getAllSupportAttendWithMember_QueryDSL(page, id);
     }
 
     @PostMapping("update-requests-status")

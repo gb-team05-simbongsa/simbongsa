@@ -1,14 +1,17 @@
 package com.app.simbongsa.service.support;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface SupportService {
@@ -16,7 +19,7 @@ public interface SupportService {
     public Long getAllSupportAttend_QueryDSL(Long id);
 
 //    후원명단 조회
-    public List<SupportDTO> getSupportList(Long id);
+//    public List<SupportDTO> getSupportListWithPaging(Long id);
 
 
     default SupportDTO toSupportDTO(Support support){
@@ -45,6 +48,7 @@ public interface SupportService {
                 .memberStatus(member.getMemberStatus())
                 .build();
     }
+
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {
         return SupportRequestDTO.builder()
                 .id(supportRequest.getId())
@@ -54,8 +58,40 @@ public interface SupportService {
                 .createdDate(supportRequest.getCreatedDate())
                 .updatedDate(supportRequest.getUpdatedDate())
                 .memberDTO(toMemberDTO(supportRequest.getMember()))
-                .supports(supportRequest.getSupports())
-                .supportRequestFiles(supportRequest.getSupportRequestFiles())
+                .supportDTOS(toSupportDTO(supportRequest.getSupports()))
+                .fileDTOS(toFileDTO(supportRequest.getSupportRequestFiles()))
                 .build();
+    }
+
+    default List<SupportDTO> toSupportDTO(List<Support> supports){
+        List<SupportDTO> supportDTOList = new ArrayList<>();
+        supports.forEach(
+                support -> {
+                    SupportDTO supportDTO = SupportDTO.builder()
+                            .id(support.getId())
+                            .memberDTO(toMemberDTO(support.getMember()))
+                            .supportPrice(support.getSupportPrice())
+                            .build();
+                    supportDTOList.add(supportDTO);
+                }
+        );
+        return supportDTOList;
+    }
+
+    default List<FileDTO> toFileDTO(List<SupportRequestFile> supportRequestFiles){
+        List<FileDTO> supportRequestFileDTOList = new ArrayList<>();
+        supportRequestFiles.forEach(
+                supportRequestFile -> {
+                    FileDTO fileDTO = FileDTO.builder()
+                            .id(supportRequestFile.getId())
+                            .fileName(supportRequestFile.getFileName())
+                            .filePath(supportRequestFile.getFilePath())
+                            .fileUuid(supportRequestFile.getFileUuid())
+                            .fileRepresentationalType(supportRequestFile.getFileRepresentationalType())
+                            .build();
+                    supportRequestFileDTOList.add(fileDTO);
+                }
+        );
+        return supportRequestFileDTOList;
     }
 }

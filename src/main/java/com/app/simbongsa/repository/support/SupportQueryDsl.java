@@ -19,7 +19,7 @@ public interface SupportQueryDsl {
     public Long findAllSupportAttend_QueryDSL(Long id);
 
 //    후원명단 가져오기
-    public List<Support> findByIdList(Long id);
+//    public Page<Support> findByIdList(Long id);
 
 
 }

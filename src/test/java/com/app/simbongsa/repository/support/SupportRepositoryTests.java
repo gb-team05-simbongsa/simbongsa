@@ -30,13 +30,15 @@ public class SupportRepositoryTests {
 
     @Test
     public void saveTest(){
-        Support support1 = new Support(9000,memberRepository.findById(1L).get(), supportRequestRepository.findById(102L).get());
-        supportRepository.save(support1);
+        for (int i = 0; i < 30; i++) {
+            Support support1 = new Support(9000 + i,memberRepository.findById(1L).get(), supportRequestRepository.findById(380L).get());
+            supportRepository.save(support1);
+        }
 
-        Support support2 = new Support(12000,memberRepository.findById(2L).get(), supportRequestRepository.findById(102L).get());
+        Support support2 = new Support(12000,memberRepository.findById(2L).get(), supportRequestRepository.findById(380L).get());
         supportRepository.save(support2);
 
-        Support support3 = new Support(17000,memberRepository.findById(25L).get(), supportRequestRepository.findById(102L).get());
+        Support support3 = new Support(17000,memberRepository.findById(25L).get(), supportRequestRepository.findById(380L).get());
         supportRepository.save(support3);
     }
 

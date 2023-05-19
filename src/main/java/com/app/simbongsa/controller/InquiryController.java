@@ -32,13 +32,18 @@ public class InquiryController {
     private final MemberService memberService;
 
     @GetMapping("notice")
-    public String notice(Integer page, Model model) {
+    public String notice(Integer page, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
+        searchContent = searchContent == null ? "" : searchContent;
+
         AdminNoticeSearch adminNoticeSearch = new AdminNoticeSearch();
+        adminNoticeSearch.setNoticeTitle(searchContent);
+
         Page<NoticeDTO> noticeDTOS = noticeService.getNotice(page, adminNoticeSearch);
 
         model.addAttribute("noticeDTOS", noticeDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(noticeDTOS));
+        model.addAttribute("searchContent", searchContent);
         return "customerCenter/notice";
     }
 
