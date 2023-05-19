@@ -50,25 +50,25 @@ public class VolunteerRepositoryTests {
 //                    ,"서울","심봉사 TEST");
 //            volunteerWorkRepository.save(volunteerWork);
 //        }
-        for(int i = 0; i < 20; i++){
-            VolunteerWork volunteerWork = new VolunteerWork(
-                    LocalDateTime.of(2023,4,12,12,00)
-                    ,LocalDateTime.of(2023,5,12,12,00)
-                    ,1+i
-                    ,LocalDate.of(2023,04,12)
-                    ,LocalDate.of(2023,04,17)
-                    ,1+i
-                    ,"전주"
-                    ,"전주" + i,"심봉사 TEST");
-            volunteerWorkRepository.save(volunteerWork);
-        }
+//        for(int i = 0; i < 20; i++){
+//            VolunteerWork volunteerWork = new VolunteerWork(
+//                    LocalDateTime.of(2023,4,12,12,00)
+//                    ,LocalDateTime.of(2023,5,12,12,00)
+//                    ,1+i
+//                    ,LocalDate.of(2023,04,12)
+//                    ,LocalDate.of(2023,04,17)
+//                    ,1+i
+//                    ,"전주"
+//                    ,"전주" + i,"심봉사 TEST");
+//            volunteerWorkRepository.save(volunteerWork);
+//        }
 
     }
 
     //  봉사활동 목록 조회 (메인페이지)
     @Test
     public void findVolunteerWorkListTest(){
-        volunteerWorkRepository.findVolunteerWorkList().stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(v -> log.info(v.toString()));
+//        volunteerWorkRepository.findVolunteerWorkList().stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(v -> log.info(v.toString()));
 //        volunteerWorkRepository.findVolunteerWorkList().stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(log::info);
         log.info(volunteerWorkFileRepository.findAll()+ "===============");
     }

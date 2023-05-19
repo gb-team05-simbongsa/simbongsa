@@ -1,10 +1,13 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.QSupport;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
+import com.querydsl.core.Tuple;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -14,6 +17,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.app.simbongsa.entity.support.QSupport.support;
 import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
@@ -142,13 +146,13 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         OrderSpecifier result;
 
         if(keyword.equals("후원 많은순")){
-            result = supportRequest.supports.any().supportPrice.desc();
+            result = supportRequest.supports.any().supportPrice.sum().desc();
 //            result = supportRequest.supports.any().supportPrice.sum().desc();
 //            result = support.supportPrice.sum().desc();
 
         }else if(keyword.equals("후원 적은순")){
 
-            result = supportRequest.supports.any().supportPrice.asc();
+            result = supportRequest.supports.any().supportPrice.sum().asc();
 //            result = supportRequest.supports.any().supportPrice.sum().asc();
 //            result = support.supportPrice.sum().asc();
         }else  {
@@ -170,6 +174,40 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
         return new PageImpl<>(foundSupportRequest, pageable, count);
     }
+    @Override
+    public Page<SupportRequestDTO> findAllTest(Pageable pageable) {
+
+        List<Tuple> foundSupportRequest = query
+                .select(supportRequest, support.supportPrice.sum().as("totalSupportPrice"))
+                .from(supportRequest)
+                .leftJoin(supportRequest.supports, support)
+                .groupBy(supportRequest)
+                .orderBy(support.supportPrice.sum().desc()) // supportPrice 합계가 많은 순으로 정렬
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query
+                .select(supportRequest.count())
+                .from(supportRequest)
+                .fetchOne();
+
+        List<SupportRequestDTO> mappedSupportRequests = foundSupportRequest.stream()
+                .map(tuple -> {
+                    SupportRequest supportRequestEntity = tuple.get(supportRequest);
+                    int totalSupportPrice = tuple.get("totalSupportPrice", Long.class).intValue();
+
+                    SupportRequestDTO dto = SupportRequestDTO.builder()
+                            .supportRequestContent(supportRequestEntity.getSupportRequestContent())
+                            .supportRequestTitle(supportRequestEntity.getSupportRequestTitle())
+                            .supportRequestStatus(supportRequestEntity.getSupportRequestStatus())
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(mappedSupportRequests, pageable, count);
+    }
+
 
 
 
@@ -189,5 +227,6 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
                 .where(supportRequest.supportRequestStatus.eq(requestType))
                 .fetchOne();
     }
+
 
 }
