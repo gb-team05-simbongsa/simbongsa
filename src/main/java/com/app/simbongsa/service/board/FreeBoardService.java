@@ -140,9 +140,19 @@ public interface FreeBoardService {
     default Member toMemberEntity(MemberDTO memberDTO){
         return Member.builder()
                 .id(memberDTO.getId())
-                .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberRice(memberDTO.getMemberRice())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
                 .build();
     }
 

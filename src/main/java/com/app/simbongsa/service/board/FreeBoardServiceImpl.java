@@ -157,7 +157,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
 
         Member member = memberRepository.findById(memberId).orElseThrow(UserNotFoundException::new);
-
         FreeBoard freeBoard = toFreeBoardEntity(freeBoardDTO);
         freeBoard.setMember(member);
         freeBoardRepository.save(freeBoard);
@@ -176,7 +175,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
             fileDTOS.get(i).setFreeBoardDTO(freeBoardToDTO(getCurrentSequence()));
             FreeBoardFile freeBoardFile = toFreeBoardFileEntity(fileDTOS.get(i));
-
             freeBoardFile.setFreeBoard(freeBoard);
             freeBoardFileRepository.save(freeBoardFile);
         }
