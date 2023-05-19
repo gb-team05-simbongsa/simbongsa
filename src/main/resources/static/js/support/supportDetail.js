@@ -30,6 +30,7 @@ $button.on('click', function(){
     $("#expandedImg").attr("src", $image);
     $("#expandedImg").css('width', '100%');
 });
+
 //
 // let text =`
 //                                     <li class="history-item">

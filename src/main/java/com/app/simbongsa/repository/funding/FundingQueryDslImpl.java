@@ -38,6 +38,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .from(funding)
                 .leftJoin(funding.fundingFile, fundingFile)
                 .fetchJoin()
+                .where(funding.fundingTargetPrice.ne(0))
                 .orderBy(funding.fundingCurrentPrice.divide(funding.fundingTargetPrice).multiply(100).desc())
                 .fetch();
     }

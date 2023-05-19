@@ -45,15 +45,12 @@ public class FundingServiceImpl implements FundingService {
         return fundingDTO;
     })
             .collect(Collectors.toList());
-        fundingDTOS.stream().map(FundingDTO::toString).forEach(v -> log.info(v + " 여기야여기~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!"));
         return fundingDTOS;
     }
 
     // 펀딩 저장
     @Override
     public void fundingRegister(FundingDTO fundingDTO) {
-
-
         fundingRepository.save(toFundingEntity(fundingDTO));
     }
 

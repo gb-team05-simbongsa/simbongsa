@@ -200,20 +200,23 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     }
 
 
+    // 메인페이지 인기게시판 목록 파일
     @Override
     public List<FreeBoardDTO> getAllWithFile() {
-//        List<FreeBoard> freeBoardList = freeBoardRepository.findAllWithFile();
-//        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.stream()
-//                .map(freeBoard -> {
-//                    FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
-//                    List<FreeBoardFile> freeBoardFiles = freeBoard.getFreeBoardFiles();
-//                    List<FileDTO> fileDTOs = FileToDTO(freeBoardFiles);
-//                    freeBoardDTO.setFileDTOS(fileDTOs);
-//                    return freeBoardDTO;
-//                })
-        return null;
+        List<FreeBoard> freeBoardList = freeBoardRepository.findAllWithFile();
+        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.stream()
+                .map(freeBoard -> {
+                    FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
+                    List<FreeBoardFile> freeBoardFiles = freeBoard.getFreeBoardFiles();
+                    List<FileDTO> fileDTOs = FileToDTO(freeBoardFiles);
+                    freeBoardDTO.setFileDTOS(fileDTOs);
+                    return freeBoardDTO;
+                }).collect(Collectors.toList());
+        freeBoardDTOS.stream().map(FreeBoardDTO::toString).forEach(v -> log.info(v + " 여어어어어어어어익  ~~~~~"));
+        return freeBoardDTOS;
     }
 
+    // 메인페이지 인기게시판 목록
     @Override
     public List<FreeBoardDTO> getAllWithPopularFreeBoard() {
         List<FreeBoard> freeBoards = freeBoardRepository.findAllWithPopularFreeBoard();
