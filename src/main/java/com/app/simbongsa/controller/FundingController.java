@@ -80,7 +80,7 @@ public class FundingController {
 
         if(fileDTOS != null){
             fileDTOS.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
-            fundingFileRepository.save(fundingService.toFundingFileEntity((fileDTOS.));
+//            fundingFileRepository.save(fundingService.toFundingFileEntity((fileDTOS.));
         }
         fundingService.fundingRegister(fundingDTO);
         return "funding/funding-initial-info";}
