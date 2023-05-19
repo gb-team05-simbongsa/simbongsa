@@ -121,7 +121,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
     @Override
     public Page<FreeBoard> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         List<FreeBoard> foundFreeBoards = query.select(freeBoard)
                 .from(freeBoard)
                 .leftJoin(freeBoard.freeBoardFiles)

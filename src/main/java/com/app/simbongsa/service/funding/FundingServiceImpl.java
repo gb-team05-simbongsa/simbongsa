@@ -7,8 +7,10 @@ import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.repository.funding.FundingFileRepository;
 import com.app.simbongsa.repository.funding.FundingRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
+import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.RequestType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FundingServiceImpl implements FundingService {
     private final FundingRepository fundingRepository;
+    private final FundingFileRepository fundingFileRepository;
 
 //    메인페이지 펀딩 인기순
 //    여기에서 FileDTOs에 파일이 안들어가
@@ -52,6 +55,19 @@ public class FundingServiceImpl implements FundingService {
     @Override
     public void fundingRegister(FundingDTO fundingDTO) {
         fundingRepository.save(toFundingEntity(fundingDTO));
+        List<FileDTO> fileDTOS = fundingDTO.getFileDTOs();
+
+        if(fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++) {
+                if(i == 0){
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                } else {
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+                }
+                fundingFileRepository.save(toFundingFileEntity(fileDTOS.get(i)));
+            }
+        }
+
     }
 
     // 펀딩 전체 목록 조회(무한스크롤)

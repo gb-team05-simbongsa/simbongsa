@@ -91,6 +91,7 @@
   width: 200px;
 }
 
+
 .user__profile__input input {
   color: #777777;
   width: 100%;
@@ -101,7 +102,35 @@
   border-radius: 3px;
   padding: 3px 12px ;
 }
+
 .user__profile__input input:focus {
+  border: 1px solid #777777;
+}
+
+.user__profile__input_volunteer_modal {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  margin-left: 80px;
+  font-size: 16px;
+  text-align: left;
+  font-weight: 400;
+  border: 0;
+  width: 380px;
+}
+
+.user__profile__input_volunteer_modal input {
+  color: #777777;
+  width: 100%;
+  font-family: inherit;
+  height: 70%;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 12px ;
+}
+
+.user__profile__input_volunteer_modal input:focus {
   border: 1px solid #777777;
 }
 

@@ -124,7 +124,7 @@ public class CommunityController {
     @PostMapping("review-create")
     public RedirectView reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, @AuthenticationPrincipal UserDetail userDetail){
 
-        Long memberId = userDetail.getId();
+        Long memberId = userDetail.getMember().getId();
         reviewService.register(reviewDTO, memberId);
         return new RedirectView("community/review-create");
     }

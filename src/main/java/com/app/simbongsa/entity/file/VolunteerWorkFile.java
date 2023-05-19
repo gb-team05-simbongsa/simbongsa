@@ -24,8 +24,8 @@ public class VolunteerWorkFile extends File {
         this.volunteerWork = volunteerWork;
     }
 
-    @Builder
-    public VolunteerWorkFile(VolunteerWork volunteerWork) {
-        this.volunteerWork = volunteerWork;
-    }
+//    @Builder
+//    public VolunteerWorkFile(VolunteerWork volunteerWork) {
+//        this.volunteerWork = volunteerWork;
+//    }
 }

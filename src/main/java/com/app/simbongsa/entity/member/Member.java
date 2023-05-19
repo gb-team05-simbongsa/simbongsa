@@ -62,4 +62,9 @@ public class Member {
         this.memberRole = memberRole;
         this.memberStatus = memberStatus;
     }
+
+    public Member update(String memberEmail) {
+        this.memberEmail = memberEmail;
+        return this;
+    }
 }

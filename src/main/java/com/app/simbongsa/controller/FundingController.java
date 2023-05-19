@@ -18,6 +18,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -32,7 +33,6 @@ public class FundingController {
     private  final MemberService memberService;
 
     private final FundingItemService fundingItemService;
-    private final FundingFileRepository fundingFileRepository;
 
 
     @GetMapping("funding-creator-info")
@@ -73,17 +73,13 @@ public class FundingController {
 
     //업로드는 됨.... db에 저장이 안됌
     @PostMapping("funding-initial-info")
-    @Transactional
-    public String fundingInitial(@ModelAttribute("fundingDTO") FundingDTO fundingDTO) {
+    public RedirectView fundingInitial(@ModelAttribute("fundingDTO") FundingDTO fundingDTO) {
 
-        List<FileDTO> fileDTOS = fundingDTO.getFileDTOs();
+        log.info(fundingDTO.toString());
 
-        if(fileDTOS != null){
-            fileDTOS.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
-//            fundingFileRepository.save(fundingService.toFundingFileEntity((fileDTOS.));
-        }
         fundingService.fundingRegister(fundingDTO);
-        return "funding/funding-initial-info";}
+        return new RedirectView("/funding/funding-initial-info");
+    }
 
     @GetMapping("funding-gift")
     public String fundingGiftForm() {return "funding/funding-gift.html";}

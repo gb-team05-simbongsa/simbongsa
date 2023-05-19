@@ -38,14 +38,14 @@ public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQ
                 .from(volunteerWorkActivity)
                 .join(volunteerWorkActivity.volunteerWork)
                 .fetchJoin()
-                .where(volunteerWorkActivity.member.id.eq(userDetail.getId()))
+                .where(volunteerWorkActivity.member.id.eq(userDetail.getMember().getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(volunteerWorkActivity.count())
                 .from(volunteerWorkActivity)
-                .where(volunteerWorkActivity.member.id.eq(userDetail.getId()))
+                .where(volunteerWorkActivity.member.id.eq(userDetail.getMember().getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWorkActivities,pageable,count);

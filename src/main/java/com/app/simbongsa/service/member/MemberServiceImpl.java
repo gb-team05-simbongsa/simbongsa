@@ -18,7 +18,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -54,14 +53,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.findByMemberEmail(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
-        return UserDetail.builder()
-                .id(member.getId())
-                .memberEmail(member.getMemberEmail())
-                .memberPassword(member.getMemberPassword())
-                .memberRole(member.getMemberRole())
-                .build();
+        return new UserDetail(member);
     }
 
 //    메인페이지 유저랭킹 목록
@@ -135,6 +129,7 @@ public class MemberServiceImpl implements MemberService {
                 sb.append("&redirect_uri=http://localhost:10000/member/kakao"); // TODO 인가코드 받은 redirect_uri 입력
             } else if (type.equals("login")) {
 //            로그인에서 접근했을 때
+                log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~로그인이 맞워요~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 sb.append("&redirect_uri=http://localhost:10000/member/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
             }
             sb.append("&code=" + code);
@@ -163,6 +158,7 @@ public class MemberServiceImpl implements MemberService {
 
             log.info("access_token : " + access_Token);
             log.info("refresh_token : " + refresh_Token);
+            log.info("sb : " + sb);
 
             br.close();
             bw.close();

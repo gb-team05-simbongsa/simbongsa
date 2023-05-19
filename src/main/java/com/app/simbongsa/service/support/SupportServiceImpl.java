@@ -1,10 +1,7 @@
 package com.app.simbongsa.service.support;
 
 import com.app.simbongsa.domain.SupportDTO;
-import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.entity.support.SupportRequest;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.support.SupportRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +10,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

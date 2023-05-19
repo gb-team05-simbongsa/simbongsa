@@ -62,22 +62,22 @@ public class MemberController {
         return "join-login/find-password";
     }
 
-    /* 비밀번호 재설정 페이지 */
+    /* 비밀번호 재설정 페이지이동 */
     @GetMapping("change-password")
-    public String changePassword(String memberEmail, String randomKey) {
-        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
-            return "/member/login";
-        }
-        memberService.updateRandomKey(memberEmail, null);
+    public String changePassword(@RequestParam("memberEmail") String memberEmail, String randomKey) {
         return "/join-login/change-password";
     }
 
-    /* 비밀번호 재설정 */
+    /* 비밀번호 변경하기 */
     @PostMapping("change-password")
-    public RedirectView changePasswordOK(String memberEmail, String memberPassword){
-        log.info("memberEmail" + memberEmail);
+    public RedirectView changePasswordOK(@RequestParam("memberEmail") String memberEmail, String memberPassword, String randomKey){
+        log.info("url에서 받아온 memberEmail: " + memberEmail);
+        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
+            return new RedirectView ("/member/login");
+        }
         memberService.updatePassword(memberEmail, memberPassword);
         log.info("들어옴");
+        memberService.updateRandomKey(memberEmail, null);
         return new RedirectView("/member/login");
     }
 
@@ -96,7 +96,7 @@ public class MemberController {
         MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
 
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        if (memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오) {
+        if (memberDTO == null/* || memberDTO.getMemberJoinType() != MemberJoinType.카카오*/) {
             redirectAttributes.addFlashAttribute("kakaoInfo", kakaoInfo.getMemberEmail());
             return new RedirectView("/member/join");
         }
@@ -108,12 +108,13 @@ public class MemberController {
     @GetMapping("kakao-login")
     public RedirectView kakaoLogin(String code) throws Exception {
         /*String userIdentification = null;*/
-
+        log.info("------------------이리로 들어오나?------------------------" + code);
         String token = memberService.getKaKaoAccessToken(code, "login");
         memberService.getKakaoInfo(token);
 
         MemberDTO kakaoInfo = memberService.getKakaoInfo(token);
         MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 무슨 값이야 : " + memberDTO);
 
         if(memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오){
             return new RedirectView("/member/login?check=false");
