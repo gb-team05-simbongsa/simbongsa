@@ -62,12 +62,12 @@ public class CommunityController {
     @PostMapping("free-create")
     public RedirectView FreeWrite(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
 
-        Long memberId = userDetail.getId();
+/*        Long memberId = userDetail.getId();*/
+        Long memberId = userDetail.getMember().getId();
+/*        freeBoardService.register(freeBoardDTO, memberId);
+        return new RedirectView("community/free-create");*/
         freeBoardService.write(freeBoardDTO, memberId);
         return new RedirectView("/community/freeBoard/newList");
-/*        Long memberId = userDetail.getMember().getId();
-        freeBoardService.register(freeBoardDTO, memberId);
-        return new RedirectView("community/free-create");*/
     }
 
     /*자유게시판 수정하기*/
