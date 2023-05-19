@@ -55,7 +55,6 @@ public class MemberDTO implements Serializable {
     }
 
     public MemberDTO(Member member) {
-        this.memberName = memberName;
         this.memberEmail = memberEmail;
     }
 }

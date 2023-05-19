@@ -19,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/mypage/*")
 @RequiredArgsConstructor
@@ -33,9 +35,14 @@ public class MypageController {
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
-    public String notice(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail) {
+    public String notice(Integer page, Model model, HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail) {
         page = page == null ? 0 : page - 1;
-        Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+/*        if(memberDTO != null){
+
+        }*/
+
+        Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, memberDTO.getId());
 
         log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
 

@@ -26,7 +26,7 @@
                     <h1 class="join-title">이메일로 가입하기</h1>
 
                     <form th:action="@{/member/join}" method="post" name="joinForm">
-                        <input type="hidden" name="memberJoinType" th:if="${kakaoInfo} != null" value="카카오">
+                        <!--<input type="hidden" name="memberJoinType" th:if="${kakaoInfo} != null" value="카카오">-->
                         <div class="input-div">
                             <div class="input-title">이름</div>
                             <div class="input-include-div">
@@ -40,12 +40,12 @@
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
                                 <span class="input-include-span" style="padding: 0px 0px 0px 12px;">
-                                    <input th:if="${kakaoInfo == null}" type="text" name="memberEmail" class="input-write input-email" placeholder="이메일 주소를 입력해주세요">
-                                    <input th:if="${kakaoInfo != null}" type="text" name="memberEmail" class="input-write input-email" placeholder="이메일 주소를 입력해주세요" th:value="${kakaoInfo}" readonly>
+                                    <input th:if="${member == null}"  type="text" name="memberEmail" class="input-write input-email" id="email-input" placeholder="이메일 주소를 입력해주세요">
+                                    <input th:unless="${member == null}" type="text" name="memberEmail" class="input-write input-email" placeholder="이메일 주소를 입력해주세요" id="email-value" th:value="${member.memberEmail}" readonly>
                                     <button class="email-check" type="button" onclick="">중복확인</button>
                                 </span>
-                            </div>
-                            <div class="email-error">비워놓을 수 없습니다.</div>
+                        </div>
+                        <div class="email-error">비워놓을 수 없습니다.</div>
                         </div>
                         <div class="input-div">
                             <div class="input-title">비밀번호</div>

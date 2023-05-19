@@ -72,17 +72,16 @@ spring:
             client-secret: 4ouXP37HyC
             redirect-uri: http://localhost:10000/login/oauth2/code/naver
             authorization-grant-type: authorization_code
-            scope: name,email
+            scope: email
 
           #kakao
           kakao:
             client-id: 7d1b8d2a934aea81ad94f34bb0bee10c
             redirect-uri: http://localhost:10000/login/oauth2/code/kakao
-            #            redirect-uri: http://localhost:10000/oauth/kakao
             client-authentication-method: POST
-            client-secret: 03wP4xJHpwKXPzBm6EaiKKDJc2lfCusP
+            client-secret: IEMgUxhifcob8cQfModdoRybzbdHD9gj
             authorization-grant-type: authorization_code
-            scope: profile_nickname, account_email
+            scope: account_email
             client_name: kakao
 
         provider:
@@ -98,6 +97,6 @@ spring:
             authorization-uri: https://kauth.kakao.com/oauth/authorize
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
-            user-name-attribute: id
+            user-name-attribute: kakao_account
 
 

@@ -29,7 +29,7 @@ public interface InquiryService {
 //    문의 검색
 
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
-    public Page<InquiryDTO> getMyInquiry(Integer page, @AuthenticationPrincipal UserDetail userDetail);
+    public Page<InquiryDTO> getMyInquiry(Integer page, Long id);
 
     /* 문의 수정 */
     public void setInquiry(InquiryDTO inquiryDTO);

@@ -51,8 +51,8 @@ public class InquiryServiceImpl implements InquiryService {
 
     /* 유저아이디로 문의 페이징처리해서 불러오기 */
     @Override
-    public Page<InquiryDTO> getMyInquiry(Integer page, UserDetail userDetail) {
-        Page<Inquiry> myInquiries = inquiryRepository.findByMemberId(PageRequest.of(page,5),userDetail);
+    public Page<InquiryDTO> getMyInquiry(Integer page, Long id) {
+        Page<Inquiry> myInquiries = inquiryRepository.findByMemberId(PageRequest.of(page,5), id);
         List<InquiryDTO> inquiryDTOS = myInquiries.getContent().stream().map(this::toInquiryDTO).collect(Collectors.toList());
         return new PageImpl<>(inquiryDTOS, myInquiries.getPageable(), myInquiries.getTotalElements());
     }
