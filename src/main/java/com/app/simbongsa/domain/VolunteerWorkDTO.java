@@ -29,15 +29,15 @@ public class VolunteerWorkDTO {
     private String volunteerWorkRegisterAgency;
     private String volunteerWorkPlace;
     private String volunteerWorkTitle;
+    private String volunteerWorkContent;
+    private FileDTO fileDTO;
 
-    private List<FileDTO> fileDTOs;
-
-    public VolunteerWorkDTO(List<FileDTO> fileDTOs) {
-        this.fileDTOs = fileDTOs;
+    public VolunteerWorkDTO(FileDTO fileDTO) {
+        this.fileDTO = fileDTO;
     }
 
     @Builder
-    public VolunteerWorkDTO(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, List<VolunteerWorkFile> volunteerWorkFiles, List<FileDTO> fileDTOs) {
+    public VolunteerWorkDTO(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent, FileDTO fileDTO) {
         this.id = id;
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
@@ -49,7 +49,8 @@ public class VolunteerWorkDTO {
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
-        this.fileDTOs = fileDTOs;
+        this.volunteerWorkContent = volunteerWorkContent;
+        this.fileDTO = fileDTO;
     }
 
 }

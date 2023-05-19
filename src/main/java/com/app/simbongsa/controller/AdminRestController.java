@@ -196,6 +196,11 @@ public class AdminRestController {
         supportRequestService.deleteSupportRequest(idList);
     }
 
+    @PostMapping("volunteer-work-regist")
+    public void volunteerWorkRegist(VolunteerWorkDTO volunteerWorkDTO) {
+
+    }
+
     @PostMapping("volunteers-delete")
     public void volunteersDelete(Long[] ids) {
         List<Long> idList = new ArrayList<>();

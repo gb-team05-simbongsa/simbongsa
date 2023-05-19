@@ -91,6 +91,38 @@ $photoPicker.on("change", function () {
     });
 });
 
+let setVolunteerWorkDTO = function() {
+    const $files = $photoPicker[0].files;
+
+    let fileDTO = new Object();
+    fileDTO.fileOrgName = file.name;
+    fileDTO.fileUuid = globalThis.uuids[i];
+
+    const volunteerWorkDTO = {
+        volunteerWorkTitle : $('input[name=volunteerWorkTitle]').val(),
+        volunteerWorkContent : $('input[name=volunteerWorkContent]').val(),
+        volunteerWorkStartDate : $('input[name=volunteerWorkStartDate]').val(),
+        volunteerWorkEndDate : $('input[name=volunteerWorkEndDate]').val(),
+        volunteerWorkTime : $('input[name=volunteerWorkTime]').val(),
+        volunteerWorkJoinStartDate : $('input[name=volunteerWorkJoinStartDate]').val(),
+        volunteerWorkJoinEndDate : $('input[name=volunteerWorkJoinEndDate]').val(),
+        volunteerWorkRecruitNumber : $('input[name=volunteerWorkRecruitNumber]').val(),
+        volunteerWorkCategory : $('input[name=volunteerWorkCategory]').val(),
+        volunteerWorkPlace : $('input[name=volunteerWorkPlace]').val(),
+        volunteerWorkRegisterAgency : $('input[name=volunteerWorkRegisterAgency]').val(),
+
+        fileDTO : fileDTO
+    }
+
+    return volunteerWorkDTO;
+}
+
+$('#submitBtn').on('click', function() {
+    adminService.saveVolunteerWork(setVolunteerWorkDTO(), function() {
+        location.href = "/admin/volunteer";
+    });
+});
+
 // let $fileAjax = (contentId, table) => {
 //     const $files = $photoPicker[0].files;
 //
