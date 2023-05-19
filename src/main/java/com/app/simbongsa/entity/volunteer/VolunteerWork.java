@@ -39,22 +39,38 @@ public class VolunteerWork {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade=CascadeType.REMOVE)
     private VolunteerWorkFile volunteerWorkFile;
 
-    @Builder
-    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent) {
-        this.volunteerWorkStartDate = volunteerWorkStartDate;
-        this.volunteerWorkEndDate = volunteerWorkEndDate;
-        this.volunteerWorkTime = volunteerWorkTime;
-        this.volunteerWorkJoinStartDate = volunteerWorkJoinStartDate;
-        this.volunteerWorkJoinEndDate = volunteerWorkJoinEndDate;
-        this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
-        this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
-        this.volunteerWorkPlace = volunteerWorkPlace;
-        this.volunteerWorkTitle = volunteerWorkTitle;
-        this.volunteerWorkContent = volunteerWorkContent;
-    }
+//    @Builder
+//    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent) {
+//        this.volunteerWorkStartDate = volunteerWorkStartDate;
+//        this.volunteerWorkEndDate = volunteerWorkEndDate;
+//        this.volunteerWorkTime = volunteerWorkTime;
+//        this.volunteerWorkJoinStartDate = volunteerWorkJoinStartDate;
+//        this.volunteerWorkJoinEndDate = volunteerWorkJoinEndDate;
+//        this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
+//        this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
+//        this.volunteerWorkPlace = volunteerWorkPlace;
+//        this.volunteerWorkTitle = volunteerWorkTitle;
+//        this.volunteerWorkContent = volunteerWorkContent;
+//    }
+//
+//    @Builder
+//    public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent) {
+//        this.id = id;
+//        this.volunteerWorkStartDate = volunteerWorkStartDate;
+//        this.volunteerWorkEndDate = volunteerWorkEndDate;
+//        this.volunteerWorkTime = volunteerWorkTime;
+//        this.volunteerWorkJoinStartDate = volunteerWorkJoinStartDate;
+//        this.volunteerWorkJoinEndDate = volunteerWorkJoinEndDate;
+//        this.volunteerWorkRecruitNumber = volunteerWorkRecruitNumber;
+//        this.volunteerWorkCategory = volunteerWorkCategory;
+//        this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
+//        this.volunteerWorkPlace = volunteerWorkPlace;
+//        this.volunteerWorkTitle = volunteerWorkTitle;
+//        this.volunteerWorkContent = volunteerWorkContent;
+//    }
 
     @Builder
-    public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent) {
+    public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent, VolunteerWorkFile volunteerWorkFile) {
         this.id = id;
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
@@ -67,5 +83,6 @@ public class VolunteerWork {
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
         this.volunteerWorkContent = volunteerWorkContent;
+        this.volunteerWorkFile = volunteerWorkFile;
     }
 }
