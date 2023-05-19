@@ -1,3 +1,48 @@
+FileList.prototype.forEach = Array.prototype.forEach;
+
+let $ul = $(".img_ul");
+let files = [];
+if(fileDTOS != null && fileDTOS != undefined){
+    fileDTOS.forEach((file, i) => {
+        files.push(file);
+    });
+}
+$("input[type=file]").on("change", function () {
+    const $files = $("input[type=file]")[0].files;
+    let formData = new FormData();
+
+    $($files).each((i, file) => {
+        files.push(file);
+    })
+
+    files.forEach((file, e) => {
+        formData.append("file", file);
+    })
+
+
+    $.ajax({
+        url: "/file/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (uuids) {
+            globalThis.uuids = uuids;
+            console.log(uuids);
+            $files.forEach((file, i) => {
+                if (file.type.startsWith("image")) {
+                    let text = `
+                    
+                `;
+                    $ul.append(text);
+                }
+            });
+        }
+    });
+});
+
+
+
 $(document).ready(function() {
   // textarea 입력시 등록 버튼 색상 변경
   $('.title-input, .contents-text').on('input', function() {

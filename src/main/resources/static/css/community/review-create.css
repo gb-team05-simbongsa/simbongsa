@@ -309,12 +309,13 @@ div{
 }
 .imageThumbnail{
     background-position: center;
-    height: 72px;
-    width: 72px;
+    height: 76px;
+    width: 120px;
     display: inline-flex;
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
+    margin-top: 10px;
 }
 .closeImgButton {
     position: absolute;

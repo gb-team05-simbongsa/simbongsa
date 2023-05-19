@@ -197,12 +197,12 @@
                     <div class="page-wrap">
                         <div>
                             <div class="paging" style="text-align: center">
-                                <a th:if="${pageDTO.prev}" th:href="@{/mypage/my-question} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                                <a th:if="${pageDTO.prev}" th:href="@{/mypage/rice-list} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
                                 <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
-                                    <a th:href="@{/mypage/my-question} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                                    <a th:href="@{/mypage/rice-list} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
                                     <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
                                 </th:block>
-                                <a th:if="${pageDTO.next}" th:href="@{/mypage/my-question} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
+                                <a th:if="${pageDTO.next}" th:href="@{/mypage/rice-list} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
                             </div>
                             <form name="pageForm">
                                 <input type="hidden">

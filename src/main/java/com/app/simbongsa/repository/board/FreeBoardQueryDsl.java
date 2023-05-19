@@ -19,6 +19,9 @@ public interface FreeBoardQueryDsl {
     // 메인페이지 인기순 목록 조회
     public List<FreeBoard> findAllWithPopularFreeBoard();
 
+    // 메인 페이지 자유게시판 파일
+    public List<FreeBoard> findAllWithFile();
+
     //    인기순 목록 조회 - 무한스크롤
     public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable);
 

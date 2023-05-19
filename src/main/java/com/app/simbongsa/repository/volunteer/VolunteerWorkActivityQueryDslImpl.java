@@ -3,6 +3,7 @@ package com.app.simbongsa.repository.volunteer;
 import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.QVolunteerWorkActivity;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
+import com.app.simbongsa.provider.UserDetail;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,19 +33,24 @@ public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQ
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     @Override
-    public Page<VolunteerWorkActivity> findByMemberId(Pageable pageable, Long memberId) {
+    public Page<VolunteerWorkActivity> findMyVolunteerById(Pageable pageable, UserDetail userDetail) {
         List<VolunteerWorkActivity> foundVolunteerWorkActivities = query.select(volunteerWorkActivity)
                 .from(volunteerWorkActivity)
-                .where(volunteerWorkActivity.member.id.eq(memberId))
+                .join(volunteerWorkActivity.volunteerWork)
+                .fetchJoin()
+                .where(volunteerWorkActivity.member.id.eq(userDetail.getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(volunteerWorkActivity.count())
                 .from(volunteerWorkActivity)
-                .where(volunteerWorkActivity.member.id.eq(memberId))
+                .where(volunteerWorkActivity.member.id.eq(userDetail.getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWorkActivities,pageable,count);
     }
+
+
+
 }

@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.entity.board.QFreeBoard;
 import com.app.simbongsa.entity.file.FreeBoardFile;
+import com.app.simbongsa.entity.file.QFreeBoardFile;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
+import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
 import static com.app.simbongsa.entity.inquiry.QInquiry.inquiry;
 
 
@@ -74,11 +76,20 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public List<FreeBoard> findAllWithPopularFreeBoard() {
         return query.select(freeBoard)
                 .from(freeBoard)
-                .join(freeBoard.freeBoardReplies, freeBoardReply)
+                .leftJoin(freeBoard.freeBoardReplies, freeBoardReply)
                 .fetchJoin()
-//                .join(freeBoard.freeBoardFiles)
-//                .fetchJoin()
-                .orderBy(freeBoard.freeBoardReplyCount.desc())
+                .orderBy(freeBoard.freeBoardReplies.size().desc())
+                .limit(10)
+                .fetch();
+    }
+
+    @Override
+    public List<FreeBoard> findAllWithFile() {
+        return query.select(freeBoard)
+                .from(freeBoard)
+                .leftJoin(freeBoard.freeBoardFiles, freeBoardFile)
+                .fetchJoin()
+                .orderBy(freeBoard.freeBoardReplies.size().desc())
                 .limit(10)
                 .fetch();
     }

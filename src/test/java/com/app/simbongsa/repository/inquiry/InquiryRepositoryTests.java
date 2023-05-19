@@ -30,8 +30,8 @@ public class InquiryRepositoryTests {
 //    더미데이터 넣기
     @Test
     public void saveTest() {
-        for (int i = 1; i <= 15; i++) {
-            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, memberRepository.findById(2L).get());
+        for (int i = 1; i <= 2; i++) {
+            Inquiry inquiry = new Inquiry("제목" + i, "내용" + i, memberRepository.findById(595L).get());
             inquiryRepository.save(inquiry);
         }
     }

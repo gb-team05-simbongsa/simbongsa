@@ -199,14 +199,28 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         freeBoardRepository.deleteAllById(ids);
     }
 
+
     @Override
-    public List<FreeBoardDTO> findAllWithPopularFreeBoard() {
+    public List<FreeBoardDTO> getAllWithFile() {
+//        List<FreeBoard> freeBoardList = freeBoardRepository.findAllWithFile();
+//        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.stream()
+//                .map(freeBoard -> {
+//                    FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
+//                    List<FreeBoardFile> freeBoardFiles = freeBoard.getFreeBoardFiles();
+//                    List<FileDTO> fileDTOs = FileToDTO(freeBoardFiles);
+//                    freeBoardDTO.setFileDTOS(fileDTOs);
+//                    return freeBoardDTO;
+//                })
+        return null;
+    }
+
+    @Override
+    public List<FreeBoardDTO> getAllWithPopularFreeBoard() {
         List<FreeBoard> freeBoards = freeBoardRepository.findAllWithPopularFreeBoard();
         List<FreeBoardDTO> freeBoardDTOS = new ArrayList<>();
         for (FreeBoard freeBoard : freeBoards) {
             FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
             freeBoardDTOS.add(freeBoardDTO);
-
         }
         return freeBoardDTOS;
     }

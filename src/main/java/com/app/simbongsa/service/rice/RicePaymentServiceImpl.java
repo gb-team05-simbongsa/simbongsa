@@ -4,6 +4,7 @@ import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.RicePaymentDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.rice.RicePayment;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.rice.RicePaymentRepository;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.type.RequestType;
@@ -67,4 +68,14 @@ public class RicePaymentServiceImpl implements RicePaymentService {
     public List<Long> getPaymentPriceAndPaymentCount() {
         return Arrays.asList(ricePaymentRepository.countTodayPayment(), ricePaymentRepository.getAllPaymentPrice() * 110);
     }
+
+
+    /* 내 공양미 조회(페이징) */
+    @Override
+    public Page<RicePaymentDTO> getMyRicePayment(Integer page, UserDetail userDetail) {
+        Page<RicePayment> myRicePayments = ricePaymentRepository.findByMemberId(PageRequest.of(page,5),userDetail);
+        List<RicePaymentDTO> ricePaymentDTOS = myRicePayments.getContent().stream().map(this::toRicePaymentDTO).collect(Collectors.toList());
+        return new PageImpl<>(ricePaymentDTOS, myRicePayments.getPageable(),myRicePayments.getTotalElements());
+    }
+
 }

@@ -32,7 +32,7 @@ public class MainController {
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
         List<MemberDTO> memberRankList = memberService.getMemberRankingList();
         List<FundingDTO> fundingListOrderByPopularList = fundingService.getAllPopularFundingList();
-        List<FreeBoardDTO> freeBoardList = freeBoardService.findAllWithPopularFreeBoard();
+        List<FreeBoardDTO> freeBoardList = freeBoardService.getAllWithPopularFreeBoard();
         List<FileDTO> fileDTO = fundingService.getAllPopularFundingList()
                 .stream()
                 .flatMap(funding -> funding.getFileDTOs().stream())

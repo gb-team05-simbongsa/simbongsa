@@ -1,12 +1,15 @@
 package com.app.simbongsa.controller;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.FundingItemDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.funding.FundingCreator;
+import com.app.simbongsa.repository.funding.FundingFileRepository;
 import com.app.simbongsa.service.funding.FundingItemService;
 import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.member.MemberService;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.Member;
@@ -16,6 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -27,17 +32,15 @@ public class FundingController {
     private  final MemberService memberService;
 
     private final FundingItemService fundingItemService;
+    private final FundingFileRepository fundingFileRepository;
 
 
     @GetMapping("funding-creator-info")
     public String fundingCreateForm() {return "funding/funding-creater-info";}
 
     @PostMapping("funding-creator-info")
-    public String fundingCreate(Model model, FundingDTO fundingDTO) {
+    public String fundingCreate( FundingDTO fundingDTO) {
 
-//        fundingDTO.getFundingCreator().setFundingCreatorNickname();
-//        fundingDTO.getFundingCreator().setFundingCreatorIntroduce();
-//        fundingService.fundingRegister(fundingDTO);
 
         return "funding/funding-creater-info";
     }
@@ -63,12 +66,22 @@ public class FundingController {
         fundingItemService.ItemSave(fundingItemDTO);
         return "funding/funding-item";}
 
+
     @GetMapping("funding-initial-info")
     public String fundingInitialForm() {return "funding/funding-initial-info.html";}
 
-    @PostMapping("funding-initial-info")
-    public String fundingInitial(FundingDTO fundingDTO) {
 
+    //업로드는 됨.... db에 저장이 안됌
+    @PostMapping("funding-initial-info")
+    @Transactional
+    public String fundingInitial(@ModelAttribute("fundingDTO") FundingDTO fundingDTO) {
+
+        List<FileDTO> fileDTOS = fundingDTO.getFileDTOs();
+
+        if(fileDTOS != null){
+            fileDTOS.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+//            fundingFileRepository.save(fundingService.toFundingFileEntity((fileDTOS.));
+        }
         fundingService.fundingRegister(fundingDTO);
         return "funding/funding-initial-info";}
 
@@ -123,17 +136,11 @@ public class FundingController {
     @GetMapping("funding-project-plan")
     public String fundingProjectPlanForm() {return "funding/funding-project-plan";}
 
-    @PostMapping("funding-project-plan")
-    public String fundingProjectPlan(FundingDTO fundingDTO) {
+   /* @PostMapping("funding-project-plan")
+    public String fundingProjectPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
+        fundingService.toFundingEntity(fundingService.updateFundingPlan())
 
-        String fundingCreatorName = fundingDTO.getFundingCreator().getFundingCreatorNickname();
-        String fundingIntroduce = fundingDTO.getFundingCreator().getFundingCreatorIntroduce();
-
-        fundingDTO.getFundingCreator().setFundingCreatorNickname(fundingCreatorName);
-        fundingDTO.getFundingCreator().setFundingCreatorIntroduce(fundingIntroduce);
-
-        fundingService.fundingRegister(fundingDTO);
-        return "funding/funding-project-plan";}
+        return "funding/funding-project-plan";}*/
 
 
 

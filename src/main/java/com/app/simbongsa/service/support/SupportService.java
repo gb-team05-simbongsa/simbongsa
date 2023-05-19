@@ -15,13 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface SupportService {
-    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id);
+//    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id);
+    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Pageable pageable, Long id);
     public Long getAllSupportAttend_QueryDSL(Long id);
 
 //    후원명단 조회
 //    public List<SupportDTO> getSupportListWithPaging(Long id);
 
 
+    public List<SupportDTO> getSupportList(Long id);
+  
     default SupportDTO toSupportDTO(Support support){
         return SupportDTO.builder()
                 .id(support.getId())

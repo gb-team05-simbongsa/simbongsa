@@ -216,9 +216,11 @@
                                         <div class="LabelWithAreaTooltip__Tooltip-sc-16u328b- areaTooltip areaTooltip">
                                             <div class="toolTip-content toolTip-content">
                                                 <div class="title">긴 제목은 <br>어디에 쓰이나요?</div>
-                                                <div class="image"><img src="/image/funding/long-guide.png" alt="">
+                                                <div class="image">
+                                                    <img src="/image/funding/long-guide.png" alt="">
                                                 </div>
-                                            </div><em class="close">
+                                            </div>
+                                            <em class="close">
                                                 <div name="close-1" class="icon-svg">
                                                     <svg viewBox="0 0 48 48">
                                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -464,7 +466,7 @@
                     </div>
                     <div class="buttonWrap">
 <!--                        <button type="button" class="lineButton pdc-btn-l" color="grayEditor200">취소</button>-->
-                        <button  class="solidButton pdc-btn-l"  color="mainEditorP80">
+                        <button type="button" class="solidButton pdc-btn-l save-button"  color="mainEditorP80">
                             <span>등록</span>
                         </button>
                     </div>
@@ -476,36 +478,39 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/funding/funding-initial-info.js"></script>
-<script src="/js/funding/funding-file.js"></script>
-<!--<script>
+
+<script th:inline="javascript">
+    const fundingDTO = [[${fundingDTO}]];
+
+   /* let fileDTOS = fundingDTO.fileDTOs;*/
+
     globalThis.uuids;
 
+    let fileDTOS = null;
+    if(fundingDTO == null || fundingDTO == undefined){
+    }else {
+        fileDTOS = fundingDTO.fileDTOs;
+    }
     //===========================================
     FileList.prototype.forEach = Array.prototype.forEach;
 
     const $alertModal = $(".alert-modal-display");
     const alertMsg = ['사진은 최소 4개이상 넣어 주세요.', '제목을 입력해주세요.', '내용을 입력해주세요.'];
 
-    let $ul = $(".img_ul");
+    let $li = $(".imgList");
     let files = [];
     if(fileDTOS != null && fileDTOS != undefined){
-        fileDTOS.forEach((file, i) => {
-            files.push(file);
-        });
+        files.push(fileDTOS[0]);
+          /*  files.push(file);*/
+
     }
 
     $("input[type=file]").on("change", function () {
-        const $files = $("input[type=file]")[0].files;
+        const $file = $("input[type=file]")[0].files[0];
         let formData = new FormData();
 
-        $($files).each((i, file) => {
-            files.push(file);
-        })
 
-        files.forEach((file, e) => {
-            formData.append("file", file);
-        })
+        formData.append("file", $file);
 
 
         $.ajax({
@@ -517,103 +522,98 @@
             success: function (uuids) {
                 globalThis.uuids = uuids;
                 console.log(uuids);
-                $files.forEach((file, i) => {
-                    if (file.type.startsWith("image")) {
-                        let text = `
-                        <li class="img_list" id="li${i}">
 
-                                <article class="img_wrapper">
-                                    <div class="img_div">
-                                        <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}" class="inserted_img">
-                                    </div>
-                                </article>
-                            </div>
-                        </li>
+                if (file.type.startsWith("image")) {
+                    let text = `
+
+                             <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}" class="inserted_img">
+
+
                 `;
-                        $ul.append(text);
-                    }
-                });
-            }
-        });
-    });
-
-
-    // 이미지 지울 때
-    $ul.on("click",".close-button", function(e){
-        const dataTransfer = new DataTransfer();
-
-        let target = $(e.currentTarget).parent().parent().parent();
-        let fileArray = Array.from(files);
-        let ul = target.parent();
-        let i = ul.find("li").index(target);
-        files = [];
-
-        fileArray.splice(i, 1);
-        fileArray.forEach(file => {
-            if(file.fileOriginalName == null && file.fileOriginalName == undefined){
-                dataTransfer.items.add(file);
-            }else {
-                files.push(file);
+                    $li.html(text);
+                }
             }
         })
-
-        target.remove();
-        dataTransfer.files.forEach((file, i) =>{
-            files.push(file);
-        });
-
-        console.log(files);
     });
 
-    $(".save-button").click(() => {
-        const $files = $("input[type=file]")[0].files;
-        let text = "";
 
-        let boardTitle = $("input[name='boardTitle']").val();
-        let boardContent = $(".proposal_content").val();
+        // 이미지 지울 때
+        $li.on("click",".close-button", function(e){
+            const dataTransfer = new DataTransfer();
 
-        const startDate = $("input[name='startDate']").val(); // 시작 날짜 값 가져오기
-        const endDate = $("input[name='endDate']").val(); // 종료 날짜 값 가져오기
+            let target = $(e.currentTarget).parent().parent().parent();
+            let fileArray = Array.from(files);
+            let ul = target.parent();
+            let i = ul.find("li").index(target);
+            files = [];
 
-        FileList.prototype.forEach = Array.prototype.forEach;
-        files.forEach((file, i) => {
-            text +=
-                `
-                <input type="hidden" name="fileDTOS[${i}].fileOriginalName" value="${file.name}">
+            fileArray.splice(i, 1);
+            fileArray.forEach(file => {
+                if(file.filelName == null && file.fileName == undefined){
+                    dataTransfer.items.add(file);
+                }else {
+                    files.push(file);
+                }
+            })
+
+            target.remove();
+            dataTransfer.files.forEach((file, i) =>{
+                files.push(file);
+            });
+
+            console.log(files);
+        });
+
+        $(".save-button").click(() => {
+            const $files = $("input[type=file]")[0].files;
+            let text = "";
+
+            let fundingCategory = $("input[name='fundingCategory']").val();
+            let fundingShortTitle = $("input[name='fundingShortTitle']").val();
+            let fundingTitle = $("input[name='fundingTitle']").val();
+
+            FileList.prototype.forEach = Array.prototype.forEach;
+            files.forEach((file, i) => {
+                text +=
+                    `
+                <input type="hidden" name="fileDTOS[${i}].fileName" value="${file.name}">
                 <input type="hidden" name="fileDTOS[${i}].fileUuid" value="${globalThis.uuids[i]}">
                 <input type="hidden" name="fileDTOS[${i}].filePath" value="${toStringByFormatting(new Date())}">
+
                 `;
-        });
-        $("form[name=form]").append(text);
-        $("form[name=form]").submit();
-    })
-    /*****************************************************/
-    function leftPad(value) {
-        if (value >= 10) {
-            return value;
+            });
+
+            $("form[name=initialForm]").append(text);
+            $("form[name=initialForm]").submit();
+        })
+        /*****************************************************/
+
+        function leftPad(value) {
+            if (value >= 10) {
+                return value;
+            }
+
+            return `0${value}`;
         }
 
-        return `0${value}`;
-    }
+        function toStringByFormatting(source, delimiter = '/') {
+            const year = source.getFullYear();
+            const month = leftPad(source.getMonth() + 1);
+            const day = leftPad(source.getDate());
 
-    function toStringByFormatting(source, delimiter = '/') {
-        const year = source.getFullYear();
-        const month = leftPad(source.getMonth() + 1);
-        const day = leftPad(source.getDate());
-
-        return [year, month, day].join(delimiter);
-    }
-
-
-    function alertModal(errorMsg) {
-
-        $(".alert").text(errorMsg);
-        $alertModal.fadeIn();
-        setTimeout(function () {
-            $alertModal.fadeOut();
+            return [year, month, day].join(delimiter);
         }
 
 
-</script>-->
+       /* function alertModal(errorMsg) {
 
+            $(".alert").text(errorMsg);
+            $alertModal.fadeIn();
+            setTimeout(function () {
+                $alertModal.fadeOut();
+            }*/
+
+</script>
+<script src="/js/funding/funding-initial-info.js"></script>
+<script src="/js/funding/funding-file.js"></script>
 </html>

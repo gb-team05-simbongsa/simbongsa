@@ -1,6 +1,7 @@
 package com.app.simbongsa.repository.rice;
 
 
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 
 import com.app.simbongsa.entity.rice.RicePayment;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -113,7 +115,27 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .execute();
     }
 
-//    @Override
+    /* 내 공양미 조회(페이징) */
+    @Override
+    public Page<RicePayment> findByMemberId(Pageable pageable, UserDetail userDetail) {
+        List<RicePayment> foundRice = query.select(ricePayment)
+                .from(ricePayment)
+                .join(ricePayment.member)
+                .fetchJoin()
+                .where(ricePayment.member.id.eq(userDetail.getId()))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(ricePayment.count())
+                .from(ricePayment)
+                .where(ricePayment.member.id.eq(userDetail.getId()))
+                .fetchOne();
+
+        return new PageImpl<>(foundRice, pageable, count);
+    }
+
+    //    @Override
 //    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGongyang) {
 //        query.update(member)
 //                .set(member.memberRice, member.memberRice.subtract(supportGongyang))
@@ -122,23 +144,6 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 //                .where(member.id.eq(id))
 //                .execute();
 //    }
-  /* 세션에 담긴 id 값 받아와서 내 공양미 조회(페이징) */
-      @Override
-      public Page<RicePayment> findByMemberId(Pageable pageable, Long memberId) {
-          List<RicePayment> foundRice = query.select(ricePayment)
-                  .from(ricePayment)
-                  .where(ricePayment.member.id.eq(memberId))
-                  .offset(pageable.getOffset())
-                  .limit(pageable.getPageSize())
-                  .fetch();
-
-          Long count = query.select(ricePayment.count())
-                  .from(ricePayment)
-                  .where(ricePayment.member.id.eq(memberId))
-                  .fetchOne();
-
-          return new PageImpl<>(foundRice, pageable, count);
-      }
 
     @Override
     public Long countStatusWaitAccessDenied(RicePaymentType ricePaymentType) {

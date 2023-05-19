@@ -121,10 +121,16 @@ public class FreeBoardRepositoryTests {
         log.info("============================" + freeBoardRepository.findById(116L));
     }
 
+//   메인페이지 목록뽑기
     @Test
     public void findAllWithPopularFreeBoardTest(){
 //        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::getFreeBoardReplies).map(v->v.size()).forEach(v -> log.info(v.toString()));
-        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::toString).forEach(log::info);
+        freeBoardRepository.findAllWithPopularFreeBoard().stream().map(FreeBoard::getBoardTitle).forEach(v -> log.info(v +"여기야~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
 
+    }
+    // 메인페이지 파일이미지 뽑기
+    @Test
+    public void findAllWithFileTest(){
+        freeBoardRepository.findAllWithFile().stream().map(FreeBoard::getFreeBoardFiles).forEach(v -> log.info(v.toString() +"여기야~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
     }
 }
