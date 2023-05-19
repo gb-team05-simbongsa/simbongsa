@@ -62,22 +62,22 @@ public class MemberController {
         return "join-login/find-password";
     }
 
-    /* 비밀번호 재설정 페이지 */
+    /* 비밀번호 재설정 페이지이동 */
     @GetMapping("change-password")
-    public String changePassword(String memberEmail, String randomKey) {
-        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
-            return "/member/login";
-        }
-        memberService.updateRandomKey(memberEmail, null);
+    public String changePassword(@RequestParam("memberEmail") String memberEmail, String randomKey) {
         return "/join-login/change-password";
     }
 
-    /* 비밀번호 재설정 */
+    /* 비밀번호 변경하기 */
     @PostMapping("change-password")
-    public RedirectView changePasswordOK(String memberEmail, String memberPassword){
-        log.info("memberEmail" + memberEmail);
+    public RedirectView changePasswordOK(@RequestParam("memberEmail") String memberEmail, String memberPassword, String randomKey){
+        log.info("url에서 받아온 memberEmail: " + memberEmail);
+        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
+            return new RedirectView ("/member/login");
+        }
         memberService.updatePassword(memberEmail, memberPassword);
         log.info("들어옴");
+        memberService.updateRandomKey(memberEmail, null);
         return new RedirectView("/member/login");
     }
 
