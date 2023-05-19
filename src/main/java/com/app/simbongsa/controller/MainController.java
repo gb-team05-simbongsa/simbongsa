@@ -72,4 +72,9 @@ public class MainController {
 
     }
 
+    @GetMapping("info")
+     public String serviceInfo(){
+        return "service-info/service-info";
+    }
+
 }
