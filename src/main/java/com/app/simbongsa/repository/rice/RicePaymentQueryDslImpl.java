@@ -122,14 +122,14 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                 .from(ricePayment)
                 .join(ricePayment.member)
                 .fetchJoin()
-                .where(ricePayment.member.id.eq(userDetail.getId()))
+                .where(ricePayment.member.id.eq(userDetail.getMember().getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(ricePayment.count())
                 .from(ricePayment)
-                .where(ricePayment.member.id.eq(userDetail.getId()))
+                .where(ricePayment.member.id.eq(userDetail.getMember().getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundRice, pageable, count);
