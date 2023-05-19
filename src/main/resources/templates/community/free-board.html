@@ -105,13 +105,6 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
     let freeBoardList = [[${freeBoardList}]];
-
-    volunteerFile.forEach((fileDTO, i) => {
-        let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
-        `;
-        $(".volunteerImg a").eq(i).html(text);
-    });
 </script>
 <script src="/js/community/free-board.js"></script>
 <script src="/js/main/header.js"></script>

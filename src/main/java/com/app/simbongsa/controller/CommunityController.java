@@ -73,8 +73,11 @@ public class CommunityController {
 
     /*자유게시판 상세보가*/
     @GetMapping("free-detail/{id}")
-    public String goToFreeDetail(Model model, @PathVariable Long id) {
-        model.addAttribute("freeBoard", freeBoardService.getFreeBoardDetail(id));
+    public String goToFreeDetail(Model model, @PathVariable Long id, @AuthenticationPrincipal UserDetail userDetail) {
+        FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(id);
+
+        model.addAttribute("freeBoardDTO", freeBoardDTO);
+        model.addAttribute("userDetail", userDetail);
         return "community/free-detail";
     }
 

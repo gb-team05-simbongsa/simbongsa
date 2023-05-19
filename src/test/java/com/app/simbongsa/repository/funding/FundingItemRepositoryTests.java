@@ -22,17 +22,17 @@ public class FundingItemRepositoryTests {
 
     @Autowired
     FundingGiftItemRepository fundingGiftItemRepository;
-    @Test
-    public void saveTest() {
-        for(int i=1; i<=25; i++) {
-            FundingItem fundingItem = new FundingItem(
-                    "펀딩아이템" + i
-             , "필름카메라" + (i + 1) +"개"
-            );
-         fundingItemRepository.save(fundingItem);
-        }
-
-    }
+//    @Test
+//    public void saveTest() {
+//        for(int i=1; i<=25; i++) {
+//            FundingItem fundingItem = new FundingItem(
+//                    "펀딩아이템" + i
+//             , "필름카메라" + (i + 1) +"개"
+//            );
+//         fundingItemRepository.save(fundingItem);
+//        }
+//
+//    }
 
 
     @Test
