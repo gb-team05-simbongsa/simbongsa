@@ -90,10 +90,24 @@ const adminService = (function() {
         $.ajax({
             url: url,
             type: 'post',
-            data: { id : contentId, page : page }, // 수정: page를 객체 형태로 전달
+            data: { id : contentId, page : page },
             success: function(result) {
                 if (callback) {
                     callback(result);
+                }
+            }
+        });
+    }
+
+    function saveVolunteerWork(volunteerWorkDTO, callback) {
+        $.ajax({
+            url: "/admins/volunteer-work-regist",
+            type: 'post',
+            data: JSON.stringify(volunteerWorkDTO),
+            contentType: "application/json; charset=utf-8",
+            success: function() {
+                if (callback) {
+                    callback();
                 }
             }
         });
@@ -105,5 +119,5 @@ const adminService = (function() {
     }
 
     return { saveNotice : saveNotice, getDetail : getDetail, deleteOrUpdate : deleteOrUpdate, updateStatus : updateStatus,
-        answerRegistration : answerRegistration, volunteerFile : volunteerFile, getDetailList : getDetailList, dateFormat : dateFormat };
+        answerRegistration : answerRegistration, volunteerFile : volunteerFile, getDetailList : getDetailList, saveVolunteerWork : saveVolunteerWork, dateFormat : dateFormat };
 })();

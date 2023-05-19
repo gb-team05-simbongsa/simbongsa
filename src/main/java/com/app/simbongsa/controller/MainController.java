@@ -45,11 +45,11 @@ public class MainController {
                 .collect(Collectors.toList());
 
         // 봉사 파일
-        List<FileDTO> volunteerFileDTO = volunteerWorkService.getVolunteerList()
-                .stream()
-                .flatMap(volunteer -> volunteer.getFileDTOs().stream())
-                .collect(Collectors.toList());
-        volunteerFileDTO.stream().map(FileDTO::toString).forEach(log::info);
+//        List<FileDTO> volunteerFileDTO = volunteerWorkService.getVolunteerList()
+//                .stream()
+//                .flatMap(volunteer -> volunteer.getFileDTOs().stream())
+//                .collect(Collectors.toList());
+//        volunteerFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
         // 게시판 파일
         List<FileDTO> freeBoardFileDTO = Optional.ofNullable(freeBoardService.getAllWithFile())
@@ -60,7 +60,7 @@ public class MainController {
         freeBoardFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
         model.addAttribute("fileDTO", fileDTO);
-        model.addAttribute("volunteerFileDTO", volunteerFileDTO);
+//        model.addAttribute("volunteerFileDTO", volunteerFileDTO);
         model.addAttribute("volunteerList", volunteerList);
         model.addAttribute("memberRankList", memberRankList);
 

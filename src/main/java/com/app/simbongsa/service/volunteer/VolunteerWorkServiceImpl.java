@@ -44,14 +44,14 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkList.stream()
                 .map(volunteerWork -> {
                     VolunteerWorkDTO volunteerWorkDTO = toVolunteerWorkDTO(volunteerWork);
-                    List<VolunteerWorkFile> volunteerWorkFiles = volunteerWork.getVolunteerWorkFiles();
-                    List<FileDTO> fileDTOS = FileToDTO(volunteerWorkFiles);
-                    volunteerWorkDTO.setFileDTOs(fileDTOS);
+                    VolunteerWorkFile volunteerWorkFile = volunteerWork.getVolunteerWorkFile();
+                    FileDTO fileDTO = toFileDTO(volunteerWorkFile);
+                    volunteerWorkDTO.setFileDTO(fileDTO);
                     return volunteerWorkDTO;
                 }).collect(Collectors.toList());
 
 //        List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkList.stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
-        volunteerWorkList.stream().map(VolunteerWork::getVolunteerWorkFiles).forEach(v -> log.info(v.toString()));
+        volunteerWorkList.stream().map(VolunteerWork::getVolunteerWorkFile).forEach(v -> log.info(v.toString()));
         volunteerWorkDTOS.stream().map(VolunteerWorkDTO::toString).forEach(v -> log.info(v + "여기야!!!!!!!!!!!!!!!!!!!!!!=================="));
         return volunteerWorkDTOS;
     }

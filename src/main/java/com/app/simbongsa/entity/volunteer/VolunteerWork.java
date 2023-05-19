@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter @ToString(exclude = "volunteerWorkFiles")
+@Getter @ToString(exclude = "volunteerWorkFile")
 @Table(name = "TBL_VOLUNTEER_WORK")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
@@ -33,14 +33,14 @@ public class VolunteerWork {
     @NotNull private String volunteerWorkRegisterAgency;
     @NotNull private String volunteerWorkPlace;
     @NotNull private String volunteerWorkTitle;
+    @NotNull private String volunteerWorkContent;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade=CascadeType.REMOVE)
-    private List<VolunteerWorkFile> volunteerWorkFiles;
-//    단위테스트용 생성자 생성
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade=CascadeType.REMOVE)
+    private VolunteerWorkFile volunteerWorkFile;
 
     @Builder
-    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle) {
+    public VolunteerWork(LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent) {
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
         this.volunteerWorkTime = volunteerWorkTime;
@@ -50,10 +50,11 @@ public class VolunteerWork {
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
+        this.volunteerWorkContent = volunteerWorkContent;
     }
 
     @Builder
-    public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, List<VolunteerWorkFile> volunteerWorkFiles) {
+    public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent) {
         this.id = id;
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
@@ -65,5 +66,6 @@ public class VolunteerWork {
         this.volunteerWorkRegisterAgency = volunteerWorkRegisterAgency;
         this.volunteerWorkPlace = volunteerWorkPlace;
         this.volunteerWorkTitle = volunteerWorkTitle;
+        this.volunteerWorkContent = volunteerWorkContent;
     }
 }
