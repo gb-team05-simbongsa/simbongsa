@@ -120,17 +120,6 @@ public class MypageController {
     }
 
     /* 내 공양미 조회(페이징) */
-    /*public String notice(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail) {
-        page = page == null ? 0 : page - 1;
-        Page<InquiryDTO> myInquiries = inquiryService.getMyInquiry(page, userDetail);
-
-        log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
-
-        model.addAttribute("myInquiries", myInquiries.getContent());
-        model.addAttribute("pageDTO", new PageDTO(myInquiries));
-        return "mypage/my-question";
-    }*/
-
     @GetMapping("rice-list")
     public String riceList(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
         page = page == null ? 0 : page - 1;
