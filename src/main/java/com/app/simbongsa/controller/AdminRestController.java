@@ -16,6 +16,7 @@ import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
+import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
@@ -196,9 +197,9 @@ public class AdminRestController {
         supportRequestService.deleteSupportRequest(idList);
     }
 
-    @PostMapping("volunteer-work-regist")
-    public void volunteerWorkRegist(VolunteerWorkDTO volunteerWorkDTO) {
-
+    @PostMapping("volunteer-works-register")
+    public void volunteerWorkRegister(@RequestBody VolunteerWorkDTO volunteerWorkDTO) {
+        volunteerWorkService.saveVolunteerWork(volunteerWorkDTO);
     }
 
     @PostMapping("volunteers-delete")
@@ -228,13 +229,4 @@ public class AdminRestController {
         freeBoardService.deleteFreeBoardByIds(idList);
     }
 
-    @PostMapping("files/upload")
-    public Map<String, Object> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
-        return volunteerWorkService.uploadFile(multipartFiles);
-    }
-
-    @GetMapping("files/display")
-    public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("/C:/upload", fileName));
-    }
 }

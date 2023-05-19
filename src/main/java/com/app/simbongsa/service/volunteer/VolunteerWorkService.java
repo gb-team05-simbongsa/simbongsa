@@ -3,6 +3,7 @@ package com.app.simbongsa.service.volunteer;
 import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
+import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -21,22 +22,20 @@ public interface VolunteerWorkService {
     // 1. 메인페이지 - 봉사 활동 8개 TEST
     public List<VolunteerWorkDTO> getVolunteerList();
 
+//    현재 시퀀스 가져오기
+    public VolunteerWork getCurrentSequence();
+
 //    봉사 전체 조회
     public Page<VolunteerWorkDTO> getVolunteerWork(Integer page, AdminVolunteerSearch adminVolunteerSearch);
+
+//    봉사 등록
+    public void saveVolunteerWork(VolunteerWorkDTO volunteerWorkDTO);
 
 //    봉사 상세보기
     public VolunteerWorkDTO getVolunteerWorkDetail(Long id);
 
 //    봉사 삭제
     public void deleteVolunteerWorkByIds(List<Long> ids);
-
-//    봉사 파일 업로드
-    public Map<String, Object> uploadFile(List<MultipartFile> multipartFiles) throws IOException;
-
-    //    현재 날짜 경로 구하기
-//    private String getPath() {
-//        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-//    }
 
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork){
         return VolunteerWorkDTO.builder()
@@ -45,7 +44,7 @@ public interface VolunteerWorkService {
                 .volunteerWorkCategory(volunteerWork.getVolunteerWorkCategory())
                 .id(volunteerWork.getId())
                 .volunteerWorkEndDate(volunteerWork.getVolunteerWorkEndDate())
-                .fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()))
+//                .fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()))
                 .volunteerWorkJoinEndDate(volunteerWork.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWork.getVolunteerWorkJoinStartDate())
                 .volunteerWorkRecruitNumber(volunteerWork.getVolunteerWorkRecruitNumber())
@@ -86,7 +85,7 @@ public interface VolunteerWorkService {
                 .volunteerWorkEndDate(volunteerWorkDTO.getVolunteerWorkEndDate())
                 .volunteerWorkJoinEndDate(volunteerWorkDTO.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWorkDTO.getVolunteerWorkJoinStartDate())
-//                .volunteerWorkFiles(volunteerWorkDTO.getVolunteerWorkFiles())
+//                .volunteerWorkFile(toVolunteerWorkFileEntity(volunteerWorkDTO.getFileDTO()))
                 .volunteerWorkPlace(volunteerWorkDTO.getVolunteerWorkPlace())
                 .volunteerWorkRecruitNumber(volunteerWorkDTO.getVolunteerWorkRecruitNumber())
                 .volunteerWorkRegisterAgency(volunteerWorkDTO.getVolunteerWorkRegisterAgency())
@@ -94,6 +93,16 @@ public interface VolunteerWorkService {
                 .volunteerWorkTime(volunteerWorkDTO.getVolunteerWorkTime())
                 .volunteerWorkTitle(volunteerWorkDTO.getVolunteerWorkTitle())
                 .volunteerWorkRegisterAgency(volunteerWorkDTO.getVolunteerWorkRegisterAgency())
+                .build();
+    }
+
+    default VolunteerWorkFile toVolunteerWorkFileEntity(FileDTO fileDTO) {
+        return VolunteerWorkFile.builder()
+                .fileName(fileDTO.getFileName())
+                .filePath(fileDTO.getFilePath())
+                .fileUuid(fileDTO.getFileUuid())
+                .fileRepresentationalType(fileDTO.getFileRepresentationalType())
+                .volunteerWork(fileDTO.getVolunteerWork())
                 .build();
     }
 }

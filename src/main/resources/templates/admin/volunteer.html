@@ -247,7 +247,7 @@
                     </svg>
                 </a>
             </div>
-            <form class="storage_form" th:action="@{/admin/volunteer-work-regist}" name="registForm" method="post">
+            <form class="storage_form" name="registForm">
                 <main class="modal__main">
                     <div class="modal__profile__top">
                         <h4>봉사 정보</h4>
@@ -260,8 +260,8 @@
                         <div class="user__profile">
                             <h5>봉사기간</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="volunteerWorkStartDate" placeholder="2023-03-01"/>
-                                <input type="text" name="volunteerWorkEndDate" placeholder="2023-04-20"/>
+                                <input type="datetime-local" name="volunteerWorkStartDate" placeholder="2023-03-01"/>
+                                <input type="datetime-local" name="volunteerWorkEndDate" placeholder="2023-04-20"/>
                             </div>
                         </div>
                         <div class="user__profile">
@@ -273,14 +273,14 @@
                         <div class="user__profile">
                             <h5>모집기간</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="volunteerWorkJoinStartDate" placeholder="2023-02-01"/>
-                                <input type="text" name="volunteerWorkJoinEndDate" placeholder="2023-02-25"/>
+                                <input type="date" name="volunteerWorkJoinStartDate" placeholder="2023-02-01"/>
+                                <input type="date" name="volunteerWorkJoinEndDate" placeholder="2023-02-25"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>모집인원</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="volunteerWorkRecruitNumber" value="30명"/>
+                                <input type="text" name="volunteerWorkRecruitNumber" placeholder="30명"/>
                             </div>
                         </div>
                         <div class="user__profile">
@@ -292,13 +292,13 @@
                         <div class="user__profile">
                             <h5>봉사장소</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="volunteerWorkPlace" value="서울 복지센터"/>
+                                <input type="text" name="volunteerWorkPlace" placeholder="서울 복지센터"/>
                             </div>
                         </div>
                         <div class="user__profile">
                             <h5>등록기관</h5>
                             <div class="user__profile__input">
-                                <input type="text" name="volunteerWorkRegisterAgency" value="서울 복지센터"/>
+                                <input type="text" name="volunteerWorkRegisterAgency" placeholder="서울 복지센터"/>
                             </div>
                         </div>
                         <h4 style="margin-top: 20px;">이미지</h4>
@@ -369,7 +369,7 @@
                         <!--                  <textarea id="summernote" name="editordata"></textarea>-->
                         <!--                </div>-->
                         <div class="user__profile__button" style="margin-top: 20px;">
-                            <button id="submitBtn" class="button__type_2 button__color__green">
+                            <button id="submitBtn" class="button__type_2 button__color__green" type="button">
                                 작성완료
                             </button>
                         </div>

@@ -152,5 +152,14 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         return new PageImpl<>(foundVolunteerWork, pageable, count);
     }
 
+    @Override
+    public VolunteerWork getCurrentSequence_QueryDSL() {
+        return query.select(volunteerWork)
+                .from(volunteerWork)
+                .orderBy(volunteerWork.id.desc())
+                .limit(1)
+                .fetchOne();
+    }
+
 }
 

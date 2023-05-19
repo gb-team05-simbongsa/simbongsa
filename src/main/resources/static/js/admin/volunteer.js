@@ -44,6 +44,7 @@ $('.search').on('click', () => {
 
 //file---------------------------------------------------------------------
 globalThis.uuids;
+globalThis.paths;
 FileList.prototype.forEach = Array.prototype.forEach;
 let prevFileList;
 
@@ -53,7 +54,7 @@ let prevFileList;
 const $photoPicker = $("#photo-picker");
 const uploadAjaxConfig = (data) => {
     return {
-        url: "/admins/files/upload",
+        url: "/file/upload",
         method: "POST",
         data: data,
         contentType: false,
@@ -82,10 +83,11 @@ $photoPicker.on("change", function () {
     adminService.volunteerFile(uploadAjaxConfig(formData), (result) => {
         console.log(result)
         globalThis.uuids = result.uuids;
+        globalThis.paths = result.paths;
         $('.content__img__wrap').empty();
         result.paths.forEach((path, i) => {
             if ($files[i].type.startsWith("image")) {
-                $('.content__img__wrap').append(`<img class="imageThumbnail" src="/admins/files/display?fileName=${result.paths[i]}">`);
+                $('.content__img__wrap').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
             } else $('.content__img__wrap').append(`<img style="width: 100px"/>`);
         });
     });
@@ -95,12 +97,14 @@ let setVolunteerWorkDTO = function() {
     const $files = $photoPicker[0].files;
 
     let fileDTO = new Object();
-    fileDTO.fileOrgName = file.name;
-    fileDTO.fileUuid = globalThis.uuids[i];
+    fileDTO.fileName = $files[0].name;
+    fileDTO.fileUuid = globalThis.uuids[0];
+    fileDTO.filePath = globalThis.paths[0];
+    // fileDTO.fileRepresentationalType = null;
 
     const volunteerWorkDTO = {
         volunteerWorkTitle : $('input[name=volunteerWorkTitle]').val(),
-        volunteerWorkContent : $('input[name=volunteerWorkContent]').val(),
+        volunteerWorkContent : $('textarea[name=volunteerWorkContent]').val(),
         volunteerWorkStartDate : $('input[name=volunteerWorkStartDate]').val(),
         volunteerWorkEndDate : $('input[name=volunteerWorkEndDate]').val(),
         volunteerWorkTime : $('input[name=volunteerWorkTime]').val(),
