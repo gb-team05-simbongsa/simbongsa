@@ -23,28 +23,7 @@
          <div class="content-container">
              <div class="content-layout">
                  <div class="work-detail-info-container">
-                     <div class="work-detail-board-layout">
-                         <div class="work-detail-list-btn-wrap">
-                             <div style="justify-content: center; display: flex; margin: 16px; ">
-                                 <button type="button" class="list-btn" id="" name="">
-                                        <a href="/volunteer-work/work-list"><span>목록</span></a>
-                                </button>
-                             </div>
-
-                             <a class="work-list-prev-btn board_prev" id="board_prev">
-                                 <img src="https://www.1365.go.kr/web/vols/images/ico/ico_board_btn_prev.png" alt="이전글 표시">이전글
-                                 <span class="">이전글이 없습니다.</span>
-                             </a>
-
-
-                             <a href="" class="work-detail-list-next-btn next-btn" id="board_next" onclick="">
-                                 다음글
-                                 <img src="https://www.1365.go.kr/web/vols/images/ico/ico_board_btn_next.png" alt="다음글 표시">
-                                 <span class="">우크라이나 &amp; 튀르키예 &amp; 시리아 긴급구호 물품지원 선별 분류 작업</span>
-                             </a>
-
-                         </div>
-                     </div>
+                     
                      <!-- <div class="work-detail-info-top-btn-layout">
                          <button type="button" class="apply-btn" id="" title="신청하기">
                              <span>신청하기</span>
@@ -52,8 +31,8 @@
                      </div> -->
                      <div class="work-detail-info-top-btn-layout" style="display: flex; width: 97.6%; justify-content: space-between;">
                          <!-- <h3 class="work-detail-info-title"> -->
-                         <span class="work-detail-info-title"> 사전연명의료의향서 상담 및 작성 업무 [오후]
-                                        <!-- <input type="hidden" id="" value="사전연명의료의향서 상담 및 작성 업무 [오후]"> -->
+                         <span class="work-detail-info-title" th:text="${volunteerWorkDetail.volunteerWorkTitle}"> 사전연명의료의향서 상담 및 작성 업무 [오후]
+<!--                                         <input type="hidden" id="" value="사전연명의료의향서 상담 및 작성 업무 [오후]">-->
                                         <em class="em">(모집중)</em>
                                     </span>
                          <!-- 지원하기 버튼 -->
@@ -68,42 +47,38 @@
                          <div class="group">
                              <dl>
                                  <dt>봉사기간</dt>
-                                 <dd>2023.05.25 ~ 2023.05.29</dd>
+                                 <dd th:text="${#strings.substring(volunteerWorkDetail.volunteerWorkJoinStartDate, 0, 10)} + ' ~ ' + ${#strings.substring(volunteerWorkDetail.volunteerWorkEndDate, 0, 10)}"></dd>
                              </dl>
                              <dl>
                                  <dt>봉사시간</dt>
-                                 <dd>12시 30분 ~ 16시 0분</dd>
+                                 <dd th:text="${volunteerWorkDetail.volunteerWorkTime}"></dd>
                              </dl>
                          </div>
-                         <div class="group">
-                             <dl>
-                                 <dt>모집기간</dt>
-                                 <dd>2023.04.18 ~ 2023.04.27</dd>
-                             </dl>
+                             <div class="group">
+                                 <dl>
+                                     <dt>모집기간</dt>
+                                     <dd th:text="${#strings.substring(volunteerWorkDetail.volunteerWorkStartDate, 0, 10)} + ' ~ ' + ${#strings.substring(volunteerWorkDetail.volunteerWorkEndDate, 0, 10)}"></dd>
+                                 </dl>
                              <dl>
                                  <dt>모집인원</dt>
-                                 <dd>1 명 / 일</dd>
+                                 <dd th:text="${volunteerWorkDetail.volunteerWorkRecruitNumber}">1 명 / 일</dd>
                              </dl>
-                             <!-- <dl>
-                                 <dt>활동요일</dt>
-                                 <dd>월,목</dd>
-                             </dl> -->
                          </div>
                          <div class="group">
                              <dl>
                                  <dt>봉사분야</dt>
-                                 <dd>보건의료 &gt; 기타</dd>
+                                 <dd th:text="${volunteerWorkDetail.volunteerWorkCategory}">보건의료 &gt; 기타</dd>
                              </dl>
                              <dl>
                                  <dt>등록기관</dt>
-                                 <dd>서울특별시 송파구</dd>
+                                 <dd th:text="${volunteerWorkDetail.volunteerWorkRegisterAgency}">서울특별시 송파구</dd>
                              </dl>
                          </div>
 
                          <div class="group">
                              <dl>
                                  <dt>봉사장소</dt>
-                                 <dd>심봉사</dd>
+                                 <dd th:text="${volunteerWorkDetail.volunteerWorkPlace}">심봉사</dd>
                              </dl>
 
                          </div>
@@ -112,7 +87,7 @@
                      <div class="detail-info-board-wrap">
                          <div class="detail-info-board-text">
 
-                             <pre>서울아산병원 암통합진료센터에서 사전연명의료의향서 상담 및 작성업무 자원봉사자를 모집합니다.
+                             <pre th:text="${volunteerWorkDetail.volunteerWorkContent}">서울아산병원 암통합진료센터에서 사전연명의료의향서 상담 및 작성업무 자원봉사자를 모집합니다.
 
                                     1. 봉사기간 및 시간 (월, 목 中 1일 오후 상시, 종료기한 없음)
                                     ㅇ 12시반~16시(오후)
@@ -535,6 +510,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
+<script th:inline="javascript"></script>
 <script src="/js/volunteer-work/work-apply-modal.js"></script>
 
 

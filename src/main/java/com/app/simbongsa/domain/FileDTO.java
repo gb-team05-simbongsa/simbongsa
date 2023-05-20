@@ -36,6 +36,55 @@ public class FileDTO {
         this.filePath = filePath;
         this.fileRepresentationalType = fileRepresentationalType;
     }
+//    봉사활동
+//    @Builder
+//    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, VolunteerWork volunteerWork) {
+//        this.id = id;
+//        this.fileName = fileName;
+//        this.fileUuid = fileUuid;
+//        this.filePath = filePath;
+//        this.fileRepresentationalType = fileRepresentationalType;
+//        this.volunteerWork = volunteerWork;
+//    }
+////    펀딩
+//    @Builder
+//    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Funding funding) {
+//        this.id = id;
+//        this.fileName = fileName;
+//        this.fileUuid = fileUuid;
+//        this.filePath = filePath;
+//        this.fileRepresentationalType = fileRepresentationalType;
+//        this.funding = funding;
+//    }
+////    자유게시판
+//    @Builder
+//    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
+//        this.id = id;
+//        this.fileName = fileName;
+//        this.fileUuid = fileUuid;
+//        this.filePath = filePath;
+//        this.fileRepresentationalType = fileRepresentationalType;
+//        this.freeBoard = freeBoard;
+//    }
+//
+////    활동 게시판
+//    @Builder
+//    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Review review) {
+//        this.id = id;
+//        this.fileName = fileName;
+//        this.fileUuid = fileUuid;
+//        this.filePath = filePath;
+//        this.fileRepresentationalType = fileRepresentationalType;
+//        this.review = review;
+//    }
+//    @Builder
+//    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType) {
+//        this.id = id;
+//        this.fileName = fileName;
+//        this.fileUuid = fileUuid;
+//        this.filePath = filePath;
+//        this.fileRepresentationalType = fileRepresentationalType;
+//    }
 
     public void setFreeBoardDTO(FreeBoardDTO freeBoardDTO){
         this.freeBoardDTO = freeBoardDTO;
