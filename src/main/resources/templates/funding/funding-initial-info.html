@@ -539,6 +539,7 @@
                 text +=`
                 <input type="hidden" name="fileDTOs[0].fileName" value="${$file.name}">
                 <input type="hidden" name="fileDTOs[0].fileUuid" value="${globalThis.uuids[0]}">
+                <input type="hidden" name="fileRepresentationalType" value="REPRESENTATION">
                 <input type="hidden" name="fileDTOs[0].filePath" value="${toStringByFormatting(new Date())}">
 
                 `;
@@ -548,7 +549,7 @@
                 console.log(toStringByFormatting(new Date()));
 
             $("form[name=initialForm]").html(text);
-           //  $("form[name=initialForm]").submit();
+            $("form[name=initialForm]").submit();
         })
         /*****************************************************/
 
