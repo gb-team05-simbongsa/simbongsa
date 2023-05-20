@@ -116,7 +116,7 @@
   text-align: left;
   font-weight: 400;
   border: 0;
-  width: 380px;
+  width: 400px;
 }
 
 .user__profile__input_volunteer_modal input {
@@ -127,7 +127,7 @@
   outline: none;
   border: none;
   border-radius: 3px;
-  padding: 3px 12px ;
+  padding: 3px 3px ;
 }
 
 .user__profile__input_volunteer_modal input:focus {

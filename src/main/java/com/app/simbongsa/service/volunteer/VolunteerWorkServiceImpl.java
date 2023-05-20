@@ -21,6 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -91,6 +92,15 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
     @Override
     public void deleteVolunteerWorkByIds(List<Long> ids) {
         volunteerWorkRepository.deleteAllById(ids);
+    }
+
+    @Override
+    @Transactional
+    public void updateVolunteerWork(VolunteerWorkDTO volunteerWorkDTO) {
+        FileDTO fileDTO = volunteerWorkDTO.getFileDTO();
+
+        volunteerWorkRepository.updateVolunteerWork(toVolunteerWorkEntity(volunteerWorkDTO));
+        volunteerWorkFileRepository.updateVolunteerWorkFile(toVolunteerWorkFileEntity(fileDTO));
     }
 
 }

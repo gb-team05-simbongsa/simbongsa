@@ -25,6 +25,9 @@ public interface VolunteerWorkQueryDsl {
     //    봉사활동 카테고리별 목록 조회
     public Page<VolunteerWork> findAllByCategory_QueryDSL(VolunteerWorkCategoryType volunteerWorkCategoryType, Pageable pageable);
 
+//    봉사활동 수정
+    public void updateVolunteerWork(VolunteerWork volunteerWork);
+
 //    현재 시퀀스 가져오기
     public VolunteerWork getCurrentSequence_QueryDSL();
 }
