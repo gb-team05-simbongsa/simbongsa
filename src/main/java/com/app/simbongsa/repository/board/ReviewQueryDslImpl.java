@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -73,10 +74,11 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
     /* 내 후기 게시물 목록 조회 (페이징처리) */
     @Override
-    public Page<Review> findByMemberId(Pageable pageable, Long memberId) {
+    public Page<Review> findByMemberId(Pageable pageable, MemberDTO memberDTO) {
+        Long memberId = memberDTO.getId();
         List<Review> foundReview = query.select(review)
                 .from(review)
-                .join(review.reviewFiles)
+                .leftJoin(review.reviewFiles)
                 .fetchJoin()
                 .where(review.member.id.eq(memberId))
                 .offset(pageable.getOffset())

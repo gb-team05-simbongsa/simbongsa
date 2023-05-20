@@ -195,4 +195,22 @@ public class ReviewServiceImpl implements ReviewService{
     public void deleteReviewByIds(List<Long> ids) {
         reviewRepository.deleteAllById(ids);
     }
+
+    /* 내 후기 게시물 목록 조회 (페이징처리) */
+    @Override
+    public Page<ReviewDTO> getMyReviewBoards(Integer page, MemberDTO memberDTO) {
+        page = page == null ? 0 : page;
+        Page<Review> myReviews = reviewRepository.findByMemberId(PageRequest.of(page, 5), memberDTO);
+
+        List<ReviewDTO> myReveiwDTOS = myReviews.stream().map(review -> {
+            ReviewDTO reviewDTO = toReviewDTO(review);
+            List<ReviewFile> reviewFiles = review.getReviewFiles();
+            List<FileDTO> fileDTOS = FileToDTO(reviewFiles);
+            reviewDTO.setFileDTOS(fileDTOS);
+            return reviewDTO;
+        }).collect(Collectors.toList());
+
+        log.info("myReviewDTOS serviceImpl: ===== " + myReveiwDTOS);
+        return new PageImpl<>(myReveiwDTOS,myReviews.getPageable(),myReviews.getTotalElements());
+    }
 }

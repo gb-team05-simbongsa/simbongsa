@@ -40,7 +40,7 @@ myFreeBoards.forEach((myFreeBoard, i) => {
             </div>
             <div class="review-main-footer">
                 <div class="review-write-date">
-                    <span>${myFreeBoard.updatedDate}</span>
+                    <span>${myFreeBoard.updatedDate.substring(0,10)} ${myFreeBoard.updatedDate.substring(11,19)}</span>
                     <span>자유게시판</span>
                 </div>
             </div>
