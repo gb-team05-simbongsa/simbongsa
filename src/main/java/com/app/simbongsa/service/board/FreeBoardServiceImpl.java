@@ -1,9 +1,6 @@
 package com.app.simbongsa.service.board;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.FreeBoardDTO;
-import com.app.simbongsa.domain.FreeBoardReplyDTO;
-import com.app.simbongsa.domain.ReplyDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
@@ -230,10 +227,19 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
     @Override
-    public Page<FreeBoardDTO> getMyFreeBoards(Integer page, UserDetail userDetail) {
+    public Page<FreeBoardDTO> getMyFreeBoards(Integer page, MemberDTO memberDTO) {
         page = page == null ? 0 : page;
-        Page<FreeBoard> myFreeBoards = freeBoardRepository.findByMemberId(PageRequest.of(page, 5), userDetail);
-        List<FreeBoardDTO> freeBoardDTOS = myFreeBoards.getContent().stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
-        return new PageImpl<>(freeBoardDTOS,myFreeBoards.getPageable(),myFreeBoards.getTotalElements());
+        Page<FreeBoard> myFreeBoards = freeBoardRepository.findByMemberId(PageRequest.of(page, 5), memberDTO);
+
+        List<FreeBoardDTO> myFreeBoardDTOS = myFreeBoards.stream().map(freeBoard -> {
+            FreeBoardDTO freeBoardDTO = toFreeBoardDTO(freeBoard);
+            List<FreeBoardFile> freeBoardFiles = freeBoard.getFreeBoardFiles();
+            List<FileDTO> fileDTOs = FileToDTO(freeBoardFiles);
+            freeBoardDTO.setFileDTOS(fileDTOs);
+            return freeBoardDTO;
+        }).collect(Collectors.toList());
+
+        log.info("myFreeBoardDTOS serviceImpl: ===== " + myFreeBoardDTOS);
+        return new PageImpl<>(myFreeBoardDTOS,myFreeBoards.getPageable(),myFreeBoards.getTotalElements());
     }
 }

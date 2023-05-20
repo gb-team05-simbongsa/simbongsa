@@ -61,7 +61,7 @@ public interface FreeBoardService {
     public List<FreeBoardDTO> getAllWithFile();
 
 //    유저가 작성한 자유게시물 조회(페이징처리)
-    Page<FreeBoardDTO> getMyFreeBoards(Integer page, UserDetail userDetail);
+    Page<FreeBoardDTO> getMyFreeBoards(Integer page, MemberDTO memberDTO);
 
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
@@ -148,7 +148,6 @@ public interface FreeBoardService {
 
     default FreeBoard toFreeBoardEntity(FreeBoardDTO freeBoardDTO){
         return FreeBoard.builder()
-                .id(freeBoardDTO.getId())
                 .boardTitle(freeBoardDTO.getBoardTitle())
                 .boardContent(freeBoardDTO.getBoardContent())
                 .member(toMemberEntity(freeBoardDTO.getMemberDTO()))

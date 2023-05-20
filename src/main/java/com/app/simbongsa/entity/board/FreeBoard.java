@@ -35,8 +35,8 @@ public class FreeBoard extends Board {
     private List<FreeBoardFile> freeBoardFiles = new ArrayList<>();
 
     @Builder
-    public FreeBoard(Long id, String boardTitle, String boardContent, Member member, List<FreeBoardFile> freeBoardFiles, Integer freeBoardReplyCount) {
-        super(id, boardTitle, boardContent);
+    public FreeBoard(String boardTitle, String boardContent, Member member, List<FreeBoardFile> freeBoardFiles, Integer freeBoardReplyCount) {
+        super(boardTitle, boardContent);
         this.member = member;
         this.freeBoardFiles = freeBoardFiles;
         this.freeBoardReplyCount = freeBoardReplyCount;

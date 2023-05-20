@@ -1,5 +1,6 @@
 package com.app.simbongsa.service.support;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
@@ -62,8 +63,8 @@ public class SupportRequestServiceImpl implements SupportRequestService {
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
     @Override
-    public Page<SupportRequestDTO> getMySupportRequest(Integer page, UserDetail userDetail) {
-        Page<SupportRequest> mySupportRequest = supportRequestRepository.findByMemberId(PageRequest.of(page, 5), userDetail);
+    public Page<SupportRequestDTO> getMySupportRequest(Integer page, MemberDTO memberDTO) {
+        Page<SupportRequest> mySupportRequest = supportRequestRepository.findByMemberId(PageRequest.of(page, 5), memberDTO);
         List<SupportRequestDTO> mySupportRequestDTOS = mySupportRequest.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
         return new PageImpl<>(mySupportRequestDTOS, mySupportRequest.getPageable(), mySupportRequest.getTotalElements());
     }

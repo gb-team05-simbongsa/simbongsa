@@ -10,13 +10,14 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter @ToString
 @Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
-public class Member {
+public class Member implements Serializable {
     @Id @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;

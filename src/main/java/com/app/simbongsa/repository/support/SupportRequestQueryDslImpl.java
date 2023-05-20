@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -23,17 +24,17 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
 
     /* 유저아이디로 후원요청목록 페이징처리해서 불러오기 */
     @Override
-    public Page<SupportRequest> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
+    public Page<SupportRequest> findByMemberId(Pageable pageable, MemberDTO memberDTO) {
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(userDetail.getMember().getId()))
+                .where(supportRequest.member.id.eq(memberDTO.getId()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
-                .where(supportRequest.member.id.eq(userDetail.getMember().getId()))
+                .where(supportRequest.member.id.eq(memberDTO.getId()))
                 .fetchOne();
 
         return new PageImpl<>(foundSupportRequest,pageable,count);

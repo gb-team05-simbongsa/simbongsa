@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.support;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 public interface SupportRequestQueryDsl {
     /* 유저별 후원 요청 조회 */
-    public Page<SupportRequest> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
+    public Page<SupportRequest> findByMemberId(Pageable pageable, MemberDTO memberDTO);
     // 후원 요청 목록
     public Slice<SupportRequest> findAllSupportRequest(Pageable pageable);
 
