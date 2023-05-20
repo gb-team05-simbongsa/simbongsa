@@ -61,7 +61,11 @@ public class VolunteerRepositoryTests {
 //                    ,"전주"
 //                    ,"전주" + i,"심봉사 TEST");
 //            volunteerWorkRepository.save(volunteerWork);
+<<<<<<< HEAD
         }
+=======
+//        }
+>>>>>>> 4d935988435db12426ed1ad277f6615d9eca8e70
 
 
     //  봉사활동 목록 조회 (메인페이지)
@@ -131,9 +135,9 @@ public class VolunteerRepositoryTests {
     }
     @Test
     public void findById_QueryDSLTest(){
-        log.info(volunteerWorkRepository.findById_QueryDSL(40L).toString());
-        volunteerWorkRepository.findById_QueryDSL(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
-        volunteerWorkRepository.findById_QueryDSL(42L).stream().map(VolunteerWork::toString);
+        log.info(volunteerWorkRepository.findById_QueryDSL(773L).toString());
+        volunteerWorkRepository.findById_QueryDSL(763L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
+        volunteerWorkRepository.findById_QueryDSL(196L).stream().map(VolunteerWork::toString);
     }
     /* 이전글 다음글*/
     @Test

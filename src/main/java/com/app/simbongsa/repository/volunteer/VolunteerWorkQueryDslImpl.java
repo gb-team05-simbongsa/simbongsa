@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import com.app.simbongsa.type.VolunteerWorkCategoryType;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.sun.istack.NotNull;
@@ -14,6 +15,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -84,6 +86,42 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         return new PageImpl<>(findAllVolunteer, pageable, count);
     }
 
+    // 봉사 활동 목록 조회(검색 + 무한스크롤)
+    @Override
+    public Slice<VolunteerWork> findAllScorollAndSearch(String keyword, Pageable pageable) {
+        BooleanBuilder searchCondition = new BooleanBuilder();
+
+        if (keyword != null && !keyword.isEmpty()) {
+            if (keyword.equals("서울특별시")) {
+                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("서울특별시"));
+            } else if (keyword.equals("경기도")) {
+                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("경기도"));
+            } else if (keyword.equals("충청북도")) {
+                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("충청북도"));
+            } else if (keyword.equals("충청남도")) {
+                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("충청남도"));
+            } else if (keyword.equals("경상남도")) {
+                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("경상남도"));
+            } else if (keyword.equals("경상북도")) {
+                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("경상북도"));
+            }
+        }
+
+
+        List<VolunteerWork> findAllVolunteer = query.selectFrom(volunteerWork)
+                .leftJoin(volunteerWork.volunteerWorkFile, volunteerWorkFile)
+                .where(searchCondition)
+                .orderBy(volunteerWork.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()).fetch();
+        boolean hasNext = findAllVolunteer.size() > pageable.getPageSize();
+        if (hasNext) {
+            findAllVolunteer.remove(pageable.getPageSize());
+        }
+
+        return new SliceImpl<>(findAllVolunteer, pageable, hasNext);
+    }
+
     @Override
     public Page<VolunteerWork> findPagingAndSearch(String placeKeyword, String agencyKeyword, Pageable pageable) {
         List<BooleanExpression> searchConditions = new ArrayList<>();
@@ -117,28 +155,6 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
                 .where(volunteerWork.id.eq(volunteerWorkId))
                 .fetchOne());
      }
-    //    이전글 다음글
-    @Override
-    public Optional<VolunteerWork> findByNextIdOrPrevId(String keyword, Long id) {
-        BooleanExpression prevPage = volunteerWork.id.lt(id);
-        BooleanExpression nextPage = volunteerWork.id.gt(id);
-
-        if(keyword == "다음글"){
-            return Optional.ofNullable(query.selectFrom(volunteerWork)
-                    .where(nextPage)
-                    .fetchFirst());
-        }else if(keyword == "이전글"){
-            return Optional.ofNullable(query.selectFrom(volunteerWork)
-                    .where(prevPage)
-                    .fetchFirst());
-        }else {
-            return Optional.ofNullable(query.selectFrom(volunteerWork)
-                    .where(volunteerWork.id.eq(id))
-                    .fetchOne());
-        }
-
-
-    }
     // 봉사활동 카테고리별 목록조회
     @Override
     public Page<VolunteerWork> findAllByCategory_QueryDSL(VolunteerWorkCategoryType volunteerWorkCategoryType, Pageable pageable) {
