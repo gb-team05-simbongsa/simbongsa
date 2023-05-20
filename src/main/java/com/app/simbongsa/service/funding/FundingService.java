@@ -170,6 +170,7 @@ public interface FundingService {
                 .filePath(fileDTO.getFilePath())
                 .fileRepresentationalType(fileDTO.getFileRepresentationalType())
                 .fileUuid(fileDTO.getFileUuid())
+                .funding(fileDTO.getFunding())
                 .build();
     }
 
