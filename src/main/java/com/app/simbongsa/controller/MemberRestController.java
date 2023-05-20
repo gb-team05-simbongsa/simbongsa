@@ -15,7 +15,7 @@ public class MemberRestController {
 
     /*이메일 중복 검사*/
     @PostMapping("check-email")
-    public Long overlapByMemberEmail(String memberEmail) {
+    public Long overlapByMemberEmail(@RequestParam("memberEmail") String memberEmail) {
         log.info("들어옴ㅁㅇㄴㄻㅇㄻㄴㅇㄹㄴㅇㅁㄹㄴㅇㅁㄻㄴㅇㄻㄴㅇㄹ");
         return memberService.overlapByMemberEmail(memberEmail);
     }

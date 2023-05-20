@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -63,14 +60,15 @@ public class MemberController {
     }
 
     /* 비밀번호 재설정 페이지이동 */
-    @GetMapping("change-password")
-    public String changePassword(@RequestParam("memberEmail") String memberEmail, String randomKey) {
-        return "/join-login/change-password";
-    }
+//    @GetMapping("change-password")
+//    public String changePassword(@RequestParam("memberEmail") String memberEmail, String randomKey) {
+//        return "/join-login/change-password";
+//    }
 
     /* 비밀번호 변경하기 */
-    @PostMapping("change-password")
-    public RedirectView changePasswordOK(@RequestParam("memberEmail") String memberEmail, String memberPassword, String randomKey){
+    @GetMapping("change-password")
+//    @ResponseBody
+    public RedirectView changePasswordOK(@RequestParam("memberEmail") String memberEmail, String memberPassword, @RequestParam("randomKey") String randomKey){
         log.info("url에서 받아온 memberEmail: " + memberEmail);
         if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
             return new RedirectView ("/member/login");

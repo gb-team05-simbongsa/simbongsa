@@ -266,6 +266,8 @@ public class MemberServiceImpl implements MemberService {
     /* 비밀번호변경 */
     @Override
     public void updatePassword(String memberEmail, String memberPassword) {
+        log.info(memberPassword + "===============================");
+        log.info(memberEmail + "===================================");
        memberRepository.updatePassword(memberEmail, memberPassword);
     }
 }

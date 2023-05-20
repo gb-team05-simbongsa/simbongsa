@@ -55,22 +55,22 @@ $('.submit-button').on('click', () => {
 
 
 //이메일 중복
-$('.submit-button').on("click", function(){
-    $.ajax({
-        url:"/members/check-email" ,
-        data: { memberEmail: $('.input-email').val() },
-        type: "post",
-        success: function(result){
-            if(result >= 1) {
-                $errorMessage.eq(1).text('사용 불가능한 이메일입니다.');
-                $errorMessage.eq(1).show();
-            } else {
-                emailCheck = true;
-                $('.modal-content').text('사용 가능한 이메일입니다.');
-                $('.modal-wrap').show();
-                $errorMessage.eq(1).hide();
-
-            }
-        }
-    });
-});
+// $('.submit-button').on("click", function(){
+//     $.ajax({
+//         url:"/members/check-email" ,
+//         data: { memberEmail: $('.input-email').val() },
+//         type: "post",
+//         success: function(result){
+//             if(result >= 1) {
+//                 $errorMessage.eq(1).text('사용 불가능한 이메일입니다.');
+//                 $errorMessage.eq(1).show();
+//             } else {
+//                 emailCheck = true;
+//                 $('.modal-content').text('사용 가능한 이메일입니다.');
+//                 $('.modal-wrap').show();
+//                 $errorMessage.eq(1).hide();
+//
+//             }
+//         }
+//     });
+// });
