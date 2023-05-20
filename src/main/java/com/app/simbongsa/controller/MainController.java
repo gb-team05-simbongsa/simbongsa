@@ -47,7 +47,7 @@ public class MainController {
         // 봉사 파일
 //        List<FileDTO> volunteerFileDTO = volunteerWorkService.getVolunteerList()
 //                .stream()
-//                .flatMap(volunteer -> volunteer.getFileDTOs().stream())
+//                .flatMap(VolunteerWorkDTO::getFileDTO)
 //                .collect(Collectors.toList());
 //        volunteerFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
@@ -70,6 +70,11 @@ public class MainController {
         model.addAttribute("freeBoardFileDTO", freeBoardFileDTO);
         return "main/main";
 
+    }
+
+    @GetMapping("info")
+     public String serviceInfo(){
+        return "service-info/service-info";
     }
 
 }

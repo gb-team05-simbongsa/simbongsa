@@ -28,13 +28,14 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("funding") @Primary
+@Qualifier("funding")
+@Primary
 @Slf4j
 public class FundingServiceImpl implements FundingService {
     private final FundingRepository fundingRepository;
     private final FundingFileRepository fundingFileRepository;
 
-//    메인페이지 펀딩 인기순
+    //    메인페이지 펀딩 인기순
 //    여기에서 FileDTOs에 파일이 안들어가
     @Override
     public List<FundingDTO> getAllPopularFundingList() {
@@ -45,29 +46,22 @@ public class FundingServiceImpl implements FundingService {
                     List<FundingFile> fundingFiles = funding.getFundingFile();
                     List<FileDTO> fileDTOs = FileToDTO(fundingFiles);
                     fundingDTO.setFileDTOs(fileDTOs);
-        return fundingDTO;
-    })
-            .collect(Collectors.toList());
+                    return fundingDTO;
+                })
+                .collect(Collectors.toList());
         return fundingDTOS;
     }
 
-    // 펀딩 저장
+    // 펀딩 저장 // 등록한 시점의 현재 시퀀스만들기
     @Override
     public void fundingRegister(FundingDTO fundingDTO) {
+        List<FileDTO> fileDTOs = fundingDTO.getFileDTOs();
         fundingRepository.save(toFundingEntity(fundingDTO));
-        List<FileDTO> fileDTOS = fundingDTO.getFileDTOs();
 
-        if(fileDTOS != null){
-            for (int i = 0; i < fileDTOS.size(); i++) {
-                if(i == 0){
-                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
-                } else {
-                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
-                }
-                fundingFileRepository.save(toFundingFileEntity(fileDTOS.get(i)));
-            }
+        if(fileDTOs != null){
+            fileDTOs.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+            fundingFileRepository.save(toFundingFileEntity(fileDTOs.get(0)));
         }
-
     }
 
     // 펀딩 전체 목록 조회(무한스크롤)

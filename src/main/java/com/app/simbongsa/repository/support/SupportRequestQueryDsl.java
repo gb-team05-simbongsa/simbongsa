@@ -1,6 +1,8 @@
 package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -37,4 +39,6 @@ public interface SupportRequestQueryDsl {
 
 //    대기 승인 반려 수 조회
     public Long countStatusWaitAccessDenied(RequestType requestType);
+
+    public Page<SupportRequestDTO> findAllTest(Pageable pageable);
 }

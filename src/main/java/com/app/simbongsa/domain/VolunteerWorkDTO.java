@@ -3,6 +3,7 @@ package com.app.simbongsa.domain;
 import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
