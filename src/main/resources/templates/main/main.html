@@ -20,7 +20,9 @@
         height: 100%;
     }
 </style>
-<body>
+<body style="
+    background: white;
+">
     <div class="full-screen">
         <div class="scroll-top-btn-wrapper animate">
             <button class="scroll-top-btn">
@@ -107,7 +109,7 @@
                         </div>
                     </div>
 
-                    <div class="main-popular-section">
+                    <div class="main-popular-section" style="zoom:1.1">
                         <div class="main-popular-title-wrapper">
                             <div class="popular-list-title">
                                 <a href="#">심청이 랭킹</a>
@@ -127,18 +129,18 @@
                                     <div class="volunteer-percentage-wrapper">
                                         <div></div>
                                         <div class="popular-percentage-layout" th:each="memberRankList, state : ${memberRankList}">
-                                            <div class="image-wrapper">
-                                                <a href="#" style="background-size: 96px;"></a>
-                                            </div>
                                             <span class="rank-layout-top" th:text="${state.count}">1</span>
-                                            <div class="info-wrapper">
+                                            <div class="info-wrapper" style="margin-left: 11px; width: calc(100% - 120px);">
                                                 <dl>
                                                     <dd class="volunteer-sub-info">
+                                                        <div class="memberRank" style= "
+                                                                        background-size: 20px;
+                                                                        width: 20px;
+                                                                        height: 20px;
+                                                                        display: inline-block;">
+                                                        </div>
                                                         <span>
-                                                            <a href="#" >엽전</a>
-                                                        </span>
-                                                        <span >
-                                                            <a href="#" th:text="${memberRankList.memberRank}" class="rank">3티어</a>
+                                                            <a href="#" th:text="${memberRankList.memberRank}" class="rank" style="font-size: 12px">3티어</a>
                                                         </span>
                                                     </dd>
                                                     <dt>
@@ -147,7 +149,7 @@
                                                         </a>
                                                     </dt>
                                                 </dl>
-                                                <div class="funding-status">
+                                                <div class="funding-status" style="margin-left: 2px;">
                                                     <span class="percentage">누적 </span><span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">시간 달성</span>
                                                 </div>
                                             </div>
@@ -345,7 +347,7 @@
 <script th:inline="javascript">
     FileList.prototype.forEach = Array.prototype.forEach;
     let fileDTO =[[${fileDTO}]];
-    let volunteerFile = [[${volunteerFileDTO}]];
+    // let volunteerFile = [[${volunteerFileDTO}]];
     let volunteerList = [[${volunteerList}]];
     let freeboardFile = [[${freeBoardFileDTO}]];
 
@@ -365,7 +367,9 @@
             <div></div>
             <div class="volunteer-link-wrapper">
              <div class="volunteer-image-wrapper volunteerImg">
-             <a href="#"></a>
+             <a href="#">
+                <img class="fundingImg" src="/file/display?fileName=${volunteer.fileDTO.filePath}/${volunteer.fileDTO.fileUuid}_${volunteer.fileDTO.fileName}">
+            </a>
             </div>
             <div class="info-wrapper" >
             <dl>
@@ -391,12 +395,12 @@
         $volunteerAppend.append(text);
     });
 
-    volunteerFile.forEach((fileDTO, i) => {
-        let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
-        `;
-        $(".volunteerImg a").eq(i).html(text);
-    });
+    // volunteerFile.forEach((fileDTO, i) => {
+    //     let text = `
+    //        <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+    //     `;
+    //     $(".volunteerImg a").eq(i).html(text);
+    // });
 
     fileDTO.forEach((fileDTO, i) =>{
         let text = `
@@ -412,10 +416,8 @@
     })
 
 
-
-
     const $rank = $('.rank');
-    const $image = $('.image-wrapper a');
+    const $image = $('.memberRank');
 
     $(document).ready(function () {
         $rank.each(function (index) {

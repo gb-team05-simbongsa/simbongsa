@@ -6,7 +6,7 @@ list(page);
 function list(page) {
 
     $.ajax({
-        url: '/funding/funding-list',
+        url: '/volunteers/work-list',
         type: 'get',
         data: {page: page},
         success: function (list) {
