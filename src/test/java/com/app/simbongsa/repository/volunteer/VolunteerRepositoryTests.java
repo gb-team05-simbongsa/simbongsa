@@ -132,9 +132,9 @@ public class VolunteerRepositoryTests {
     }
     @Test
     public void findById_QueryDSLTest(){
-        log.info(volunteerWorkRepository.findById_QueryDSL(40L).toString());
-        volunteerWorkRepository.findById_QueryDSL(41L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
-        volunteerWorkRepository.findById_QueryDSL(42L).stream().map(VolunteerWork::toString);
+        log.info(volunteerWorkRepository.findById_QueryDSL(773L).toString());
+        volunteerWorkRepository.findById_QueryDSL(763L).ifPresent(volunteerWork -> log.info(volunteerWork.toString()));
+        volunteerWorkRepository.findById_QueryDSL(196L).stream().map(VolunteerWork::toString);
     }
     /* 이전글 다음글*/
     @Test

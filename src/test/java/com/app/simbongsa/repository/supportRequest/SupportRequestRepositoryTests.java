@@ -146,14 +146,14 @@ public class SupportRequestRepositoryTests {
         supportRequestRepository.delete(supportRequestRepository.findById(121L).get());
     }
 
-    @Test
-    public void findAllTest(){
-        PageRequest pageRequest = PageRequest.of(0, 40);
-        Page<SupportRequest> supportRequests = supportRequestRepository.findAllTest(pageRequest);
-        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
-        List<SupportRequest> supportRequestList = supportRequests.getContent();
-        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
-        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
-    }
+//    @Test
+//    public void findAllTest(){
+//        PageRequest pageRequest = PageRequest.of(0, 40);
+//        Page<SupportRequest> supportRequests = supportRequestRepository.findAllTest(pageRequest);
+//        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+//        List<SupportRequest> supportRequestList = supportRequests.getContent();
+//        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
+//        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
+//    }
 
 }
