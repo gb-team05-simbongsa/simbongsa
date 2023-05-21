@@ -16,9 +16,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/support/*")
@@ -32,11 +33,12 @@ public class SupportController {
 
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
-    public String supportDetail(Integer page, Model model, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
-
+    public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         log.info("들어오나?");
         page = page == null ? 0 : page -1;
-        Long memberId = userDetail.getMember().getId();
+//        Long memberId = userDetail.getMember().getId();
+        Long memberId = memberDTO.getId();
         log.info(memberId + "내 로그인한 아이디");
 
 //        후원 총 참여 수
@@ -44,23 +46,23 @@ public class SupportController {
 //        후원 상세페이지 조회
         SupportRequestDTO supportDetail = supportRequestService.getSupportRequestDetail(supportRequestId);
 //        로그인한 ID
-        MemberDTO memberDTO = memberService.getMemberById(memberId);
+        MemberDTO member = memberService.getMemberById(memberId);
         log.info(memberDTO.getMemberRice() + " ================");
 
 //        후원된 공양미
-//        int totalPrice = supportDetail.getSupports()
-//                .stream()
-//                .mapToInt(Support::getSupportPrice)
-//                .sum();
-//        int originalPrice = totalPrice * 100;
+        int totalPrice = supportDetail.getSupportDTOS()
+                .stream()
+                .mapToInt(SupportDTO::getSupportPrice)
+                .sum();
+        int originalPrice = totalPrice * 100;
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", member);
         model.addAttribute("attendCount", attendCount);
 //        model.addAttribute("attendList", attendList.getContent());
 //        model.addAttribute("pageDTO", new PageDTO(attendList));
         model.addAttribute("supportDetail", supportDetail);
-//        model.addAttribute("totalPrice", totalPrice);
-//        model.addAttribute("originalPrice", originalPrice);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("originalPrice", originalPrice);
 //        등록된 날짜.
         model.addAttribute("createDate", supportDetail.getCreatedDate().toString().substring(0,10));
         return "support/support-detail";
@@ -93,8 +95,17 @@ public class SupportController {
         return "support/support-success";
     }
     @GetMapping("support-write")
-    public String supportWrite(){
-        return "support/support-write";
+    public void goToWriteForm(SupportRequestDTO supportRequestDTO){
+    }
+    @PostMapping("support-write")
+    public RedirectView supportWrite(@ModelAttribute("supportRequestDTO") SupportRequestDTO supportRequestDTO, HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        log.info("========================" + supportRequestDTO.toString() + "==================================");
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+//        Long memberId = userDetail.getMember().getId();
+        Long memberId = memberDTO.getId();
+        log.info("========================" + memberId.toString() + "=============================");
+        supportRequestService.register(supportRequestDTO, memberId);
+        return new RedirectView("support-list");
     }
 
 

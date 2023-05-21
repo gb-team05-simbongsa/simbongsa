@@ -46,7 +46,16 @@ public class SupportRequest extends Period {
         this.member = member;
     }
 
-
+    @Builder
+    public SupportRequest(Long id, String supportRequestTitle, String supportRequestContent, RequestType supportRequestStatus, Member member, List<Support> supports, List<SupportRequestFile> supportRequestFiles) {
+        this.id = id;
+        this.supportRequestTitle = supportRequestTitle;
+        this.supportRequestContent = supportRequestContent;
+        this.supportRequestStatus = supportRequestStatus;
+        this.member = member;
+        this.supports = supports;
+        this.supportRequestFiles = supportRequestFiles;
+    }
 
     public void setSupportRequestStatus(RequestType supportRequestStatus) {
         this.supportRequestStatus = supportRequestStatus;

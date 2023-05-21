@@ -41,4 +41,8 @@ public interface SupportRequestQueryDsl {
     public Long countStatusWaitAccessDenied(RequestType requestType);
 
     public Page<SupportRequestDTO> findAllTest(Pageable pageable);
-}
+
+    public Optional<SupportRequest> findByIdSupportRequest_QueryDsl(Long supportRequestId);
+    public SupportRequest getCurrentSequence_QueryDsl();
+    }
+

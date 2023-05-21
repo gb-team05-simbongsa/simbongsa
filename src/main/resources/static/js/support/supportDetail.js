@@ -70,100 +70,100 @@ $button.on('click', function(){
 //                                     </ul>
 //                                 </div>
 // `
-
-const $list = $('.history-list');
-let page = 0;
-
-listService = (function(){
-    function list(page, callback){
-        $.ajax({
-            url : '/supports/attend-list',
-            type: 'get',
-            data: {page: page},
-            success: function(list){
-                if(callback){
-                    console.log("들어옴");
-                    callback(list);
-                }
-            }
-        });
-    }
-    return {
-        list: list
-    }
-})();
-
-getList(page);
-function getList(page) {
-    console.log("getList 들어옴");
-    console.log(page);
-    console.log(list);
-    listService.list(page, function(list) { // 수정: page를 인자로 전달
-        listText(list);
-        displayPagination(list.totalPages);
-    });
-}
-$('.paging-wrapper').on("click", ".page", function(e){
-    e.preventDefault();
-    console.log("page 들어옴");
-    $list.empty();
-    const targetPage = $(this).text();
-    if($(this).hasClass("prev")){
-        if(page>0){
-            page--;
-        }
-    }else if($(this).hasClass("next")){
-        page++;
-    }else{
-        page=parseInt(targetPage) - 1;
-    }
-    getList(page);
-});
-
-
-function displayPagination(totalPages) {
-    const $pagination = $(".pages-wrapper");
-    $pagination.empty();
-
-    const maxDisplayedPages = 10; // 한 번에 표시할 페이지 수
-    const startPage = Math.floor(page / maxDisplayedPages) * maxDisplayedPages; // 시작 페이지 번호
-
-    if (page > 0) {
-        $pagination.append("<div class='arrow-left page'></div>");
-    }
-
-    for (let i = startPage; i < startPage + maxDisplayedPages && i < totalPages; i++) {
-        if (i === page) {
-            $pagination.append("<div class='page active'>" + (i + 1) + "</div>");
-        } else {
-            $pagination.append("<div class='page'>" + (i + 1) + "</div>");
-        }
-    }
-
-    if (page < totalPages - 1) {
-        $pagination.append("<div class='arrow-right page'></div>");
-    }
-}
-
-
-function listText(list) {
-    console.log("list text 들어옴");
-    let supportDTOS = list.content;
-    $(supportDTOS).each((i, support) => {
-        console.log("text 들어옴");
-        var text = "";
-        text += `
-            <li class="history-item">
-                                        <div class="history-card">
-                                            <span class="history-card-date">${supportDTOS.createDate}</span>
-                                            <strong class="history-card-name">${supportDTOs.memberName}</strong>
-                                            <span class="history-amount">
-                                                <span class="number">${supportDTOs.supportPrice}</span>
-                                                원 참여
-                                            </span>
-                                        </div>
-                                    </li>
-        `;
-        $list.append(text);
-    });
-}
+//
+// const $list = $('.history-list');
+// let page = 0;
+//
+// listService = (function(){
+//     function list(page, callback){
+//         $.ajax({
+//             url : '/supports/attend-list',
+//             type: 'get',
+//             data: {page: page},
+//             success: function(list){
+//                 if(callback){
+//                     console.log("들어옴");
+//                     callback(list);
+//                 }
+//             }
+//         });
+//     }
+//     return {
+//         list: list
+//     }
+// })();
+//
+// getList(page);
+// function getList(page) {
+//     console.log("getList 들어옴");
+//     console.log(page);
+//     console.log(list);
+//     listService.list(page, function(list) { // 수정: page를 인자로 전달
+//         listText(list);
+//         displayPagination(list.totalPages);
+//     });
+// }
+// $('.paging-wrapper').on("click", ".page", function(e){
+//     e.preventDefault();
+//     console.log("page 들어옴");
+//     $list.empty();
+//     const targetPage = $(this).text();
+//     if($(this).hasClass("prev")){
+//         if(page>0){
+//             page--;
+//         }
+//     }else if($(this).hasClass("next")){
+//         page++;
+//     }else{
+//         page=parseInt(targetPage) - 1;
+//     }
+//     getList(page);
+// });
+//
+//
+// function displayPagination(totalPages) {
+//     const $pagination = $(".pages-wrapper");
+//     $pagination.empty();
+//
+//     const maxDisplayedPages = 10; // 한 번에 표시할 페이지 수
+//     const startPage = Math.floor(page / maxDisplayedPages) * maxDisplayedPages; // 시작 페이지 번호
+//
+//     if (page > 0) {
+//         $pagination.append("<div class='arrow-left page'></div>");
+//     }
+//
+//     for (let i = startPage; i < startPage + maxDisplayedPages && i < totalPages; i++) {
+//         if (i === page) {
+//             $pagination.append("<div class='page active'>" + (i + 1) + "</div>");
+//         } else {
+//             $pagination.append("<div class='page'>" + (i + 1) + "</div>");
+//         }
+//     }
+//
+//     if (page < totalPages - 1) {
+//         $pagination.append("<div class='arrow-right page'></div>");
+//     }
+// }
+//
+//
+// function listText(list) {
+//     console.log("list text 들어옴");
+//     let supportDTOS = list.content;
+//     $(supportDTOS).each((i, support) => {
+//         console.log("text 들어옴");
+//         var text = "";
+//         text += `
+//             <li class="history-item">
+//                                         <div class="history-card">
+//                                             <span class="history-card-date">${supportDTOS.createDate}</span>
+//                                             <strong class="history-card-name">${supportDTOs.memberName}</strong>
+//                                             <span class="history-amount">
+//                                                 <span class="number">${supportDTOs.supportPrice}</span>
+//                                                 원 참여
+//                                             </span>
+//                                         </div>
+//                                     </li>
+//         `;
+//         $list.append(text);
+//     });
+// }

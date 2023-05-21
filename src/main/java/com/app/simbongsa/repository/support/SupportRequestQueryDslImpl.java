@@ -2,6 +2,9 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.file.QSupportRequestFile;
+import com.app.simbongsa.entity.member.QMember;
+import com.app.simbongsa.entity.support.QSupportRequest;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
@@ -18,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.app.simbongsa.entity.file.QSupportRequestFile.supportRequestFile;
+import static com.app.simbongsa.entity.member.QMember.member;
 import static com.app.simbongsa.entity.support.QSupport.support;
 import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
 
@@ -208,7 +213,29 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         return null;
     }
 
+    @Override
+    public Optional<SupportRequest> findByIdSupportRequest_QueryDsl(Long supportRequestId) {
+        SupportRequest foundSupportRequest = query.select(supportRequest)
+                .from(supportRequest)
+                .leftJoin(supportRequest.supportRequestFiles, supportRequestFile)
+                .fetchJoin()
+                .leftJoin(supportRequest.member, member)
+                .fetchJoin()
+                .where(supportRequest.id.eq(supportRequestId))
+                .fetchOne();
 
+
+        return Optional.ofNullable(foundSupportRequest);
+    }
+
+    @Override
+    public SupportRequest getCurrentSequence_QueryDsl() {
+        return query.select(supportRequest)
+                .from(supportRequest)
+                .orderBy(supportRequest.id.desc())
+                .limit(1)
+                .fetchOne();
+    }
 
 
     //    대기를 승인으로 변경
