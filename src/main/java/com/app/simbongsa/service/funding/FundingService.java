@@ -56,6 +56,11 @@ public interface FundingService {
 // 펀딩 계획 등록
     public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate);
 
+    // 현재 시퀀스 가져오기
+    public Funding getCurrentSequence();
+
+
+
 //    default FundingDTO toFundingDTO(Funding funding) {
 //        return FundingDTO.builder()
 //                .fundingCategory(funding.getFundingCategory())
