@@ -77,6 +77,7 @@ public class FundingController {
 
         log.info(fundingDTO.toString());
 
+
         fundingService.fundingRegister(fundingDTO);
         return new RedirectView("/funding/funding-initial-info");
     }
