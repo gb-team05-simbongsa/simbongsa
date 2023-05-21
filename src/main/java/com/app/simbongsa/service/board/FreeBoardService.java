@@ -72,6 +72,7 @@ public interface FreeBoardService {
                 .createdDate(freeBoard.getCreatedDate())
                 .updatedDate(freeBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
+                .fileDTOS(FileToDTO(freeBoard.getFreeBoardFiles()))
                 .replyCount(freeBoard.getFreeBoardReplyCount())
                 .build();
     }
