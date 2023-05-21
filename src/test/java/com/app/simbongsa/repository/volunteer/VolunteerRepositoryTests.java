@@ -61,11 +61,8 @@ public class VolunteerRepositoryTests {
 //                    ,"전주"
 //                    ,"전주" + i,"심봉사 TEST");
 //            volunteerWorkRepository.save(volunteerWork);
-<<<<<<< HEAD
         }
-=======
 //        }
->>>>>>> 4d935988435db12426ed1ad277f6615d9eca8e70
 
 
     //  봉사활동 목록 조회 (메인페이지)
@@ -142,9 +139,9 @@ public class VolunteerRepositoryTests {
     /* 이전글 다음글*/
     @Test
     public void findByNextIdOrPrevIdTest(){
-        Optional<VolunteerWork> volunteerWork = volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
-        volunteerWork.map(VolunteerWork::toString);
-        volunteerWork.ifPresent(volunteerWork1 -> log.info(volunteerWork1.toString()));
+//        Optional<VolunteerWork> volunteerWork = volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
+//        volunteerWork.map(VolunteerWork::toString);
+//        volunteerWork.ifPresent(volunteerWork1 -> log.info(volunteerWork1.toString()));
 
     }
     @Test

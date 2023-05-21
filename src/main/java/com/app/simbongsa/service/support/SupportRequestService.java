@@ -38,7 +38,7 @@ public interface SupportRequestService {
 //    public SupportRequestDTO getByIdWithSupportRequestInfo_QueryDsl(Long id);
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
-    Page<SupportRequestDTO> getMySupportRequest(Integer page, UserDetail userDetail);
+    Page<SupportRequestDTO> getMySupportRequest(Integer page, MemberDTO memberDTO);
 
 //    승인 대기 반려 수 조회
     public List<Long> countStatusWaitAccessDenied();

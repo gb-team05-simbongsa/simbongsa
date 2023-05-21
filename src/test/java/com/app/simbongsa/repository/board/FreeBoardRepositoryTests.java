@@ -1,10 +1,14 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.entity.file.FreeBoardFile;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +18,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -31,16 +37,16 @@ public class FreeBoardRepositoryTests {
     @Autowired
     private FreeBoardReplyRepository freeBoardReplyRepository;
 
+    @Autowired
+    private FreeBoardFileRepository freeBoardFileRepository;
+
     /*자유게시판 등록*/
     @Test
     public void saveTest() {
-        for (int i = 1; i <= 5; i++) {
-//            FreeBoard freeBoard = new FreeBoard("제목" + i, "내용" + i, memberRepository.findById(25L).get());
-//            freeBoardRepository.save(freeBoard);
-        }
+            FreeBoard freeBoard = new FreeBoard("776이 작성한 자유게시판 제목","776이 작성한 자유게시물입니다. 잘 나오나요?",memberRepository.findMemberById(776L),null,null);
+            freeBoardRepository.save(freeBoard);
     }
 
-    /*자유게시판 댓글 등록*/
     @Test
     public void saveReplies() {
         for (int i = 1; i <= 5; i++) {
@@ -66,11 +72,12 @@ public class FreeBoardRepositoryTests {
     @Test
     public void findByMemberIdTest() {
         PageRequest pageRequest = PageRequest.of(0, 4);
-        UserDetail userDetail = new UserDetail();
-        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, userDetail);
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setId(776L);
+        Page<FreeBoard> freeBoards = freeBoardRepository.findByMemberId(pageRequest, memberDTO);
         freeBoards.stream().map(FreeBoard::toString).forEach(log::info);
 
-        log.info("----------------------유저 146L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
+        log.info("----------------------유저 776L의 리뷰게시판 목록 수 --------------------" + freeBoards.getTotalElements());
     }
 
     /* 자유게시판 상세 조회 */

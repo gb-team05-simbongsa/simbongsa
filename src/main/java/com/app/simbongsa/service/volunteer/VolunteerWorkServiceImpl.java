@@ -114,7 +114,6 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         volunteerWorkRepository.updateVolunteerWork(toVolunteerWorkEntity(volunteerWorkDTO));
         volunteerWorkFileRepository.updateVolunteerWorkFile(toVolunteerWorkFileEntity(fileDTO));
     }
-
 }
 
 

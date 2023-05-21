@@ -84,6 +84,7 @@ public interface FundingService {
                 .fundingGiftExplain(funding.getFundingGiftExplain())
                 .fundingStatus(funding.getFundingStatus())
                 .fundingCreator(funding.getFundingCreator())
+                .fileDTOs(FileToDTO(funding.getFundingFile()))
                 .build();
     }
     default MemberDTO toMemberDTO(Member member){

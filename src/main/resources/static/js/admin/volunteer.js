@@ -36,6 +36,7 @@ $('#confirm-delete').on('click', function() {
 
 function modalClose() {
     $('.detail-modal').fadeOut(500);
+    $('.detail-modal').empty();
 }
 
 

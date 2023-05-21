@@ -80,6 +80,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name())
+                /* 작업하기 편하도록 임시방편 */
                 .antMatchers(MYPAGE_PATH).hasRole(Role.ADMIN.name())
                 .antMatchers(SUPPORT_PAGE).hasRole(Role.ADMIN.name())
                 .antMatchers(COMMUNITY_FREE_PAGE).hasRole(Role.ADMIN.name())
