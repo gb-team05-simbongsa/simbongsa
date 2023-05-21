@@ -457,6 +457,7 @@
                                         <strong>※ 이미지를 등록하면 즉시 반영됩니다.</strong>
                                     </div>
                                     <input type="file" id="imageFile"  accept=".jpg, .jpeg, .png" multiple>
+
                                 </div>
                                         <li class="ImgStyleList firstTest imgList">
                                             <!--썸네일 이미지-->
@@ -479,105 +480,212 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-    const fundingDTO = [[${fundingDTO}]];
-    globalThis.uuids;
-    //===========================================
-    FileList.prototype.forEach = Array.prototype.forEach;
+    let fundings = [[${fundingDTOS}]];
 
-    const $alertModal = $(".alert-modal-display");
-    const alertMsg = ['사진은 최소 4개이상 넣어 주세요.', '제목을 입력해주세요.', '내용을 입력해주세요.'];
-
-    let $li = $(".imgList");
-    let $file = null;
-
-    $("input[type=file]").on("change", function () {
-        $file = $("input[type=file]")[0].files[0];
-        let formData = new FormData();
-        formData.append("file", $file);
-
-        $.ajax({
-            url: "/file/upload",
-            type: "post",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (uuids) {
-                globalThis.uuids = uuids;
-                if ($file.type.startsWith("image")) {
-                    let text = `
-                             <img src="/file/display?fileName=${toStringByFormatting(new Date())}/t_${uuids}_${$file.name}" class="inserted_img">
-                `;
-                    $li.html(text);
+    const fundingService = (function() {
+        function saveFunding(fundingDTO, callback) {
+            $.ajax({
+                url: "/funding/funding-initial-info",
+                type: 'post',
+                data: JSON.stringify(fundingDTO),
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    if (callback) {
+                        callback();
+                    }
                 }
-            }
-        })
+            });
+        }
+
+
+        function fundingFile(config, callback) {
+            const isContentTypeDefined = config.contentType !== undefined;
+
+            $.ajax({
+                url: config.url,
+                data: config.data,
+                method: config.method,
+                processData: config.processData !== false,
+                contentType: isContentTypeDefined ? config.contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (result) {
+                    callback(result)
+                },
+                error: function () {
+                    console.log(config.data);
+                }
+            });
+        }
+        return { saveFunding : saveFunding, fundingFile : fundingFile};
+    })();
+
+
+    //file---------------------------------------------------------------------
+    globalThis.uuids;
+    globalThis.paths;
+    FileList.prototype.forEach = Array.prototype.forEach;
+    let prevFileList;
+
+    /* 저장할 파일들의 Array */
+
+    let $fileId;
+    let $imageFile = $("#imageFile");
+    const uploadAjaxConfig = (data) => {
+        return {
+            url: "/file/upload",
+            method: "POST",
+            data: data,
+            contentType: false,
+            processData: false
+        }
+    }
+
+    $('#imageFile').on("change", function () {
+        let $files = $(this)[0].files;
+        let formData = new FormData();
+        prevFileList = '';
+        globalThis.uuids = prevFileList;
+        globalThis.paths = prevFileList;
+
+        if ($files.length > 1) {
+            alert("파일은 1개만 등록할 수 있습니다.");
+            /* 파일 input 초기화 */
+            $('#imageFile')[0].files = prevFileList;
+            console.log($('#imageFile')[0].files);
+            return;
+        }
+
+        prevFileList = $files;
+
+        // formData.append("file", $files);
+        $files.forEach(file => formData.append("file", file));
+
+
+        fundingService.fundingFile(uploadAjaxConfig(formData), (result) => {
+            console.log(result)
+            globalThis.uuids = result.uuids;
+            globalThis.paths = result.paths;
+            $('.ImgStyleList').empty();
+            result.paths.forEach((path, i) => {
+                if ($files[i].type.startsWith("image")) {
+                    $('.ImgStyleList').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
+                } else $('.ImgStyleList').append(`<img style="width: 100px"/>`);
+            });
+        });
+    });
+    //
+    // function loadPhoto() {
+    //     $imageFile.on("change", function () {
+    //         console.log("!!!!!!!!!!!!")
+    //         let $files = $(this)[0].files;
+    //         let formData = new FormData();
+    //         prevFileList = '';
+    //         globalThis.uuids = prevFileList;
+    //         globalThis.paths = prevFileList;
+    //
+    //         if ($files.length > 1) {
+    //             alert("파일은 1개만 등록할 수 있습니다.");
+    //             /* 파일 input 초기화 */
+    //             $imageFile[0].files = prevFileList;
+    //             console.log( $imageFile[0].files);
+    //             return;
+    //         }
+    //
+    //         prevFileList = $files;
+    //
+    //         // formData.append("file", $files);
+    //         $files.forEach(file => formData.append("file", file));
+    //
+    //
+    //         adminService.volunteerFile(uploadAjaxConfig(formData), (result) => {
+    //             console.log(result)
+    //             globalThis.uuids = result.uuids;
+    //             globalThis.paths = result.paths;
+    //             $('.content__img__wrap-modify').empty();
+    //             result.paths.forEach((path, i) => {
+    //                 if ($files[i].type.startsWith("image")) {
+    //                     $('.content__img__wrap-modify').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
+    //                 } else $('.content__img__wrap-modify').append(`<img style="width: 100px"/>`);
+    //             });
+    //         });
+    //     });
+    // }
+
+    let fileDTO = new Object();
+
+    let setFundingDTO = function() {
+        console.log($('.ImgStyleList')[0])
+        const $files = $('.ImgStyleList')[0].files;
+
+        fileDTO.fileName = $files[0].name;
+        fileDTO.fileUuid = globalThis.uuids[0];
+        fileDTO.filePath = globalThis.paths[0];
+
+        const fundingDTO = {
+            fundingCategory : $('input[name=fundingCategory]').val(),
+            fundingTitle : $('input[name=fundingTitle]').val(),
+            fundingShortTitle : $('input[name=fundingShortTitle]').val(),
+            fundingSummary : $('textarea[name=fundingSummary]').val(),
+            // volunteerWorkStartDate : $('input[name=volunteerWorkStartDate]').val(),
+            // volunteerWorkEndDate : $('input[name=volunteerWorkEndDate]').val(),
+            // volunteerWorkTime : $('input[name=volunteerWorkTime]').val(),
+            // volunteerWorkJoinStartDate : $('input[name=volunteerWorkJoinStartDate]').val(),
+            // volunteerWorkJoinEndDate : $('input[name=volunteerWorkJoinEndDate]').val(),
+            // volunteerWorkRecruitNumber : $('input[name=volunteerWorkRecruitNumber]').val(),
+            // volunteerWorkCategory : $('input[name=volunteerWorkCategory]:checked').val(),
+            // volunteerWorkPlace : $('input[name=volunteerWorkPlace]').val(),
+            // volunteerWorkRegisterAgency : $('input[name=volunteerWorkRegisterAgency]').val(),
+
+            fileDTO : fileDTO
+        }
+
+        return fundingDTO;
+    }
+    //
+    // let setVolunteerWorkModifyDTO = function() {
+    //     const $files = $photoPicker[0].files;
+    //
+    //     console.log($files)
+    //     if($files.length != 0) {
+    //         // let fileDTO = new Object();
+    //         fileDTO.fileName = $files[0].name;
+    //         fileDTO.fileUuid = globalThis.uuids[0];`
+    //         fileDTO.filePath = globalThis.paths[0];
+    //     }
+    //
+    //     fileDTO.id = $fileId.val();
+    //
+    //     const volunteerWorkDTO = {
+    //         id : $('#modifyId').val(),
+    //         volunteerWorkTitle : $('input[name=volunteerWorkTitleModify]').val(),
+    //         volunteerWorkContent : $('textarea[name=volunteerWorkContentModify]').val(),
+    //         volunteerWorkStartDate : $('input[name=volunteerWorkStartDateModify]').val(),
+    //         volunteerWorkEndDate : $('input[name=volunteerWorkEndDateModify]').val(),
+    //         volunteerWorkTime : $('input[name=volunteerWorkTimeModify]').val(),
+    //         volunteerWorkJoinStartDate : $('input[name=volunteerWorkJoinStartDateModify]').val(),
+    //         volunteerWorkJoinEndDate : $('input[name=volunteerWorkJoinEndDateModify]').val(),
+    //         volunteerWorkRecruitNumber : $('input[name=volunteerWorkRecruitNumberModify]').val(),
+    //         volunteerWorkCategory : $('input[name=volunteerWorkCategoryModify]:checked').val(),
+    //         volunteerWorkPlace : $('input[name=volunteerWorkPlaceModify]').val(),
+    //         volunteerWorkRegisterAgency : $('input[name=volunteerWorkRegisterAgencyModify]').val(),
+    //
+    //         fileDTO : fileDTO
+    //     }
+    //
+    //     return volunteerWorkDTO;
+    // }
+
+    $('.save-button').on('click', function() {
+        fundingService.saveFunding(setFundingDTO(), function() {
+            document.onsubmit;
+            location.href = "/funding/funding";
+        });
     });
 
-
-        // 이미지 지울 때
-        $li.on("click",".close-button", function(e){
-            const dataTransfer = new DataTransfer();
-
-            let target = $(e.currentTarget).parent().parent().parent();
-            let fileArray = Array.from(files);
-            let ul = target.parent();
-            let i = ul.find("li").index(target);
-
-            target.remove();
-
-            console.log($file);
+    /*function modify() {
+        adminService.updateVolunteerWork(setVolunteerWorkModifyDTO(), function() {
+            document.location.reload(true);
         });
-
-        $(".save-button").click(() => {
-
-            console.log($file);
-            console.log("test!!!!!!!!!!!!!!!!!!!!!!1");
-
-            console.log(globalThis.uuids[0]);
-            let text = "";
-
-                text +=`
-                <input type="hidden" name="fileDTOs[0].fileName" value="${$file.name}">
-                <input type="hidden" name="fileDTOs[0].fileUuid" value="${globalThis.uuids[0]}">
-                <input type="hidden" name="fileRepresentationalType" value="REPRESENTATION">
-                <input type="hidden" name="fileDTOs[0].filePath" value="${toStringByFormatting(new Date())}">
-
-                `;
-                console.log($file);
-                console.log($file.name);
-                console.log(globalThis.uuids[0]);
-                console.log(toStringByFormatting(new Date()));
-
-            $("form[name=initialForm]").html(text);
-            $("form[name=initialForm]").submit();
-        })
-        /*****************************************************/
-
-        function leftPad(value) {
-            if (value >= 10) {
-                return value;
-            }
-
-            return `0${value}`;
-        }
-
-        function toStringByFormatting(source, delimiter = '/') {
-            const year = source.getFullYear();
-            const month = leftPad(source.getMonth() + 1);
-            const day = leftPad(source.getDate());
-
-            return [year, month, day].join(delimiter);
-        }
-
-
-       /* function alertModal(errorMsg) {
-
-            $(".alert").text(errorMsg);
-            $alertModal.fadeIn();
-            setTimeout(function () {
-                $alertModal.fadeOut();
-            }*/
-
+    }*/
 </script>
 <script src="/js/funding/funding-initial-info.js"></script>
 <script src="/js/funding/funding-file.js"></script>

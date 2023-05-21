@@ -22,7 +22,6 @@ public class VolunteerWorkActivity {
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "VOLUNTEER_WORK_ID")
     private VolunteerWork volunteerWork;
     
     

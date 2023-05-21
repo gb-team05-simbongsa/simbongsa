@@ -3,6 +3,7 @@ package com.app.simbongsa.service.board;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.board.ReviewReply;
+import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ReviewService {
@@ -62,6 +64,7 @@ public interface ReviewService {
                 .createdDate(review.getCreatedDate())
                 .updatedDate(review.getUpdatedDate())
                 .memberDTO(toMemberDTO(review.getMember()))
+                .fileDTOS(FileToDTO(review.getReviewFiles()))
                 .build();
     }
 
@@ -81,6 +84,23 @@ public interface ReviewService {
                 .memberRole(member.getMemberRole())
                 .memberStatus(member.getMemberStatus())
                 .build();
+    }
+
+    default List<FileDTO> FileToDTO(List<ReviewFile> reviewFiles){
+        List<FileDTO> reviewFileList = new ArrayList<>();
+        reviewFiles.forEach(
+                fundingFile -> {
+                    FileDTO fileDTO = FileDTO.builder()
+                            .id(fundingFile.getId())
+                            .fileName(fundingFile.getFileName())
+                            .filePath(fundingFile.getFilePath())
+                            .fileRepresentationalType(fundingFile.getFileRepresentationalType())
+                            .fileUuid(fundingFile.getFileUuid())
+                            .build();
+                    reviewFileList.add(fileDTO);
+                }
+        );
+        return reviewFileList;
     }
 
     default ReviewDTO reviewToDTO(Review review){

@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 @RequestMapping("/file/*")
 @RequiredArgsConstructor
 public class FileRestController {
-    //    파일 업로드
+
     @PostMapping("upload")
     public Map<String, Object> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         Map<String, Object> map = new HashMap<>();
@@ -42,13 +42,13 @@ public class FileRestController {
                 out.close();
             }
 
-            filePaths.add(getPath() + "/" + filePath);
+             filePaths.add(getPath() + "/" + filePath);
         }
 
-        map.put("uuids", uuids);
-        map.put("paths", filePaths);
+    map.put("uuids", uuids);
+    map.put("paths", filePaths);
 
-        return map;
+          return map;
     }
 
     //    파일 불러오기

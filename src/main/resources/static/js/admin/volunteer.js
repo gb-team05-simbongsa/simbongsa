@@ -17,10 +17,16 @@ volunteers.forEach(volunteer => {
             <td>
                 <button class="content__detail__btn button__type_2 button__color__green">
                     상세보기
-                </button>
-                <button class="button__type_2 volunteer_button button__color__green">
-                    신청명단
-                </button>
+                </button>`;
+            console.log(volunteer.volunteerWorkActivityDTOS.length)
+             if(volunteer.volunteerWorkActivityDTOS.length != 0) {
+                 text += `
+                    <button class="button__type_2 volunteer_button button__color__green">
+                        신청명단
+                    </button>
+                 `;
+             }
+    text += `
             </td>
         </tr>
     `;
