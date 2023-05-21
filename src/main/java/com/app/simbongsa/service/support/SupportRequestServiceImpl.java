@@ -72,4 +72,9 @@ public class SupportRequestServiceImpl implements SupportRequestService {
                 supportRequestRepository.countStatusWaitAccessDenied(RequestType.대기),
                 supportRequestRepository.countStatusWaitAccessDenied(RequestType.반려));
     }
+
+    @Override
+    public void saveSupportRequest(SupportRequestDTO supportRequestDTO) {
+        supportRequestRepository.save(toSupportRequestEntity(supportRequestDTO));
+    }
 }

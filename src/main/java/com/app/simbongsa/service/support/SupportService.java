@@ -17,6 +17,8 @@ import java.util.List;
 public interface SupportService {
     public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id);
     public Long getAllSupportAttend_QueryDSL(Long id);
+    //    후원 요청 작성
+    public void saveSupport(SupportDTO supportDTO);
 
 //    후원명단 조회
 //    public List<SupportDTO> getSupportListWithPaging(Long id);
@@ -32,7 +34,21 @@ public interface SupportService {
                 .supportRequestDTO(toSupportRequestDTO(support.getSupportRequest()))
                 .build();
     }
-
+    default Support toSupportEntity(SupportDTO supportDTO){
+        return Support.builder()
+                .id(supportDTO.getId())
+                .supportPrice(supportDTO.getSupportPrice())
+                .supportRequest(toSupportRequestEntity(supportDTO.getSupportRequestDTO()))
+                .build();
+    }
+    default SupportRequest toSupportRequestEntity(SupportRequestDTO supportRequestDTO){
+        return SupportRequest.builder()
+                .id(supportRequestDTO.getId())
+                .supportRequestTitle(supportRequestDTO.getSupportRequestTitle())
+                .supportRequestContent(supportRequestDTO.getSupportRequestContent())
+                .supportRequestStatus(supportRequestDTO.getSupportRequestStatus())
+                .build();
+    }
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder()
                 .id(member.getId())

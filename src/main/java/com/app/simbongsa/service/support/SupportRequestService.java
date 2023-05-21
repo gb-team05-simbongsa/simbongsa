@@ -5,12 +5,14 @@ import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.summernote.SupportRequestFileDTO;
+import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 
@@ -42,6 +44,9 @@ public interface SupportRequestService {
 
 //    승인 대기 반려 수 조회
     public List<Long> countStatusWaitAccessDenied();
+
+//    후원 요청 작성
+  public void saveSupportRequest(SupportRequestDTO supportRequestDTO);
 
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {
         return SupportRequestDTO.builder()
@@ -104,6 +109,40 @@ public interface SupportRequestService {
                 .memberRice(member.getMemberRice())
                 .memberRole(member.getMemberRole())
                 .memberStatus(member.getMemberStatus())
+                .build();
+    }
+    default SupportRequest toSupportRequestEntity(SupportRequestDTO supportRequestDTO){
+        return SupportRequest.builder()
+                .id(supportRequestDTO.getId())
+                .supportRequestTitle(supportRequestDTO.getSupportRequestTitle())
+                .supportRequestContent(supportRequestDTO.getSupportRequestContent())
+                .supportRequestStatus(supportRequestDTO.getSupportRequestStatus())
+                .build();
+    }
+    default Member toMemberEntity(MemberDTO memberDTO) {
+        return Member.builder().id(memberDTO.getId())
+                .memberName(memberDTO.getMemberName())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberRice(memberDTO.getMemberRice())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
+                .memberStatus(memberDTO.getMemberStatus())
+                .build();
+    }
+    default SupportRequestFile toSupportRequestFileEntity(FileDTO fileDTO) {
+        return SupportRequestFile.builder()
+                .fileName(fileDTO.getFileName())
+                .filePath(fileDTO.getFilePath())
+                .fileUuid(fileDTO.getFileUuid())
+                .fileRepresentationalType(fileDTO.getFileRepresentationalType())
+                .supportRequest(fileDTO.getSupportRequest())
                 .build();
     }
 }

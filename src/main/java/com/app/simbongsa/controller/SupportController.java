@@ -93,7 +93,7 @@ public class SupportController {
         return "support/support-success";
     }
     @GetMapping("support-write")
-    public String supportWrite(){
+    public String supportWrite(Model model){
         return "support/support-write";
     }
 

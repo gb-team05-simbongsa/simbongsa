@@ -1,6 +1,7 @@
 package com.app.simbongsa.service.support;
 
 import com.app.simbongsa.domain.SupportDTO;
+import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.repository.support.SupportRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,11 @@ public class SupportServiceImpl implements SupportService {
     public Long getAllSupportAttend_QueryDSL(Long id) {
 
         return supportRepository.findAllSupportAttend_QueryDSL(id);
+    }
+
+    @Override
+    public void saveSupport(SupportDTO supportDTO) {
+        supportRepository.save(toSupportEntity(supportDTO));
     }
 
 //    @Override
