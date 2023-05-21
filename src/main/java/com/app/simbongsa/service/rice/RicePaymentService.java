@@ -37,18 +37,34 @@ public interface RicePaymentService {
     public List<Long> getPaymentPriceAndPaymentCount();
 
     /* 내 공양미 조회(페이징) */
-    public Page<RicePaymentDTO> getMyRicePayment(Integer page, @AuthenticationPrincipal UserDetail userDetail);
+    public Page<RicePaymentDTO> getMyRicePayment(Integer page, MemberDTO memberDTO);
+
+//    결제한 값 넣기
+    public void insertRicePayment(Integer ricePaymentUsed, MemberDTO memberDTO);
+
+//    환전 요청 값 넣기
+    public void insertExchangeRequest(RicePaymentDTO ricePaymentDTO, MemberDTO memberDTO);
+
+//    회원 환전 가능 공양미(후원받은 공양미) 가져오기
+    public int findEnableRiceById(Long id);
 
     default RicePaymentDTO toRicePaymentDTO(RicePayment ricePayment) {
-        return RicePaymentDTO.builder()
+        RicePaymentDTO.RicePaymentDTOBuilder builder = RicePaymentDTO.builder()
                 .id(ricePayment.getId())
                 .ricePaymentUsed(ricePayment.getRicePaymentUsed())
-                .ricePaymentExchangeBank(ricePayment.getRicePaymentExchangeBank())
-                .ricePaymentExchangeAccount(ricePayment.getRicePaymentExchangeAccount())
                 .ricePaymentStatus(ricePayment.getRicePaymentStatus())
                 .memberDTO(toMemberDTO(ricePayment.getMember()))
-                .createdDate(ricePayment.getCreatedDate())
-                .build();
+                .createdDate(ricePayment.getCreatedDate());
+
+        if (ricePayment.getRicePaymentExchangeBank() != null) {
+            builder.ricePaymentExchangeBank(ricePayment.getRicePaymentExchangeBank());
+        }
+
+        if (ricePayment.getRicePaymentExchangeAccount() != null) {
+            builder.ricePaymentExchangeAccount(ricePayment.getRicePaymentExchangeAccount());
+        }
+
+        return builder.build();
     }
 
     default MemberDTO toMemberDTO(Member member){
@@ -66,6 +82,42 @@ public interface RicePaymentService {
                 .memberRice(member.getMemberRice())
                 .memberRole(member.getMemberRole())
                 .memberStatus(member.getMemberStatus())
+                .build();
+    }
+
+    default RicePayment toRicePaymentEntity(RicePaymentDTO ricePaymentDTO) {
+        RicePayment.RicePaymentBuilder builder = RicePayment.builder()
+                .ricePaymentUsed(ricePaymentDTO.getRicePaymentUsed())
+                .ricePaymentStatus(ricePaymentDTO.getRicePaymentStatus())
+                .member(toMemberEntity(ricePaymentDTO.getMemberDTO()))
+                ;
+
+        if (ricePaymentDTO.getRicePaymentExchangeBank() != null) {
+            builder.ricePaymentExchangeBank(ricePaymentDTO.getRicePaymentExchangeBank());
+        }
+
+        if (ricePaymentDTO.getRicePaymentExchangeAccount() != null) {
+            builder.ricePaymentExchangeAccount(ricePaymentDTO.getRicePaymentExchangeAccount());
+        }
+
+        return builder.build();
+    }
+
+    default Member toMemberEntity(MemberDTO memberDTO) {
+        return Member.builder().id(memberDTO.getId())
+                .memberName(memberDTO.getMemberName())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberRice(memberDTO.getMemberRice())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
+                .memberStatus(memberDTO.getMemberStatus())
                 .build();
     }
 }

@@ -117,19 +117,20 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
 
     /* 내 공양미 조회(페이징) */
     @Override
-    public Page<RicePayment> findByMemberId(Pageable pageable, UserDetail userDetail) {
+    public Page<RicePayment> findByMemberId(Pageable pageable, Long id) {
         List<RicePayment> foundRice = query.select(ricePayment)
                 .from(ricePayment)
                 .join(ricePayment.member)
                 .fetchJoin()
-                .where(ricePayment.member.id.eq(userDetail.getMember().getId()))
+                .where(ricePayment.member.id.eq(id))
+                .orderBy(ricePayment.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(ricePayment.count())
                 .from(ricePayment)
-                .where(ricePayment.member.id.eq(userDetail.getMember().getId()))
+                .where(ricePayment.member.id.eq(id))
                 .fetchOne();
 
         return new PageImpl<>(foundRice, pageable, count);
@@ -170,6 +171,14 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                   .from(ricePayment)
                   .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.충전))
                   .fetchOne());
+    }
+
+    @Override
+    public Integer findEnableRiceById(Long id) {
+        return query.select(ricePayment.ricePaymentUsed.sum())
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.후원받은공양미).and(ricePayment.member.id.eq(id)))
+                .fetchOne();
     }
 
 }
