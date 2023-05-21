@@ -43,11 +43,17 @@ public class FundingDTO {
     private Integer fundingCount;
     private MemberDTO memberDTO;
     private List<FileDTO> fileDTOs;
+    private FileDTO fileDTO;
+
     private List<FundingGift> fundingGifts;
 
 
     public FundingDTO(List<FileDTO> fileDTOs) {
         this.fileDTOs = fileDTOs;
+    }
+
+    public FundingDTO(FileDTO fileDTO) {
+        this.fileDTO = fileDTO;
     }
 //
 //    @Builder
@@ -72,7 +78,7 @@ public class FundingDTO {
 //    }
 
     @Builder
-    public FundingDTO(Long id, List<FileDTO> fileDTOs, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator) {
+    public FundingDTO(Long id, List<FileDTO> fileDTOs, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, FileDTO fileDTO) {
         this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
@@ -89,8 +95,10 @@ public class FundingDTO {
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
         this.fileDTOs = fileDTOs;
+        this.fileDTO = fileDTO;
 
-         if (fundingTargetPrice == 0 || fundingCurrentPrice == 0) {
+
+        if (fundingTargetPrice == 0 || fundingCurrentPrice == 0) {
              this.fundingPercent =0;
             } else {
              this.fundingPercent = (int) ((fundingCurrentPrice / (double) fundingTargetPrice) * 100);

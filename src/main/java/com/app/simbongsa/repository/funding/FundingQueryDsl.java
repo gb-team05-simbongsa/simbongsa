@@ -45,4 +45,9 @@ public interface FundingQueryDsl {
 
      // 펀딩 계획 등록
      public Long updateFunding_QueryDsl(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate);
+
+    // 현재 시퀀스 가져오기
+    public Funding getCurrentSequence_QueryDsl();
+
+
 }
