@@ -76,7 +76,7 @@
   text-align: left;
   font-weight: 400;
   border: 0;
-  width: 200px;
+  width: 330px;
 }
 
 .user__profile__input input {
@@ -88,6 +88,9 @@
   border: none;
   border-radius: 3px;
   padding: 3px 12px ;
+}
+.user__profile__input p {
+  margin-left: 2px;
 }
 .user__profile__input input:focus {
   border: 1px solid #777777;
@@ -121,4 +124,11 @@
 }
 .volunteer_profile h5 {
   font-size: 14px;
+}
+.detail-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
 }

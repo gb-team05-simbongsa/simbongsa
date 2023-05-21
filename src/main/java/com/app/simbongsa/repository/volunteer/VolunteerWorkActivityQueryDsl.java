@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface VolunteerWorkActivityQueryDsl {
 //    신청 명단 조회
-    public List<VolunteerWorkActivity> findApplyByVolunteerWorkId(Long id);
+    public Page<VolunteerWorkActivity> findApplyByVolunteerWorkId(Long id, Pageable pageable);
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     public Page<VolunteerWorkActivity> findMyVolunteerById(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);

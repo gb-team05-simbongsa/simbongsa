@@ -165,17 +165,6 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne());
     }
 
-    /* 마이페이지 작성한 자유게시물 상세 조회*/
-    @Override
-    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId) {
-        return Optional.ofNullable(query.select(freeBoard)
-                .from(freeBoard)
-                .join(freeBoard.freeBoardFiles)
-                .fetchJoin()
-                .where(freeBoard.id.eq(freeBoardId))
-                .fetchOne());
-    }
-
     //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
     private Slice<FreeBoard> checkLastPage(Pageable pageable, List<FreeBoard> freeBoards) {
 

@@ -1,45 +1,72 @@
-FileList.prototype.forEach = Array.prototype.forEach;
-
-let $ul = $(".img_ul");
-let files = [];
-if(fileDTOS != null && fileDTOS != undefined){
-    fileDTOS.forEach((file, i) => {
-        files.push(file);
-    });
+const insertData = {
+    boardTitle:"",
+    boardContent: "",
 }
-$("input[type=file]").on("change", function () {
-    const $files = $("input[type=file]")[0].files;
-    let formData = new FormData();
 
-    $($files).each((i, file) => {
-        files.push(file);
-    })
+$("form[name='form']").on("submit", function (e) {
+    // e.preventDefault();
 
-    files.forEach((file, e) => {
-        formData.append("file", file);
-    })
+    let boardTitle = $("input[name='boardTitle']").val();
+    let boardContent = $("textarea[name='boardContent']").val();
 
+    insertData.boardTitle = boardTitle;
+    insertData.boardContent = boardContent;
 
     $.ajax({
-        url: "/file/upload",
-        type: "post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (uuids) {
-            globalThis.uuids = uuids;
-            console.log(uuids);
-            $files.forEach((file, i) => {
-                if (file.type.startsWith("image")) {
-                    let text = `
-                    
-                `;
-                    $ul.append(text);
-                }
-            });
+        url: '/community/free-create',
+        data: JSON.stringify(insertData),
+        contentType: "application/json; charset=utf-8",
+        method: 'post',
+        success: function (result) {
+            // redirect 경로
+            location.href = "/community/free-create";
         }
-    });
+    })
 });
+
+
+// FileList.prototype.forEach = Array.prototype.forEach;
+//
+// let $ul = $(".img_ul");
+// let files = [];
+// if(fileDTOS != null && fileDTOS != undefined){
+//     fileDTOS.forEach((file, i) => {
+//         files.push(file);
+//     });
+// }
+// $("input[type=file]").on("change", function () {
+//     const $files = $("input[type=file]")[0].files;
+//     let formData = new FormData();
+//
+//     $($files).each((i, file) => {
+//         files.push(file);
+//     })
+//
+//     files.forEach((file, e) => {
+//         formData.append("file", file);
+//     })
+//
+//
+//     $.ajax({
+//         url: "/file/upload",
+//         type: "post",
+//         data: formData,
+//         contentType: false,
+//         processData: false,
+//         success: function (uuids) {
+//             globalThis.uuids = uuids;
+//             console.log(uuids);
+//             $files.forEach((file, i) => {
+//                 if (file.type.startsWith("image")) {
+//                     let text = `
+//
+//                 `;
+//                     $ul.append(text);
+//                 }
+//             });
+//         }
+//     });
+// });
 
 
 

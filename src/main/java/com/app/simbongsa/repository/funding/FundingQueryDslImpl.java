@@ -197,4 +197,14 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .where(funding.id.eq(fundingId))
                 .execute();
     }
+
+
+    @Override
+    public Funding getCurrentSequence_QueryDsl() {
+        return query.select(funding)
+                .from(funding)
+                .orderBy(funding.id.desc())
+                .limit(1)
+                .fetchOne();
+    }
 }

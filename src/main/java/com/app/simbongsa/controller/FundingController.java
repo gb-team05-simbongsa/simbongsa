@@ -73,9 +73,11 @@ public class FundingController {
 
     //업로드는 됨.... db에 저장이 안됌
     @PostMapping("funding-initial-info")
+    @ResponseBody
     public RedirectView fundingInitial(@ModelAttribute("fundingDTO") FundingDTO fundingDTO) {
 
         log.info(fundingDTO.toString());
+
 
         fundingService.fundingRegister(fundingDTO);
         return new RedirectView("/funding/funding-initial-info");

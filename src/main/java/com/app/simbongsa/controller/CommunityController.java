@@ -55,19 +55,22 @@ public class CommunityController {
         return freeBoardDTOS.getContent();
     }
 
+//    /*자유게시판 작성하기*/
+//    @GetMapping("free-create")
+//    public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
+//
+//    @PostMapping("free-create")
+//    public RedirectView freeWrite(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
+//
+//        Long memberId = userDetail.getId();
+//        freeBoardService.write(freeBoardDTO, memberId);
+//        return new RedirectView("/community/freeBoard/newList");
+//    }
+
     /*자유게시판 작성하기*/
     @GetMapping("free-create")
-    public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
-
-    @PostMapping("free-create")
-    public RedirectView FreeWrite(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
-
-/*        Long memberId = userDetail.getId();*/
-        Long memberId = userDetail.getMember().getId();
-/*        freeBoardService.register(freeBoardDTO, memberId);
-        return new RedirectView("community/free-create");*/
-        freeBoardService.write(freeBoardDTO, memberId);
-        return new RedirectView("/community/freeBoard/newList");
+    public void goToFreeCreate(Model model) {
+        model.addAttribute("freeBoard", new FreeBoardDTO());
     }
 
     /*자유게시판 수정하기*/

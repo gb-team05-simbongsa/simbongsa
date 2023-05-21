@@ -113,11 +113,26 @@ const adminService = (function() {
         });
     }
 
+    function updateVolunteerWork(volunteerWorkDTO, callback) {
+        $.ajax({
+            url: "/admins/volunteer-works-update",
+            type: 'post',
+            data: JSON.stringify(volunteerWorkDTO),
+            contentType: "application/json; charset=utf-8",
+            success: function() {
+                if (callback) {
+                    callback();
+                }
+            }
+        });
+    }
+
     function dateFormat(date) {
         var date = new Date(date);
         return date.toLocaleString();
     }
 
     return { saveNotice : saveNotice, getDetail : getDetail, deleteOrUpdate : deleteOrUpdate, updateStatus : updateStatus,
-        answerRegistration : answerRegistration, volunteerFile : volunteerFile, getDetailList : getDetailList, saveVolunteerWork : saveVolunteerWork, dateFormat : dateFormat };
+        answerRegistration : answerRegistration, volunteerFile : volunteerFile, getDetailList : getDetailList,
+        saveVolunteerWork : saveVolunteerWork, dateFormat : dateFormat, updateVolunteerWork : updateVolunteerWork };
 })();

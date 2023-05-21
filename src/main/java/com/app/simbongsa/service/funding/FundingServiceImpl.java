@@ -55,13 +55,21 @@ public class FundingServiceImpl implements FundingService {
     // 펀딩 저장 // 등록한 시점의 현재 시퀀스만들기
     @Override
     public void fundingRegister(FundingDTO fundingDTO) {
-        List<FileDTO> fileDTOs = fundingDTO.getFileDTOs();
+       /* List<FileDTO> fileDTOs = fundingDTO.getFileDTOs();
         fundingRepository.save(toFundingEntity(fundingDTO));
 
         if(fileDTOs != null){
             fileDTOs.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
-            fundingFileRepository.save(toFundingFileEntity(fileDTOs.get(0)));
-        }
+            fileDTOs.get(0).setFunding(getCurrentSequence());
+            fundingFileRepository.save(toFundingFileEntity(fileDTOs.get(0)));*/
+
+        FileDTO fileDTO = fundingDTO.getFileDTO();
+
+        fundingRepository.save(toFundingEntity(fundingDTO));
+
+        fileDTO.setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+        fileDTO.setFunding(getCurrentSequence());
+        fundingFileRepository.save(toFundingFileEntity(fileDTO));
     }
 
     // 펀딩 전체 목록 조회(무한스크롤)
@@ -83,6 +91,14 @@ public class FundingServiceImpl implements FundingService {
     @Override
     public FundingDTO getFundingDetail(Long fundingId) {
         return toFundingDTO(fundingRepository.findById(fundingId).get());
+
+    }
+
+    // 현재 시퀀스 가져오기
+    @Override
+    public Funding getCurrentSequence() {
+        return fundingRepository.getCurrentSequence_QueryDsl();
+
 
     }
 

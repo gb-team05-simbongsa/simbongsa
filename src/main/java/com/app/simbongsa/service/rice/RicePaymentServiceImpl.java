@@ -1,15 +1,18 @@
 package com.app.simbongsa.service.rice;
 
 import com.app.simbongsa.domain.InquiryDTO;
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.RicePaymentDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.rice.RicePayment;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.repository.rice.RicePaymentRepository;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
 import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
@@ -18,6 +21,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,8 +29,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Qualifier("ricePayment") @Primary
+@Slf4j
 public class RicePaymentServiceImpl implements RicePaymentService {
     private final RicePaymentRepository ricePaymentRepository;
+    private final MemberRepository memberRepository;
 
     @Override
     public Page<RicePaymentDTO> getRicePayment(Integer page, AdminPaymentSearch adminPaymentSearch, RicePaymentType ricePaymentType) {
@@ -72,10 +78,36 @@ public class RicePaymentServiceImpl implements RicePaymentService {
 
     /* 내 공양미 조회(페이징) */
     @Override
-    public Page<RicePaymentDTO> getMyRicePayment(Integer page, UserDetail userDetail) {
-        Page<RicePayment> myRicePayments = ricePaymentRepository.findByMemberId(PageRequest.of(page,5),userDetail);
+    public Page<RicePaymentDTO> getMyRicePayment(Integer page, MemberDTO memberDTO) {
+        Page<RicePayment> myRicePayments = ricePaymentRepository.findByMemberId(PageRequest.of(page,5), memberDTO.getId());
         List<RicePaymentDTO> ricePaymentDTOS = myRicePayments.getContent().stream().map(this::toRicePaymentDTO).collect(Collectors.toList());
         return new PageImpl<>(ricePaymentDTOS, myRicePayments.getPageable(),myRicePayments.getTotalElements());
+    }
+
+    @Override
+    @Transactional
+    public void insertRicePayment(Integer ricePaymentUsed, MemberDTO memberDTO) {
+        RicePaymentDTO ricePaymentDTO = new RicePaymentDTO();
+        ricePaymentDTO.setRicePaymentUsed(ricePaymentUsed);
+        ricePaymentDTO.setRicePaymentStatus(RicePaymentType.충전);
+        ricePaymentDTO.setMemberDTO(memberDTO);
+        ricePaymentRepository.save(toRicePaymentEntity(ricePaymentDTO));
+        memberRepository.updateChargeRiceByMemberId(memberDTO.getId(), ricePaymentUsed);
+    }
+
+    @Override
+    @Transactional
+    public void insertExchangeRequest(RicePaymentDTO ricePaymentDTO, MemberDTO memberDTO) {
+        int ricePaymentUsed = -ricePaymentDTO.getRicePaymentUsed();
+
+        ricePaymentRepository.save(toRicePaymentEntity(ricePaymentDTO));
+        memberRepository.updateChargeRiceByMemberId(memberDTO.getId(), ricePaymentUsed);
+    }
+
+    @Override
+    public int findEnableRiceById(Long id) {
+        Integer rice = ricePaymentRepository.findEnableRiceById(id);
+        return rice == null ? 0 : rice;
     }
 
 }
