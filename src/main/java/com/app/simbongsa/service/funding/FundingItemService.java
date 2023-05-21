@@ -10,7 +10,7 @@ public interface FundingItemService {
     public void ItemSave(FundingItemDTO fundingItemDTO);
 
     // 아이템 조회
-//    public void getItem(Long itemId);
+  /*  public void getItem(Long itemId);*/
 
 
 

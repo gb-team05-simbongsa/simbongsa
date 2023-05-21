@@ -25,7 +25,7 @@ public interface FundingQueryDsl {
     public FundingGift findSupport_QueryDsl(Long giftId);
 
     //    펀딩 상세페이지 조회
-    public Optional<Funding> findByIdForDetail(Long fundingId);
+    public Optional<Funding> findByIdForDetail_QueryDsl(Long fundingId);
 
     /* 내 펀딩 내역 조회(페이징처리) */
     /* 나중에 HttpSession session 으로 매개변수 바꿔줘야 함 */

@@ -23,4 +23,9 @@ public class FundingItemServiceImpl implements FundingItemService {
         fundingItemRepository.save(toFundingItemEntity(fundingItemDTO));
 
     }
+
+   /* @Override
+    public FundingItemDTO getItem(Long itemId) {
+       return toFundingItemDTO(fundingItemRepository.findById(itemId).get());
+    }*/
 }
