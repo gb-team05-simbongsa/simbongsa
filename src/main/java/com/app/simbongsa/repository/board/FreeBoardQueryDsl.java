@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +34,7 @@ public interface FreeBoardQueryDsl {
     public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);
 
     /* 유저가 작성한 자유게시물 조회(페이징처리) */
-    public Page<FreeBoard> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
+    public Page<FreeBoard> findByMemberId(Pageable pageable, MemberDTO memberDTO);
 
     //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
     public List<FreeBoard> findFreeBoardListByMemberId(Pageable pageable, Long memberId);
