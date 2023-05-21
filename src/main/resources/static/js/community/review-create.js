@@ -1,3 +1,30 @@
+const insertData = {
+    boardTitle:"",
+    boardContent: "",
+}
+
+$("form[name='form']").on("submit", function (e) {
+    e.preventDefault();
+
+    let boardTitle = $("input[name='boardTitle']").val();
+    let boardContent = $("textarea[name='boardContent']").val();
+
+    insertData.boardTitle = boardTitle;
+    insertData.boardContent = boardContent;
+
+    $.ajax({
+        url: '/community/review-create',
+        data: JSON.stringify(insertData),
+        contentType: "application/json; charset=utf-8",
+        method: 'post',
+        success: function (result) {
+            // redirect 경로
+            location.href = "/community/review-create";
+        }
+    })
+});
+
+
 $(document).ready(function() {
   // textarea 입력시 등록 버튼 색상 변경
   $('.title-input, .contents-text').on('input', function() {

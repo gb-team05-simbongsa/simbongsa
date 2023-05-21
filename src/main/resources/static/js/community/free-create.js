@@ -4,7 +4,7 @@ const insertData = {
 }
 
 $("form[name='form']").on("submit", function (e) {
-    // e.preventDefault();
+    e.preventDefault();
 
     let boardTitle = $("input[name='boardTitle']").val();
     let boardContent = $("textarea[name='boardContent']").val();

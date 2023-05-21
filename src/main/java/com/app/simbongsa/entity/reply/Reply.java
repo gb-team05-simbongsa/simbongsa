@@ -1,6 +1,7 @@
 package com.app.simbongsa.entity.reply;
 
 import com.app.simbongsa.audit.Period;
+import com.app.simbongsa.entity.member.Member;
 import com.sun.istack.NotNull;
 import lombok.*;
 

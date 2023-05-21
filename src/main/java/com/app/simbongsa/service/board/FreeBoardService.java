@@ -4,9 +4,7 @@ import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
-import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.member.Member;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,13 +25,13 @@ public interface FreeBoardService {
     public FreeBoard getCurrentSequence();
 
     // 댓글 저장
-    public void registerReply(FreeBoardReplyDTO freeBoardReplyDTO);
+    public void registerReply(ReplyRequestDTO replyRequestDTO);
 
     // 댓글 삭제
     public void deleteReply(Long replyId);
 
     // 댓글 목록
-    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
+    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
 
     // 댓글 갯수
     public Integer getReplyCount(Long freeBoardId);
@@ -182,6 +180,16 @@ public interface FreeBoardService {
                 .memberDTO(toMemberDTO(freeBoardReply.getMember()))
                 .registerDate(freeBoardReply.getCreatedDate())
                 .replyContent(freeBoardReply.getReplyContent())
+                .build();
+    }
+
+    default FreeBoardReplyDTO toFreeBoardReplyDTO(FreeBoardReply freeBoardReply){
+        return FreeBoardReplyDTO.builder().id(freeBoardReply.getId())
+                .memberDTO(toMemberDTO(freeBoardReply.getMember()))
+                .replyContent(freeBoardReply.getReplyContent())
+                .id(freeBoardReply.getFreeBoard().getId())
+                .createdDate(freeBoardReply.getCreatedDate())
+                .updatedDate(freeBoardReply.getUpdatedDate())
                 .build();
     }
 
