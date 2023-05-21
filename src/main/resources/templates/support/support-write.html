@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/support/support-write.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/community/free-create.css">
      <!-- 웹에디터 API -->
      <link
      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
@@ -36,7 +37,7 @@
                 <div class="qna-write-content">
 
 
-                    <form  method="post" enctype="multipart/form-data">
+                    <form  method="post" name="form" th:action="@{/support/support-write}" enctype="multipart/form-data">
                         <div class="qna-original-input-layout">
                             <div class="qna-write-content-title-div">
                                 <label for="inquiry-subject">
@@ -47,7 +48,7 @@
                                 <div class="write-content-input-outter-div">
                                     <div class="write-content-input-inner-div">
                                         <input type="text" id="inquiry-subject" class="write-content-input-tag"
-                                               name="inquiryTitle" placeholder="제목을 입력해주세요">
+                                               name="supportRequestTitle" placeholder="제목을 입력해주세요">
                                     </div>
                                     <div class="errorDiv">
                                         <p class="errorMessage"></p>
@@ -56,36 +57,36 @@
                             </div>
                         </div>
                         <!-- 내용 -->
-                        <div class="qna-content-input-layout" style="margin-left: 137px;">
+                        <div class="qna-content-input-layout">
                             <div class="qna-original-input-layout">
-<!--                                <div class="qna-write-content-title-div">-->
-<!--                                    <label for="inquiry-contents">-->
-<!--                                        내용<span class="required-red-span">*</span>-->
-<!--                                    </label>-->
-<!--                                </div>-->
+                                <div class="qna-write-content-title-div">
+                                    <label for="inquiry-contents">
+                                        내용<span class="required-red-span">*</span>
+                                    </label>
+                                </div>
                                 <div class="qna-write-content-input">
                                     <div class="write-content-contents-outter-div">
-                                        <!-- <div class="write-content-contents-inner-div">
+                                        <div class="write-content-contents-inner-div">
                                                  <textarea id="inquiry-contents" class="write-content-contents-textarea"
-                                                      name="inquiryContent" inputmode="text" cols="30" rows="10"
+                                                           name="supportRequestContent" inputmode="text" cols="30" rows="10"
                                                       style="resize: none;" maxlength="5000"
                                                       placeholder="전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다."></textarea>
                                           
-                                                 <span class="content-length-counter">
-                                                    <span>
-                                                        <span class="content-length-count">0자</span>
-                                                        <span class="content-length-max-count">
-                                                            /
-                                                            5000자
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </div> -->
+<!--                                                 <span class="content-length-counter">-->
+<!--                                                    <span>-->
+<!--                                                        <span class="content-length-count">0자</span>-->
+<!--                                                        <span class="content-length-max-count">-->
+<!--                                                            /-->
+<!--                                                            5000자-->
+<!--                                                        </span>-->
+<!--                                                    </span>-->
+<!--                                                </span>-->
+                                            </div>
 
                                         <!-- 썸머노트 API -->
-                                        <div class="notice__content" >
-                                            <textarea id="summernote" name="editordata"></textarea>
-                                        </div>
+<!--                                        <div class="notice__content" >-->
+<!--                                            <textarea id="summernote" name="editordata"></textarea>-->
+<!--                                        </div>-->
                                         <div class="errorDiv">
                                             <p class="errorMessage"></p>
                                         </div>
@@ -101,7 +102,7 @@
                             <div class="imageContainer">
                                 <div class="imageWrapperPadding">
                                     <div class="imageWrapper">
-                                        <!-- <div id="thumbnail-list" class="imageDiv">
+                                         <div id="thumbnail-list" class="imageDiv">
                                             <div class="imgButtonWrap">
                                                 <label for="photo-picker">
                                                     <div class="imgButton">
@@ -111,7 +112,7 @@
                                                         multiple="multiple"  accept="image/jpg, image/jpeg, image/png, image/bmp"/>
                                                 </label>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <div class="imgTextWrapper">
                                             <div class="imgTextDiv">
                                                 <span></span>
@@ -164,109 +165,18 @@
           ['insert', ['link', 'picture', 'video']],
       ],
 
-      callbacks: {
-          onImageUpload: function(files) {
-              // 이미지 업로드를 처리하는 부분
-              uploadImage(files[0]);
-          }
-          // ,
-          // onMediaDelete: function(target) {
-          //     // 이미지 삭제 시 처리하는 부분
-          //     deleteImage(target[0].src);
-          // }
-      }
   });
-  // 이미지 업로드 함수
-  // function uploadImage(file) {
-  //     var formData = new FormData();
-  //     formData.append('file', file);
-  //
-  //     $.ajax({
-  //         url: '/api/summernote/image',
-  //         method: "POST",
-  //         data: formData,
-  //         contentType: false,
-  //         processData: false,
-  //         success: function(url) {
-  //             // 업로드된 이미지 URL을 에디터에 삽입
-  //             var image = $('<img>').attr('src', url);
-  //             $('#summernote').summernote('insertNode', image[0]);
-  //             $('#summernote').summernote('insertImage', url);
-  //         },
-  //         error: function() {
-  //             // 업로드 실패 시 처리
-  //             alert('이미지 업로드에 실패했습니다.');
-  //         }
-  //     });
-  // }
-  // 이미지 업로드 함수
-  function uploadImage(file) {
-      var formData = new FormData();
-      formData.append('file', file);
-
-      $.ajax({
-          url: '/api/summernote/image',
-          method: "POST",
-          data: formData,
-          contentType: false,
-          processData: false,
-          success: function (formData) {
-              // 업로드된 이미지 URL을 에디터에 삽입
-              var image = $('<img>').attr('src', formData);
-              $('#summernote').summernote('insertNode', image[0]);
-              $('#summernote').summernote('insertImage', formData.url);
-          },
-          error: function () {
-              // 업로드 실패 시 처리
-              alert('이미지 업로드에 실패했습니다.');
-          }
-      });
-  }
-
-
-      // $.ajax({
-      //     url: '/api/summernote/images',
-      //     method: "POST",
-      //     data: formData,
-      //     contentType: false,
-      //     processData: false,
-      //     success: function(url) {
-      //         // 업로드된 이미지 URL을 에디터에 삽입
-      //         $('#summernote').summernote('insertNode', url);
-      //         $('#summernote').summernote('insertImage', url);
-      //     },
-      //     error: function() {
-      //         // 업로드 실패 시 처리
-      //         alert('이미지 업로드에 실패했습니다.');
-      //     }
-      // });
-  // }
-
-
-  // // 이미지 삭제 함수
-  // function deleteImage(src) {
-  //     // 이미지 삭제 API 호출 및 처리
-  //     $.ajax({
-  //         url: '/api/summernote/image/delete',
-  //         method: 'POST',
-  //         data: { src: src },
-  //         success: function(response) {
-  //             // 이미지 삭제 성공 시 처리
-  //             console.log('이미지 삭제 성공');
-  //         },
-  //         error: function() {
-  //             // 이미지 삭제 실패 시 처리
-  //             console.log('이미지 삭제 실패');
-  //         }
-  //     });
-  // }
-
-  // 등록 버튼 클릭 시 폼 제출
-  // $('.submit-button').on('click', function () {
-  //     $('form').submit();
-  // });
-
 </script>
-
-
+<script th:inline="javascript">
+    let fileDTOS = null;
+    let supportRequestDTO =[[${supportRequestDTO}]];
+    console.log(supportRequestDTO.fileDTOs);
+    console.log(supportRequestDTO +"1 . ==================");
+    if(supportRequestDTO == null || supportRequestDTO == undefined){
+    }else {
+        fileDTOS = supportRequestDTO.fileDTOs;
+    }
+    console.log(fileDTOS + "2. =====================");
+</script>
+<script src="/js/support/supportRequest-write.js"></script>
 </html>

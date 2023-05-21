@@ -1,11 +1,16 @@
 package com.app.simbongsa.service.support;
 
+import com.app.simbongsa.domain.FileDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
+import com.app.simbongsa.summernote.SupportRequestFileRepository;
+import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +33,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SupportRequestServiceImpl implements SupportRequestService {
     private final SupportRequestRepository supportRequestRepository;
+    private final MemberRepository memberRepository;
+    private final SupportRequestFileRepository supportRequestFileRepository;
 
     @Override
     public Page<SupportRequestDTO> getSupportRequest(Integer page, AdminSupportRequestSearch adminSupportRequestSearch) {
@@ -77,5 +84,31 @@ public class SupportRequestServiceImpl implements SupportRequestService {
     @Override
     public void saveSupportRequest(SupportRequestDTO supportRequestDTO) {
         supportRequestRepository.save(toSupportRequestEntity(supportRequestDTO));
+    }
+
+    @Override @Transactional
+    public void register(SupportRequestDTO supportRequestDTO, Long memberId) {
+        List<FileDTO> fileDTOS = supportRequestDTO.getFileDTOS();
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> supportRequestDTO.setMemberDTO(toMemberDTO(member))
+        );
+        supportRequestRepository.save(toSupportRequestEntity(supportRequestDTO));
+        if(fileDTOS != null){
+            for(int i = 0; i< fileDTOS.size(); i++){
+                if(i==0){
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                }else{
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+                }
+                fileDTOS.get(i).setSupportRequest(getCurrentSequence());
+                supportRequestFileRepository.save(toSupportRequestFileEntity(fileDTOS.get(i)));
+            }
+        }
+    }
+
+    @Override
+    public SupportRequest getCurrentSequence() {
+        return supportRequestRepository.getCurrentSequence_QueryDsl();
     }
 }

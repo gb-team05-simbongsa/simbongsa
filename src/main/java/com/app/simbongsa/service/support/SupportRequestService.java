@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface SupportRequestService {
 
@@ -48,18 +49,24 @@ public interface SupportRequestService {
 //    후원 요청 작성
   public void saveSupportRequest(SupportRequestDTO supportRequestDTO);
 
+  public void register(SupportRequestDTO supportRequestDTO, Long memberId);
+  public SupportRequest getCurrentSequence();
+
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {
-        return SupportRequestDTO.builder()
+        SupportRequestDTO.SupportRequestDTOBuilder builder = SupportRequestDTO.builder()
                 .id(supportRequest.getId())
                 .supportRequestTitle(supportRequest.getSupportRequestTitle())
                 .supportRequestContent(supportRequest.getSupportRequestContent())
                 .supportRequestStatus(supportRequest.getSupportRequestStatus())
                 .createdDate(supportRequest.getCreatedDate())
                 .updatedDate(supportRequest.getUpdatedDate())
-                .memberDTO(toMemberDTO(supportRequest.getMember()))
                 .supportDTOS(toSupportDTO(supportRequest.getSupports()))
-                .fileDTOS(toFileDTO(supportRequest.getSupportRequestFiles()))
-                .build();
+                .fileDTOS(toFileDTO(supportRequest.getSupportRequestFiles()));
+        if (supportRequest.getMember() != null) {
+            builder.memberDTO(toMemberDTO(supportRequest.getMember()));
+        }
+
+        return builder.build();
     }
 
     default List<SupportDTO> toSupportDTO(List<Support> supports){
@@ -110,6 +117,7 @@ public interface SupportRequestService {
                 .memberRole(member.getMemberRole())
                 .memberStatus(member.getMemberStatus())
                 .build();
+
     }
     default SupportRequest toSupportRequestEntity(SupportRequestDTO supportRequestDTO){
         return SupportRequest.builder()
