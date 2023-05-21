@@ -127,7 +127,7 @@ public interface FundingService {
         return fundingFileList;
     }
 
-    default Funding toFundingEntity(FundingDTO fundingDTO) {
+  /*  default Funding toFundingEntity(FundingDTO fundingDTO) {
         return Funding.builder()
                 .id(fundingDTO.getId())
                 .fundingCategory(fundingDTO.getFundingCategory())
@@ -139,6 +139,28 @@ public interface FundingService {
                 .fundingScheduleExplain(fundingDTO.getFundingScheduleExplain())
                 .fundingGiftExplain(fundingDTO.getFundingGiftExplain())
                 .build();
+
+    }*/
+
+    default Funding toFundingEntity(FundingDTO fundingDTO) {
+        Funding.FundingBuilder builder = Funding.builder()
+
+                .fundingCategory(fundingDTO.getFundingCategory())
+                .fundingTitle(fundingDTO.getFundingTitle())
+                .fundingShortTitle(fundingDTO.getFundingShortTitle())
+                .fundingSummary(fundingDTO.getFundingSummary())
+                .fundingBudgetExplain(fundingDTO.getFundingBudgetExplain())
+                .fundingIntroduce(fundingDTO.getFundingIntroduce())
+                .fundingScheduleExplain(fundingDTO.getFundingScheduleExplain())
+                .fundingGiftExplain(fundingDTO.getFundingGiftExplain())
+                .fundingFile(toFundingFileListEntity(fundingDTO.getFileDTOs()));
+
+
+        if (fundingDTO.getId() != null) {
+            builder.id(fundingDTO.getId());
+        }
+
+        return builder.build();
 
     }
 

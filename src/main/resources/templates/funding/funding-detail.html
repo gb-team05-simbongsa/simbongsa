@@ -8,6 +8,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/funding/funding-detail.css">
+    <link rel="stylesheet" href="/css/support/support-detail.css">
+
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
    
@@ -22,9 +24,9 @@
                     <div class="projectOutline">
                         <div class="outlineInner">
                             <a href="/discover?tab=category&amp;category=board-games">
-                                <span class="projectCategory"  >보드게임</span>
+                                <span class="projectCategory"  th:text="${fundingDTO.fundingCategory}">보드게임</span>
                             </a>
-                            <h1 class="projectTitle" >정통 추리 게임, 트위스티드 클루</h1>
+                            <h1 class="projectTitle" th:text="${fundingDTO.fundingTitle}">정통 추리 게임, 트위스티드 클루</h1>
                         </div>
                     </div>
                     <div class="introMainColumn">
@@ -58,32 +60,8 @@
                                                 </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="swiper-pagination swiper-pagination-bullets">
-                                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                                        <span class="swiper-pagination-bullet"></span>
-                                        <span class="swiper-pagination-bullet"></span>
-                                        <span class="swiper-pagination-bullet"></span>
-                                        <span class="swiper-pagination-bullet"></span>
-                                        </div> -->
-                                </div>
-                                <!-- <div class="swiper-button-prev swiper-button-disabled">
-                                    <div name="arrow1-left" class="iconSVG">
-                                        <svg viewBox="0 0 48 48">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M32.8912 45.3014L12 23.913L32.8912 2.52471C33.5866 1.8251 34.7804 1.8251 35.4777 2.52471C36.1741 3.22333 36.1741 4.42368 35.4777 5.22224L17.1731 23.913L35.4777 42.7018C36.1741 43.4024 36.1741 44.6018 35.4777 45.4013C35.0788 45.8011 34.6819 46 34.1845 46C33.7855 45.9011 33.2881 45.7002 32.8912 45.3014Z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="swiper-button-next">
-                                    <div name="arrow1-right" class="iconSVG">
-                                        <svg viewBox="0 0 48 48">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M13.9071 46C13.4118 46 12.9164 45.8001 12.6192 45.4003C11.9257 44.7007 11.9257 43.5014 12.6192 42.7019L30.8493 24.0125L12.5201 5.22317C11.8266 4.52357 11.8266 3.32425 12.5201 2.5247C13.2136 1.8251 14.3034 1.8251 15.096 2.5247L36 24.0125L15.195 45.4003C14.7988 45.8001 14.3034 46 13.9071 46Z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                </div> -->
+
+
                             </div>
                         </figure>
                     </div>
@@ -92,17 +70,18 @@
                             <div class="metric">
                                 <div class="statusTitle">모인금액</div>
                                 <div class="statusValue">
-                                    <span class="price" >16,895,200
+                                    <span class="price" th:text="${fundingDTO.fundingCurrentPrice}">16,895,200
                                         <span class="small">원</span>
                                     </span>
-                                    <span class="fundingRage" >563%</span>
+                                    <span class="fundingRage">563%</span>
                                 </div>
                             </div>
-                            <div class="metric">
-                                <div class="statusTitle">남은시간</div>
-                                <div class="statusValue" >27<span
-                                        class="small">일</span></div>
-                            </div>
+<!--                            <div class="metric">-->
+<!--                                <div class="statusTitle">남은시간</div>-->
+<!--                                <div class="statusValue" >27-->
+<!--                                    <span class="small">일</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="metric">
                                 <div class="statusTitle">후원자</div>
                                 <div class="statusValue">304<span
@@ -113,48 +92,29 @@
                             <div class="fundingInfoWrap">
                                 <dl class="infoItem">
                                     <dt class="infoTitle">목표금액</dt>
-                                    <dd class="infoDesc">3,000,000원</dd>
+                                    <dd class="infoDesc" th:text="${fundingDTO.fundingTargetPrice}">3,000,000원</dd>
                                 </dl>
                                 <dl class="infoItem">
                                     <dt class="infoTitle">펀딩 기간</dt>
-                                    <dd class="infoDesc">2023.04.25 ~ 2023.05.23
-                                        <span class="dayLabel">27일 남음</span>
-                                    </dd>
+                                    <dd class="infoDesc" th:text="${fundingDTO.fundingStartDate}">2023.04.25</dd> ~
+                                    <dd class="infoDesc"  th:text="${fundingDTO.fundingEndDate}">  2023.05.23</dd>
+<!--                                        <span class="dayLabel">27일 남음</span>-->
                                 </dl>
-                                <dl class="infoItem">
-                                    <dt class="infoTitle">결제</dt>
-                                    <dd class="infoDesc">목표금액 달성시 2023.05.24에 결제 진행</dd>
-                                </dl>
+<!--                                <dl class="infoItem">-->
+<!--                                    <dt class="infoTitle">결제</dt>-->
+<!--                                    <dd class="infoDesc">목표금액 달성시 2023.05.24에 결제 진행</dd>-->
+<!--                                </dl>-->
                             </div>
                         </div>
                         <div class="couponWrap couponWrap"></div>
-                        <div class="cardStyle creatorCardStyle">
-                            <!-- <div class="cardInner">
-                                <div class="cardLabel">창작자 소개</div>
-                                <div class="cardProfile">
-                                    <div class="creatorWrapper">
-                                        <a target="_blank" href="/u/delight">
-                                            <span class="styleProfileImg profileImage"></span>
-                                        </a>
-                                        <div class="creatorInfo">
-                                            <div class="topWrap">
-                                                <a target="_blank" href="/u/delight">
-                                                    <span class="creatorName">딜라이트</span>
-                                                </a>
-                                            </div>
-                                            <div class="bottomWrap">
-                                                <div class="creatorStat">
-                                                    <span>마지막 로그인</span>
-                                                    <b>19분 전</b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                       <!-- <div class="cardStyle creatorCardStyle">
+
                                 
                                 <div class="categoryBiography">2018년부터 현재까지 텀블벅에서 40여개 프로젝트를 진행한
-                                    바 있습니다. 재미있는 해외 보드게임을 한국어화 하며 자체 보드게임 개발에도 힘쓰고 있습니다.항상 최선을 다하겠습니다!</div>
-                                <div class="buttonWrap">
+                                    바 있습니다. 재미있는 해외 보드게임을 한국어화 하며 자체 보드게임 개발에도 힘쓰고 있습니다.항상 최선을 다하겠습니다!
+                                </div>
+
+                            <div class="buttonWrap">
                                     <div class=" followButtonWrapper">
                                         <button class="followButton fnt-p1" color="grayEditor200">
                                             <span>
@@ -166,13 +126,17 @@
                                                     </svg>
                                                 </div>
                                                 <div class="followButton">팔로우</div>
-                                            </span></button></div><a class="creatorButton">
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <a class="creatorButton">
                                         <div name="letter" class="iconSVG askCreatorButton">
                                             <svg viewBox="0 0 48 48">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                                     d="M41.9 37.8966H6.1C5.1 37.8966 4.2 37.0958 4.2 35.997V34.5964L15.7 26.3993L19 29.0977C21.9 31.4981 26.099 31.4981 29.099 29.0977L32.4 26.3993L43.9 34.5964V35.997C43.799 37.0958 43 37.8966 41.9 37.8966ZM13.9 24.9996L4.2 31.898V17.0015L13.9 24.9996ZM43.799 17.0015V31.898L34.099 24.9996L43.799 17.0015ZM6.1 9.20333H41.9C42.9 9.20333 43.799 10.0031 43.799 11.1029V14.2022L27.7 27.499C25.599 29.1986 22.5 29.1986 20.4 27.499L4.2 14.2022V11.0029C4.2 10.0031 5.1 9.10336 6.1 9.20333ZM41.9 7.00385H6.1C3.9 6.90287 2 8.80243 2 11.0029V35.997C2 38.2955 3.9 40.0951 6.1 39.9961H41.9C44.2 39.9961 46 38.1965 46 35.997V11.0029C46 8.80243 44.2 6.90287 41.9 7.00385Z">
                                                 </path>
-                                            </svg></div>창작자 문의
+                                            </svg>
+                                        </div>창작자 문의
                                     </a>
                                 </div>
                                 <div class="BQDxE">
@@ -200,7 +164,6 @@
                                     </div>
                                 </div>
                             </div> -->
-                        </div>
                         <div class="projectButton">
                             <div class="projectButtonInner">
                                 <div class="primaryButton">
@@ -208,39 +171,7 @@
                                         <button class="pledgebutton pledgebuttonStyle">이 프로젝트 후원하기</button>
                                     </div>
                                 </div>
-                                <!-- <div
-                                    class="tooltipWrapper tooltipStyle">
-                                    <div class="secondButton">
-                                        <div class="linkButton detailLinkButton">
-                                            <div class="detailLinkButtonStyle detailText">
-                                                <div name="like-line" class="iconSVG">
-                                                    <svg viewBox="0 0 38 34" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M18.9996 5.62299L15.6051 2.55614C12.2106 -0.510215 6.56995 0.17753 3.48147 3.57849C-0.397666 7.66674 -0.397863 14.5859 3.70675 18.9121L19 33.8811L34.2923 18.9121C38.3969 14.5859 38.3971 7.66747 34.5176 3.57849C31.4291 0.17753 25.7888 -0.510094 22.3942 2.55614L18.9996 5.62299ZM32.0081 16.6701C34.9446 13.533 34.8523 8.58052 32.1962 5.78099L32.1721 5.75565L32.1487 5.72978C30.0533 3.42248 26.4219 3.23047 24.5394 4.93062L18.9996 9.93557L13.4601 4.93076C11.5777 3.2306 7.94577 3.42244 5.85042 5.72978L5.82689 5.75569L5.8028 5.78108C3.14716 8.57988 3.05453 13.533 5.99094 16.6701L18.9999 29.4033L32.0081 16.6701Z"
-                                                            fill="#6D6D6D"></path>
-                                                    </svg>
-                                                </div>
-                                                <span>610</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="tertiaryButton">
-                                    <div class="SNSButtonWrap">
-                                        <button
-                                            type="button"
-                                            class="buttonStyle SNSbutton SNSByttonStyle">
-                                            <div name="share-2" class="iconSVG">
-                                                <svg viewBox="0 0 32 35" fill="none">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M25.5 9.8C27.3226 9.8 28.8 8.32254 28.8 6.5C28.8 4.67746 27.3226 3.2 25.5 3.2C23.6775 3.2 22.2 4.67746 22.2 6.5C22.2 8.32254 23.6775 9.8 25.5 9.8ZM25.5 13C29.0899 13 32 10.0899 32 6.5C32 2.91015 29.0899 0 25.5 0C21.9102 0 19 2.91015 19 6.5C19 7.00407 19.0574 7.49475 19.166 7.96584L13.2462 11.8889L10.9897 13.2996C9.82276 12.1847 8.24135 11.4999 6.5 11.4999C2.91015 11.4999 0 14.4101 0 17.9999C0 21.5898 2.91015 24.4999 6.5 24.4999C8.22679 24.4999 9.79631 23.8266 10.9603 22.7281L19.0878 27.4291C19.0301 27.7775 19 28.1352 19 28.4999C19 32.0898 21.9102 34.9999 25.5 34.9999C29.0899 34.9999 32 32.0898 32 28.4999C32 24.9101 29.0899 21.9999 25.5 21.9999C23.4257 21.9999 21.5784 22.9716 20.3882 24.4846L12.6783 20.0251C12.8871 19.3878 13 18.7071 13 17.9999C13 17.3061 12.8913 16.6376 12.6899 16.0106L14.9785 14.5798L20.6465 10.8236C21.8369 12.159 23.5703 13 25.5 13ZM6.5 21.2999C8.32254 21.2999 9.8 19.8225 9.8 17.9999C9.8 16.1774 8.32254 14.6999 6.5 14.6999C4.67746 14.6999 3.2 16.1774 3.2 17.9999C3.2 19.8225 4.67746 21.2999 6.5 21.2999ZM28.8 28.4999C28.8 30.3225 27.3226 31.7999 25.5 31.7999C23.6775 31.7999 22.2 30.3225 22.2 28.4999C22.2 26.6774 23.6775 25.1999 25.5 25.1999C27.3226 25.1999 28.8 26.6774 28.8 28.4999Z"
-                                                        fill="#6D6D6D">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                            <span>42</span>
-                                        </button>
-                                    </div> -->
+
                                 </div>
                             </div>
                         </div>
@@ -256,31 +187,11 @@
                             style="color: rgb(0, 0, 0); border-bottom: 3px solid rgb(0, 0, 0); padding-bottom: calc(0.5rem - 3px);">프로젝트
                             계획
                         </a>
-                        <!-- <a class="navItem" href="/twistedclue1/community/creator?ref=GNB%2F%EC%9D%B8%EA%B8%B0">업데이트
-                            <span class="communityPostAmount">2</span>
-                        </a>
-                        <a class="navItem" href="/twistedclue1/community/backer?ref=GNB%2F%EC%9D%B8%EA%B8%B0">커뮤니티</a>
-                        <a class="navItem" href="/twistedclue1/recommend">추천</a> -->
+
                         </div>
                 </div>
             </nav>
-            <!-- <div class="navFix">
-                <nav class="contentNav">
-                    <div class="navInner">
-                        <div class="navLeft">
-                            <a aria-current="page" class="navItem active" href="/twistedclue1/story?ref=GNB%2F%EC%9D%B8%EA%B8%B0"
-                                style="color: rgb(0, 0, 0); border-bottom: 3px solid rgb(0, 0, 0); padding-bottom: calc(0.5rem - 3px);">프로젝트
-                                계획
-                            </a>
-                            <a class="navItem" href="/twistedclue1/community/creator?ref=GNB%2F%EC%9D%B8%EA%B8%B0">업데이트
-                                <span class="communityPostAmount">2</span>
-                            </a>
-                            <a class="navItem" href="/twistedclue1/community/backer?ref=GNB%2F%EC%9D%B8%EA%B8%B0">커뮤니티</a>
-                            <a class="navItem" href="/twistedclue1/recommend">추천</a>
-                        </div>
-                    </div>
-                </nav>
-            </div> -->
+
             <div class="fixBar fixBar">
                 <div class="pledgeWrap pledgeWrap">
                     <div class="tooltipWrapper pledgeStyle izHChh">
@@ -321,9 +232,7 @@
                                         <li><a class="isActive isActive">소개</a></li>
                                         <li><a class="">예산</a></li>
                                         <li><a class="">일정</a></li>
-                                        <!-- <li><a class="">팀 소개</a></li> -->
                                         <li><a class="">선물 설명</a></li>
-                                        <!-- <li><a class="">신뢰와 안전</a></li> -->
                                     </ul>
                                 </div>
                                 <div class="jEEjPy">
@@ -331,55 +240,88 @@
                                         <div id="purpose" class="storySection">
                                             <div class="storySectionTitle">프로젝트 소개</div>
                                             <div class="storyContent">
-                                                <p><strong>추리 소설</strong>을 좋아하고, <strong>스릴러 영화</strong>를 즐기시나요?
+                                                <div class="thumbnail-section" style="visibility: visible;">
+                                                    <div class="view">
+                                                        <img id="expandedImg" src="" style="cursor:pointer; width:624 height=351" alt="루게릭병 환우 간병비 지원사업">
+                                                    </div>
+                                                    <div class="thumbnail-list">
+                                                        <ul>
+                                                            <li class="on">
+                                                                <button href="#">
+                                                                    <img class="img-div" src="/image/notice/rag_doll_tumbnail.jpg" width="99" height="70" alt="루게릭병 환우 간병비 지원사업">
+                                                                </button>
+                                                            </li>
+                                                            <li class="on">
+                                                                <button href="#">
+                                                                    <img class="img-div" src="image/main/001.jpg" width="99" height="70" alt="루게릭병 환우 간병비 지원사업">
+                                                                </button>
+                                                            </li>
+                                                            <li class="on">
+                                                                <button href="#">
+                                                                    <img class="img-div" src="/image/main/002.jpg" width="99" height="70" alt="루게릭병 환우 간병비 지원사업">
+                                                                </button>
+                                                            </li>
+                                                            <li class="on">
+                                                                <button href="#">
+                                                                    <img class="img-div" src="/image/main/003.jpg" width="99" height="70" alt="루게릭병 환우 간병비 지원사업">
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <p th:text="${fundingDTO.fundingSummary}">
+                                                   <!-- <strong>추리 소설</strong>을 좋아하고, <strong>스릴러 영화</strong>를 즐기시나요?
                                                     <strong>미스터리한 사건</strong> 속에서 <strong>단서</strong>를 찾아내며
                                                     <strong>진실</strong>을 파헤치며 즐거움을 느끼시나요? 그리고 아래 단어 중 하나라도 관심 있는 단어가
-                                                    있으신가요?</p>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/f226141e-31f2-46cc-a7c6-01c1fd340dd2.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=9809bcf67ee5c8072e13680ddabc7065">
+                                                    있으신가요?-->
+                                                </p>
+                                                <p>
                                                 </p>
                                                 <p>만약 그렇다면, 절대 이 프로젝트를 놓치지 마세요. [트위스티드 클루]는 바로 <u><strong>여러분이 기다리던 정통
                                                             추리 보드게임</strong></u>입니다.</p>
+
                                                 <p>&nbsp;</p>
-                                                <p><img style="width: 620px; display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4935b6c0-255e-434f-9f9a-be1eb460e072.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=da2760bc2d184705f01703fcc0573833">
-                                                </p>
-                                                <p>&nbsp;</p>
-                                                <hr>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/a139fce2-187b-4a35-a116-507bec809251.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=e6aebecca8f1cc3bd70653a502311661">
-                                                </p>
-                                                <p><strong>[트위스티드 클루]</strong>는 여러분은 직접 탐정이 되어 즐기는 정통 추리 게임입니다. 여러분은
-                                                    <u><strong>신문</strong></u>을 읽거나 다른 인물과 <u><strong>대화</strong></u>를
-                                                    나누며 정보를 모으고, <u><strong>장소를 조사</strong></u>하거나 <u><strong>의심스러운 인물을
-                                                            심문</strong></u>할 수 있습니다.&nbsp;<br><br><img
-                                                        style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/c3631ebf-e34a-42e3-99cb-3f3a85b7928b.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=0e36215c4b643cccf49f2c396d130601">
+
+                                                <p>
+                                                    <strong>[트위스티드 클루]</strong>는 여러분은 직접 탐정이 되어 즐기는 정통 추리 게임입니다. 여러분은
+                                                    <u>
+                                                        <strong>신문</strong>
+                                                    </u>을 읽거나 다른 인물과
+                                                    <u>
+                                                    <strong>대화</strong>
+                                                    </u>
+                                                    를 나누며 정보를 모으고,
+                                                    <u>
+                                                        <strong>장소를 조사</strong>
+                                                    </u>하거나
+                                                    <u>
+                                                        <strong>의심스러운 인물을 심문</strong>
+                                                    </u>할 수 있습니다.&nbsp;<br><br>
                                                 </p>
                                                 <p>게임의 배경이 되는 세계 속에서 살고 있는 <u><strong>다양한 인물</strong></u>들과 여러분. 그리고
                                                     <u><strong>미스터리한 사건</strong></u>들과 <u><strong>뒤틀린 단서</strong></u>.
                                                     이제 여러분이 직접<strong> <u>흩어진 정보의 조각</u>을 짜 맞추고 진실을 향해 한 걸음씩 다가가야
                                                         합니다</strong>.</p>
                                                 <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/cb6dc0c3-3aa1-459b-852e-8819317dedde.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=b0f11dc8f7576712a9097700b29eb7f7">
-                                                </p>
+
                                                 <h2>진정한 정통 추리 게임</h2>
                                                 <p>[트위스티드 클루]에서 여러분은 직접 게임 속 탐정이 되어, 신문을 읽거나 다른 인물과 대화를 나누며 정보를 모으고, 장소를
                                                     조사하거나 의심스러운 인물을 심문합니다. 그리고 그 과정 속에 추리에 몰입을 방해하는, <strong>시나리오와 무관한
                                                         퍼즐적 요소나 기믹이 특별히 없기 때문</strong>에, 여러분은 <u><strong>추리 그 자체를 있는 그대로
                                                             온전히 즐길 수 있습니다</strong></u>.</p>
+
                                                 <h2>얽혀있는 미스터리</h2>
                                                 <p>[트위스티드 클루]에는 <strong>하나의 확장에 여러 개의 시나리오</strong>가 포함되어 있습니다. 그리고 이
                                                     시나리오들은 <u><strong>하나의 세계 속을 살아가는 인물들 사이에서 동시간대에 벌어지는
                                                             사건들</strong></u>이기 때문에, <strong>하나의 인물로 서로 얽혀있기도 하며, 때로는 사건의
                                                         발생이 서로에게 영향을 주고받기도 합니다</strong>.</p>
+
                                                 <h2>방대한 분량의 스토리</h2>
                                                 <p><strong>60페이지 분량의 조사집, 20페이지 분량의 행동집을 포함하여 지도, 신문, 사건집, 풀이집</strong>에
                                                     담겨있는 방대한 분량의 풍성한 스토리는 여러분이 작품 속 탐정으로 몰입하는 데에 도움을 줍니다. <u><strong>풍성한
                                                             스토리의 퍼즐을 맞춰가며 사건의 진실을 밝혀내는 진정한 추리의 재미</strong></u>를 느껴보세요.
                                                 </p>
+
                                                 <h2>간단한 규칙과 게임 진행</h2>
                                                 <p>[트위스티드 클루]에서 여러분이 잊지 말아야 할 규칙은, <strong>'행동을 하면 행동 수치가
                                                         증가한다'</strong>라는 것 하나입니다. 그 이외에는 따로 크게 신경 써야 할 규칙이 없기 때문에 [트위스티드
@@ -387,81 +329,39 @@
                                                             집중</strong></u>하실 수 있습니다.<br>또한 [트위스티드 클루]는 <strong>모든 구성품이
                                                         책자 형태</strong>로 이루어져 있기 때문에, <u><strong>보드게임을 즐겨보지 않으신 분들도 추리
                                                             소설을 읽듯이 손쉽게 게임에 몰입</strong></u>하실 수 있습니다. &nbsp;</p>
+
                                                 <h2>1~2인 전용</h2>
                                                 <p>[트위스티드 클루]를 즐기기 위해서 많은 인원을 모을 필요가 없습니다. <strong>연인</strong> 혹은
                                                     <strong>친구</strong>와 함께, 그게 아니라면 <strong>혼자</strong>서도 괜찮습니다. 진정한
                                                     추리의 재미에 빠질 준비는 이걸로 전부 끝입니다!<br>여기에 분위기 있는 조명, 커피 한 잔이 곁들여진다면 금상첨화일
                                                     것입니다.</p>
                                                 <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/7bcf9a74-d821-4041-9961-111bbb559f4c.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=e3373cb5298c0a025f556788576e7a1d">
-                                                </p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/a8d24ba8-05da-406b-8ebd-4407852fb131.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=ad0ad97dfcf983cda018d55208c3a266"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/54e2fada-1fd4-4c9a-92c8-37b67e99ac51.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=abfdc62e016a8a3ac1b0a196b050f40b"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/642d8c18-f22c-4ab1-a743-360e7fe25e64.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=02dd59ecc976ea57beff532b17672840"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/78502b3f-e4d2-4f36-aa27-70a26c966a98.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=58dd6fc8043c08434b9753f049b6d366">
-                                                </p>
-                                                <p>&nbsp;</p>
-                                                <hr>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/b34aab1e-fb2e-4b2d-b039-dba03b5dcee5.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=7aa9cdf4f6697b35115e65c52e680699">
-                                                </p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/ae7e0395-81a8-4485-8668-08a3894188d5.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=9e0226e4d2599f443da7c823a8fcb98b"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/cbedd7ed-e3eb-4e67-ba79-b77380fdef3e.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=db84a9053a5edfdbd05d1a5ac7dc05b6"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/aa43ed01-1c6f-4744-a4fd-10e38334e861.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=e0314ca1ea270a85559f0f3d0da0e3ed">
-                                                </p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/270465f3-2d6a-4c45-9c40-2475059e45b6.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=1ff56f27e8a8ec5ca10f8b933ab82ec1">
-                                                </p>
+
+
                                                 <p>【사건집】에서 수사할 사건을 선택하고 난이도, 사건의 개요, 의문점을 확인합니다. 사건의 개요는 해당 사건과 관련한 기본
                                                     정보이며, 의문점은 해당 사건을 수사하며 확인해야 할 주요 질문들입니다. 게임 종료 시 의문점의 답을 맞힌다면 점수를
                                                     획득할 수 있습니다.&nbsp;</p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/cec14fa4-6f1c-49e2-a505-1c9d20e67840.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=ee64ecd6e4714e0ead437520d2e37880">
+                                                <p>
                                                 </p>
                                                 <p>플레이어는 【신문】,&nbsp;【행동】, 【지도】, 【조사】를 활용하며 수사를 진행합니다.&nbsp;</p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/246d1740-d9f4-42f1-ae85-3f6d8eeed509.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=b9fc9e4474aa83075d0deeeeb9b99cf8">
+                                                <p>
                                                 </p>
                                                 <p>게임 시작 시 제공되는 【신문】에는 사건 해결에 불필요한 내용도 있지만, 사건 해결에 실마리가 되는 중요한 정보가 포함되어
                                                     있기도 합니다.&nbsp;</p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/f0037352-cbaf-498e-9f32-594fa6a6f53a.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=5ebec8a1d6dc060b387933253147c473"><br>신문을
+                                                <p>
                                                     읽다가 방문하고 싶은 장소가 생긴다면, 【지도】를 통해 해당 장소에 방문해 【조사】를 이어가거나, 다른 인물을 【조사】할
                                                     수도 있습니다.</p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/a695b48a-c9b7-4187-ad65-9a1534fc1250.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=470e3ebd7193c25245312d5106755479">
+                                                <p>
                                                 </p>
                                                 <p>이렇게 수사를 진행하며 얻은 정보는 【행동】을 통해 확인(행동 수치 증가)합니다.</p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/edf8cf87-c5c4-4138-991b-b12f6c325a53.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=ff78a547d6f331582764c4f4e0b64868">
+                                                <p>
                                                 </p>
                                                 <p>사건의 진상을 충분히 파악했다고 생각한다면, 수사를 마치고 【풀이집】을 가져와서 사건의 전말과 의문점의 정답을 확인하며
                                                     점수를 기록합니다.</p>
                                                 <p>모든 사건의 수사를 마쳤다면, 모든 구성품의 내용을 자유롭게 확인할 수 있습니다. 게임을 진행하며 확인하지 못했던 단서들을
                                                     하나씩 확인해 보며, 직접 추리를 할 때와는 또 다른 색다른 재미를 추가로 느낄 수 있습니다.</p>
                                                 <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/809248eb-e1fc-400a-8f53-37e6e6be671d.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=abb5a7aa5fd72465cd124a4f8e1dbc37">
-                                                </p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/3c081755-1505-4b49-bc8c-01654c71e175.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=34cad98c1c4e428dd13445d23d46e09e"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/b08a05db-1287-4ec8-85cc-149a6ddb165c.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=6b5fbd3dc885f8df61d2342fbed13ca5">
-                                                </p>
-                                                <p>&nbsp;</p>
-                                                <hr>
-                                                <p><img style="display: block; margin-left: auto; margin-right: auto;"
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/c534154d-fe1f-4a1d-8121-cafc40295896.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=ede6a3025612525662847f8aef87f04e">
-                                                </p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/92cf5b2a-2c1f-49a6-aaf8-8a640aa4ef32.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=4d0350473199ece41b0ebbd68b722ed7">
-                                                </p>
+
                                                 <p>저희는 이번 프로젝트에서도, <strong>현실</strong><strong>적으로 달성 가능</strong>하며
                                                     <strong>후원자분들께 큰 기쁨을 드릴 수 있는 스트레치 골</strong>을 준비했습니다.&nbsp;<br>이번
                                                     프로젝트 최종 후원 금액(결제 금액 기준)이 <u><strong>3000만 원</strong></u>을 돌파하면,
@@ -470,72 +370,69 @@
                                                     준비해온 또 다른 확장으로, 미니 확장이 아닌 <strong>정식 확장</strong>이며 <strong>세 개의
                                                         시나리오를 포함</strong>하고 있습니다. 스트레치 골은 별개의 박스로 제공되며, 추가 시나리오 이름, 배경
                                                     등에 대한 정보는 추후에 공개하겠습니다. 스트레치 골 달성을 위해 저희도 최선을 다하겠습니다.&nbsp;</p>
-                                                <p>&nbsp;</p>
                                             </div>
                                         </div>
                                         <div id="budget" class="storySection">
-                                            <div class="storySectionTitle">프로젝트 예산</div>
+                                            <div class="storySectionTitle" >프로젝트 예산</div>
                                             <div class="storyContent">
-                                                <p><img src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/c81b516c-09e1-41b4-b1ca-e40dca6ca782.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=bad0150449825c6c7f233f8a89016a48"
-                                                        style="display: block; margin-left: auto; margin-right: auto;">
+                                                <p th:text="${fundingDTO.fundingBudgetExplain}">
                                                 </p>
-                                                <p>-인쇄비 : 250만 원<br>-배송비 : 100만 원<br>-수수료 : 100만 원<br>-발주비 : 50만 원</p>
-                                                <p>후원자 여러분이 보내주시는 소중한 후원 비용은 제작 비용, 운송 비용 등으로 활용됩니다.&nbsp;</p>
+<!--                                                <p>-인쇄비 : 250만 원<br>-배송비 : 100만 원<br>-수수료 : 100만 원<br>-발주비 : 50만 원</p>-->
+<!--                                                <p>후원자 여러분이 보내주시는 소중한 후원 비용은 제작 비용, 운송 비용 등으로 활용됩니다.&nbsp;</p>-->
                                             </div>
                                         </div>
                                         <div id="schedule" class="storySection">
                                             <div class="storySectionTitle">프로젝트 일정</div>
                                             <div class="storyContent">
-                                                <p><strong><img
+                                                <p>
+                                                    <strong>
+                                                    <img
                                                             src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/335b96e3-d696-40d7-b75e-da5d9a987b9c.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=b2aa8fb04740afe32cf16009906ad63e"
                                                             style="display: block; margin-left: auto; margin-right: auto;"></strong>
                                                 </p>
-                                                <p><strong>2022년</strong><br>-8월 : 시나리오 작업 착수<br>-12월 : 시나리오 완성 및 게임화 작업
-                                                    착수</p>
-                                                <p><strong>2023년</strong><br>-1월 : 일러스트 제작 및 보완<br>-4월 25일 : 펀딩
-                                                    시작일<br>-5월 1일 : 샘플 작업<br>-5월 23일 : 펀딩 종료일<br>-6월 1일 : 선물 발주
-                                                    시작<br>-6월 12일 : 선물 생산 시작<br>-9월 30일 : 선물 생산 완료<br>-10월 31일 : 선물 예상
-                                                    전달일</p>
-                                                <p>기존에 저희가 진행한 <strong>40여 회의 크라우드 펀딩</strong>에 관심이 있으셨던 분들은 아시겠지만, 저희는
-                                                    프로젝트를 진행하며 <strong>일정 약속을 잘 지켜왔습니다</strong>. 이는 <strong>지키지 못할 약속은
-                                                        하지 않기 위해, 선물 전달 일정을 여유 있게 잡았기에 가능</strong>했습니다. 이번 프로젝트에서도 선물
-                                                    전달을 약속드린 일정에 맞게 진행하겠습니다.</p>
+                                                <p th:text="${fundingDTO.fundingScheduleExplain}">
+
+                                                </p>
+<!--                                                <p><strong>2022년</strong><br>-8월 : 시나리오 작업 착수<br>-12월 : 시나리오 완성 및 게임화 작업-->
+<!--                                                    착수</p>-->
+<!--                                                <p><strong>2023년</strong><br>-1월 : 일러스트 제작 및 보완<br>-4월 25일 : 펀딩-->
+<!--                                                    시작일<br>-5월 1일 : 샘플 작업<br>-5월 23일 : 펀딩 종료일<br>-6월 1일 : 선물 발주-->
+<!--                                                    시작<br>-6월 12일 : 선물 생산 시작<br>-9월 30일 : 선물 생산 완료<br>-10월 31일 : 선물 예상-->
+<!--                                                    전달일</p>-->
+<!--                                                <p>기존에 저희가 진행한 <strong>40여 회의 크라우드 펀딩</strong>에 관심이 있으셨던 분들은 아시겠지만, 저희는-->
+<!--                                                    프로젝트를 진행하며 <strong>일정 약속을 잘 지켜왔습니다</strong>. 이는 <strong>지키지 못할 약속은-->
+<!--                                                        하지 않기 위해, 선물 전달 일정을 여유 있게 잡았기에 가능</strong>했습니다. 이번 프로젝트에서도 선물-->
+<!--                                                    전달을 약속드린 일정에 맞게 진행하겠습니다.</p>-->
                                             </div>
                                         </div>
                                         <div id="introduction" class="storySection">
                                             <div class="storySectionTitle">프로젝트 팀 소개</div>
                                             <div class="storyContent">
-                                                <p><img src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/f9dbdf53-aa98-4606-9204-dc6b3d8ad908.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=dc9423bf129761099bed7772a0095ab6"
-                                                        style="display: block; margin-left: auto; margin-right: auto;"><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/cdb522f9-a91b-40f0-a739-d7d337221a56.jpg?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=498d98f59f49f842915e32c37ed5602b"
-                                                        style="width: 620px; display: block; margin-left: auto; margin-right: auto;">
+                                                <p th:text="${fundingDTO.fundingIntroduce}">
+
                                                 </p>
-                                                <p>저희 딜라이트는 2018년부터 다양한 해외 보드게임을 한국에 소개하고 재미있는 자체 제작 보드게임을 개발하고 있습니다.
-                                                    크라우드 펀딩을 기반으로 지금까지 <strong><u>40여 회의 프로젝트</u>를 성공적으로
-                                                        마무리</strong>했습니다. <u><strong>그간 저희가 걸어온 발자취와 후원자분들의 후기는, 저희 프로필을
-                                                            통해 확인하실 수 있습니다</strong>.</u></p>
-                                                <p><img src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/5723a067-d793-41ef-974d-aec38130d499.jpg?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=c02ddc054c96fd32a97a888da5d75888"
-                                                        style="display: block; margin-left: auto; margin-right: auto;">
-                                                </p>
-                                                <p>그리고 저희는 지금까지 <u><strong>국내에서 가장 많은 스토리 기반 추리/방탈출 류 보드게임을 퍼블리싱 한
-                                                            회사</strong></u>입니다. 이러한 경험을 바탕으로 저희는 이번 프로젝트를 통해 <strong>정통
-                                                        추리 게임에 목마른 많은 분들의 지적 욕구를 채워드리고자 합니다</strong>.&nbsp;이번 프로젝트도 열심히
-                                                    준비하고 진행하겠습니다. 프로젝트 관련 문의는 오른쪽 '창작자에게 문의하기'로 부탁드립니다. 감사합니다.</p>
+<!--                                                <p>저희 딜라이트는 2018년부터 다양한 해외 보드게임을 한국에 소개하고 재미있는 자체 제작 보드게임을 개발하고 있습니다.-->
+<!--                                                    크라우드 펀딩을 기반으로 지금까지 <strong><u>40여 회의 프로젝트</u>를 성공적으로-->
+<!--                                                        마무리</strong>했습니다. <u><strong>그간 저희가 걸어온 발자취와 후원자분들의 후기는, 저희 프로필을-->
+<!--                                                            통해 확인하실 수 있습니다</strong>.</u></p>-->
+<!--                                                <p>-->
+<!--                                                </p>-->
+<!--                                                <p>그리고 저희는 지금까지 <u><strong>국내에서 가장 많은 스토리 기반 추리/방탈출 류 보드게임을 퍼블리싱 한-->
+<!--                                                            회사</strong></u>입니다. 이러한 경험을 바탕으로 저희는 이번 프로젝트를 통해 <strong>정통-->
+<!--                                                        추리 게임에 목마른 많은 분들의 지적 욕구를 채워드리고자 합니다</strong>.&nbsp;이번 프로젝트도 열심히-->
+<!--                                                    준비하고 진행하겠습니다. 프로젝트 관련 문의는 오른쪽 '창작자에게 문의하기'로 부탁드립니다. 감사합니다.</p>-->
                                             </div>
                                         </div>
                                         <div id="rewardsDescription" class="storySection">
                                             <div class="storySectionTitle">선물 설명</div>
                                             <div class="storyContent">
-                                                <p><img src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/a36ff484-b027-45b8-b5a2-41367eeb6d6a.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=cf0fa850272a6939b1c49e6d9427efec"
-                                                        style="display: block; margin-left: auto; margin-right: auto;">
+                                                <p th:text="${fundingDTO.fundingGiftExplain}">
                                                 </p>
-                                                <p><img
-                                                        src="https://tumblbug-psi.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/5c210b09-7f1c-46ab-865a-3c4efefc4496.png?ixlib=rb-1.1.0&amp;w=1240&amp;auto=format%2C%20compress&amp;lossless=true&amp;ch=save-data&amp;s=27806203a6f1dd556498b3ef41e532b9">
-                                                </p>
-                                                <p>※ <strong>[트위스티드 클루] x1</strong> 구성을 선택하시면 안갯속의 비밀, 함박골 이야기 중 하나를
-                                                    선택하여 받아보실 수 있으며, 스트레치 골 달성 시에도 스트레치 골이 포함되지 않습니다.<br>※ <strong>[타임
-                                                        스토리즈 B]</strong>에는 올해 추가 확장 소식을 전해드릴 예정인 타임 스토리즈 블루 사이클의 [경험],
-                                                    [하달 프로젝트], [한여름 밤에], [데미안]으로 구성되어 있습니다.</p>
+
+<!--                                                <p>※ <strong>[트위스티드 클루] x1</strong> 구성을 선택하시면 안갯속의 비밀, 함박골 이야기 중 하나를-->
+<!--                                                    선택하여 받아보실 수 있으며, 스트레치 골 달성 시에도 스트레치 골이 포함되지 않습니다.<br>※ <strong>[타임-->
+<!--                                                        스토리즈 B]</strong>에는 올해 추가 확장 소식을 전해드릴 예정인 타임 스토리즈 블루 사이클의 [경험],-->
+<!--                                                    [하달 프로젝트], [한여름 밤에], [데미안]으로 구성되어 있습니다.</p>-->
                                             </div>
                                         </div>
                                         <div id="refundExchangePolicy" class="storySection">
@@ -543,7 +440,8 @@
                                             <div class="fundingInfoStyle">
                                                 <div class="sectionSubTitle">크라우드 펀딩에 대한 안내</div>
                                                 <dl>
-                                                    <dt><img src="/wpa/1f66831ec9af8b200c2861bccde76bd5.png" alt="">후원은
+                                                    <dt>
+                                                        <img src="/wpa/1f66831ec9af8b200c2861bccde76bd5.png" alt="">후원은
                                                         구매가 아닌 창의적인 계획에 자금을 지원하는 일입니다.</dt>
                                                     <dd>전자상거래법상 통신판매는 소비자의 청약 전 규격, 제조연월일 등 구체적인 상품정보가 제공 가능한 것을 대상으로
                                                         합니다. 따라서 텀블벅에서의 후원은 통신판매에 해당하지 않고, 전자상거래법 및 소비자보호규정(수령 후 7일 내
@@ -556,10 +454,10 @@
                                                         프로젝트를 완수할 책임과 권리는 창작자에게 있습니다.</dd>
                                                 </dl>
                                             </div>
-                                            <div class="style__FundingUnderstand-qkz7cf-12 cIQwNC"><a
-                                                    href="https://help.tumblbug.com/hc/ko/articles/115010171368"
-                                                    target="_blank" rel="noreferrer">크라우드펀딩·후원 이해하기<div
-                                                        name="link2-line" class="iconSVG"><svg
+                                            <div class="style__FundingUnderstand-qkz7cf-12 cIQwNC">
+                                                <a href="https://help.tumblbug.com/hc/ko/articles/115010171368"
+                                                    target="_blank" rel="noreferrer">크라우드펀딩·후원 이해하기
+                                                    <div name="link2-line" class="iconSVG"><svg
                                                             viewBox="0 0 48 48">
                                                             <path
                                                                 d="M21 10.1C21 10.0448 20.9552 10 20.9 10L7.1 10C7.04477 10 7 10.0448 7 10.1V40.9C7 40.9552 7.04477 41 7.1 41H37.9C37.9552 41 38 40.9552 38 40.9V27.1C38 27.0448 37.9552 27 37.9 27H34.1C34.0448 27 34 27.0448 34 27.1V37H11V14H20.9C20.9552 14 21 13.9552 21 13.9V10.1Z">
@@ -567,7 +465,10 @@
                                                             <path
                                                                 d="M34.6602 10.5L25.5 10.5V6.5H41.5V22.4C41.5 22.4552 41.4552 22.5 41.4 22.5H37.6C37.5448 22.5 37.5 22.4552 37.5 22.4V13.317L23.3266 27.4904L20.4982 24.6619L34.6602 10.5Z">
                                                             </path>
-                                                        </svg></div></a></div>
+                                                        </svg>
+                                                    </div>
+                                                 </a>
+                                            </div>
                                             <div class="policyWrap refundPolicy">
                                                 <div class="sectionSubTitle">프로젝트 정책</div>
                                                 <div class="policyContents">- 펀딩 종료일 후에는 즉시 제작 및 실행에 착수하는 프로젝트 특성상 단순
@@ -619,10 +520,10 @@
                                                         <span class="creatorName">딜라이트</span>
                                                     </a>
                                                 </div>
-                                                <div class="bottomWrap">
-                                                    <div class="creatorStat">
-                                                        <span>마지막 로그인</span> <b>19분 전</b></div>
-                                                </div>
+<!--                                                <div class="bottomWrap">-->
+<!--                                                    <div class="creatorStat">-->
+<!--                                                        <span>마지막 로그인</span> <b>19분 전</b></div>-->
+<!--                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -693,7 +594,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="donation-mid" id="panel" style="display: none;">
+                                       <!-- <div class="donation-mid" id="panel" style="display: none;">
                                             <div class="donation-mid-container">
                                                 <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
                                                     <div class="formContent form-input-wrapper">
@@ -709,16 +610,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                </div>
-                                                <div class="buttonWrapper">
-                                                    <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                    <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                    <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                    <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                </div>
+                                                </div>-->
+<!--
                                                 <button class=" solidButton rewardDetailButton fnt-p1" color="main80">
                                                     <span>1,000원 후원하기</span>
-                                                </button>
+                                                </button>-->
                                             </div>
                                         </div>
                                     </section>
@@ -739,45 +635,22 @@
                                                         </div>
                                                     </div>
                                                 </section >
-                                                <section direction="right" class="stepperWrap">
-                                                    <div class="rewardCardInner">
-                                                        <div class="rewardSelector">
-                                                            <div class="sub-wrapper">
-                                                                <div class="rewardContents">
-                                                                    <div class="rewardMinAmount">1,000원 +</div>
-                                                                    <div class="card-description">선물 없이 후원하기</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide">
-                                                                        <div class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div>
-                                                        <button class=" solidButton rewardDetailButton fnt-p1" color="main80">
-                                                            <span>1,000원 후원하기</span>
-                                                        </button>
-                                                    </div>
-                                                </section>
+<!--                                                <section direction="right" class="stepperWrap">-->
+<!--                                                    <div class="rewardCardInner">-->
+<!--                                                        <div class="rewardSelector">-->
+<!--                                                            <div class="sub-wrapper">-->
+<!--                                                                <div class="rewardContents">-->
+<!--                                                                    <div class="rewardMinAmount">1,000원 +</div>-->
+<!--                                                                    <div class="card-description">선물 없이 후원하기</div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+
+<!--                                                        <button class=" solidButton rewardDetailButton fnt-p1" color="main80">-->
+<!--                                                            <span>1,000원 후원하기</span>-->
+<!--                                                        </button>-->
+<!--                                                    </div>-->
+<!--                                                </section>-->
                                             </div>
                                         </div>
                                     </div>
@@ -870,30 +743,8 @@
                                                         </ul>
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span></div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide">
-                                                                        <div class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                               <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div><button class=" solidButton rewardDetailButton fnt-p1"color="main80">27,000원 후원하기</span></button>
+
+                                                        <button class=" solidButton rewardDetailButton fnt-p1"color="main80">27,000원 후원하기</span></button>
                                                     </div>
                                                 </section>
                                             </div>
@@ -964,30 +815,7 @@
                                                         </ul>
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span></div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide">
-                                                                        <div class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                               <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div>
+
                                                         <button class=" solidButton rewardDetailButton fnt-p1"color="main80">
                                                             <span>49,800원 후원하기</span>
                                                         </button>
@@ -1070,30 +898,8 @@
                                                         </ul>
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span></div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide">
-                                                                        <div class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                               <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div><button class=" solidButton rewardDetailButton fnt-p1"color="main80">59,800원 후원하기</span></button>
+
+                                                        <button class=" solidButton rewardDetailButton fnt-p1"color="main80">59,800원 후원하기</span></button>
                                                     </div>
                                                 </section>
                                             </div>
@@ -1111,9 +917,14 @@
                                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                                             d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
                                                                         </path>
-                                                                    </svg></div>8명이 선택
-                                                            </span><span class="rewardLimit"><span class="limitLabel">42개
-                                                                    남음</span></span></div>
+                                                                    </svg>
+                                                                </div>
+                                                                8명이 선택
+                                                            </span>
+                                                                <span class="rewardLimit">
+                                                                    <span class="limitLabel">42개남음</span>
+                                                                </span>
+                                                        </div>
                                                         <div class="rewardSelector">
                                                             <div class="sub-wrapper">
                                                                 <div class="rewardContents">
@@ -1139,16 +950,22 @@
                                                 <section direction="right"
                                                     class="stepperWrap">
                                                     <div class="rewardCardInner">
-                                                        <div class="rewardHeader"><span
+                                                        <div class="rewardHeader">
+                                                            <span>
                                                                 class="pledgeAmount">
                                                                 <div name="check" class="iconSVG reward-svg">
                                                                     <svg viewBox="0 0 48 48">
                                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                                             d="M41.6 8L18.9 30.8L6.2 19L2 23.5L19.1 39.4L46 12.4L41.6 8Z">
                                                                         </path>
-                                                                    </svg></div>8명이 선택
-                                                            </span><span class="rewardLimit"><span class="limitLabel">42개
-                                                                    남음</span></span></div>
+                                                                    </svg>
+                                                                </div>
+                                                            8명이 선택
+                                                            </span>
+                                                            <span class="rewardLimit">
+                                                                <span class="limitLabel">42개남음</span>
+                                                            </span>
+                                                        </div>
                                                         <div class="rewardSelector">
                                                             <div class="sub-wrapper">
                                                                 <div class="rewardContents">
@@ -1167,30 +984,8 @@
                                                         </ul>
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span></div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide">
-                                                                        <div class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                               <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div><button class=" solidButton rewardDetailButton fnt-p1"color="main80">69,500원 후원하기</span></button>
+
+                                                        <button class=" solidButton rewardDetailButton fnt-p1"color="main80">69,500원 후원하기</span></button>
                                                     </div>
                                                 </section>
                                             </div>
@@ -1263,30 +1058,7 @@
                                                         </ul>
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span></div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label"> 추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide">
-                                                                        <div class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                               <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div>
+
                                                         <button class=" solidButton rewardDetailButton fnt-p1" color="main80"><span>88,800원 후원하기</span></button>
                                                     </div>
                                                 </section>
@@ -1357,34 +1129,7 @@
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span>
                                                         </div>
-                                                        <div class="extraPedge">
-                                                            <div class="form-Wrap formWrapper">
-                                                                <div class="formLabel form-input-label">
-                                                                    추가 후원금(선택)
-                                                                </div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div
-                                                                        class="inputguide">
-                                                                        <div
-                                                                            class="inputLengthCheck">
-                                                                            <span class="styleInput inputWrapper">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper">* 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div>
+
                                                         <button class=" solidButton rewardDetailButton fnt-p1" color="main80">
                                                             <span>109,800원 후원하기</span>
                                                         </button>
@@ -1458,30 +1203,7 @@
                                                         <div class="rewardCard">
                                                             <span>예상 전달일 &nbsp;<b>2023년 10월 31일</b></span>
                                                         </div>
-                                                        <div class="extraPedge">
-                                                            <div class="formWrapper form-Wrap  ">
-                                                                <div class="formLabel form-input-label">추가 후원금(선택)</div>
-                                                                <div class="formContent form-input-wrapper">
-                                                                    <div class="inputguide inputguide">
-                                                                        <div class="inputLengthCheck  inputLengthCheck">
-                                                                            <span class="inputWrapper styleInput">
-                                                                                <input type="text" inputmode="numeric" placeholder="0" autocomplete="off" autocapitalize="off" class="innerInput" value="">
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="noticeMsg">
-                                                                            <p class="guideMsg"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="formDescription form-desc-wrapper"> * 더 후원해주시면 프로젝트 성사가 앞당겨집니다.</div>
-                                                            </div>
-                                                            <div class="buttonWrapper">
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5천 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 1만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 5만 원</button>
-                                                                <button class="lineButton fnt-p2" color="gray10">+ 10만 원</button>
-                                                            </div>
-                                                        </div>
+
                                                         <button class="solidButtonrewardDetailButton fnt-p1" color="main80">
                                                             <span>129,800원 후원하기</span>
                                                         </button>
@@ -1505,4 +1227,11 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/funding/funding-detail.js"></script>
+<script src="/js/support/supportDetail.js"></script>
+<script th:inline="javascript">
+   // const fundingDTO = [[{fundingDTO}]];
+
+
+</script>
+
 </html>

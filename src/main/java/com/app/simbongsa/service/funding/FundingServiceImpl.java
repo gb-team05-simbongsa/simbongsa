@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,23 +56,23 @@ public class FundingServiceImpl implements FundingService {
     // 펀딩 저장 // 등록한 시점의 현재 시퀀스만들기
     @Override
     public void fundingRegister(FundingDTO fundingDTO) {
-       /* List<FileDTO> fileDTOs = fundingDTO.getFileDTOs();
+        List<FileDTO> fileDTOs = fundingDTO.getFileDTOs();
         fundingRepository.save(toFundingEntity(fundingDTO));
 
-        if(fileDTOs != null){
+        if (fileDTOs != null) {
             fileDTOs.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
             fileDTOs.get(0).setFunding(getCurrentSequence());
-            fundingFileRepository.save(toFundingFileEntity(fileDTOs.get(0)));*/
+            fundingFileRepository.save(toFundingFileEntity(fileDTOs.get(0)));
 
-        FileDTO fileDTO = fundingDTO.getFileDTO();
-
+            /* FileDTO fileDTO = fundingDTO.getFileDTO();*/
+/*
         fundingRepository.save(toFundingEntity(fundingDTO));
 
         fileDTO.setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
         fileDTO.setFunding(getCurrentSequence());
-        fundingFileRepository.save(toFundingFileEntity(fileDTO));
+        fundingFileRepository.save(toFundingFileEntity(fileDTO));*/
+        }
     }
-
     // 펀딩 전체 목록 조회(무한스크롤)
     @Override
     public Slice<FundingDTO> getFundingList(Pageable pageable) {
@@ -90,7 +91,8 @@ public class FundingServiceImpl implements FundingService {
     //펀딩 상세보기 파일빼고 controller 완성
     @Override
     public FundingDTO getFundingDetail(Long fundingId) {
-        return toFundingDTO(fundingRepository.findById(fundingId).get());
+        Optional<Funding> funding = fundingRepository.findByIdForDetail_QueryDsl(fundingId);
+        return toFundingDTO(funding.get());
 
     }
 

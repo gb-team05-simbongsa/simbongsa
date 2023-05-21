@@ -1,6 +1,7 @@
 package com.app.simbongsa.entity.funding;
 
 import com.app.simbongsa.entity.file.FundingFile;
+import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
@@ -56,7 +57,8 @@ public class Funding {
         this.member = member;
     }
 
-//    // 테스트용 생성자
+
+    //    // 테스트용 생성자
 //    @Builder
 //    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, Member member) {
 //        this.id = id;
@@ -76,7 +78,7 @@ public class Funding {
 //       this.member = member;
 //    }
     @Builder
-    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, Member member) {
+    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, Member member,  List<FundingFile> fundingFile) {
         this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
@@ -92,6 +94,8 @@ public class Funding {
         this.fundingGiftExplain = fundingGiftExplain;
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
+        this.fundingFile = fundingFile;
+
         this.member = member;
     }
 
