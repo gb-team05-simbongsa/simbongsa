@@ -8,10 +8,19 @@ import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.*;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -163,6 +172,24 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWork, pageable, count);
+    }
+
+    @Override
+    public void updateVolunteerWork(VolunteerWork volunteerWorkModify) {
+        query.update(volunteerWork)
+                .set(volunteerWork.volunteerWorkStartDate, volunteerWorkModify.getVolunteerWorkStartDate())
+                .set(volunteerWork.volunteerWorkEndDate, volunteerWorkModify.getVolunteerWorkEndDate())
+                .set(volunteerWork.volunteerWorkTime, volunteerWorkModify.getVolunteerWorkTime())
+                .set(volunteerWork.volunteerWorkJoinStartDate, volunteerWorkModify.getVolunteerWorkJoinStartDate())
+                .set(volunteerWork.volunteerWorkJoinEndDate, volunteerWorkModify.getVolunteerWorkJoinEndDate())
+                .set(volunteerWork.volunteerWorkRecruitNumber, volunteerWorkModify.getVolunteerWorkRecruitNumber())
+                .set(volunteerWork.volunteerWorkCategory, volunteerWorkModify.getVolunteerWorkCategory())
+                .set(volunteerWork.volunteerWorkRegisterAgency, volunteerWorkModify.getVolunteerWorkRegisterAgency())
+                .set(volunteerWork.volunteerWorkPlace, volunteerWorkModify.getVolunteerWorkPlace())
+                .set(volunteerWork.volunteerWorkTitle, volunteerWorkModify.getVolunteerWorkTitle())
+                .set(volunteerWork.volunteerWorkContent, volunteerWorkModify.getVolunteerWorkContent())
+                .where(volunteerWork.id.eq(volunteerWorkModify.getId()))
+                .execute();
     }
 
     @Override

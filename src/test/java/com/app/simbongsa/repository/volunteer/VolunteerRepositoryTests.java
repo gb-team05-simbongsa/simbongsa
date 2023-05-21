@@ -61,9 +61,9 @@ public class VolunteerRepositoryTests {
 //                    ,"전주"
 //                    ,"전주" + i,"심봉사 TEST");
 //            volunteerWorkRepository.save(volunteerWork);
+        }
 //        }
 
-    }
 
     //  봉사활동 목록 조회 (메인페이지)
     @Test
@@ -98,7 +98,7 @@ public class VolunteerRepositoryTests {
 //    신청 명단 조회
     @Test
     public void findApplyByVolunteerWorkIdTest() {
-        volunteerWorkActivityRepository.findApplyByVolunteerWorkId(401L).stream().map(VolunteerWorkActivity::toString).forEach(log::info);
+//        volunteerWorkActivityRepository.findApplyByVolunteerWorkId(401L).stream().map(VolunteerWorkActivity::toString).forEach(log::info);
     }
 
 //    봉사활동 삭제

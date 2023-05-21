@@ -15,6 +15,7 @@ import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
+import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.MemberStatus;
@@ -46,6 +47,7 @@ public class AdminRestController {
     private final RicePaymentService ricePaymentService;
     private final SupportService supportService;
     private final VolunteerWorkService volunteerWorkService;
+    private final VolunteerWorkActivityService volunteerWorkActivityService;
     private final FundingService fundingService;
     private final SupportRequestService supportRequestService;
     private final FreeBoardService freeBoardService;
@@ -202,6 +204,12 @@ public class AdminRestController {
         volunteerWorkService.saveVolunteerWork(volunteerWorkDTO);
     }
 
+    @PostMapping("/admins/volunteer-works-update")
+    public void volunteerWorkUpdate(@RequestBody VolunteerWorkDTO volunteerWorkDTO) {
+        log.info(volunteerWorkDTO.toString());
+        volunteerWorkService.updateVolunteerWork(volunteerWorkDTO);
+    }
+
     @PostMapping("volunteers-delete")
     public void volunteersDelete(Long[] ids) {
         List<Long> idList = new ArrayList<>();
@@ -214,6 +222,11 @@ public class AdminRestController {
     @PostMapping("volunteer-work-details")
     public VolunteerWorkDTO volunteerDetails(Long id) {
         return volunteerWorkService.getVolunteerWorkDetail(id);
+    }
+
+    @PostMapping("activity-lists")
+    public Page<VolunteerWorkActivityDTO> activityLists(Long id, Integer page) {
+        return volunteerWorkActivityService.getVolunteerWorkActivity(id, page);
     }
 
     @PostMapping("reviews-delete")
