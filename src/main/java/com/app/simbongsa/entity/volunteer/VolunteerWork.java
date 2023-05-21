@@ -36,7 +36,7 @@ public class VolunteerWork {
     @NotNull private String volunteerWorkContent;
 
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade=CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
     private VolunteerWorkFile volunteerWorkFile;
 
     @Builder

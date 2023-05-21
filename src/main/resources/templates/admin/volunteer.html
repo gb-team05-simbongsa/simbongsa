@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/css/admin/content.css"/>
     <link rel="stylesheet" href="/css/admin/status.css"/>
     <link rel="stylesheet" href="/css/admin/paging.css">
-    <link rel="stylesheet" href="/css/admin/volunteer.css">
     <link rel="stylesheet" href="/css/admin/inquiry-modal.css">
+    <link rel="stylesheet" href="/css/admin/volunteer.css">
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"/>
 </head>
@@ -283,10 +283,25 @@
                                 <input type="text" name="volunteerWorkRecruitNumber" placeholder="30명"/>
                             </div>
                         </div>
-                        <div class="user__profile">
+                        <div class="user__profile" style="width: 900px;">
                             <h5>봉사분야</h5>
-                            <div class="user__profile__input">
-                                <input type="text" name="volunteerWorkCategory" placeholder="다문화가정"/>
+                            <div class="user__profile__input" style="width: 620px;">
+                                <input type="radio" name="volunteerWorkCategory" value="시설봉사" style="width: 15px" checked/>
+                                <p style="font-size: 13px; margin-right: 5px;">시설봉사</p>
+                                <input type="radio" name="volunteerWorkCategory" value="재가봉사" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">재가봉사</p>
+                                <input type="radio" name="volunteerWorkCategory" value="전문봉사" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">전문봉사</p>
+                                <input type="radio" name="volunteerWorkCategory" value="지역사회봉사" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">지역사회봉사</p>
+                                <input type="radio" name="volunteerWorkCategory" value="금물품봉사" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">금물품봉사</p>
+                                <input type="radio" name="volunteerWorkCategory" value="해외봉사" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">해외봉사</p>
+                                <input type="radio" name="volunteerWorkCategory" value="헌혈" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">헌혈</p>
+                                <input type="radio" name="volunteerWorkCategory" value="재능기부봉사" style="width: 15px"/>
+                                <p style="font-size: 13px; margin-right: 5px;">재능기부봉사</p>
                             </div>
                         </div>
                         <div class="user__profile">
@@ -303,13 +318,13 @@
                         </div>
                         <h4 style="margin-top: 20px;">이미지</h4>
                         <!-- 이미지 파일 -->
+                        <input type="file" name="file" id="photo-picker" style="display: none"/>
                         <div class="content__img__wrap">
                             <!-- 임시로 name='file' 해둠 -->
-                            <label>
+                            <label for="photo-picker">
                                 <div class="content__img">
                                     <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
                                 </div>
-                                <input type="file" name="file" id="photo-picker" style="display: none"/>
                             </label>
                             <!--                    <label>-->
                             <!--                      <div class="content__img">-->
@@ -378,6 +393,7 @@
             </form>
         </section>
     </section>
+    <section class="detail-modal"></section>
     <section class="volunteer-modal" style="display: none">
         <section class="modal">
             <div class="modal__header">
@@ -401,50 +417,47 @@
                                 <input type="text" name="" value="아이디" readonly="true"/>
                             </div>
                         </div>
-                        <div class="user__profile">
-                            <h5></h5>
-                            <div class="user__profile__input volunteer_input">
-                                <input type="text" name="" value="1" readonly="true"/>
-                                <input type="text" name="" value="홍길동" readonly="true"/>
-                                <input type="text" name="" value="01011112222" readonly="true"/>
-                                <input type="text" name="" value="kmg2331" readonly="true"/>
-                            </div>
+                        <div class="append-div"></div>
+<!--                        <div class="user__profile">-->
+<!--                            <h5></h5>-->
+<!--                            <div class="user__profile__input volunteer_input">-->
+<!--                                <input type="text" name="" value="1" readonly="true"/>-->
+<!--                                <input type="text" name="" value="홍길동" readonly="true"/>-->
+<!--                                <input type="text" name="" value="01011112222" readonly="true"/>-->
+<!--                                <input type="text" name="" value="kmg2331" readonly="true"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="user__profile">-->
+<!--                            <h5></h5>-->
+<!--                            <div class="user__profile__input volunteer_input">-->
+<!--                                <input type="text" name="" value="1" readonly="true"/>-->
+<!--                                <input type="text" name="" value="홍길동" readonly="true"/>-->
+<!--                                <input type="text" name="" value="01011112222" readonly="true"/>-->
+<!--                                <input type="text" name="" value="kmg2331" readonly="true"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="user__profile">-->
+<!--                            <h5></h5>-->
+<!--                            <div class="user__profile__input volunteer_input">-->
+<!--                                <input type="text" name="" value="1" readonly="true"/>-->
+<!--                                <input type="text" name="" value="홍길동" readonly="true"/>-->
+<!--                                <input type="text" name="" value="01011112222" readonly="true"/>-->
+<!--                                <input type="text" name="" value="kmg2331" readonly="true"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                        </div>-->
+                        <div class="paging-modal" style="margin-top: 28px; margin-bottom: -57px; text-align: center;">
+                            <!--                                <a class="changePage" style="color: black"><code><</code></a>-->
+                            <!--                                <code id="currentPage">1</code>-->
+                            <!--                                <a class="changePage" style="color: black"><code>2</code></a>-->
+                            <!--                                <a class="changePage" style="color: black"><code>></code></a>-->
                         </div>
-                        <div class="user__profile">
-                            <h5></h5>
-                            <div class="user__profile__input volunteer_input">
-                                <input type="text" name="" value="1" readonly="true"/>
-                                <input type="text" name="" value="홍길동" readonly="true"/>
-                                <input type="text" name="" value="01011112222" readonly="true"/>
-                                <input type="text" name="" value="kmg2331" readonly="true"/>
-                            </div>
-                        </div>
-                        <div class="user__profile">
-                            <h5></h5>
-                            <div class="user__profile__input volunteer_input">
-                                <input type="text" name="" value="1" readonly="true"/>
-                                <input type="text" name="" value="홍길동" readonly="true"/>
-                                <input type="text" name="" value="01011112222" readonly="true"/>
-                                <input type="text" name="" value="kmg2331" readonly="true"/>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="paging" style="margin-top: 28px; margin-bottom: -57px; text-align: center;">
-                                <a class="changePage" style="color: black"><code><</code></a>
-                                <code id="currentPage">1</code>
-                                <a class="changePage" style="color: black"><code>2</code></a>
-                                <a class="changePage" style="color: black"><code>></code></a>
-                            </div>
-                            <form name="pageForm">
-                                <input type="hidden">
-                                <input type="hidden">
-                            </form>
-                        </div>
-                        <div class="user__profile__button" style="margin-top: 20px;">
-                            <button id="completeBtn" class="button__type_2 button__color__green">
-                                작성완료
-                            </button>
-                        </div>
+                        <!--                        <div class="user__profile__button" style="margin-top: 20px;">-->
+<!--                            <button id="completeBtn" class="button__type_2 button__color__green">-->
+<!--                                작성완료-->
+<!--                            </button>-->
+<!--                        </div>-->
                     </div>
                 </main>
             </form>
@@ -458,20 +471,20 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
-    $('#summernote').summernote({
-        placeholder: '봉사 내용 작성',
-        tabsize: 2,
-        height: 300,
-        width: '100%',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['picture']],
-        ],
-    });
+    // $('#summernote').summernote({
+    //     placeholder: '봉사 내용 작성',
+    //     tabsize: 2,
+    //     height: 300,
+    //     width: '100%',
+    //     toolbar: [
+    //         ['style', ['style']],
+    //         ['font', ['bold', 'underline', 'clear']],
+    //         ['color', ['color']],
+    //         ['para', ['ul', 'ol', 'paragraph']],
+    //         ['table', ['table']],
+    //         ['insert', ['picture']],
+    //     ],
+    // });
 
     $('.registVolunteer').on('click', () => {
         $modalStage.show();
@@ -501,6 +514,7 @@
 
         $('.modal-close').on('click', function () {
             $('.volunteer-modal').fadeOut(500);
+            $('.modal-stage').empty();
         });
 
     })

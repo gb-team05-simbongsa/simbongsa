@@ -21,31 +21,24 @@ import java.util.Optional;
 @Transactional
 @Rollback(false)
 @Slf4j
-public class VoluntterActvitiyRepositoryTests {
+public class VolunteerActvitiyRepositoryTests {
     @Autowired
     private VolunteerWorkActivityRepository volunteerWorkActivityRepository;
+    @Autowired
     private MemberRepository memberRepository;
+    @Autowired
     private VolunteerWorkRepository volunteerWorkRepository;
     /* 내 봉사 활동 목록 조회(페이징처리) */
+
+
     @Test
     public void saveTest(){
-
-        Optional<Member> memberOptional = memberRepository.findById(595L);
-        Optional<VolunteerWork> volunteerWorkOptional = volunteerWorkRepository.findById(197L);
-
-        memberOptional.ifPresent(member -> {
-            volunteerWorkOptional.ifPresent(volunteerWork -> {
-                VolunteerWorkActivity volunteerWorkActivity = new VolunteerWorkActivity(
-                        LocalDate.now(),
-                        member,
-                        volunteerWork
-                );
-                volunteerWorkActivityRepository.save(volunteerWorkActivity);
-
-                // 테스트에 필요한 동작 수행
-            });
-        });
-
+        for (int i = 0; i < 18; i++) {
+        Member member = memberRepository.findById(1L).get();
+        VolunteerWork volunteerWork = volunteerWorkRepository.findById(773L).get();
+        VolunteerWorkActivity volunteerWorkActivity = new VolunteerWorkActivity(LocalDate.now(), member, volunteerWork);
+            volunteerWorkActivityRepository.save(volunteerWorkActivity);
+        }
     }
     @Test
     public void findByMemberId() {

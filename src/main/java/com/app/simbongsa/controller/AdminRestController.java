@@ -15,6 +15,7 @@ import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
+import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.MemberStatus;
@@ -46,6 +47,7 @@ public class AdminRestController {
     private final RicePaymentService ricePaymentService;
     private final SupportService supportService;
     private final VolunteerWorkService volunteerWorkService;
+    private final VolunteerWorkActivityService volunteerWorkActivityService;
     private final FundingService fundingService;
     private final SupportRequestService supportRequestService;
     private final FreeBoardService freeBoardService;
@@ -197,9 +199,20 @@ public class AdminRestController {
         supportRequestService.deleteSupportRequest(idList);
     }
 
+    @PostMapping("support-request-details")
+    public SupportRequestDTO supportRequestDetail(Long id) {
+        return supportRequestService.getSupportRequestDetail(id);
+    }
+
     @PostMapping("volunteer-works-register")
     public void volunteerWorkRegister(@RequestBody VolunteerWorkDTO volunteerWorkDTO) {
         volunteerWorkService.saveVolunteerWork(volunteerWorkDTO);
+    }
+
+    @PostMapping("/admins/volunteer-works-update")
+    public void volunteerWorkUpdate(@RequestBody VolunteerWorkDTO volunteerWorkDTO) {
+        log.info(volunteerWorkDTO.toString());
+        volunteerWorkService.updateVolunteerWork(volunteerWorkDTO);
     }
 
     @PostMapping("volunteers-delete")
@@ -216,6 +229,11 @@ public class AdminRestController {
         return volunteerWorkService.getVolunteerWorkDetail(id);
     }
 
+    @PostMapping("activity-lists")
+    public Page<VolunteerWorkActivityDTO> activityLists(Long id, Integer page) {
+        return volunteerWorkActivityService.getVolunteerWorkActivity(id, page);
+    }
+
     @PostMapping("reviews-delete")
     public void reviewsDelete(Long[] ids) {
         List<Long> idList = new ArrayList<>();
@@ -223,6 +241,11 @@ public class AdminRestController {
             idList.add(id);
         }
         reviewService.deleteReviewByIds(idList);
+    }
+
+    @PostMapping("review-details")
+    public ReviewDTO reviewDetails(Long id) {
+        return reviewService.getReviewDetail(id);
     }
     
     @PostMapping("free-boards-delete")
@@ -232,6 +255,11 @@ public class AdminRestController {
             idList.add(id);
         }
         freeBoardService.deleteFreeBoardByIds(idList);
+    }
+
+    @PostMapping("freeboard-details")
+    public FreeBoardDTO freeBoardDetails(Long id) {
+        return freeBoardService.getFreeBoardDetail(id);
     }
 
 }

@@ -13,7 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import java.util.List;
 
 public interface VolunteerWorkActivityService {
-    public List<VolunteerWorkActivity> getVolunteerWorkActivity(Long id);
+    public Page<VolunteerWorkActivityDTO> getVolunteerWorkActivity(Long id, Integer page);
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     public Page<VolunteerWorkActivityDTO> getMyVolunteerWork(Integer page, @AuthenticationPrincipal UserDetail userDetail);
@@ -26,6 +26,7 @@ public interface VolunteerWorkActivityService {
                 .volunteerWorkDTO(toVolunteerWorkDTO(volunteerWorkActivity.getVolunteerWork()))
                 .build();
     }
+
     default MemberDTO toMemberDTO(Member member){
         return MemberDTO.builder()
                 .id(member.getId())

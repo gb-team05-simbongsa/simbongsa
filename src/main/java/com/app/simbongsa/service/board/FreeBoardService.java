@@ -61,7 +61,7 @@ public interface FreeBoardService {
     public List<FreeBoardDTO> getAllWithFile();
 
 //    유저가 작성한 자유게시물 조회(페이징처리)
-    Page<FreeBoardDTO> getMyFreeBoards(Integer page, UserDetail userDetail);
+    Page<FreeBoardDTO> getMyFreeBoards(Integer page, MemberDTO memberDTO);
 
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
@@ -140,15 +140,24 @@ public interface FreeBoardService {
     default Member toMemberEntity(MemberDTO memberDTO){
         return Member.builder()
                 .id(memberDTO.getId())
-                .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberRice(memberDTO.getMemberRice())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
                 .build();
     }
 
     default FreeBoard toFreeBoardEntity(FreeBoardDTO freeBoardDTO){
         return FreeBoard.builder()
-                .id(freeBoardDTO.getId())
                 .boardTitle(freeBoardDTO.getBoardTitle())
                 .boardContent(freeBoardDTO.getBoardContent())
                 .member(toMemberEntity(freeBoardDTO.getMemberDTO()))

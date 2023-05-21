@@ -13,18 +13,13 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ReviewFile extends File {
 
-    @EqualsAndHashCode.Include
-    @Id @GeneratedValue
-    private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "REVIEW_ID")
     private Review review;
 
     @Builder
-    public ReviewFile(String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Review review) {
-        super(fileName, fileUuid, filePath, fileRepresentationalType);
-        this.id = id;
+    public ReviewFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Review review) {
+        super(id, fileName, fileUuid, filePath, fileRepresentationalType);
         this.review = review;
     }
 

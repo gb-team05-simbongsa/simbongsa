@@ -22,13 +22,21 @@ public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQ
 
 //    신청 명단 조회
     @Override
-    public List<VolunteerWorkActivity> findApplyByVolunteerWorkId(Long id) {
-        return query.select(volunteerWorkActivity)
+    public Page<VolunteerWorkActivity> findApplyByVolunteerWorkId(Long id, Pageable pageable) {
+        List<VolunteerWorkActivity> foundActivity = query.select(volunteerWorkActivity)
                 .from(volunteerWorkActivity)
                 .where(volunteerWorkActivity.volunteerWork.id.eq(id))
-                .join(volunteerWorkActivity.member)
-                .fetchJoin()
+                .orderBy(volunteerWorkActivity.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
+
+        Long count = query.select(volunteerWorkActivity.count())
+                .from(volunteerWorkActivity)
+                .where(volunteerWorkActivity.volunteerWork.id.eq(id))
+                .fetchOne();
+
+        return new PageImpl<>(foundActivity, pageable, count);
     }
 
     /* 내 봉사 활동 목록 조회(페이징처리) */

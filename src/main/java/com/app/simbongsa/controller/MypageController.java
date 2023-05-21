@@ -58,8 +58,9 @@ public class MypageController {
 
     /* 내 문의 게시글 수정 */
     @PostMapping("my-question-update")
-    public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent, @AuthenticationPrincipal UserDetail userDetail) {
-        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(userDetail.getMember().getId())).build();
+    public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail) {
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(memberDTO.getId())).build();
         inquiryService.setInquiry(inquiryDTO);
         log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO.toString());
         return new RedirectView("my-question");
@@ -67,11 +68,10 @@ public class MypageController {
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
     @GetMapping("support-request")
-    public String supportRequest(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
-        Long memberId = userDetail.getMember().getId();
-        log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+    public String supportRequest(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         page = page == null ? 0 : page - 1;
-        Page<SupportRequestDTO> mySupportRequests = supportRequestService.getMySupportRequest(page, userDetail);
+        Page<SupportRequestDTO> mySupportRequests = supportRequestService.getMySupportRequest(page, memberDTO);
 
         model.addAttribute("mySupportRequests", mySupportRequests.getContent());
         model.addAttribute("pageDTO",new PageDTO(mySupportRequests));
@@ -95,14 +95,13 @@ public class MypageController {
 
     /* 내 자유 게시글 목록 */
     @GetMapping("my-review")
-    public String myReview(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
-        Long memberId = userDetail.getMember().getId();
-        log.info(memberId + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+    public String myReview(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        log.info(memberDTO.getId() + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
         page = page == null ? 0 : page - 1;
         log.info(page + "pagepagepagepapgapgagpdspagpsdgpasdpgapsppage");
-        Page<FreeBoard> myFreeB = freeBoardRepository.findByMemberId(PageRequest.of(page, 5), userDetail);
-        log.info(myFreeB + "이거 나온망로 ㅏㅇㅁ널이ㅓ ㅁ니;ㅏ어ㅏ림ㄴㅇㄻㅇㄴㄻㄴㅇㄻㅇㄻㅇㄴㄹㄴㅇㅁ");
-        Page<FreeBoardDTO> myFreeBoards = freeBoardService.getMyFreeBoards(page, userDetail);
+        Page<FreeBoardDTO> myFreeBoards = freeBoardService.getMyFreeBoards(page, memberDTO);
+        log.info( "freeBoardDTO 잘 나오나요" + myFreeBoards);
 
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
