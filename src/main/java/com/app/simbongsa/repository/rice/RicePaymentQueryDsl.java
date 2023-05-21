@@ -32,7 +32,7 @@ public interface RicePaymentQueryDsl {
     public void updatePaymentByMemberId(Long id, int supportGongyang);
 
     /* 내 공양미 조회(페이징) */
-    public Page<RicePayment> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
+    public Page<RicePayment> findByMemberId(Pageable pageable, Long id);
       
 //    public void updatePaymentByMemberIdAndSupportGongyang(Long id, int supportGonynag);
 
@@ -45,4 +45,6 @@ public interface RicePaymentQueryDsl {
 //    결제 총 금액
     public Long getAllPaymentPrice();
 
+//    회원 환전 가능 공양미(후원받은 공양미) 가져오기
+    public Integer findEnableRiceById(Long id);
 }

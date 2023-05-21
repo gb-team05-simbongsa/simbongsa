@@ -100,12 +100,12 @@
                         <div class="change-modal-title-row">
                             <h4 class="change-modal-title-text">공양미 환전 요청</h4>
                         </div>
-                        <form th:action="@{exchange-request}" class="change-modal-form-wrapper" name="exchangeForm">
+                        <form th:action="@{/mypage/exchange-request}" method="post" class="change-modal-form-wrapper" th:object="${ricePaymentDTO}" name="exchangeForm">
                             <div class="change-modal-form-row">
                                 <span class="change-modal-form-label">은행</span>
                                 <div class="change-modal-form-field">
                                     <div class="change-modal-form-title">
-                                        <input name="ricePaymentExchangeBank" type="text" placeholder="은행을 입력하세요." id="name" class="change-modal-form-title-input" maxlength="4">
+                                        <input name="ricePaymentExchangeBank" type="text" placeholder="은행을 입력하세요." id="name" th:field="*{ricePaymentExchangeBank}" class="change-modal-form-title-input" maxlength="4">
                                         <div class="error-message">비워둘 수 없습니다.</div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                 <span class="change-modal-form-label">계좌번호</span>
                                 <div class="change-modal-form-field">
                                     <div class="change-modal-form-title">
-                                        <input name="ricePaymentExchangeAccount" type="text" placeholder="계좌번호를 입력해주세요." class="change-modal-form-title-input">
+                                        <input name="ricePaymentExchangeAccount" type="text" placeholder="계좌번호를 입력해주세요." th:field="*{ricePaymentExchangeAccount}" class="change-modal-form-title-input">
                                         <div class="error-message">비워둘 수 없습니다.</div>
                                     </div>
                                 </div>
@@ -123,21 +123,21 @@
                                 <span class="change-modal-form-label">환전할 공양미</span>
                                 <div class="change-modal-form-field">
                                     <div class="change-modal-form-title">
-                                        <input name="ricePaymentUsed" type="text" placeholder="환전할 공양미 개수를 입력하세요." class="change-modal-form-title-input">
+                                        <input name="ricePaymentUsed" type="text" placeholder="환전할 공양미 개수를 입력하세요." th:field="*{ricePaymentUsed}" class="change-modal-form-title-input">
                                         <div class="error-message">비워둘 수 없습니다.</div>
                                         <div class="able-exchange">
-                                            환전 가능한 공양미 수 : 
-                                            <span class="able-exchange-rice">300</span>석
+                                            환전 가능한 공양미 수 :
+                                            <span class="able-exchange-rice" th:text="${enableRice}">300</span>석
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="change-modal-actions-row">
+                                <button type="submit" class="change-modal-ok-btn">
+                                    <span class="change-modal-btn">환전요청</span>
+                                </button>
+                            </div>
                         </form>
-                        <div class="change-modal-actions-row">
-                            <button type="submit" class="change-modal-ok-btn">
-                                <span class="change-modal-btn">환전요청</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
+import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -79,8 +80,22 @@ public class MypageController {
     }
 
     @GetMapping("exchange-request")
-    public String exchangeRequest(){
+    public String exchangeRequest(RicePaymentDTO ricePaymentDTO, HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        model.addAttribute("enableRice", ricePaymentService.findEnableRiceById(memberDTO.getId()));
         return "mypage/exchange-request";
+    }
+
+    @PostMapping("exchange-request")
+    public RedirectView exchangeRequest(RicePaymentDTO ricePaymentDTO, HttpSession session) {
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        ricePaymentDTO.setMemberDTO(memberDTO);
+        ricePaymentDTO.setRicePaymentStatus(RicePaymentType.환전대기);
+
+        ricePaymentService.insertExchangeRequest(ricePaymentDTO, memberDTO);
+
+        return new RedirectView("/mypage/rice-list");
     }
 
     @GetMapping("my-funding-list")
@@ -120,9 +135,11 @@ public class MypageController {
 
     /* 내 공양미 조회(페이징) */
     @GetMapping("rice-list")
-    public String riceList(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
+    public String riceList(Integer page, Model model, HttpSession session){
         page = page == null ? 0 : page - 1;
-        Page<RicePaymentDTO> myRice = ricePaymentService.getMyRicePayment(page, userDetail);
+
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Page<RicePaymentDTO> myRice = ricePaymentService.getMyRicePayment(page, memberDTO);
 
         log.info(myRice.toString() + "------------내 공양미 리스트-------------- ");
         model.addAttribute("myRicePayments", myRice.getContent());
@@ -157,5 +174,13 @@ public class MypageController {
     @GetMapping("withdraw-login")
     public String withdrawLogin(){
         return "mypage/withdraw-login";
+    }
+
+    @PostMapping("rices-charge")
+    @ResponseBody
+    public void riceCharge(Integer ricePaymentUsed, HttpSession session) {
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        ricePaymentService.insertRicePayment(ricePaymentUsed, memberDTO);
     }
 }
