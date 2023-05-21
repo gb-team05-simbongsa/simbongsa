@@ -7,15 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>후원 요청 관리</title>
-    <link
-            href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
-            rel="stylesheet"/>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/admin/default.css"/>
     <link rel="stylesheet" href="/css/admin/sidebar.css"/>
     <link rel="stylesheet" href="/css/admin/content.css"/>
     <link rel="stylesheet" href="/css/admin/status.css"/>
     <link rel="stylesheet" href="/css/admin/sponsorship-request-modal.css"/>
     <link rel="stylesheet" href="/css/admin/paging.css">
+    <link rel="stylesheet" href="/css/admin/storage-modal.css">
     <!-- 웹에디터 API -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"/>
 </head>
@@ -238,53 +237,53 @@
         </div>
     </div>
     <section class="modal-stage" style="display: none">
-        <section class="modal">
-            <div class="modal__header">
-                <h3 class="modal__title">후원 요청 상세보기</h3>
-                <a class="modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Capa 1" id="Capa_1" viewBox="0 0 20 19.84">
-                        <path d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"/>
-                    </svg>
-                </a>
-            </div>
-            <form action="">
-                <main class="modal__main">
-                    <div class="modal__profile__top">
-                        <h4>회원정보</h4>
-                        <div class="user__profile">
-                            <h5>아이디</h5>
-                            <div class="user__profile__input">
-                                <input type="text" name="" value="example1234" readonly="true"/>
-                            </div>
-                        </div>
-                        <div class="user__profile">
-                            <h5>이메일</h5>
-                            <div class="user__profile__input">
-                                <input type="text" name="" value="example@gmail.com" readonly="true"/>
-                            </div>
-                        </div>
-                        <div class="user__profile">
-                            <h5>전화번호</h5>
-                            <div class="user__profile__input">
-                                <input type="text" name="" value="01012341234" readonly="true"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal__profile__bottom">
-                        <h4>테스트 후원요청 제목</h4>
-                        <div class="notice__content">
-                            <textarea></textarea>
-                        </div>
-                    </div>
+<!--        <section class="modal">-->
+<!--            <div class="modal__header">-->
+<!--                <h3 class="modal__title">후원 요청 상세보기</h3>-->
+<!--                <a class="modal-close">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Capa 1" id="Capa_1" viewBox="0 0 20 19.84">-->
+<!--                        <path d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"/>-->
+<!--                    </svg>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <form action="">-->
+<!--                <main class="modal__main">-->
+<!--                    <div class="modal__profile__top">-->
+<!--                        <h4>회원정보</h4>-->
+<!--                        <div class="user__profile">-->
+<!--                            <h5>아이디</h5>-->
+<!--                            <div class="user__profile__input">-->
+<!--                                <input type="text" name="" value="example1234" readonly="true"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="user__profile">-->
+<!--                            <h5>이메일</h5>-->
+<!--                            <div class="user__profile__input">-->
+<!--                                <input type="text" name="" value="example@gmail.com" readonly="true"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="user__profile">-->
+<!--                            <h5>전화번호</h5>-->
+<!--                            <div class="user__profile__input">-->
+<!--                                <input type="text" name="" value="01012341234" readonly="true"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="modal__profile__bottom">-->
+<!--                        <h4>테스트 후원요청 제목</h4>-->
+<!--                        <div class="notice__content">-->
+<!--                            <textarea></textarea>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="user__profile__button">
-                        <button id="completeBtn" class="button__type_2 button__color__green">
-                            닫기
-                        </button>
-                    </div>
-                </main>
-            </form>
-        </section>
+<!--                    <div class="user__profile__button">-->
+<!--                        <button id="completeBtn" class="button__type_2 button__color__green">-->
+<!--                            닫기-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </main>-->
+<!--            </form>-->
+<!--        </section>-->
     </section>
     <section class="volunteer-modal" style="display: none">
         <section class="modal" style="padding: 50px">

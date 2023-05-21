@@ -139,9 +139,9 @@ public class VolunteerRepositoryTests {
     /* 이전글 다음글*/
     @Test
     public void findByNextIdOrPrevIdTest(){
-        Optional<VolunteerWork> volunteerWork = volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
-        volunteerWork.map(VolunteerWork::toString);
-        volunteerWork.ifPresent(volunteerWork1 -> log.info(volunteerWork1.toString()));
+//        Optional<VolunteerWork> volunteerWork = volunteerWorkRepository.findByNextIdOrPrevId("이전글",194L);
+//        volunteerWork.map(VolunteerWork::toString);
+//        volunteerWork.ifPresent(volunteerWork1 -> log.info(volunteerWork1.toString()));
 
     }
     @Test

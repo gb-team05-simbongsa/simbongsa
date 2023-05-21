@@ -199,6 +199,11 @@ public class AdminRestController {
         supportRequestService.deleteSupportRequest(idList);
     }
 
+    @PostMapping("support-request-details")
+    public SupportRequestDTO supportRequestDetail(Long id) {
+        return supportRequestService.getSupportRequestDetail(id);
+    }
+
     @PostMapping("volunteer-works-register")
     public void volunteerWorkRegister(@RequestBody VolunteerWorkDTO volunteerWorkDTO) {
         volunteerWorkService.saveVolunteerWork(volunteerWorkDTO);
@@ -237,6 +242,11 @@ public class AdminRestController {
         }
         reviewService.deleteReviewByIds(idList);
     }
+
+    @PostMapping("review-details")
+    public ReviewDTO reviewDetails(Long id) {
+        return reviewService.getReviewDetail(id);
+    }
     
     @PostMapping("free-boards-delete")
     public void freeBoardsDelete(Long[] ids) {
@@ -245,6 +255,11 @@ public class AdminRestController {
             idList.add(id);
         }
         freeBoardService.deleteFreeBoardByIds(idList);
+    }
+
+    @PostMapping("freeboard-details")
+    public FreeBoardDTO freeBoardDetails(Long id) {
+        return freeBoardService.getFreeBoardDetail(id);
     }
 
 }
