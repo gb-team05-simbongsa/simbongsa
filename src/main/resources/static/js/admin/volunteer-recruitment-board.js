@@ -146,47 +146,29 @@ $('.content__detail__btn').on('click', function () {
                                 </div>
                             </div>
                             <div class="content__img__wrap">
-                                <!-- 임시로 name='file' 해둠 -->
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="content__img">
-                                        <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"/>
-                                    </div>
-                                </label>
+                                <!-- 임시로 name='file' 해둠 -->`;
+        let fileDTOs = result.fileDTOS;
+        if(fileDTOs.length == 0) {
+            text += `
+                    <label>
+                        <div class="content__img">
+                            <img src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6" style="width: 200px"> 
+                        </div>
+                    </label>
+                    `;
+        } else {
+            fileDTOs.forEach((fileDTO) => {
+                console.log(fileDTO); // 각 요소 출력 예시
+                text += `
+                        <label>
+                            <div class="content__img">
+                                <img src="/file/display?fileName=` + fileDTO.filePath + '/' + fileDTO.fileUuid + '_' + fileDTO.fileName + `" style="width: 200px">
+                            </div>
+                        </label>
+                        `;
+            });
+        }
+        text += `
                             </div>
                             <div class="content__intput input_box_shadow" style="margin-left: 6px;">
                                 <textarea readonly>${result.boardContent}</textarea>
@@ -204,19 +186,6 @@ $('.content__detail__btn').on('click', function () {
 
         $('.modal-stage').html(text);
 
-//         $('input[name=volunteerWorkCategoryModify]').each(function() {
-//             if($(this).val() == `${result.volunteerWorkCategory}`) {
-//                 $(this).prop('checked', true);
-//             }
-//         });
-//
-//         fileDTO.fileName = `${result.fileDTO.fileName}`
-//         fileDTO.filePath = `${result.fileDTO.filePath}`
-//         fileDTO.fileUuid = `${result.fileDTO.fileUuid}`
-//
-//         $photoPicker = $('#photo-picker-modify');
-//         $fileId = $('#fileId');
-//         loadPhoto();
     });
 
     /* 추후 타임리프로 대체할 예정 */

@@ -39,6 +39,9 @@ public class VolunteerWork {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
     private VolunteerWorkFile volunteerWorkFile;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork")
+    private List<VolunteerWorkActivity> volunteerWorkActivities;
+
     @Builder
     public VolunteerWork(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent, VolunteerWorkFile volunteerWorkFile) {
         this.id = id;

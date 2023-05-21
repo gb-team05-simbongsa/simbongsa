@@ -1,12 +1,11 @@
 package com.app.simbongsa.service.volunteer;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.InquiryDTO;
-import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.domain.VolunteerWorkDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.VolunteerWorkFile;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
+import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import org.springframework.data.domain.Page;
@@ -59,13 +58,32 @@ public interface VolunteerWorkService {
                 .volunteerWorkRecruitNumber(volunteerWork.getVolunteerWorkRecruitNumber())
                 .volunteerWorkRegisterAgency(volunteerWork.getVolunteerWorkRegisterAgency())
                 .volunteerWorkStartDate(volunteerWork.getVolunteerWorkStartDate())
-                .volunteerWorkTime(volunteerWork.getVolunteerWorkTime());
+                .volunteerWorkTime(volunteerWork.getVolunteerWorkTime())
+                .volunteerWorkActivityDTOS(toVolunteerActivityDTO(volunteerWork.getVolunteerWorkActivities()));
 
         if (volunteerWork.getVolunteerWorkFile() != null) {
             builder.fileDTO(toFileDTO(volunteerWork.getVolunteerWorkFile()));
         }
 
         return builder.build();
+    }
+
+    default MemberDTO toMemberDTO(Member member){
+        return MemberDTO.builder()
+                .id(member.getId())
+                .memberRank(member.getMemberRank())
+                .memberName(member.getMemberName())
+                .memberVolunteerTime(member.getMemberVolunteerTime())
+                .memberAddress(member.getMemberAddress())
+                .memberEmail(member.getMemberEmail())
+                .memberAge(member.getMemberAge())
+                .memberPassword(member.getMemberPassword())
+                .memberInterest(member.getMemberInterest())
+                .memberJoinType(member.getMemberJoinType())
+                .memberRice(member.getMemberRice())
+                .memberRole(member.getMemberRole())
+                .memberStatus(member.getMemberStatus())
+                .build();
     }
 
     default FileDTO toFileDTO(VolunteerWorkFile volunteerWorkFile) {
@@ -92,6 +110,20 @@ public interface VolunteerWorkService {
                     volunteerFileList.add(fileDTO);
                 } );
         return volunteerFileList;
+    }
+
+    default List<VolunteerWorkActivityDTO> toVolunteerActivityDTO(List<VolunteerWorkActivity> volunteerWorkActivities){
+        List<VolunteerWorkActivityDTO> volunteerWorkActivityList = new ArrayList<>();
+        volunteerWorkActivities.forEach(
+                volunteerWorkActivity->{
+                    VolunteerWorkActivityDTO volunteerWorkActivityDTO = VolunteerWorkActivityDTO.builder()
+                            .id(volunteerWorkActivity.getId())
+                            .volunteerWorkActivityDate(volunteerWorkActivity.getVolunteerWorkActivityDate())
+                            .memberDTO(toMemberDTO(volunteerWorkActivity.getMember()))
+                            .build();
+                    volunteerWorkActivityList.add(volunteerWorkActivityDTO);
+                } );
+        return volunteerWorkActivityList;
     }
 
     default VolunteerWork toVolunteerWorkEntity(VolunteerWorkDTO volunteerWorkDTO){

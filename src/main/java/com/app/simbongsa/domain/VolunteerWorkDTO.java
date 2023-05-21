@@ -32,13 +32,14 @@ public class VolunteerWorkDTO {
     private String volunteerWorkTitle;
     private String volunteerWorkContent;
     private FileDTO fileDTO;
+    private List<VolunteerWorkActivityDTO> volunteerWorkActivityDTOS;
 
     public VolunteerWorkDTO(FileDTO fileDTO) {
         this.fileDTO = fileDTO;
     }
 
     @Builder
-    public VolunteerWorkDTO(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent, FileDTO fileDTO) {
+    public VolunteerWorkDTO(Long id, LocalDateTime volunteerWorkStartDate, LocalDateTime volunteerWorkEndDate, int volunteerWorkTime, LocalDate volunteerWorkJoinStartDate, LocalDate volunteerWorkJoinEndDate, int volunteerWorkRecruitNumber, VolunteerWorkCategoryType volunteerWorkCategory, String volunteerWorkRegisterAgency, String volunteerWorkPlace, String volunteerWorkTitle, String volunteerWorkContent, FileDTO fileDTO, List<VolunteerWorkActivityDTO> volunteerWorkActivityDTOS) {
         this.id = id;
         this.volunteerWorkStartDate = volunteerWorkStartDate;
         this.volunteerWorkEndDate = volunteerWorkEndDate;
@@ -52,6 +53,7 @@ public class VolunteerWorkDTO {
         this.volunteerWorkTitle = volunteerWorkTitle;
         this.volunteerWorkContent = volunteerWorkContent;
         this.fileDTO = fileDTO;
+        this.volunteerWorkActivityDTOS = volunteerWorkActivityDTOS;
     }
 
 }
