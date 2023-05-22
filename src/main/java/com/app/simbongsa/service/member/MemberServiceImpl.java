@@ -19,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.google.gson.JsonElement;
@@ -55,7 +56,18 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.findByMemberEmail(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
-        return new UserDetail(member);
+        return UserDetail.builder()
+                .id(member.getId())
+                .memberRole(member.getMemberRole())
+                .memberPassword(member.getMemberPassword())
+                .memberEmail(member.getMemberEmail())
+                .memberAddress(member.getMemberAddress()).memberAge(member.getMemberAge()).memberJoinType(member.getMemberJoinType()).memberInterest(member.getMemberInterest())
+                .memberName(member.getMemberName())
+                .memberRank(member.getMemberRank())
+                .memberRice(member.getMemberRice())
+                .memberStatus(member.getMemberStatus()).memberVolunteerTime(member.getMemberVolunteerTime())
+                .randomKey(member.getRandomKey())
+                .build();
     }
 
 //    메인페이지 유저랭킹 목록
@@ -277,8 +289,12 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword){
-        memberRepository.updatePassword(memberEmail, memberPassword);
+    public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder){
+        /*passwordEncoder.encode(memberPassword);*/
+        /*memberDTO.setMemberPassword(passwordEncoder.encode(memberDTO.getMemberPassword()));*/
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(memberPassword);
+        memberRepository.updatePassword(memberEmail, encodedPassword);
         memberRepository.updateRandomKey(memberEmail, null);
 
 

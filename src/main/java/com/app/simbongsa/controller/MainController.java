@@ -2,17 +2,20 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.funding.Funding;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -28,9 +31,17 @@ public class MainController {
     private final MemberService memberService;
     private final FundingService fundingService;
     private final FreeBoardService freeBoardService;
+    private final HttpSession session;
 
     @GetMapping("")
-    public String main(Model model) {
+    public String main(Model model, @AuthenticationPrincipal UserDetail userDetail) {
+        if(userDetail != null) {
+            session.invalidate();
+            session.setAttribute("member", userDetail);
+        }
+
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
         List<MemberDTO> memberRankList = memberService.getMemberRankingList();
         List<FundingDTO> fundingListOrderByPopularList = fundingService.getAllPopularFundingList();

@@ -48,10 +48,11 @@ public class FundingController {
     }
 
 
-    @GetMapping("funding-detail")
-    public String fundingDetail() {return "funding/funding-detail";}
+//    @GetMapping("funding-detail")
+//    public String fundingDetail() {return "funding/funding-detail";}
 
-// 후원 상세보기
+
+// 펀딩 상세보기
    @GetMapping("funding-detail/{fundingId}")
     public String fundingDetail(@PathVariable Long fundingId, Model model, @AuthenticationPrincipal UserDetail userDetail) {
 //        Long memberId = userDetail.getMember().getId();
@@ -68,7 +69,7 @@ public class FundingController {
 
 
     @GetMapping("funding-item")
-    public String fundingItemForm() {return "funding/funding-item.html";}
+    public String fundingItemForm(Model model) {return "funding/funding-item.html";}
 
 
     @PostMapping("funding-item")
@@ -160,6 +161,6 @@ public class FundingController {
     @GetMapping("funding-start")
     public String fundingStart() {return "funding/funding-start.html";}
 
-//    @GetMapping("funding-topContent")
-//    public String fundingTopContent() {return "funding/funding-topContent.html";}
+    @GetMapping("funding-topContent")
+    public String fundingTopContent() {return "funding/funding-topContent.html";}
 }

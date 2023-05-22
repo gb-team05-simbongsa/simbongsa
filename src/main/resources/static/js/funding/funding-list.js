@@ -45,7 +45,7 @@ function list(page) {
                                 } else {
                                     for(let j = 0; j <fundingDTO.fileDTOS.length; j++) {
                                         if (fundingDTO.fileDTOS[j].fileType === "REPRESENTATION") {
-                                            text += ` <img src="/file/display?fileName=${fundingDTO.fileDTOS[j].filePath}/${diaryDTO.fileDTOS[j].fileUuid}_${fundingDTO.fileDTOS[j].fileName}">`;
+                                            text += ` <img src="/file/display?fileName=${fundingDTO.fileDTOS[j].filePath}/${fundingDTO.fileDTOS[j].fileUuid}_${fundingDTO.fileDTOS[j].fileName}">`;
                                         }
                                     }
                 }
