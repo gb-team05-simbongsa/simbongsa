@@ -8,7 +8,7 @@ import com.app.simbongsa.entity.funding.FundingItem;
 public interface FundingItemService {
 
     // 아이템 등록
-    public void ItemSave(FundingItemDTO fundingItemDTO);
+    public Long ItemSave(FundingItemDTO fundingItemDTO);
 
     // 아이템 조회
     public FundingItemDTO findByIdItem(Long itemId);
@@ -16,6 +16,9 @@ public interface FundingItemService {
 
     // 아이템 현재 시퀀스 가져오기
     public FundingItem getCurrentSequence();
+
+    // 아이템 삭제
+    public void itemDelete(Long itemId);
 
 
     default FundingItemDTO toFundingItemDTO(FundingItem fundingItem) {
