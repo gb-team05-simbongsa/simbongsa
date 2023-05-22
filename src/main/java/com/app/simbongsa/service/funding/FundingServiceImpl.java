@@ -1,8 +1,10 @@
 package com.app.simbongsa.service.funding;
 
 import com.app.simbongsa.domain.FileDTO;
+import com.app.simbongsa.domain.FreeBoardDTO;
 import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
@@ -104,6 +106,23 @@ public class FundingServiceImpl implements FundingService {
 
     }
 
+    /*내가 만든 펀딩 목록(페이징처리)*/
+    @Override
+    public Page<FundingDTO> getMyFunding(Pageable pageable, MemberDTO memberDTO) {
+        /*Long memberId = memberDTO.getId();
+        Page<Funding> Fundings = fundingRepository.findByMemberId_QueryDSL(pageable, memberId);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoards.stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardDTOS, freeBoards.getPageable(), freeBoards.getTotalElements());*/
+        return null;
+    }
+
+/*    @Override
+    public Page<FreeBoardDTO> getFreeForMemberIdList(Pageable pageable, Long id){
+        Page<FreeBoard> freeBoards = freeBoardRepository.findAllByFreeMemberIdPaging_QueryDsl(pageable, id);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoards.stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardDTOS, freeBoards.getPageable(), freeBoards.getTotalElements());
+    }*/
+
     @Override
     public Page<FundingDTO> getFunding(Integer page, AdminFundingSearch adminFundingSearch) {
         Page<Funding> fundings = fundingRepository.findAllWithPaging(adminFundingSearch, PageRequest.of(page, 5));
@@ -134,5 +153,7 @@ public class FundingServiceImpl implements FundingService {
     public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
         fundingRepository.updateFunding_QueryDsl(fundingId, fundingTargetPrice, fundingStartDate, fundingEndDate);
     }
+
+
 }
 

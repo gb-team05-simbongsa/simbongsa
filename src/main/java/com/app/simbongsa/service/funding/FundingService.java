@@ -1,9 +1,6 @@
 package com.app.simbongsa.service.funding;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.FundingDTO;
-import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.domain.VolunteerWorkDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
@@ -58,6 +55,9 @@ public interface FundingService {
 
     // 현재 시퀀스 가져오기
     public Funding getCurrentSequence();
+
+    // 내가 만든 펀딩 목록(페이징처리)
+    Page<FundingDTO> getMyFunding(Pageable pageable, MemberDTO memberDTO);
 
 
 
