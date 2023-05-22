@@ -15,8 +15,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -36,25 +38,25 @@ public class CommunityController {
     @GetMapping("free-board/new")
     public String goFreeNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable) {
         Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
+                10));
         log.info(freeBoardDTOS.getContent().get(0).getId() + "=======================================");
         model.addAttribute("freeBoardList", freeBoardDTOS.getContent());
         return "community/free-board";
     }
     @GetMapping("free-board/newList")
-    @ResponseBody
     public List<FreeBoardDTO> goToFreeNewList(@PageableDefault(page=1, size=10) Pageable pageable){
         Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
                 pageable.getPageSize()));
         return freeBoardDTOS.getContent();
     }
 
+
     /*자유게시판 인기순*/
     @GetMapping("free-board/likes")
     @ResponseBody
     public List<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
         Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
+                10));
         return freeBoardDTOS.getContent();
     }
 
@@ -63,13 +65,12 @@ public class CommunityController {
     public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
 
     @PostMapping("free-create")
-    public RedirectView freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
-
-        Long memberId = userDetail.getId();
+    @ResponseBody
+    public void freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, HttpSession session){
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        Long memberId = member.getId();
         freeBoardService.register(freeBoardDTO, memberId);
-        return new RedirectView("community/free-create");
     }
-
 
     /*자유게시판 수정하기*/
     @GetMapping("free-board-modify/{boardId}")
@@ -91,12 +92,12 @@ public class CommunityController {
         ReviewDTO reviewDTO = reviewService.getReview(boardId);
         return "community/review-board-modify";
     }
-    @PostMapping("review-board-modify")
+    @PostMapping("review-board-modify/{boardId}")
     public RedirectView modify(@RequestParam("boardId") Long boardId, @ModelAttribute("reviewDTO") ReviewDTO reviewDTO){
         reviewDTO.getFileDTOS().stream().forEach(fileDTO -> log.info(fileDTO.toString()));
         reviewDTO.setId(boardId);
         reviewService.update(reviewDTO);
-        return new RedirectView("/community/review-detail" + boardId);
+        return new RedirectView("/community/review-detail/{boardId}");
     }
 
     /*자유게시판 상세보가*/
@@ -126,6 +127,7 @@ public class CommunityController {
     }
 
 /*=========================================================================================================================*/
+
     @GetMapping("review-board")
     public String goToReviewBoard(){return "community/review-board";}
 
@@ -177,15 +179,15 @@ public class CommunityController {
     /* 자유게시판 댓글*/
     @PostMapping("save")
     public void saveReply(@RequestBody ReplyRequestDTO replyRequestDTO){
-        freeBoardService.registerReply(replyRequestDTO);
+        freeBoardService.insertReply(replyRequestDTO);
     }
 
     @DeleteMapping("delete")
     public void deleteFreeReply(@RequestParam("replyId") Long replyId){freeBoardService.deleteReply(replyId);}
 
     @GetMapping("list")
-    public Slice<FreeBoardReplyDTO> getFreeList(@RequestParam("boardId") Long freeBoardId, @RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageable = PageRequest.of(page, 8);
+    public Slice<ReplyDTO> getFreeList(@RequestParam("boardId") Long freeBoardId, @RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageable = PageRequest.of(page, 5);
         return freeBoardService.getReplyList(freeBoardId, pageable);
     }
 
