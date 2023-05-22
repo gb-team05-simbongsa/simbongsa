@@ -24,8 +24,8 @@ import org.springframework.stereotype.Service;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -269,5 +269,21 @@ public class MemberServiceImpl implements MemberService {
         log.info(memberPassword + "===============================");
         log.info(memberEmail + "===================================");
        memberRepository.updatePassword(memberEmail, memberPassword);
+    }
+
+    @Override
+    public void updateMemberRice(MemberDTO memberDTO) {
+        memberRepository.updateMemberCash(toMemberEntity(memberDTO));
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword){
+        memberRepository.updatePassword(memberEmail, memberPassword);
+        memberRepository.updateRandomKey(memberEmail, null);
+
+
+
+
+
     }
 }

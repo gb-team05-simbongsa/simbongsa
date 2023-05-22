@@ -3,6 +3,7 @@ package com.app.simbongsa.domain;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.funding.Funding;
+import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class FileDTO {
     private Funding funding;
     private FreeBoard freeBoard;
     private Review review;
+    private SupportRequest supportRequest;
 
     @Builder
     public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType) {

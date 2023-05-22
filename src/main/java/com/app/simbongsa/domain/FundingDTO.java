@@ -95,7 +95,7 @@ public class FundingDTO {
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
         this.fileDTOs = fileDTOs;
-        this.fileDTO = fileDTO;
+//        this.fileDTO = fileDTO;
 
 
         if (fundingTargetPrice == 0 || fundingCurrentPrice == 0) {

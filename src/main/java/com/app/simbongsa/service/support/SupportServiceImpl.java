@@ -1,8 +1,12 @@
 package com.app.simbongsa.service.support;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportDTO;
+import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.support.Support;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.repository.support.SupportRepository;
+import com.app.simbongsa.repository.support.SupportRequestRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,6 +25,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SupportServiceImpl implements SupportService {
     private final SupportRepository supportRepository;
+    private final MemberRepository memberRepository;
+    private final SupportRequestRepository supportRequestRepository;
 //    @Override
 //    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id) {
 //        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5),id);
@@ -39,6 +45,17 @@ public class SupportServiceImpl implements SupportService {
 
         return supportRepository.findAllSupportAttend_QueryDSL(id);
     }
+
+    @Override
+    public void saveSupport(SupportDTO supportDTO) {
+        supportRepository.save(toSupportEntity(supportDTO));
+    }
+
+    @Override
+    public void updateSupportGongyangmi(SupportDTO supportDTO) {
+        supportRepository.updateSupportRequestCash(toSupportEntity(supportDTO));
+    }
+
 
 //    @Override
 //    public List<SupportDTO> getSupportListWithPaging(Long id) {

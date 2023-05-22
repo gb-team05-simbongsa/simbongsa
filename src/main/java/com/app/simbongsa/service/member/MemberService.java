@@ -58,6 +58,10 @@ public interface MemberService extends UserDetailsService {
 
     /* 비밀번호변경 */
     public void updatePassword(String memberEmail, String memberPassword);
+    public void updateMemberRice(MemberDTO memberDTO);
+
+    /**/
+    public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword);
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())

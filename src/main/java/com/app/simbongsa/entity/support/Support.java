@@ -29,4 +29,12 @@ public class Support {
         this.member = member;
         this.supportRequest = supportRequest;
     }
+    @Builder
+    public Support(Long id, int supportPrice, Member member, SupportRequest supportRequest) {
+        this.id = id;
+        this.supportPrice = supportPrice;
+        this.member = member;
+        this.supportRequest = supportRequest;
+    }
+
 }

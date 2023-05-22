@@ -46,4 +46,6 @@ public interface FreeBoardQueryDsl {
     public Page<FreeBoard> findAllByFreeMemberIdPaging_QueryDsl(Pageable pageable, Long id);
 
 
+    /* 내 자유게시물 수정 */
+    
 }

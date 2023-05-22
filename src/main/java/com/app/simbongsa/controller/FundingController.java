@@ -5,6 +5,7 @@ import com.app.simbongsa.domain.FundingDTO;
 import com.app.simbongsa.domain.FundingItemDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.funding.FundingCreator;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.funding.FundingFileRepository;
 import com.app.simbongsa.service.funding.FundingItemService;
 import com.app.simbongsa.service.funding.FundingService;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.Member;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,15 +47,24 @@ public class FundingController {
         return "funding/funding-creater-info";
     }
 
+
     @GetMapping("funding-detail")
     public String fundingDetail() {return "funding/funding-detail";}
 
-
-//    @GetMapping("funding-detail{fundingId}")
-//    public String fundingDetail(@PathVariable Long fundingId, Model model) {
-//        model.addAttribute("funding", fundingService.getFundingDetail(fundingId));
+// 후원 상세보기
+   @GetMapping("funding-detail/{fundingId}")
+    public String fundingDetail(@PathVariable Long fundingId, Model model, @AuthenticationPrincipal UserDetail userDetail) {
+//        Long memberId = userDetail.getMember().getId();
+//        log.info(memberId + "내 로그인한 아이디");
 //
-//        return "/funding/funding-detail";}
+//        MemberDTO memberDTO = memberService.getMemberById(memberId);
+//        log.info(memberDTO.getMemberRice() + " ================");
+
+        FundingDTO fundingDTO =  fundingService.getFundingDetail(fundingId);
+
+        model.addAttribute("fundingDTO", fundingDTO);
+
+        return "/funding/funding-detail";}
 
 
     @GetMapping("funding-item")
@@ -72,16 +83,16 @@ public class FundingController {
 
 
     //업로드는 됨.... db에 저장이 안됌
-    @PostMapping("funding-initial-info")
+   /* @PostMapping("funding-initial-info")
     @ResponseBody
-    public RedirectView fundingInitial(@ModelAttribute("fundingDTO") FundingDTO fundingDTO) {
+    public RedirectView fundingInitial( FundingDTO fundingDTO) {
 
         log.info(fundingDTO.toString());
 
 
         fundingService.fundingRegister(fundingDTO);
         return new RedirectView("/funding/funding-initial-info");
-    }
+    }*/
 
     @GetMapping("funding-gift")
     public String fundingGiftForm() {return "funding/funding-gift.html";}

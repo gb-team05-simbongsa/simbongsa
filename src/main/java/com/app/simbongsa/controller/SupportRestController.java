@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class SupportRestController {
     private final SupportService supportService;
-    @ResponseBody
     @GetMapping("attend-list") //멤버 목록
     public Page<SupportDTO> getAttendList(@RequestParam(value = "page") int page, Long supportRequestId){
 
@@ -26,6 +25,8 @@ public class SupportRestController {
         return attendList;
 
     }
+
+
 
 }
 

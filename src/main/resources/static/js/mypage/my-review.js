@@ -10,8 +10,11 @@ myFreeBoards.forEach((myFreeBoard, i) => {
                         ${myFreeBoard.boardTitle}
                     </div>
                     <div>
-                        <span class="review-modify">수정</span>
+                        <a href="my-free-board-detail/${myFreeBoard.id}">
+                            <span class="review-modify">수정</span>
+                        </a>
                         <span class="review-delete">삭제</span>
+
                     </div>
                 </div>
             </div>
@@ -40,7 +43,7 @@ myFreeBoards.forEach((myFreeBoard, i) => {
             </div>
             <div class="review-main-footer">
                 <div class="review-write-date">
-                    <span>${myFreeBoard.updatedDate}</span>
+                    <span>${myFreeBoard.updatedDate.substring(0,10)} ${myFreeBoard.updatedDate.substring(11,19)}</span>
                     <span>자유게시판</span>
                 </div>
             </div>

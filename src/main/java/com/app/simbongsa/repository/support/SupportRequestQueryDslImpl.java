@@ -2,22 +2,22 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
-import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
-import com.querydsl.core.Tuple;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+import static com.app.simbongsa.entity.file.QSupportRequestFile.supportRequestFile;
+import static com.app.simbongsa.entity.member.QMember.member;
 import static com.app.simbongsa.entity.support.QSupport.support;
 import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
 
@@ -208,6 +208,30 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
         return null;
     }
 
+    @Override
+    public Optional<SupportRequest> findByIdSupportRequest_QueryDsl(Long supportRequestId) {
+        SupportRequest foundSupportRequest = query.select(supportRequest)
+                .from(supportRequest)
+                .leftJoin(supportRequest.supportRequestFiles, supportRequestFile)
+                .fetchJoin()
+                .leftJoin(supportRequest.member, member)
+                .fetchJoin()
+                .where(supportRequest.id.eq(supportRequestId))
+                .fetchOne();
+
+
+        return Optional.ofNullable(foundSupportRequest);
+    }
+
+    @Override
+    public SupportRequest getCurrentSequence_QueryDsl() {
+        return query.select(supportRequest)
+                .from(supportRequest)
+                .orderBy(supportRequest.id.desc())
+                .limit(1)
+                .fetchOne();
+    }
+
 
 
 
@@ -227,6 +251,9 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
                 .where(supportRequest.supportRequestStatus.eq(requestType))
                 .fetchOne();
     }
+    // 공양미 후원
+
+
 
 
 }

@@ -467,7 +467,7 @@
                     </div>
                     <div class="buttonWrap">
 <!--                        <button type="button" class="lineButton pdc-btn-l" color="grayEditor200">취소</button>-->
-                        <button type="button" class="solidButton pdc-btn-l save-button"  color="mainEditorP80">
+                        <button type="button" id= "submitBtn"class="solidButton pdc-btn-l save-button"  color="mainEditorP80">
                             <span>등록</span>
                         </button>
                     </div>
@@ -515,6 +515,13 @@
                 }
             });
         }
+
+
+        function dateFormat(date) {
+            var date = new Date(date);
+            return date.toLocaleString();
+        }
+
         return { saveFunding : saveFunding, fundingFile : fundingFile};
     })();
 
@@ -572,53 +579,61 @@
             });
         });
     });
-    //
-    // function loadPhoto() {
-    //     $imageFile.on("change", function () {
-    //         console.log("!!!!!!!!!!!!")
-    //         let $files = $(this)[0].files;
-    //         let formData = new FormData();
-    //         prevFileList = '';
-    //         globalThis.uuids = prevFileList;
-    //         globalThis.paths = prevFileList;
-    //
-    //         if ($files.length > 1) {
-    //             alert("파일은 1개만 등록할 수 있습니다.");
-    //             /* 파일 input 초기화 */
-    //             $imageFile[0].files = prevFileList;
-    //             console.log( $imageFile[0].files);
-    //             return;
-    //         }
-    //
-    //         prevFileList = $files;
-    //
-    //         // formData.append("file", $files);
-    //         $files.forEach(file => formData.append("file", file));
-    //
-    //
-    //         adminService.volunteerFile(uploadAjaxConfig(formData), (result) => {
-    //             console.log(result)
-    //             globalThis.uuids = result.uuids;
-    //             globalThis.paths = result.paths;
-    //             $('.content__img__wrap-modify').empty();
-    //             result.paths.forEach((path, i) => {
-    //                 if ($files[i].type.startsWith("image")) {
-    //                     $('.content__img__wrap-modify').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
-    //                 } else $('.content__img__wrap-modify').append(`<img style="width: 100px"/>`);
-    //             });
-    //         });
-    //     });
-    // }
 
-    let fileDTO = new Object();
+    function loadPhoto() {
+        $imageFile.on("change", function () {
+            console.log("!!!!!!!!!!!!")
+            let $files = $(this)[0].files;
+            let formData = new FormData();
+            prevFileList = '';
+            globalThis.uuids = prevFileList;
+            globalThis.paths = prevFileList;
+
+            if ($files.length > 1) {
+                alert("파일은 1개만 등록할 수 있습니다.");
+                /* 파일 input 초기화 */
+                $imageFile[0].files = prevFileList;
+                console.log( $imageFile[0].files);
+                return;
+            }
+
+            prevFileList = $files;
+
+            // formData.append("file", $files);
+            $files.forEach(file => formData.append("file", file));
+
+
+            fundingService.fundingFile(uploadAjaxConfig(formData), (result) => {
+                console.log(result)
+                globalThis.uuids = result.uuids;
+                globalThis.paths = result.paths;
+                $('.ImgStyleList').empty();
+                result.paths.forEach((path, i) => {
+                    if ($files[i].type.startsWith("image")) {
+                        $('.ImgStyleList').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
+                    } else $('.ImgStyleList').append(`<img style="width: 100px"/>`);
+                });
+            });
+        });
+    }
+
+    let fileDTOs = new Object();
 
     let setFundingDTO = function() {
-        console.log($('.ImgStyleList')[0])
-        const $files = $('.ImgStyleList')[0].files;
+        console.log($('#imageFile')[0])
+        const $files = $('#imageFile')[0].files;
 
-        fileDTO.fileName = $files[0].name;
-        fileDTO.fileUuid = globalThis.uuids[0];
-        fileDTO.filePath = globalThis.paths[0];
+        $files.forEach((file, i) => {
+            fileDTOs.fileName = $files[0].name;
+            fileDTOs.fileUuid = globalThis.uuids[i];
+            fileDTOs.filePath = globalThis.paths[0];
+            fileDTOs.push(fileDTOs);
+
+    console.log(fileDTOs);
+        /*fileDTOs.fileName = $files[0].name;
+        fileDTOs.fileUuid = globalThis.uuids[0];
+        fileDTOs.filePath = globalThis.paths[0];*/
+        });
 
         const fundingDTO = {
             fundingCategory : $('input[name=fundingCategory]').val(),
@@ -635,7 +650,7 @@
             // volunteerWorkPlace : $('input[name=volunteerWorkPlace]').val(),
             // volunteerWorkRegisterAgency : $('input[name=volunteerWorkRegisterAgency]').val(),
 
-            fileDTO : fileDTO
+            fileDTOs : fileDTOs
         }
 
         return fundingDTO;
@@ -674,10 +689,10 @@
     //     return volunteerWorkDTO;
     // }
 
-    $('.save-button').on('click', function() {
+    $('#submitBtn').on('click', function() {
         fundingService.saveFunding(setFundingDTO(), function() {
-            document.onsubmit;
-            location.href = "/funding/funding";
+           /* document.onsubmit;*/
+            location.href = "/funding/funding-initial-info";
         });
     });
 

@@ -26,9 +26,20 @@
                 <label id="photo-picker">
                     <div class="photo" id="photo">
                         <input id="file_input" type="file" multiple style="display: none;">
-                        <div class="photo-container">
-                            <div class="photo-img"></div>
-                        </div>
+                        <th:block th:if="${myFreeBoard != null}">
+                                    <th:block th:if="${myFreeBoard.fileDTOS == null or myFreeBoard.fileDTOS == undefined}">
+                                        <img src="https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&amp;fit=crop&amp;h=288&amp;lossless=true&amp;w=384&amp;s=ccaf0c29a4a9c34a703c08e3ddef88d1">
+                                    </th:block>
+                                    <th:block th:else>
+                                        <th:block th:each="fileDTO : ${myFreeBoard.fileDTOS}">
+                                            <div class="photo-container">
+                                        <div class="photo-img">
+                                            <img th:src="@{/file/display(fileName=${fileDTO.filePath + '/' + fileDTO.fileUuid + '_' + fileDTO.fileName})}">
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </th:block>
+                        </th:block>
                     </div>
                 </label>
                 <label id="photo-picker2"></label>
@@ -37,14 +48,14 @@
                         <div class="title">
                             <div class="title-container">
                                 <label class="title-label">
-                                    <input type="text" placeholder="제목을 입력해주세요." class="title-input">
+                                    <input th:value="${freeBoardDTO.boardTitle}" type="text" placeholder="제목을 입력해주세요." class="title-input">
                                 </label>
                             </div>
                         </div>
                         <div class="line"></div>
                         <div class="contents">
                             <span class="contents-span1">
-                                <textarea class="contents-text" placeholder="궁금했던 모든 것을 자유롭게 작성해보세요.
+                                <textarea th:text="${freeBoardDTO.boardContent}" class="contents-text" placeholder="궁금했던 모든 것을 자유롭게 작성해보세요.
 
     예) 봉사 함께하실 심청이 구합니다.
     예) 후원은 어떻게 하면 되나요?
@@ -59,14 +70,14 @@
         </section>
         <div >
             <div class="modal">
-                <h4 class="modal-title">게시물 등록</h4>
-                <div class="modal-content">게시물을 등록하시겠습니까?</div>
+                <h4 class="modal-title">게시물 수정</h4>
+                <div class="modal-content">게시물을 수정하시겠습니까?</div>
                 <div class="modal-choce">
                     <div class="choce1">
                         <button class="choce1-btn">취소</button>
                     </div>
                     <div class="choce2">
-                        <button class="choce2-btn">등록</button>
+                        <button class="choce2-btn">수정</button>
                     </div>
                 </div>
             </div>
@@ -80,6 +91,9 @@
     
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:list="javascript">
+    let freeBoardDTO = $[[${freeBoardDTO}]];
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/community/free-create.js"></script>
 </html>

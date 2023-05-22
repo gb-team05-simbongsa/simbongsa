@@ -17,6 +17,7 @@ import java.util.Optional;
 
 import static com.app.simbongsa.entity.member.QMember.member;
 import static com.app.simbongsa.entity.support.QSupport.support;
+import static com.app.simbongsa.entity.support.QSupportRequest.supportRequest;
 
 
 @RequiredArgsConstructor
@@ -153,6 +154,13 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
         query.update(member)
                 .set(member.randomKey, randomKey)
                 .where(member.memberEmail.eq(memberEmail))
+                .execute();
+    }
+
+    @Override
+    public void updateMemberCash(Member memberModify) {
+        query.update(member).set(member.memberRice, memberModify.getMemberRice())
+                .where(supportRequest.member.id.eq(memberModify.getId()))
                 .execute();
     }
 }
