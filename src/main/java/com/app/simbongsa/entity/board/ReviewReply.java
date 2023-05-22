@@ -20,23 +20,24 @@ public class ReviewReply extends Reply {
     @JoinColumn(name = "REVIEW_ID")
     private Review review;
 
-
-    // 단위 테스트용 생성자
-    public ReviewReply(String replyContent, Member member, Review review) {
+    public ReviewReply(String replyContent, Review review, Member member) {
         super(replyContent);
-        this.member = member;
         this.review = review;
+        this.member = member;
     }
-
-    public void setReviewReplyContent(String replyContent) {
-        super.setReplyContent(replyContent);
-    }
-
 
     @Builder
-    public ReviewReply(Long id, String replyContent, Review review, Member member) {
+    public ReviewReply(Long id, String replyContent, Review review, Member member){
         super(id, replyContent);
         this.review = review;
         this.member = member;
+    }
+
+
+    public void setReview(Review review) {
+        this.review = review;
+    }
+    public void setReviewReplyContent(String replyContent) {
+        super.setReplyContent(replyContent);
     }
 }

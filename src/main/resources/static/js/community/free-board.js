@@ -74,8 +74,25 @@ headerTitle2.addEventListener('click', () => {
 });
 
  /* 눌렀을 때 색 변환 - 최신글, 인기글*/
- const categoriNew = document.querySelector('.categori-new');
- const categoriBest = document.querySelector('.categori-best');
+    const categoriNew = document.querySelector('.categori-new');
+    const categoriBest = document.querySelector('.categori-best');
+    const userTimeElement = document.querySelector('.user-time');
+    const userTime = new Date(userTimeElement.textContent);
+    const currentTime = new Date();
+    const timeDifferenceInMs = currentTime - userTime;
+    const timeDifferenceInDays = Math.floor(timeDifferenceInMs / (1000 * 60 * 60 * 24));
+
+    let formattedTime;
+
+    if (timeDifferenceInDays === 0) {
+        formattedTime = '오늘';
+    } else if (timeDifferenceInDays === 1) {
+        formattedTime = '어제';
+    } else {
+        formattedTime = `${timeDifferenceInDays}일 전`;
+    }
+
+    userTimeElement.textContent = formattedTime;
 
  categoriNew.addEventListener('click', () => {
     categoriNew.style.color = '#1d1d1e';
@@ -110,7 +127,7 @@ headerTitle2.addEventListener('click', () => {
                                                 <div class="user-profile">
                                                     <span class="user-name">${freeboards.memberDTO.memberName}</span>
                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                                    <span class="user-time">${freeboards.createdDate}</span>
+                                                    <span class="user-time">${date()}</span>
                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
                                                     <span class="user-see">댓글수 ${freeboards.replyCount}</span>
                                                 </div>
@@ -129,8 +146,8 @@ headerTitle2.addEventListener('click', () => {
  categoriBest.addEventListener('click', () => {
     categoriBest.style.color = '#1d1d1e';
     categoriBest.style.fill = '#1d1d1e';
-   categoriNew.style.color = '#8a8a8b';
-   categoriNew.style.fill = '#8a8a8b';
+    categoriNew.style.color = '#8a8a8b';
+    categoriNew.style.fill = '#8a8a8b';
 
      $.ajax({
          url: "/community/free-board/likes",
@@ -159,7 +176,7 @@ headerTitle2.addEventListener('click', () => {
                                             <div class="user-profile">
                                                 <span class="user-name">${freeboard.memberDTO.memberName}</span>
                                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                                <span class="user-time">${freeboard.createdDate}</span>
+                                                <span class="user-time">${date()}</span>
                                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
                                                 <span class="user-see">댓글수 ${freeboard.replyCount}</span>
                                             </div>
@@ -174,5 +191,6 @@ headerTitle2.addEventListener('click', () => {
          }
      });
  });
+
 
 

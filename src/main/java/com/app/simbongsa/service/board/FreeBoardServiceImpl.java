@@ -65,19 +65,19 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     }
 
     /*댓글 저장*/
-    @Override
-    public void registerReply(FreeBoardReplyDTO freeBoardReplyDTO) {
-        memberRepository.findById(freeBoardReplyDTO.getMemberId()).ifPresent(
+    @Override @Transactional
+    public void registerReply(ReplyRequestDTO replyRequestDTO) {
+        memberRepository.findById(replyRequestDTO.getMemberId()).ifPresent(
                 member ->
-                        freeBoardRepository.findById(freeBoardReplyDTO.getBoardId()).ifPresent(
+                        freeBoardRepository.findById(replyRequestDTO.getBoardId()).ifPresent(
                                 freeBoard -> {
                                     FreeBoardReply freeBoardReply = FreeBoardReply.builder()
                                             .freeBoard(freeBoard)
                                             .member(member)
-                                            .replyContent(freeBoardReplyDTO.getReplyContent())
+                                            .replyContent(replyRequestDTO.getReplyContent())
                                             .build();
                                     freeBoardReplyRepository.save(freeBoardReply);
-                                    freeBoard.setFreeBoardReplyCount(getReplyCount(freeBoardReplyDTO.getBoardId()));
+                                    freeBoard.setFreeBoardReplyCount(getReplyCount(replyRequestDTO.getBoardId()));
                                     freeBoardRepository.save(freeBoard);
                                 }
                         )
@@ -102,11 +102,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*댓글 목록*/
     @Override
-    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable) {
-        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(freeBoardId, pageable);
+    public Slice<FreeBoardReplyDTO> getReplyList(Long boardId, Pageable pageable) {
+        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(boardId, pageable);
 
-        List<ReplyDTO> replyDTOS = freeBoardReplyList.getContent().stream().map(this::toReplyDTO).collect(Collectors.toList());
-        return new SliceImpl<>(replyDTOS, pageable, freeBoardReplyList.hasNext());
+        List<FreeBoardReplyDTO> freeBoardReplyDTOS = freeBoardReplyList.getContent().stream().map(this::toFreeBoardReplyDTO).collect(Collectors.toList());
+        return new SliceImpl<>(freeBoardReplyDTOS, pageable, freeBoardReplyList.hasNext());
     }
 
     /*댓글 갯수*/

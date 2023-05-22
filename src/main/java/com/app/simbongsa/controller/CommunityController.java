@@ -6,6 +6,7 @@ import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.board.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -23,7 +24,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class CommunityController {
+    @Qualifier
     private final FreeBoardService freeBoardService;
+    @Qualifier
     private final ReviewService reviewService;
 
     @GetMapping("free-board")
@@ -71,6 +74,15 @@ public class CommunityController {
     @GetMapping("free-create")
     public void goToFreeCreate(Model model) {
         model.addAttribute("freeBoard", new FreeBoardDTO());
+    }
+
+    @PostMapping("free-create")
+    @ResponseBody
+    public void freeCreate(@RequestBody FreeBoardDTO freeBoardDTO){
+        Long memberId = 745L;
+        freeBoardService.write(freeBoardDTO, memberId);
+
+        log.info("=====================" + freeBoardDTO);
     }
 
     /*자유게시판 수정하기*/
@@ -138,15 +150,15 @@ public class CommunityController {
 
     /* 자유게시판 댓글*/
     @PostMapping("save")
-    public void saveReply(@RequestParam FreeBoardReplyDTO freeBoardReplyDTO){
-        freeBoardService.registerReply(freeBoardReplyDTO);
+    public void saveReply(@RequestBody ReplyRequestDTO replyRequestDTO){
+        freeBoardService.registerReply(replyRequestDTO);
     }
 
     @DeleteMapping("delete")
     public void deleteFreeReply(@RequestParam("replyId") Long replyId){freeBoardService.deleteReply(replyId);}
 
     @GetMapping("list")
-    public Slice<ReplyDTO> getFreeList(@RequestParam("boardId") Long freeBoardId, @RequestParam(defaultValue = "0", name = "page") int page){
+    public Slice<FreeBoardReplyDTO> getFreeList(@RequestParam("boardId") Long freeBoardId, @RequestParam(defaultValue = "0", name = "page") int page){
         PageRequest pageable = PageRequest.of(page, 8);
         return freeBoardService.getReplyList(freeBoardId, pageable);
     }
@@ -154,8 +166,8 @@ public class CommunityController {
 
     /*활동후기 댓글*/
     @PostMapping("review-save")
-    public void saveReply(@RequestParam ReviewReplyDTO reviewReplyDTO){
-        reviewService.registerReply(reviewReplyDTO);
+    public void registerReply(@RequestParam ReplyRequestDTO replyRequestDTO){
+        reviewService.registerReply(replyRequestDTO);
     }
 
     @DeleteMapping("revew-delete")

@@ -17,15 +17,21 @@
     <!-- 전체 div -->
     <div class="board">
         <section class="board-container">
-            <form action="">
-                <div class="register">
-                    <div class="register-container">
-                        <button class="register-btn" type="button" disabled>등록</button>
-                    </div>
+            <div class="register">
+                <div class="register-container">
+                    <button class="register-btn" type="button">등록</button>
                 </div>
+            </div>
+            <form name="form" method="post">
                 <label id="photo-picker">
                     <div class="photo" id="photo">
-                        <input id="file_input" type="file" multiple style="display: none;">
+                        <input
+                                id="file_input"
+                                type="file"
+                                style="display: none"
+                                name="imgFile"
+                                accept="image/*"
+                        />
                         <div class="photo-container">
                             <div class="photo-img"></div>
                         </div>
@@ -37,14 +43,20 @@
                         <div class="title">
                             <div class="title-container">
                                 <label class="title-label">
-                                    <input type="text" placeholder="제목을 입력해주세요." class="title-input">
+                                    <input
+                                            type="text"
+                                            placeholder="제목을 입력해주세요."
+                                            class="title-input"
+                                            name="boardTitle"
+                                            value=""
+                                    />
                                 </label>
                             </div>
                         </div>
                         <div class="line"></div>
                         <div class="contents">
                             <span class="contents-span1">
-                                <textarea class="contents-text" placeholder="궁금했던 모든 것을 자유롭게 작성해보세요.
+                                <textarea name="boardContent" class="contents-text" placeholder="궁금했던 모든 것을 자유롭게 작성해보세요.
 
     예) 봉사 함께하실 심청이 구합니다.
     예) 후원은 어떻게 하면 되나요?
@@ -55,23 +67,23 @@
                         </div>
                     </div>
                 </div>
+                <div >
+                    <div class="modal">
+                        <h4 class="modal-title">게시물 등록</h4>
+                        <div class="modal-content">게시물을 등록하시겠습니까?</div>
+                        <div class="modal-choce">
+                            <div class="choce1">
+                                <button class="choce1-btn" type="button">취소</button>
+                            </div>
+                            <div class="choce2">
+                                <button class="choce2-btn" type="submit">등록</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-back"></div>
+                </div>
             </form>
         </section>
-        <div >
-            <div class="modal">
-                <h4 class="modal-title">게시물 등록</h4>
-                <div class="modal-content">게시물을 등록하시겠습니까?</div>
-                <div class="modal-choce">
-                    <div class="choce1">
-                        <button class="choce1-btn">취소</button>
-                    </div>
-                    <div class="choce2">
-                        <button class="choce2-btn">등록</button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-back"></div>
-        </div>
     </div>
     
 

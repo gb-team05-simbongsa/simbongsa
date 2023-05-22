@@ -26,13 +26,13 @@ public interface ReviewService {
     public Review getCurrentSequence();
 
     /*댓글 저장*/
-    public void registerReply(ReviewReplyDTO reviewReplyDTO);
+    public void registerReply(ReplyRequestDTO replyRequestDTO);
 
     /*댓글 삭제*/
     public void deleteReply(Long replyId);
 
     /*댓글 목록*/
-    public Slice<ReplyDTO> getReplyList(Long reviewId, Pageable pageable);
+    public Slice<ReplyDTO> getReplyList(Long boardId, Pageable pageable);
 
     /*댓글 갯수*/
     public Integer getReplyCount(Long reviewId);
@@ -117,7 +117,6 @@ public interface ReviewService {
 
     default Review toReviewEntity(ReviewDTO reviewDTO){
         return Review.builder()
-                .id(reviewDTO.getId())
                 .boardTitle(reviewDTO.getBoardTitle())
                 .boardContent(reviewDTO.getBoardContent())
                 .member(toMemberEntity(reviewDTO.getMemberDTO()))
@@ -127,9 +126,19 @@ public interface ReviewService {
     default Member toMemberEntity(MemberDTO memberDTO){
         return Member.builder()
                 .id(memberDTO.getId())
-                .memberRank(memberDTO.getMemberRank())
                 .memberName(memberDTO.getMemberName())
                 .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberRice(memberDTO.getMemberRice())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberStatus(memberDTO.getMemberStatus())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
                 .build();
     }
 
@@ -150,6 +159,16 @@ public interface ReviewService {
                 .memberDTO(toMemberDTO(reviewReply.getMember()))
                 .registerDate(reviewReply.getCreatedDate())
                 .replyContent(reviewReply.getReplyContent())
+                .build();
+    }
+
+    default ReviewReplyDTO toReviewReplyDTO(ReviewReply reviewReply){
+        return ReviewReplyDTO.builder().id(reviewReply.getId())
+                .memberDTO(toMemberDTO(reviewReply.getMember()))
+                .replyContent(reviewReply.getReplyContent())
+                .id(reviewReply.getReview().getId())
+                .createdDate(reviewReply.getCreatedDate())
+                .updatedDate(reviewReply.getUpdatedDate())
                 .build();
     }
 

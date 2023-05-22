@@ -31,8 +31,8 @@ public class Review extends Board {
     private List<ReviewFile> reviewFiles = new ArrayList<>();
 
     @Builder
-    public Review(Long id, String boardTitle, String boardContent, Member member, List<ReviewFile> reviewFiles, Integer reviewReplyCount) {
-        super(id, boardTitle, boardContent);
+    public Review(String boardTitle, String boardContent, Member member, List<ReviewFile> reviewFiles, Integer reviewReplyCount) {
+        super(boardTitle, boardContent);
         this.member = member;
         this.reviewFiles = reviewFiles;
         this.reviewReplyCount = reviewReplyCount;
