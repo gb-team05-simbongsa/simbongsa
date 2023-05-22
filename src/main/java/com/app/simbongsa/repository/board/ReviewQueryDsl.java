@@ -1,5 +1,6 @@
 package com.app.simbongsa.repository.board;
 
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
@@ -15,7 +16,7 @@ public interface ReviewQueryDsl {
     public Review getCurrentSequence_QueryDsl();
 
     /* 유저별 후기게시판 목록 조회 */
-    public Page<Review> findByMemberId(Pageable pageable, Long memberId);
+    public Page<Review> findByMemberId(Pageable pageable, MemberDTO memberDTO);
 
     /* 후기게시판 삭제*/
 /*    public Review deleteById(Review review);*/
