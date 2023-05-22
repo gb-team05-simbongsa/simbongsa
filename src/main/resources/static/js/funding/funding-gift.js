@@ -136,7 +136,7 @@ function removeButton(e) {
     $('.item-count').text(--count);
 };
 
-function append(title, itemType) {
+function append(title, itemType, id) {
     // let $itemTitle = $('.innerInput').val();
     let explainCount = ++count;
     let content = $('.textareaJu').val();
@@ -154,7 +154,7 @@ function append(title, itemType) {
                     <li>` + content + `</li>
                 </ul>
             </button>
-            <button type="button" value="7513af07-bd37-48b3-9cee-28f6c588d2a2" class="removeButton" onclick="removeButton(this)">
+            <button type="button" value="7513af07-bd37-48b3-9cee-28f6c588d2a2" class="removeButton" onclick="removeItem(` + id +`, this)">
                 <div name="delete" class="iconSVG">
                     <svg viewBox="0 0 48 48">
                         <path fill-rule="evenodd" clip-rule="evenodd"

@@ -84,12 +84,19 @@ public class FundingController {
 
     @PostMapping("funding-item")
     @ResponseBody
-    public void fundingItem(String title, String content, String itemType) {
+    public Long fundingItem(String title, String content, String itemType) {
         FundingItemDTO fundingItemDTO = new FundingItemDTO();
         fundingItemDTO.setItemTitle(title);
         fundingItemDTO.setItemContent(content);
         fundingItemDTO.setItemType(itemType);
-        fundingItemService.ItemSave(fundingItemDTO);
+        return fundingItemService.ItemSave(fundingItemDTO);
+     }
+
+     @PostMapping("funding-item-delete")
+     @ResponseBody
+     public void fundingDelete(Long itemId, FundingItemDTO fundingItemDTO) {
+        log.info(itemId + "==============아이템아이디");
+        fundingItemService.itemDelete(itemId);
      }
 
 
