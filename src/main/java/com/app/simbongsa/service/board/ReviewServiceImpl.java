@@ -1,11 +1,8 @@
 package com.app.simbongsa.service.board;
 
 import com.app.simbongsa.domain.*;
-import com.app.simbongsa.entity.board.FreeBoard;
-import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.board.ReviewReply;
-import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.exception.UserNotFoundException;
@@ -21,8 +18,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,6 +33,59 @@ public class ReviewServiceImpl implements ReviewService{
     private final MemberRepository memberRepository;
     private final ReviewReplyRepository reviewReplyRepository;
     private final ReviewFileRepository reviewFileRepository;
+
+    /*수정*/
+    @Override @Transactional
+    public void update(ReviewDTO reviewDTO){
+        List<FileDTO> fileDTOS = reviewDTO.getFileDTOS();
+
+        reviewRepository.findById(reviewDTO.getId()).ifPresent(review -> {
+            Review updateFreeBoard = Review.builder()
+                    .id(review.getId())
+                    .boardContent(reviewDTO.getBoardContent())
+                    .boardTitle(reviewDTO.getBoardTitle())
+                    .member(review.getMember())
+                    .reviewReplyCount(review.getReviewReplyCount())
+                    .build();
+
+            reviewRepository.save(updateFreeBoard);
+        });
+
+        reviewFileRepository.deleteById(reviewDTO.getId());
+
+        if(fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++) {
+                if(i == 0){
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                }else {
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+                }
+                fileDTOS.get(i).setReview(getCurrentSequence());
+                reviewFileRepository.save(toReviewFileEntity(fileDTOS.get(i)));
+            }
+        }
+
+    }
+
+    /*삭제*/
+    @Override @Transactional
+    public void delete(Long reviewId){
+        reviewRepository.findById(reviewId).ifPresent(
+                review -> {
+                    reviewReplyRepository.deleteByReviewId(reviewId);
+                    reviewRepository.delete(review);
+                }
+        );
+    }
+
+
+    /*마이페이지 게시물 목록 조회*/
+    @Override
+    public Page<ReviewDTO> getReviewForMemberIdList(Pageable pageable, Long id){
+        Page<Review> reviews = reviewRepository.findAllByReviewMemberIdPaging_QueryDsl(pageable, id);
+        List<ReviewDTO> reviewDTOS = reviews.stream().map(this::toReviewDTO).collect(Collectors.toList());
+        return new PageImpl<>(reviewDTOS, reviews.getPageable(), reviews.getTotalElements());
+    }
 
     /*저장*/
     @Override @Transactional
@@ -127,7 +177,7 @@ public class ReviewServiceImpl implements ReviewService{
 
     /*작성*/
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void write(ReviewDTO reviewDTO, Long memberId) {
         List<FileDTO> fileDTOS = reviewDTO.getFileDTOS();
 

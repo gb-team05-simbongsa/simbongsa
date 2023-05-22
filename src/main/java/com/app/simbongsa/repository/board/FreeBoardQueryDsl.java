@@ -1,15 +1,12 @@
 package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +38,13 @@ public interface FreeBoardQueryDsl {
 
     //    자유게시판 상세페이지 조회
     public Optional<FreeBoard> findByIdForDetail_QueryDsl(Long freeBoardId);
+
+    /* 마이페이지 작성한 자유게시물 상세 조회*/
+    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId);
+
+    /*마이페이지 내가 작성한 글 전체 조회*/
+    public Page<FreeBoard> findAllByFreeMemberIdPaging_QueryDsl(Pageable pageable, Long id);
+
 
     /* 내 자유게시물 수정 */
     

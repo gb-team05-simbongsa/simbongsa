@@ -13,7 +13,6 @@ import org.springframework.data.domain.*;
 import java.util.List;
 import java.util.Optional;
 
-import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QReview.review;
 
 
@@ -170,4 +169,23 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         return new SliceImpl<>(reviews, pageable, hasNext);
     }
 
+    /*마이페이지 내가 작성한 글 전체 조회*/
+    @Override
+    public Page<Review> findAllByReviewMemberIdPaging_QueryDsl(Pageable pageable, Long id){
+        List<Review> foundReview = query.select(review)
+                .from(review)
+                .where(review.member.id.eq(id))
+                .leftJoin(review.reviewFiles)
+                .fetchJoin()
+                .orderBy(review.createdDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(review.count())
+                .from(review)
+                .where(review.member.id.eq(id))
+                .fetchOne();
+        return new PageImpl<>(foundReview, pageable, count);
+    }
 }

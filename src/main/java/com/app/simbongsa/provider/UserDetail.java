@@ -15,10 +15,17 @@ import java.util.Map;
 @Component
 @Getter
 @ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserDetail implements UserDetails, OAuth2User {
 
     private Member member;
     private Map<String, Object> attributes;
+
+    private Long id;
+    private String memberEmail;
+    private String memberPassword;
+    private String memberPhoneNumber;
+    private String memberName;
 
     /* 일반 로그인 생성자 */
     public UserDetail(Member member) {
@@ -92,5 +99,12 @@ public class UserDetail implements UserDetails, OAuth2User {
         return null;
     }
 
-    public UserDetail() {}
+    @Builder
+    public UserDetail(Long id, String memberEmail, String memberPassword, String memberPhoneNumber, String memberName) {
+        this.id = id;
+        this.memberEmail = memberEmail;
+        this.memberPassword = memberPassword;
+        this.memberPhoneNumber = memberPhoneNumber;
+        this.memberName = memberName;
+    }
 }

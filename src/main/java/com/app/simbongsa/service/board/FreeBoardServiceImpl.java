@@ -6,7 +6,6 @@ import com.app.simbongsa.entity.board.FreeBoardReply;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.exception.UserNotFoundException;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardFileRepository;
 import com.app.simbongsa.repository.board.FreeBoardReplyRepository;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
@@ -22,10 +21,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +38,59 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     private final MemberRepository memberRepository;
     private final FreeBoardReplyRepository freeBoardReplyRepository;
     private final FreeBoardFileRepository freeBoardFileRepository;
+
+    /*수정*/
+    @Override @Transactional
+    public void update(FreeBoardDTO freeBoardDTO){
+        List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
+
+        freeBoardRepository.findById(freeBoardDTO.getId()).ifPresent(freeBoard -> {
+            FreeBoard updateFreeBoard = FreeBoard.builder()
+                    .id(freeBoard.getId())
+                    .boardContent(freeBoardDTO.getBoardContent())
+                    .boardTitle(freeBoardDTO.getBoardTitle())
+                    .member(freeBoard.getMember())
+                    .freeBoardReplyCount(freeBoard.getFreeBoardReplyCount())
+                    .build();
+
+            freeBoardRepository.save(updateFreeBoard);
+        });
+
+        freeBoardFileRepository.deleteById(freeBoardDTO.getId());
+
+        if(fileDTOS != null){
+            for (int i = 0; i < fileDTOS.size(); i++) {
+                if(i == 0){
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+                }else {
+                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
+                }
+                fileDTOS.get(i).setFreeBoard(getCurrentSequence());
+                freeBoardFileRepository.save(toFreeBoardFileEntity(fileDTOS.get(i)));
+            }
+        }
+
+    }
+
+    /*삭제*/
+    @Override @Transactional
+    public void delete(Long freeBoardId){
+        freeBoardRepository.findById(freeBoardId).ifPresent(
+                freeBoard -> {
+                    freeBoardReplyRepository.deleteByFreeBoardId(freeBoardId);
+                    freeBoardRepository.delete(freeBoard);
+                }
+        );
+    }
+
+
+    /*마이페이지 게시물 목록 조회*/
+    @Override
+    public Page<FreeBoardDTO> getFreeForMemberIdList(Pageable pageable, Long id){
+        Page<FreeBoard> freeBoards = freeBoardRepository.findAllByFreeMemberIdPaging_QueryDsl(pageable, id);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoards.stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardDTOS, freeBoards.getPageable(), freeBoards.getTotalElements());
+    }
 
     /*저장*/
     @Override @Transactional
@@ -149,7 +200,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*작성*/
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void write(FreeBoardDTO freeBoardDTO, Long memberId) {
         List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
 

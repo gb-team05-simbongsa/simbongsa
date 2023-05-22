@@ -16,6 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ReviewService {
+    /*마이페이지 게시물 목록 조회*/
+    public Page<ReviewDTO> getReviewForMemberIdList(Pageable pageable, Long id);
+
+    /*수정*/
+    public void update(ReviewDTO reviewDTO);
+
+    /*삭제*/
+    public void delete(Long reviewId);
 
     /*저징*/
     public void register(ReviewDTO reviewDTO, Long memberId);
