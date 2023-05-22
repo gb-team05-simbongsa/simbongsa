@@ -4,12 +4,15 @@ import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
+import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.service.board.FreeBoardService;
+import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
+import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.RicePaymentType;
@@ -39,6 +42,8 @@ public class MypageController {
     private final MemberService memberService;
     private final RicePaymentService ricePaymentService;
     private final VolunteerWorkActivityService volunteerWorkActivityService;
+    private final SupportService supportService;
+    private final FundingService fundingService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -134,8 +139,31 @@ public class MypageController {
     }
 
     @GetMapping("my-support-list")
-    public String mySupportList(){
+    public String mySupportListSupport(Integer page, HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        page = page == null ? 0 : page - 1;
+
+        Page<SupportDTO> supports = supportService.getSupportById(page, memberDTO.getId());
+
+        model.addAttribute("supportDTOS", supports.getContent());
+        model.addAttribute("pageDTO", new PageDTO(supports));
+
         return "mypage/my-support-list";
+    }
+
+    @GetMapping("my-support-list/funding")
+    public String mySupportListFunding(Integer page, HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        page = page == null ? 0 : page - 1;
+
+        Page<FundingPaymentDTO> fundingPaymentDTOS = fundingService.getFundingSupportByMemberId(page, memberDTO.getId());
+
+        model.addAttribute("fundingPaymentDTOS", fundingPaymentDTOS.getContent());
+        model.addAttribute("pageDTO", new PageDTO(fundingPaymentDTOS));
+
+        return "mypage/my-support-list-funding";
     }
 
     @GetMapping("rice-charge")

@@ -19,17 +19,18 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
 
     /* 내 후원 내역 조회 (페이징처리)*/
     @Override
-    public Page<Support> findByMemberId(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail) {
+    public Page<Support> findByMemberId(Pageable pageable, Long id) {
         List<Support> foundSupports = query.select(support)
                 .from(support)
-                .where(support.member.id.eq(userDetail.getId()))
+                .where(support.member.id.eq(id))
+                .orderBy(support.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(support.count())
                 .from(support)
-                .where(support.member.id.eq(userDetail.getId()))
+                .where(support.member.id.eq(id))
                 .fetchOne();
 
         return new PageImpl<>(foundSupports,pageable,count);

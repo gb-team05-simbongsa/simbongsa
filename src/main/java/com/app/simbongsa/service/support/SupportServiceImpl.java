@@ -52,6 +52,13 @@ public class SupportServiceImpl implements SupportService {
     }
 
     @Override
+    public Page<SupportDTO> getSupportById(Integer page, Long id) {
+        Page<Support> foundSupport = supportRepository.findByMemberId(PageRequest.of(page, 5), id);
+        List<SupportDTO> supportDTOS = foundSupport.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
+        return new PageImpl<>(supportDTOS, foundSupport.getPageable(), foundSupport.getTotalElements());
+    }
+
+    @Override
     public void updateSupportGongyangmi(SupportDTO supportDTO) {
         supportRepository.updateSupportRequestCash(toSupportEntity(supportDTO));
     }
