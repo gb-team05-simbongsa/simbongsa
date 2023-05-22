@@ -7,15 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/funding/funding-header.css">
+    <link rel="stylesheet" href="/css/funding/funding-header-response.css">
     <link rel="stylesheet" href="/css/funding/funding-topContent.css">
     <link rel="stylesheet" href="/css/funding/funding-topContent-response.css">
+    <link rel="stylesheet" href="/css/funding/funding.css">
+    <link rel="stylesheet" href="/css/funding/response.css">
 </head>
 <body>
+<div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
+
     <!-- top-content  -->
     <div class="top-content" th:fragment="topContent">
         <div class="top-contentWrap">
             <div class="top-title">프로젝트 기획</div>
         </div>
+
         <div class="fix-contentWrap">
             <div class="plan-depthWrap">
                 <ul class="tap-item">
@@ -52,7 +59,12 @@
                     </button>
                 </div>
             </div>
-            
+
+            <div th:insert="~{funding/funding-initial-info.html :: initialInfo}"></div>
+            <div th:insert="~{funding/funding-creater-info.html :: creator}"></div>
+            <div th:insert="~{funding/funding-project-plan.html :: projectPlan}"></div>
+
+
         </div>
     </div>
  
