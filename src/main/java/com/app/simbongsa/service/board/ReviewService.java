@@ -3,6 +3,7 @@ package com.app.simbongsa.service.board;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.board.ReviewReply;
+import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
@@ -54,6 +55,9 @@ public interface ReviewService {
 
 //    게시판 삭제
     public void deleteReviewByIds(List<Long> ids);
+
+    /* 내 후기 게시물 목록 조회 (페이징처리) */
+    Page<ReviewDTO> getMyReviewBoards(Integer page, MemberDTO memberDTO);
 
 
     default ReviewDTO toReviewDTO(Review review) {
