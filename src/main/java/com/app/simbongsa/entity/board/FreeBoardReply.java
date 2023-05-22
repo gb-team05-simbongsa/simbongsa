@@ -39,6 +39,10 @@ public class FreeBoardReply extends Reply {
         this.freeBoard = freeBoard;
     }
 
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     public void setFreeBoardReplyContent(String replyContent) {
         super.setReplyContent(replyContent);
     }

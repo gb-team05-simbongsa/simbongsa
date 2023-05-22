@@ -43,7 +43,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        return checkLastPage(pageable, freeBoards);
+        return new SliceImpl<>(freeBoards, pageable, false);
     }
 
     //    인기순 목록 조회(무한스크롤)

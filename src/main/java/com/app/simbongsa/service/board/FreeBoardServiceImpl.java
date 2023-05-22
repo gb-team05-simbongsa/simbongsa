@@ -119,7 +119,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*댓글 저장*/
     @Override @Transactional
-    public void registerReply(ReplyRequestDTO replyRequestDTO) {
+    public void insertReply(ReplyRequestDTO replyRequestDTO) {
         memberRepository.findById(replyRequestDTO.getMemberId()).ifPresent(
                 member ->
                         freeBoardRepository.findById(replyRequestDTO.getBoardId()).ifPresent(
@@ -155,11 +155,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*댓글 목록*/
     @Override
-    public Slice<FreeBoardReplyDTO> getReplyList(Long boardId, Pageable pageable) {
-        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(boardId, pageable);
+    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable) {
+        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(freeBoardId, pageable);
 
-        List<FreeBoardReplyDTO> freeBoardReplyDTOS = freeBoardReplyList.getContent().stream().map(this::toFreeBoardReplyDTO).collect(Collectors.toList());
-        return new SliceImpl<>(freeBoardReplyDTOS, pageable, freeBoardReplyList.hasNext());
+        List<ReplyDTO> replyDTOS = freeBoardReplyList.getContent().stream().map(this::toReplyDTO).collect(Collectors.toList());
+        return new SliceImpl<>(replyDTOS, pageable, freeBoardReplyList.hasNext());
     }
 
     /*댓글 갯수*/
