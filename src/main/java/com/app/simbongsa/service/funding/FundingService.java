@@ -57,7 +57,7 @@ public interface FundingService {
     public Funding getCurrentSequence();
 
     // 내가 만든 펀딩 목록(페이징처리)
-    Page<FundingDTO> getMyFunding(Pageable pageable, MemberDTO memberDTO);
+    Page<FundingDTO> getMyFunding(Integer page, MemberDTO memberDTO);
 
 
 

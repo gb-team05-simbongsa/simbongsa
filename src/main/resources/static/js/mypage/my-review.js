@@ -28,11 +28,9 @@ myFreeBoards.forEach((myFreeBoard, i) => {
     else {
         for(let j = 0; j < myFreeBoard.fileDTOS.length; j++) {
             text +=
-                ` <div class="review-main-img">
-                        <div class="review-img">
-                            <img src="/file/display?fileName=${myFreeBoard.fileDTOS[j].filePath + '/' + myFreeBoard.fileDTOS[j].fileUuid + '_' + myFreeBoard.fileDTOS[j].fileName}">
-                        </div>
-                    </div>`;
+                ` 
+                  <img src="/file/display?fileName=${myFreeBoard.fileDTOS[j].filePath + '/' + myFreeBoard.fileDTOS[j].fileUuid + '_' + myFreeBoard.fileDTOS[j].fileName}">
+                    `;
         }
     }
 

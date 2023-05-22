@@ -91,6 +91,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .join(funding.fundingFile)
                 .fetchJoin()
                 .where(funding.member.id.eq(memberId))
+                .orderBy(funding.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
