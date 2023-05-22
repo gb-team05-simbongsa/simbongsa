@@ -81,10 +81,13 @@ public class MemberController {
     @GetMapping("change-password")
     @ResponseBody
     public RedirectView changePasswordOK(String memberEmail, String memberPassword, String randomKey){
-        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
+        log.info("form에서 받아온 memberEmail: " + memberEmail);
+        log.info("form에서 받아온 memberPassword: " + memberPassword);
+        log.info("form에서 받아온 randomKey: " + randomKey);
+/*        if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
             return new RedirectView ("/member/login");
-        }
-        memberService.updatePasswordAndResetRandomKey(memberEmail, memberPassword);
+        }*/
+        memberService.updatePasswordAndResetRandomKey(memberEmail, memberPassword, passwordEncoder);
         return new RedirectView("/member/login");
     }
 

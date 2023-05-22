@@ -61,7 +61,7 @@ public interface MemberService extends UserDetailsService {
     public void updateMemberRice(MemberDTO memberDTO);
 
     /**/
-    public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword);
+    public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder);
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())

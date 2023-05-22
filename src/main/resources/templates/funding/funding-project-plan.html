@@ -34,11 +34,11 @@
 
 </style>
 <body>
-    <div id="view" class="view">
+<!-- funding-header -->
+<div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
+<div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
+<div id="view" class="view" th: th:fragment="projectPlan">
         <div class="project-wrap">
-                  <!-- funding-header -->
-            <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
-            <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
 
             <div class="contents" size="277">
                 <div class="planContents">
