@@ -163,4 +163,9 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
                 .where(supportRequest.member.id.eq(memberModify.getId()))
                 .execute();
     }
+
+    @Override
+    public Member findByMemberEmail_QueryDSL(String memberEmail) {
+        return query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
+    }
 }
