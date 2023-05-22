@@ -58,36 +58,46 @@ public class CommunityController {
         return freeBoardDTOS.getContent();
     }
 
-//    /*자유게시판 작성하기*/
-//    @GetMapping("free-create")
-//    public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
-//
-//    @PostMapping("free-create")
-//    public RedirectView freeWrite(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
-//
-//        Long memberId = userDetail.getId();
-//        freeBoardService.write(freeBoardDTO, memberId);
-//        return new RedirectView("/community/freeBoard/newList");
-//    }
-
     /*자유게시판 작성하기*/
     @GetMapping("free-create")
-    public void goToFreeCreate(Model model) {
-        model.addAttribute("freeBoard", new FreeBoardDTO());
-    }
+    public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
 
     @PostMapping("free-create")
-    @ResponseBody
-    public void freeCreate(@RequestBody FreeBoardDTO freeBoardDTO){
-        Long memberId = 745L;
-        freeBoardService.write(freeBoardDTO, memberId);
+    public RedirectView freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
 
-        log.info("=====================" + freeBoardDTO);
+        Long memberId = userDetail.getId();
+        freeBoardService.register(freeBoardDTO, memberId);
+        return new RedirectView("community/free-create");
     }
 
+
     /*자유게시판 수정하기*/
-    @GetMapping("board-modify")
-    public String freeModify() {return "community/board-modify";}
+    @GetMapping("free-board-modify/{boardId}")
+    public String goToFreeModify(Model model, @PathVariable("boardID") Long boardId) {
+        FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(boardId);
+        return "community/free-board-modify";
+    }
+    @PostMapping("free-board-modify")
+    public RedirectView modify(@RequestParam("boardId") Long boardId, @ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO){
+        freeBoardDTO.getFileDTOS().stream().forEach(fileDTO -> log.info(fileDTO.toString()));
+        freeBoardDTO.setId(boardId);
+        freeBoardService.update(freeBoardDTO);
+        return new RedirectView("/community/free-detail" + boardId);
+    }
+
+    /*활동후기 수정하기*/
+    @GetMapping("review-board-modify/{boardId}")
+    public String goToReviewModify(Model model, @PathVariable("boardID") Long boardId) {
+        ReviewDTO reviewDTO = reviewService.getReview(boardId);
+        return "community/review-board-modify";
+    }
+    @PostMapping("review-board-modify")
+    public RedirectView modify(@RequestParam("boardId") Long boardId, @ModelAttribute("reviewDTO") ReviewDTO reviewDTO){
+        reviewDTO.getFileDTOS().stream().forEach(fileDTO -> log.info(fileDTO.toString()));
+        reviewDTO.setId(boardId);
+        reviewService.update(reviewDTO);
+        return new RedirectView("/community/review-detail" + boardId);
+    }
 
     /*자유게시판 상세보가*/
     @GetMapping("free-detail/{id}")
@@ -97,6 +107,22 @@ public class CommunityController {
         model.addAttribute("freeBoardDTO", freeBoardDTO);
         model.addAttribute("userDetail", userDetail);
         return "community/free-detail";
+    }
+
+
+    /*자유게시판 삭제하기*/
+    @PostMapping("free-delete/{boardId}")
+    public RedirectView freeDelete(@PathVariable("boardId") Long boardId) {
+        freeBoardService.delete(boardId);
+        return new RedirectView("/community/freeBoard/newList");
+    }
+
+
+    /*활동후기 삭제하기*/
+    @PostMapping("review-delete/{boardId}")
+    public RedirectView reviewDelete(@PathVariable("boardId") Long boardId){
+        reviewService.delete(boardId);
+        return new RedirectView("/community/freeBoard/newList");
     }
 
 /*=========================================================================================================================*/

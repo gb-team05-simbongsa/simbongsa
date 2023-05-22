@@ -9,11 +9,20 @@ import com.app.simbongsa.search.admin.AdminBoardSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.security.core.parameters.P;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public interface FreeBoardService {
+    // 마이페이지 게시물 목록 조회
+    public Page<FreeBoardDTO> getFreeForMemberIdList(Pageable pageable, Long id);
+
+    // 수정
+    public void update(FreeBoardDTO freeBoardDTO);
+
+    //삭제
+    public void delete(Long freeBoardId);
 
     // 저장
     public void register(FreeBoardDTO freeBoardDTO, Long memberId);

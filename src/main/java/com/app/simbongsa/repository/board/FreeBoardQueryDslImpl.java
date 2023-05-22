@@ -190,6 +190,24 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
 
-    /* 내 자유게시물 수정 */
+    /*마이페이지 내가 작성한 글 전체 조회*/
+    @Override
+    public Page<FreeBoard> findAllByFreeMemberIdPaging_QueryDsl(Pageable pageable, Long id){
+        List<FreeBoard> foundFreeBoard = query.select(freeBoard)
+                .from(freeBoard)
+                .where(freeBoard.member.id.eq(id))
+                .leftJoin(freeBoard.freeBoardFiles)
+                .fetchJoin()
+                .orderBy(freeBoard.createdDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(freeBoard.count())
+                .from(freeBoard)
+                .where(freeBoard.member.id.eq(id))
+                .fetchOne();
+        return new PageImpl<>(foundFreeBoard, pageable, count);
+    }
 
 }

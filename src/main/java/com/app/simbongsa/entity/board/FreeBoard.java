@@ -9,6 +9,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class FreeBoard extends Board {
     private List<FreeBoardFile> freeBoardFiles = new ArrayList<>();
 
     @Builder
-    public FreeBoard(String boardTitle, String boardContent, Member member, List<FreeBoardFile> freeBoardFiles, Integer freeBoardReplyCount) {
-        super(boardTitle, boardContent);
+    public FreeBoard(Long id, String boardTitle, String boardContent, Member member, List<FreeBoardFile> freeBoardFiles, Integer freeBoardReplyCount) {
+        super(id, boardTitle, boardContent);
         this.member = member;
         this.freeBoardFiles = freeBoardFiles;
         this.freeBoardReplyCount = freeBoardReplyCount;
