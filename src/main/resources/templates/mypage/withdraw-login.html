@@ -27,23 +27,22 @@
                 <div class="password-inner-wrap">
                     <h3 class="password-title">본인 인증</h3>
 
-                    <form action="" name="withdrawForm">
+                    <form th:action="@{/mypage/withdraw}" name="withdrawForm" method="post">
                         <div class="input-div">
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="password" class="input-write" placeholder="tonky0810@naver.com" readonly>
+                                    <input type="text" id="memberEmail" name="memberEmail" class="input-write" th:value="${memberEmail}" readonly>
                                 </span>
                             </div>
                         </div>
                         <div class="input-div">
                             <div class="input-include-div">
                                 <span class="input-include-span">
-                                    <input type="password" class="input-write" placeholder="비밀번호">
+                                    <input type="password" id="memberPassword" name="memberPassword" class="input-write" placeholder="비밀번호">
                                 </span>
                             </div>
                             <div class="email-error"></div>
                         </div>
-                        </form>
                         <button class="submit-button" type="button">
                             <span>회원 탈퇴</span>
                         </button>

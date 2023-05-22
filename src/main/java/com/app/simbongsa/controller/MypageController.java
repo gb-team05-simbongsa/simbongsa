@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/mypage/*")
@@ -181,7 +182,9 @@ public class MypageController {
     }
 
     @GetMapping("withdraw-login")
-    public String withdrawLogin(){
+    public String withdrawLogin(HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        model.addAttribute("memberEmail", memberDTO.getMemberEmail());
         return "mypage/withdraw-login";
     }
 
@@ -191,5 +194,13 @@ public class MypageController {
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 
         ricePaymentService.insertRicePayment(ricePaymentUsed, memberDTO);
+    }
+
+    @PostMapping("withdraw")
+    public RedirectView withdraw(HttpSession session) {
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        memberService.updateStatusByIds(Arrays.asList(memberDTO.getId()));
+        return new RedirectView("/member/logout");
     }
 }
