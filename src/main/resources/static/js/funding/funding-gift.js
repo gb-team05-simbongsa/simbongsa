@@ -101,7 +101,7 @@ $('.textareaGaek').keypress(function(e) {
 
     
         $('.inputWrapper').next().append(text);
-        if($('.removableTag').length >= 2 && $('.innerInput').val()) {
+        if($('.removableTag').length == 2 && $('.innerInput').val()) {
             $('.saveButton').attr('disabled', false);
         } else {
             $('.saveButton').attr('disabled', true);
@@ -136,8 +136,8 @@ function removeButton(e) {
     $('.item-count').text(--count);
 };
 
-$('.saveButton').on('click', () => {
-    let $itemTitle = $('.innerInput').val();
+function append(title, itemType) {
+    // let $itemTitle = $('.innerInput').val();
     let explainCount = ++count;
     let content = $('.textareaJu').val();
     $('.value').each((i, e) => {
@@ -148,8 +148,8 @@ $('.saveButton').on('click', () => {
     let text = `
         <li class="previewItemStyel previewItemStyel">
             <button type="button" value="7513af07-bd37-48b3-9cee-28f6c588d2a2" class="previewItemButton">
-                <strong>` + $itemTitle + `</strong>
-                <span class="select-type">` + $selectType + `</span> 옵션<span class="explain-count">(` + explainCount + `)</span>
+                <strong>` + title + `</strong>
+                <span class="select-type">` + itemType + `</span> 옵션<span class="explain-count">(` + explainCount + `)</span>
                 <ul>
                     <li>` + content + `</li>
                 </ul>
@@ -169,4 +169,4 @@ $('.saveButton').on('click', () => {
     $('.previewItem').hide();
     $('.result-ul').append(text);
     $('.item-count').text(count);
-});
+};
