@@ -2,10 +2,8 @@ package com.app.simbongsa.repository.funding;
 
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.file.QFundingFile;
-import com.app.simbongsa.entity.funding.Funding;
-import com.app.simbongsa.entity.funding.FundingGift;
-import com.app.simbongsa.entity.funding.QFunding;
-import com.app.simbongsa.entity.funding.QFundingGift;
+import com.app.simbongsa.entity.funding.*;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FundingCategoryType;
@@ -23,6 +21,7 @@ import static com.app.simbongsa.entity.board.QReview.review;
 import static com.app.simbongsa.entity.file.QFundingFile.fundingFile;
 import static com.app.simbongsa.entity.funding.QFunding.funding;
 import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
+import static com.app.simbongsa.entity.funding.QFundingPayment.fundingPayment;
 import static com.app.simbongsa.entity.member.QMember.member;
 
 //        return checkLastPage(pageable, foundFunding);
@@ -91,6 +90,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .join(funding.fundingFile)
                 .fetchJoin()
                 .where(funding.member.id.eq(memberId))
+                .orderBy(funding.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -207,5 +207,23 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
                 .orderBy(funding.id.desc())
                 .limit(1)
                 .fetchOne();
+    }
+
+    @Override
+    public Page<FundingPayment> findByMemberId(Pageable pageable, Long id) {
+        List<FundingPayment> foundFundingPayment = query.select(fundingPayment)
+                .from(fundingPayment)
+                .where(fundingPayment.member.id.eq(id))
+                .orderBy(fundingPayment.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long count = query.select(fundingPayment.count())
+                .from(fundingPayment)
+                .where(fundingPayment.member.id.eq(id))
+                .fetchOne();
+
+        return new PageImpl<>(foundFundingPayment, pageable, count);
     }
 }

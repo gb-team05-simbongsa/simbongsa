@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Data
+@NoArgsConstructor
 public class VolunteerWorkActivityDTO {
     private Long id;
     private LocalDate volunteerWorkActivityDate;
