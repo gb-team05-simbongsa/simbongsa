@@ -73,5 +73,10 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
 //                .fetch();
 //    }
 
-
+    @Override
+    public void updateSupportRequestCash(Support supportModify) {
+        query.update(support).set(support.supportPrice, supportModify.getSupportPrice())
+                .where(support.supportRequest.id.eq(supportModify.getId()))
+                .execute();
+    }
 }

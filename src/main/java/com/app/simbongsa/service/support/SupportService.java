@@ -22,9 +22,11 @@ public interface SupportService {
 
 //    후원명단 조회
 //    public List<SupportDTO> getSupportListWithPaging(Long id);
-
-
 //    public List<SupportDTO> getSupportList(Long id);
+
+//    공양미 후원 update
+    public void updateSupportGongyangmi(SupportDTO supportDTO);
+
   
     default SupportDTO toSupportDTO(Support support){
         return SupportDTO.builder()

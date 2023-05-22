@@ -20,6 +20,7 @@ public interface SupportQueryDsl {
 
 //    후원명단 가져오기
 //    public Page<Support> findByIdList(Long id);
-
+    // 공양미 후원
+    public void updateSupportRequestCash(Support supportModify);
 
 }
