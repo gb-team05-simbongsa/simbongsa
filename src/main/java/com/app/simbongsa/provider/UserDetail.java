@@ -1,13 +1,25 @@
 package com.app.simbongsa.provider;
 
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.type.MemberJoinType;
+import com.app.simbongsa.type.MemberStatus;
+import com.app.simbongsa.type.Role;
+import com.app.simbongsa.type.UserRankType;
+import com.sun.istack.NotNull;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -15,56 +27,67 @@ import java.util.Map;
 @Component
 @Getter
 @ToString
-public class UserDetail implements UserDetails, OAuth2User {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Slf4j
+public class UserDetail implements UserDetails {
 
-    private Member member;
-    private Map<String, Object> attributes;
+    private Long id;
+    private String memberName;
+    private String memberEmail;
+    private String memberPassword;
+    private String memberAddress;
+    private Integer memberAge;
+    private String memberInterest;
+    private MemberJoinType memberJoinType;
+    private UserRankType memberRank;
+    private int memberRice;
+    private int memberVolunteerTime;
+    private String randomKey;
+    private Role memberRole;
+    private MemberStatus memberStatus;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    /* 일반 로그인 생성자 */
-    public UserDetail(Member member) {
-        this.member = member;
-    }
-
-    /* OAuth 로그인 생성자 */
-    public UserDetail(Member member, Map<String, Object> attributes) {
-        this.member = member;
-        this.attributes = attributes;
+    @Builder
+    public UserDetail(Long id, String memberName, String memberEmail, String memberPassword, String memberAddress, Integer memberAge, String memberInterest, MemberJoinType memberJoinType, UserRankType memberRank, int memberRice, int memberVolunteerTime, String randomKey, Role memberRole, MemberStatus memberStatus, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberPassword = memberPassword;
+        this.memberAddress = memberAddress;
+        this.memberAge = memberAge;
+        this.memberInterest = memberInterest;
+        this.memberJoinType = memberJoinType;
+        this.memberRank = memberRank;
+        this.memberRice = memberRice;
+        this.memberVolunteerTime = memberVolunteerTime;
+        this.randomKey = randomKey;
+        this.memberRole = memberRole;
+        this.memberStatus = memberStatus;
+        this.authorities = authorities;
     }
 
     /**
      * OAuth2User 인터페이스 메소드
      */
-    @Override
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
 
     /**
      * UserDetails 인터페이스 메소드
      */
     // 해당 User의 권한을 리턴하는 곳!(role)
     // SecurityFilterChain에서 권한을 체크할 때 사용됨
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> collection = new ArrayList();
-        collection.add(new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-
-                return String.valueOf(member.getMemberRole());
-            }
-        });
-        return collection;
+        return AuthorityUtils.createAuthorityList(memberRole.getSecurityRole());
     }
-
     @Override
     public String getPassword() {
-        return member.getMemberPassword();
+        return memberPassword;
     }
 
     @Override
     public String getUsername() {
-        return member.getMemberName();
+        return memberEmail;
     }
 
     @Override
@@ -87,10 +110,4 @@ public class UserDetail implements UserDetails, OAuth2User {
         return true;
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
-
-    public UserDetail() {}
 }

@@ -69,7 +69,7 @@ public class InquiryController {
 
     @PostMapping("inquiry-write")
     public String inquiryWrite(InquiryDTO inquiryDTO, @AuthenticationPrincipal UserDetail userDetail){
-        inquiryDTO.setMemberDTO(memberService.getMemberById(userDetail.getMember().getId()));
+        inquiryDTO.setMemberDTO(memberService.getMemberById(userDetail.getId()));
         inquiryService.saveInquiry(inquiryDTO);
         return "mypage/my-question";
     }
