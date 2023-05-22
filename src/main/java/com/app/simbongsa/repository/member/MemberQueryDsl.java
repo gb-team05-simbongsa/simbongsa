@@ -53,4 +53,6 @@ public interface MemberQueryDsl {
 
     public void updateMemberCash(Member memberModify);
 
+    /* 메인 이메일 찾기 */
+    public Member findByMemberEmail_QueryDSL(String memberEmail);
 }
