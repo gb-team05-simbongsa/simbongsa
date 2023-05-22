@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
 import com.app.simbongsa.service.board.FreeBoardService;
+import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.member.MemberService;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +40,7 @@ public class MypageController {
     private final MemberService memberService;
     private final RicePaymentService ricePaymentService;
     private final VolunteerWorkActivityService volunteerWorkActivityService;
+    private final FundingService fundingService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -98,8 +101,16 @@ public class MypageController {
         return new RedirectView("/mypage/rice-list");
     }
 
+    /* 내가 만든 펀딩 목록 */
     @GetMapping("my-funding-list")
-    public String myFundingList(){
+    public String myFundingList(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        page = page == null ? 0 : page - 1;
+        Page<FundingDTO> myFundings = fundingService.getMyFunding(page, memberDTO);
+        log.info( "myFundings 잘 나오나요" + myFundings.toString());
+
+        model.addAttribute("myFundings", myFundings.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myFundings));
         return "mypage/my-funding-list";
     }
 
