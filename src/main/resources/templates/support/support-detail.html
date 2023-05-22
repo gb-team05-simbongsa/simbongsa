@@ -35,7 +35,7 @@
                     <h2 class="theme">
                         <a class="theme" style="text-decoration:none" href="#">장애인 > 생계 및 기초생활지원</a>
                     </h2>
-                    <h3 class="tit"  th:text="${supportDetail.supportRequestTitle}">
+                    <h3 class="tit"  th:text="${supportRequestDTO.supportRequestTitle}">
                         아빠의 간병을 위해 엄마는 일을 정리했습니다
                     </h3>
                     <ul class="collect-tab" id="collect-tab"></ul>
@@ -63,7 +63,7 @@
                         <ul class="intro-list editor-base">
                             <li>
                                 <dl>
-                                    <dt id="paragraph-title" th:text="${supportDetail.supportRequestContent}">“아빠의 진단 이후, 가족의 삶이 달라졌어요.”</dt>
+                                    <dt id="paragraph-title" th:text="${supportRequestDTO.supportRequestContent}">“아빠의 진단 이후, 가족의 삶이 달라졌어요.”</dt>
                                     <dd id="paragraph-content" >
                                         “아빠가 응급실로 실려 간 후, 상상도 못한 루게릭병이라는 진단을 받고 기관절개와 콧줄을 삽입하게 된 건 한순간이었어요. 가족끼리 대공원에 가자는 약속을 미루고만 있었는데, 아빠는 이제 움직일 수 없고, 대화도 할 수 없고 음식도 못 드시게 되어서 하루 종일 누워만 계세요.” -환우 가족의 루게릭병 수기공모전 수상작 ‘아빠, 사랑해요!’ 中
                                         <br> 
