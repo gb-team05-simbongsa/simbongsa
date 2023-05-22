@@ -2,6 +2,7 @@ package com.app.simbongsa.service.funding;
 
 
 import com.app.simbongsa.domain.FundingItemDTO;
+import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingItem;
 
 public interface FundingItemService {
@@ -10,8 +11,11 @@ public interface FundingItemService {
     public void ItemSave(FundingItemDTO fundingItemDTO);
 
     // 아이템 조회
-  /*  public void getItem(Long itemId);*/
+    public FundingItemDTO findByIdItem(Long itemId);
 
+
+    // 아이템 현재 시퀀스 가져오기
+    public FundingItem getCurrentSequence();
 
 
     default FundingItemDTO toFundingItemDTO(FundingItem fundingItem) {

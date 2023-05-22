@@ -67,16 +67,30 @@ public class FundingController {
 
         return "/funding/funding-detail";}
 
-
+//
+//    @GetMapping("funding-item")
+//    public String fundingItemForm(Model model, Long itemId) {
+//
+//        log.info(itemId + "아이템아이디 어쩌구");
+//        FundingItemDTO fundingItemDTO = fundingItemService.findByIdItem(itemId);
+//        model.addAttribute("fundingItemDTO", fundingItemDTO);
+//
+//        return "funding/funding-item";}
     @GetMapping("funding-item")
-    public String fundingItemForm(Model model) {return "funding/funding-item.html";}
+    public String fundingItemForm() {
+        return "funding/funding-item";
+    }
 
 
     @PostMapping("funding-item")
-    public String fundingItem(FundingItemDTO fundingItemDTO) {
-
+    @ResponseBody
+    public void fundingItem(String title, String content, String itemType) {
+        FundingItemDTO fundingItemDTO = new FundingItemDTO();
+        fundingItemDTO.setItemTitle(title);
+        fundingItemDTO.setItemContent(content);
+        fundingItemDTO.setItemType(itemType);
         fundingItemService.ItemSave(fundingItemDTO);
-        return "funding/funding-item";}
+     }
 
 
     @GetMapping("funding-initial-info")
