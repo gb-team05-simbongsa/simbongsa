@@ -38,7 +38,6 @@ public class SupportController {
     private final MemberRepository memberRepository;
     private final SupportRepository supportRepository;
     private final SupportRequestRepository supportRequestRepository;
-    private
 
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
@@ -120,10 +119,10 @@ public class SupportController {
     public RedirectView updateGongyang(HttpSession httpSession, Long memberId,
                                        Long supportRequestId, int supportAmount, SupportDTO supportDTO, MemberDTO memberDTO){
         int minus =  memberRepository.findById(memberId).get().getMemberRice() - supportAmount;
-        int plus = supportRequestRepository.findById(supportRequestId).get().getSupports().get().getSupportPrice() + supportAmount;
+//        int plus = supportRequestRepository.findById(supportRequestId).get().getSupports().get().getSupportPrice() + supportAmount;
         // SupportDTO 객체를 생성하여 요청 데이터를 설정합니다.
         supportDTO.getSupportRequestDTO().setId(supportRequestId);
-        supportDTO.setSupportPrice(plus);
+//        supportDTO.setSupportPrice(plus);
 
 
         // SupportService의 메서드를 호출하여 게시물의 후원 금액을 업데이트합니다.
