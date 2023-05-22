@@ -26,7 +26,7 @@
                                     <p class="user-name" th:text="${reviewDTO.memberDTO.memberName}">케토루</p>
                                 </div>
                                 <div class="user-see">
-                                    <span th:text="${reviewDTO.createdDate}">5시간 전</span>
+                                    <span th:text="${#temporals.format(reviewDTO.createdDate, 'yyyy.MM.dd HH:mm')}">5시간 전</span>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
                                     <span th:text="댓글수 + ${reviewDTO.replyCount}">댓글수 25</span>
                                 </div>
@@ -117,7 +117,7 @@
                                     <p class="comment-contant"></p>
                                     좋은 활동 후기보고 갑니다.
                                     <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
+                                    <span class="comment-day" th:text="${#temporals.format(reviewDTO.createdDate, 'yyyy.MM.dd HH:mm')}">1일 전</span>
                                 </div>
                             </li>
                             <!-- 다른 사람들 댓글 x버튼 없음 -->

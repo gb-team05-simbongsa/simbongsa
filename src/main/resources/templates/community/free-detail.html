@@ -25,9 +25,9 @@
                                     <p class="user-name" th:text="${freeBoardDTO.memberDTO.memberName}">케토루</p>
                                 </div>
                                 <div class="user-see">
-                                    <span th:text="${freeBoardDTO.createdDate}">5시간 전</span>
+                                    <span th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">5시간 전</span>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                    <span th:text="댓글수 + ${freeBoardDTO.replyCount}">댓글수 25</span>
+                                    <span th:text="댓글수 + ${replyCount}">댓글수 25</span>
                                 </div>
                             </div>
                         </div>
@@ -75,11 +75,11 @@
                                         </span>
                                     </div>
                                 </div>
-                                <textarea class="comment-box-span" placeholder="댓글을 작성해 주세요..."></textarea>
+                                <textarea class="comment-box-span" name="content" placeholder="댓글을 작성해 주세요..."></textarea>
                             </div>
                             <div class="singUp-btn">
                                 <button class="singUp1">취소</button>
-                                <button class="singUp" disabled>등록</button>
+                                <button class="singUp" type="submit">등록</button>
                             </div>
                         </div>
                         </th:block>
@@ -115,7 +115,7 @@
                                     <p class="comment-contant"></p>
                                     좋은 활동 후기보고 갑니다.
                                     <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
+                                    <span class="comment-day" th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">1일 전</span>
                                 </div>
                             </li>
                             <!-- 다른 사람들 댓글 x버튼 없음 -->
@@ -244,7 +244,7 @@
                         <div style="display: flex;">
                             <button class="footer-btn">
                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-svg"><path clip-rule="evenodd" d="M8.144 13.563v2l2.543-2h2.396a2.74 2.74 0 0 0 2.741-2.74V7.073a2.74 2.74 0 0 0-2.74-2.74h-6.01a2.74 2.74 0 0 0-2.74 2.74v4.012a2.477 2.477 0 0 0 2.477 2.477h1.333Zm-.104 3.778a.815.815 0 0 1-1.23-.702v-1.743A3.81 3.81 0 0 1 3 11.086V7.074A4.074 4.074 0 0 1 7.074 3h6.01a4.074 4.074 0 0 1 4.073 4.074v3.748a4.074 4.074 0 0 1-4.074 4.074h-1.935L8.04 17.341Z"></path><path d="M8.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM10.667 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM13.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Z"></path></svg>
-                                <span style="margin-left: 4px;">6</span>
+                                <span style="margin-left: 4px;" th:text="${replyCount}">6</span>
                             </button>
                         </div>
                     </div>
@@ -257,31 +257,48 @@
 
      <!-- 댓글 삭제 모달창 -->
      <div>
-         <div class="modal">
-            <h4 class="modal-title">댓글 삭제</h4>
-            <div class="modal-content">댓글을 삭제하시겠습니까?</div>
-            <div class="modal-choce">
-                <div class="choce1">
-                    <button class="choce1-btn">취소</button>
-                </div>
-                <div class="choce2">
-                    <button class="choce2-btn">삭제</button>
-                </div>
-            </div>
-         </div>
-         <div class="modal-back"></div>
+         <th:block th:if="${not #strings.isEmpty(userDetail)}">
+             <th:block th:if="${userDetail.id == freeBoardDTO.memberDTO.id}">
+                 <div class="modal">
+                    <h4 class="modal-title">댓글 삭제</h4>
+                    <div class="modal-content">댓글을 삭제하시겠습니까?</div>
+                    <div class="modal-choce">
+                        <div class="choce1">
+                            <button class="choce1-btn">취소</button>
+                        </div>
+                        <div class="choce2">
+                            <form action="" method="post">
+                                <button type="submit" class="choce2-btn" fill="true">삭제</button>
+                            </form>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="modal-back"></div>
+             </th:block>
+         </th:block>
      </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
     let userDetail = [[${userDetail}]];
-    let memberId;
+    let memberId = null;
     if(userDetail){
         memberId = userDetail.id;
     }
     const freeBoardDTO = [[${freeBoardDTO}]]
-    const boardId = freeBoardDTO.id;
+    let boardId = freeBoardDTO.id;
     const fileDTOS = [[${freeBoardDTO.fileDTOS}]];
+
+    /* 날짜 변환 (년, 월, 일) */
+    function changeDateToString(e){
+        let month = "";
+        date = new Date(e.createdDate);
+        month = date.getMonth() + 1;
+        if (month < 10){
+            month = "0" + month;
+        }
+        return date.getFullYear() + "." + month + "." + date.getDate();
+    }
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/community/free-detail.js"></script>

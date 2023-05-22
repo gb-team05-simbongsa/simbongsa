@@ -9,11 +9,11 @@ import org.springframework.data.domain.Slice;
 public interface FreeBoardReplyQueryDsl {
 
     // 전체 조회 ( 페이징 )
-    public Slice<FreeBoardReply> findAllByFreeBoardReplyWithPaging(Long freeBoardId, Pageable pageable);
+    public Slice<FreeBoardReply> findAllByFreeBoardReplyWithPaging(Long boardId, Pageable pageable);
 
     // 댓글 갯수
-    public Long getReplyCount_QueryDsl(Long freeBoardId);
+    public Long getReplyCount_QueryDsl(Long boardId);
 
     // 댓글 삭제
-    public void deleteByFreeBoardId(Long freeBoardId);
+    public void deleteByFreeBoardId(Long boardId);
 }

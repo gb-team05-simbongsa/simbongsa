@@ -25,7 +25,13 @@
             <form name="form" method="post">
                 <label id="photo-picker">
                     <div class="photo" id="photo">
-                        <input id="file_input" type="file" multiple style="display: none;">
+                        <input
+                                id="file_input"
+                                type="file"
+                                style="display: none"
+                                name="imgFile"
+                                accept="image/*"
+                        />
                         <div class="photo-container">
                             <div class="photo-img"></div>
                         </div>
@@ -37,7 +43,14 @@
                         <div class="title">
                             <div class="title-container">
                                 <label class="title-label">
-                                    <input name="boardTitle" type="text" placeholder="제목을 입력해주세요." class="title-input">
+                                    <input
+                                            name="boardTitle"
+                                            type="text"
+                                            placeholder="제목을 입력해주세요."
+                                            class="title-input"
+                                            name="boardTitle"
+                                            value=""
+                                    />
                                 </label>
                             </div>
                         </div>

@@ -18,12 +18,12 @@ public class FreeBoardReplyQueryDslImpl implements FreeBoardReplyQueryDsl {
 
 
     @Override
-    public Slice<FreeBoardReply> findAllByFreeBoardReplyWithPaging(Long freeBoardId, Pageable pageable){
+    public Slice<FreeBoardReply> findAllByFreeBoardReplyWithPaging(Long boardId, Pageable pageable){
         List<FreeBoardReply> foundReply = query.select(freeBoardReply)
                 .from(freeBoardReply)
                 .leftJoin(freeBoardReply.member, member)
                 .fetchJoin()
-                .where(freeBoardReply.freeBoard.id.eq(freeBoardId))
+                .where(freeBoardReply.freeBoard.id.eq(boardId))
                 .orderBy(freeBoardReply.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
@@ -39,17 +39,17 @@ public class FreeBoardReplyQueryDslImpl implements FreeBoardReplyQueryDsl {
     }
 
     @Override
-    public Long getReplyCount_QueryDsl(Long freeBoardId){
+    public Long getReplyCount_QueryDsl(Long boardId){
         return query.select(freeBoardReply.count())
                 .from(freeBoardReply)
-                .where(freeBoardReply.freeBoard.id.eq(freeBoardId))
+                .where(freeBoardReply.freeBoard.id.eq(boardId))
                 .fetchOne();
     }
 
     @Override
-    public void deleteByFreeBoardId(Long freeBoardId){
+    public void deleteByFreeBoardId(Long boardId){
         query.delete(freeBoardReply)
-                .where(freeBoardReply.freeBoard.id.eq(freeBoardId))
+                .where(freeBoardReply.freeBoard.id.eq(boardId))
                 .execute();
     }
 }

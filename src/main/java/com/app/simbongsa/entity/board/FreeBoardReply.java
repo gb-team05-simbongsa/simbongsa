@@ -17,14 +17,25 @@ public class FreeBoardReply extends Reply {
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FREEBOARD_ID")
     private FreeBoard freeBoard;
 
 
-
-    // 단위 테스트용 생성자
-    public FreeBoardReply(String replyContent, Member member, FreeBoard freeBoard) {
+    public FreeBoardReply(String replyContent, FreeBoard freeBoard, Member member) {
         super(replyContent);
+        this.freeBoard = freeBoard;
         this.member = member;
+    }
+
+    @Builder
+    public FreeBoardReply(Long id, String replyContent, FreeBoard freeBoard, Member member){
+        super(id, replyContent);
+        this.freeBoard = freeBoard;
+        this.member = member;
+    }
+
+
+    public void setFreeBoard(FreeBoard freeBoard) {
         this.freeBoard = freeBoard;
     }
 
@@ -33,10 +44,4 @@ public class FreeBoardReply extends Reply {
     }
 
 
-    @Builder
-    public FreeBoardReply(Long id, String replyContent, FreeBoard freeBoard, Member member) {
-        super(id, replyContent);
-        this.freeBoard = freeBoard;
-        this.member = member;
-    }
 }

@@ -75,19 +75,19 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     /*댓글 저장*/
-    @Override
-    public void registerReply(ReviewReplyDTO reviewReplyDTO) {
-        memberRepository.findById(reviewReplyDTO.getMemberId()).ifPresent(
+    @Override @Transactional
+    public void registerReply(ReplyRequestDTO replyRequestDTO) {
+        memberRepository.findById(replyRequestDTO.getMemberId()).ifPresent(
                 member ->
-                        reviewRepository.findById(reviewReplyDTO.getBoardId()).ifPresent(
+                        reviewRepository.findById(replyRequestDTO.getBoardId()).ifPresent(
                                 review -> {
                                     ReviewReply reviewReply = ReviewReply.builder()
                                             .review(review)
                                             .member(member)
-                                            .replyContent(reviewReplyDTO.getReplyContent())
+                                            .replyContent(replyRequestDTO.getReplyContent())
                                             .build();
                                     reviewReplyRepository.save(reviewReply);
-                                    review.setReviewReplyCount(getReplyCount(reviewReplyDTO.getBoardId()));
+                                    review.setReviewReplyCount(getReplyCount(replyRequestDTO.getBoardId()));
                                     reviewRepository.save(review);
                                 }
                         )
