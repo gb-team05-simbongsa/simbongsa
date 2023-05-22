@@ -270,13 +270,19 @@ public class MemberServiceImpl implements MemberService {
         log.info(memberEmail + "===================================");
        memberRepository.updatePassword(memberEmail, memberPassword);
     }
-  @Transactional(rollbackFor = Exception.class)
+
+    @Override
+    public void updateMemberRice(MemberDTO memberDTO) {
+        memberRepository.updateMemberCash(toMemberEntity(memberDTO));
+    }
+
+    @Transactional(rollbackFor = Exception.class)
     public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword){
         memberRepository.updatePassword(memberEmail, memberPassword);
         memberRepository.updateRandomKey(memberEmail, null);
-       @Override
-    public void updateMemberRice(MemberDTO memberDTO) {
-        memberRepository.updateMemberCash(toMemberEntity(memberDTO));
+
+
+
 
 
     }
