@@ -66,6 +66,7 @@ public interface VolunteerWorkActivityService {
                 .build();
     }
 
+
     default FileDTO toFileDTO(VolunteerWorkFile volunteerWorkFile) {
         return FileDTO.builder()
                 .fileName(volunteerWorkFile.getFileName())
@@ -103,7 +104,6 @@ public interface VolunteerWorkActivityService {
     }
     default VolunteerWork toVolunteerWorkEntity(VolunteerWorkDTO volunteerWorkDTO){
         VolunteerWork.VolunteerWorkBuilder builder = VolunteerWork.builder()
-                .volunteerWorkCategory(volunteerWorkDTO.getVolunteerWorkCategory())
                 .volunteerWorkEndDate(volunteerWorkDTO.getVolunteerWorkEndDate())
                 .volunteerWorkJoinEndDate(volunteerWorkDTO.getVolunteerWorkJoinEndDate())
                 .volunteerWorkJoinStartDate(volunteerWorkDTO.getVolunteerWorkJoinStartDate())
@@ -117,6 +117,9 @@ public interface VolunteerWorkActivityService {
 
         if (volunteerWorkDTO.getId() != null) {
             builder.id(volunteerWorkDTO.getId());
+        }
+        if (volunteerWorkDTO.getVolunteerWorkCategory() != null) {
+            builder.volunteerWorkCategory(volunteerWorkDTO.getVolunteerWorkCategory());
         }
 
         return builder.build();

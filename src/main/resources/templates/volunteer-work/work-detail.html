@@ -122,12 +122,12 @@
 
 
 
-                         <div class="company-info-map">
-                             [수요처 지도]
-                             <!-- <a href="javascript:;" id="skipBtn" style="float: right;">지도 건너뛰기</a> -->
-                             <div>
-                                 <img src="/image/map.png" alt="kakao">
-                             </div>
+<!--                         <div class="company-info-map">-->
+<!--                             [수요처 지도]-->
+<!--                             &lt;!&ndash; <a href="javascript:;" id="skipBtn" style="float: right;">지도 건너뛰기</a> &ndash;&gt;-->
+<!--                             <div>-->
+<!--                                 <img src="/image/map.png" alt="kakao">-->
+<!--                             </div>-->
 
 
                              <!-- <div id="map" style="position: relative; overflow: hidden; background: url(&quot;https://t1.daumcdn.net/mapjsapi/images/bg_tile.png&quot;);">
@@ -375,7 +375,7 @@
                          } */
                      </script> -->
 
-                         </div>
+<!--                         </div>-->
 
 
                          <div class="company-data">
@@ -435,8 +435,8 @@
              <div class="apply-container">
                  <div class="apply-layer">
                      <p class="apply-title">자원봉사자참여신청</p>
-                     <form name="goForm"  th:action="/volunteerWork/work-detail">
-                         <!-- 로그인 정보 DB로 숨겨서 들어감 -->
+                     <form name="goForm" th:action="@{/volunteer-work/work-detail-modal/{id}(id=${volunteerWorkDetail.id})}">
+                     <!-- 로그인 정보 DB로 숨겨서 들어감 -->
                          <!-- <input type="hidden" id="seq" name="seq" value="">
                          <input type="hidden" id="id" name="id" value="">
                          <input type="hidden" id="password" name="password" value="">
@@ -454,16 +454,11 @@
                              <tr>
                                  <th scope="row">* 이름</th>
                                  <td>
-                                     <th:block th:if="${memberInfo.memberName == null}">
-                                     <input type="text" name="memberName"  value="" readonly="readonly" title="이름" class="apply-text">
-                                     </th:block>
-                                     <th:block th:if="${memberInfo.memberName}">
                                      <input type="text" name="memberName" th:value="${memberInfo.memberName}"  value="" readonly="readonly" title="이름" class="apply-text">
-                                     </th:block>
                                  </td>
                              </tr>
-                             <tr>
-                                 <th scope="row">* 연락처</th>
+<!--                             <tr>-->
+<!--                                 <th scope="row">* 연락처</th>-->
 <!--                                 <td>-->
 <!--                                     <select name="" id="" title="핸드폰번호 앞자리" class="apply-select">-->
 <!--                                         <option value="">선택</option>-->
@@ -479,23 +474,18 @@
 <!--                                     <span class="">-</span>-->
 <!--                                     <input type="text" id="" name="" value="" title="핸드폰번호 뒷자리" maxlength="4" class="apply-text apply-width">-->
 <!--                                 </td>-->
-                             </tr>
+<!--                             </tr>-->
                              <tr>
                                  <th scope="row">* 이메일</th>
 
                                  <td>
-                                     <th:block th:if="${memberInfo.memberEmail == null}">
-                                         <input type="text" name="memberEmail" value="" title="이메일" class="apply-text">
-                                     </th:block>
-                                     <th:block th:if="${memberInfo.memberEmail}">
-                                         <input type="text" name="memberEmail" title="이메일" class="apply-text" th:value="${memberInfo.memberEmail}">
-                                     </th:block>
+                                     <input type="text" name="memberEmail" title="이메일" class="apply-text" th:value="${memberInfo.memberEmail}">
                                  </td>
                              </tr>
                              <tr>
                                  <th scope="row">* 봉사 날짜</th>
                                  <td>
-                                     <input type="date" name="volunteerWorkActivityDate" value="" title="날짜" class="apply-text">
+                                     <input type="date"  name="volunteerWorkActivityDate" value="" title="날짜" class="apply-text">
                                  </td>
                              </tr>
                              </tbody>
@@ -505,7 +495,7 @@
 
                  <!-- 신청하기 버튼 -->
                  <div class="apply-btn-layout">
-                     <button type="button" class="apply-btn" onclick="">신청하기</button>
+                     <button type="button" class="apply-btn" onclick="clickButton()">신청하기</button>
                  </div>
 
                  <button type="button" class="apply-close">X</button>
@@ -523,6 +513,11 @@
 <script src="/js/main/header.js"></script>
 <script th:inline="javascript"></script>
 <script src="/js/volunteer-work/work-apply-modal.js"></script>
+<script >
+    function clickButton(){
+        document.goForm.submit();
+    };
+</script>
 
 
             
