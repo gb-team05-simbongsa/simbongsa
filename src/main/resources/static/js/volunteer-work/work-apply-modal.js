@@ -16,8 +16,9 @@ $(document).ready(function(){
         $layout.hide();
     })
 // 전송 
-// $submit.click(function(){
-//     document.$submit();
-// });
+$('.apply-btn').click(function(){
 
 });
+
+});
+

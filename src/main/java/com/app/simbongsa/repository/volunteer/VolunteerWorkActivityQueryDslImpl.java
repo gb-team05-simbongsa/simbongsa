@@ -2,6 +2,7 @@ package com.app.simbongsa.repository.volunteer;
 
 import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.QVolunteerWorkActivity;
+import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.provider.UserDetail;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -19,6 +20,7 @@ import static com.app.simbongsa.entity.volunteer.QVolunteerWorkActivity.voluntee
 @RequiredArgsConstructor
 public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQueryDsl {
     private final JPAQueryFactory query;
+    private final VolunteerWorkRepository volunteerWorkRepository;
 
 //    신청 명단 조회
     @Override
