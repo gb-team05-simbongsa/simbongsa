@@ -11,8 +11,11 @@ import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -25,6 +28,7 @@ public class MypageRestController {
     private final InquiryService inquiryService;
     private final RicePaymentService ricePaymentService;
     private final MemberService memberService;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("inquiry-details")
     public InquiryDTO inquiryDetail(Long id) {
@@ -34,6 +38,11 @@ public class MypageRestController {
     @PostMapping("inquiry-delete")
     public void deleteByInquiry(Long id) {
         inquiryService.deleteByInquiryId(id);
+    }
+
+    @PostMapping("check-member")
+    public boolean checkMember(String memberEmail, String memberPassword) {
+        return passwordEncoder.matches(memberPassword, memberService.getMemberByEmail(memberEmail).getMemberPassword());
     }
 
 //    @PostMapping("rices-charge")
