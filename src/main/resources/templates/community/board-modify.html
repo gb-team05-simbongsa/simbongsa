@@ -26,9 +26,20 @@
                 <label id="photo-picker">
                     <div class="photo" id="photo">
                         <input id="file_input" type="file" multiple style="display: none;">
-                        <div class="photo-container">
-                            <div class="photo-img"></div>
-                        </div>
+                        <th:block th:if="${myFreeBoard != null}">
+                                    <th:block th:if="${myFreeBoard.fileDTOS == null or myFreeBoard.fileDTOS == undefined}">
+                                        <img src="https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&amp;fit=crop&amp;h=288&amp;lossless=true&amp;w=384&amp;s=ccaf0c29a4a9c34a703c08e3ddef88d1">
+                                    </th:block>
+                                    <th:block th:else>
+                                        <th:block th:each="fileDTO : ${myFreeBoard.fileDTOS}">
+                                            <div class="photo-container">
+                                        <div class="photo-img">
+                                            <img th:src="@{/file/display(fileName=${fileDTO.filePath + '/' + fileDTO.fileUuid + '_' + fileDTO.fileName})}">
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </th:block>
+                        </th:block>
                     </div>
                 </label>
                 <label id="photo-picker2"></label>

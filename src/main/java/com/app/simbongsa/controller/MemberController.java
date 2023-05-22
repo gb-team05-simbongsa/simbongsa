@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -59,6 +60,17 @@ public class MemberController {
         return "join-login/find-password";
     }
 
+    /* 비밀번호 변경 페이지 */
+    @GetMapping("change-password-email")
+    public String changePassword(String memberEmail, String memberPassword, String randomKey, Model model) {
+        model.addAttribute("memberEmail", memberEmail);
+        model.addAttribute("randomKey", randomKey);
+        model.addAttribute("randomKey", memberPassword);
+        log.info("url에서 받아온 memberEmail: " + memberEmail);
+        log.info("url에서 받아온 randomKey: " + randomKey);
+        return "join-login/change-password";
+    }
+
     /* 비밀번호 재설정 페이지이동 */
 //    @GetMapping("change-password")
 //    public String changePassword(@RequestParam("memberEmail") String memberEmail, String randomKey) {
@@ -67,15 +79,12 @@ public class MemberController {
 
     /* 비밀번호 변경하기 */
     @GetMapping("change-password")
-//    @ResponseBody
-    public RedirectView changePasswordOK(@RequestParam("memberEmail") String memberEmail, String memberPassword, @RequestParam("randomKey") String randomKey){
-        log.info("url에서 받아온 memberEmail: " + memberEmail);
+    @ResponseBody
+    public RedirectView changePasswordOK(String memberEmail, String memberPassword, String randomKey){
         if(!memberService.getMemberByEmail(memberEmail).getRandomKey().equals(randomKey)) {
             return new RedirectView ("/member/login");
         }
-        memberService.updatePassword(memberEmail, memberPassword);
-        log.info("들어옴");
-        memberService.updateRandomKey(memberEmail, null);
+        memberService.updatePasswordAndResetRandomKey(memberEmail, memberPassword);
         return new RedirectView("/member/login");
     }
 
@@ -145,7 +154,7 @@ public class MemberController {
         MailDTO mailDTO = new MailDTO();
         mailDTO.setAddress(memberEmail);
         mailDTO.setTitle("새 비밀번호 설정 링크입니다.");
-        mailDTO.setMessage("링크: http://localhost:10000/member/change-password?memberEmail=" + memberEmail + "&randomKey=" + randomKey);
+        mailDTO.setMessage("링크: http://localhost:10000/member/change-password-email?memberEmail=" + memberEmail + "&randomKey=" + randomKey);
         memberService.sendMail(mailDTO);
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);

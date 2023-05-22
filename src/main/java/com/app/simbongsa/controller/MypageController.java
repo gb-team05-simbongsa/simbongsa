@@ -123,6 +123,15 @@ public class MypageController {
         return "mypage/my-review";
     }
 
+    /* 내 자유 게시글 상세보기 */
+    @GetMapping("my-free-board-detail/{boardId}")
+    public String getMyFreeBoardetail(@PathVariable("boardId") Long boardId, Model model){
+        FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(boardId);
+
+        model.addAttribute("freeBoardDTO", freeBoardDTO);
+        return "community/board-modify";
+    }
+
     @GetMapping("my-support-list")
     public String mySupportList(){
         return "mypage/my-support-list";

@@ -42,9 +42,6 @@ public interface FreeBoardQueryDsl {
     //    자유게시판 상세페이지 조회
     public Optional<FreeBoard> findByIdForDetail_QueryDsl(Long freeBoardId);
 
-    /* 마이페이지 작성한 자유게시물 상세 조회*/
-    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId);
-
     /* 내 자유게시물 수정 */
     
 }

@@ -10,8 +10,11 @@ myFreeBoards.forEach((myFreeBoard, i) => {
                         ${myFreeBoard.boardTitle}
                     </div>
                     <div>
-                        <span class="review-modify">수정</span>
+                        <a href="my-free-board-detail/${myFreeBoard.id}">
+                            <span class="review-modify">수정</span>
+                        </a>
                         <span class="review-delete">삭제</span>
+
                     </div>
                 </div>
             </div>

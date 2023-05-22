@@ -3,11 +3,8 @@ package com.app.simbongsa.service.board;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.board.ReviewReply;
-<<<<<<< HEAD
 import com.app.simbongsa.entity.file.FreeBoardFile;
-=======
 import com.app.simbongsa.entity.file.FundingFile;
->>>>>>> master
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -158,22 +155,6 @@ public interface ReviewService {
                 .registerDate(reviewReply.getCreatedDate())
                 .replyContent(reviewReply.getReplyContent())
                 .build();
-    }
-
-    default List<FileDTO> FileToDTO(List<ReviewFile> reivewFiles){
-        List<FileDTO> reviewFileList = new ArrayList<>();
-        reivewFiles.forEach(
-                freeBoardFile -> {
-                    FileDTO fileDTO = FileDTO.builder()
-                            .id(freeBoardFile.getId())
-                            .fileName(freeBoardFile.getFileName())
-                            .filePath(freeBoardFile.getFilePath())
-                            .fileUuid(freeBoardFile.getFileUuid())
-                            .build();
-                    reviewFileList.add(fileDTO);
-                }
-        );
-        return reviewFileList;
     }
 
 }

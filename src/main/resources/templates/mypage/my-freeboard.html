@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작성한 게시물</title>
+    <link rel="stylesheet" href="/css/font/font.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/mypage/mypage-header.css">
+    <link rel="stylesheet" href="/css/mypage/my-review.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/mypage/paging.css">
+</head>
+<body>
+    <div class="full-screen">
+
+        <!-- 헤더 임시 -->
+        <header th:insert="~{main/header.html :: mainHeader}"></header>
+
+        <!-- 마이페이지 헤더 -->
+        <div class="mypage-header-wrap">
+            <div class="mypage-header-container">
+                <div class="mypage-header">
+                    <div class="mypage-header-left">
+                        <div class="my-rank">
+                            <img src="https://i.namu.wiki/i/67tjhRLuCX7MYeLY5p94GgXYHP7v1dMQ5M0QP8emeuw3IvlZlQNZBgeKz5qj8P_3ll2AF97RWC_isDEnrT4kgeBMW1GU39jR-Wn92gD-XSt5J1HbKiRxpRt8ZRaq8dvGHUMTt_clauEc9TOx_JyIaQ.webp" alt="">
+                        </div>
+                        <div class="mypage-info">
+                            <div class="info-name">정현진</div>
+                            <div class="info-rice">
+                                <p>내 공양미 : 300석</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rice-charge-wrap">
+                        <button type="button" class="rice-charge">
+                            <div class="rice-charge-text">공양미 충전</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-menu-wrap">
+                <div class="header-menu">
+                    <div class="header-menu-inner">
+                    <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/support-request" class="header-menu-a">후원 요청 목록</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/my-review" class="header-menu-a-select">작성한 게시물</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/my-question" class="header-menu-a">내 문의사항</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/volunteer-work-list" class="header-menu-a">봉사활동 내역</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/my-support-list" class="header-menu-a">후원내역</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/my-funding-list" class="header-menu-a">펀딩내역</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/rice-list" class="header-menu-a">공양미 내역</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/exchange-request" class="header-menu-a">공양미 환전요청</a>
+                        </div>
+                    </span>
+                        <span class="header-menu-element">
+                        <div class="header-menu-div">
+                            <a href="/mypage/user-modify" class="header-menu-a">회원정보 수정</a>
+                        </div>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-wrap">
+            <div class="my-review-wrap">
+                <div class="my-board-header">
+                    <div class="my-board-header-container">
+                        <span class="my-board-header-title">자유</span>
+                        <a th:href="@{/mypage/my-review}">
+                        <span class="my-board-header-title-select">활동후기</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="my-review-count-wrap">
+                    총
+                    <em class="my-review-count">50</em>개의 게시물이 있습니다.
+                </div>
+                <div class="my-review-list">
+                    <div>
+                        <div class="review-header">
+                            <div class="review-title">
+                                <div class="review-title-text">
+                                    야생마
+                                </div>
+                                <div>
+                                    <span class="review-modify">수정</span>
+                                    <span class="review-delete">삭제</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-main">
+                            <div class="review-main-img-wrap">
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                달려보자 닥다가닥다가닥히하 경쾌하다 닥다가닥다가닥히하 태양을 향해 불이나게 달리 자우와우와우와우와
+                                <br>
+                                넘어져도 일어나라 고지를 향해 앞만 보고 달리 자우와우와우와우와 검은 눈동자 윤기나는 갈기 딴딴한 내 허벅지 예 으랴
+                            </div>
+                        </div>
+                        <div class="review-main-footer">
+                            <div class="review-write-date">
+                                <span>2023.04.19</span>
+                                <span>자유게시판</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div>
+                        <div class="review-header">
+                            <div class="review-title">
+                                <div class="review-title-text">
+                                    야생마
+                                </div>
+                                <div>
+                                    <span class="review-modify">수정</span>
+                                    <span class="review-delete">삭제</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-main">
+                            <div class="review-main-img-wrap">
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                달려보자 닥다가닥다가닥히하 경쾌하다 닥다가닥다가닥히하 태양을 향해 불이나게 달리 자우와우와우와우와
+                                <br>
+                                넘어져도 일어나라 고지를 향해 앞만 보고 달리 자우와우와우와우와 검은 눈동자 윤기나는 갈기 딴딴한 내 허벅지 예 으랴
+                            </div>
+                        </div>
+                        <div class="review-main-footer">
+                            <div class="review-write-date">
+                                <span>2023.04.19</span>
+                                <span>후기게시판</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="review-header">
+                            <div class="review-title">
+                                <div class="review-title-text">
+                                    야생마
+                                </div>
+                                <div>
+                                    <span class="review-modify">수정</span>
+                                    <span class="review-delete">삭제</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-main">
+                            <div class="review-main-img-wrap">
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                달려보자 닥다가닥다가닥히하 경쾌하다 닥다가닥다가닥히하 태양을 향해 불이나게 달리 자우와우와우와우와
+                                <br>
+                                넘어져도 일어나라 고지를 향해 앞만 보고 달리 자우와우와우와우와 검은 눈동자 윤기나는 갈기 딴딴한 내 허벅지 예 으랴
+                            </div>
+                        </div>
+                        <div class="review-main-footer">
+                            <div class="review-write-date">
+                                <span>2023.04.19</span>
+                                <span>자유게시판</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="review-header">
+                            <div class="review-title">
+                                <div class="review-title-text">
+                                    야생마
+                                </div>
+                                <div>
+                                    <span class="review-modify">수정</span>
+                                    <span class="review-delete">삭제</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-main">
+                            <div class="review-main-img-wrap">
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i.ytimg.com/vi/FaHAi8bMBjw/hqdefault.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="review-main-img">
+                                    <div class="review-img">
+                                        <img src="https://i1.sndcdn.com/artworks-dI8Aqh5Byx07sn1M-fOCEsw-t500x500.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                달려보자 닥다가닥다가닥히하 경쾌하다 닥다가닥다가닥히하 태양을 향해 불이나게 달리 자우와우와우와우와
+                                <br>
+                                넘어져도 일어나라 고지를 향해 앞만 보고 달리 자우와우와우와우와 검은 눈동자 윤기나는 갈기 딴딴한 내 허벅지 예 으랴
+                            </div>
+                        </div>
+                        <div class="review-main-footer">
+                            <div class="review-write-date">
+                                <span>2023.04.19</span>
+                                <span>후기게시판</span>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+            <div class="page-wrap">
+                <div>
+                    <div class="paging" style="text-align: center">
+                        <a th:if="${pageDTO.prev}" th:href="@{/mypage/my-review} + '?page=' + ${pageDTO.startPage - 1}" class="changePage" style="color: black"><code><</code></a>
+                        <th:block th:each="page:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                            <a th:href="@{/mypage/my-review} + '?page=' + ${page}" th:if="${pageDTO.pageNum != page}" class="changePage" style="color: black" th:text="${page}"></a>
+                            <code id="currentPage" th:if="${pageDTO.pageNum == page}" th:text="${page}">1</code>
+                        </th:block>
+                        <a th:if="${pageDTO.next}" th:href="@{/mypage/my-review} + '?page=' + ${pageDTO.endPage + 1}" class="changePage" style="color: black"><code>></code></a>
+                    </div>
+                    <form name="pageForm">
+                        <input type="hidden">
+                        <input type="hidden">
+                    </form>
+                </div>
+            </div>
+
+        <!--삭제모달-->
+        <div class="change-modal" id="modal" style="display: none;">
+            <div class="change-modal-root"></div>
+            <div class="change-modal-container">
+                <div class="change-modal-wrapper">
+                    <div>
+                        <div class="change-modal-title-row">
+                            <h4 class="change-modal-title-text">1:1 문의내역</h4>
+                            <!-- x버튼 -->
+                            <div class="modal-close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g>
+                                            <g>
+                                                <g>
+                                                    <path fill="#fff" fill-opacity="0" d="M0 0H32V32H0z" transform="translate(-884 -270) translate(500 240) translate(384 30)"></path>
+                                                    <g stroke="#999" stroke-linecap="round">
+                                                        <path d="M20 20L0 0M0 20L20 0" transform="translate(-884 -270) translate(500 240) translate(384 30) translate(6 6)"></path>
+                                                    </g>
+                                                    <g fill="#999">
+                                                        <path d="M.784.089l.07.057L10.5 9.793 20.146.146c.196-.195.512-.195.708 0 .173.174.192.443.057.638l-.057.07-9.647 9.646 9.647 9.646c.195.196.195.512 0 .708-.174.173-.443.192-.638.057l-.07-.057-9.646-9.647-9.646 9.647c-.196.195-.512.195-.708 0-.173-.174-.192-.443-.057-.638l.057-.07L9.793 10.5.146.854C-.049.658-.049.342.146.146.32-.027.59-.046.784.09z" transform="translate(-884 -270) translate(500 240) translate(384 30) translate(5.5 5.5)"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <form action="" class="change-modal-form-wrapper">
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">제목</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-title">
+                                        <input type="text" placeholder="제목을 입력해주세요." class="change-modal-form-title-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="change-modal-form-row">
+                                <span class="change-modal-form-label">내용</span>
+                                <div class="change-modal-form-field">
+                                    <div class="change-modal-form-field-container">
+                                        <textarea inputmode="text" class="change-modal-form-field-text"></textarea>
+                                        <span class="change-modal-form-field-content">
+                                            <span style="color: rgb(51, 51, 51);">0자</span>
+                                            <span style="color: rgb(153, 153, 153);"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="change-modal-actions-row">
+                            <button type="submit" class="change-modal-ok-btn">
+                                <span class="change-modal-btn">수정</span>
+                            </button>
+                            <button type="button" class="change-modal-delete-btn">
+                                <span class="change-modal-btn">취소</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="delete-modal-wrap">
+            <div class="modal-container">
+                <div class="modal">
+                    <div class="modal-content">정말로 삭제하시겠습니까?</div>
+                    <div class="modal-ok-div">
+                        <button type="button" class="modal-button modal-ok">확인</button>
+                        <button type="button" class="modal-button modal-cancel">취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 사진 모달 -->
+        <div class="modal-wrap">
+            <div class="modal">
+                <div class="modal-close">
+                    <svg class="PhotoModal__CloseButton-sc-1gv5j0l-3 bvQFDf" width="62" height="64" viewBox="0 0 62 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_dd_365_30583)"><circle cx="31" cy="29" r="26" fill="white"></circle></g><path fill-rule="evenodd" clip-rule="evenodd" d="M31.0549 27.1734L24.1816 20.333L22.3598 22.146L29.2332 28.9863L22.333 35.8534L24.1547 37.6664L31.0549 30.7993L37.8446 37.5564L39.6663 35.7434L32.8767 28.9863L39.6395 22.256L37.8178 20.443L31.0549 27.1734Z" fill="#1C1C1C"></path><defs><filter id="filter0_dd_365_30583" x="0" y="0" width="62" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="2.5"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_365_30583"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="1"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="effect1_dropShadow_365_30583" result="effect2_dropShadow_365_30583"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_365_30583" result="shape"></feBlend></filter></defs></svg>
+                </div>
+                <div class="modal-img">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- 푸터 임시 -->
+        <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let myFreeBoards = [[${myFreedBoards}]];
+</script>
+<script src="/js/mypage/my-review.js"></script>
+<script src="/js/mypage/mypage-header.js"></script>
+</html>
