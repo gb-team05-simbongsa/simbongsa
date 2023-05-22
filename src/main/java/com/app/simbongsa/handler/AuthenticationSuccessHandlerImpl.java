@@ -20,7 +20,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        if(((UserDetail)authentication.getPrincipal()).getMember().getMemberRole().equals(Role.ADMIN)){
+        if(((UserDetail)authentication.getPrincipal()).getMemberRole().equals(Role.ADMIN)){
             log.info("ADMIN_SUCCESS");
             response.sendRedirect(REDIRECT_URL_FOR_ADMIN);
         }else {

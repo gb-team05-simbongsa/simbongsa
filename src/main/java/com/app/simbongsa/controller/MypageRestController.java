@@ -22,9 +22,9 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 @Slf4j
 public class MypageRestController {
-    private InquiryService inquiryService;
-    private RicePaymentService ricePaymentService;
-    private MemberService memberService;
+    private final InquiryService inquiryService;
+    private final RicePaymentService ricePaymentService;
+    private final MemberService memberService;
 
     @PostMapping("inquiry-details")
     public InquiryDTO inquiryDetail(Long id) {
