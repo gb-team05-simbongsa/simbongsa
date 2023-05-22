@@ -4,8 +4,12 @@ import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.domain.SupportDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.repository.support.SupportRepository;
+import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/support/*")
@@ -30,6 +35,10 @@ public class SupportController {
     private final SupportService supportService;
     private final RicePaymentService ricePaymentService;
     private final MemberService memberService;
+    private final MemberRepository memberRepository;
+    private final SupportRepository supportRepository;
+    private final SupportRequestRepository supportRequestRepository;
+    private
 
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
@@ -60,14 +69,12 @@ public class SupportController {
         model.addAttribute("attendCount", attendCount);
 //        model.addAttribute("attendList", attendList.getContent());
 //        model.addAttribute("pageDTO", new PageDTO(attendList));
-        model.addAttribute("supportDetail", supportDetail);
+        model.addAttribute("supportRequestDTO", supportDetail);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("originalPrice", originalPrice);
 //        등록된 날짜.
         model.addAttribute("createDate", supportDetail.getCreatedDate().toString().substring(0,10));
         return "support/support-detail";
-
-
 
     }
 
@@ -108,5 +115,29 @@ public class SupportController {
         return new RedirectView("support-list");
     }
 
+    @GetMapping("update-gongyangmi")
+    @ResponseBody
+    public RedirectView updateGongyang(HttpSession httpSession, Long memberId,
+                                       Long supportRequestId, int supportAmount, SupportDTO supportDTO, MemberDTO memberDTO){
+        int minus =  memberRepository.findById(memberId).get().getMemberRice() - supportAmount;
+        int plus = supportRequestRepository.findById(supportRequestId).get().getSupports().get().getSupportPrice() + supportAmount;
+        // SupportDTO 객체를 생성하여 요청 데이터를 설정합니다.
+        supportDTO.getSupportRequestDTO().setId(supportRequestId);
+        supportDTO.setSupportPrice(plus);
+
+
+        // SupportService의 메서드를 호출하여 게시물의 후원 금액을 업데이트합니다.
+        supportService.updateSupportGongyangmi(supportDTO);
+
+        // MemberDTO 객체를 생성하여 요청 데이터를 설정합니다.
+        memberDTO.setId(memberId);
+        memberDTO.setMemberRice(minus);
+
+        // MemberService의 메서드를 호출하여 멤버의 공양미를 업데이트합니다.
+        memberService.updateMemberRice(memberDTO);
+
+        return new RedirectView("support-list");
+
+    }
 
 }

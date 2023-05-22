@@ -2,15 +2,14 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,5 +43,6 @@ public interface SupportRequestQueryDsl {
 
     public Optional<SupportRequest> findByIdSupportRequest_QueryDsl(Long supportRequestId);
     public SupportRequest getCurrentSequence_QueryDsl();
-    }
 
+
+}

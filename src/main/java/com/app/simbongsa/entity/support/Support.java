@@ -36,4 +36,5 @@ public class Support {
         this.member = member;
         this.supportRequest = supportRequest;
     }
+
 }
