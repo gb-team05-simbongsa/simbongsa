@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -104,8 +105,16 @@ public class MypageController {
         return new RedirectView("/mypage/rice-list");
     }
 
+    /* 내가 만든 펀딩 목록 */
     @GetMapping("my-funding-list")
-    public String myFundingList(){
+    public String myFundingList(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        page = page == null ? 0 : page - 1;
+        Page<FundingDTO> myFundings = fundingService.getMyFunding(page, memberDTO);
+        log.info( "myFundings 잘 나오나요" + myFundings.toString());
+
+        model.addAttribute("myFundings", myFundings.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myFundings));
         return "mypage/my-funding-list";
     }
 

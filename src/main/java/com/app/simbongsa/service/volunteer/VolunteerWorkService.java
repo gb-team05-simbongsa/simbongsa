@@ -8,6 +8,7 @@ import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
+import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -24,8 +25,6 @@ import java.util.Optional;
 public interface VolunteerWorkService {
     // 1. 메인페이지 - 봉사 활동 8개 TEST
     public List<VolunteerWorkDTO> getVolunteerList();
-    // 2. 봉사 목록 페이지 (검색, 무한스크롤)
-    public Slice<VolunteerWorkDTO> getAllScorollAndSearch(String keyword,Pageable pageable);
 
 //    현재 시퀀스 가져오기
     public VolunteerWork getCurrentSequence();
@@ -44,6 +43,12 @@ public interface VolunteerWorkService {
 
 //    봉사 수정
     public void updateVolunteerWork(VolunteerWorkDTO volunteerWorkDTO);
+
+//    ** 봉사 목록 지역 별 조회
+    public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page);
+//    ** 봉사 목록 카테고리별 조회
+    public Page<VolunteerWorkDTO> pagingVolunteerWorkCategory(VolunteerWorkCategoryType volunteerWorkCategoryType, Integer page);
+
 
     default VolunteerWorkDTO toVolunteerWorkDTO(VolunteerWork volunteerWork){
         VolunteerWorkDTO.VolunteerWorkDTOBuilder builder = VolunteerWorkDTO.builder()

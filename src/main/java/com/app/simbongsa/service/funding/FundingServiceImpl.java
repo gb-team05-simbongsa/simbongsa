@@ -2,6 +2,7 @@ package com.app.simbongsa.service.funding;
 
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
@@ -105,15 +106,25 @@ public class FundingServiceImpl implements FundingService {
 
     }
 
-    /*내가 만든 펀딩 목록(페이징처리)*/
+    /* 유저가 작성한 자유게시물 조회(페이징처리) */
     @Override
-    public Page<FundingDTO> getMyFunding(Pageable pageable, MemberDTO memberDTO) {
-        /*Long memberId = memberDTO.getId();
-        Page<Funding> Fundings = fundingRepository.findByMemberId_QueryDSL(pageable, memberId);
-        List<FreeBoardDTO> freeBoardDTOS = freeBoards.stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
-        return new PageImpl<>(freeBoardDTOS, freeBoards.getPageable(), freeBoards.getTotalElements());*/
-        return null;
+    public Page<FundingDTO> getMyFunding(Integer page, MemberDTO memberDTO) {
+        Long memberId = memberDTO.getId();
+        page = page == null ? 0 : page;
+        Page<Funding> myFundings = fundingRepository.findByMemberId_QueryDSL(PageRequest.of(page, 5), memberId);
+
+        List<FundingDTO> myFundingDTOS = myFundings.stream().map(funding -> {
+            FundingDTO fundingDTO = toFundingDTO(funding);
+            List<FundingFile> FundingFiles = funding.getFundingFile();
+            List<FileDTO> fileDTOs = FileToDTO(FundingFiles);
+            fundingDTO.setFileDTOs(fileDTOs);
+            return fundingDTO;
+        }).collect(Collectors.toList());
+
+        log.info("myFreeBoardDTOS serviceImpl: ===== " + myFundingDTOS);
+        return new PageImpl<>(myFundingDTOS,myFundings.getPageable(),myFundings.getTotalElements());
     }
+
 
     @Override
     public Page<FundingPaymentDTO> getFundingSupportByMemberId(Integer page, Long id) {
@@ -128,6 +139,8 @@ public class FundingServiceImpl implements FundingService {
         List<FreeBoardDTO> freeBoardDTOS = freeBoards.stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
         return new PageImpl<>(freeBoardDTOS, freeBoards.getPageable(), freeBoards.getTotalElements());
     }*/
+
+
 
     @Override
     public Page<FundingDTO> getFunding(Integer page, AdminFundingSearch adminFundingSearch) {
