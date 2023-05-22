@@ -2,24 +2,19 @@ package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
-import com.app.simbongsa.entity.file.QSupportRequestFile;
-import com.app.simbongsa.entity.member.QMember;
-import com.app.simbongsa.entity.support.QSupportRequest;
-import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
-import com.querydsl.core.Tuple;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static com.app.simbongsa.entity.file.QSupportRequestFile.supportRequestFile;
 import static com.app.simbongsa.entity.member.QMember.member;
@@ -238,6 +233,8 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     }
 
 
+
+
     //    대기를 승인으로 변경
     @Override
     public void updateWaitToAccessByIds(List<Long> ids, RequestType requestType) {
@@ -254,6 +251,9 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
                 .where(supportRequest.supportRequestStatus.eq(requestType))
                 .fetchOne();
     }
+    // 공양미 후원
+
+
 
 
 }

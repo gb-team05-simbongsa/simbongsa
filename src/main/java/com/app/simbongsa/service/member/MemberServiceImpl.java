@@ -270,4 +270,9 @@ public class MemberServiceImpl implements MemberService {
         log.info(memberEmail + "===================================");
        memberRepository.updatePassword(memberEmail, memberPassword);
     }
+
+    @Override
+    public void updateMemberRice(MemberDTO memberDTO) {
+        memberRepository.updateMemberCash(toMemberEntity(memberDTO));
+    }
 }

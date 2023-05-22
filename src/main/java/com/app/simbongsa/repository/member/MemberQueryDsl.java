@@ -51,4 +51,6 @@ public interface MemberQueryDsl {
     /* 랜덤키 값 변경 */
     public void updateRandomKey(String memberEmail, String randomKey);
 
+    public void updateMemberCash(Member memberModify);
+
 }
