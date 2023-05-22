@@ -2,6 +2,7 @@ package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.funding.Funding;
+import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.funding.FundingService;
@@ -35,12 +36,29 @@ public class MainController {
 
     @GetMapping("")
     public String main(Model model, @AuthenticationPrincipal UserDetail userDetail) {
-        if(userDetail != null) {
+/*        if(userDetail != null) {
             session.invalidate();
             session.setAttribute("member", userDetail);
         }
 
-        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");*/
+
+        Member member = null;
+
+        if(session.getAttribute("member")==null){
+            try {
+                member = memberService.findByMemberEmail(userDetail.getMemberEmail());
+            } catch (NullPointerException e) {
+               log.info("main-controller: " + e.getMessage());
+            }
+            if(member!=null){
+                MemberDTO memberDTO = memberService.toMemberDTO(member);
+                session.invalidate();
+                session.setAttribute("member", memberDTO);
+                log.info("member: " + memberDTO.toString());
+            }
+        }
+        /*log.info("member,session: " + session.getAttribute("member").toString());*/
 
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
         List<MemberDTO> memberRankList = memberService.getMemberRankingList();

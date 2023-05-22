@@ -9,6 +9,7 @@ import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
 import com.app.simbongsa.provider.UserDetail;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.repository.volunteer.VolunteerWorkActivityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 @Qualifier("volunteerWorkActivity") @Primary
 public class VolunteerWorkActivityServiceImpl implements VolunteerWorkActivityService {
     private final VolunteerWorkActivityRepository volunteerWorkActivityRepository;
+    private final MemberRepository memberRepository;
 
     @Override
     public Page<VolunteerWorkActivityDTO> getVolunteerWorkActivity(Long id, Integer page) {
@@ -41,4 +43,12 @@ public class VolunteerWorkActivityServiceImpl implements VolunteerWorkActivitySe
         List<VolunteerWorkActivityDTO> volunteerWorkActivityDTOS = myVolunteerWorkActivity.getContent().stream().map(this::toVolunteerWorkActivityDTO).collect(Collectors.toList());
         return new PageImpl<>(volunteerWorkActivityDTOS, myVolunteerWorkActivity.getPageable(),myVolunteerWorkActivity.getTotalElements());
     }
+
+    @Override
+    public void saveVolunteerWorkActivity(VolunteerWorkActivityDTO volunteerWorkActivityDTO) {
+        volunteerWorkActivityRepository.save(toVolunteerWorkActivityEntity(volunteerWorkActivityDTO));
+    }
+
+
+
 }

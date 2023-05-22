@@ -142,8 +142,9 @@
                                 </div>
                                 <ul class="result-ul">
                                     <li class="previewItem">만든 아이템이 없습니다</li>
-                                    <!-- <li class="previewItemStyel previewItemStyel">
-                                        <button type="button" value="7513af07-bd37-48b3-9cee-28f6c588d2a2" class="previewItemButton">
+
+                               <!--     <li class="item-list-li">-->
+                                        <!--<button type="button" value="7513af07-bd37-48b3-9cee-28f6c588d2a2" class="previewItemButton">
                                             <strong>이건 도대체 ....</strong>
                                             <span class="select-type">주관식</span> 옵션<span class="explain-count">(1)</span>
                                             <ul>
@@ -158,8 +159,8 @@
                                                     </path>
                                                 </svg>
                                             </div>
-                                        </button>
-                                    </li> -->
+                                        </button>-->
+                             <!--       </li>-->
                                     <!-- <li class="previewItemStyel">
                                         <button type="button" value="9fe96cb2-6fda-42c5-98f1-0a098a861df1" class="previewItemButton"><strong>이건 블락이야?</strong><span>객관식 옵션(2)</span>
                                             <ul>
@@ -226,7 +227,7 @@
                                             <div class="inputWrapper">
                                                 <div class="inputGuideWrapper">
                                                     <span class="inputCheckWrap inputCheckStyle">
-                                                        <input type="text" inputmode="text" placeholder="아이템 이름을 입력해주세요" name= "itemTitle" autocomplete="off" autocapitalize="off" class="innerInput" maxlength="50">
+                                                        <input id="itemTitle" type="text" inputmode="text" placeholder="아이템 이름을 입력해주세요" name= "itemTitle" autocomplete="off" autocapitalize="off" class="innerInput" maxlength="50">
                                                     </span>
                                                 </div>
                                                 <div class="noticeArea">
@@ -271,7 +272,7 @@
                                             </div>
                                             <div class="selectTableWrapper">
                                                 <div class="itemOpCard selectCardWrap">
-                                                    <input type="radio" name="itemType" class="checkInput" value="0">
+                                                    <input id="itemType" type="radio" name="itemType" class="checkInput" value="없음">
                                                     <div class="selectableInner">
                                                         <div class="selectCard">
                                                             <div class="checkBox"></div>
@@ -281,7 +282,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="itemOpCard selectCardWrap">
-                                                    <input type="radio" name="itemType" class="checkInput" value="1">
+                                                    <input type="radio" name="itemType" class="checkInput" value="주관식">
                                                     <div class="selectableInner">
                                                         <div class="selectCard">
                                                             <div class="checkBox"></div>
@@ -291,7 +292,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="itemOpCard selectCardWrap">
-                                                    <input type="radio" name="itemType" class="checkInput" value="2">
+                                                    <input type="radio" name="itemType" class="checkInput" value="객관식">
                                                     <div class="selectableInner">
                                                         <div class="selectCard">
                                                             <div class="checkBox"></div>
@@ -392,8 +393,8 @@
                                             </div>
                                         </section>
                                         <div class="buttonWrap">
-                                            <button class="lineButton resetButton buttonStyle" color="grayEditor200">초기화</button>
-                                            <button class="solidButton saveButton solidButton buttonStyle"  id="saveButton"  color="mainEditorP80" disabled>
+<!--                                            <button class="lineButton resetButton buttonStyle" color="grayEditor200">초기화</button>-->
+                                            <button class="solidButton saveButton solidButton buttonStyle" type="button" id="saveButton"  color="mainEditorP80" disabled>
                                                 <span>저장</span>
                                             </button>
                                         </div>
@@ -415,4 +416,11 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>˛
 <script src="/js/funding/funding-gift.js"></script>
+<script src="/js/funding/funding-item.js"></script>
+
+<script th:inline="javascript">
+    let fundingItemDTO = [[${fundingItemDTO}]];
+
+
+</script>
 </html>

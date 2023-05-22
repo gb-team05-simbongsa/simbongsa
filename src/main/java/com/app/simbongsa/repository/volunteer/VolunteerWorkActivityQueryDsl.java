@@ -15,4 +15,5 @@ public interface VolunteerWorkActivityQueryDsl {
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     public Page<VolunteerWorkActivity> findMyVolunteerById(Pageable pageable, @AuthenticationPrincipal UserDetail userDetail);
+
 }

@@ -212,7 +212,7 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Optional<SupportRequest> findByIdSupportRequest_QueryDsl(Long supportRequestId) {
         SupportRequest foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .leftJoin(supportRequest.supportRequestFiles, supportRequestFile)
+                .leftJoin(supportRequest.supports, support)
                 .fetchJoin()
                 .leftJoin(supportRequest.member, member)
                 .fetchJoin()

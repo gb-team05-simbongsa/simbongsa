@@ -72,82 +72,29 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     // 봉사 활동 목록 조회 (검색 + 페이징)
     @Override
     public Page<VolunteerWork> findAllPagingAndSearch(String keyword, Pageable pageable) {
-        BooleanExpression searchCondition = volunteerWork.volunteerWorkPlace.containsIgnoreCase(keyword);
+        BooleanExpression searchCondition = keyword == null ? null :volunteerWork.volunteerWorkPlace.like(keyword + "%") ;
         List<VolunteerWork> findAllVolunteer = query.select(volunteerWork)
-                .from(volunteerWork)
-                .where(searchCondition)
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
+                    .from(volunteerWork)
+                    .leftJoin(volunteerWork.volunteerWorkFile, volunteerWorkFile)
+                    .fetchJoin()
+                    .where(searchCondition)
+                    .orderBy(volunteerWork.id.desc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetch();
+
         Long count = query.select(volunteerWork.count())
                 .from(volunteerWork)
+                .where(searchCondition)
                 .fetchOne();
 
         return new PageImpl<>(findAllVolunteer, pageable, count);
     }
 
     // 봉사 활동 목록 조회(검색 + 무한스크롤)
-    @Override
-    public Slice<VolunteerWork> findAllScorollAndSearch(String keyword, Pageable pageable) {
-        BooleanBuilder searchCondition = new BooleanBuilder();
-
-        if (keyword != null && !keyword.isEmpty()) {
-            if (keyword.equals("서울특별시")) {
-                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("서울특별시"));
-            } else if (keyword.equals("경기도")) {
-                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("경기도"));
-            } else if (keyword.equals("충청북도")) {
-                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("충청북도"));
-            } else if (keyword.equals("충청남도")) {
-                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("충청남도"));
-            } else if (keyword.equals("경상남도")) {
-                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("경상남도"));
-            } else if (keyword.equals("경상북도")) {
-                searchCondition.and(volunteerWork.volunteerWorkPlace.eq("경상북도"));
-            }
-        }
 
 
-        List<VolunteerWork> findAllVolunteer = query.selectFrom(volunteerWork)
-                .leftJoin(volunteerWork.volunteerWorkFile, volunteerWorkFile)
-                .where(searchCondition)
-                .orderBy(volunteerWork.id.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize()).fetch();
-        boolean hasNext = findAllVolunteer.size() > pageable.getPageSize();
-        if (hasNext) {
-            findAllVolunteer.remove(pageable.getPageSize());
-        }
 
-        return new SliceImpl<>(findAllVolunteer, pageable, hasNext);
-    }
-
-    @Override
-    public Page<VolunteerWork> findPagingAndSearch(String placeKeyword, String agencyKeyword, Pageable pageable) {
-        List<BooleanExpression> searchConditions = new ArrayList<>();
-
-        if (placeKeyword != null && !placeKeyword.isEmpty()) {
-            searchConditions.add(volunteerWork.volunteerWorkPlace.containsIgnoreCase(placeKeyword));
-        }
-        if (agencyKeyword != null && !agencyKeyword.isEmpty()) {
-            searchConditions.add(volunteerWork.volunteerWorkRegisterAgency.containsIgnoreCase(agencyKeyword));
-        }
-
-        BooleanExpression finalCondition = searchConditions.stream().reduce(BooleanExpression::or).orElse(null);
-        List<VolunteerWork> findAllVolunteerWorkKeywords = query.select(volunteerWork)
-                .from(volunteerWork)
-                .where(finalCondition)
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-
-        Long count = query.select(volunteerWork.count())
-                .from(volunteerWork)
-                .where(finalCondition)
-                .fetchOne();
-
-        return new PageImpl<>(findAllVolunteerWorkKeywords, pageable, count);
-    }
     //    봉사활동 상세페이지 조회
     @Override
     public Optional<VolunteerWork> findById_QueryDSL(Long volunteerWorkId) {
@@ -169,6 +116,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
 
         Long count = query.select(volunteerWork.count())
                 .from(volunteerWork)
+                .where(volunteerWork.volunteerWorkCategory.eq(volunteerWorkCategoryType))
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWork, pageable, count);

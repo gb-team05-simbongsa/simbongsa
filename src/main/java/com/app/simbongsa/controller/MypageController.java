@@ -4,12 +4,15 @@ import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
+import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.service.board.FreeBoardService;
+import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
+import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.RicePaymentType;
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/mypage/*")
@@ -38,6 +43,8 @@ public class MypageController {
     private final MemberService memberService;
     private final RicePaymentService ricePaymentService;
     private final VolunteerWorkActivityService volunteerWorkActivityService;
+    private final SupportService supportService;
+    private final FundingService fundingService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -98,8 +105,16 @@ public class MypageController {
         return new RedirectView("/mypage/rice-list");
     }
 
+    /* 내가 만든 펀딩 목록 */
     @GetMapping("my-funding-list")
-    public String myFundingList(){
+    public String myFundingList(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        page = page == null ? 0 : page - 1;
+        Page<FundingDTO> myFundings = fundingService.getMyFunding(page, memberDTO);
+        log.info( "myFundings 잘 나오나요" + myFundings.toString());
+
+        model.addAttribute("myFundings", myFundings.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myFundings));
         return "mypage/my-funding-list";
     }
 
@@ -133,8 +148,31 @@ public class MypageController {
     }
 
     @GetMapping("my-support-list")
-    public String mySupportList(){
+    public String mySupportListSupport(Integer page, HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        page = page == null ? 0 : page - 1;
+
+        Page<SupportDTO> supports = supportService.getSupportById(page, memberDTO.getId());
+
+        model.addAttribute("supportDTOS", supports.getContent());
+        model.addAttribute("pageDTO", new PageDTO(supports));
+
         return "mypage/my-support-list";
+    }
+
+    @GetMapping("my-support-list/funding")
+    public String mySupportListFunding(Integer page, HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        page = page == null ? 0 : page - 1;
+
+        Page<FundingPaymentDTO> fundingPaymentDTOS = fundingService.getFundingSupportByMemberId(page, memberDTO.getId());
+
+        model.addAttribute("fundingPaymentDTOS", fundingPaymentDTOS.getContent());
+        model.addAttribute("pageDTO", new PageDTO(fundingPaymentDTOS));
+
+        return "mypage/my-support-list-funding";
     }
 
     @GetMapping("rice-charge")
@@ -181,7 +219,9 @@ public class MypageController {
     }
 
     @GetMapping("withdraw-login")
-    public String withdrawLogin(){
+    public String withdrawLogin(HttpSession session, Model model){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        model.addAttribute("memberEmail", memberDTO.getMemberEmail());
         return "mypage/withdraw-login";
     }
 
@@ -191,5 +231,13 @@ public class MypageController {
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 
         ricePaymentService.insertRicePayment(ricePaymentUsed, memberDTO);
+    }
+
+    @PostMapping("withdraw")
+    public RedirectView withdraw(HttpSession session) {
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+        memberService.updateStatusByIds(Arrays.asList(memberDTO.getId()));
+        return new RedirectView("/member/logout");
     }
 }

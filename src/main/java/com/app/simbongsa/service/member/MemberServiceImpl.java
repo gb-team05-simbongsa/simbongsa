@@ -297,9 +297,12 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.updatePassword(memberEmail, encodedPassword);
         memberRepository.updateRandomKey(memberEmail, null);
 
-
-
-
-
     }
+
+    @Override
+    public Member findByMemberEmail(String memberEmail) {
+        return (memberRepository.findByMemberEmail_QueryDSL(memberEmail));
+    }
+
+
 }

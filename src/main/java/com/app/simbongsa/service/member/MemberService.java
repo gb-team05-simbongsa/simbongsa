@@ -63,6 +63,9 @@ public interface MemberService extends UserDetailsService {
     /**/
     public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder);
 
+    /* 메인에서 쓰는 이메일찾기 */
+    public Member findByMemberEmail(String memberEmail);
+
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())
                 .memberName(memberDTO.getMemberName())

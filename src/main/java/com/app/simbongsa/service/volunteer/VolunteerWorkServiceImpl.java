@@ -11,7 +11,9 @@ import com.app.simbongsa.repository.volunteer.VolunteerWorkFileRepository;
 import com.app.simbongsa.repository.volunteer.VolunteerWorkRepository;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import com.app.simbongsa.type.FileRepresentationalType;
+import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.sun.tools.jconsole.JConsoleContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -62,14 +64,9 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         return volunteerWorkDTOS;
     }
 
-    // 봉사 목록페이지 검색, 무한스크롤
-    @Override
-    public Slice<VolunteerWorkDTO> getAllScorollAndSearch(String keyword, Pageable pageable) {
-        Slice<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllScorollAndSearch(keyword, pageable);
-        List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorks.getContent().stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
 
-        return new SliceImpl<>(volunteerWorkDTOS, pageable, volunteerWorks.hasNext());
-    }
+    // 봉사 목록페이지 검색, 무한스크롤
+
 
     @Override
     public VolunteerWork getCurrentSequence() {
@@ -114,6 +111,24 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         volunteerWorkRepository.updateVolunteerWork(toVolunteerWorkEntity(volunteerWorkDTO));
         volunteerWorkFileRepository.updateVolunteerWorkFile(toVolunteerWorkFileEntity(fileDTO));
     }
+
+    @Override
+    public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page) {
+        log.info(keyword + "==================");
+        log.info(page + "=======================");
+        Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllPagingAndSearch(keyword, PageRequest.of(page, 8));
+        List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorks.getContent().stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
+        return new PageImpl<>(volunteerWorkDTOS, volunteerWorks.getPageable(), volunteerWorks.getTotalElements());
+    }
+
+    @Override
+    public Page<VolunteerWorkDTO> pagingVolunteerWorkCategory(VolunteerWorkCategoryType volunteerWorkCategoryType, Integer page) {
+        Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllByCategory_QueryDSL(volunteerWorkCategoryType, PageRequest.of(page, 8));
+        List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorks.getContent().stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
+        return new PageImpl<>(volunteerWorkDTOS, volunteerWorks.getPageable(), volunteerWorks.getTotalElements());
+    }
+
+
 }
 
 

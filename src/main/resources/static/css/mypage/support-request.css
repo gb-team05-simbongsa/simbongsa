@@ -1,3 +1,36 @@
+.my-board-header{
+    /* border-bottom: 1px solid rgb(230, 230, 230); */
+    /* align-items: center; */
+    /* padding-left: 16px; */
+    padding-right: 16px;
+    flex-direction: column;
+    max-width: 500px;
+    min-width: 350px;
+    display: flex;
+    /* margin-left: auto; */
+    margin-right: auto;
+}
+.my-board-header-container{
+    gap: 16px;
+    display: flex;
+}
+.my-board-header-title{
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 34px;
+    color: #1d1d1e;
+    fill: #1d1d1e;
+}
+.my-board-header-title-select{
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 34px;
+    color: #b9b9bb;
+    fill: #b9b9bb;
+}
+
 .content-wrap {
     width: 1160px;
     padding: 0px 16px;

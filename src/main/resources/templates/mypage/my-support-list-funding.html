@@ -99,10 +99,10 @@
 
                     <div class="my-board-header">
                         <div class="my-board-header-container">
-                            <span class="my-board-header-title">후원</span>
-                            <a href="/mypage/my-support-list/funding">
-                                <span class="my-board-header-title-select">펀딩</span>
+                            <a href="/mypage/my-support-list">
+                                <span class="my-board-header-title-select">후원</span>
                             </a>
+                                <span class="my-board-header-title">펀딩</span>
                         </div>
                     </div>
 
@@ -149,7 +149,7 @@
                 <div class="page-wrap">
                     <ul class="page-ul">
                         <li class="page-arrow" th:if="${pageDTO.prev}">
-                            <a th:href="@{/mypage/my-support-list} + '?page=' + ${pageDTO.startPage - 1}">
+                            <a th:href="@{/mypage/my-support-list/funding} + '?page=' + ${pageDTO.startPage - 1}">
                                 <div class="arrow">
                                     <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M32.8912 45.3014L12 23.913L32.8912 2.52471C33.5866 1.8251 34.7804 1.8251 35.4777 2.52471C36.1741 3.22333 36.1741 4.42368 35.4777 5.22224L17.1731 23.913L35.4777 42.7018C36.1741 43.4024 36.1741 44.6018 35.4777 45.4013C35.0788 45.8011 34.6819 46 34.1845 46C33.7855 45.9011 33.2881 45.7002 32.8912 45.3014Z"></path></svg>
                                 </div>
@@ -161,11 +161,27 @@
                                 <a th:text="${page}">1</a>
                             </li>
                             <li th:if="${pageDTO.pageNum != page}" class="page-li">
-                                <a th:href="@{/mypage/my-support-list} + '?page=' + ${page}" th:text="${page}">2</a>
+                                <a th:href="@{/mypage/my-support-list/funding} + '?page=' + ${page}" th:text="${page}">2</a>
                             </li>
                         </th:block>
+
+<!--                        <li class="page-li-select">-->
+<!--                            <a href="">1</a>-->
+<!--                        </li>-->
+<!--                        <li class="page-li">-->
+<!--                            <a href="">2</a>-->
+<!--                        </li>-->
+<!--                        <li class="page-li">-->
+<!--                            <a href="">3</a>-->
+<!--                        </li>-->
+<!--                        <li class="page-li">-->
+<!--                            <a href="">4</a>-->
+<!--                        </li>-->
+<!--                        <li class="page-li">-->
+<!--                            <a href="">5</a>-->
+<!--                        </li>-->
                         <li class="page-arrow" th:if="${pageDTO.next}">
-                            <a th:href="@{/mypage/my-support-list} + '?page=' + ${pageDTO.endPage + 1}">
+                            <a th:href="@{/mypage/my-support-list/funding} + '?page=' + ${pageDTO.endPage + 1}">
                                 <div class="arrow">
                                     <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9071 46C13.4118 46 12.9164 45.8001 12.6192 45.4003C11.9257 44.7007 11.9257 43.5014 12.6192 42.7019L30.8493 24.0125L12.5201 5.22317C11.8266 4.52357 11.8266 3.32425 12.5201 2.5247C13.2136 1.8251 14.3034 1.8251 15.096 2.5247L36 24.0125L15.195 45.4003C14.7988 45.8001 14.3034 46 13.9071 46Z"></path></svg>
                                 </div>
@@ -186,10 +202,10 @@
     </div>
 </body>
 <script th:inline="javascript">
-    let supports = [[${supportDTOS}]];
+    let fundings = [[${fundingPaymentDTOS}]];
 </script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>
-<script src="/js/mypage/my-support-list.js"></script>
+<script src="/js/mypage/my-support-list-funding.js"></script>
 </html>
