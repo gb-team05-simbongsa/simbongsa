@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/support/*")
@@ -114,15 +116,21 @@ public class SupportController {
         return new RedirectView("support-list");
     }
 
-    @GetMapping("update-gongyangmi")
+    @PostMapping("update-gongyangmi")
     @ResponseBody
     public RedirectView updateGongyang(HttpSession httpSession, Long memberId,
                                        Long supportRequestId, int supportAmount, SupportDTO supportDTO, MemberDTO memberDTO){
         int minus =  memberRepository.findById(memberId).get().getMemberRice() - supportAmount;
-//        int plus = supportRequestRepository.findById(supportRequestId).get().getSupports().get().getSupportPrice() + supportAmount;
+        int plus = supportRequestRepository.findByIdSupportRequest_QueryDsl(supportRequestId)
+                .get()
+                .getSupports()
+                .stream()
+                .mapToInt(Support::getSupportPrice)
+                .sum() + supportAmount;
+
         // SupportDTO 객체를 생성하여 요청 데이터를 설정합니다.
-        supportDTO.getSupportRequestDTO().setId(supportRequestId);
-//        supportDTO.setSupportPrice(plus);
+//        supportDTO.getSupportRequestDTO().getId();
+        supportDTO.setSupportPrice(plus);
 
 
         // SupportService의 메서드를 호출하여 게시물의 후원 금액을 업데이트합니다.

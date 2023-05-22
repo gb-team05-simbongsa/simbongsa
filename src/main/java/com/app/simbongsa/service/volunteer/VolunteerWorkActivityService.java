@@ -3,6 +3,7 @@ package com.app.simbongsa.service.volunteer;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWorkActivity;
@@ -17,6 +18,9 @@ public interface VolunteerWorkActivityService {
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     public Page<VolunteerWorkActivityDTO> getMyVolunteerWork(Integer page, @AuthenticationPrincipal UserDetail userDetail);
+
+    /* 봉사활동 참가 모달*/
+    public void saveVolunteerWorkActivity(VolunteerWorkActivityDTO volunteerWorkActivityDTO);
 
     default VolunteerWorkActivityDTO toVolunteerWorkActivityDTO(VolunteerWorkActivity volunteerWorkActivity) {
         return VolunteerWorkActivityDTO.builder()
@@ -69,5 +73,52 @@ public interface VolunteerWorkActivityService {
                 .fileUuid(volunteerWorkFile.getFileUuid())
                 .fileRepresentationalType(volunteerWorkFile.getFileRepresentationalType())
                 .build();
+    }
+
+    default VolunteerWorkActivity toVolunteerWorkActivityEntity(VolunteerWorkActivityDTO volunteerWorkActivityDTO){
+        return VolunteerWorkActivity.builder()
+                .id(volunteerWorkActivityDTO.getId())
+                .volunteerWork(toVolunteerWorkEntity(volunteerWorkActivityDTO.getVolunteerWorkDTO()))
+                .volunteerWorkActivityDate(volunteerWorkActivityDTO.getVolunteerWorkActivityDate())
+                .member(toMemberEntity(volunteerWorkActivityDTO.getMemberDTO()))
+                .build();
+    }
+
+    default Member toMemberEntity(MemberDTO memberDTO) {
+        return Member.builder().id(memberDTO.getId())
+                .memberName(memberDTO.getMemberName())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberRice(memberDTO.getMemberRice())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
+                .memberStatus(memberDTO.getMemberStatus())
+                .build();
+    }
+    default VolunteerWork toVolunteerWorkEntity(VolunteerWorkDTO volunteerWorkDTO){
+        VolunteerWork.VolunteerWorkBuilder builder = VolunteerWork.builder()
+                .volunteerWorkCategory(volunteerWorkDTO.getVolunteerWorkCategory())
+                .volunteerWorkEndDate(volunteerWorkDTO.getVolunteerWorkEndDate())
+                .volunteerWorkJoinEndDate(volunteerWorkDTO.getVolunteerWorkJoinEndDate())
+                .volunteerWorkJoinStartDate(volunteerWorkDTO.getVolunteerWorkJoinStartDate())
+                .volunteerWorkPlace(volunteerWorkDTO.getVolunteerWorkPlace())
+                .volunteerWorkRecruitNumber(volunteerWorkDTO.getVolunteerWorkRecruitNumber())
+                .volunteerWorkRegisterAgency(volunteerWorkDTO.getVolunteerWorkRegisterAgency())
+                .volunteerWorkStartDate(volunteerWorkDTO.getVolunteerWorkStartDate())
+                .volunteerWorkTime(volunteerWorkDTO.getVolunteerWorkTime())
+                .volunteerWorkTitle(volunteerWorkDTO.getVolunteerWorkTitle())
+                .volunteerWorkContent(volunteerWorkDTO.getVolunteerWorkContent());
+
+        if (volunteerWorkDTO.getId() != null) {
+            builder.id(volunteerWorkDTO.getId());
+        }
+
+        return builder.build();
     }
 }

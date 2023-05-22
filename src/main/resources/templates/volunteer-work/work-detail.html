@@ -435,7 +435,7 @@
              <div class="apply-container">
                  <div class="apply-layer">
                      <p class="apply-title">자원봉사자참여신청</p>
-                     <form name=""   action="">
+                     <form name="goForm"  th:action="/volunteerWork/work-detail">
                          <!-- 로그인 정보 DB로 숨겨서 들어감 -->
                          <!-- <input type="hidden" id="seq" name="seq" value="">
                          <input type="hidden" id="id" name="id" value="">
@@ -454,37 +454,48 @@
                              <tr>
                                  <th scope="row">* 이름</th>
                                  <td>
-                                     <input type="text" name=""  value="" readonly="readonly" title="이름" class="apply-text">
+                                     <th:block th:if="${memberInfo.memberName == null}">
+                                     <input type="text" name="memberName"  value="" readonly="readonly" title="이름" class="apply-text">
+                                     </th:block>
+                                     <th:block th:if="${memberInfo.memberName}">
+                                     <input type="text" name="memberName" th:value="${memberInfo.memberName}"  value="" readonly="readonly" title="이름" class="apply-text">
+                                     </th:block>
                                  </td>
                              </tr>
                              <tr>
                                  <th scope="row">* 연락처</th>
-                                 <td>
-                                     <select name="" id="" title="핸드폰번호 앞자리" class="apply-select">
-                                         <option value="">선택</option>
-                                         <option value="010">010</option>
-                                         <option value="011">011</option>
-                                         <option value="016">016</option>
-                                         <option value="017">017</option>
-                                         <option value="018">018</option>
-                                         <option value="019">019</option>
-                                     </select>
-                                     <span class="">-</span>
-                                     <input type="text" id="" name="" value="" title="핸드폰번호 중간자리" maxlength="4" class="apply-text apply-width">
-                                     <span class="">-</span>
-                                     <input type="text" id="" name="" value="" title="핸드폰번호 뒷자리" maxlength="4" class="apply-text apply-width">
-                                 </td>
+<!--                                 <td>-->
+<!--                                     <select name="" id="" title="핸드폰번호 앞자리" class="apply-select">-->
+<!--                                         <option value="">선택</option>-->
+<!--                                         <option value="010">010</option>-->
+<!--                                         <option value="011">011</option>-->
+<!--                                         <option value="016">016</option>-->
+<!--                                         <option value="017">017</option>-->
+<!--                                         <option value="018">018</option>-->
+<!--                                         <option value="019">019</option>-->
+<!--                                     </select>-->
+<!--                                     <span class="">-</span>-->
+<!--                                     <input type="text" id="" name="" value="" title="핸드폰번호 중간자리" maxlength="4" class="apply-text apply-width">-->
+<!--                                     <span class="">-</span>-->
+<!--                                     <input type="text" id="" name="" value="" title="핸드폰번호 뒷자리" maxlength="4" class="apply-text apply-width">-->
+<!--                                 </td>-->
                              </tr>
                              <tr>
                                  <th scope="row">* 이메일</th>
+
                                  <td>
-                                     <input type="text" name="" id="" value="" title="이메일" class="apply-text">
+                                     <th:block th:if="${memberInfo.memberEmail == null}">
+                                         <input type="text" name="memberEmail" value="" title="이메일" class="apply-text">
+                                     </th:block>
+                                     <th:block th:if="${memberInfo.memberEmail}">
+                                         <input type="text" name="memberEmail" title="이메일" class="apply-text" th:value="${memberInfo.memberEmail}">
+                                     </th:block>
                                  </td>
                              </tr>
                              <tr>
                                  <th scope="row">* 봉사 날짜</th>
                                  <td>
-                                     <input type="date" name="" id="" value="" title="날짜" class="apply-text">
+                                     <input type="date" name="volunteerWorkActivityDate" value="" title="날짜" class="apply-text">
                                  </td>
                              </tr>
                              </tbody>

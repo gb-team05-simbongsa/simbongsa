@@ -165,6 +165,11 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne());
     }
 
+    @Override
+    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId) {
+        return Optional.empty();
+    }
+
     //    hasNext true인지 false인지 체크하는 메소드(마지막 페이지 체크)
     private Slice<FreeBoard> checkLastPage(Pageable pageable, List<FreeBoard> freeBoards) {
 
