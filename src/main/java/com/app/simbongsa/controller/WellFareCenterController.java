@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/wellFareCenter/*")
+@RequestMapping("/welfare/center")
 @RequiredArgsConstructor
 @Slf4j
 public class WellFareCenterController {
-    @GetMapping("welfare-center-search")
+    @GetMapping("")
     public String welfareCenterSearch() {
         return "welfare-center/welfare-center-search";
     }
