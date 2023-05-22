@@ -40,7 +40,7 @@ public interface FreeBoardQueryDsl {
     public Optional<FreeBoard> findByIdForDetail_QueryDsl(Long freeBoardId);
 
     /* 마이페이지 작성한 자유게시물 상세 조회*/
-    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId);
+//    public Optional<FreeBoard> findByIdForMyDetail(Long freeBoardId);
 
     /*마이페이지 내가 작성한 글 전체 조회*/
     public Page<FreeBoard> findAllByFreeMemberIdPaging_QueryDsl(Pageable pageable, Long id);

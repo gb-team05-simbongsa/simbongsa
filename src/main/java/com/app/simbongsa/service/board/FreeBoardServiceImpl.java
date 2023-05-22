@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -82,6 +83,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
                 }
         );
     }
+
 
 
     /*마이페이지 게시물 목록 조회*/

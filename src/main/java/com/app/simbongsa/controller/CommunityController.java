@@ -15,8 +15,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -63,13 +65,13 @@ public class CommunityController {
     public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
 
     @PostMapping("free-create")
-    public RedirectView freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, @AuthenticationPrincipal UserDetail userDetail){
-
-        Long memberId = userDetail.getId();
-        freeBoardService.register(freeBoardDTO, memberId);
+    public RedirectView freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, HttpSession session){
+//        MemberDTO member = (MemberDTO) session.getAttribute("member");
+//        Long memberId = member.getId();
+//        freeBoardService.register(freeBoardDTO, memberId);
+        freeBoardService.register(freeBoardDTO, 1L);
         return new RedirectView("community/free-create");
     }
-
 
     /*자유게시판 수정하기*/
     @GetMapping("free-board-modify/{boardId}")
