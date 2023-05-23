@@ -13,6 +13,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -190,7 +191,7 @@ public class FundingQueryDslImpl implements FundingQueryDsl {
 
 
     @Override
-    public Long updateFunding_QueryDsl(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
+    public Long updateFunding_QueryDsl(Long fundingId, int fundingTargetPrice, LocalDate fundingStartDate, LocalDate fundingEndDate) {
       return  query.update(funding)
                 .set(funding.fundingTargetPrice, fundingTargetPrice)
                 .set( funding.fundingStartDate, fundingStartDate)

@@ -7,9 +7,11 @@
     <title>후원 상세보기</title>
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/support/support-detail.css">
+    <link rel="stylesheet" href="/css/mypage/paging.css">
     <link rel="stylesheet" href="/css/support/support-rice-modal.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
 </head>
 <style>
     .error{
@@ -17,7 +19,7 @@
         font-weight: bold;
         font-style: normal;
         text-align: center;
-    }
+
 </style>
 <body class="full">
 <header th:insert="~{main/header.html :: mainHeader}"></header>
@@ -30,6 +32,7 @@
 
 <div id="wrap">
         <div id="container">
+            <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
             <div class="collect-wrap">
                 <div class="collect-content">
                     <h2 class="theme">
@@ -277,16 +280,16 @@
                                 <ul class="history-list">
 
 
-                                    <li class="history-item">
-                                        <div class="history-card">
-                                            <span class="history-card-date">2023.04.27 00:22</span>
-                                            <strong class="history-card-name">wish</strong>
-                                            <span class="history-amount">
-                                                <span class="number">1,800</span>
-                                                원 참여
-                                            </span>
-                                        </div>
-                                    </li>
+<!--                                    <li class="history-item">-->
+<!--                                        <div class="history-card">-->
+<!--                                            <span class="history-card-date">2023.04.27 00:22</span>-->
+<!--                                            <strong class="history-card-name">wish</strong>-->
+<!--                                            <span class="history-amount">-->
+<!--                                                <span class="number">1,800</span>-->
+<!--                                                원 참여-->
+<!--                                            </span>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
 
                                 </ul>
                                 <div>
@@ -397,7 +400,9 @@
     let memberDTO = [[${memberDTO}]];
     let supportRequestDTO = [[${supportRequestDTO}]];
 </script>
+<script src="/js/admin/admin-service.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/support/support-rice-modal.js"></script>
 <script src="/js/support/supportDetail.js"></script>
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

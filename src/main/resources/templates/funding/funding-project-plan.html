@@ -36,12 +36,12 @@
 </style>
 <body>
 <!-- funding-header -->
-<div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
-<div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
-<div id="view" class="view" th: th:fragment="projectPlan">
+<!--<div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>-->
+<!--<div th:insert="~{funding/funding-topContent.html :: topContent}"></div>-->
+<div id="view" class="view">
         <div class="project-wrap">
 
-            <div class="contents" size="277">
+            <div class="contents" size="277" >
                 <div class="planContents">
                     <div class="titleWraper">
                         <div class="selectionTitle">프로젝트 계획
@@ -54,7 +54,6 @@
                             </div>
                         </div>
                     </div>
-                    <form class="storyWrapper">
                         <div class="guidewrapper">
                             <div class="guideInfo">
                                 <div class="guideTitle">
@@ -72,7 +71,6 @@
                             </div>
                         </div>
 
-                <form th:action="@{/funding/funding-project-plan}" method="post" enctype="multipart/form-data">
                         <div class="editoerWrapper">
                             <div name="purpose" class="planSelection">
                                 <div>
@@ -102,7 +100,8 @@
                             </div>
 
                             <div name="budget" class="planSelection">
-                                <div><button open="" class="accorationTitle">프로젝트 예산<i>
+                                <div>
+                                    <button open="" class="accorationTitle">프로젝트 예산<i>
                                             <div name="arrow2-down" class="icon-svg">
                                                 <svg viewBox="0 0 48 48">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -137,14 +136,17 @@
                                 </div>
                             </div>
                             <div name="schedule" class="planSelection">
-                                <div><button open="" class="accorationTitle">프로젝트 일정<i>
+                                <div>
+                                    <button open="" class="accorationTitle">프로젝트 일정<i>
                                             <div name="arrow2-down" class="icon-svg"><svg
                                                     viewBox="0 0 48 48">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M2 14.4065C2 13.1363 3.09843 12.0615 4.39657 12.0615C4.99571 12.0615 5.59485 12.257 6.09414 12.7455L23.9685 29.4526L41.843 12.6478C42.8415 11.7684 44.3394 11.7684 45.338 12.7455C46.2367 13.7226 46.2367 15.1882 45.2381 16.0676L23.9685 36L2.79886 16.0676C2.29957 15.6767 2 14.9928 2 14.4065Z">
                                                     </path>
-                                                </svg></div>
-                                        </i></button>
+                                                </svg>
+                                            </div>
+                                        </i>
+                                    </button>
                                     <div open="" class="toggleContent">
                                         <div class="editorPreview">
                                             <p style="height: 70px;" class="editorDescription ">작업 일정을 구체적인 날짜와 함께 작성하세요. 후원자가 일정을 보면서 어떤 작업이 진행될지 알 수 있어야 합니다. 펀딩 종료 이후의 제작 일정을 반드시 포함하세요.</p>
@@ -190,14 +192,13 @@
                                 </div>
 
                                 <!--등록버튼-->
-                                <div class="buttonWrap">
-                                    <button  class="solidButton pdc-btn-l"  color="mainEditorP80">
-                                        <span>등록</span>
-                                    </button>
-                                </div>
+<!--                                <div class="buttonWrap">-->
+<!--                                    <button  class="solidButton pdc-btn-l"  color="mainEditorP80">-->
+<!--                                        <span>등록</span>-->
+<!--                                    </button>-->
+<!--                                </div>-->
                             </div>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>

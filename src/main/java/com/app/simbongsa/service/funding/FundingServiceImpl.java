@@ -22,6 +22,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -169,7 +170,7 @@ public class FundingServiceImpl implements FundingService {
 
     @Override
     @Transactional
-    public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
+    public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDate fundingStartDate, LocalDate fundingEndDate) {
         fundingRepository.updateFunding_QueryDsl(fundingId, fundingTargetPrice, fundingStartDate, fundingEndDate);
     }
 

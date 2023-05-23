@@ -79,7 +79,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .from(freeBoard)
                 .leftJoin(freeBoard.freeBoardReplies, freeBoardReply)
                 .fetchJoin()
-                .orderBy(freeBoard.freeBoardReplies.size().desc())
+                .orderBy(freeBoard.freeBoardReplyCount.desc())
                 .limit(10)
                 .fetch();
     }

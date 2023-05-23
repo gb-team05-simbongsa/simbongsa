@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
     <link rel="stylesheet" href="/css/community/free-create.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
      <!-- 웹에디터 API -->
      <link
      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
@@ -23,9 +24,10 @@
 
 
      <div class="faq-list-all-outer-div">
-        <div class="faq-list-all-inner-div">
+         <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
+         <div class="faq-list-all-inner-div">
             <div class="faq-list-side-bar">
-                
+
             </div>
             <div class="faq-list-content-all">
                 <div class="faq-list-title">
@@ -33,9 +35,8 @@
                         <h2 class="faq-list-all-title-text">후원요청하기</h2>
                     </div>
                 </div>
-                
-                <div class="qna-write-content">
 
+                <div class="qna-write-content">
 
                     <form  method="post" name="form" th:action="@{/support/support-write}" enctype="multipart/form-data">
                         <div class="qna-original-input-layout">
@@ -179,4 +180,5 @@
     console.log(fileDTOS + "2. =====================");
 </script>
 <script src="/js/support/supportRequest-write.js"></script>
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

@@ -76,9 +76,9 @@ public class InquiryController {
 
         InquiryDTO inquiryDTO = new InquiryDTO();
         inquiryDTO.setInquiryTitle(inquiryTitle);
-        inquiryDTO.setInquiryTitle(inquiryContent);
-
+        inquiryDTO.setInquiryContent(inquiryContent);
         inquiryDTO.setMemberDTO(memberDTO);
+
         inquiryService.saveInquiry(inquiryDTO);
         return "mypage/my-question";
     }

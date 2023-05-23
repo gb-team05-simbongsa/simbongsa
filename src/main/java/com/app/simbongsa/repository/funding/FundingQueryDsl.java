@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +48,7 @@ public interface FundingQueryDsl {
      public Long getFundingCount_QueryDsl(Long fundingId);
 
      // 펀딩 계획 등록
-     public Long updateFunding_QueryDsl(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate);
+     public Long updateFunding_QueryDsl(Long fundingId, int fundingTargetPrice, LocalDate fundingStartDate, LocalDate fundingEndDate);
 
     // 현재 시퀀스 가져오기
     public Funding getCurrentSequence_QueryDsl();

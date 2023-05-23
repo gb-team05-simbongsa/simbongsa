@@ -2,7 +2,7 @@
 
 
 
-.main-container {
+.main-inquiry-container {
     position: relative;
     width: 370px;
     height: 680px;
@@ -16,11 +16,11 @@
     float: right;
     /*margin-top: 16em;*/
     margin-right: 4px;
-    margin-left: 1655px;
-    margin-top: 114px;
+    margin-left: 1250px;
+    margin-top: 80px;
 }
 
-.main-wrap{
+.main-inquiry-wrap{
     position: relative;
     display: flex;
     flex-direction: column;

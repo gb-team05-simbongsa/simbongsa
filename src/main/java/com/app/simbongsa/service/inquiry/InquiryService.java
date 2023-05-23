@@ -48,6 +48,7 @@ public interface InquiryService {
                 .id(inquiryDTO.getId())
                 .inquiryTitle(inquiryDTO.getInquiryTitle())
                 .inquiryContent(inquiryDTO.getInquiryContent())
+                .inquiryStatus(inquiryDTO.getInquiryStatus())
                 .member(toMemberEntity(inquiryDTO.getMemberDTO()))
                 .build();
     }

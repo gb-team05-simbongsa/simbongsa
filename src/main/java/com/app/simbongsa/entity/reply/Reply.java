@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @ToString(callSuper = true)
+@Table(name = "TBL_REPLY")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor

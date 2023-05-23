@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
 </head>
 <body>
     <header th:insert="~{main/header.html :: mainHeader}"></header>
     <div id="container">
+        <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
         <div class="layout content-layout">
             <div class="content-wrapper">
                 <div id="location" class="title-wrapper" tabindex="-1">
@@ -26,11 +28,11 @@
                         <fieldset class="search">
                             <legend>복지센터 검색</legend>
                             <div class="search-form-layout">
-<!--                                <label for="address-first" class="sido-label">지역구분(시도/시군구)</label>-->
+                                <!--                                <label for="address-first" class="sido-label">지역구분(시도/시군구)</label>-->
                                 <div class="text" value="서울특별시">
-<!--                                    <select name="address-first" id="address-first">-->
-<!--                                        <option value="11">서울특별시</option>-->
-<!--                                    </select>-->
+                                    <!--                                    <select name="address-first" id="address-first">-->
+                                    <!--                                        <option value="11">서울특별시</option>-->
+                                    <!--                                    </select>-->
                                 </div>
                                 <label for="address-second" class="hidden">시군구</label>
                                 <div class="select-box" style="width: 200px;">
@@ -135,4 +137,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/welfare-center/welfare-center.js"></script>
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

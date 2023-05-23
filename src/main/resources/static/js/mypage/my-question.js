@@ -49,7 +49,8 @@ myInquiries.forEach((inquiry, i) => {
                             </button>
                         </div>
                         <div class="support-request-detail">
-                            <button class="go-support-request-delete">
+                            <button class="go-support-request-delete" onclick="removeReady(this)">
+                                <input class="inquiryId" type="hidden" value="${inquiry.id}"> 
                                 <span class="request-detail">
                                     <div class="detail-text">삭제</div>
                                 </span>
@@ -102,19 +103,23 @@ $('.go-support-request').on('click', function() {
 });
 
 /* 삭제 확인 버튼 눌렀을 때 */
-$('.modal-ok').on('click',function () {
-    var inquiryId = $('input[name=myInquiryId]').val();
+function removeReady(button) {
+    var inquiryId = $(button).find('.inquiryId').val();
     console.log("inquiryId: "+inquiryId);
 
-    $a.ajax({
-        url: "/mypages/inquiry-delete",
-        type: "post",
-        data: {id: "inquiryId"},
-        success: function() {
-            location.reload();
-        }
+    $('.modal-wrap').show();
+
+    $('.modal-ok').on('click', function() {
+        $.ajax({
+            url: "/mypages/inquiry-delete",
+            type: "post",
+            data: { id: inquiryId },
+            success: function() {
+                location.reload();
+            }
+        })
     })
-})
+}
 
 
 // 수정 모달이 띄워졌을 때 X버튼 누르면 모달 닫기

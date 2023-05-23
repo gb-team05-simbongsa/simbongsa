@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/volunteer-work/work-detail-response.css">
     <link rel="stylesheet" href="/css/volunteer-work/work-detail.css">
     <link rel="stylesheet" href="/css/volunteer-work/work-apply.css">
-
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
 </head>
 <body>
     
@@ -21,6 +21,7 @@
      <!-- contents -->
      <div>
          <div class="content-container">
+             <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
              <div class="content-layout">
                  <div class="work-detail-info-container">
                      
@@ -518,7 +519,5 @@
         document.goForm.submit();
     };
 </script>
-
-
-            
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

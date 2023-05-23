@@ -15,6 +15,7 @@ import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
+import com.app.simbongsa.type.InquiryType;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +71,8 @@ public class MypageController {
     @PostMapping("my-question-update")
     public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail) {
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
-        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(memberDTO.getId())).build();
+        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent)
+                .inquiryStatus(InquiryType.답변대기).memberDTO(memberService.getMemberById(memberDTO.getId())).build();
         inquiryService.setInquiry(inquiryDTO);
         log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO.toString());
         return new RedirectView("my-question");
@@ -211,14 +213,26 @@ public class MypageController {
         return "/mypage/user-modify";
     }
 
-    /* 비밀번호 수정 */
+    /* 회원정보 수정 */
     @PostMapping("user-modify")
-    public RedirectView updateMemberInfo(String memberPassword,HttpSession session) {
+    public RedirectView updateMemberInfo(String memberPassword, String memberName, String memberAddress, Integer memberAge, String memberInterest, HttpSession session) {
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-        String memberEmail = memberDTO.getMemberEmail();
-        log.info("form에서 받아온 memberPassword: " + memberPassword);
-        memberService.updateMyMemberPassword(memberEmail,memberPassword,passwordEncoder);
-        return new RedirectView("/mypage/user-modify?update=ok");
+        MemberDTO updateInfo = new MemberDTO();
+        log.info(memberPassword);
+        log.info(memberName);
+        log.info(memberAddress);
+        log.info(memberAge+"나이");
+        log.info(memberInterest);
+        // 기존 memberDTO 값을 수정하여 필요한 정보만 업데이트
+        updateInfo.setMemberPassword(memberPassword);
+        updateInfo.setMemberName(memberName);
+        updateInfo.setMemberAddress(memberAddress);
+        updateInfo.setMemberAge(memberAge);
+        updateInfo.setMemberInterest(memberInterest);
+
+        log.info("contorller updateInfo: =================" + updateInfo);
+        memberService.updateMyInfo(memberDTO,updateInfo, passwordEncoder);
+        return new RedirectView("/mypage/user-modify?result=ok");
     }
 
     @GetMapping("volunteer-work-list")
