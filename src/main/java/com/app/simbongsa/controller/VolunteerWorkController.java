@@ -83,7 +83,6 @@ public class VolunteerWorkController {
             volunteerWorkType = "";
         }
 
-        log.info(volunteerWorkType + "============================");
         Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkType);
         Long total = volunteerWorkDTOS.getTotalElements();
         model.addAttribute("total", total);
@@ -94,7 +93,7 @@ public class VolunteerWorkController {
         return "volunteer-work/work-list";
     }
 
-    @GetMapping("work-list-category/{volunteerWorkType}")
+    @GetMapping("work-list/{volunteerWorkType}")
     public String volunteerCategory(Model model, Integer page, @RequestParam(required = false) String keyword, @PathVariable("volunteerWorkType") String volunteerWorkCategoryType){
         page = page == null ? 0 : page - 1;
         if(keyword == null){
@@ -103,6 +102,7 @@ public class VolunteerWorkController {
         if(volunteerWorkCategoryType == null){
             volunteerWorkCategoryType = "";
         }
+        log.info(volunteerWorkCategoryType + "========================");
         Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkCategoryType);
 
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());

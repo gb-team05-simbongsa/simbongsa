@@ -75,8 +75,18 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
         BooleanExpression searchCondition = keyword == null ? null :volunteerWork.volunteerWorkPlace.like("%" + keyword + "%") ;
         BooleanExpression categorySearch = volunteerWorkCategoryType == null ? null : volunteerWork.volunteerWorkCategory.eq(volunteerWorkCategoryType);
 
-
-        List<VolunteerWork> findAllVolunteer = query.select(volunteerWork)
+        List<VolunteerWork> findAllVolunteer;
+        if(volunteerWorkCategoryType == null){
+            findAllVolunteer = query.select(volunteerWork)
+                    .from(volunteerWork)
+                    .leftJoin(volunteerWork.volunteerWorkFile, volunteerWorkFile)
+                    .fetchJoin()
+                    .orderBy(volunteerWork.id.desc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetch();
+        }else{
+            findAllVolunteer = query.select(volunteerWork)
                     .from(volunteerWork)
                     .leftJoin(volunteerWork.volunteerWorkFile, volunteerWorkFile)
                     .fetchJoin()
@@ -85,6 +95,8 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetch();
+        }
+
 
         Long count = query.select(volunteerWork.count())
                 .from(volunteerWork)

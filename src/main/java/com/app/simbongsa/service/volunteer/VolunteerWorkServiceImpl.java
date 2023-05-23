@@ -104,11 +104,13 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
     public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page, String volunteerWorkCategoryType) {
         log.info(keyword + "==================");
         log.info(page + "=======================");
+        log.info(volunteerWorkCategoryType + "=============");
         VolunteerWorkCategoryType categoryType = null;
 
         switch (volunteerWorkCategoryType){
             case "전체":
                 categoryType = null;
+                break;
             case "시설봉사":
                 categoryType = VolunteerWorkCategoryType.시설봉사;
             break;
@@ -137,6 +139,7 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
                 categoryType= null;
                 break;
         }
+        log.info(categoryType + "===============");
 
 
         Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllPagingAndSearch(keyword, PageRequest.of(page, 8), categoryType);
