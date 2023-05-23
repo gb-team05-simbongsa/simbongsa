@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/community/free-detail.css">
+    <link rel="shortcut icon" href="/image/pavicon.png">
 </head>
 <body>
     <!-- 헤더 -->
@@ -65,23 +66,25 @@
                             </div>
                         </div>
                         <!-- 로그인 했을때 -->
-                        <th:block th:if="${not #strings.isEmpty(userDetail)}">
-                        <div class="comment-box2">
-                            <div class="comment-box-wrapper2">
-                                <div class="comment-login">
-                                    <div class="comment-login-profile">
-                                        <span class="profile-span">
-                                            <img class="profile-img" style="margin: 0;" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
-                                        </span>
+                        <th:block th:if="${not #strings.isEmpty(session.member)}">
+                            <th:block th:if="${session.member.id == freeBoardDTO.memberDTO.id}">
+                                <div class="comment-box2">
+                                    <div class="comment-box-wrapper2">
+                                        <div class="comment-login">
+                                            <div class="comment-login-profile">
+                                                <span class="profile-span">
+                                                    <img class="profile-img" style="margin: 0;" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <textarea class="comment-box-span" name="content" placeholder="댓글을 작성해 주세요..."></textarea>
+                                    </div>
+                                    <div class="singUp-btn">
+                                        <button class="singUp1">취소</button>
+                                        <button class="singUp" type="button">등록</button>
                                     </div>
                                 </div>
-                                <textarea class="comment-box-span" name="content" placeholder="댓글을 작성해 주세요..."></textarea>
-                            </div>
-                            <div class="singUp-btn">
-                                <button class="singUp1">취소</button>
-                                <button class="singUp" type="button">등록</button>
-                            </div>
-                        </div>
+                            </th:block>
                         </th:block>
                         <!--  -->
                         <div style="height: 33px;"></div>

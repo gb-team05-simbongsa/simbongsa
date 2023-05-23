@@ -55,7 +55,7 @@ public class CommunityController {
     @ResponseBody
     public List<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
         Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
-                10));
+                pageable.getPageSize()));
         return freeBoardDTOS.getContent();
     }
 
@@ -102,9 +102,7 @@ public class CommunityController {
     /*자유게시판 상세보가*/
     @GetMapping("free-detail/{id}")
     public String goToFreeDetail(Model model, @PathVariable Long id) {
-        FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(id);
-
-        model.addAttribute("freeBoardDTO", freeBoardDTO);
+        model.addAttribute("freeBoard", freeBoardService.getFreeBoardDetail(id));
         return "community/free-detail";
     }
 
@@ -138,7 +136,6 @@ public class CommunityController {
     }
 
     @GetMapping("review-board/newList")
-    @ResponseBody
     public List<ReviewDTO> getToReviewNewList(@PageableDefault(page=1, size=10) Pageable pageable){
         Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
                 pageable.getPageSize()));
@@ -161,7 +158,6 @@ public class CommunityController {
     @PostMapping("review-create")
     @ResponseBody
     public void reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, HttpSession session){
-
         MemberDTO member = (MemberDTO) session.getAttribute("member");
         Long memberId = member.getId();
         reviewService.register(reviewDTO, memberId);
@@ -201,7 +197,7 @@ public class CommunityController {
 
     @GetMapping("review-list")
     public Slice<ReplyDTO> getReviewList(@RequestParam("boardId") Long reviewId, @RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageable = PageRequest.of(page, 8);
+        PageRequest pageable = PageRequest.of(page, 5);
         return reviewService.getReplyList(reviewId, pageable);
     }
 }

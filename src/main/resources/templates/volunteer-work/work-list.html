@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
     <link rel="stylesheet" href="/css/mypage/paging.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
+    <link rel="shortcut icon" href="/image/pavicon.png">
 </head>
 <body>
 
@@ -27,12 +29,13 @@
                         <div class="semi_header_div">
                             <div class="wrap">
 
-                                 
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
             <div class="main_content">
                 <div class="main_content_div">
                     <form id="search-form" th:action="@{/volunteer-work/work-list}" method="GET">
@@ -87,5 +90,5 @@
     let pageDTO = [[${pageDTO}]];
 </script>
 <script src="/js/volunteer-work/work.js"></script>
-
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

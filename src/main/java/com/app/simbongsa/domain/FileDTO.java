@@ -70,15 +70,15 @@ public class FileDTO {
 //    }
 //
 ////    활동 게시판
-//    @Builder
-//    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Review review) {
-//        this.id = id;
-//        this.fileName = fileName;
-//        this.fileUuid = fileUuid;
-//        this.filePath = filePath;
-//        this.fileRepresentationalType = fileRepresentationalType;
-//        this.review = review;
-//    }
+    @Builder
+    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Review review) {
+        this.id = id;
+        this.fileName = fileName;
+        this.fileUuid = fileUuid;
+        this.filePath = filePath;
+        this.fileRepresentationalType = fileRepresentationalType;
+        this.review = review;
+    }
 //    @Builder
 //    public FileDTO(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType) {
 //        this.id = id;

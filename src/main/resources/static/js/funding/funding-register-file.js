@@ -92,7 +92,7 @@ $('#imageFile').on("change", function () {
         $('.ImgStyleList').empty();
         result.paths.forEach((path, i) => {
             if ($files[i].type.startsWith("image")) {
-                $('.ImgStyleList').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
+                $('.ImgStyleList').append(`<img data-path="${result.paths}" class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 200px">`);
             } else $('.ImgStyleList').append(`<img style="width: 100px"/>`);
         });
     });
@@ -176,11 +176,22 @@ let setFundingDTO = function() {
 
 }
 
-$('#submitBtn').on('click', function() {
-    fundingService.saveFunding(setFundingDTO(), function() {
-        /* document.onsubmit;*/
-        location.href = "/funding/funding-topContent";
+$('#submitBtn').on('click', function(e) {
+    e.preventDefault();
+
+    let text = ``;
+    $("img").each((i, img) => {
+        let paths = $(img).data("paths");
+        text += `<input type='hidden' name='fileDTOs[${i}].filePath' value=${paths}>`
     });
+
+    $("form").append(text);
+    $("form").submit();
+
+    // fundingService.saveFunding(setFundingDTO(), function() {
+    //     /* document.onsubmit;*/
+    //     location.href = "/funding/funding-topContent";
+    // });
 });
 
 /*function modify() {

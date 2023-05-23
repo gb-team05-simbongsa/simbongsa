@@ -96,7 +96,6 @@ public class Funding {
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
         this.fundingFile = fundingFile;
-
         this.member = member;
     }
 

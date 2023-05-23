@@ -37,6 +37,9 @@ public class ReviewReply extends Reply {
     public void setReview(Review review) {
         this.review = review;
     }
+    public void setMember(Member member) {
+        this.member = member;
+    }
     public void setReviewReplyContent(String replyContent) {
         super.setReplyContent(replyContent);
     }

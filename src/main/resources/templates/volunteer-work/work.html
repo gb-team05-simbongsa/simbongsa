@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/support/support-list-response.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
+    <link rel="shortcut icon" href="/image/pavicon.png">
 </head>
 <body>
 
@@ -19,6 +21,7 @@
 
 
      <div class="all_wrap">
+         <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
         <div class="all_wrap_div">
             <div class="editer">
                 <div class="editer_div">
@@ -65,5 +68,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/volunteer-work/work.js"></script>
-
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

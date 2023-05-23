@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import javax.persistence.Id;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,8 +28,7 @@ public interface FundingService {
     public List<FundingDTO> getAllPopularFundingList();
 
     // 펀딩 저장
-    public void fundingRegister(FundingDTO fundingDTO);
-
+    public void fundingRegister(FundingDTO fundingDTO, Long memberId);
 
 
     //펀딩 전체 목록 조회
@@ -158,7 +158,7 @@ public interface FundingService {
 
     default Funding toFundingEntity(FundingDTO fundingDTO) {
         Funding.FundingBuilder builder = Funding.builder()
-
+                .id(fundingDTO.getId())
                 .fundingCategory(fundingDTO.getFundingCategory())
                 .fundingTitle(fundingDTO.getFundingTitle())
                 .fundingShortTitle(fundingDTO.getFundingShortTitle())
@@ -167,7 +167,10 @@ public interface FundingService {
                 .fundingIntroduce(fundingDTO.getFundingIntroduce())
                 .fundingScheduleExplain(fundingDTO.getFundingScheduleExplain())
                 .fundingGiftExplain(fundingDTO.getFundingGiftExplain())
-                .fundingFile(toFundingFileListEntity(fundingDTO.getFileDTOs()));
+                .fundingStatus(fundingDTO.getFundingStatus())
+                .fundingCreator(fundingDTO.getFundingCreator())
+                .fundingFile(toFundingFileListEntity(fundingDTO.getFileDTOs()))
+                .member(toMemberEntity(fundingDTO.getMemberDTO()));
 
 
         if (fundingDTO.getId() != null) {

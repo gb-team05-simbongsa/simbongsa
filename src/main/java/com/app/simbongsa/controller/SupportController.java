@@ -1,8 +1,6 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
-import com.app.simbongsa.entity.member.Member;
-import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.repository.support.SupportRepository;
@@ -20,11 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/support/*")
