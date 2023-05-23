@@ -51,6 +51,7 @@ public class MemberServiceImpl implements MemberService {
     public void join(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
         memberDTO.setMemberPassword(passwordEncoder.encode(memberDTO.getMemberPassword()));
         memberDTO.setMemberRole(Role.MEMBER);
+        memberDTO.setMemberJoinType(memberDTO.getMemberJoinType());
         memberRepository.save(toMemberEntity(memberDTO));
     }
 
@@ -305,38 +306,6 @@ public class MemberServiceImpl implements MemberService {
     public void updateMemberRice(MemberDTO memberDTO) {
         memberRepository.updateMemberCash(toMemberEntity(memberDTO));
     }
-
-
-/*    *//*회원정보 비밀번호 수정*//*
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void updateMyMemberPassword(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder) {
-        memberRepository.memberUpdatePassword_QueryDSL(memberEmail, passwordEncoder.encode(memberPassword));
-    }
-
-    *//* 회원정보수정 이름 *//*
-    @Override
-    public void updateMyMemberName(String memberEmail, String memberName) {
-        memberRepository.memberUpdateName_QueryDSL(memberEmail, memberName);
-    }
-
-    *//* 회원정보수정 주소 *//*
-    @Override
-    public void updateMyMemberAddress(String memberEmail, String memberAddress) {
-        memberRepository.memberUpdateAddress_QueryDSL(memberEmail,memberAddress);
-    }
-
-    *//* 회원정보수정 나이 *//*
-    @Override
-    public void updateMyMemberAge(String memberEmail, Integer memberAge) {
-        memberRepository.memberUpdateAge_QueryDSL(memberEmail,memberAge);
-    }
-
-    *//* 회원정보수정 관심봉사 *//*
-    @Override
-    public void updateMyMemberInterest(String memberEmail, String memberInterest) {
-        memberRepository.memberUpdateInterest_QueryDSL(memberEmail, memberInterest);
-    }*/
 
     /* 회원정보 수정 */
     @Transactional(rollbackFor = Exception.class)

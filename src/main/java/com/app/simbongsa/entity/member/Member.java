@@ -28,7 +28,6 @@ public class Member implements Serializable {
     private Integer memberAge;
     private String memberInterest;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("'심청이'")
     private MemberJoinType memberJoinType;
     @Enumerated(EnumType.STRING)
     @ColumnDefault("'동냥1티어'")

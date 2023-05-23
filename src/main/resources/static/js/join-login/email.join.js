@@ -89,9 +89,11 @@ $('.email-check').on("click", function(){
                 $errorMessage.eq(1).show();
             } else {
                 emailCheck = true;
-                $('.modal-content').text('사용 가능한 이메일입니다.');
-                $('.modal-wrap').show();
-                $errorMessage.eq(1).hide();
+                if($('.input-email').val().length != 0) {
+                    $('.modal-content').text('사용 가능한 이메일입니다.');
+                    $('.modal-wrap').show();
+                    $errorMessage.eq(1).hide();
+                }
 
             }
         }

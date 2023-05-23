@@ -26,6 +26,8 @@
                     <h1 class="join-title">이메일로 가입하기</h1>
 
                     <form th:action="@{/member/join}" method="post" name="joinForm">
+                        <!--<input th:if="${member != null && member.memberJoinType != null}" type="hidden" name="memberJoinType" th:value="${member.memberJoinType}">
+                        <input th:unless="${member != null && member.memberJoinType != null}" type="hidden" name="memberJoinType" th:value="${member.memberJoinType}">-->
                         <!--<input type="hidden" name="memberJoinType" th:if="${kakaoInfo} != null" value="카카오">-->
                         <div class="input-div">
                             <div class="input-title">이름</div>
@@ -94,13 +96,14 @@
                                 </label>
                             </div>
                             <div class="drop-content">
-                                <p>정</p>
-                                <p>정</p>
-                                <p>정</p>
-                                <p>정</p>
-                                <p>정</p>
-                                <p>정</p>
-                                <p>정</p>
+                                <p>전문봉사</p>
+                                <p>해외봉사</p>
+                                <p>시설봉사</p>
+                                <p>지역사회봉사</p>
+                                <p>헌혈</p>
+                                <p>재가봉사</p>
+                                <p>금물품봉사</p>
+                                <p>재능기부봉사</p>
                             </div>
                         </div>
                         <div class="agree-outer">
