@@ -1,23 +1,160 @@
-$("form[name='form']").on("submit", function (e) {
-    e.preventDefault();
-
-    let formData = new FormData(); // Create FormData object
-    formData.append('file', $('#file_input')[0].files[0]); // Append the file
-    formData.append('boardTitle', $("input[name='boardTitle']").val()); // Append the title
-    formData.append('boardContent', $("textarea[name='boardContent']").val()); // Append the content
+const $doAjax = function (config, callback) {
+    const isContentTypeDefined = config.contentType !== undefined;
 
     $.ajax({
-        url: '/community/free-create',
-        data: formData,
-        processData: false,
-        contentType: false,
-        method: 'post',
-        success: function () {
-            // redirect 경로
-            location.href = "/community/free-board/new";
+        url: config.url,
+        data: config.data,
+        method: config.method,
+        processData: config.processData !== false,
+        contentType: isContentTypeDefined ? config.contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function (result) {
+            callback(result)
+        },
+        error: function () {
+            console.log(config.data);
         }
     });
+}
+
+
+
+globalThis.uuids;
+globalThis.paths;
+FileList.prototype.forEach = Array.prototype.forEach;
+let prevFileList;
+
+/* 저장할 파일들의 Array */
+
+
+const $photoPicker = $("#photo-picker");
+const uploadAjaxConfig = (data) => {
+    return {
+        url: "/file/upload",
+        method: "POST",
+        data: data,
+        contentType: false,
+        processData: false
+    }
+}
+
+$photoPicker.on("change", function () {
+    let $files = $(this)[0].files;
+    let formData = new FormData();
+
+    if ($files.length > 8) {
+        alert("등록할 수 있는 파일의 최대 갯수는 8개 입니다.");
+        /* 파일 input 초기화 */
+        $photoPicker[0].files = prevFileList;
+        console.log($photoPicker[0].files);
+        return;
+    }
+
+    prevFileList = $files;
+    $files.forEach(file => formData.append("file", file));
+
+    $doAjax(uploadAjaxConfig(formData), (result) => {
+        console.log(result)
+        globalThis.uuids = result.uuids;
+        $photoPicker.empty();
+        result.paths.forEach((path, i) => {
+            if ($files[i].type.startsWith("image")) {
+                $photoPicker.append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}">`);
+            } else $photoPicker.append(`<img style="width: 100px"/>`);
+        });
+    });
 });
+
+
+let fileDTOs = new Object();
+
+let setReviewDTO = function() {
+    console.log($photoPicker[0])
+
+    const $files = $photoPicker[0].files;
+    fileDTOs = new Array();
+
+    // $files.forEach((file, i) => {
+    //     let fileDTO = new Object();
+    //     fileDTO.fileName = file.name;
+    //     fileDTO.fileUuid = globalThis.uuids[i];
+    //     fileDTOs.push(fileDTO);
+    // });
+
+    $files.forEach((file, i) => {
+        fileDTOs.fileName = $files[i].name;
+        fileDTOs.fileUuid = globalThis.uuids[i];
+        fileDTOs.filePath = globalThis.paths[i];
+        fileDTOs.push(fileDTOs);
+
+        console.log(fileDTOs);
+
+
+    const reviewDTO = {
+        boardTitle: $("input[name='boardTitle']").val(),
+        boardContent: $("textarea[name='boardContent']").val(),
+
+        files: fileDTOs
+    }
+
+    return reviewDTO;
+})
+
+}
+// ===========================================파일===============================
+
+$("form[name='form']").on("submit", function (e) {
+    console.log(paths);
+    console.log(${files.name});
+
+    e.preventDefault();
+
+    let text = ``;
+    $('.imageThumbnail').each((i, img) => {
+        let paths = $(img).data("paths");
+        text += `<input type='hidden' name='fileDTOs[${i}].filePath' value=${paths}>
+                 <input type='hidden' name='fileDTOs[${i}].fileName' value=${files.name}>
+                <input type="hidden" name="fileDTOS[${i}].fileUuid" value="${globalThis.uuids[i]}">
+
+`
+    });
+    console.log(globalThis.uuids[i]);
+
+    $("form").append(text);
+    // $("form").submit();
+    //
+    // config = {
+    //     url: `/community/free-create`,
+    //     method: "POST",
+    //     data: JSON.stringify(setReviewDTO()),
+    //     contentType: "application/json; charset=utf-8"
+    // }
+
+    console.log("ㅇㅁㅇㅁㅇㅁㄴㅇㅁㄴㅇ");
+
+    $doAjax(config, (result) => {
+        location.href = result;
+    });
+
+
+});
+//
+//     let formData = new FormData(); // Create FormData object
+//     formData.append('file', $('#file_input')[0].files[0]); // Append the file
+//     formData.append('boardTitle', $("input[name='boardTitle']").val()); // Append the title
+//     formData.append('boardContent', $("textarea[name='boardContent']").val()); // Append the content
+//
+//     $.ajax({
+//         url: '/community/free-create',
+//         data: formData,
+//         processData: false,
+//         contentType: false,
+//         method: 'post',
+//         success: function () {
+//             // redirect 경로
+//             location.href = "/community/free-board/new";
+//         }
+//     });
+// });
 
 
 
@@ -111,5 +248,6 @@ const fileInput = document.getElementById("photo-picker");
 fileInput.addEventListener("change", function(event) {
     handleFiles(event.target.files);
 });
+
 
 /*============================================================================================================*/

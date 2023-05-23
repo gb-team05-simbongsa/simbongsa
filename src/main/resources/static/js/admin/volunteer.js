@@ -316,7 +316,7 @@ let prevFileList;
 /* 저장할 파일들의 Array */
 
 let $fileId;
-let $photoPicker = $("#photo-picker");
+let $photoPicker = $("#photo-picker2");
 const uploadAjaxConfig = (data) => {
     return {
         url: "/file/upload",
@@ -327,20 +327,17 @@ const uploadAjaxConfig = (data) => {
     }
 }
 
-$('#photo-picker').on("change", function () {
+$photoPicker.on("change", function () {
     let $files = $(this)[0].files;
     let formData = new FormData();
-    prevFileList = '';
-    globalThis.uuids = prevFileList;
-    globalThis.paths = prevFileList;
 
-    if ($files.length > 1) {
-        alert("파일은 1개만 등록할 수 있습니다.");
+    if ($files.length > 8) {
+        alert("등록할 수 있는 파일의 최대 갯수는 8개 입니다.");
         /* 파일 input 초기화 */
-        $('#photo-picker')[0].files = prevFileList;
-        console.log($('#photo-picker')[0].files);
+        $photoPicker[0].files = prevFileList;
         return;
     }
+
 
     prevFileList = $files;
 
@@ -348,7 +345,7 @@ $('#photo-picker').on("change", function () {
     $files.forEach(file => formData.append("file", file));
 
 
-    adminService.volunteerFile(uploadAjaxConfig(formData), (result) => {
+    $doAjax(uploadAjaxConfig(formData), (result) => {
         console.log(result)
         globalThis.uuids = result.uuids;
         globalThis.paths = result.paths;

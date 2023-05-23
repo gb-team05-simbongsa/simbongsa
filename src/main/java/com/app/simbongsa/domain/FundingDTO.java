@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -30,7 +31,9 @@ public class FundingDTO {
     private String fundingSummary;
     private int fundingTargetPrice;
     private int fundingCurrentPrice;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fundingStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fundingEndDate;
     private String fundingIntroduce;
     private String fundingBudgetExplain;
@@ -43,18 +46,18 @@ public class FundingDTO {
     private Integer fundingCount;
     private MemberDTO memberDTO;
     private List<FileDTO> fileDTOs;
-    private FileDTO fileDTO;
+//    private FileDTO fileDTO;
 
-    private List<FundingGift> fundingGifts;
+//    private List<FundingGift> fundingGifts;
 
 
     public FundingDTO(List<FileDTO> fileDTOs) {
         this.fileDTOs = fileDTOs;
     }
 
-    public FundingDTO(FileDTO fileDTO) {
-        this.fileDTO = fileDTO;
-    }
+//    public FundingDTO(FileDTO fileDTO) {
+//        this.fileDTO = fileDTO;
+//    }
 //
 //    @Builder
 //    public FundingDTO(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, MemberDTO memberDTO, List<FileDTO> fileDTOs, List<FundingGift> fundingGifts) {
@@ -78,7 +81,7 @@ public class FundingDTO {
 //    }
 
     @Builder
-    public FundingDTO(Long id, List<FileDTO> fileDTOs, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDate fundingStartDate, LocalDate fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, FileDTO fileDTO) {
+    public FundingDTO(Long id, List<FileDTO> fileDTOs, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDate fundingStartDate, LocalDate fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, MemberDTO memberDTO) {
         this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
@@ -95,6 +98,7 @@ public class FundingDTO {
         this.fundingStatus = fundingStatus;
         this.fundingCreator = fundingCreator;
         this.fileDTOs = fileDTOs;
+        this.memberDTO = memberDTO;
 //        this.fileDTO = fileDTO;
 
 
