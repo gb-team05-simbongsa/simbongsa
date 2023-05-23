@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class FundingRestController {
 
     private final FundingService fundingService;
-
-    @PostMapping("funding-initial-info")
-    public void volunteerWorkRegister(@RequestBody FundingDTO fundingDTO) {
-        log.info(fundingDTO.toString());
-        fundingService.fundingRegister(fundingDTO);
-    }
+//
+//    @PostMapping("funding-initial-info")
+//    public void volunteerWorkRegister(@RequestBody FundingDTO fundingDTO) {
+//        log.info(fundingDTO.toString());
+//        fundingService.fundingRegister(fundingDTO);
+//    }
 
 }

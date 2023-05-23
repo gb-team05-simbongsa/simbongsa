@@ -183,5 +183,16 @@ public class FundingController {
     public String fundingStart() {return "funding/funding-start.html";}
 
     @GetMapping("funding-topContent")
-    public String fundingTopContent() {return "funding/funding-topContent.html";}
+    public String fundingTopContentForm() {return "funding/funding-topContent.html";}
+
+    @PostMapping("funding-topContent")
+    @ResponseBody
+    public String fundingTopContent(FundingDTO fundingDTO) {
+
+         fundingService.fundingRegister(fundingDTO);
+         return "funding/funding-topContent";}
+
+
+    @GetMapping("funding-project")
+    public String fundingproject() {return "funding/funding-register";}
 }

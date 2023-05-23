@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public interface FundingService {
     public List<Long> countAcceptAndWait();
 
 // 펀딩 계획 등록
-    public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate);
+    public void updateFundingPlan(Long fundingId, int fundingTargetPrice, LocalDate fundingStartDate, LocalDate fundingEndDate);
 
     // 현재 시퀀스 가져오기
     public Funding getCurrentSequence();

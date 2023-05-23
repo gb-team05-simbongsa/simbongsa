@@ -30,11 +30,11 @@
 <body>
 <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
 <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
-<div id="view" class="view" th:fragment="initialInfo">
+<div id="view" class="view" >
         <div class="project-wrap">
 
             <!--모달창-->
-            <div class="modal-layer" style="display: block;">
+            <div class="modal-layer" style="display: none;">
                 <div class="modal-wrapper">
                     <div class="modal-back">
                         <div class="modal-posWrap">
@@ -64,8 +64,7 @@
 
             <div id="_topContent"></div>
             
-            <div class="contents" size="228">
-                <form class="plan-content" th:action="@{/funding/funding-initial-info}" method="post" name="initialForm" enctype="multipart/form-data">
+            <div class="contents" size="228" >
                     <div class="project-itemWrap">
                         <dl class="project-info">
                             <dt class="project-infoTitle">프로젝트 카테고리
@@ -465,13 +464,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="buttonWrap">
-<!--                        <button type="button" class="lineButton pdc-btn-l" color="grayEditor200">취소</button>-->
-                        <button type="button" id= "submitBtn"class="solidButton pdc-btn-l save-button"  color="mainEditorP80">
-                            <span>등록</span>
-                        </button>
-                    </div>
-                </form>
+<!--                    <div class="buttonWrap">-->
+<!--&lt;!&ndash;                        <button type="button" class="lineButton pdc-btn-l" color="grayEditor200">취소</button>&ndash;&gt;-->
+<!--                        <button type="button" id= "submitBtn"class="solidButton pdc-btn-l save-button"  color="mainEditorP80">-->
+<!--                            <span>등록</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+
                 </div>
             </div>
         </div>
@@ -485,7 +484,7 @@
     const fundingService = (function() {
         function saveFunding(fundingDTO, callback) {
             $.ajax({
-                url: "/funding/funding-initial-info",
+                url: "/funding/funding-topContent",
                 type: 'post',
                 data: JSON.stringify(fundingDTO),
                 contentType: "application/json; charset=utf-8",

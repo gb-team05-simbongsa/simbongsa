@@ -34,11 +34,12 @@
     }
 </style>
 <body>
-    <div id="view" class="view">
+<!-- funding-header -->
+<!--<div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>-->
+<!--<div th:insert="~{funding/funding-topContent.html :: topContent}"></div>-->
+
+<div id="view" class="view" >
         <div class="project-wrap">
-                  <!-- funding-header -->
-            <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
-            <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
 
             <div class="contents" size="228">
                 <div class="planContents">
@@ -278,12 +279,12 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
+<!--<script>
     $(document).ready(function() {
         $("#_header").load("/templates/funding/funding-plan-header.html");
         $("#_topContent").load("/templates/funding/funding-topContent.html");
     });
-</script>
+</script>-->
 <script>
     const $feeAmount = $('.feeAmount');
     const $receipt = $('.receipt');
