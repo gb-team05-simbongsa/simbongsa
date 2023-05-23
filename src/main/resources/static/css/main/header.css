@@ -98,7 +98,7 @@ h3, p, div {
     justify-content: center;
     cursor: pointer;
     transition: scale 0.3s ease-in-out 0s;
-    background-image: url(../../image/logo-test.png);
+    background-image: url(../../image/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -515,17 +515,17 @@ svg:not(:root) {
     font-weight: bold;
 }
 
-.category-select::after{
-    bottom: 0px;
-    position: absolute;
-    display: flex;
-    content: " ";
-    /* opacity: 0; */
-    width: calc(100% + 6px);
-    height: 2px;
-    background: black;
-    animation: 0.3s ease-in-out 0s 1 normal forwards running eclZLu;
-}
+/*.category-select::after{*/
+/*    bottom: 0px;*/
+/*    position: absolute;*/
+/*    display: flex;*/
+/*    content: " ";*/
+/*    !* opacity: 0; *!*/
+/*    width: calc(100% + 6px);*/
+/*    height: 2px;*/
+/*    background: black;*/
+/*    animation: 0.3s ease-in-out 0s 1 normal forwards running eclZLu;*/
+/*}*/
 
 .icon-wrapper{
     overflow: hidden;
