@@ -19,7 +19,7 @@ volunteers.forEach(volunteer => {
                     상세보기
                 </button>`;
             console.log(volunteer.volunteerWorkActivityDTOS.length)
-             if(volunteer.volunteerWorkActivityDTOS.length != 0) {
+             if(volunteer.volunteerWorkActivityDTOS.length > 0) {
                  text += `
                     <button class="button__type_2 volunteer_button button__color__green">
                         신청명단
@@ -205,6 +205,9 @@ $('.volunteer_button').on('click', function() {
     /* 해당 컨텐츠 번호 */
     contentId = $(this).parent().parent().find('.content__id').text();
 
+    console.log(contentId)
+    console.log(goPage)
+
     getList(contentId, goPage);
 
     $('.modal-close').on('click', function () {
@@ -237,6 +240,7 @@ function getList(contentId, page) {
                 </div>
             `;
         });
+        console.log(text)
         $('.append-div').html(text);
 
         //여기가 문제
