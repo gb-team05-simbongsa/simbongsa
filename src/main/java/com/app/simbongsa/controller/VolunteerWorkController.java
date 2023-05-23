@@ -15,6 +15,7 @@ import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -70,9 +71,10 @@ public class VolunteerWorkController {
         return "volunteer-work/work-detail";
     }
 
-    @GetMapping("work-list/{volunteerWorkType}")
-    public String volunteerList(Integer page,@RequestParam(required = false) String keyword, @PathVariable("volunteerWorkType") String volunteerWorkType,  Model model) {
+    @GetMapping("work-list")
+    public String volunteerList(Integer page, @RequestParam(required = false) String keyword, Model model) {
         page = page == null ? 0 : page - 1;
+        String volunteerWorkType = null;
         log.info(volunteerWorkType + "============================");
         if(keyword == null){
             keyword = "";
@@ -80,9 +82,11 @@ public class VolunteerWorkController {
         if(volunteerWorkType == null){
             volunteerWorkType = "";
         }
+
         log.info(volunteerWorkType + "============================");
         Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkType);
-
+        Long total = volunteerWorkDTOS.getTotalElements();
+        model.addAttribute("total", total);
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
         model.addAttribute("keyword", keyword);
@@ -90,16 +94,24 @@ public class VolunteerWorkController {
         return "volunteer-work/work-list";
     }
 
-//    @GetMapping("work-list")
-//    public String volunteerCategory(Model model ,Integer page, @RequestParam(required = false) VolunteerWorkCategoryType volunteerWorkCategoryType){
-//        page = page == null ? 0 : page - 1;
-//        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWorkCategory(volunteerWorkCategoryType, page);
-//
-//        model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS);
-//        model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
-//
-//        return "volunteer-work/work-list";
-//    }
+    @GetMapping("work-list-category/{volunteerWorkType}")
+    public String volunteerCategory(Model model, Integer page, @RequestParam(required = false) String keyword, @PathVariable("volunteerWorkType") String volunteerWorkCategoryType){
+        page = page == null ? 0 : page - 1;
+        if(keyword == null){
+            keyword = "";
+        }
+        if(volunteerWorkCategoryType == null){
+            volunteerWorkCategoryType = "";
+        }
+        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkCategoryType);
+
+        model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
+        Long total = volunteerWorkDTOS.getTotalElements();
+        model.addAttribute("total", total);
+        model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
+
+        return "volunteer-work/work-list";
+    }
 
     @GetMapping("work-search")
     public String workSearch() { return "volunteer-work/work-search2";}
