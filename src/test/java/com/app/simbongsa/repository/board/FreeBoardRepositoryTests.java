@@ -43,16 +43,16 @@
 //    /*자유게시판 등록*/
 //    @Test
 //    public void saveTest() {
-//            FreeBoard freeBoard = new FreeBoard("776이 작성한 자유게시판 제목","776이 작성한 자유게시물입니다. 잘 나오나요?",memberRepository.findMemberById(776L),null,null);
-//            freeBoardRepository.save(freeBoard);
+////            FreeBoard freeBoard = new FreeBoard("776이 작성한 자유게시판 제목","776이 작성한 자유게시물입니다. 잘 나오나요?",memberRepository.findMemberById(776L),null,null);
+////            freeBoardRepository.save(freeBoard);
 //    }
 //
 //    @Test
 //    public void saveReplies() {
 //        for (int i = 1; i <= 5; i++) {
-//            Optional<FreeBoard> byId = freeBoardRepository.findById(46L);
-////            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i, memberRepository.findById(25L).get(), byId.get());
-////            freeBoardReplyRepository.save(freeBoardReply);
+//            Optional<FreeBoard> byId = freeBoardRepository.findById(1244L);
+//            FreeBoardReply freeBoardReply = new FreeBoardReply("댓글 테스트" + i, byId.get(), memberRepository.findById(1L).get());
+//            freeBoardReplyRepository.save(freeBoardReply);
 //        }
 //    }
 //
