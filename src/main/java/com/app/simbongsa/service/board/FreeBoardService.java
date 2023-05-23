@@ -10,11 +10,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.security.core.parameters.P;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public interface FreeBoardService {
+
     // 마이페이지 게시물 목록 조회
     public Page<FreeBoardDTO> getFreeForMemberIdList(Pageable pageable, Long id);
 
@@ -33,14 +35,14 @@ public interface FreeBoardService {
     // 시퀀스 가져오기
     public FreeBoard getCurrentSequence();
 
-    // 댓글 저장
-    public void registerReply(ReplyRequestDTO replyRequestDTO);
+    // 댓글 작성
+    public void insertReply(ReplyRequestDTO replyRequestDTO);
 
     // 댓글 삭제
     public void deleteReply(Long replyId);
 
     // 댓글 목록
-    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
+    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
 
     // 댓글 갯수
     public Integer getReplyCount(Long freeBoardId);
@@ -202,4 +204,12 @@ public interface FreeBoardService {
                 .build();
     }
 
+    default FreeBoardReply toFreeBoardReplyEntity(ReplyDTO replyDTO){
+        return FreeBoardReply.builder()
+                .id(replyDTO.getId())
+                .member(toMemberEntity(replyDTO.getMemberDTO()))
+                .replyContent(replyDTO.getReplyContent())
+                .freeBoard(toFreeBoardEntity(replyDTO.getFreeBoardDTO()))
+                .build();
+    }
 }
