@@ -40,7 +40,7 @@
                 <div class="main_content_div">
                     <form id="search-form" th:action="@{/volunteer-work/work-list}" method="GET">
                         <div class="have_project">
-                            <span style="color: rgb(255, 87, 87);">46,860</span>
+                            <span style="color: rgb(255, 87, 87);" th:text="${total}">46,860</span>
                             개의 후원 목록이 있습니다.
                             <select class="wrap_span" name="keyword" id="location-select">
                                 <option value="">전체보기</option>
