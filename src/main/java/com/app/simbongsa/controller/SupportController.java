@@ -1,9 +1,6 @@
 package com.app.simbongsa.controller;
 
-import com.app.simbongsa.domain.MemberDTO;
-import com.app.simbongsa.domain.PageDTO;
-import com.app.simbongsa.domain.SupportDTO;
-import com.app.simbongsa.domain.SupportRequestDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.provider.UserDetail;
@@ -51,7 +48,7 @@ public class SupportController {
 
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
-    public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
+    public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail, InquiryDTO inquiryDTO){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         log.info("들어오나?");
         page = page == null ? 0 : page -1;
