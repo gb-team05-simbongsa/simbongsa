@@ -63,8 +63,9 @@ public class Member implements Serializable {
         this.memberStatus = memberStatus;
     }
 
-    public Member update(String memberEmail) {
+    public Member update(String memberEmail, MemberJoinType memberJoinType) {
         this.memberEmail = memberEmail;
+        this.memberJoinType = memberJoinType;
         return this;
     }
 }
