@@ -20,6 +20,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +43,7 @@ public class MypageController {
     private final RicePaymentService ricePaymentService;
     private final VolunteerWorkActivityService volunteerWorkActivityService;
     private final FundingService fundingService;
+    private final PasswordEncoder passwordEncoder;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -173,9 +175,24 @@ public class MypageController {
         return "mypage/support-request";
     }*/
 
+    /* 회원정보수정 페이지 */
     @GetMapping("user-modify")
-    public String userModify(){
-        return "mypage/user-modify";
+    public String updateMemberInfo(@AuthenticationPrincipal UserDetail userDetail, Model model,HttpSession httpSession) {
+        MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
+        Long memberId = memberDTO.getId();
+        log.info(memberService.getMemberById(memberId) + "memberDTO 들어오나");
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
+        return "/mypage/user-modify";
+    }
+
+    /* 비밀번호 수정 */
+    @PostMapping("user-modify")
+    public RedirectView updateMemberInfo(String memberPassword,HttpSession session) {
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+        String memberEmail = memberDTO.getMemberEmail();
+        log.info("form에서 받아온 memberPassword: " + memberPassword);
+        memberService.updateMyMemberPassword(memberEmail,memberPassword,passwordEncoder);
+        return new RedirectView("/mypage/user-modify?update=ok");
     }
 
     @GetMapping("volunteer-work-list")

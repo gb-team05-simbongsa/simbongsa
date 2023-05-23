@@ -100,7 +100,7 @@
                     <div class="modify-title-div">
                         <p class="modify-title">이메일</p>
                     </div>
-                    <div class="modify-value">tonky0810@naver.com</div>
+                    <div th:text="${memberDTO.memberEmail}" name="memberEmail" class="modify-value">tonky0810@naver.com</div>
                 </div>
 
                 <!-- 비밀번호 변경 버튼 누르기 전 -->
@@ -113,7 +113,7 @@
 
                 <!-- 비밀번호 변경 버튼 눌렀을 때 -->
                 <div class="modify-content" style="display: none;">
-                    <form action="">
+                    <form th:action="@{/mypage/user-modify}" method="post">
                         <div class="modify-title-div">
                             <p class="modify-title">비밀번호</p>
                             <button class="modify-button-cancel" type="button">취소</button>
@@ -131,7 +131,7 @@
                             <div class="little-title" style="margin-top: 15px;">변경할 비밀번호</div>
                             <div class="modify-input-div">
                                 <span class="modify-input-span">
-                                    <input type="password" class="modify-input" placeholder="바꿀 비밀번호를 입력하세요.">
+                                    <input name="memberPassword" type="password" class="modify-input" placeholder="바꿀 비밀번호를 입력하세요.">
                                 </span>
                             </div>
                             <div class="error-message">비워놓을 수 없습니다.</div>
@@ -156,7 +156,7 @@
                         <p class="modify-title">이름</p>
                         <button class="modify-button">변경</button>
                     </div>
-                    <div class="modify-value">정현진</div>
+                    <div th:text="${memberDTO.memberName}" class="modify-value">정현진</div>
                 </div>
 
                 <!-- 이름 변경 버튼 눌렀을 때 -->
@@ -189,7 +189,7 @@
                         <p class="modify-title">주소</p>
                         <button class="modify-button">변경</button>
                     </div>
-                    <div class="modify-value">서울시 강남구 역삼로15길 7</div>
+                    <div th:text="${memberDTO.memberAddress}" class="modify-value">서울시 강남구 역삼로15길 7</div>
                 </div>
 
                 <!-- 주소 변경 버튼 눌렀을 때 -->
@@ -223,7 +223,7 @@
                         <p class="modify-title">나이</p>
                         <button class="modify-button">변경</button>
                     </div>
-                    <div class="modify-value">24</div>
+                    <div th:text="${memberDTO.memberAge}" class="modify-value">24</div>
                 </div>
 
                 <!-- 나이 변경 버튼 눌렀을 때 -->
@@ -255,7 +255,7 @@
                         <p class="modify-title">관심봉사활동</p>
                         <button class="modify-button">변경</button>
                     </div>
-                    <div class="modify-value">노인</div>
+                    <div th:text="${memberDTO.memberInterest}" class="modify-value">노인</div>
                 </div>
 
                 <!-- 관심봉사활동 변경 버튼 눌렀을 때 -->
@@ -318,6 +318,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    let memberDTO = [[${memberDTO}]];
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/user.modify.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>

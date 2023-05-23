@@ -74,6 +74,7 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
 
     //    비밀 번호 변경
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void updatePassword(String memberEmail, String memberPassword) {
         query.update(member).set(member.memberPassword, memberPassword).where(member.memberEmail.eq(memberEmail)).execute();
     }
@@ -167,5 +168,23 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     @Override
     public Member findByMemberEmail_QueryDSL(String memberEmail) {
         return query.select(member).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne();
+    }
+
+    /* 회원정보수정 비밀번호 */
+    @Override
+    public void memberUpdatePassword_QueryDSL(String memberEmail, String memberPassword) {
+        query.update(member).set(member.memberPassword, memberPassword).where(member.memberEmail.eq(memberEmail)).execute();
+    }
+
+    /* 회원정보수정 이름 */
+    @Override
+    public void memberUpdateName_QueryDSL(String memberEmail, String memberName) {
+        query.update(member).set(member.memberName, memberName).where(member.memberEmail.eq(memberEmail)).execute();
+    }
+
+    /* 회원정보수정 주소 */
+    @Override
+    public void memberUpdateAddress_QueryDSL(String memberEmail, String memberAddress) {
+        query.update(member).set(member.memberAddress, memberAddress).where(member.memberEmail.eq(memberEmail)).execute();
     }
 }

@@ -45,6 +45,8 @@ public class MypageRestController {
         return passwordEncoder.matches(memberPassword, memberService.getMemberByEmail(memberEmail).getMemberPassword());
     }
 
+    /* 변경 */
+
 //    @PostMapping("rices-charge")
 //    public void riceCharge(Integer ricePaymentUsed, HttpSession session) {
 //        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");

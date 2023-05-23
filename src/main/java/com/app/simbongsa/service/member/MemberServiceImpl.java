@@ -27,6 +27,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -304,5 +305,10 @@ public class MemberServiceImpl implements MemberService {
         return (memberRepository.findByMemberEmail_QueryDSL(memberEmail));
     }
 
-
+    /*회원정보수정*/
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void updateMyMemberPassword(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder) {
+        memberRepository.memberUpdatePassword_QueryDSL(memberEmail, passwordEncoder.encode(memberPassword));
+    }
 }
