@@ -94,6 +94,7 @@ public class MypageController {
     public String exchangeRequest(RicePaymentDTO ricePaymentDTO, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("enableRice", ricePaymentService.findEnableRiceById(memberDTO.getId()));
         return "mypage/exchange-request";
     }
@@ -193,6 +194,7 @@ public class MypageController {
         Page<RicePaymentDTO> myRice = ricePaymentService.getMyRicePayment(page, memberDTO);
 
         log.info(myRice.toString() + "------------내 공양미 리스트-------------- ");
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myRicePayments", myRice.getContent());
         model.addAttribute("pageDTO", new PageDTO(myRice));
         return "mypage/rice-list";

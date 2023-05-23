@@ -190,6 +190,7 @@
 }
 
 .detail-text {
+    color: white;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
