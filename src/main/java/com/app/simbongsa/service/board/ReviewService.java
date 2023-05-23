@@ -77,6 +77,7 @@ public interface ReviewService {
                 .updatedDate(review.getUpdatedDate())
                 .memberDTO(toMemberDTO(review.getMember()))
                 .fileDTOS(FileToDTO(review.getReviewFiles()))
+                .replyCount(review.getReviewReplyCount())
                 .build();
     }
 
