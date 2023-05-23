@@ -155,11 +155,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
     /*댓글 목록*/
     @Override
-    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable) {
-        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(freeBoardId, pageable);
+    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, int page) {
+        Slice<FreeBoardReply> freeBoardReplyList = freeBoardReplyRepository.findAllByFreeBoardReplyWithPaging(freeBoardId, PageRequest.of(page, 5));
 
-        List<ReplyDTO> replyDTOS = freeBoardReplyList.getContent().stream().map(this::toReplyDTO).collect(Collectors.toList());
-        return new SliceImpl<>(replyDTOS, pageable, freeBoardReplyList.hasNext());
+        List<FreeBoardReplyDTO> freeBoardReplyDTOS = freeBoardReplyList.getContent().stream().map(this::toFreeBoardReplyDTO).collect(Collectors.toList());
+        return new SliceImpl<>(freeBoardReplyDTOS, freeBoardReplyList.getPageable(), freeBoardReplyList.hasNext());
     }
 
     /*댓글 갯수*/

@@ -21,12 +21,12 @@ public class FreeBoardReplyQueryDslImpl implements FreeBoardReplyQueryDsl {
     public Slice<FreeBoardReply> findAllByFreeBoardReplyWithPaging(Long boardId, Pageable pageable){
         List<FreeBoardReply> foundReply = query.select(freeBoardReply)
                 .from(freeBoardReply)
-                .leftJoin(freeBoardReply.member, member)
-                .fetchJoin()
+//                .leftJoin(freeBoardReply.member, member)
+//                .fetchJoin()
                 .where(freeBoardReply.freeBoard.id.eq(boardId))
                 .orderBy(freeBoardReply.id.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1)
+                .limit(pageable.getPageSize())
                 .fetch();
 
         boolean hasNext = false;

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @Component
 @NoArgsConstructor
 public class FreeBoardReplyDTO {
@@ -19,8 +18,9 @@ public class FreeBoardReplyDTO {
     private Long boardId;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private FreeBoardDTO freeBoardDTO;
 
-    @QueryProjection
+    @Builder
     public FreeBoardReplyDTO(Long id, MemberDTO memberDTO, String replyContent, Long boardId, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.memberDTO = memberDTO;

@@ -28,7 +28,7 @@
                                 <div class="user-see">
                                     <span th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">5시간 전</span>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                    <span th:text="댓글수 + ${replyCount}">댓글수 25</span>
+                                    <span th:text="댓글수 + ${freeBoardDTO.replyCount}">댓글수 25</span>
                                 </div>
                             </div>
                         </div>
@@ -95,52 +95,52 @@
 <!--                        </div>-->
 
                         <!-- 댓글 있을때 -->
-                        <ul>
+                        <ul class="comment-lists">
                             <!-- 내가 쓴 댓글일 경우 -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">서현</div>
-                                        <button type="button" class="x-btn">
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
-                                                <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    좋은 활동 후기보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day" th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">1일 전</span>
-                                </div>
-                            </li>
-                            <!-- 다른 사람들 댓글 x버튼 없음 -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">시금</div>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    너무 도움이 되는 활동 후기를 보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
-                                </div>
-                            </li>
+<!--                            <li class="comment-ok-list">-->
+<!--&lt;!&ndash;                                <div class="comment-profile">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="comment-profile-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <span class="comment-profile-span">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                <div style="width: 100%;">-->
+<!--                                    <div class="comment-user">-->
+<!--                                        <div class="comment-user-name">서현</div>-->
+<!--                                        <button type="button" class="x-btn">-->
+<!--                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">-->
+<!--                                                <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>-->
+<!--                                            </svg>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div style="flex: 0 0 auto; height: 5px;"></div>-->
+<!--                                    <p class="comment-contant"></p>-->
+<!--                                    좋은 활동 후기보고 갑니다.-->
+<!--                                    <div style="flex: 0 0 auto; height: 8px;"></div>-->
+<!--                                    <span class="comment-day" th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">1일 전</span>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash; 다른 사람들 댓글 x버튼 없음 &ndash;&gt;-->
+<!--                            <li class="comment-ok-list">-->
+<!--                                <div class="comment-profile">-->
+<!--                                    <div class="comment-profile-container">-->
+<!--                                        <span class="comment-profile-span">-->
+<!--                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div style="width: 100%;">-->
+<!--                                    <div class="comment-user">-->
+<!--                                        <div class="comment-user-name">시금</div>-->
+<!--                                    </div>-->
+<!--                                    <div style="flex: 0 0 auto; height: 5px;"></div>-->
+<!--                                    <p class="comment-contant"></p>-->
+<!--                                    너무 도움이 되는 활동 후기를 보고 갑니다.-->
+<!--                                    <div style="flex: 0 0 auto; height: 8px;"></div>-->
+<!--                                    <span class="comment-day">1일 전</span>-->
+<!--                                </div>-->
+<!--                            </li>-->
                             <!--  -->
                         </ul>
                         <!--  -->
@@ -247,7 +247,7 @@
                         <div style="display: flex;">
                             <button class="footer-btn">
                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-svg"><path clip-rule="evenodd" d="M8.144 13.563v2l2.543-2h2.396a2.74 2.74 0 0 0 2.741-2.74V7.073a2.74 2.74 0 0 0-2.74-2.74h-6.01a2.74 2.74 0 0 0-2.74 2.74v4.012a2.477 2.477 0 0 0 2.477 2.477h1.333Zm-.104 3.778a.815.815 0 0 1-1.23-.702v-1.743A3.81 3.81 0 0 1 3 11.086V7.074A4.074 4.074 0 0 1 7.074 3h6.01a4.074 4.074 0 0 1 4.073 4.074v3.748a4.074 4.074 0 0 1-4.074 4.074h-1.935L8.04 17.341Z"></path><path d="M8.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM10.667 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM13.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Z"></path></svg>
-                                <span style="margin-left: 4px;" th:text="${replyCount}">6</span>
+                                <span style="margin-left: 4px;" th:text="${freeBoardDTO.replyCount}">6</span>
                             </button>
                         </div>
                     </div>
@@ -283,14 +283,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
-    let userDetail = [[${userDetail}]];
-    let memberId = null;
-    if(userDetail){
-        memberId = userDetail.id;
-    }
-    const freeBoardDTO = [[${freeBoardDTO}]]
+    let freeBoardDTO = [[${freeBoardDTO}]];
     let boardId = freeBoardDTO.id;
-    const fileDTOS = [[${freeBoardDTO.fileDTOS}]];
+    // const fileDTOS = [[${freeBoardDTO.fileDTOS}]];
 
     /* 날짜 변환 (년, 월, 일) */
     function changeDateToString(e){
