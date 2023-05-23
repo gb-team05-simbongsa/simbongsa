@@ -128,3 +128,32 @@ $(".paging-modal").on("click", ".changePage-modal", function(e) {
 
     getList(contentId, goPage);
 });
+
+console.log(supportRequestDTO);
+console.log();
+let file = supportRequestDTO.fileDTOS;
+file.forEach((file, i) =>{
+    let text = ' ';
+        text = `
+                <li class="on">
+                    <button href="#">
+                `
+                    if(file == null || file == undefined) {
+                        text = `
+                                <img style=" width: 238px; height: 238px;" src="https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=ccaf0c29a4a9c34a703c08e3ddef88d1"> `;
+                    } else {
+                                text += ` <img src="/file/display?fileName=${file.filePath}/${file.fileUuid}_${file.fileName}">`;
+                            }
+        `
+                    </button>
+                </li>
+            `;
+    $('.thumbnail-list ul').append(text);
+});
+
+let text = ' ';
+    text = `
+     <img id="expandedImg" src="/file/display?fileName=${file[0].filePath}/${file[0].fileUuid}_${file[0].fileName}" style="cursor:pointer; width:624 height=351">
+    `;
+$('.view').html(text);
+console.log(file[0]);
