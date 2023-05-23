@@ -14,8 +14,10 @@
     background-color: rgba(247, 247, 248, 0.9);
     backdrop-filter: blur(60px);
     float: right;
-    margin-top: 16em;
+    /*margin-top: 16em;*/
     margin-right: 4px;
+    margin-left: 1655px;
+    margin-top: 114px;
 }
 
 .main-wrap{
@@ -420,4 +422,8 @@ input::placeholder {
 textarea::placeholder {
     font-size: 12px;
     color:#d5d7db;
+}
+.main{
+    z-index: 1000 !important;
+    position: fixed;
 }
