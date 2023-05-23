@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
+import com.app.simbongsa.entity.funding.FundingPayment;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
@@ -57,9 +58,21 @@ public interface FundingService {
     public Funding getCurrentSequence();
 
     // 내가 만든 펀딩 목록(페이징처리)
-    Page<FundingDTO> getMyFunding(Integer page, MemberDTO memberDTO);
+    public Page<FundingDTO> getMyFunding(Integer page, MemberDTO memberDTO);
+
+//    내가 후원한 펀딩 목록(페이징)
+    public Page<FundingPaymentDTO> getFundingSupportByMemberId(Integer page, Long id);
 
 
+    default FundingPaymentDTO toFundingPaymentDTO(FundingPayment fundingPayment) {
+        return FundingPaymentDTO.builder()
+                .id(fundingPayment.getId())
+                .fundingPaymentDate(fundingPayment.getFundingPaymentDate())
+                .fundingPaymentPrice(fundingPayment.getFundingPaymentPrice())
+                .memberDTO(toMemberDTO(fundingPayment.getMember()))
+                .fundingDTO(toFundingDTO(fundingPayment.getFunding()))
+                .build();
+    }
 
 //    default FundingDTO toFundingDTO(Funding funding) {
 //        return FundingDTO.builder()

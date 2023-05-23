@@ -1,15 +1,14 @@
 package com.app.simbongsa.service.funding;
 
-import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.FreeBoardDTO;
-import com.app.simbongsa.domain.FundingDTO;
-import com.app.simbongsa.domain.MemberDTO;
+import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.FreeBoard;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingCreator;
+import com.app.simbongsa.entity.funding.FundingPayment;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.repository.funding.FundingFileRepository;
 import com.app.simbongsa.repository.funding.FundingRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
@@ -125,6 +124,21 @@ public class FundingServiceImpl implements FundingService {
         log.info("myFreeBoardDTOS serviceImpl: ===== " + myFundingDTOS);
         return new PageImpl<>(myFundingDTOS,myFundings.getPageable(),myFundings.getTotalElements());
     }
+
+
+    @Override
+    public Page<FundingPaymentDTO> getFundingSupportByMemberId(Integer page, Long id) {
+        Page<FundingPayment> foundFundingPayment = fundingRepository.findByMemberId(PageRequest.of(page, 5), id);
+        List<FundingPaymentDTO> fundingPaymentDTOS = foundFundingPayment.getContent().stream().map(this::toFundingPaymentDTO).collect(Collectors.toList());
+        return new PageImpl<>(fundingPaymentDTOS, foundFundingPayment.getPageable(), foundFundingPayment.getTotalElements());
+    }
+
+/*    @Override
+    public Page<FreeBoardDTO> getFreeForMemberIdList(Pageable pageable, Long id){
+        Page<FreeBoard> freeBoards = freeBoardRepository.findAllByFreeMemberIdPaging_QueryDsl(pageable, id);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoards.stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new PageImpl<>(freeBoardDTOS, freeBoards.getPageable(), freeBoards.getTotalElements());
+    }*/
 
 
 

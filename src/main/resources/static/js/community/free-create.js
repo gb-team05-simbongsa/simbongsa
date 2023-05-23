@@ -1,72 +1,49 @@
-const insertData = {
-    boardTitle:"",
-    boardContent: "",
-}
+// const insertData = {
+//     boardTitle:"",
+//     boardContent: "",
+// }
+//
+// $("form[name='form']").on("submit", function (e) {
+//     e.preventDefault();
+//
+//     let boardTitle = $("input[name='boardTitle']").val();
+//     let boardContent = $("textarea[name='boardContent']").val();
+//
+//     insertData.boardTitle = boardTitle;
+//     insertData.boardContent = boardContent;
+//
+//     $.ajax({
+//         url: '/community/free-create',
+//         data: JSON.stringify(insertData),
+//         contentType: "application/json; charset=utf-8",
+//         method: 'post',
+//         success: function (result) {
+//             // redirect 경로
+//             location.href = "/community/free-create";
+//         }
+//     })
+// });
 
 $("form[name='form']").on("submit", function (e) {
     e.preventDefault();
 
-    let boardTitle = $("input[name='boardTitle']").val();
-    let boardContent = $("textarea[name='boardContent']").val();
-
-    insertData.boardTitle = boardTitle;
-    insertData.boardContent = boardContent;
+    let formData = new FormData(); // Create FormData object
+    formData.append('file', $('#file_input')[0].files[0]); // Append the file
+    formData.append('boardTitle', $("input[name='boardTitle']").val()); // Append the title
+    formData.append('boardContent', $("textarea[name='boardContent']").val()); // Append the content
 
     $.ajax({
         url: '/community/free-create',
-        data: JSON.stringify(insertData),
-        contentType: "application/json; charset=utf-8",
+        data: formData,
+        processData: false,
+        contentType: false,
         method: 'post',
-        success: function (result) {
+        success: function () {
             // redirect 경로
-            location.href = "/community/free-create";
+            location.href = "/community/free-board/new";
         }
-    })
+    });
 });
-
-
-// FileList.prototype.forEach = Array.prototype.forEach;
-//
-// let $ul = $(".img_ul");
-// let files = [];
-// if(fileDTOS != null && fileDTOS != undefined){
-//     fileDTOS.forEach((file, i) => {
-//         files.push(file);
-//     });
-// }
-// $("input[type=file]").on("change", function () {
-//     const $files = $("input[type=file]")[0].files;
-//     let formData = new FormData();
-//
-//     $($files).each((i, file) => {
-//         files.push(file);
-//     })
-//
-//     files.forEach((file, e) => {
-//         formData.append("file", file);
-//     })
-//
-//
-//     $.ajax({
-//         url: "/file/upload",
-//         type: "post",
-//         data: formData,
-//         contentType: false,
-//         processData: false,
-//         success: function (uuids) {
-//             globalThis.uuids = uuids;
-//             console.log(uuids);
-//             $files.forEach((file, i) => {
-//                 if (file.type.startsWith("image")) {
-//                     let text = `
-//
-//                 `;
-//                     $ul.append(text);
-//                 }
-//             });
-//         }
-//     });
-// });
 
 
 

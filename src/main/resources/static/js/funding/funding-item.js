@@ -1,4 +1,6 @@
 const $submitBtn = $('.saveButton');
+const $removeBtn = $('.removeButton');
+
 
 $submitBtn.on("click", function () {
     let content = '';
@@ -16,9 +18,27 @@ $submitBtn.on("click", function () {
         type: "post",
         data:{ title : $('#itemTitle').val(), content : content, itemType : $('input[name=itemType]:checked').val() },
         async: false,
-        success: function() {
-            append($('#itemTitle').val(), $('input[name=itemType]:checked').val());
+        success: function(result) {
+            append($('#itemTitle').val(), $('input[name=itemType]:checked').val(), result);
             console.log("승전보");
         }
     });
 })
+
+// let id = fundingItemDTO.itemId;
+console.log($removeBtn);
+function removeItem(itemId, e) {
+    $.ajax({
+            url: "/funding/funding-item-delete",
+            type: "post",
+            data: { itemId : itemId },
+            traditional : true,
+             success : function(result){
+                 removeButton(e);
+                if(result) {
+                location.reload();
+            }
+        }
+    });
+
+}

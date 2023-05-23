@@ -19,6 +19,9 @@ public interface SupportService {
     //    후원 요청 작성
     public void saveSupport(SupportDTO supportDTO, Long id);
 
+//    내 후원 조회
+    public Page<SupportDTO> getSupportById(Integer page, Long id);
+
 //    후원명단 조회
 //    public Page<SupportDTO> getSupportListWithPaging(Long id);
 //    public List<SupportDTO> getSupportList(Long id);

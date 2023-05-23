@@ -16,12 +16,4 @@ import org.springframework.web.bind.annotation.*;
 public class VolunteerWorkRestController {
     private final VolunteerWorkService volunteerWorkService;
 
-    @GetMapping("work-list")
-    @ResponseBody
-    public Slice<VolunteerWorkDTO> getVolunteerList(@RequestParam(defaultValue = "0", name = "page") int page, @RequestParam(defaultValue = "전체보기", name = "keyword") String keyword){
-        PageRequest pageRequest = PageRequest.of(page, 12);
-        return null;
-    }
-
-
 }

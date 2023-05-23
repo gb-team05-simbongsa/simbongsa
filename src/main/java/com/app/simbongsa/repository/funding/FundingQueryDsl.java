@@ -2,11 +2,14 @@ package com.app.simbongsa.repository.funding;
 
 import com.app.simbongsa.entity.funding.Funding;
 import com.app.simbongsa.entity.funding.FundingGift;
+import com.app.simbongsa.entity.funding.FundingPayment;
+import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FundingCategoryType;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
@@ -49,5 +52,6 @@ public interface FundingQueryDsl {
     // 현재 시퀀스 가져오기
     public Funding getCurrentSequence_QueryDsl();
 
-
+//    내가 후원한 펀딩 가져오기(페이징)
+    public Page<FundingPayment> findByMemberId(Pageable pageable, Long id);
 }

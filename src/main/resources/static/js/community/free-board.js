@@ -1,6 +1,6 @@
 freeBoardList.forEach(freeboard => {
     let text;
-
+    console.log("몇번")
     text = `
         <a href="/community/free-detail/${freeboard.id}">
             <li class="contant-list-container" style="margin-top: 10px">
@@ -105,6 +105,7 @@ headerTitle2.addEventListener('click', () => {
          type: "get",
          success: function(result) {
              let text = ``;
+             console.log("몇번")
              result.forEach(freeboards => {
 
                  text += `
