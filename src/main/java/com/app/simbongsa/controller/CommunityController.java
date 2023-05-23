@@ -38,8 +38,7 @@ public class CommunityController {
     @GetMapping("free-board/new")
     public String goFreeNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable) {
         Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
-                10));
-        log.info(freeBoardDTOS.getContent().get(0).getId() + "=======================================");
+                pageable.getPageSize()));
         model.addAttribute("freeBoardList", freeBoardDTOS.getContent());
         return "community/free-board";
     }
@@ -102,14 +101,12 @@ public class CommunityController {
 
     /*자유게시판 상세보가*/
     @GetMapping("free-detail/{id}")
-    public String goToFreeDetail(Model model, @PathVariable Long id, @AuthenticationPrincipal UserDetail userDetail) {
+    public String goToFreeDetail(Model model, @PathVariable Long id) {
         FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(id);
 
         model.addAttribute("freeBoardDTO", freeBoardDTO);
-        model.addAttribute("userDetail", userDetail);
         return "community/free-detail";
     }
-
 
     /*자유게시판 삭제하기*/
     @PostMapping("free-delete/{boardId}")
@@ -162,11 +159,12 @@ public class CommunityController {
     public void goToReviewCreate(ReviewDTO reviewDTO) {}
 
     @PostMapping("review-create")
-    public RedirectView reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, @AuthenticationPrincipal UserDetail userDetail){
+    @ResponseBody
+    public void reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, HttpSession session){
 
-        Long memberId = userDetail.getId();
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        Long memberId = member.getId();
         reviewService.register(reviewDTO, memberId);
-        return new RedirectView("community/review-create");
     }
 
     /*활동후기 상세보기*/

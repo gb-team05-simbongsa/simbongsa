@@ -76,25 +76,29 @@ headerTitle2.addEventListener('click', () => {
  /* 눌렀을 때 색 변환 - 최신글, 인기글*/
     const categoriNew = document.querySelector('.categori-new');
     const categoriBest = document.querySelector('.categori-best');
-    const userTimeElement = document.querySelector('.user-time');
-    const userTime = new Date(userTimeElement.textContent);
-    const currentTime = new Date();
-    const timeDifferenceInMs = currentTime - userTime;
-    const timeDifferenceInDays = Math.floor(timeDifferenceInMs / (1000 * 60 * 60 * 24));
+    const userTimeElements = document.querySelectorAll('.user-time');
 
-    let formattedTime;
+    userTimeElements.forEach((userTimeElement) => {
+        const userTime = new Date(userTimeElement.textContent);
+        const currentTime = new Date();
+        const timeDifferenceInMs = currentTime - userTime;
+        const timeDifferenceInDays = Math.floor(timeDifferenceInMs / (1000 * 60 * 60 * 24));
 
-    if (timeDifferenceInDays === 0) {
-        formattedTime = '오늘';
-    } else if (timeDifferenceInDays === 1) {
-        formattedTime = '어제';
-    } else {
-        formattedTime = `${timeDifferenceInDays}일 전`;
-    }
+        let formattedTime;
 
-    userTimeElement.textContent = formattedTime;
+        if (timeDifferenceInDays === 0) {
+            formattedTime = '오늘';
+        } else if (timeDifferenceInDays === 1) {
+            formattedTime = '어제';
+        } else {
+            formattedTime = `${timeDifferenceInDays}일 전`;
+        }
 
- categoriNew.addEventListener('click', () => {
+        userTimeElement.textContent = formattedTime;
+    });
+
+
+categoriNew.addEventListener('click', () => {
     categoriNew.style.color = '#1d1d1e';
     categoriNew.style.fill = '#1d1d1e';
     categoriBest.style.color = '#8a8a8b';

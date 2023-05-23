@@ -28,9 +28,8 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
     public Slice<Review> findAllByIdReviewPaging_QueryDSL(Pageable pageable) {
         List<Review> reviews = query.select(review)
                 .from(review)
-                .join(review.member)
-                .fetchJoin()
-                .join(review.reviewFiles)
+                .leftJoin(review.member)
+                .leftJoin(review.reviewFiles)
                 .fetchJoin()
                 .orderBy(review.id.desc())
                 .offset(pageable.getOffset())
@@ -45,9 +44,8 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
     public Slice<Review> findAllByLikeCountReviewPaging_QueryDSL(Pageable pageable) {
         List<Review> reviews = query.select(review)
                 .from(review)
-                .join(review.member)
-                .fetchJoin()
-                .join(review.reviewFiles)
+                .leftJoin(review.member)
+                .leftJoin(review.reviewFiles)
                 .fetchJoin()
                 .orderBy(review.reviewReplyCount.desc())
                 .offset(pageable.getOffset())
@@ -57,11 +55,7 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         return checkLastPage(pageable, reviews);
     }
 
-//    @Override
-//    public Review getCurrentSequence_QueryDsl() {
-//        return null;
-//    }
-
+    // 시퀀스
     @Override
     public Review getCurrentSequence_QueryDsl() {
         return query.select(review)

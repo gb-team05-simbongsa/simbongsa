@@ -82,7 +82,7 @@ public interface FreeBoardService {
                 .updatedDate(freeBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
                 .fileDTOS(FileToDTO(freeBoard.getFreeBoardFiles()))
-                .replyCount(freeBoard.getFreeBoardReplyCount())
+                .freeBoardReplyCount(freeBoard.getFreeBoardReplyCount())
                 .build();
     }
     default List<FileDTO> FileToDTO(List<FreeBoardFile> freeBoardFiles){
@@ -143,7 +143,7 @@ public interface FreeBoardService {
                 .updatedDate(freeBoard.getUpdatedDate())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
-                .replyCount(freeBoard.getFreeBoardReplyCount())
+                .freeBoardReplyCount(freeBoard.getFreeBoardReplyCount())
                 .build();
     }
 

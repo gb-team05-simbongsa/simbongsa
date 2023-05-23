@@ -165,7 +165,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     /*댓글 갯수*/
    @Override
     public Integer getReplyCount(Long freeBoardId) {
-        return freeBoardReplyRepository.getReplyCount_QueryDsl(freeBoardId).intValue();
+        return freeBoardRepository.getFreeReplyCount_QueryDsl(freeBoardId).intValue();
     }
 
     /*최신순 무한스크롤 전체 목록*/
@@ -174,7 +174,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         Slice<FreeBoard> freeBoards =
                 freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(pageable);
         List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
-
         return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
     }
 
