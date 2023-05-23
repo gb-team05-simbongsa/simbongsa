@@ -68,6 +68,7 @@ public class InquiryServiceImpl implements InquiryService {
 
     /* 문의 삭제 */
     @Override
+    @Transactional
     public void deleteByInquiryId(Long id) {
         inquiryRepository.deleteByInquiryId(id);
     }

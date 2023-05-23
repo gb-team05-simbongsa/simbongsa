@@ -40,10 +40,11 @@ public class Inquiry extends Period {
     }
 
     @Builder
-    public Inquiry(Long id, String inquiryTitle, String inquiryContent, Member member) {
+    public Inquiry(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, Member member) {
         this.id = id;
         this.inquiryTitle = inquiryTitle;
         this.inquiryContent = inquiryContent;
+        this.inquiryStatus = inquiryStatus;
         this.member = member;
     }
 }
