@@ -86,24 +86,24 @@ public class SupportRequestServiceImpl implements SupportRequestService {
         supportRequestRepository.save(toSupportRequestEntity(supportRequestDTO));
     }
 
-    @Override @Transactional
-    public void register(SupportRequestDTO supportRequestDTO, Long memberId) {
+    @Override
+    public void register(SupportRequestDTO supportRequestDTO) {
         List<FileDTO> fileDTOS = supportRequestDTO.getFileDTOS();
 
-        memberRepository.findById(memberId).ifPresent(
-                member -> supportRequestDTO.setMemberDTO(toMemberDTO(member))
-        );
+        supportRequestDTO.setSupportRequestStatus(RequestType.대기);
+        log.info(supportRequestDTO.toString());
+
         supportRequestRepository.save(toSupportRequestEntity(supportRequestDTO));
-        if(fileDTOS != null){
-            for(int i = 0; i< fileDTOS.size(); i++){
-                if(i==0){
-                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
-                }else{
-                    fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
-                }
-                fileDTOS.get(i).setSupportRequest(getCurrentSequence());
-                supportRequestFileRepository.save(toSupportRequestFileEntity(fileDTOS.get(i)));
+
+        for(int i = 0; i< fileDTOS.size(); i++){
+            if(i==0){
+                fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
+            }else{
+                fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
             }
+            fileDTOS.get(i).setSupportRequest(getCurrentSequence());
+            log.info(fileDTOS.get(i).toString());
+            supportRequestFileRepository.save(toSupportRequestFileEntity(fileDTOS.get(i)));
         }
     }
 

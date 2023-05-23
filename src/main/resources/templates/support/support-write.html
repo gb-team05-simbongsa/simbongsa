@@ -130,7 +130,7 @@
                         </div>
                         
                         <div class="submit-button-layout">
-                            <input type="submit" class="submit-button" value="등록">
+                            <input type="button" class="submit-button" value="등록">
                         </div>
                     </form>
                 </div>
@@ -165,15 +165,15 @@
   });
 </script>
 <script th:inline="javascript">
-    let fileDTOS = null;
+    // let fileDTOS = null;
     let supportRequestDTO =[[${supportRequestDTO}]];
-    console.log(supportRequestDTO.fileDTOs);
-    console.log(supportRequestDTO +"1 . ==================");
-    if(supportRequestDTO == null || supportRequestDTO == undefined){
-    }else {
-        fileDTOS = supportRequestDTO.fileDTOs;
-    }
-    console.log(fileDTOS + "2. =====================");
+    // console.log(supportRequestDTO.fileDTOs);
+    // console.log(supportRequestDTO +"1 . ==================");
+    // if(supportRequestDTO == null || supportRequestDTO == undefined){
+    // }else {
+    //     fileDTOS = supportRequestDTO.fileDTOs;
+    // }
+    // console.log(fileDTOS + "2. =====================");
 </script>
 <script src="/js/support/supportRequest-write.js"></script>
 <script src="/js/customerCenter/inquiry-write.js"></script>
