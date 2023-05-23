@@ -345,7 +345,7 @@ svg:not(:root) {
     font-family: "Noto Sans", sans-serif;
 }
 
-.write-content-contents-textarea{
+.write-content-contents-textarea-write{
     display: block;
     width: 100%;
     height: 100%;
