@@ -3,11 +3,13 @@ package com.app.simbongsa.domain;
 import com.app.simbongsa.type.InquiryType;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
 @Data
+@NoArgsConstructor
 public class InquiryDTO {
     private Long id;
     private String inquiryTitle;
