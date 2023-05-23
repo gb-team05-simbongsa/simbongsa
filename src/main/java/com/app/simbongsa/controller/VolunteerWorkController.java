@@ -71,13 +71,17 @@ public class VolunteerWorkController {
     }
 
     @GetMapping("work-list/{volunteerWorkType}")
-    public String volunteerList(Integer page,@RequestParam(required = false) String keyword, @PathVariable("volunteerWorkType") String volunteerWorkCategoryType,  Model model) {
+    public String volunteerList(Integer page,@RequestParam(required = false) String keyword, @PathVariable("volunteerWorkType") String volunteerWorkType,  Model model) {
         page = page == null ? 0 : page - 1;
-        if(keyword == null || volunteerWorkCategoryType == null){
+        log.info(volunteerWorkType + "============================");
+        if(keyword == null){
             keyword = "";
-            volunteerWorkCategoryType = "";
         }
-        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkCategoryType);
+        if(volunteerWorkType == null){
+            volunteerWorkType = "";
+        }
+        log.info(volunteerWorkType + "============================");
+        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkType);
 
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));

@@ -107,6 +107,8 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         VolunteerWorkCategoryType categoryType = null;
 
         switch (volunteerWorkCategoryType){
+            case "전체":
+                categoryType = null;
             case "시설봉사":
                 categoryType = VolunteerWorkCategoryType.시설봉사;
             break;
@@ -131,6 +133,9 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
             case "재능기부봉사":
                 categoryType = VolunteerWorkCategoryType.재능기부봉사;
             break;
+            default:
+                categoryType= null;
+                break;
         }
 
 
