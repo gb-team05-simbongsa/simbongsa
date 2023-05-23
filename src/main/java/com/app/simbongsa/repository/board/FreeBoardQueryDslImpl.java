@@ -207,12 +207,4 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new PageImpl<>(foundFreeBoard, pageable, count);
     }
 
-    //댓글 갯수
-    @Override
-    public Long getFreeReplyCount_QueryDsl(Long boardId){
-        return query.select(freeBoard.count())
-                .from(freeBoard)
-                .where(freeBoard.id.eq(boardId))
-                .fetchOne();
-    }
 }

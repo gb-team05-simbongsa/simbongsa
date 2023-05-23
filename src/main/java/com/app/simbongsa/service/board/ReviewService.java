@@ -123,7 +123,7 @@ public interface ReviewService {
                 .updatedDate(review.getUpdatedDate())
                 .boardTitle(review.getBoardTitle())
                 .boardContent(review.getBoardContent())
-                .reviewReplyCount(review.getReviewReplyCount())
+                .replyCount(review.getReviewReplyCount())
                 .build();
     }
 
