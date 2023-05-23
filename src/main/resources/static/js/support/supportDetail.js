@@ -31,6 +31,12 @@ $button.on('click', function(){
     $("#expandedImg").css('width', '100%');
 });
 
+
+
+
+
+
+
 //
 // let text =`
 //                                     <li class="history-item">
@@ -167,3 +173,300 @@ $button.on('click', function(){
 //         $list.append(text);
 //     });
 // }
+
+
+
+
+/*여기서 부터*/
+// let total;
+// let endPage;
+// let startPage;
+// const $list = $('.history-list');
+// const contentId = supportRequestDTO.id;
+// function getList(contentId, page) {
+//     adminService.getDetailList("/support/attend-member", contentId, page,function(results) {
+//         let supportRequestDTO = results.content;
+//
+//         let text = ``;
+//
+//         supportRequestDTO.forEach(supportRequest => {
+//
+//             text += `
+//             <li class="history-item">
+//                                         <div class="history-card">
+//                                             <span class="history-card-date">${supportRequest.createDate}</span>
+//                                             <strong class="history-card-name">${supportRequest.memberName}</strong>
+//                                             <span class="history-amount">
+//                                                 <span class="number">${supportRequest.supportPrice}</span>
+//                                                 원 참여
+//                                             </span>
+//                                         </div>
+//                                     </li>
+//         `;
+//         });
+//         $list.append(text);
+//
+//         //여기가 문제
+//         const $pagination = $(".paging-modal");
+//         $pagination.empty();
+//
+//         const maxDisplayedPages = 5; // 한 번에 표시할 페이지 수
+//         total = results.totalElements;
+//
+//         endPage = Math.ceil( ++goPage / 5.0) * maxDisplayedPages;
+//         startPage = endPage - 4; // 시작 페이지 번호
+//
+//         let listSize = total < 5 ? total : 5;
+//         // if(total < 5) {
+//         //     listSize = total;
+//         // } else {
+//         //     listSize = 5;
+//         // }
+//         // listSize = supportRequestDTOS.length;
+//         const realEnd = Math.ceil(Math.ceil(total * 1.0) / listSize);
+//
+//         if(realEnd < endPage) {
+//             endPage = realEnd;
+//         }
+//
+//         if (startPage > 1) {
+//             $pagination.prepend(`<a class="changePage-modal arrow-right" style="color: black"><code><</code></a>`);
+//         }
+//
+//         for (let i = startPage; i <= endPage; i++) {
+//             if (i === goPage) {
+//                 $pagination.append(`<code id="currentPage-modal">` + goPage +`</code>`);
+//             } else {
+//                 $pagination.append(`<a class="changePage-modal count" style="color: black"><code>` + i + `</code></a>`);
+//             }
+//         }
+//
+//         if (endPage < realEnd) {
+//             $pagination.append(`<a class="changePage-modal arrow-right" style="color: black"><code>></code></a>`);
+//         }
+//     });
+// }
+//
+// $(".paging-modal").on("click", ".changePage-modal", function(e) {
+//     e.preventDefault();
+//     $('.append-div').empty();
+//     $(".paging-modal").empty();
+//     const targetPage = $(this).text();
+//
+//     if (targetPage == '<') {
+//         console.log(startPage)
+//         goPage = startPage - 6;
+//     } else if (targetPage == '>') {
+//         goPage = endPage;
+//     } else {
+//         goPage = parseInt(targetPage) - 1;
+//     }
+//     // if ($(this).hasClass("arrow-left")) {
+//     //     if (goPage > 0) {
+//     //         goPage--;
+//     //     }
+//     // } else if ($(this).hasClass("arrow-right")) {
+//     //     goPage++;
+//     // } else {
+//     //     goPage = parseInt(targetPage) - 1;
+//     // }
+//
+//     getList(contentId, goPage);
+// });
+//
+//
+// let total;
+// let endPage;
+// let startPage;
+// const $list = $('.history-list');
+// const contentId = supportRequestDTO.id;
+// function getList(contentId, page) {
+//     adminService.getDetailList("/support/attend-member", contentId, page,function(results) {
+//         let supportRequestDTO = results.content;
+//
+//         let text = ``;
+//
+//         supportRequestDTO.forEach(supportRequest => {
+//
+//             text += `
+//             <li class="history-item">
+//                                         <div class="history-card">
+//                                             <span class="history-card-date">${supportRequest.createDate}</span>
+//                                             <strong class="history-card-name">${supportRequest.memberName}</strong>
+//                                             <span class="history-amount">
+//                                                 <span class="number">${supportRequest.supportPrice}</span>
+//                                                 원 참여
+//                                             </span>
+//                                         </div>
+//                                     </li>
+//         `;
+//         });
+//         $list.append(text);
+//
+//         //여기가 문제
+//         const $pagination = $(".paging-modal");
+//         $pagination.empty();
+//
+//         const maxDisplayedPages = 5; // 한 번에 표시할 페이지 수
+//         total = results.totalElements;
+//
+//         endPage = Math.ceil( ++goPage / 5.0) * maxDisplayedPages;
+//         startPage = endPage - 4; // 시작 페이지 번호
+//
+//         let listSize = total < 5 ? total : 5;
+//         // if(total < 5) {
+//         //     listSize = total;
+//         // } else {
+//         //     listSize = 5;
+//         // }
+//         // listSize = supportRequestDTOS.length;
+//         const realEnd = Math.ceil(Math.ceil(total * 1.0) / listSize);
+//
+//         if(realEnd < endPage) {
+//             endPage = realEnd;
+//         }
+//
+//         if (startPage > 1) {
+//             $pagination.prepend(`<a class="changePage-modal arrow-right" style="color: black"><code><</code></a>`);
+//         }
+//
+//         for (let i = startPage; i <= endPage; i++) {
+//             if (i === goPage) {
+//                 $pagination.append(`<code id="currentPage-modal">` + goPage +`</code>`);
+//             } else {
+//                 $pagination.append(`<a class="changePage-modal count" style="color: black"><code>` + i + `</code></a>`);
+//             }
+//         }
+//
+//         if (endPage < realEnd) {
+//             $pagination.append(`<a class="changePage-modal arrow-right" style="color: black"><code>></code></a>`);
+//         }
+//     });
+// }
+//
+// $(".paging-modal").on("click", ".changePage-modal", function(e) {
+//     e.preventDefault();
+//     $('.append-div').empty();
+//     $(".paging-modal").empty();
+//     const targetPage = $(this).text();
+//
+//     if (targetPage == '<') {
+//         console.log(startPage)
+//         goPage = startPage - 6;
+//     } else if (targetPage == '>') {
+//         goPage = endPage;
+//     } else {
+//         goPage = parseInt(targetPage) - 1;
+//     }
+//     // if ($(this).hasClass("arrow-left")) {
+//     //     if (goPage > 0) {
+//     //         goPage--;
+//     //     }
+//     // } else if ($(this).hasClass("arrow-right")) {
+//     //     goPage++;
+//     // } else {
+//     //     goPage = parseInt(targetPage) - 1;
+//     // }
+//
+//     getList(contentId, goPage);
+// });
+
+
+//
+let total;
+let endPage;
+let startPage;
+const $list = $('.history-list');
+const id = supportRequestDTO.id;
+
+function doAjax(url, data, successCallback, errorCallback) {
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        success: successCallback,
+        error: errorCallback
+    });
+}
+
+function getList(id, page) {
+    const url = '/support/attend-member';
+    const data = {
+        id: id,
+        page: page
+    };
+
+    doAjax(url, data, function(results) {
+        let supportRequestDTO = results.content;
+
+        let text = ``;
+
+        supportRequestDTO.forEach(supportRequest => {
+
+            text += `
+        <li class="history-item">
+          <div class="history-card">
+            <span class="history-card-date">${supportRequest.createDate}</span>
+            <strong class="history-card-name">${supportRequest.memberName}</strong>
+            <span class="history-amount">
+              <span class="number">${supportRequest.supportPrice}</span>
+              원 참여
+            </span>
+          </div>
+        </li>
+      `;
+        });
+        $list.append(text);
+
+        const $pagination = $(".paging-modal");
+        $pagination.empty();
+
+        const maxDisplayedPages = 5;
+        total = results.totalElements;
+
+        endPage = Math.ceil(++goPage / 5.0) * maxDisplayedPages;
+        startPage = endPage - 4;
+
+        let listSize = total < 5 ? total : 5;
+        const realEnd = Math.ceil(Math.ceil(total * 1.0) / listSize);
+
+        if(realEnd < endPage) {
+            endPage = realEnd;
+        }
+
+        if (startPage > 1) {
+            $pagination.prepend(`<a class="changePage-modal arrow-right" style="color: black"><code><</code></a>`);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            if (i === goPage) {
+                $pagination.append(`<code id="currentPage-modal">${goPage}</code>`);
+            } else {
+                $pagination.append(`<a class="changePage-modal count" style="color: black"><code>${i}</code></a>`);
+            }
+        }
+
+        if (endPage < realEnd) {
+            $pagination.append(`<a class="changePage-modal arrow-right" style="color: black"><code>></code></a>`);
+        }
+    }, function(error) {
+        console.error('AJAX request failed:', error);
+    });
+}
+
+$(".paging-modal").on("click", ".changePage-modal", function(e) {
+    e.preventDefault();
+    $('.append-div').empty();
+    $(".paging-modal").empty();
+    const targetPage = $(this).text();
+
+    if (targetPage == '<') {
+        goPage = startPage - 6;
+    } else if (targetPage == '>') {
+        goPage = endPage;
+    } else {
+        goPage = parseInt(targetPage) - 1;
+    }
+
+    getList(contentId, goPage);
+});

@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,13 @@ public class SupportController {
     private final SupportRepository supportRepository;
     private final SupportRequestRepository supportRequestRepository;
 
+    @PostMapping("attend-member")
+    @ResponseBody
+    public Page<SupportDTO> attendMember(Long id, Integer page){
+        log.info("들어오나?");
+        return supportService.getAllSupportAttendWithMember_QueryDSL(page, id);
+    }
+
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
     public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail){
@@ -57,7 +65,6 @@ public class SupportController {
         SupportRequestDTO supportDetail = supportRequestService.getSupportRequestDetail(supportRequestId);
 //        로그인한 ID
         MemberDTO member = memberService.getMemberById(memberId);
-        log.info(memberDTO.getMemberRice() + " ================");
 
 //        후원된 공양미
         int totalPrice = supportDetail.getSupportDTOS()
@@ -78,6 +85,20 @@ public class SupportController {
         return "support/support-detail";
 
     }
+    @PostMapping("support")
+    public RedirectView support(String supportRequestId, Integer supportAmount, HttpSession session){
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+        log.info(supportRequestId + "---------------------");
+
+        SupportDTO supportDTO = new SupportDTO();
+        supportDTO.setSupportRequestDTO(supportRequestService.getSupportRequestDetail(Long.valueOf(supportRequestId)));
+        supportDTO.setMemberDTO(memberDTO);
+        supportDTO.setSupportPrice(supportAmount);
+
+        supportService.saveSupport(supportDTO, memberDTO.getId());
+        return new RedirectView("/support/support-success");
+    }
+
 
 
 //    후원 목록페이지 페이징처리
@@ -114,37 +135,6 @@ public class SupportController {
         log.info("========================" + memberId.toString() + "=============================");
         supportRequestService.register(supportRequestDTO, memberId);
         return new RedirectView("support-list");
-    }
-
-    @PostMapping("update-gongyangmi")
-    @ResponseBody
-    public RedirectView updateGongyang(HttpSession httpSession, Long memberId,
-                                       Long supportRequestId, int supportAmount, SupportDTO supportDTO, MemberDTO memberDTO){
-        int minus =  memberRepository.findById(memberId).get().getMemberRice() - supportAmount;
-        int plus = supportRequestRepository.findByIdSupportRequest_QueryDsl(supportRequestId)
-                .get()
-                .getSupports()
-                .stream()
-                .mapToInt(Support::getSupportPrice)
-                .sum() + supportAmount;
-
-        // SupportDTO 객체를 생성하여 요청 데이터를 설정합니다.
-//        supportDTO.getSupportRequestDTO().getId();
-        supportDTO.setSupportPrice(plus);
-
-
-        // SupportService의 메서드를 호출하여 게시물의 후원 금액을 업데이트합니다.
-        supportService.updateSupportGongyangmi(supportDTO);
-
-        // MemberDTO 객체를 생성하여 요청 데이터를 설정합니다.
-        memberDTO.setId(memberId);
-        memberDTO.setMemberRice(minus);
-
-        // MemberService의 메서드를 호출하여 멤버의 공양미를 업데이트합니다.
-        memberService.updateMemberRice(memberDTO);
-
-        return new RedirectView("support-list");
-
     }
 
 }

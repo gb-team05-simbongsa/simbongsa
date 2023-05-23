@@ -283,11 +283,6 @@ public class MemberServiceImpl implements MemberService {
        memberRepository.updatePassword(memberEmail, memberPassword);
     }
 
-    @Override
-    public void updateMemberRice(MemberDTO memberDTO) {
-        memberRepository.updateMemberCash(toMemberEntity(memberDTO));
-    }
-
     @Transactional(rollbackFor = Exception.class)
     public void updatePasswordAndResetRandomKey(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder){
         /*passwordEncoder.encode(memberPassword);*/
@@ -302,6 +297,12 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member findByMemberEmail(String memberEmail) {
         return (memberRepository.findByMemberEmail_QueryDSL(memberEmail));
+    }
+
+
+    @Override
+    public void updateMemberRice(MemberDTO memberDTO) {
+        memberRepository.updateMemberCash(toMemberEntity(memberDTO));
     }
 
 

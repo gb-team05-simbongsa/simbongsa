@@ -1,23 +1,23 @@
 
-$('#selectOp').change(function () {
-    console.log($(this).val());
-    $('#inputOp').val($(this).val());
-
-    console.log($('#inputOp').val());
-    var keyword;
-
-    if($(this).val() == "후원 많은순"){
-        keyword = "후원 많은순";
-    }else if($(this).val() == "후원 적은순"){
-        keyword = "후원 적은순";
-    }else{
-        keyword = null;
-    }
-    $('#inputOp').val(keyword);
-    console.log($('#inputOp').val(keyword))
-    ;
-    document.goForm.submit();
-})
+// $('#selectOp').change(function () {
+//     console.log($(this).val());
+//     $('#inputOp').val($(this).val());
+//
+//     console.log($('#inputOp').val());
+//     var keyword;
+//
+//     if($(this).val() == "후원 많은순"){
+//         keyword = "후원 많은순";
+//     }else if($(this).val() == "후원 적은순"){
+//         keyword = "후원 적은순";
+//     }else{
+//         keyword = null;
+//     }
+//     $('#inputOp').val(keyword);
+//     console.log($('#inputOp').val(keyword))
+//     ;
+//     document.goForm.submit();
+// })
 
 
 // supports.forEach(supports => {
