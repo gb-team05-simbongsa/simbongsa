@@ -15,6 +15,7 @@ import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
+import com.app.simbongsa.type.InquiryType;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +71,8 @@ public class MypageController {
     @PostMapping("my-question-update")
     public RedirectView myQuestionUpdate(Long id, String inquiryTitle, String inquiryContent,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail) {
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
-        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent).memberDTO(memberService.getMemberById(memberDTO.getId())).build();
+        InquiryDTO inquiryDTO = InquiryDTO.builder().id(id).inquiryTitle(inquiryTitle).inquiryContent(inquiryContent)
+                .inquiryStatus(InquiryType.답변대기).memberDTO(memberService.getMemberById(memberDTO.getId())).build();
         inquiryService.setInquiry(inquiryDTO);
         log.info("문의 게시글 수정에서의 inquiryDTO: ", inquiryDTO.toString());
         return new RedirectView("my-question");
