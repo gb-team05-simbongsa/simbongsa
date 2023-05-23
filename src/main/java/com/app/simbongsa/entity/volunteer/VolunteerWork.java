@@ -39,7 +39,7 @@ public class VolunteerWork {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
     private VolunteerWorkFile volunteerWorkFile;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "volunteerWork", cascade = {CascadeType.REMOVE})
     private List<VolunteerWorkActivity> volunteerWorkActivities;
 
     @Builder

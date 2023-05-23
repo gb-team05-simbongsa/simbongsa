@@ -162,7 +162,7 @@ $('.content__detail__btn').on('click', function () {
                 text += `
                         <label>
                             <div class="content__img">
-                                <img src="/file/display?fileName=` + fileDTO.filePath + '/' + fileDTO.fileUuid + '_' + fileDTO.fileName + `" style="width: 200px">
+                                <img src="/file/display?fileName=` + fileDTO.filePath + `" style="width: 200px">
                             </div>
                         </label>
                         `;
