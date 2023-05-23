@@ -66,8 +66,35 @@ public interface MemberService extends UserDetailsService {
     /* 메인에서 쓰는 이메일찾기 */
     public Member findByMemberEmail(String memberEmail);
 
-    /* 회원정보수정 비밀번호 */
+/*
+    */
+/* 회원정보수정 비밀번호 *//*
+
     public void updateMyMemberPassword(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder);
+
+    */
+/* 회원정보수정 이름 *//*
+
+    public void updateMyMemberName(String memberEmail, String memberName);
+
+    */
+/* 회원정보수정 주소 *//*
+
+    public void updateMyMemberAddress(String memberEmail, String memberAddress);
+
+    */
+/* 회원정보수정 나이 *//*
+
+    public void updateMyMemberAge(String memberEmail, Integer memberAge);
+
+    */
+/* 회원정보수정 관심봉사 *//*
+
+    public void updateMyMemberInterest(String memberEmail, String memberInterest);
+*/
+
+    /* 회원정보수정*/
+    public void updateMyInfo(MemberDTO memberDTO, MemberDTO updateInfo, PasswordEncoder passwordEncoder);
 
     default Member toMemberEntity(MemberDTO memberDTO) {
         return Member.builder().id(memberDTO.getId())

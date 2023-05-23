@@ -64,4 +64,10 @@ public interface MemberQueryDsl {
 
     /* 회원정보수정 주소 */
     public void memberUpdateAddress_QueryDSL(String memberEmail, String memberAddress);
+
+    /* 회원정보수정 나이 */
+    public void memberUpdateAge_QueryDSL(String memberEmail, Integer memberAge);
+
+    /* 회원정보수정 관심봉사 */
+    public void memberUpdateInterest_QueryDSL(String memberEmail, String memberInterest);
 }

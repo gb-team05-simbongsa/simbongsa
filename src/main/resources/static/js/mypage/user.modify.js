@@ -110,3 +110,16 @@ function sample6_execDaumPostcode() {
 $('.unregister-button').click( function () {
     location.href = "/mypage/withdraw-check";
 })
+
+const $password = $('.input-write').eq(1);
+
+// 성공적으로 정보 변경시 모달 띄우기
+if(new URLSearchParams(location.search).get("result") == "ok") {
+    $('.modal-wrap').show();
+}
+
+
+// 모달에 확인 버튼 누르면 모달 끄기
+$('.modal-ok').on('click', () => {
+    $('.modal-wrap').hide();
+});

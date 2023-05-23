@@ -211,14 +211,26 @@ public class MypageController {
         return "/mypage/user-modify";
     }
 
-    /* 비밀번호 수정 */
+    /* 회원정보 수정 */
     @PostMapping("user-modify")
-    public RedirectView updateMemberInfo(String memberPassword,HttpSession session) {
+    public RedirectView updateMemberInfo(String memberPassword, String memberName, String memberAddress, Integer memberAge, String memberInterest, HttpSession session) {
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-        String memberEmail = memberDTO.getMemberEmail();
-        log.info("form에서 받아온 memberPassword: " + memberPassword);
-        memberService.updateMyMemberPassword(memberEmail,memberPassword,passwordEncoder);
-        return new RedirectView("/mypage/user-modify?update=ok");
+        MemberDTO updateInfo = new MemberDTO();
+        log.info(memberPassword);
+        log.info(memberName);
+        log.info(memberAddress);
+        log.info(memberAge+"나이");
+        log.info(memberInterest);
+        // 기존 memberDTO 값을 수정하여 필요한 정보만 업데이트
+        updateInfo.setMemberPassword(memberPassword);
+        updateInfo.setMemberName(memberName);
+        updateInfo.setMemberAddress(memberAddress);
+        updateInfo.setMemberAge(memberAge);
+        updateInfo.setMemberInterest(memberInterest);
+
+        log.info("contorller updateInfo: =================" + updateInfo);
+        memberService.updateMyInfo(memberDTO,updateInfo, passwordEncoder);
+        return new RedirectView("/mypage/user-modify?result=ok");
     }
 
     @GetMapping("volunteer-work-list")
