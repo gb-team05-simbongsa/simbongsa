@@ -1,6 +1,7 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.InquiryDTO;
+import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.domain.PageDTO;
 import com.app.simbongsa.provider.UserDetail;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/inquiry/*")
 @RequiredArgsConstructor
@@ -29,7 +32,7 @@ public class InquiryController {
     private final MemberService memberService;
 
     @GetMapping("notice")
-    public String notice(Integer page, String searchContent, Model model) {
+    public String notice(Integer page, String searchContent, Model model, InquiryDTO inquiryDTO) {
         page = page == null ? 0 : page - 1;
         searchContent = searchContent == null ? "" : searchContent;
 
@@ -63,13 +66,19 @@ public class InquiryController {
     }
 
     @GetMapping("inquiry-write")
-    public String gotoInquiryWrite(InquiryDTO inquiryDTO) {
+    public String gotoInquiryWrite() {
         return "customerCenter/inquiry-write";
     }
 
     @PostMapping("inquiry-write")
-    public String inquiryWrite(InquiryDTO inquiryDTO, @AuthenticationPrincipal UserDetail userDetail){
-        inquiryDTO.setMemberDTO(memberService.getMemberById(userDetail.getId()));
+    public String inquiryWrite(String inquiryTitle, String inquiryContent, HttpSession session){
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+
+        InquiryDTO inquiryDTO = new InquiryDTO();
+        inquiryDTO.setInquiryTitle(inquiryTitle);
+        inquiryDTO.setInquiryTitle(inquiryContent);
+
+        inquiryDTO.setMemberDTO(memberDTO);
         inquiryService.saveInquiry(inquiryDTO);
         return "mypage/my-question";
     }

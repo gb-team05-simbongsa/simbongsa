@@ -14,29 +14,29 @@
 <button id="open" >심봉사 문의하기</button>
 
     <div class="main" style="display: none;">
-            <div class="main-layout">
-                <div  class="main-container">
-                    <div class="main-wrap">
-                        <header class="inquiry-header-layout">
-                       
+        <div class="main-layout">
+            <div  class="main-container">
+                <div class="main-wrap">
+                    <header class="inquiry-header-layout">
+
                         <div class="inquiry-header-container">
                             <div class="inquiry-header-wrapper">
                                 <div class="inquiry-header-wrap">
-                                    <span class="inquiry-header-span" >
-                                <div class="inquiry-header-title">심봉사 문의하기</div>
-                                </span>
+                                    <span class="inquiry-header-span">
+                                        <div class="inquiry-header-title">심봉사 문의하기</div>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
-                    <div class="inquiry-close-btn-wrap">
-                        <button class="inquiry-close-btn">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" foundation="[object Object]" class="" defaultopacity="1" hoveredopacity="1" margintop="0" marginright="0" marginbottom="0" marginleft="0" withtheme="true">
-                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.4818 4.69668L15.3033 3.51817L10 8.82147L4.69671 3.51817L3.5182 4.69668L8.8215 9.99998L3.51819 15.3033L4.6967 16.4818L10 11.1785L15.3033 16.4818L16.4818 15.3033L11.1785 9.99998L16.4818 4.69668Z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </header>
+
+                        <div class="inquiry-close-btn-wrap">
+                            <button class="inquiry-close-btn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" foundation="[object Object]" class="" defaultopacity="1" hoveredopacity="1" margintop="0" marginright="0" marginbottom="0" marginleft="0" withtheme="true">
+                                    <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.4818 4.69668L15.3033 3.51817L10 8.82147L4.69671 3.51817L3.5182 4.69668L8.8215 9.99998L3.51819 15.3033L4.6967 16.4818L10 11.1785L15.3033 16.4818L16.4818 15.3033L11.1785 9.99998L16.4818 4.69668Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </header>
             
 
                     <div class="inquiry-content-layout">
@@ -77,57 +77,57 @@
                                                 <!-- <div class="inquiry-currentTime">오전 4:28</div> -->
 
                                                 <!-- 컨텐츠 -->
-                                                    <form th:action="@{/inquiry/inquiry-write}" th:object="${inquiryDTO}" method="post">
-                                                        <div class="content-layout" tabindex="0">
-                                                            <div class="content-container"></div>
-                                                                <div class="inquiry-text-layout">
-                                                                    
-                                                                    <div class="inquiry-text-container">
-                                                                        <div class="inquiry-text-wrap">
-                                                                            <div class="inquiry-text-input-layout">
-                                                                                <span> * 제목</span>
-                                                                                <input type="text" placeholder="제목을 입력하세요" value="" th:field="*{inquiryTitle}">
-                                                                                <div class="inquiry-textarea">
-                                                                                    <div class="inquiry-contents-wrap">
-                                                                                        <span> * 내용</span>
-                                                                                    </div>
-                                                                                        <div class="write-content-contents-textarea">
-                                                                                             <textarea id="inquiry-contents" class="write-content-contents" name="inquiryContent" inputmode="text" cols="30" rows="10"
-                                                                                            style="resize: none;" maxlength="" th:field="*{inquiryContent}" placeholder="전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다."></textarea>
-                                                                             
-                                                                                    <!-- <span class="content-length-counter">
-                                                                                       <span>
-                                                                                           <span class="content-length-count">0자</span>
-                                                                                           <span class="content-length-max-count">
-                                                                                               /
-                                                                                               5000자
-                                                                                           </span>
-                                                                                       </span>
-                                                                                   </span> -->
+                                                <form th:action="@{/inquiry/inquiry-write}" method="post">
+                                                    <div class="content-layout" tabindex="0">
+                                                        <div class="content-container"></div>
+                                                            <div class="inquiry-text-layout">
 
-                                                                                   <div class="inquiry-regist-btn-layout">
-                                                                                       <button type="submit" class="inquiry-regist-btn" style="cursor: pointer">등록</button>
-                                                                                   </div>
-
+                                                                <div class="inquiry-text-container">
+                                                                    <div class="inquiry-text-wrap">
+                                                                        <div class="inquiry-text-input-layout">
+                                                                            <span> * 제목</span>
+                                                                            <input type="text" placeholder="제목을 입력하세요" value="">
+                                                                            <div class="inquiry-textarea">
+                                                                                <div class="inquiry-contents-wrap">
+                                                                                    <span> * 내용</span>
                                                                                 </div>
+                                                                                    <div class="write-content-contents-textarea">
+                                                                                         <textarea id="inquiry-contents" class="write-content-contents" name="inquiryContent" inputmode="text" cols="30" rows="10"
+                                                                                        style="resize: none;" maxlength="" placeholder="전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의 내용에 저장되지 않도록 주의해 주시기 바랍니다."></textarea>
+
+                                                                                <!-- <span class="content-length-counter">
+                                                                                   <span>
+                                                                                       <span class="content-length-count">0자</span>
+                                                                                       <span class="content-length-max-count">
+                                                                                           /
+                                                                                           5000자
+                                                                                       </span>
+                                                                                   </span>
+                                                                               </span> -->
+
+                                                                               <div class="inquiry-regist-btn-layout">
+                                                                                   <button type="submit" class="inquiry-regist-btn" style="cursor: pointer">등록</button>
+                                                                               </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </div>
+                                                </form>
                                             </div>
-                                         </div>
-                                     </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
                         </main>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
- </div>
  
     
 </body>
