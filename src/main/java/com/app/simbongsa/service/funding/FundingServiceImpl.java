@@ -11,6 +11,7 @@ import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.repository.funding.FundingFileRepository;
 import com.app.simbongsa.repository.funding.FundingRepository;
+import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.RequestType;
@@ -38,6 +39,7 @@ import java.util.stream.Collectors;
 public class FundingServiceImpl implements FundingService {
     private final FundingRepository fundingRepository;
     private final FundingFileRepository fundingFileRepository;
+    private final MemberRepository memberRepository;
 
     //    메인페이지 펀딩 인기순
 //    여기에서 FileDTOs에 파일이 안들어가
@@ -58,13 +60,21 @@ public class FundingServiceImpl implements FundingService {
 
     // 펀딩 저장 // 등록한 시점의 현재 시퀀스만들기
     @Override
-    public void fundingRegister(FundingDTO fundingDTO) {
+    public void fundingRegister(FundingDTO fundingDTO, Long memberId) {
         List<FileDTO> fileDTOs = fundingDTO.getFileDTOs();
+        log.info(fundingDTO + "=============");
+        log.info(fileDTOs + "===============");
         fundingRepository.save(toFundingEntity(fundingDTO));
+
+        memberRepository.findById(memberId).ifPresent(
+                member -> fundingDTO.setMemberDTO(toMemberDTO(member))
+        );
+
 
         if (fileDTOs != null) {
             fileDTOs.get(0).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
             fileDTOs.get(0).setFunding(getCurrentSequence());
+
             fundingFileRepository.save(toFundingFileEntity(fileDTOs.get(0)));
 
             /* FileDTO fileDTO = fundingDTO.getFileDTO();*/

@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,16 +33,18 @@ import java.util.List;
 @Slf4j
 public class FundingController {
     private final FundingService fundingService;
-    private  final MemberService memberService;
+    private final MemberService memberService;
 
     private final FundingItemService fundingItemService;
 
 
     @GetMapping("funding-creator-info")
-    public String fundingCreateForm() {return "funding/funding-creater-info";}
+    public String fundingCreateForm() {
+        return "funding/funding-creater-info";
+    }
 
     @PostMapping("funding-creator-info")
-    public String fundingCreate( FundingDTO fundingDTO) {
+    public String fundingCreate(FundingDTO fundingDTO) {
 
 
         return "funding/funding-creater-info";
@@ -52,22 +55,23 @@ public class FundingController {
 //    public String fundingDetail() {return "funding/funding-detail";}
 
 
-// 펀딩 상세보기
-   @GetMapping("funding-detail/{fundingId}")
+    // 펀딩 상세보기
+    @GetMapping("funding-detail/{fundingId}")
     public String fundingDetail(@PathVariable Long fundingId, Model model, @AuthenticationPrincipal UserDetail userDetail) {
-//        Long memberId = userDetail.getMember().getId();
+        Long memberId = userDetail.getId();
 //        log.info(memberId + "내 로그인한 아이디");
 //
-//        MemberDTO memberDTO = memberService.getMemberById(memberId);
+        MemberDTO memberDTO = memberService.getMemberById(memberId);
 //        log.info(memberDTO.getMemberRice() + " ================");
 
-        FundingDTO fundingDTO =  fundingService.getFundingDetail(fundingId);
+        FundingDTO fundingDTO = fundingService.getFundingDetail(fundingId);
 
         model.addAttribute("fundingDTO", fundingDTO);
 
-        return "/funding/funding-detail";}
+        return "/funding/funding-detail";
+    }
 
-//
+    //
 //    @GetMapping("funding-item")
 //    public String fundingItemForm(Model model, Long itemId) {
 //
@@ -90,18 +94,20 @@ public class FundingController {
         fundingItemDTO.setItemContent(content);
         fundingItemDTO.setItemType(itemType);
         return fundingItemService.ItemSave(fundingItemDTO);
-     }
+    }
 
-     @PostMapping("funding-item-delete")
-     @ResponseBody
-     public void fundingDelete(Long itemId, FundingItemDTO fundingItemDTO) {
+    @PostMapping("funding-item-delete")
+    @ResponseBody
+    public void fundingDelete(Long itemId, FundingItemDTO fundingItemDTO) {
         log.info(itemId + "==============아이템아이디");
         fundingItemService.itemDelete(itemId);
-     }
+    }
 
 
     @GetMapping("funding-initial-info")
-    public String fundingInitialForm() {return "funding/funding-initial-info.html";}
+    public String fundingInitialForm() {
+        return "funding/funding-initial-info.html";
+    }
 
 
     //업로드는 됨.... db에 저장이 안됌
@@ -117,10 +123,12 @@ public class FundingController {
     }*/
 
     @GetMapping("funding-gift")
-    public String fundingGiftForm() {return "funding/funding-gift.html";}
+    public String fundingGiftForm() {
+        return "funding/funding-gift.html";
+    }
 
     @PostMapping("funding-gift")
-    public String fundingGift(FundingItemDTO fundingItemDTO){
+    public String fundingGift(FundingItemDTO fundingItemDTO) {
         fundingItemService.ItemSave(fundingItemDTO);
         return "funding/funding-gift";
     }
@@ -129,8 +137,8 @@ public class FundingController {
 //    public String fundinglist() {return "funding/funding-list.html";}
 
     @GetMapping("funding")
-    public String goToFundingList(Model model, Long fundingId){
-            model.addAttribute("count", fundingService.getFundingCount(fundingId));
+    public String goToFundingList(Model model, Long fundingId) {
+        model.addAttribute("count", fundingService.getFundingCount(fundingId));
 
         return "/funding/funding-list";
     }
@@ -138,9 +146,9 @@ public class FundingController {
     @GetMapping("funding-list")
     @ResponseBody
     public Slice<FundingDTO> getFundingList(@RequestParam(defaultValue = "0", name = "page") int page) {
-    PageRequest pageRequest = PageRequest.of(page, 12);
+        PageRequest pageRequest = PageRequest.of(page, 12);
 
-    return fundingService.getFundingList(pageRequest);
+        return fundingService.getFundingList(pageRequest);
 
     }
 
@@ -156,16 +164,23 @@ public class FundingController {
         model.addAttribute("fundingDTO", fundingDTO);
 
 
-        return "funding/funding-payment";}
+        return "funding/funding-payment";
+    }
 
     @GetMapping("funding-plan")
-    public String fundingPlan() {return "funding/funding-plan.html";}
+    public String fundingPlan() {
+        return "funding/funding-plan.html";
+    }
 
     @GetMapping("funding-plan-main")
-    public String fundingPlanMain() {return "funding/funding-plan-main.html";}
+    public String fundingPlanMain() {
+        return "funding/funding-plan-main.html";
+    }
 
     @GetMapping("funding-project-plan")
-    public String fundingProjectPlanForm() {return "funding/funding-project-plan";}
+    public String fundingProjectPlanForm() {
+        return "funding/funding-project-plan";
+    }
 
    /* @PostMapping("funding-project-plan")
     public String fundingProjectPlan(Long fundingId, int fundingTargetPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate) {
@@ -174,25 +189,34 @@ public class FundingController {
         return "funding/funding-project-plan";}*/
 
 
-
-// 후원자 수
-     @GetMapping("funding-result")
-    public String fundingResult() {return "funding/funding-result.html";}
+    // 후원자 수
+    @GetMapping("funding-result")
+    public String fundingResult() {
+        return "funding/funding-result.html";
+    }
 
     @GetMapping("funding-start")
-    public String fundingStart() {return "funding/funding-start.html";}
+    public String fundingStart() {
+        return "funding/funding-start.html";
+    }
 
     @GetMapping("funding-topContent")
-    public String fundingTopContentForm() {return "funding/funding-topContent.html";}
+    public String fundingTopContentForm() {
+        return "funding/funding-topContent.html";
+    }
+
 
     @PostMapping("funding-topContent")
     @ResponseBody
-    public String fundingTopContent(FundingDTO fundingDTO) {
-
-         fundingService.fundingRegister(fundingDTO);
-         return "funding/funding-topContent";}
+    public String fundingTopContent(FundingDTO fundingDTO, HttpSession session) {
+        Long memberId = ((MemberDTO)session.getAttribute("member")).getId();
+        fundingService.fundingRegister(fundingDTO, memberId);
+        return "funding/funding-topContent";
+    }
 
 
     @GetMapping("funding-project")
-    public String fundingproject() {return "funding/funding-register";}
+    public String fundingproject() {
+        return "funding/funding-register";
+    }
 }
