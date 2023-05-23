@@ -70,7 +70,6 @@ public class SecurityConfig {
                 .antMatchers(IGNORE_CALENDAR_PATH)
                 .antMatchers(IGNORE_WELFARECENTER_PATH)*/
                 /*일단 admin 편하게 들어갈 수 있게 한건데 나중에 수정하기*/
-                .antMatchers(ADMIN_PATH)
                 /*.antMatchers(IGNORE_MEMBER_PATH)*/
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); //static 경로도 필터에서 제외
     }
