@@ -170,8 +170,17 @@ public class CommunityController {
 
     /* 자유게시판 댓글*/
     @PostMapping("save")
-    public void saveReply(@RequestBody ReplyRequestDTO replyRequestDTO){
-        freeBoardService.insertReply(replyRequestDTO);
+    @ResponseBody
+    public void saveReply(String replyContent,  Long id, HttpSession session){
+        log.info(replyContent + "=====================================");
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+
+        FreeBoardReplyDTO freeBoardReplyDTO = new FreeBoardReplyDTO();
+        freeBoardReplyDTO.setFreeBoardReplyContent(replyContent);
+        freeBoardReplyDTO.setFreeBoardDTO(freeBoardService.getFreeBoardDetail(id));
+        freeBoardReplyDTO.setMemberDTO(memberDTO);
+
+        freeBoardService.insertReply(freeBoardReplyDTO);
     }
 
     @DeleteMapping("delete")

@@ -118,23 +118,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     }
 
     /*댓글 저장*/
-    @Override @Transactional
-    public void insertReply(ReplyRequestDTO replyRequestDTO) {
-        memberRepository.findById(replyRequestDTO.getMemberId()).ifPresent(
-                member ->
-                        freeBoardRepository.findById(replyRequestDTO.getBoardId()).ifPresent(
-                                freeBoard -> {
-                                    FreeBoardReply freeBoardReply = FreeBoardReply.builder()
-                                            .freeBoard(freeBoard)
-                                            .member(member)
-                                            .replyContent(replyRequestDTO.getReplyContent())
-                                            .build();
-                                    freeBoardReplyRepository.save(freeBoardReply);
-                                    freeBoard.setFreeBoardReplyCount(getReplyCount(replyRequestDTO.getBoardId()));
-                                    freeBoardRepository.save(freeBoard);
-                                }
-                        )
-        );
+    @Override
+    public void insertReply(FreeBoardReplyDTO freeBoardReplyDTO) {
+        freeBoardReplyRepository.save(toFreeBoardReplyEntity(freeBoardReplyDTO));
     }
 
     /*댓글 삭제*/
