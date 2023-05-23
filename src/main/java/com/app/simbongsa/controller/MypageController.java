@@ -120,7 +120,7 @@ public class MypageController {
 
         model.addAttribute("myFundings", myFundings.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFundings));
-        return "mypage/my-funding-list";
+        return "/error/unReady";
     }
 
 /*    @GetMapping("my-question")
@@ -140,7 +140,7 @@ public class MypageController {
 
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
-        return "mypage/my-review";
+        return "/error/unReady";
     }
 
     /* 내 자유 게시글 상세보기 */
@@ -177,7 +177,7 @@ public class MypageController {
         model.addAttribute("fundingPaymentDTOS", fundingPaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(fundingPaymentDTOS));
 
-        return "mypage/my-support-list-funding";
+        return "/error/unReady";
     }
 
     @GetMapping("rice-charge")
