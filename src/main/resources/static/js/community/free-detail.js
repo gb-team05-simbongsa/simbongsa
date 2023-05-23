@@ -1,8 +1,33 @@
+// freeBoardDTOS.forEach(freeBoardDTO => {
+//     let text;
+//
+//     text = `
+//             <li class="comment-ok-list">
+//                 <div style="width: 100%;">
+//                     <div class="comment-user">
+//                         <div class="comment-user-name">${freeBoardDTO.memberDTO.memberName}</div>
+//                         <button type="button" class="x-btn">
+//                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
+//                                 <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
+//                             </svg>
+//                         </button>
+//                     </div>
+//                     <div style="flex: 0 0 auto; height: 5px;"></div>
+//                     <p class="comment-contant">${freeBoardDTO.boardContent}</p>
+//                     <div style="flex: 0 0 auto; height: 8px;"></div>
+//                     <span class="comment-day">${freeBoardDTO.createdDate}</span>
+//                 </div>
+//             </li>
+//     `;
+//
+//     $('.comment-lists').append(text);
+// });
+
 let replyService = (function(){
 
     function save(reply, callback){
         $.ajax({
-            url : '/save',
+            url : '/community/save',
             type: "post",
             data: JSON.stringify(reply),
             contentType: "application/json;charset=utf-8",
@@ -16,8 +41,8 @@ let replyService = (function(){
 
     function list(reply, callback){
         $.ajax({
-            url : '/list',
-            type: 'get',
+            url : '/community/list',
+            type: 'post',
             data: reply,
             success : function(replies){
                 if(callback) {
@@ -29,7 +54,7 @@ let replyService = (function(){
 
     function deleteReply(reply, callback){
         $.ajax({
-            url : '/delete',
+            url : '/community/delete',
             type : 'delete',
             data : reply,
             success : function(){
@@ -61,21 +86,48 @@ replyService.list({
     page: page,
     boardId: boardId
 }, function (replies) {
+    console.log(replies)
     if (replies.content.length < 1) {
         let text = `
-                        <div class="comment-list" style="display: none;">
-                            <p class="NoComment">댓글이 없습니다.</p>
-                            <p class="NoComment2">첫 댓글을 남겨보세요</p>
-                        </div>
-        
+                <div class="comment-list" style="display: none;">
+                    <p class="NoComment">댓글이 없습니다.</p>
+                    <p class="NoComment2">첫 댓글을 남겨보세요</p>
+                </div>
             `;
         $replyBox.html(text);
         $(".comment-btn").hide();
         return false;
     }
-    if (replies.last) {
-        $(".comment-btn").hide();
-    }
+    // if (replies.pageSize) {
+    //     // $(".comment-btn").hide();
+    // }
+
+    replies.content.forEach(reply => {
+        let text;
+
+        text = `
+            <li class="comment-ok-list">
+                <div style="width: 100%;">
+                    <div class="comment-user">
+                        <div class="comment-user-name">${reply.memberDTO.memberName}</div>
+                        <button type="button" class="x-btn">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
+                                <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div style="flex: 0 0 auto; height: 5px;"></div>
+                    <p class="comment-contant">${reply.replyContent}</p>
+                    <div style="flex: 0 0 auto; height: 8px;"></div>
+                    <span class="comment-day">${reply.createdDate}</span>
+                </div>
+            </li>
+        `;
+
+        $('.comment-lists').append(text);
+    });
+
+
     $replyBox.html(repliesContent(replies));
 });
 /* 댓글 */

@@ -42,7 +42,7 @@ public interface FreeBoardService {
     public void deleteReply(Long replyId);
 
     // 댓글 목록
-    public Slice<ReplyDTO> getReplyList(Long freeBoardId, Pageable pageable);
+    public Slice<FreeBoardReplyDTO> getReplyList(Long freeBoardId, int page);
 
     // 댓글 갯수
     public Integer getReplyCount(Long freeBoardId);
@@ -198,7 +198,7 @@ public interface FreeBoardService {
         return FreeBoardReplyDTO.builder().id(freeBoardReply.getId())
                 .memberDTO(toMemberDTO(freeBoardReply.getMember()))
                 .replyContent(freeBoardReply.getReplyContent())
-                .id(freeBoardReply.getFreeBoard().getId())
+                .id(freeBoardReply.getId())
                 .createdDate(freeBoardReply.getCreatedDate())
                 .updatedDate(freeBoardReply.getUpdatedDate())
                 .build();

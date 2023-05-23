@@ -26,9 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class CommunityController {
-    @Qualifier
     private final FreeBoardService freeBoardService;
-    @Qualifier
     private final ReviewService reviewService;
 
     @GetMapping("free-board")
@@ -102,7 +100,7 @@ public class CommunityController {
     /*자유게시판 상세보가*/
     @GetMapping("free-detail/{id}")
     public String goToFreeDetail(Model model, @PathVariable Long id) {
-        model.addAttribute("freeBoard", freeBoardService.getFreeBoardDetail(id));
+        model.addAttribute("freeBoardDTO", freeBoardService.getFreeBoardDetail(id));
         return "community/free-detail";
     }
 
@@ -179,10 +177,12 @@ public class CommunityController {
     @DeleteMapping("delete")
     public void deleteFreeReply(@RequestParam("replyId") Long replyId){freeBoardService.deleteReply(replyId);}
 
-    @GetMapping("list")
-    public Slice<ReplyDTO> getFreeList(@RequestParam("boardId") Long freeBoardId, @RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageable = PageRequest.of(page, 5);
-        return freeBoardService.getReplyList(freeBoardId, pageable);
+    @PostMapping("list")
+    @ResponseBody
+    public Slice<FreeBoardReplyDTO> getFreeList(Long boardId, int page){
+        Slice<FreeBoardReplyDTO> replyList = freeBoardService.getReplyList(boardId, page);
+        log.info(replyList.toString());
+        return replyList;
     }
 
 
