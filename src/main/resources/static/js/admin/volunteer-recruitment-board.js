@@ -166,8 +166,8 @@ $('.content__detail__btn').on('click', function () {
                             </div>
                         </label>
                         `;
-            });
-        }
+                    });
+                 }
         text += `
                             </div>
                             <div class="content__intput input_box_shadow" style="margin-left: 6px;">

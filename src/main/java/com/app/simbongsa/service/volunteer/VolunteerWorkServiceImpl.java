@@ -54,8 +54,6 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
 
 
     // 봉사 목록페이지 검색, 무한스크롤
-
-
     @Override
     public VolunteerWork getCurrentSequence() {
         return volunteerWorkRepository.getCurrentSequence_QueryDSL();
