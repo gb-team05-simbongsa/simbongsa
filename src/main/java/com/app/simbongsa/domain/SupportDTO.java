@@ -6,9 +6,11 @@ import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 @Data
+@NoArgsConstructor
 public class SupportDTO {
     private Long id;
     private int supportPrice;

@@ -9,7 +9,6 @@ import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +17,10 @@ public interface SupportService {
     public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id);
     public Long getAllSupportAttend_QueryDSL(Long id);
     //    후원 요청 작성
-    public void saveSupport(SupportDTO supportDTO);
+    public void saveSupport(SupportDTO supportDTO, Long id);
 
 //    후원명단 조회
-//    public List<SupportDTO> getSupportListWithPaging(Long id);
+//    public Page<SupportDTO> getSupportListWithPaging(Long id);
 //    public List<SupportDTO> getSupportList(Long id);
 
 //    공양미 후원 update
@@ -41,6 +40,7 @@ public interface SupportService {
                 .id(supportDTO.getId())
                 .supportPrice(supportDTO.getSupportPrice())
                 .supportRequest(toSupportRequestEntity(supportDTO.getSupportRequestDTO()))
+                .member(toMemberEntity(supportDTO.getMemberDTO()))
                 .build();
     }
     default SupportRequest toSupportRequestEntity(SupportRequestDTO supportRequestDTO){
@@ -66,6 +66,23 @@ public interface SupportService {
                 .memberRice(member.getMemberRice())
                 .memberRole(member.getMemberRole())
                 .memberStatus(member.getMemberStatus())
+                .build();
+    }
+    default Member toMemberEntity(MemberDTO memberDTO) {
+        return Member.builder().id(memberDTO.getId())
+                .memberName(memberDTO.getMemberName())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberPassword(memberDTO.getMemberPassword())
+                .memberAddress(memberDTO.getMemberAddress())
+                .memberAge(memberDTO.getMemberAge())
+                .memberInterest(memberDTO.getMemberInterest())
+                .memberRole(memberDTO.getMemberRole())
+                .memberJoinType(memberDTO.getMemberJoinType())
+                .memberRank(memberDTO.getMemberRank())
+                .memberRice(memberDTO.getMemberRice())
+                .memberVolunteerTime(memberDTO.getMemberVolunteerTime())
+                .randomKey(memberDTO.getRandomKey())
+                .memberStatus(memberDTO.getMemberStatus())
                 .build();
     }
 

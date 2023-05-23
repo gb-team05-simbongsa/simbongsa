@@ -20,7 +20,7 @@ public class VolunteerWorkRestController {
     @ResponseBody
     public Slice<VolunteerWorkDTO> getVolunteerList(@RequestParam(defaultValue = "0", name = "page") int page, @RequestParam(defaultValue = "전체보기", name = "keyword") String keyword){
         PageRequest pageRequest = PageRequest.of(page, 12);
-        return volunteerWorkService.getAllScorollAndSearch(keyword,pageRequest);
+        return null;
     }
 
 

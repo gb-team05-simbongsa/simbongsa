@@ -10,7 +10,7 @@ $open.click(function(){
     $('.support-layout').html(
         `
             <div class="support-rice-layout">
-             <form name="goForm">
+             <form name="goForm" method="post" action="/support/support">
             <div class="suppport-rice-container">
                 <div class="support-rice-close-btn-layout">
                     <button type="button" onclick="modalClose()">X</button>
@@ -23,8 +23,7 @@ $open.click(function(){
             </div>
             <div class="support-pay-layout">
                 <button type="button" onclick="confirm()" class="btn-rice">
-                <input type="hidden" name="supportRequestId" value="${supportRequestDTO.supportRequestId}">
-                <input type="hidden" name="memberId" value="${memberDTO.memberId}">
+                <input type="hidden" name="supportRequestId" value="${supportRequestDTO.id}">
                     <span>확인</span>
                 </button>
             </div>

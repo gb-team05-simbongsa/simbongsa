@@ -11,6 +11,7 @@ import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
 import com.app.simbongsa.type.RicePaymentType;
+import com.app.simbongsa.type.VolunteerWorkCategoryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -71,9 +72,10 @@ public class VolunteerWorkController {
     @GetMapping("work-list")
     public String volunteerList(Integer page,@RequestParam(required = false) String keyword, Model model) {
         page = page == null ? 0 : page - 1;
-
+        if(keyword == null){
+            keyword = "";
+        }
         Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page);
-
 
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
@@ -82,7 +84,16 @@ public class VolunteerWorkController {
         return "volunteer-work/work-list";
     }
 
-
+//    @GetMapping("work-list")
+//    public String volunteerCategory(Model model ,Integer page, @RequestParam(required = false) VolunteerWorkCategoryType volunteerWorkCategoryType){
+//        page = page == null ? 0 : page - 1;
+//        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWorkCategory(volunteerWorkCategoryType, page);
+//
+//        model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS);
+//        model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
+//
+//        return "volunteer-work/work-list";
+//    }
 
     @GetMapping("work-search")
     public String workSearch() { return "volunteer-work/work-search2";}
