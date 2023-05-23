@@ -47,15 +47,19 @@ public class SupportController {
         log.info("들어오나?");
         page = page == null ? 0 : page -1;
 //        Long memberId = userDetail.getMember().getId();
-        Long memberId = memberDTO.getId();
-        log.info(memberId + "내 로그인한 아이디");
+        if(memberDTO != null) {
+            Long memberId = memberDTO.getId();
+            log.info(memberId + "내 로그인한 아이디");
+            //        로그인한 ID
+            MemberDTO member = memberService.getMemberById(memberId);
+            model.addAttribute("memberDTO", member);
+        }
 
 //        후원 총 참여 수
         Long attendCount = supportService.getAllSupportAttend_QueryDSL(supportRequestId);
 //        후원 상세페이지 조회
         SupportRequestDTO supportDetail = supportRequestService.getSupportRequestDetail(supportRequestId);
 //        로그인한 ID
-        MemberDTO member = memberService.getMemberById(memberId);
 
 //        후원된 공양미
         int totalPrice = supportDetail.getSupportDTOS()
@@ -64,7 +68,6 @@ public class SupportController {
                 .sum();
         int originalPrice = totalPrice * 100;
 
-        model.addAttribute("memberDTO", member);
         model.addAttribute("attendCount", attendCount);
 //        model.addAttribute("attendList", attendList.getContent());
 //        model.addAttribute("pageDTO", new PageDTO(attendList));

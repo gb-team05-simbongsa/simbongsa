@@ -21,7 +21,7 @@ volunteerWorkDTOS.forEach((volunteerWorkDTOS, i) => {
                                 <div class="project_card_div" id="${i}">
                                     <div class="project_card_img">
                                         <div class="image_wrapper">
-                                            <a href="work-detail/${volunteerWorkDTOS.id}">
+                                            <a href="/volunteer-work/work-detail/${volunteerWorkDTOS.id}">
                        `;
 
         if(volunteerWorkDTOS.fileDTOS == null || volunteerWorkDTOS.fileDTOS == undefined) {

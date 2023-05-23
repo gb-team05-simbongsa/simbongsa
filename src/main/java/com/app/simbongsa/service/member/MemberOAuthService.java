@@ -88,14 +88,15 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
         } else {
             // 첫 오어스 로그인 시 진입
             // 필요한 정보를 폼 페이지에 미리 채워 넣기 위해 해당 정보를 세션에 저장
-            foundMember = foundMemberOptional.map(member -> member.update(attributes.getEmail()))
+            foundMember = foundMemberOptional.map(member -> member.update(attributes.getEmail(), attributes.getMemberJoinType()))
                     .orElse(attributes.toEntity());
-            session.setAttribute("member", MemberDTO.builder().memberEmail(attributes.getEmail()).build());
+            session.setAttribute("member", MemberDTO.builder().memberEmail(attributes.getEmail()).memberJoinType(attributes.getMemberJoinType()).build());
             MemberDTO sessionMemberDTO = (MemberDTO) session.getAttribute("member");
             log.info(sessionMemberDTO + "첫 오어스 로그인 시 진입");
             log.info(foundMember + "첫 오어스 로그인 시 진입 foundMember");
         }
 
         return foundMember;
+
     }
 }

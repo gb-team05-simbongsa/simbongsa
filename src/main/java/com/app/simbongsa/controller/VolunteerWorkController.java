@@ -45,12 +45,12 @@ public class VolunteerWorkController {
     public String workDetail(Model model, @PathVariable("volunteerWorkId") Long volunteerWorkId, HttpSession httpSession) {
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         VolunteerWorkDTO volunteerWorkDetail = volunteerWorkService.getVolunteerWorkDetail(volunteerWorkId);
-        MemberDTO memberInfo = memberService.getMemberById(memberDTO.getId());
-        log.info(memberInfo + "==========================");
+        if(memberDTO != null) {
+            MemberDTO memberInfo = memberService.getMemberById(memberDTO.getId());
+            log.info(memberInfo + "==========================");
+            model.addAttribute("memberInfo", memberInfo);
+        }
         log.info(volunteerWorkDetail + "==========================");
-
-
-        model.addAttribute("memberInfo", memberInfo);
         model.addAttribute("volunteerWorkDetail", volunteerWorkDetail);
         return "volunteer-work/work-detail";
     }
