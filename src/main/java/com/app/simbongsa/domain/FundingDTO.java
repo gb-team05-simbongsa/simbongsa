@@ -30,8 +30,8 @@ public class FundingDTO {
     private String fundingSummary;
     private int fundingTargetPrice;
     private int fundingCurrentPrice;
-    private LocalDateTime fundingStartDate;
-    private LocalDateTime fundingEndDate;
+    private LocalDate fundingStartDate;
+    private LocalDate fundingEndDate;
     private String fundingIntroduce;
     private String fundingBudgetExplain;
     private String fundingScheduleExplain;
@@ -78,7 +78,7 @@ public class FundingDTO {
 //    }
 
     @Builder
-    public FundingDTO(Long id, List<FileDTO> fileDTOs, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, FileDTO fileDTO) {
+    public FundingDTO(Long id, List<FileDTO> fileDTOs, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDate fundingStartDate, LocalDate fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, FileDTO fileDTO) {
         this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;

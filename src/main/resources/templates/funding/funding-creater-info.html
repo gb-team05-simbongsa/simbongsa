@@ -29,7 +29,7 @@
 <body>
 <div th:insert="~{funding/funding-plan-header.html :: planHeader}"></div>
 <div th:insert="~{funding/funding-topContent.html :: topContent}"></div>
-<div id="view" class="view" th:fragment="creator">
+<div id="view" class="view" >
         <div class="project-wrap">
             <!-- funding-header -->
                     <div id="_header"></div>
@@ -39,7 +39,6 @@
 
             <div class="contents" size="228">
                         <div class="planContents">
-                            <form th:action="@{/funding/funding-creator-info}" method="post" name="fundingForm">
                             <div class="projectWrap">
                                 <dl class="projectInfo">
                                     <dt class="projectInfoTitle">창작자 이름
@@ -99,13 +98,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="buttonWrap">
-                                <button type="button" class="lineButton pdc-btn-l" color="grayEditor200">취소</button>
-                                <button  class="solidButton pdc-btn-l"  color="mainEditorP80">
-                                    <span>등록</span>
-                                </button>
-                            </div>
-                            </form>
+<!--                            <div class="buttonWrap">-->
+<!--                                <button type="button" class="lineButton pdc-btn-l" color="grayEditor200">취소</button>-->
+<!--                                <button  class="solidButton pdc-btn-l"  color="mainEditorP80">-->
+<!--                                    <span>등록</span>-->
+<!--                                </button>-->
+<!--                            </div>-->
                         </div>
             </div>
         </div>

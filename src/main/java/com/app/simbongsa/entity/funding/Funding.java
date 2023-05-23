@@ -11,6 +11,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class Funding {
     @NotNull private String fundingSummary;
     @NotNull private int fundingTargetPrice;
     @NotNull private int fundingCurrentPrice;
-    @NotNull private LocalDateTime fundingStartDate;
-    @NotNull private LocalDateTime fundingEndDate;
+    @NotNull private LocalDate fundingStartDate;
+    @NotNull private LocalDate fundingEndDate;
     @NotNull private String fundingIntroduce;
     @NotNull private String fundingBudgetExplain;
     @NotNull private String fundingScheduleExplain;
@@ -78,7 +79,7 @@ public class Funding {
 //       this.member = member;
 //    }
     @Builder
-    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, Member member,  List<FundingFile> fundingFile) {
+    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDate fundingStartDate, LocalDate fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, Member member,  List<FundingFile> fundingFile) {
         this.id = id;
         this.fundingCategory = fundingCategory;
         this.fundingTitle = fundingTitle;
@@ -127,11 +128,11 @@ public class Funding {
         this.fundingCurrentPrice = fundingCurrentPrice;
     }
 
-    public void setFundingStartDate(LocalDateTime fundingStartDate) {
+    public void setFundingStartDate(LocalDate fundingStartDate) {
         this.fundingStartDate = fundingStartDate;
     }
 
-    public void setFundingEndDate(LocalDateTime fundingEndDate) {
+    public void setFundingEndDate(LocalDate fundingEndDate) {
         this.fundingEndDate = fundingEndDate;
     }
 

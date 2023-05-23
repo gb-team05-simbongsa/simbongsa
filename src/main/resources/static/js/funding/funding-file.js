@@ -59,7 +59,7 @@ function handleFiles(files) {
             });
 
             /* 사진이 한개 추가됐을 때 버튼 숨기기 */
-            if($('.ImgStyleList').length = 1) {
+            if($('.ImgStyleList').length = 4) {
                 $('.uploadWrap').hide();
             }
 
