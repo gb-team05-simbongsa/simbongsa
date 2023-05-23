@@ -30,7 +30,7 @@ public interface FreeBoardQueryDsl {
     //    자유게시판 전체 조회(페이징)
     public Page<FreeBoard> findAllWithPaging(AdminBoardSearch adminBoardSearch, Pageable pageable);
 
-    /*  작성한 자유게시물 조회(페이징처리) */
+    /* 유저가 작성한 자유게시물 조회(페이징처리) */
     public Page<FreeBoard> findByMemberId(Pageable pageable, MemberDTO memberDTO);
 
     //    세션에 담긴 id 값 받아와서 내가 작성한 자유 게시글 리스트 가져오기
@@ -45,7 +45,6 @@ public interface FreeBoardQueryDsl {
     /*마이페이지 내가 작성한 글 전체 조회*/
     public Page<FreeBoard> findAllByFreeMemberIdPaging_QueryDsl(Pageable pageable, Long id);
 
-    // 댓글 갯수
-    public Long getFreeReplyCount_QueryDsl(Long boardId);
+
 
 }
