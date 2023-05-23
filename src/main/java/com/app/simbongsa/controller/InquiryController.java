@@ -9,6 +9,7 @@ import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.inquiry.NoticeService;
 import com.app.simbongsa.service.member.MemberService;
+import com.app.simbongsa.type.InquiryType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 
@@ -71,7 +73,7 @@ public class InquiryController {
     }
 
     @PostMapping("inquiry-write")
-    public String inquiryWrite(String inquiryTitle, String inquiryContent, HttpSession session){
+    public RedirectView inquiryWrite(String inquiryTitle, String inquiryContent, HttpSession session){
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 
         InquiryDTO inquiryDTO = new InquiryDTO();
@@ -80,7 +82,7 @@ public class InquiryController {
         inquiryDTO.setMemberDTO(memberDTO);
 
         inquiryService.saveInquiry(inquiryDTO);
-        return "mypage/my-question";
+        return new RedirectView("/mypage/my-question");
     }
 
     @GetMapping("search")

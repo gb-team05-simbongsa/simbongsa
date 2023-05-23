@@ -14,7 +14,9 @@ myActivity.forEach((activity, i) => {
                 <div class="support-request-detail">
                     <button class="go-support-request">
                         <span class="request-detail">
-                            <div class="detail-text">상세보기</div>
+                            <a href="/volunteer-work/work-detail/${activity.volunteerWorkDTO.id}">
+                                <div class="detail-text">상세보기</div>
+                            </a>
                         </span>
                     </button>
                 </div>
