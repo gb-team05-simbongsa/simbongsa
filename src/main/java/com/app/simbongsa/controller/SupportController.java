@@ -41,7 +41,7 @@ public class SupportController {
 
     @PostMapping("attend-member")
     @ResponseBody
-    public Page<SupportDTO> attendMember(Long id, Integer page){
+    public Page<SupportDTO> attendMember(Long id, @RequestParam(value = "page") Integer page){
         log.info("들어오나?");
         return supportService.getAllSupportAttendWithMember_QueryDSL(page, id);
     }

@@ -470,4 +470,4 @@ $(".paging-modal").on("click", ".changePage-modal", function(e) {
 //     }
 //
 //     getList(contentId, goPage);
-// });
+

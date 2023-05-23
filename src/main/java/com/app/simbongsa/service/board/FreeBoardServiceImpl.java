@@ -174,7 +174,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         Slice<FreeBoard> freeBoards =
                 freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(pageable);
         List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
-
         return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
     }
 

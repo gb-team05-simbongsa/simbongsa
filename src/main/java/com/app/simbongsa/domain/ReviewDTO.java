@@ -22,7 +22,7 @@ public class ReviewDTO {
 
 
     @Builder
-    public ReviewDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, int replyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
+    public ReviewDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, Integer replyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
