@@ -1,6 +1,6 @@
 reviewBoardList.forEach(review => {
     let text;
-
+    console.log("번")
     text = `
         <a href="/community/review-detail/${review.id}">
             <li class="contant-list-container" style="margin-top: 10px">
@@ -76,6 +76,7 @@ headerTitle2.addEventListener('click', () => {
  /* 눌렀을 때 색 변환 - 최신글, 인기글*/
     const categoriNew = document.querySelector('.categori-new');
     const categoriBest = document.querySelector('.categori-best');
+
     const userTimeElements = document.querySelectorAll('.user-time');
 
     userTimeElements.forEach((userTimeElement) => {
@@ -103,12 +104,14 @@ categoriNew.addEventListener('click', () => {
     categoriNew.style.fill = '#1d1d1e';
     categoriBest.style.color = '#8a8a8b';
     categoriBest.style.fill = '#8a8a8b';
+
      $.ajax({
          url: "/community/review-board/newList",
          type: "get",
-         success: function(results) {
+         success: function(result) {
              let text = ``;
-             results.forEach(reviews => {
+             console.log("몇번")
+             result.forEach(reviews => {
 
                  text += `
                             <a href="/community/review-detail/${reviews.id}">
@@ -151,12 +154,13 @@ categoriNew.addEventListener('click', () => {
     categoriBest.style.fill = '#1d1d1e';
    categoriNew.style.color = '#8a8a8b';
    categoriNew.style.fill = '#8a8a8b';
+
      $.ajax({
          url: "/community/review-board/likes",
          type: "get",
-         success: function(result) {
+         success: function(results) {
              let text = ``;
-             result.forEach(review => {
+             results.forEach(review => {
 
                  text += `
                             <a href="/community/review-detail/${review.id}">

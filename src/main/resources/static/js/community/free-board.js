@@ -23,7 +23,7 @@ freeBoardList.forEach(freeboard => {
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
                                 <span class="user-time">${freeboard.createdDate}</span>
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                <span class="user-see">댓글수 ${freeboard.freeBoardReplyCount}</span>
+                                <span class="user-see">댓글수 ${freeboard.replyCount}</span>
                             </div>
                         </div>
                     </button>
