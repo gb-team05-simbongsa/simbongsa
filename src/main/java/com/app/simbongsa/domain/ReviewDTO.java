@@ -14,7 +14,7 @@ public class ReviewDTO {
     private String boardContent;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private Integer replyCount;
+    private Integer reviewReplyCount;
     private MemberDTO memberDTO;
     private List<FileDTO> fileDTOS;
 
@@ -22,13 +22,13 @@ public class ReviewDTO {
 
 
     @Builder
-    public ReviewDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, int replyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
+    public ReviewDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, Integer reviewReplyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
-        this.replyCount = replyCount;
+        this.reviewReplyCount = reviewReplyCount;
         this.memberDTO = memberDTO;
         this.fileDTOS = fileDTOS;
     }

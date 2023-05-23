@@ -13,6 +13,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.*;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
@@ -24,7 +25,7 @@ import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
 import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
 import static com.app.simbongsa.entity.inquiry.QInquiry.inquiry;
 
-
+@Slf4j
 @RequiredArgsConstructor
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     private final JPAQueryFactory query;
@@ -34,9 +35,8 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Slice<FreeBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .join(freeBoard.member)
-                .fetchJoin()
-                .join(freeBoard.freeBoardFiles)
+                .leftJoin(freeBoard.member)
+                .leftJoin(freeBoard.freeBoardFiles)
                 .fetchJoin()
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
@@ -51,9 +51,8 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .join(freeBoard.member)
-                .fetchJoin()
-                .join(freeBoard.freeBoardFiles)
+                .leftJoin(freeBoard.member)
+                .leftJoin(freeBoard.freeBoardFiles)
                 .fetchJoin()
                 .orderBy(freeBoard.freeBoardReplyCount.desc())
                 .offset(pageable.getOffset())
@@ -63,6 +62,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return checkLastPage(pageable, freeBoards);
     }
 
+    // 현재 시퀀스
     @Override
     public FreeBoard getCurrentSequence_QueryDsl() {
         return query.select(freeBoard)
@@ -207,4 +207,12 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new PageImpl<>(foundFreeBoard, pageable, count);
     }
 
+    //댓글 갯수
+    @Override
+    public Long getFreeReplyCount_QueryDsl(Long boardId){
+        return query.select(freeBoard.count())
+                .from(freeBoard)
+                .where(freeBoard.id.eq(boardId))
+                .fetchOne();
+    }
 }

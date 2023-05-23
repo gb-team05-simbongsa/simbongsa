@@ -14,20 +14,20 @@ public class FreeBoardDTO {
     private String boardContent;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private Integer replyCount;
+    private Integer freeBoardReplyCount;
     private MemberDTO memberDTO;
     private List<FileDTO> fileDTOS;
 
     public FreeBoardDTO(){this.fileDTOS = new ArrayList<>();}
 
     @Builder
-    public FreeBoardDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, Integer replyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
+    public FreeBoardDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, Integer freeBoardReplyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
-        this.replyCount = replyCount;
+        this.freeBoardReplyCount = freeBoardReplyCount;
         this.memberDTO = memberDTO;
         this.fileDTOS = fileDTOS;
     }
