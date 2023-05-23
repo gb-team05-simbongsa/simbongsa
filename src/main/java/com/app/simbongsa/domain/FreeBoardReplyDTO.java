@@ -1,31 +1,26 @@
 package com.app.simbongsa.domain;
 
-import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Data
-@Component
 @NoArgsConstructor
 public class FreeBoardReplyDTO {
     private Long id;
     private MemberDTO memberDTO;
-    private String replyContent;
-    private Long boardId;
+    private String freeBoardReplyContent;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
     private FreeBoardDTO freeBoardDTO;
 
     @Builder
-    public FreeBoardReplyDTO(Long id, MemberDTO memberDTO, String replyContent, Long boardId, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    public FreeBoardReplyDTO(Long id, MemberDTO memberDTO, String freeBoardReplyContent, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.memberDTO = memberDTO;
-        this.replyContent = replyContent;
-        this.boardId = boardId;
+        this.freeBoardReplyContent = freeBoardReplyContent;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }

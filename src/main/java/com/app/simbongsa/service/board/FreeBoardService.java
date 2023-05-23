@@ -36,7 +36,7 @@ public interface FreeBoardService {
     public FreeBoard getCurrentSequence();
 
     // 댓글 작성
-    public void insertReply(ReplyRequestDTO replyRequestDTO);
+    public void insertReply(FreeBoardReplyDTO freeBoardReplyDTO);
 
     // 댓글 삭제
     public void deleteReply(Long replyId);
@@ -171,6 +171,7 @@ public interface FreeBoardService {
                 .boardTitle(freeBoardDTO.getBoardTitle())
                 .boardContent(freeBoardDTO.getBoardContent())
                 .member(toMemberEntity(freeBoardDTO.getMemberDTO()))
+//                .freeBoardFiles(freeBoardDTO.getFileDTOS())
                 .build();
     }
 
@@ -197,19 +198,19 @@ public interface FreeBoardService {
     default FreeBoardReplyDTO toFreeBoardReplyDTO(FreeBoardReply freeBoardReply){
         return FreeBoardReplyDTO.builder().id(freeBoardReply.getId())
                 .memberDTO(toMemberDTO(freeBoardReply.getMember()))
-                .replyContent(freeBoardReply.getReplyContent())
+                .freeBoardReplyContent(freeBoardReply.getReplyContent())
                 .id(freeBoardReply.getId())
                 .createdDate(freeBoardReply.getCreatedDate())
                 .updatedDate(freeBoardReply.getUpdatedDate())
                 .build();
     }
 
-    default FreeBoardReply toFreeBoardReplyEntity(ReplyDTO replyDTO){
+    default FreeBoardReply toFreeBoardReplyEntity(FreeBoardReplyDTO freeBoardReplyDTO){
         return FreeBoardReply.builder()
-                .id(replyDTO.getId())
-                .member(toMemberEntity(replyDTO.getMemberDTO()))
-                .replyContent(replyDTO.getReplyContent())
-                .freeBoard(toFreeBoardEntity(replyDTO.getFreeBoardDTO()))
+                .id(freeBoardReplyDTO.getId())
+                .member(toMemberEntity(freeBoardReplyDTO.getMemberDTO()))
+                .replyContent(freeBoardReplyDTO.getFreeBoardReplyContent())
+                .freeBoard(toFreeBoardEntity(freeBoardReplyDTO.getFreeBoardDTO()))
                 .build();
     }
 }
