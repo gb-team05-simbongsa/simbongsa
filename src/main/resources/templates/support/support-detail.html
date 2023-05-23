@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/support/support-rice-modal.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
 </head>
 <style>
     .error{
@@ -31,6 +32,7 @@
 
 <div id="wrap">
         <div id="container">
+            <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
             <div class="collect-wrap">
                 <div class="collect-content">
                     <h2 class="theme">
@@ -402,4 +404,5 @@
 <script src="/js/main/header.js"></script>
 <script src="/js/support/support-rice-modal.js"></script>
 <script src="/js/support/supportDetail.js"></script>
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>
