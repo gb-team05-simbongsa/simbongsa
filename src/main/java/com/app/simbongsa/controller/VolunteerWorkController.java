@@ -41,12 +41,13 @@ public class VolunteerWorkController {
     private final VolunteerWorkActivityService volunteerWorkActivityService;
 
     @GetMapping("work-detail/{volunteerWorkId}")
-    public String workDetail(Model model, @PathVariable("volunteerWorkId") Long volunteerWorkId, HttpSession httpSession, LocalDate volunteerWorkActivityDate) {
+    public String workDetail(Model model, @PathVariable("volunteerWorkId") Long volunteerWorkId, HttpSession httpSession) {
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         VolunteerWorkDTO volunteerWorkDetail = volunteerWorkService.getVolunteerWorkDetail(volunteerWorkId);
         MemberDTO memberInfo = memberService.getMemberById(memberDTO.getId());
         log.info(memberInfo + "==========================");
         log.info(volunteerWorkDetail + "==========================");
+
 
         model.addAttribute("memberInfo", memberInfo);
         model.addAttribute("volunteerWorkDetail", volunteerWorkDetail);
@@ -69,13 +70,14 @@ public class VolunteerWorkController {
         return "volunteer-work/work-detail";
     }
 
-    @GetMapping("work-list")
-    public String volunteerList(Integer page,@RequestParam(required = false) String keyword, Model model) {
+    @GetMapping("work-list/{volunteerWorkType}")
+    public String volunteerList(Integer page,@RequestParam(required = false) String keyword, @PathVariable("volunteerWorkType") String volunteerWorkCategoryType,  Model model) {
         page = page == null ? 0 : page - 1;
-        if(keyword == null){
+        if(keyword == null || volunteerWorkCategoryType == null){
             keyword = "";
+            volunteerWorkCategoryType = "";
         }
-        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page);
+        Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkCategoryType);
 
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
