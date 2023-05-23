@@ -427,7 +427,6 @@ let setVolunteerWorkDTO = function() {
 let setVolunteerWorkModifyDTO = function() {
     const $files = $photoPicker[0].files;
 
-    console.log($files)
     if($files.length != 0) {
         // let fileDTO = new Object();
         fileDTO.fileName = $files[0].name;

@@ -28,7 +28,7 @@ public class SupportRequest extends Period {
     @NotNull private RequestType supportRequestStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
+    @JoinColumn(name = "USER_ID")
     private Member member;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "supportRequest")

@@ -49,7 +49,7 @@ public interface SupportRequestService {
 //    후원 요청 작성
   public void saveSupportRequest(SupportRequestDTO supportRequestDTO);
 
-  public void register(SupportRequestDTO supportRequestDTO, Long memberId);
+  public void register(SupportRequestDTO supportRequestDTO);
   public SupportRequest getCurrentSequence();
 
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {

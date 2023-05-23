@@ -45,10 +45,10 @@ public class FileRestController {
              filePaths.add(getPath() + "/" + filePath);
         }
 
-    map.put("uuids", uuids);
-    map.put("paths", filePaths);
+        map.put("uuids", uuids);
+        map.put("paths", filePaths);
 
-          return map;
+        return map;
     }
 
     //    파일 불러오기

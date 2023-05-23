@@ -121,14 +121,15 @@ public class SupportController {
     public void goToWriteForm(SupportRequestDTO supportRequestDTO){
     }
     @PostMapping("support-write")
-    public RedirectView supportWrite(@ModelAttribute("supportRequestDTO") SupportRequestDTO supportRequestDTO, HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
-        log.info("========================" + supportRequestDTO.toString() + "==================================");
+    @ResponseBody
+    public void supportWrite(@RequestBody SupportRequestDTO supportRequestDTO, HttpSession httpSession){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        supportRequestDTO.setMemberDTO(memberDTO);
 //        Long memberId = userDetail.getMember().getId();
         Long memberId = memberDTO.getId();
         log.info("========================" + memberId.toString() + "=============================");
-        supportRequestService.register(supportRequestDTO, memberId);
-        return new RedirectView("support-list");
+        supportRequestService.register(supportRequestDTO);
+//        return new RedirectView("support-list");
     }
 
 }
