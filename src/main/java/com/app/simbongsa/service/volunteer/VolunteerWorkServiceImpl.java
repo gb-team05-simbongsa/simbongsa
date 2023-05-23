@@ -1,38 +1,26 @@
 package com.app.simbongsa.service.volunteer;
 
 import com.app.simbongsa.domain.FileDTO;
-import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.VolunteerWorkDTO;
 import com.app.simbongsa.entity.file.VolunteerWorkFile;
-import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.entity.volunteer.QVolunteerWork;
 import com.app.simbongsa.entity.volunteer.VolunteerWork;
 import com.app.simbongsa.repository.volunteer.VolunteerWorkFileRepository;
 import com.app.simbongsa.repository.volunteer.VolunteerWorkRepository;
 import com.app.simbongsa.search.admin.AdminVolunteerSearch;
 import com.app.simbongsa.type.FileRepresentationalType;
 import com.app.simbongsa.type.VolunteerWorkCategoryType;
-import com.querydsl.core.types.dsl.BooleanExpression;
-import com.sun.tools.jconsole.JConsoleContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.app.simbongsa.entity.volunteer.QVolunteerWork.volunteerWork;
 
 
 @Service
@@ -113,10 +101,40 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
     }
 
     @Override
-    public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page) {
+    public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page, String volunteerWorkCategoryType) {
         log.info(keyword + "==================");
         log.info(page + "=======================");
-        Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllPagingAndSearch(keyword, PageRequest.of(page, 8));
+        VolunteerWorkCategoryType categoryType = null;
+
+        switch (volunteerWorkCategoryType){
+            case "시설봉사":
+                categoryType = VolunteerWorkCategoryType.시설봉사;
+            break;
+            case "재가봉사":
+                categoryType = VolunteerWorkCategoryType.재가봉사;
+            break;
+            case "전문봉사":
+                categoryType = VolunteerWorkCategoryType.전문봉사;
+            break;
+            case "지역사회봉사":
+                categoryType = VolunteerWorkCategoryType.지역사회봉사;
+            break;
+            case "금물품봉사":
+                categoryType = VolunteerWorkCategoryType.금물품봉사;
+            break;
+            case "해외봉사":
+                categoryType = VolunteerWorkCategoryType.해외봉사;
+            break;
+            case "헌혈":
+                categoryType = VolunteerWorkCategoryType.헌혈;
+            break;
+            case "재능기부봉사":
+                categoryType = VolunteerWorkCategoryType.재능기부봉사;
+            break;
+        }
+
+
+        Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllPagingAndSearch(keyword, PageRequest.of(page, 8), categoryType);
         List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorks.getContent().stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
         return new PageImpl<>(volunteerWorkDTOS, volunteerWorks.getPageable(), volunteerWorks.getTotalElements());
     }

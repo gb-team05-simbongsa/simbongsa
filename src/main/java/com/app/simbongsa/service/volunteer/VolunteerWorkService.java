@@ -45,7 +45,7 @@ public interface VolunteerWorkService {
     public void updateVolunteerWork(VolunteerWorkDTO volunteerWorkDTO);
 
 //    ** 봉사 목록 지역 별 조회
-    public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page);
+    public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page, String volunteerWorkCategoryType);
 //    ** 봉사 목록 카테고리별 조회
     public Page<VolunteerWorkDTO> pagingVolunteerWorkCategory(VolunteerWorkCategoryType volunteerWorkCategoryType, Integer page);
 
