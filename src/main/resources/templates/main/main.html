@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
 </head>
 <style>
     .fundingImg{
@@ -45,6 +46,8 @@
         <header th:insert="~{main/header.html :: mainHeader}"></header>
         <div class="container">
             <div class="home-wrapper">
+                <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>
+
                 <div class="main-top-section">
                     <div class="main-first-section">
                         <div class="main-banner-container banner-margin">
@@ -329,7 +332,9 @@
                 </div>
                 <div class="main-bottom-banner"></div>
             </div>
+
             <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
+
         </div>
         <div class="common-layer-tab"></div>
     </div>
@@ -445,4 +450,30 @@
     });
 
 </script>
+<script>
+
+    var Target = document.getElementById("clock");
+    var Target_apm = document.getElementById("apm");
+
+    function clock() {
+        var time = new Date();
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+        // var seconds = time.getSeconds();
+        var AmPm ="AM";
+        if(hours > 12){
+            var AmPm ="PM";
+            hours %= 12;
+        }
+
+        Target.innerText =
+            `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+
+        Target_apm.innerText = `${AmPm}`;
+
+    }
+    clock();
+    setInterval(clock, 1000); // 1초마다 실행
+</script>
+<script src="/js/customerCenter/inquiry-write.js"></script>
 </html>
