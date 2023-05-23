@@ -307,10 +307,57 @@ public class MemberServiceImpl implements MemberService {
     }
 
 
-    /*회원정보수정*/
+/*    *//*회원정보 비밀번호 수정*//*
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateMyMemberPassword(String memberEmail, String memberPassword, PasswordEncoder passwordEncoder) {
         memberRepository.memberUpdatePassword_QueryDSL(memberEmail, passwordEncoder.encode(memberPassword));
+    }
+
+    *//* 회원정보수정 이름 *//*
+    @Override
+    public void updateMyMemberName(String memberEmail, String memberName) {
+        memberRepository.memberUpdateName_QueryDSL(memberEmail, memberName);
+    }
+
+    *//* 회원정보수정 주소 *//*
+    @Override
+    public void updateMyMemberAddress(String memberEmail, String memberAddress) {
+        memberRepository.memberUpdateAddress_QueryDSL(memberEmail,memberAddress);
+    }
+
+    *//* 회원정보수정 나이 *//*
+    @Override
+    public void updateMyMemberAge(String memberEmail, Integer memberAge) {
+        memberRepository.memberUpdateAge_QueryDSL(memberEmail,memberAge);
+    }
+
+    *//* 회원정보수정 관심봉사 *//*
+    @Override
+    public void updateMyMemberInterest(String memberEmail, String memberInterest) {
+        memberRepository.memberUpdateInterest_QueryDSL(memberEmail, memberInterest);
+    }*/
+
+    /* 회원정보 수정 */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void updateMyInfo(MemberDTO memberDTO, MemberDTO updateInfo, PasswordEncoder passwordEncoder) {
+        String memberEmail = memberDTO.getMemberEmail();
+
+        if (updateInfo.getMemberPassword() != null) {
+            memberRepository.memberUpdatePassword_QueryDSL(memberEmail, passwordEncoder.encode(updateInfo.getMemberPassword()));;
+        }
+        if (updateInfo.getMemberName() != null) {
+            memberRepository.memberUpdateName_QueryDSL(memberEmail, updateInfo.getMemberName());
+        }
+        if (updateInfo.getMemberAddress() != null) {
+            memberRepository.memberUpdateAddress_QueryDSL(memberEmail,updateInfo.getMemberAddress());
+        }
+        if (updateInfo.getMemberAge() != null) {
+            memberRepository.memberUpdateAge_QueryDSL(memberEmail,updateInfo.getMemberAge());
+        }
+        if (updateInfo.getMemberInterest() != null) {
+            memberRepository.memberUpdateInterest_QueryDSL(memberEmail, updateInfo.getMemberInterest());
+        }
     }
 }

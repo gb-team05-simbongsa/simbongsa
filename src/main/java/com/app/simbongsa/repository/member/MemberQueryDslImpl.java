@@ -187,4 +187,17 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     public void memberUpdateAddress_QueryDSL(String memberEmail, String memberAddress) {
         query.update(member).set(member.memberAddress, memberAddress).where(member.memberEmail.eq(memberEmail)).execute();
     }
+
+    /* 회원정보수정 나이 */
+
+    @Override
+    public void memberUpdateAge_QueryDSL(String memberEmail, Integer memberAge) {
+        query.update(member).set(member.memberAge, memberAge).where(member.memberEmail.eq(memberEmail)).execute();
+    }
+
+    /* 회원정보수정 관심봉사 */
+    @Override
+    public void memberUpdateInterest_QueryDSL(String memberEmail, String memberInterest) {
+        query.update(member).set(member.memberInterest, memberInterest).where(member.memberEmail.eq(memberEmail)).execute();
+    }
 }
