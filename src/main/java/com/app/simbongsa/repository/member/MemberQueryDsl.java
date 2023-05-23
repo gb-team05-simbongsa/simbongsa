@@ -55,4 +55,13 @@ public interface MemberQueryDsl {
 
     /* 메인 이메일 찾기 */
     public Member findByMemberEmail_QueryDSL(String memberEmail);
+
+    /* 회원정보수정 비밀번호 */
+    public void memberUpdatePassword_QueryDSL(String memberEmail, String memberPassword);
+
+    /* 회원정보수정 이름 */
+    public void memberUpdateName_QueryDSL(String memberEmail, String memberName);
+
+    /* 회원정보수정 주소 */
+    public void memberUpdateAddress_QueryDSL(String memberEmail, String memberAddress);
 }

@@ -3,10 +3,12 @@ package com.app.simbongsa.controller;
 import com.app.simbongsa.domain.MailDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.type.MemberJoinType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -163,5 +165,6 @@ public class MemberController {
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         return new RedirectView("/member/find-password-email-send");
     }
+
 
 }
