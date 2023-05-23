@@ -38,8 +38,8 @@ public class VolunteerWorkActivityServiceImpl implements VolunteerWorkActivitySe
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     @Override
-    public Page<VolunteerWorkActivityDTO> getMyVolunteerWork(Integer page, UserDetail userDetail) {
-        Page<VolunteerWorkActivity> myVolunteerWorkActivity = volunteerWorkActivityRepository.findMyVolunteerById(PageRequest.of(0, 5), userDetail);
+    public Page<VolunteerWorkActivityDTO> getMyVolunteerWork(Integer page, Long memberId) {
+        Page<VolunteerWorkActivity> myVolunteerWorkActivity = volunteerWorkActivityRepository.findMyVolunteerById(PageRequest.of(0, 5), memberId);
         List<VolunteerWorkActivityDTO> volunteerWorkActivityDTOS = myVolunteerWorkActivity.getContent().stream().map(this::toVolunteerWorkActivityDTO).collect(Collectors.toList());
         return new PageImpl<>(volunteerWorkActivityDTOS, myVolunteerWorkActivity.getPageable(),myVolunteerWorkActivity.getTotalElements());
     }

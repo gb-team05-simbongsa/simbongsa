@@ -236,9 +236,11 @@ public class MypageController {
     }
 
     @GetMapping("volunteer-work-list")
-    public String volunteerWorkList(Integer page, Model model, @AuthenticationPrincipal UserDetail userDetail){
+    public String volunteerWorkList(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        Long memberId = memberDTO.getId();
         page = page == null ? 0 : page - 1;
-        Page<VolunteerWorkActivityDTO> myActivity = volunteerWorkActivityService.getMyVolunteerWork(page, userDetail);
+        Page<VolunteerWorkActivityDTO> myActivity = volunteerWorkActivityService.getMyVolunteerWork(page, memberId);
         model.addAttribute("myActivity",myActivity.getContent());
         model.addAttribute("pageDTO",new PageDTO(myActivity));
         return "mypage/volunteer-work-list";

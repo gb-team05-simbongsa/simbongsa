@@ -17,7 +17,7 @@ public interface VolunteerWorkActivityService {
     public Page<VolunteerWorkActivityDTO> getVolunteerWorkActivity(Long id, Integer page);
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
-    public Page<VolunteerWorkActivityDTO> getMyVolunteerWork(Integer page, @AuthenticationPrincipal UserDetail userDetail);
+    public Page<VolunteerWorkActivityDTO> getMyVolunteerWork(Integer page, Long memberId);
 
     /* 봉사활동 참가 모달*/
     public void saveVolunteerWorkActivity(VolunteerWorkActivityDTO volunteerWorkActivityDTO);

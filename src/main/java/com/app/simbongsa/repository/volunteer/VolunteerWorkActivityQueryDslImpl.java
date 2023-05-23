@@ -43,19 +43,19 @@ public class VolunteerWorkActivityQueryDslImpl implements VolunteerWorkActivityQ
 
     /* 내 봉사 활동 목록 조회(페이징처리) */
     @Override
-    public Page<VolunteerWorkActivity> findMyVolunteerById(Pageable pageable, UserDetail userDetail) {
+    public Page<VolunteerWorkActivity> findMyVolunteerById(Pageable pageable, Long memberId) {
         List<VolunteerWorkActivity> foundVolunteerWorkActivities = query.select(volunteerWorkActivity)
                 .from(volunteerWorkActivity)
                 .join(volunteerWorkActivity.volunteerWork)
                 .fetchJoin()
-                .where(volunteerWorkActivity.member.id.eq(userDetail.getId()))
+                .where(volunteerWorkActivity.member.id.eq(memberId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         Long count = query.select(volunteerWorkActivity.count())
                 .from(volunteerWorkActivity)
-                .where(volunteerWorkActivity.member.id.eq(userDetail.getId()))
+                .where(volunteerWorkActivity.member.id.eq(memberId))
                 .fetchOne();
 
         return new PageImpl<>(foundVolunteerWorkActivities,pageable,count);
