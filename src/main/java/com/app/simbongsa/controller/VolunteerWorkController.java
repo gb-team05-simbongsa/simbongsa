@@ -88,7 +88,6 @@ public class VolunteerWorkController {
         model.addAttribute("total", total);
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
-        model.addAttribute("keyword", keyword);
 
         return "volunteer-work/work-list";
     }
