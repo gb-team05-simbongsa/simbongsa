@@ -160,6 +160,23 @@ $registerButton.click(() => {
     }
 });
 
+
+// 더보기 버튼
+$(".comment-btn").click(() => {
+    page++;
+    replyService.list({
+        page: page,
+        boardId: boardId
+    }, function (replies) {
+        $replyBox.append(repliesContent(replies));
+
+        if (replies.last) {
+            $(".comment-btn").hide();
+        }
+    });
+});
+
+
 //  삭제모달
 let modal;
 let modalBack;
