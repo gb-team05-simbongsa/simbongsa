@@ -148,12 +148,21 @@ file.forEach((file, i) =>{
                     </button>
                 </li>
             `;
-    $('.thumbnail-list ul').append(text);
-});
 
 let text = ' ';
     text = `
      <img id="expandedImg" src="/file/display?fileName=${file[0].filePath}" style="cursor:pointer; width:624px; height:351px">
+      `;
+    $('.view').html(text2);
+    $('.thumbnail-list ul').append(text);
+});
+
+    let text2 = ' ';
+    text2 = `
+     <img id="expandedImg" src="/file/display?fileName=${file[0].filePath}" style="cursor:pointer; width:624 height=351">
     `;
-$('.view').html(text);
-console.log(file[0]);
+    $('.view').html(text2);
+    $('.thumbnail-list ul').append(text);
+});
+
+

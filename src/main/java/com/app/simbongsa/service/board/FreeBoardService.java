@@ -36,7 +36,7 @@ public interface FreeBoardService {
     public FreeBoard getCurrentSequence();
 
     // 댓글 작성
-    public void insertReply(FreeBoardReplyDTO freeBoardReplyDTO);
+    public void insertReply(ReplyRequestDTO replyRequestDTO);
 
     // 댓글 삭제
     public void deleteReply(Long replyId);

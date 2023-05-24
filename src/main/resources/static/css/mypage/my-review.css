@@ -15,7 +15,7 @@
     gap: 16px;
     display: flex;
 }
-.my-board-header-title{
+.my-board-header-title-select{
     cursor: pointer;
     font-weight: 700;
     font-size: 18px;
@@ -23,7 +23,7 @@
     color: #1d1d1e;
     fill: #1d1d1e;
 }
-.my-board-header-title-select{
+.my-board-header-title{
     cursor: pointer;
     font-weight: 700;
     font-size: 18px;
