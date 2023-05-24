@@ -1,8 +1,8 @@
 const $open = $('.donate');
 const $layout = $('.support-layout');
-    const $submit = $('.support-pay-layout');
-    const $close = $('.support-rice-close-btn-layout');
-    const $input = $('rice-payment-input');
+    // const $submit = $('.support-pay-layout');
+    // const $close = $('.support-rice-close-btn-layout');
+    // const $input = $('rice-payment-input');
 
 
 // 버튼 클릭시 모달창 띄우기
