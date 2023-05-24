@@ -182,8 +182,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     @Override
     public Slice<FreeBoardDTO> getLikesList(Pageable pageable) {
         Slice<FreeBoard> freeBoards =
-                freeBoardRepository.findAllByLikeCountDescWithPaging_QueryDSL(PageRequest.of(0,10));
-        List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
+                freeBoardRepository.findAllByLikeCountDescWithPaging_QueryDSL(pageable);
+        List<FreeBoardDTO> collect = freeBoards.get().map(board -> freeBoardToDTO(board)).collect(Collectors.toList());
         return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
     }
 

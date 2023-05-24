@@ -12,11 +12,11 @@ mySupportRequests.forEach((supportRequest, i) => {
                                 <div class="support-request-reply">${supportRequest.supportRequestStatus}</div>
                             </div>
                             <div class="support-request-detail">
-                                <button class="go-support-request">
+                                <a href="/support/support-detail/${supportRequest.id}" class="go-support-request">
                                     <span class="request-detail">
                                         <div class="detail-text">상세보기</div>
                                     </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -25,3 +25,7 @@ mySupportRequests.forEach((supportRequest, i) => {
 
     $('.support-request-inner-wrap').prepend(text);
 });
+
+$('.go-support-request').click( function () {
+
+})
