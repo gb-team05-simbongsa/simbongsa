@@ -102,7 +102,7 @@ function getList(contentId, page) {
     });
 }
 getList(contentId, goPage);
-$(".paging-modal").on("click", ".changePage-modal", function(e) {
+$(".paging-modal").on("click", ".changePage-modal", function(e){
     e.preventDefault();
     $('.append-div').empty();
     $(".paging-modal").empty();
