@@ -97,6 +97,17 @@ public class RicePaymentServiceImpl implements RicePaymentService {
 
     @Override
     @Transactional
+    public void insertSupportRicePayment(Integer ricePaymentUsed, MemberDTO memberDTO, RicePaymentType ricePaymentType) {
+        RicePaymentDTO ricePaymentDTO = new RicePaymentDTO();
+        ricePaymentDTO.setRicePaymentUsed(ricePaymentUsed);
+        ricePaymentDTO.setRicePaymentStatus(ricePaymentType);
+        ricePaymentDTO.setMemberDTO(memberDTO);
+        ricePaymentRepository.save(toRicePaymentEntity(ricePaymentDTO));
+        memberRepository.updateChargeRiceByMemberId(memberDTO.getId(), ricePaymentUsed);
+    }
+
+    @Override
+    @Transactional
     public void insertExchangeRequest(RicePaymentDTO ricePaymentDTO, MemberDTO memberDTO) {
         int ricePaymentUsed = -ricePaymentDTO.getRicePaymentUsed();
 

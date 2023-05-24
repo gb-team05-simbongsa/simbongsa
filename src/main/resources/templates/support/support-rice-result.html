@@ -13,7 +13,6 @@
 </head>
 <body>
     <button id="support-open" >후원하기</button>
-    <th:block sec:authorize="!isAuthenticated()">
         <div class="support-layout-error" th:fragment="supportRiceLayoutError" style="visibility: hidden;">
             <div class="support-rice-layout">
                 <!-- <form name=""> -->
@@ -34,8 +33,7 @@
                     <!-- </form> -->
             </div>
         </div>
-    </th:block>
-    
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

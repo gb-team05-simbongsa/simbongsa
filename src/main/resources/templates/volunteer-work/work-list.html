@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>후원목록</title>
+    <title>봉사목록</title>
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/support/support-list.css">
     <link rel="stylesheet" href="/css/support/support-list-response.css">
@@ -28,8 +28,6 @@
                     <div class="semi_header">
                         <div class="semi_header_div">
                             <div class="wrap">
-
-
                             </div>
                         </div>
                     </div>
@@ -40,10 +38,11 @@
                 <div class="main_content_div">
                     <form id="search-form" th:action="@{/volunteer-work/work-list}" method="GET">
                         <div class="have_project">
-                            <span style="color: rgb(255, 87, 87);" th:text="${total}">46,860</span>
-                            개의 후원 목록이 있습니다.
+                            <span style="color: rgb(255, 87, 87);" class="total" th:text="${total}">46,860</span>
+                            개의 봉사 목록이 있습니다.
                             <select class="wrap_span" name="keyword" id="location-select">
                                 <option value="전체보기">지역별 조회</option>
+                                <option value="전체보기">전체보기</option>
                                 <option value="서울특별시">서울특별시</option>
                                 <option value="경기도">경기도</option>
                                 <option value="충청북도">충청북도</option>
@@ -52,7 +51,6 @@
                                 <option value="경상북도">경상북도</option>
                                 <option value="전라남도">전라남도</option>
                                 <option value="전라북도">전라북도</option>
-                                <option value="전체보기">전체보기</option>
                             </select>
                         </div>
                     </form>
