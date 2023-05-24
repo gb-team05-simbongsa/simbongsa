@@ -87,7 +87,7 @@
                                                                     <div class="inquiry-text-wrap">
                                                                         <div class="inquiry-text-input-layout">
                                                                             <span> * 제목</span>
-                                                                            <input type="text" name="inquiryTitle" placeholder="제목을 입력하세요" value="">
+                                                                            <input class="write-content-title" type="text" name="inquiryTitle" placeholder="제목을 입력하세요" value="">
                                                                             <div class="inquiry-textarea">
                                                                                 <div class="inquiry-contents-wrap">
                                                                                     <span> * 내용</span>
@@ -107,7 +107,7 @@
                                                                                </span> -->
 
                                                                                <div class="inquiry-regist-btn-layout">
-                                                                                   <button type="submit" class="inquiry-regist-btn" style="cursor: pointer">등록</button>
+                                                                                   <button type="button" class="inquiry-regist-btn" style="cursor: pointer">등록</button>
                                                                                </div>
 
                                                                             </div>
@@ -157,6 +157,10 @@
         }
         clock();
         setInterval(clock, 1000); // 1초마다 실행
+
+    if($('.write-content-title').val() != 0 && $('.write-content-contents').val() != 0{
+        $('.inquiry-regist-btn').submit();
+    }
 </script>
 <script src="/js/customerCenter/inquiry-write.js"></script>
 
