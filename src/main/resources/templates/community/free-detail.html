@@ -285,10 +285,15 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
-    let freeBoardDTO = [[${freeBoardDTO}]];
-    let boardId = freeBoardDTO.id;
-    console.log(boardId)
-    // const fileDTOS = [[${freeBoardDTO.fileDTOS}]];
+    let member = [[${session.member}]];
+    let memberId;
+    if(member){
+        memberId = member.id;
+    }
+
+    const freeBoardDTO = [[${freeBoardDTO}]];
+    const boardId = freeBoardDTO.id;
+    const fileDTOS = [[${freeBoardDTO.fileDTOS}]];
 
     /* 날짜 변환 (년, 월, 일) */
     function changeDateToString(e){

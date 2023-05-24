@@ -25,11 +25,12 @@
 
 let replyService = (function(){
 
-    function save(replyContent, boardId, callback){
+    function save(reply, callback){
         $.ajax({
             url : '/community/save',
             type: "post",
-            data: { replyContent : replyContent, id : boardId },
+            data: JSON.stringify(reply),
+            contentType: "application/json;charset=utf-8",
             success: function () {
                 if (callback) {
                     callback();
@@ -85,7 +86,6 @@ replyService.list({
     page: page,
     boardId: boardId
 }, function (replies) {
-    console.log(replies)
     if (replies.content.length < 1) {
         let text = `
                 <div class="comment-list">
@@ -93,13 +93,16 @@ replyService.list({
                     <p class="NoComment2">첫 댓글을 남겨보세요</p>
                 </div>
             `;
-        $('.comment-lists').append(text);
-        // $(".comment-btn").hide();
+        $replyBox.html(text);
+        // $('.comment-lists').append(text);
+        $(".comment-btn").hide();
         return false;
     }
-    // if (replies.pageSize) {
-    //     // $(".comment-btn").hide();
-    // }
+    if (replies.last) {
+        $(".comment-btn").hide();
+    }
+    $replyBox.html(repliesContent(replies));
+});
 
     replies.content.forEach(reply => {
         let text;
@@ -127,8 +130,7 @@ replyService.list({
     });
 
 
-    $replyBox.html(repliesContent(replies));
-});
+
 /* 댓글 */
 const $registerButton = $(".singUp");
 let $replyContent = $(".comment-box-span");
@@ -136,51 +138,34 @@ let $replyBox = $(".comment-ok-list");
 
 // 댓글 등록 시
 $registerButton.click(() => {
-    // let freeBoardReplyDTO = new Object();
-    //
-    // freeBoardReplyDTO.replyContent = $replyContent.val();
+    let replyRequestDTO = new Object();
+
+    replyRequestDTO.memberId = memberId;
+    replyRequestDTO.replyContent = $replyContent.val();
+    replyRequestDTO.boardId = boardId;
 
     if (!$replyContent.val()) {
         alert("입력해주세요.");
         return false;
     } else {
-        console.log(boardId)
-        replyService.save($replyContent.val(), boardId, function () {
+        replyService.save(replyRequestDTO, boardId, function () {
             $(".comment-btn").show();
             page = 0;
             replyService.list({page: page, boardId: boardId}, function (replies) {
-                let text = ``;
-                replies.content.forEach(reply => {
+                $replyBox.html(repliesContent(replies));
+                $replyContent.val("");
 
-                    text += `
-                        <li class="comment-ok-list">
-                            <div style="width: 100%;">
-                                <div class="comment-user">
-                                    <div class="comment-user-name">${reply.memberDTO.memberName}</div>
-                                    <button type="button" class="x-btn">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
-                                            <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div style="flex: 0 0 auto; height: 5px;"></div>
-                                <p class="comment-contant">${reply.replyContent}</p>
-                                <div style="flex: 0 0 auto; height: 8px;"></div>
-                                <span class="comment-day">${reply.createdDate}</span>
-                            </div>
-                        </li>
-                    `;
-
-                });
-                $('.comment-lists').html(text);
+                if (replies.last) {
+                    $(".comment-btn").hide();
+                }
             });
         });
     }
 });
+
 // 삭제 버튼
-$replyBox.on("click", "button.delete-button", function (e) {
+$replyBox.on("click", "x-btn", function (e) {
     let i = e.target.id.replaceAll("delete", "");
-    let replyId = $($(".reply-modify-content")[i]).prop("id").replaceAll("reply", "");
     page = 0;
     replyService.deleteReply({
         replyId: replyId
@@ -195,38 +180,21 @@ $replyBox.on("click", "button.delete-button", function (e) {
 });
 
 // 더보기 버튼
-// $(".comment-btn").click(() => {
-//     page++;
-//     replyService.list({
-//         page: page,
-//         boardId: boardId
-//     }, function (replies) {
-//         $replyBox.append(repliesContent(replies));
-//
-//         if (replies.last) {
-//             $(".comment-btn").hide();
-//         }
-//     });
-// });
+$(".comment-btn").click(() => {
+    page++;
+    replyService.list({
+        page: page,
+        boardId: boardId
+    }, function (replies) {
+        $replyBox.append(repliesContent(replies));
 
-// function repliesContent(replies) {
-//     let text = '';
-//     let replyDTO = replies.content;
-//
-//     if (replyDTO.length < 1) {
-//         text = `
-//                 <div class="comment-list" style="display: none;">
-//                     <p class="NoComment">댓글이 없습니다.</p>
-//                     <p class="NoComment2">첫 댓글을 남겨보세요</p>
-//                 </div>
-//         `;
-//         return text;
-//     }
-//
-//     $(replyDTO).each((i, reply) => {
-//         text += `
-//
-//         `;
+        if (replies.last) {
+            $(".comment-btn").hide();
+        }
+    });
+});
+
+//    =====================================================
 //         /*====================================================================================================================*/
 //
 //         const modal = document.querySelector('.modal');
