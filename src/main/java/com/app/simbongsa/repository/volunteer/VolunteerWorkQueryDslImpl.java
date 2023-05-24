@@ -72,7 +72,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
     // 봉사 활동 목록 조회 (검색 + 페이징)
     @Override
     public Page<VolunteerWork> findAllPagingAndSearch(String keyword, Pageable pageable, VolunteerWorkCategoryType volunteerWorkCategoryType) {
-        BooleanExpression searchCondition = keyword == null ? null :volunteerWork.volunteerWorkPlace.like("%" + keyword + "%") ;
+        BooleanExpression searchCondition = keyword == null ? null :volunteerWork.volunteerWorkPlace.like(keyword + "%") ;
         BooleanExpression categorySearch = volunteerWorkCategoryType == null ? null : volunteerWork.volunteerWorkCategory.eq(volunteerWorkCategoryType);
 
         List<VolunteerWork> findAllVolunteer;
@@ -81,6 +81,7 @@ public class VolunteerWorkQueryDslImpl implements VolunteerWorkQueryDsl {
                     .from(volunteerWork)
                     .leftJoin(volunteerWork.volunteerWorkFile, volunteerWorkFile)
                     .fetchJoin()
+                    .where(searchCondition)
                     .orderBy(volunteerWork.id.desc())
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
