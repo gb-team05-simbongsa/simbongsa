@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping("/service/*")
 @RequiredArgsConstructor
 @Slf4j
-public class CalendarController {
-    @GetMapping("calendar")
-    public String Calendar() { return "/calendar/calendar.html";}
+public class ServiceInfoController {
+    @GetMapping("privacy")
+    public String servicePrivacy() { return "/service-info/service-conditions.html";}
 
 
 }
