@@ -75,17 +75,20 @@ public class VolunteerWorkController {
     public String volunteerList(Integer page, @RequestParam(required = false) String keyword, Model model) {
         page = page == null ? 0 : page - 1;
         String volunteerWorkType = null;
-        log.info(volunteerWorkType + "============================");
         if(keyword == null){
             keyword = "";
         }
+        log.info(keyword + "keyword  ====  ====  ===   ==================");
         if(volunteerWorkType == null){
             volunteerWorkType = "";
         }
+        log.info(keyword + "keyword  ====  ====  ===   ==================");
 
         Page<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorkService.pagingVolunteerWork(keyword, page, volunteerWorkType);
+        log.info(keyword);
         Long total = volunteerWorkDTOS.getTotalElements();
         model.addAttribute("total", total);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("volunteerWorkDTOS", volunteerWorkDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(volunteerWorkDTOS));
 
