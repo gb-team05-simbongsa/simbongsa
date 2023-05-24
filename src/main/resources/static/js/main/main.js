@@ -7,6 +7,13 @@ let nowPage = 1;
 let nowPage1 = 1;
 
 $prev1.css('display', 'none');
+$('.modal-wrap').show();
+
+// 모달에 확인 버튼 누르면 모달 끄기
+$('.modal-ok').on('click', () => {
+    $('.modal-wrap').hide();
+});
+
 
 if (!mobileCheck) {
     $prev1.click(function(){
@@ -60,3 +67,4 @@ if (mobileCheck) {
 
 
 }
+
