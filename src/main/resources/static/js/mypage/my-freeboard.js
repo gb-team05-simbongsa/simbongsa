@@ -1,5 +1,5 @@
 /* 목록 */
-myReviews.forEach((myReview, i) => {
+myFreeBoards.forEach((myFreeBoard, i) => {
     let text;
 
     text += `
@@ -7,10 +7,10 @@ myReviews.forEach((myReview, i) => {
             <div class="review-header">
                 <div class="review-title">
                     <div class="review-title-text">
-                        ${myReview.boardTitle}
+                        ${myFreeBoard.boardTitle}
                     </div>
                     <div>
-                        <a href="my-free-board-detail/${myReview.id}">
+                        <a href="my-free-board-detail/${myFreeBoard.id}">
                             <span class="review-modify">수정</span>
                         </a>
                         <span class="review-delete">삭제</span>
@@ -21,16 +21,16 @@ myReviews.forEach((myReview, i) => {
             <div class="review-main">
                 <div class="review-main-img-wrap">
                 `
-    if(myReview.fileDTOS == null || myReview.fileDTOS == undefined) {
+    if(myFreeBoard.fileDTOS == null || myFreeBoard.fileDTOS == undefined) {
         text += `
             <img src="https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=ccaf0c29a4a9c34a703c08e3ddef88d1"> `;
     }
     else {
-        for(let j = 0; j < myReview.fileDTOS.length; j++) {
+        for(let j = 0; j < myFreeBoard.fileDTOS.length; j++) {
             text +=
                 ` <div class="review-main-img">
                         <div class="review-img">
-                            <img src="/file/display?fileName=${myReview.fileDTOS[j].filePath + '/' + myReview.fileDTOS[j].fileUuid + '_' + myReview.fileDTOS[j].fileName}">
+                            <img src="/file/display?fileName=${myFreeBoard.fileDTOS[j].filePath + '/' + myFreeBoard.fileDTOS[j].fileUuid + '_' + myFreeBoard.fileDTOS[j].fileName}">
                         </div>
                    </div>
                     `;
@@ -40,12 +40,12 @@ myReviews.forEach((myReview, i) => {
     text += `        
             </div>
                 <div class="review-content">
-                    ${myReview.boardContent}
+                    ${myFreeBoard.boardContent}
                 </div>
             </div>
             <div class="review-main-footer">
                 <div class="review-write-date">
-                    <span>${myReview.updatedDate.substring(0,10)} ${myReview.updatedDate.substring(11,19)}</span>
+                    <span>${myFreeBoard.updatedDate.substring(0,10)} ${myFreeBoard.updatedDate.substring(11,19)}</span>
                     <span>자유게시판</span>
                 </div>
             </div>
