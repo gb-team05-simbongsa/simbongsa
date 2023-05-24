@@ -7,12 +7,12 @@
     <title>후원 상세보기</title>
     <link rel="stylesheet" href="/css/font/font.css">
     <link rel="stylesheet" href="/css/support/support-detail.css">
-    <link rel="stylesheet" href="/css/mypage/paging.css">
     <link rel="stylesheet" href="/css/support/support-rice-modal.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
     <link rel="stylesheet" href="/css/customerCenter/inquiry-write.css">
     <link rel="shortcut icon" href="/image/pavicon.png">
+    <link rel="stylesheet" href="/css/admin/paging.css">
 </head>
 <style>
     .error{
@@ -274,7 +274,7 @@
                                 <div class="history-title">
                                     <p class="history-title-inner">
                                         총
-                                        <strong th:text="${attendCount}">1411</strong>
+                                        <strong th:text="${attendCount}"></strong>
                                         건이 후원되었습니다.
                                     </p>
                                 </div>
@@ -401,10 +401,18 @@
     let memberDTO = [[${memberDTO}]];
     let supportRequestDTO = [[${supportRequestDTO}]];
     let fileDTO = supportRequestDTO.fileDTOS;
+    let attendCount = [[${attendCount}]];
 </script>
 <script src="/js/admin/admin-service.js"></script>
 <script src="/js/main/header.js"></script>
 <script src="/js/support/support-rice-modal.js"></script>
 <script src="/js/support/supportDetail.js"></script>
+<script>
+    $(document).ready(function (){
+        if(attendCount == 0){
+            $('.paging-modal').css('display', 'none');
+        }
+    })
+</script>
 <script src="/js/customerCenter/inquiry-write.js"></script>
 </html>
