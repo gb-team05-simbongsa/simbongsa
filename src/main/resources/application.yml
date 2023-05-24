@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@52.78.245.29:1521:XE
+    url: jdbc:oracle:thin:@3.39.75.170:1521:XE
     username: hr
     password: hr
     #15.164.250.198
