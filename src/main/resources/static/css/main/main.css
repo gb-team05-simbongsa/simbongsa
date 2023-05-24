@@ -981,8 +981,7 @@ b, strong {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding: 40px;
     font-size: 16px;
     line-height: 27px;
     letter-spacing: -0.020em;
