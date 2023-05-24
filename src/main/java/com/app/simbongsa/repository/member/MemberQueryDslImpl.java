@@ -63,7 +63,13 @@ public class MemberQueryDslImpl implements MemberQueryDsl {
     // 멤버 랭킹
     @Override
     public List<Member> findMemberWithVolunteerTime() {
-        return query.select(member).from(member).orderBy(member.memberVolunteerTime.desc()).limit(8).fetch();
+        return query
+                .select(member)
+                .from(member)
+                .where(member.memberStatus.eq(MemberStatus.가입))
+                .orderBy(member.memberVolunteerTime.desc())
+                .limit(8)
+                .fetch();
     }
 
     //    비밀 번호 찾기

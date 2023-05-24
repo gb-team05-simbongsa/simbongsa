@@ -362,7 +362,6 @@ b, strong {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: url(https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/7e8526e5354e0c0bcc41f19ea3532d3953153f46/b54dc2f6adc3d2efe36e579b1105000924deb9ca/3cb39544-e40c-427d-859c-257455ee4ea8.jpeg?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=962bd7e25cdcc5817e3fc32e0affe115) center center / cover no-repeat;
     z-index: 8;
     transition: all 0.4s ease 0s;
     transform-origin: center center;

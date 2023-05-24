@@ -188,7 +188,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a class="view-total-list-button view-total-list-button-color" href="/community/free-board">전체보기</a>
+                                <a class="view-total-list-button view-total-list-button-color" href="/community/free-board/new">전체보기</a>
                             </div>
                             <div class="main-content-list-wrapper">
                                 <div class="container-component main-content-slider-banner-container">
@@ -204,7 +204,7 @@
                                                             <div></div>
                                                             <div class="volunteer-link-wrapper">
                                                                 <div class="volunteer-image-wrapper freeBoardImg">
-                                                                    <a href="#"></a>
+                                                                    <a th:href="@{/community/free-detail/{id}(id=${freeBoardList.id})}"></a>
                                                                     <!-- <div class="like-button-wrapper">
                                                                         <button  class="like-button" type="button">
                                                                             <span>좋아요</span>
@@ -282,7 +282,7 @@
                                                             <div></div>
                                                             <div class="volunteer-link-wrapper">
                                                                 <div class="volunteer-image-wrapper funding">
-                                                                    <a th:href="@{/volunteer-work/work-detail/${fundingListOrderByPopularList.id}}"></a>
+                                                                    <a href="/ready"></a>
 <!--                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">-->
                                                                 </div>
 <!--                                                                <div class="info-wrapper">-->
