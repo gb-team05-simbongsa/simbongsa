@@ -9,6 +9,7 @@ import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
 
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -24,6 +25,7 @@ import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
 import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
 import static com.app.simbongsa.entity.inquiry.QInquiry.inquiry;
+import static java.awt.AWTEventMulticaster.remove;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -207,5 +209,75 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchOne();
         return new PageImpl<>(foundFreeBoard, pageable, count);
     }
+
+
+    /*무한스크롤 인기순*/
+    @Override
+    public Slice<FreeBoard> findAllSliceByPopular(Pageable pageable) {
+        List<FreeBoard> freeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.freeBoardFiles, freeBoardFile)
+                .fetchJoin()
+                .join(freeBoard.freeBoardReplies, freeBoardReply)
+                .fetchJoin()
+                .orderBy(freeBoard.freeBoardReplies.any().id.desc())
+                .fetch();
+        boolean hasNext = false;
+        if (freeBoards.size() > pageable.getPageSize()){
+            freeBoards.remove(pageable.getPageSize());
+
+            hasNext = true;
+        }
+        return new SliceImpl<>(freeBoards, pageable, hasNext);
+    }
+
+    /*무한스크롤 최신순*/
+    @Override
+    public Slice<FreeBoard> findAllSliceByNew(Pageable pageable) {
+        List<FreeBoard> freeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.freeBoardFiles, freeBoardFile)
+                .fetchJoin()
+                .join(freeBoard.freeBoardReplies, freeBoardReply)
+                .fetchJoin()
+                .orderBy(freeBoard.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
+        boolean hasNext = false;
+        if (freeBoards.size() > pageable.getPageSize()){
+            freeBoards.remove(pageable.getPageSize());
+
+            hasNext = true;
+        }
+        return new SliceImpl<>(freeBoards, pageable, hasNext);
+    }
+
+
+    // 이건 어떻게 써야할지 모르겟네 - 최신순, 인기순
+    @Override
+    public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable) {
+        OrderSpecifier popularOrder = freeBoard.freeBoardReplies.any().id.desc();
+        OrderSpecifier newOrder = freeBoard.id.desc();
+
+        List<FreeBoard> freeBoards = query.select(freeBoard)
+                .from(freeBoard)
+                .join(freeBoard.freeBoardFiles, freeBoardFile)
+                .fetchJoin()
+                .join(freeBoard.freeBoardReplies, freeBoardReply)
+                .fetchJoin()
+                .orderBy(popularOrder, newOrder)
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
+        boolean hasNext = false;
+        if (freeBoards.size() > pageable.getPageSize()){
+            freeBoards.remove(pageable.getPageSize());
+
+            hasNext = true;
+        }
+        return new SliceImpl<>(freeBoards, pageable, hasNext);
+    }
+
 
 }
