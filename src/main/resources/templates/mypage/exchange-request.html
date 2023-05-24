@@ -24,10 +24,10 @@
                 <div class="mypage-header">
                     <div class="mypage-header-left">
                         <div class="my-rank">
-                            <img src="https://i.namu.wiki/i/67tjhRLuCX7MYeLY5p94GgXYHP7v1dMQ5M0QP8emeuw3IvlZlQNZBgeKz5qj8P_3ll2AF97RWC_isDEnrT4kgeBMW1GU39jR-Wn92gD-XSt5J1HbKiRxpRt8ZRaq8dvGHUMTt_clauEc9TOx_JyIaQ.webp" alt="">
+                            <img alt="">
                         </div>
                         <div class="mypage-info">
-                            <div class="info-name">정현진</div>
+                            <div class="info-name" th:text="${memberDTO.memberName}"></div>
                             <div class="info-rice">
                                 <p th:text="'내 공양미: '+${memberDTO.memberRice} + '석'">내 공양미 : 300석</p>
                             </div>
@@ -151,7 +151,11 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+    let memberDTO = [[${memberDTO}]];
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/exchange-request.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>
+<script src="/js/mypage/my-rank.js"></script>
 </html>
