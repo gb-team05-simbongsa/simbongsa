@@ -58,26 +58,6 @@ public class Funding {
         this.member = member;
     }
 
-
-    //    // 테스트용 생성자
-//    @Builder
-//    public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDateTime fundingStartDate, LocalDateTime fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, FundingCreator fundingCreator, Member member) {
-//        this.id = id;
-//        this.fundingCategory = fundingCategory;
-//        this.fundingTitle = fundingTitle;
-//        this.fundingShortTitle = fundingShortTitle;
-//        this.fundingSummary = fundingSummary;
-//        this.fundingTargetPrice = fundingTargetPrice;
-//        this.fundingCurrentPrice = fundingCurrentPrice;
-//        this.fundingStartDate = fundingStartDate;
-//        this.fundingEndDate = fundingEndDate;
-//        this.fundingIntroduce = fundingIntroduce;
-//        this.fundingBudgetExplain = fundingBudgetExplain;
-//        this.fundingScheduleExplain = fundingScheduleExplain;
-//        this.fundingGiftExplain = fundingGiftExplain;
-//        this.fundingCreator = fundingCreator;
-//       this.member = member;
-//    }
     @Builder
     public Funding(Long id, FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDate fundingStartDate, LocalDate fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, Member member,  List<FundingFile> fundingFile) {
         this.id = id;

@@ -43,7 +43,7 @@ public class CommunityRestController {
     }
 
     @DeleteMapping("revew-delete")
-    public void deleteReviewReply(@RequestParam("replyId") Long replyId){reviewService.deleteReply(replyId);}
+    public void deleteReviewReply(Long replyId){reviewService.deleteReply(replyId);}
 
     @PostMapping("review-list")
     public Slice<ReviewReplyDTO> getReviewList(Long boardId, int page){

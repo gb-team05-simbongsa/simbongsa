@@ -19,12 +19,6 @@ public class FundingFile extends File{
     /*@JoinColumn(name = "FUNDING_ID")*/
     private Funding funding;
 
-    /* 단위테스트 위한 생성자 생성 */
-    @Builder
-    public FundingFile(Funding funding) {
-        this.funding = funding;
-    }
-
     @Builder
     public FundingFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, Funding funding) {
         super(id, fileName, fileUuid, filePath, fileRepresentationalType);

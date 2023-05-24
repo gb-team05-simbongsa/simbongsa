@@ -18,18 +18,11 @@ public class VolunteerWorkActivity {
     @NotNull private LocalDate volunteerWorkActivityDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private VolunteerWork volunteerWork;
-    
-    
-    public VolunteerWorkActivity(LocalDate volunteerWorkActivityDate, Member member, VolunteerWork volunteerWork) {
-        this.volunteerWorkActivityDate = volunteerWorkActivityDate;
-        this.member = member;
-        this.volunteerWork = volunteerWork;
-    }
 
     @Builder
     public VolunteerWorkActivity(Long id, LocalDate volunteerWorkActivityDate, Member member, VolunteerWork volunteerWork) {
