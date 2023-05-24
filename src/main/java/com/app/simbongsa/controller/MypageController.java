@@ -104,6 +104,7 @@ public class MypageController {
         return "mypage/exchange-request";
     }
 
+    /*환전 요청 값 넣기*/
     @PostMapping("exchange-request")
     public RedirectView exchangeRequest(RicePaymentDTO ricePaymentDTO, HttpSession session) {
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
