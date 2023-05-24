@@ -112,4 +112,3 @@ let setSupportRequestDTO = function() {
 
     return supportRequestDTO;
 }
-
