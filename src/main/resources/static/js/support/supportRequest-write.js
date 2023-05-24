@@ -64,8 +64,8 @@ $photoPicker.on("change", function () {
     let $files = $(this)[0].files;
     let formData = new FormData();
 
-    if ($files.length > 8) {
-        alert("등록할 수 있는 파일의 최대 갯수는 8개 입니다.");
+    if ($files.length > 6) {
+        alert("등록할 수 있는 파일의 최대 갯수는 6개 입니다.");
         /* 파일 input 초기화 */
         $photoPicker[0].files = prevFileList;
         return;
@@ -80,7 +80,11 @@ $photoPicker.on("change", function () {
     $doAjax(uploadAjaxConfig(formData), (result) => {
         globalThis.uuids = result.uuids;
         globalThis.paths = result.paths;
-        $('#thumbnail-list').empty();
+        if($('.imageThumbnail').length != 0) {
+            $('.imageThumbnail').each((i, image) => {
+                image.remove();
+            });
+        }
         result.paths.forEach((path, i) => {
             if ($files[i].type.startsWith("image")) {
                 $('#thumbnail-list').append(`<img class="imageThumbnail" src="/file/display?fileName=${result.paths[i]}" style="width: 80px">`);

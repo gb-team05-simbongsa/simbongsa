@@ -98,10 +98,10 @@
             <div class="my-review-wrap">
                 <div class="my-board-header">
                     <div class="my-board-header-container">
+                        <a th:href="@{/mypage/my-freeboard}">
                         <span class="my-board-header-title">자유</span>
-                        <a th:href="@{/mypage/my-review}">
-                        <span class="my-board-header-title-select">활동후기</span>
                         </a>
+                        <span class="my-board-header-title-select">활동후기</span>
                     </div>
                 </div>
                 <div class="my-review-count-wrap">
@@ -459,7 +459,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-    let myFreeBoards = [[${myFreedBoards}]];
+    let myReviews = [[${myReviews}]];
 </script>
 <script src="/js/mypage/my-review.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>

@@ -17,14 +17,14 @@ public class SupportRequestFile extends File {
     @ManyToOne(fetch = FetchType.LAZY)
     private SupportRequest supportRequest;
 
-    public SupportRequestFile(SupportRequest supportRequest) {
+    public void setSupportRequest(SupportRequest supportRequest) {
         this.supportRequest = supportRequest;
     }
 
     @Builder
     public SupportRequestFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, SupportRequest supportRequest) {
         super(id, fileName, fileUuid, filePath, fileRepresentationalType);
-//        this.supportRequest = supportRequest;
+        this.supportRequest = supportRequest;
     }
 
 }

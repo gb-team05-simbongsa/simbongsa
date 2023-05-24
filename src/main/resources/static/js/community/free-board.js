@@ -1,3 +1,38 @@
+// let nextPage = 0;
+// let checkStatus = false;
+//
+// // ajax로 게시글 목록 불러오기(10개씩 가져옴)
+// const fetchData = () => {
+//     let page = nextPage;
+//     nextPage++;
+//     console.log("nextPage : " + nextPage);
+//     checkStatus = false;
+//     $.ajax({
+//         type: 'GET',
+//         url: `/community/free-board/new`,
+//         success: function (result) {
+//             setTimeout(function(){checkStatus = true;},500);
+//             freeBoardList(result);
+//         },
+//         error: function (error) {
+//             console.log('Error fetching data:', error);
+//         }
+//     });
+// };
+// / 처음에 화면에 목록 뿌려주기
+// $(document).ready(function () {
+//     console.log("Ready 들어옴");
+//     fetchData();
+// });
+// // 무한 스크롤 이벤트
+// $(window).scroll(function () {
+//     if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
+//         if (checkStatus){
+//             fetchData();
+//         }
+//     }
+// });
+
 freeBoardList.forEach(freeboard => {
     let text;
     console.log("번")
@@ -33,6 +68,7 @@ freeBoardList.forEach(freeboard => {
     `;
     $('.contant').append(text);
 })
+
 
 
 /* 스크롤 */

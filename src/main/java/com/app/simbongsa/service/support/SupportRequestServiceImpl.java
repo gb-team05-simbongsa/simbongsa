@@ -91,9 +91,12 @@ public class SupportRequestServiceImpl implements SupportRequestService {
         List<FileDTO> fileDTOS = supportRequestDTO.getFileDTOS();
 
         supportRequestDTO.setSupportRequestStatus(RequestType.대기);
-        log.info(supportRequestDTO.toString());
 
-        supportRequestRepository.save(toSupportRequestEntity(supportRequestDTO));
+        SupportRequest supportRequest = toSupportRequestEntity(supportRequestDTO);
+
+        supportRequestRepository.save(supportRequest);
+        supportRequest.setMember(toMemberEntity(supportRequestDTO.getMemberDTO()));
+
 
         for(int i = 0; i< fileDTOS.size(); i++){
             if(i==0){
@@ -101,9 +104,12 @@ public class SupportRequestServiceImpl implements SupportRequestService {
             }else{
                 fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
             }
-            fileDTOS.get(i).setSupportRequest(getCurrentSequence());
-            log.info(fileDTOS.get(i).toString());
-            supportRequestFileRepository.save(toSupportRequestFileEntity(fileDTOS.get(i)));
+
+            SupportRequestFile supportRequestFile = toSupportRequestFileEntity(fileDTOS.get(i));
+            supportRequestFile.setSupportRequest(supportRequest);
+            supportRequestFileRepository.save(supportRequestFile);
+//            supportRequestFileRepository.save(toSupportRequestFileEntity(fileDTOS.get(i)));
+//            fileDTOS.get(i).setSupportRequest(getCurrentSequence());
         }
     }
 
