@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/community/free-detail.css">
     <link rel="shortcut icon" href="/image/pavicon.png">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 <body>
     <!-- 헤더 -->
@@ -43,186 +44,42 @@
                         <p th:text="${reviewDTO.boardContent}">내용</p>
                         <div style="height: 40px;"></div>
                     </div>
-<!--                    <section class="review-user">-->
-<!--                        <div>-->
-<!--                            <div class="review-user-name">-->
-<!--                                <button class="review-user-name-btn" th:text="${reviewDTO.memberDTO.memberName}">케토루</button>-->
-<!--                                <p class="review-user-intro">귀여운 그림을 많이 그립니다.</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </section>-->
                     <div class="review-line"></div>
                     <div style="height: 28px;"></div>
                     <div>
                         <h4 class="comment">댓글</h4>
                         <div style="height: 24px;"></div>
-                        <!-- 로그인 안했을때 -->
-                        <div class="comment-box" style="display: none;">
-                            <div class="comment-box-container">
-                                <div class="comment-box-wrapper">
-                                    <span class="comment-box-p">댓글을 작성하려면 로그인을 해주세요.</span>
+                        <!-- 로그인 했을때 -->
+                        <th:block th:if="${not #strings.isEmpty(session.member)}">
+                            <div class="comment-box2">
+                                <div class="comment-box-wrapper2">
+                                    <textarea class="comment-box-span" placeholder="댓글을 작성해 주세요..."></textarea>
                                 </div>
-                                <div class="comment-Nologin">
-                                    <button class="comment-Nologin-btn">로그인</button>
+                                <div class="singUp-btn">
+                                    <button class="singUp1">취소</button>
+                                    <button class="singUp" type="button">등록</button>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 로그인 했을때 -->
-                        <th:block th:if="${not #strings.isEmpty(userDetail)}">
-                        <div class="comment-box2">
-                            <div class="comment-box-wrapper2">
-                                <div class="comment-login">
-                                    <div class="comment-login-profile">
-                                        <span class="profile-span">
-                                            <img class="profile-img" style="margin: 0;" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
-                                        </span>
+                        </th:block>
+                        <!-- 로그인 안했을때 -->
+                        <th:block th:unless="${not #strings.isEmpty(session.member)}">
+                            <div class="comment-box">
+                                <div class="comment-box-container">
+                                    <div class="comment-box-wrapper">
+                                        <span class="comment-box-p">댓글을 작성하려면 로그인을 해주세요.</span>
+                                    </div>
+                                    <div class="comment-Nologin">
+                                        <a href="/member/login">
+                                            <button class="comment-Nologin-btn">로그인</button>
+                                        </a>
                                     </div>
                                 </div>
-                                <textarea class="comment-box-span" placeholder="댓글을 작성해 주세요..."></textarea>
                             </div>
-                            <div class="singUp-btn">
-                                <button class="singUp1">취소</button>
-                                <button class="singUp" disabled>등록</button>
-                            </div>
-                        </div>
                         </th:block>
                         <!--  -->
                         <div style="height: 33px;"></div>
                         <!-- 댓글 없을때 -->
-                        <div class="comment-list" style="display: none;">
-                            <p class="NoComment">댓글이 없습니다.</p>
-                            <p class="NoComment2">첫 댓글을 남겨보세요</p>
-                        </div>
-
-                        <!-- 댓글 있을때 -->
-                        <ul>
-                            <!-- 내가 쓴 댓글일 경우 -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">서현</div>
-                                        <button type="button" class="x-btn">
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
-                                                <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    좋은 활동 후기보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day" th:text="${#temporals.format(reviewDTO.createdDate, 'yyyy.MM.dd HH:mm')}">1일 전</span>
-                                </div>
-                            </li>
-                            <!-- 다른 사람들 댓글 x버튼 없음 -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">시금</div>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    너무 도움이 되는 활동 후기를 보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
-                                </div>
-                            </li>
-                            <!--  -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">시금</div>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    너무 도움이 되는 활동 후기를 보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
-                                </div>
-                            </li>
-                            <!--  -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">시금</div>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    너무 도움이 되는 활동 후기를 보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
-                                </div>
-                            </li>
-                            <!--  -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">시금</div>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    너무 도움이 되는 활동 후기를 보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
-                                </div>
-                            </li>
-                            <!--  -->
-                            <li class="comment-ok-list">
-                                <div class="comment-profile">
-                                    <div class="comment-profile-container">
-                                        <span class="comment-profile-span">
-                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div style="width: 100%;">
-                                    <div class="comment-user">
-                                        <div class="comment-user-name">시금</div>
-                                    </div>
-                                    <div style="flex: 0 0 auto; height: 5px;"></div>
-                                    <p class="comment-contant"></p>
-                                    너무 도움이 되는 활동 후기를 보고 갑니다.
-                                    <div style="flex: 0 0 auto; height: 8px;"></div>
-                                    <span class="comment-day">1일 전</span>
-                                </div>
-                            </li>
-                            <!--  -->
-                        </ul>
+                        <ul class="comment-lists"><!-- 댓글 있을때 --></ul>
                         <!--  -->
                         <div style="height: 24px;"></div>
                         <div id="comment-btn">
@@ -238,184 +95,6 @@
                     <div class="border-line"></div>
                     <div style="height: 28px;"></div>
                     <section></section>
-                    <h4 class="another-review">
-                        <div class="another-review-container">
-                            <span class="another-review-text">다른 심청이의 최신 활동 후기</span>
-                        </div>
-                    </h4>
-                    <ul class="new-post-container">
-                        <!--  -->
-                        <li class="new-post">
-                            <div>
-                                <button class="new-post-btn">
-                                    <div class="post-container">
-                                        <div class="post-wrapper">
-                                            <h2 class="post-title" th:text="${reviewDTO.boardTitle}">의미없는 정답공개</h2>
-                                            <p class="post-contant" th:text="${reviewDTO.boardContent}">
-                                                쉽다고 생각은 했지만 정답이라니 치욕스럽습니다,,(?)정답은 나무 맞구요??ㅋㅋㅋㅋ 노란색 나무라도 한 그루 그렸으면 좀 헷갈리셨을텐데 말이죠.
-                                            </p>
-                                        </div>
-                                        <div class="post-profile-container">
-                                            <span class="post-profile-span">
-                                                <img class="post-profile-img" src="https://steadio.imgix.net/creator-posts/58b04467-0a9c-4aaf-8986-716a09f9afa9/creatorPostImage/9e11911b-906e-4357-a35e-7fde70f8eb06.JPG?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-user-container">
-                                        <div class="post-user-profile"></div>
-                                        <div class="post-user-info">
-                                            <span class="post-user-name">
-                                                아랑의 작업실
-                                            </span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-day">2일 전</span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-see">조회수 38</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                        <!--  -->
-                        <li class="new-post">
-                            <div>
-                                <button class="new-post-btn">
-                                    <div class="post-container">
-                                        <div class="post-wrapper">
-                                            <h2 class="post-title">의미없는 정답공개</h2>
-                                            <p class="post-contant">
-                                                쉽다고 생각은 했지만 정답이라니 치욕스럽습니다,,(?)정답은 나무 맞구요??ㅋㅋㅋㅋ 노란색 나무라도 한 그루 그렸으면 좀 헷갈리셨을텐데 말이죠.
-                                            </p>
-                                        </div>
-                                        <div class="post-profile-container">
-                                            <span class="post-profile-span">
-                                                <img class="post-profile-img" src="https://steadio.imgix.net/creator-posts/58b04467-0a9c-4aaf-8986-716a09f9afa9/creatorPostImage/9e11911b-906e-4357-a35e-7fde70f8eb06.JPG?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-user-container">
-                                        <div class="post-user-profile"></div>
-                                        <div class="post-user-info">
-                                            <span class="post-user-name">
-                                                아랑의 작업실
-                                            </span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-day">2일 전</span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-see">조회수 38</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                        <!--  -->
-                        <li class="new-post">
-                            <div>
-                                <button class="new-post-btn">
-                                    <div class="post-container">
-                                        <div class="post-wrapper">
-                                            <h2 class="post-title">의미없는 정답공개</h2>
-                                            <p class="post-contant">
-                                                쉽다고 생각은 했지만 정답이라니 치욕스럽습니다,,(?)정답은 나무 맞구요??ㅋㅋㅋㅋ 노란색 나무라도 한 그루 그렸으면 좀 헷갈리셨을텐데 말이죠.
-                                            </p>
-                                        </div>
-                                        <div class="post-profile-container">
-                                            <span class="post-profile-span">
-                                                <img class="post-profile-img" src="https://steadio.imgix.net/creator-posts/58b04467-0a9c-4aaf-8986-716a09f9afa9/creatorPostImage/9e11911b-906e-4357-a35e-7fde70f8eb06.JPG?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-user-container">
-                                        <div class="post-user-profile"></div>
-                                        <div class="post-user-info">
-                                            <span class="post-user-name">
-                                                아랑의 작업실
-                                            </span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-day">2일 전</span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-see">조회수 38</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                        <!--  -->
-                        <li class="new-post">
-                            <div>
-                                <button class="new-post-btn">
-                                    <div class="post-container">
-                                        <div class="post-wrapper">
-                                            <h2 class="post-title">의미없는 정답공개</h2>
-                                            <p class="post-contant">
-                                                쉽다고 생각은 했지만 정답이라니 치욕스럽습니다,,(?)정답은 나무 맞구요??ㅋㅋㅋㅋ 노란색 나무라도 한 그루 그렸으면 좀 헷갈리셨을텐데 말이죠.
-                                            </p>
-                                        </div>
-                                        <div class="post-profile-container">
-                                            <span class="post-profile-span">
-                                                <img class="post-profile-img" src="https://steadio.imgix.net/creator-posts/58b04467-0a9c-4aaf-8986-716a09f9afa9/creatorPostImage/9e11911b-906e-4357-a35e-7fde70f8eb06.JPG?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-user-container">
-                                        <div class="post-user-profile"></div>
-                                        <div class="post-user-info">
-                                            <span class="post-user-name">
-                                                아랑의 작업실
-                                            </span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-day">2일 전</span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-see">조회수 38</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                        <!--  -->
-                        <li class="new-post">
-                            <div>
-                                <button class="new-post-btn">
-                                    <div class="post-container">
-                                        <div class="post-wrapper">
-                                            <h2 class="post-title">의미없는 정답공개</h2>
-                                            <p class="post-contant">
-                                                쉽다고 생각은 했지만 정답이라니 치욕스럽습니다,,(?)정답은 나무 맞구요??ㅋㅋㅋㅋ 노란색 나무라도 한 그루 그렸으면 좀 헷갈리셨을텐데 말이죠.
-                                            </p>
-                                        </div>
-                                        <div class="post-profile-container">
-                                            <span class="post-profile-span">
-                                                <img class="post-profile-img" src="https://steadio.imgix.net/creator-posts/58b04467-0a9c-4aaf-8986-716a09f9afa9/creatorPostImage/9e11911b-906e-4357-a35e-7fde70f8eb06.JPG?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-user-container">
-                                        <div class="post-user-profile"></div>
-                                        <div class="post-user-info">
-                                            <span class="post-user-name">
-                                                아랑의 작업실
-                                            </span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-day">2일 전</span>
-                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="post-user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                            <span class="post-user-see">조회수 38</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                        <!--  -->
-                    </ul>
-
-                    <!-- 더보기 -->
-                    <div class="more">
-                        <button class="more-btn" type="button">
-                            더보기
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="more-svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="m20.023 11.886-7 7a.9.9 0 0 1-1.273-1.273l4.827-4.827H5.15a.9.9 0 0 1 0-1.8h11.427L11.75 6.16a.9.9 0 1 1 1.273-1.273l7 7Z"></path>
-                            </svg>
-                        </button>
-                    </div>
                 </main>
             </div>
             <footer class="footer">
@@ -424,42 +103,42 @@
                         <div style="display: flex;">
                             <button class="footer-btn">
                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-svg"><path clip-rule="evenodd" d="M8.144 13.563v2l2.543-2h2.396a2.74 2.74 0 0 0 2.741-2.74V7.073a2.74 2.74 0 0 0-2.74-2.74h-6.01a2.74 2.74 0 0 0-2.74 2.74v4.012a2.477 2.477 0 0 0 2.477 2.477h1.333Zm-.104 3.778a.815.815 0 0 1-1.23-.702v-1.743A3.81 3.81 0 0 1 3 11.086V7.074A4.074 4.074 0 0 1 7.074 3h6.01a4.074 4.074 0 0 1 4.073 4.074v3.748a4.074 4.074 0 0 1-4.074 4.074h-1.935L8.04 17.341Z"></path><path d="M8.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM10.667 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM13.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Z"></path></svg>
-                                <span style="margin-left: 4px;">6</span>
+                                <span style="margin-left: 4px;" th:text="${reviewDTO.replyCount}">6</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </footer>
         </div>
+         <footer th:insert="~{main/footer.html :: mainFooter}"></footer>
     </div>
      <!--  -->
      <!-- 댓글 삭제 모달창 -->
-     <div>
-         <div class="modal">
-            <h4 class="modal-title">댓글 삭제</h4>
-            <div class="modal-content">댓글을 삭제하시겠습니까?</div>
-            <div class="modal-choce">
-                <div class="choce1">
-                    <button class="choce1-btn">취소</button>
-                </div>
-                <div class="choce2">
-                    <button class="choce2-btn">삭제</button>
-                </div>
-            </div>
-         </div>
-         <div class="modal-back"></div>
+     <div id="modal-wrap">
      </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
-    let userDetail = [[${userDetail}]];
+    let member = [[${session.member}]];
     let memberId;
-    if(userDetail){
-        memberId = userDetail.id;
+    if(member){
+        memberId = member.id;
     }
-    const reviewDTO = [[${reviewDTO}]]
+
+    const reviewDTO = [[${reviewDTO}]];
     const boardId = reviewDTO.id;
     const fileDTOS = [[${reviewDTO.fileDTOS}]];
+
+    /* 날짜 변환 (년, 월, 일) */
+    function changeDateToString(e){
+        let month = "";
+        date = new Date(e.createdDate);
+        month = date.getMonth() + 1;
+        if (month < 10){
+            month = "0" + month;
+        }
+        return date.getFullYear() + "." + month + "." + date.getDate();
+    }
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/community/review-detail.js"></script>

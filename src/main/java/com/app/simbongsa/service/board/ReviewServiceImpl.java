@@ -162,11 +162,11 @@ public class ReviewServiceImpl implements ReviewService{
 
     /*댓글 목록*/
     @Override
-    public Slice<ReplyDTO> getReplyList(Long reviewId, Pageable pageable) {
-        Slice<ReviewReply> reviewReplyList = reviewReplyRepository.findAllByReviewReplyWithPaging(reviewId, pageable);
+    public Slice<ReviewReplyDTO> getReplyList(Long reviewId, int page) {
+        Slice<ReviewReply> reviewReplyList = reviewReplyRepository.findAllByReviewReplyWithPaging(reviewId, PageRequest.of(page, 5));
 
-        List<ReplyDTO> replyDTOS = reviewReplyList.getContent().stream().map(this::toReplyDTO).collect(Collectors.toList());
-        return new SliceImpl<>(replyDTOS, pageable, reviewReplyList.hasNext());
+        List<ReviewReplyDTO> reviewReplyDTOS = reviewReplyList.getContent().stream().map(this::toReviewReplyDTO).collect(Collectors.toList());
+        return new SliceImpl<>(reviewReplyDTOS, reviewReplyList.getPageable(), reviewReplyList.hasNext());
     }
 
     /*댓글 갯수*/
