@@ -282,7 +282,7 @@
                                                             <div></div>
                                                             <div class="volunteer-link-wrapper">
                                                                 <div class="volunteer-image-wrapper funding">
-                                                                    <a href="#"></a>
+                                                                    <a th:href="@{/volunteer-work/work-detail/${fundingListOrderByPopularList.id}}"></a>
 <!--                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">-->
                                                                 </div>
 <!--                                                                <div class="info-wrapper">-->
@@ -292,10 +292,10 @@
                                                                     <dl>
                                                                         <dd class="volunteer-sub-info">
                                                                             <span>
-                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCategory}">펀딩 카테고리</a>
+                                                                                <a th:href="@{/volunteer-work/work-detail/${fundingListOrderByPopularList.id}}" th:text="${fundingListOrderByPopularList.fundingCategory}">펀딩 카테고리</a>
                                                                             </span>
                                                                             <span>
-                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCreator.fundingCreatorNickname}">창작자이름</a>
+                                                                                <a th:href="@{/volunteer-work/work-detail/${fundingListOrderByPopularList.id}}" th:text="${fundingListOrderByPopularList.fundingCreator.fundingCreatorNickname}">창작자이름</a>
                                                                             </span>
                                                                         </dd>
                                                                         <dt>
@@ -338,6 +338,19 @@
 
         </div>
         <div class="common-layer-tab"></div>
+
+        <div class="modal-wrap">
+            <div class="modal-container">
+                <div class="modal">
+                    <div class="modal-content">본 사이트는 학습용 사이트므로 회원가입 및 서비스 이용을 금지합니다.<br>
+                        위 내용을 무시하고 서비스 이용 중 손해 발생 시 저희 심봉사측은 책임 지지 않습니다.</div>
+                    <div class="modal-ok-div">
+                        <button type="button" class="modal-ok">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -373,7 +386,7 @@
             <div></div>
             <div class="volunteer-link-wrapper">
              <div class="volunteer-image-wrapper volunteerImg">
-             <a href="#">
+             <a href="/volunteer-work/work-detail/${volunteer.id}">
                 <img class="fundingImg" src="/file/display?fileName=${volunteer.fileDTO.filePath}">
             </a>
             </div>
@@ -381,14 +394,14 @@
             <dl>
                 <dd class="volunteer-sub-info">
                     <span>
-                        <a href="#">${volunteer.volunteerWorkCategory}</a>
+                        <a href="/volunteer-work/work-detail/${volunteer.id}">${volunteer.volunteerWorkCategory}</a>
                     </span>
                     <span>
-                        <a href="#" >${volunteer.volunteerWorkPlace}</a>
+                        <a href="/volunteer-work/work-detail/${volunteer.id}" >${volunteer.volunteerWorkPlace}</a>
                     </span>
                 </dd>
                 <dt>
-                    <a href="">
+                    <a href="/volunteer-work/work-detail/${volunteer.id}">
                         <strong>${volunteer.volunteerWorkTitle}</strong>
                     </a>
                 </dt>
