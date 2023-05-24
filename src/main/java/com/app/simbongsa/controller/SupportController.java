@@ -3,12 +3,14 @@ package com.app.simbongsa.controller;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.repository.rice.RicePaymentRepository;
 import com.app.simbongsa.repository.support.SupportRepository;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
 import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
+import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -29,9 +31,6 @@ public class SupportController {
     private final SupportService supportService;
     private final RicePaymentService ricePaymentService;
     private final MemberService memberService;
-    private final MemberRepository memberRepository;
-    private final SupportRepository supportRepository;
-    private final SupportRequestRepository supportRequestRepository;
 
     @PostMapping("attend-member")
     @ResponseBody
@@ -87,6 +86,7 @@ public class SupportController {
         supportDTO.setMemberDTO(memberDTO);
         supportDTO.setSupportPrice(supportAmount);
 
+        ricePaymentService.insertSupportRicePayment(supportAmount, memberDTO, RicePaymentType.사용);
         supportService.saveSupport(supportDTO, memberDTO.getId());
         return new RedirectView("/support/support-success");
     }

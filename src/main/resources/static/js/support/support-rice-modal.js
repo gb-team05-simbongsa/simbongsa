@@ -1,5 +1,8 @@
 const $open = $('.donate');
 const $layout = $('.support-layout');
+const $errorLayout = $('.support-layout-error');
+const $closeButton = $('.support-pay-layout-error button');
+const $errorConfirmButton = $('.btn-rice');
     // const $submit = $('.support-pay-layout');
     // const $close = $('.support-rice-close-btn-layout');
     // const $input = $('rice-payment-input');
@@ -7,8 +10,35 @@ const $layout = $('.support-layout');
 
 // 버튼 클릭시 모달창 띄우기
 $open.click(function(){
-    $('.support-layout').html(
-        `
+    // if(memberDTO.memberRice == null){
+    //     continue;
+    // }
+    if (memberDTO == null || memberDTO.memberRice == null){
+        $('.support-layout-error').html(
+            `
+        <div class="support-rice-layout">
+                <!-- <form name=""> -->
+                    <div class="suppport-rice-container-error">
+                        <div class="support-rice-close-btn-layout-error" style="visibility: hidden">
+                            <button type="button" onclick="close()">X</button>
+                        </div>
+                            <div class="">
+                                <p>로그인 후 <em>이용</em>가능합니다.</p>
+                            </div>
+
+                        </div>
+                        <div class="support-pay-layout-error">
+                            <button type="button" onclick="confirmClose()" class="btn-rice">
+                                <span>확인</span>
+                            </button>
+                        </div>
+                    <!-- </form> -->
+            </div>
+        `);
+        $errorLayout.css('visibility', 'visible');
+    }else {
+        $('.support-layout').html(
+            `
             <div class="support-rice-layout">
              <form name="goForm" method="post" action="/support/support">
             <div class="suppport-rice-container">
@@ -18,7 +48,7 @@ $open.click(function(){
                 <div class="">
                     <input type="text" name="supportAmount" placeholder="공양미 입력"  class="rice-payment-input riceInput" value="">
                      <p class="error" style="font-size: 13px;"></p>
-                    <p>후원 가능한 공양미: <em>${memberDTO.memberRice}</em>석</p>
+                    <p style="margin: 8px -16px 2px 3px;">후원 가능한 공양미: <em>${memberDTO.memberRice}</em>석</p>
                 </div>
             </div>
             <div class="support-pay-layout">
@@ -30,15 +60,26 @@ $open.click(function(){
              </form>
         </div>
         `
-    )
-    $layout.show();
+        )
+        $layout.show();
+    }
 
+
+
+
+    // $errorLayout.css('visibility', 'visible');
     // 전송
     // $submit.click(function(){
     //     document.$submit();
     // });
 
 })
+// function close(){
+//     $errorLayout.css('visibility', 'hidden');
+// }
+function confirmClose() {
+    $errorLayout.css('visibility', 'hidden');
+}
 
 // $open.click(function() {
 //     $('.support-layout').html(

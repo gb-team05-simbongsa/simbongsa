@@ -100,7 +100,7 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
 
     @Override
     public Page<VolunteerWorkDTO> pagingVolunteerWork(String keyword, Integer page, String volunteerWorkCategoryType) {
-        log.info(keyword + "==================");
+        log.info(keyword + "keyword  ====  ====  ===   ==================");
         log.info(page + "=======================");
         log.info(volunteerWorkCategoryType + "=============");
         VolunteerWorkCategoryType categoryType = null;
@@ -140,6 +140,7 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         log.info(categoryType + "===============");
 
         log.info(keyword + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" + "키워드");
+        log.info(keyword + "keyword  ====  ====  ===   ==================");
 
 
         Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllPagingAndSearch(keyword, PageRequest.of(page, 8), categoryType);

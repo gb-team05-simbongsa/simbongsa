@@ -41,6 +41,7 @@ public interface RicePaymentService {
 
 //    결제한 값 넣기
     public void insertRicePayment(Integer ricePaymentUsed, MemberDTO memberDTO);
+    public void insertSupportRicePayment(Integer ricePaymentUsed, MemberDTO memberDTO, RicePaymentType ricePaymentType);
 
 //    환전 요청 값 넣기
     public void insertExchangeRequest(RicePaymentDTO ricePaymentDTO, MemberDTO memberDTO);

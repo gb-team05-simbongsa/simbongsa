@@ -15,22 +15,34 @@
     <link rel="stylesheet" href="/css/admin/paging.css">
 </head>
 <style>
-    .error{
+    .error {
         color: rgb(248, 100, 83);
         font-weight: bold;
         font-style: normal;
         text-align: center;
+    }
+    .support-rice-close-btn-layout-error button {
+        left: 56px;
+    }
+    .suppport-rice-container-error {
+        width: 276px;
+        height: 111px;
+
+    }
+    .support-rice-close-btn-layout-error {
+        width: 30px;
+        height: 41px;
+    }
 
 </style>
 <body class="full">
 <header th:insert="~{main/header.html :: mainHeader}"></header>
-<!--<div th:insert="~{support/support-rice-result.html :: supportRiceLayoutError}"></div>-->
+<div th:insert="~{support/support-rice-result.html :: supportRiceLayoutError}"></div>
 <!--<div th:insert="~{support/support-rice-modal.html :: supportRiceLayout}"></div>-->
 <div class="support-layout" style="display: none;">
     <div class="support-rice-layout"></div>
 </div>
-<!--        <div class="support-rice-layout" style="display: none;"></div>-->
-
+<div class="support-layout-error" style="visibility: hidden"></div>
 <div id="wrap">
         <div id="container">
             <div th:insert="~{customerCenter/inquiry-write.html :: inqueryModal}"></div>

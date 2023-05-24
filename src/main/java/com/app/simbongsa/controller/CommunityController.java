@@ -50,10 +50,10 @@ public class CommunityController {
     /*자유게시판 인기순*/
     @GetMapping("free-board/likes")
     @ResponseBody
-    public List<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
+    public Slice<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
         Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
                 pageable.getPageSize()));
-        return freeBoardDTOS.getContent();
+        return freeBoardDTOS;
     }
 
     /*자유게시판 작성하기*/
