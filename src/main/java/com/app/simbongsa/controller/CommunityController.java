@@ -168,45 +168,4 @@ public class CommunityController {
         return "community/review-detail";
     }
 
-    /* 자유게시판 댓글*/
-    @PostMapping("save")
-    @ResponseBody
-    public void saveReply(String replyContent,  Long id, HttpSession session){
-        log.info(replyContent + "=====================================");
-        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-
-        FreeBoardReplyDTO freeBoardReplyDTO = new FreeBoardReplyDTO();
-        freeBoardReplyDTO.setFreeBoardReplyContent(replyContent);
-        freeBoardReplyDTO.setFreeBoardDTO(freeBoardService.getFreeBoardDetail(id));
-        freeBoardReplyDTO.setMemberDTO(memberDTO);
-
-        freeBoardService.insertReply(freeBoardReplyDTO);
-    }
-
-    @DeleteMapping("delete")
-    public void deleteFreeReply(@RequestParam("replyId") Long replyId){freeBoardService.deleteReply(replyId);}
-
-    @PostMapping("list")
-    @ResponseBody
-    public Slice<FreeBoardReplyDTO> getFreeList(Long boardId, int page){
-        Slice<FreeBoardReplyDTO> replyList = freeBoardService.getReplyList(boardId, page);
-        log.info(replyList.toString());
-        return replyList;
-    }
-
-
-    /*활동후기 댓글*/
-    @PostMapping("review-save")
-    public void registerReply(@RequestParam ReplyRequestDTO replyRequestDTO){
-        reviewService.registerReply(replyRequestDTO);
-    }
-
-    @DeleteMapping("revew-delete")
-    public void deleteReviewReply(@RequestParam("replyId") Long replyId){reviewService.deleteReply(replyId);}
-
-    @GetMapping("review-list")
-    public Slice<ReplyDTO> getReviewList(@RequestParam("boardId") Long reviewId, @RequestParam(defaultValue = "0", name = "page") int page){
-        PageRequest pageable = PageRequest.of(page, 5);
-        return reviewService.getReplyList(reviewId, pageable);
-    }
 }
