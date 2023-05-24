@@ -47,13 +47,6 @@ public class CommunityController {
         return freeBoardDTOS.getContent();
     }
 
-//    @GetMapping("free-board/newList")
-//    public List<FreeBoardDTO> goToFreeNewList(@RequestParam("page") int page, @PageableDefault(page = 1, size = 10) Pageable pageable) {
-//        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(page - 1, pageable.getPageSize()));
-//        return freeBoardDTOS.getContent();
-//    }
-
-
     /*자유게시판 인기순*/
     @GetMapping("free-board/likes")
     @ResponseBody
@@ -116,7 +109,7 @@ public class CommunityController {
     @PostMapping("free-delete/{boardId}")
     public RedirectView freeDelete(@PathVariable("boardId") Long boardId) {
         freeBoardService.delete(boardId);
-        return new RedirectView("/community/freeBoard/newList");
+        return new RedirectView("/community/free-Board/newList");
     }
 
 
@@ -124,7 +117,7 @@ public class CommunityController {
     @PostMapping("review-delete/{boardId}")
     public RedirectView reviewDelete(@PathVariable("boardId") Long boardId){
         reviewService.delete(boardId);
-        return new RedirectView("/community/freeBoard/newList");
+        return new RedirectView("/community/review-board/newList");
     }
 
 /*=========================================================================================================================*/
@@ -172,7 +165,8 @@ public class CommunityController {
     /*활동후기 상세보기*/
     @GetMapping("review-detail/{id}")
     public String goToReviewDerail(Model model, @PathVariable Long id) {
-        model.addAttribute("review", reviewService.getReviewDetail(id));
+        ReviewDTO reviewDTO = reviewService.getReviewDetail(id);
+        model.addAttribute("reviewDTO", reviewDTO);
         return "community/review-detail";
     }
 

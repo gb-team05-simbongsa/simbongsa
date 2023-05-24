@@ -2,12 +2,14 @@ package com.app.simbongsa.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@ToString
 public class ReviewDTO {
     private Long id;
     private String boardTitle;

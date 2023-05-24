@@ -17,17 +17,14 @@ public class ReviewReplyQueryDslImpl implements ReviewReplyQueryDsl {
     private final JPAQueryFactory query;
 
     @Override
-    public Slice<ReviewReply> findAllByReviewReplyWithPaging(Long reviewId, Pageable pageable){
+    public Slice<ReviewReply> findAllByReviewReplyWithPaging(Long boardId, Pageable pageable){
         List<ReviewReply> foundReply = query.select(reviewReply)
                 .from(reviewReply)
-                .leftJoin(reviewReply.member, member)
-                .fetchJoin()
-                .where(reviewReply.review.id.eq(reviewId))
+                .where(reviewReply.review.id.eq(boardId))
                 .orderBy(reviewReply.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
                 .fetch();
-
         boolean hasNext = false;
         if (foundReply.size() > pageable.getPageSize()) {
             foundReply.remove(pageable.getPageSize());

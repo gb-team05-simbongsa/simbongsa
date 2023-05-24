@@ -7,7 +7,7 @@ import org.springframework.data.domain.Slice;
 public interface ReviewReplyQueryDsl {
 
     // 전체 조회 ( 페이징 )
-    public Slice<ReviewReply> findAllByReviewReplyWithPaging(Long reviewId, Pageable pageable);
+    public Slice<ReviewReply> findAllByReviewReplyWithPaging(Long boardId, Pageable pageable);
 
     // 댓글 갯수
     public Long getReplyCount_QueryDsl(Long reviewId);
