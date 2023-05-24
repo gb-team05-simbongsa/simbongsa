@@ -42,7 +42,7 @@
                     <div class="items-info-layout">
                         <div class="items-buttons">
                         <h4 class="service-header">
-                            진행 중인 봉사 정보
+                            진행 중인 후원 정보
                         </h4>
 <!--                            <form name="goForm" action="/support/support-list" style="height: 34px;">-->
 <!--                                <input name="keyword" type="hidden" value="" id="inputOp">-->
@@ -66,15 +66,13 @@
                             <div class="service-items-wrapper">
                                 <div class="service-items-content">
                                     <div class="name">
-                                        <span class="cruit" >[모집중]</span>
+                                        <span class="cruit" >[후원요청]</span>
                                         <span class="last-date-text" th:name="supportRequestId" th:text="${supportRequest.id}">3</span>번 게시물
                                     </div>
                                     <div class="title" th:text="${supportRequest.supportRequestContent}">서울시 환경정화 봉사자 모집</div>
                                     <div class="dates">
-                                        <span class="dates-text" th:text="${supportRequest.totalSupportPrice}">[모집기간] 2023-04-19 ~ 2023-04-30</span>
-                                        <span class="dates-text-work">[봉사기간] 2023-05-01 ~ 2023-05-30</span>
+                                        <span class="dates-text" th:text="'모인 공양미 : ' + ${supportRequest.totalSupportPrice} + '석'" >[모집기간] 2023-04-19 ~ 2023-04-30</span>
                                     </div>
-                                   
                                 </div>
                                 
                             </div>
