@@ -25,7 +25,7 @@ public interface FreeBoardService {
     public void delete(Long freeBoardId);
 
     // 저장
-    public void register(FreeBoardDTO freeBoardDTO, Long memberId);
+    public void register(FreeBoardDTO freeBoardDTO);
 
     // 상세 보기
     public FreeBoardDTO getFreeBoard(Long freeBoardId);
@@ -72,7 +72,7 @@ public interface FreeBoardService {
 
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
-        return FreeBoardDTO.builder()
+        FreeBoardDTO.FreeBoardDTOBuilder builder = FreeBoardDTO.builder()
                 .id(freeBoard.getId())
                 .boardTitle(freeBoard.getBoardTitle())
                 .boardContent(freeBoard.getBoardContent())
@@ -80,8 +80,12 @@ public interface FreeBoardService {
                 .updatedDate(freeBoard.getUpdatedDate())
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
                 .fileDTOS(FileToDTO(freeBoard.getFreeBoardFiles()))
-                .replyCount(freeBoard.getFreeBoardReplyCount())
-                .build();
+                .replyCount(freeBoard.getFreeBoardReplyCount());
+        if (freeBoard.getMember() != null) {
+            builder.memberDTO(toMemberDTO(freeBoard.getMember()));
+        }
+
+    return builder.build();
     }
     default List<FileDTO> FileToDTO(List<FreeBoardFile> freeBoardFiles){
         List<FileDTO> freeBoardFileList = new ArrayList<>();

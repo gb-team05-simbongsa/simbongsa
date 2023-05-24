@@ -2,14 +2,17 @@ package com.app.simbongsa.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@ToString
+@Component
+@NoArgsConstructor
 public class FreeBoardDTO {
     private Long id;
     private String boardTitle;
@@ -20,7 +23,7 @@ public class FreeBoardDTO {
     private MemberDTO memberDTO;
     private List<FileDTO> fileDTOS;
 
-    public FreeBoardDTO(){this.fileDTOS = new ArrayList<>();}
+//    public FreeBoardDTO(){this.fileDTOS = new ArrayList<>();}
 
     @Builder
     public FreeBoardDTO(Long id, String boardTitle, String boardContent, LocalDateTime createdDate, LocalDateTime updatedDate, Integer replyCount, MemberDTO memberDTO, List<FileDTO> fileDTOS) {

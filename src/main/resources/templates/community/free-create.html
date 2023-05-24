@@ -20,37 +20,35 @@
         <section class="board-container">
             <div class="register">
                 <div class="register-container">
-                    <button class="register-btn" type="button">등록</button>
+                    <button class="register-btn" type="button" disabled>등록</button>
                 </div>
             </div>
-            <form name="form" method="post" enctype="multipart/form-data">
+            <form name="form" method="post" th:action="@{/community/free-create}" enctype="multipart/form-data">
                 <label id="photo-picker">
                     <div class="photo" id="photo">
                         <input
-                                id="file_input"
+                                id="file-input"
                                 type="file"
                                 style="display: none"
                                 name="imgFile"
                                 accept="image/*"
+                                multiple="multiple"
                         />
                         <div class="photo-container">
                             <div class="photo-img"></div>
                         </div>
                     </div>
                 </label>
-                <label id="photo-picker2"></label> <!--이미지 들어가는 곳-->
+                <label id="photo-picker2">
+                    <!--이미지 들어가는 곳-->
+
+                </label>
                 <div class="content">
                     <div class="content-container">
                         <div class="title">
                             <div class="title-container">
                                 <label class="title-label">
-                                    <input
-                                            type="text"
-                                            placeholder="제목을 입력해주세요."
-                                            class="title-input"
-                                            name="boardTitle"
-                                            value=""
-                                    />
+                                    <input type="text" placeholder="제목을 입력해주세요." class="title-input" name="boardTitle"/>
                                 </label>
                             </div>
                         </div>
@@ -77,7 +75,7 @@
                                 <button class="choce1-btn" type="button">취소</button>
                             </div>
                             <div class="choce2">
-                                <button class="choce2-btn" type="submit">등록</button>
+                                <button type="button" class="choce2-btn">등록</button>
                             </div>
                         </div>
                     </div>
@@ -94,13 +92,14 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
-    let fileDTOS = null;
+    /*let fileDTOS = null;*/
     let freeBoardDTO = [[${freeBoardDTO}]];
-    if (freeBoardDTO == null || freeBoardDTO == undefined){
+   /* if (freeBoardDTO == null || freeBoardDTO == undefined){
     }else {
         fileDTOS = freeBoardDTO.fileDTOS;
-    }
+    }*/
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/community/free-create.js"></script>
+<script src="/js/community/free-board-file.js"></script>
 </html>

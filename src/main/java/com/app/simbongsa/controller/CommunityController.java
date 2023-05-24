@@ -58,14 +58,15 @@ public class CommunityController {
 
     /*자유게시판 작성하기*/
     @GetMapping("free-create")
-    public void goToFreeCreate(FreeBoardDTO freeBoardDTO) {}
+    public String goToFreeCreate() {return "/community/free-create.html";}
 
     @PostMapping("free-create")
     @ResponseBody
-    public void freeCreate(@ModelAttribute("freeBoardDTO") FreeBoardDTO freeBoardDTO, HttpSession session){
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
-        Long memberId = member.getId();
-        freeBoardService.register(freeBoardDTO, memberId);
+    public void freeCreate(@RequestBody FreeBoardDTO freeBoardDTO, HttpSession session){
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+        freeBoardDTO.setMemberDTO(memberDTO);
+        Long memberId = memberDTO.getId();
+        freeBoardService.register(freeBoardDTO);
     }
 
     /*자유게시판 수정하기*/
