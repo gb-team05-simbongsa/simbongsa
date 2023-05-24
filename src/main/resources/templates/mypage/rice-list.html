@@ -141,8 +141,10 @@
 <script th:inline="javascript">
     let myRicePayment = [[${myRicePayments}]];
     myRicePayment.forEach(myRicePayment => console.log(myRicePayment.memberRice));
+    let memberDTO = [[${memberDTO}]];
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/rice-list.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>
+<script src="/js/mypage/my-rank.js"></script>
 </html>

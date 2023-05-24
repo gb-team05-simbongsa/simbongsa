@@ -216,7 +216,11 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.1.min.js" type="application/javascript"></script>
+<script th:inline="javascript">
+    let memberDTO = [[${memberDTO}]];
+</script>
 <script src="/js/main/header.js"></script>
 <script src="/js/mypage/mypage-header.js"></script>
 <script src="/js/mypage/rice-charge.js"></script>
+<script src="/js/mypage/my-rank.js"></script>
 </html>
