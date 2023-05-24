@@ -25,8 +25,6 @@ import static com.app.simbongsa.entity.funding.QFundingGift.fundingGift;
 import static com.app.simbongsa.entity.funding.QFundingPayment.fundingPayment;
 import static com.app.simbongsa.entity.member.QMember.member;
 
-//        return checkLastPage(pageable, foundFunding);
-////      hasNext는 현재 페이지에서 다음 페이지가 있는지 여부를 나타내는 불리언(Boolean) 값, true로 설정되면 다음 페이지가 있는 것으로 간주되고,
 @RequiredArgsConstructor
 public class FundingQueryDslImpl implements FundingQueryDsl {
     private final JPAQueryFactory query;

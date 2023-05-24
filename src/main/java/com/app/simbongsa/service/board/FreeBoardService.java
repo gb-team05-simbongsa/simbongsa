@@ -12,6 +12,7 @@ import org.springframework.data.domain.Slice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ServiceLoader;
 
 public interface FreeBoardService {
 
@@ -69,6 +70,11 @@ public interface FreeBoardService {
 
 //    유저가 작성한 자유게시물 조회(페이징처리)
     Page<FreeBoardDTO> getMyFreeBoards(Integer page, MemberDTO memberDTO);
+
+//  인기순, 최신순, 인기-최신순
+    Slice<FreeBoardDTO> getSlicePopular(Pageable pageable);
+    Slice<FreeBoardDTO> getSliceNew(Pageable pageable);
+    Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable);
 
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {

@@ -301,4 +301,29 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         log.info("myFreeBoardDTOS serviceImpl: ===== " + myFreeBoardDTOS);
         return new PageImpl<>(myFreeBoardDTOS,myFreeBoards.getPageable(),myFreeBoards.getTotalElements());
     }
+
+
+    /*인기순, 최신순, 인기 - 최신순 (쿼리가 맞는진 모름)*/
+    @Override
+    public Slice<FreeBoardDTO> getSlicePopular(Pageable pageable) {
+        Slice<FreeBoard> freeBoardList = freeBoardRepository.findAllSliceByPopular(pageable);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.getContent().stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new SliceImpl<>(freeBoardDTOS, pageable, freeBoardList.hasNext());
+    }
+
+    @Override
+    public Slice<FreeBoardDTO> getSliceNew(Pageable pageable) {
+        Slice<FreeBoard> freeBoardList = freeBoardRepository.findAllSliceByPopular(pageable);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.getContent().stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new SliceImpl<>(freeBoardDTOS, pageable, freeBoardList.hasNext());
+    }
+
+    @Override
+    public Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable) {
+        Slice<FreeBoard> freeBoardList = freeBoardRepository.findAllSliceByPopular(pageable);
+        List<FreeBoardDTO> freeBoardDTOS = freeBoardList.getContent().stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new SliceImpl<>(freeBoardDTOS, pageable, freeBoardList.hasNext());
+    }
+
+
 }
