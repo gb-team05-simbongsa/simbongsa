@@ -18,20 +18,20 @@ function showMyPage(result) {
         html = `
         <div class="my-user-wrapper">
             <div class="user-menu-list">
-                <div class="menu-item">마이페이지</div>
-                <div class="menu-item">내 공양미</div>
+                <a href="/mypage/support-request"><div class="menu-item">마이페이지</div></a>
+                <a href="/mypage/rice-list"><div class="menu-item">내 공양미</div></a>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">봉사내역</div>
-                <div class="menu-item">펀딩내역</div>
-                <div class="menu-item">후원내역</div>
+                <a href="/mypage/volunteer-work-list"><div class="menu-item">봉사내역</div></a>
+                <a href="/mypage/my-support-list/funding"><div class="menu-item">펀딩내역</div></a>
+                <a href="/mypage/my-support-list"><div class="menu-item">후원내역</div></a>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">공양미충전</div>
-                <div class="menu-item">공양미환전</div>
+                <a href="/mypage/rice-charge"><div class="menu-item">공양미충전</div></a>
+                <a href="/mypage/exchange-request"><div class="menu-item">공양미환전</div></a>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">내가 만든 펀딩</div>
-                <div class="menu-item">회원정보수정</div>
+                <a href="/mypage/my-funding-list"><div class="menu-item">내가 만든 펀딩</div></a>
+                <a href="/mypage/user-modify"><div class="menu-item">회원정보수정</div></a>
                 <div class="menu-item-divider"></div>
-                <div class="menu-item">로그아웃</div>
+                <a href="/member/logout"><div class="menu-item">로그아웃</div></a>
             </div>
         </div>
         <div class="user-dimmed-layout"></div>

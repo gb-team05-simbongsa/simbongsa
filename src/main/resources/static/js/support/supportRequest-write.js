@@ -1,4 +1,4 @@
-
+//
 // const file = document.querySelector('input[type=file]');
 // const imgButton = document.querySelector(".imgButton");
 // console.log(imgButton);
