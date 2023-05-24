@@ -150,7 +150,7 @@ public interface SupportRequestService {
                 .filePath(fileDTO.getFilePath())
                 .fileUuid(fileDTO.getFileUuid())
                 .fileRepresentationalType(fileDTO.getFileRepresentationalType())
-                .supportRequest(fileDTO.getSupportRequest())
+//                .supportRequest(fileDTO.getSupportRequest())
                 .build();
     }
 }
