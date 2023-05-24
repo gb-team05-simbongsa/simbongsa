@@ -6,6 +6,7 @@ import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.board.FreeBoardRepository;
 import com.app.simbongsa.search.admin.AdminFundingSearch;
 import com.app.simbongsa.service.board.FreeBoardService;
+import com.app.simbongsa.service.board.ReviewService;
 import com.app.simbongsa.service.funding.FundingService;
 import com.app.simbongsa.service.inquiry.AnswerService;
 import com.app.simbongsa.service.inquiry.InquiryService;
@@ -48,6 +49,7 @@ public class MypageController {
     private final SupportService supportService;
     private final FundingService fundingService;
     private final PasswordEncoder passwordEncoder;
+    private final ReviewService reviewService;
 
     /* 내 문의 페이징처리해서 불러오기 */
     @GetMapping("my-question")
@@ -133,8 +135,8 @@ public class MypageController {
     }*/
 
     /* 내 자유 게시글 목록 */
-    @GetMapping("my-review")
-    public String myReview(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+    @GetMapping("my-freeboard")
+    public String myFreeBoard(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         log.info(memberDTO.getId() + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
         page = page == null ? 0 : page - 1;
@@ -148,13 +150,29 @@ public class MypageController {
         return "/mypage/my-freeboard";
     }
 
+    /* 내 후기 게시글 목록 */
+    @GetMapping("my-review")
+    public String myReview(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
+        MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        log.info(memberDTO.getId() + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        page = page == null ? 0 : page - 1;
+        log.info(page + "pagepagepagepapgapgagpdspagpsdgpasdpgapsppage");
+        Page<ReviewDTO> myReviews = reviewService.getMyReviewBoards(page, memberDTO);
+        log.info( "myReviews 잘 나오나요" + myReviews);
+
+        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("myReviews", myReviews.getContent());
+        model.addAttribute("pageDTO", new PageDTO(myReviews));
+        return "/mypage/my-review";
+    }
+
     /* 내 자유 게시글 상세보기 */
     @GetMapping("my-free-board-detail/{boardId}")
     public String getMyFreeBoardetail(@PathVariable("boardId") Long boardId, Model model){
         FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoard(boardId);
 
         model.addAttribute("freeBoardDTO", freeBoardDTO);
-        return "community/board-modify";
+        return "community/free-board-modify";
     }
 
     /* 내 후원 목록 */
