@@ -67,6 +67,26 @@ public class InquiryController {
         return "customerCenter/faq-detail";
     }
 
+    @GetMapping("faq-detail2")
+    public String faqDetail2() {
+        return "customerCenter/faq-detail2";
+    }
+
+    @GetMapping("faq-detail3")
+    public String faqDetail3() {
+        return "customerCenter/faq-detail3";
+    }
+
+    @GetMapping("faq-detail4")
+    public String faqDetail4() {
+        return "customerCenter/faq-detail4";
+    }
+
+    @GetMapping("faq-detail5")
+    public String faqDetail5() {
+        return "customerCenter/faq-detail5";
+    }
+
     @GetMapping("inquiry-write")
     public String gotoInquiryWrite() {
         return "customerCenter/inquiry-write";
