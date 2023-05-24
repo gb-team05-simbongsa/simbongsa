@@ -102,7 +102,7 @@ function getList(contentId, page) {
     });
 }
 getList(contentId, goPage);
-$(".paging-modal").on("click", ".changePage-modal", function(e)) {
+$(".paging-modal").on("click", ".changePage-modal", function(e) {
     e.preventDefault();
     $('.append-div').empty();
     $(".paging-modal").empty();
@@ -131,8 +131,8 @@ $(".paging-modal").on("click", ".changePage-modal", function(e)) {
 
 console.log(supportRequestDTO);
 console.log();
-let file = supportRequestDTO.fileDTOS;
-file.forEach((file, i) =>{
+let files = supportRequestDTO.fileDTOS;
+files.forEach((file, i) =>{
     let text = ' ';
         text = `
                 <li class="on">
@@ -149,12 +149,9 @@ file.forEach((file, i) =>{
                 </li>
             `;
 
-    let text2 = ' ';
-    text2 = `
-     <img id="expandedImg" src="/file/display?fileName=${file[0].filePath}" style="cursor:pointer; width:624 height=351">
+    let text2 = `
+        <img id="expandedImg" src="/file/display?fileName=${files[0].filePath}" style="cursor:pointer; width:624px; height:351px">
     `;
     $('.view').html(text2);
     $('.thumbnail-list ul').append(text);
 });
-
-
