@@ -27,7 +27,7 @@ public class FreeBoardFileRepositoryTests {
 //        FreeBoardFile freeBoardFile1 = new FreeBoardFile(970L,"100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,freeBoardRepository.findById(980L).get());
 //        freeBoardFileRepository.save(freeBoardFile1);
         for (int i = 1; i <= 5; i++) {
-            FreeBoardFile freeBoardFile2 = new FreeBoardFile(i+970L,"00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,freeBoardRepository.findById(1423L).get());
+            FreeBoardFile freeBoardFile2 = new FreeBoardFile(i+970L,"00" + i + ".png","34271983dksjf" + i,"c:/2023/document", FileRepresentationalType.NORMAL,freeBoardRepository.findById(1478L).get());
             freeBoardFileRepository.save(freeBoardFile2);
         }
     }
