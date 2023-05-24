@@ -55,105 +55,51 @@
                     <div>
                         <h4 class="comment">댓글</h4>
                         <div style="height: 24px;"></div>
-                        <!-- 로그인 안했을때 -->
-                        <div class="comment-box" style="display: none;">
-                            <div class="comment-box-container">
-                                <div class="comment-box-wrapper">
-                                    <span class="comment-box-p">댓글을 작성하려면 로그인을 해주세요.</span>
-                                </div>
-                                <div class="comment-Nologin">
-                                    <button class="comment-Nologin-btn">로그인</button>
-                                </div>
-                            </div>
-                        </div>
                         <!-- 로그인 했을때 -->
                         <th:block th:if="${not #strings.isEmpty(session.member)}">
-                            <th:block th:if="${session.member.id == freeBoardDTO.memberDTO.id}">
-                                <div class="comment-box2">
-                                    <div class="comment-box-wrapper2">
-                                        <div class="comment-login">
-                                            <div class="comment-login-profile">
-                                                <span class="profile-span">
-                                                    <img class="profile-img" style="margin: 0;" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
-                                                </span>
-                                            </div>
+                            <div class="comment-box2">
+                                <div class="comment-box-wrapper2">
+                                    <div class="comment-login">
+                                        <div class="comment-login-profile">
+                                            <span class="profile-span">
+                                                <img class="profile-img" style="margin: 0;" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">
+                                            </span>
                                         </div>
-                                        <textarea class="comment-box-span" name="content" placeholder="댓글을 작성해 주세요..."></textarea>
                                     </div>
-                                    <div class="singUp-btn">
-                                        <button class="singUp1">취소</button>
-                                        <button class="singUp" type="button">등록</button>
+                                    <textarea class="comment-box-span" name="content" placeholder="댓글을 작성해 주세요..."></textarea>
+                                </div>
+                                <div class="singUp-btn">
+                                    <button class="singUp1">취소</button>
+                                    <button class="singUp" type="button">등록</button>
+                                </div>
+                            </div>
+                        </th:block>
+                        <!-- 로그인 안했을때 -->
+                        <th:block th:unless="${not #strings.isEmpty(session.member)}">
+                            <div class="comment-box">
+                                <div class="comment-box-container">
+                                    <div class="comment-box-wrapper">
+                                        <span class="comment-box-p">댓글을 작성하려면 로그인을 해주세요.</span>
+                                    </div>
+                                    <div class="comment-Nologin">
+                                        <button class="comment-Nologin-btn">로그인</button>
                                     </div>
                                 </div>
-                            </th:block>
+                            </div>
                         </th:block>
                         <!--  -->
                         <div style="height: 33px;"></div>
-                        <!-- 댓글 없을때 -->
-<!--                        <div class="comment-list" style="display: none;">-->
-<!--                            <p class="NoComment">댓글이 없습니다.</p>-->
-<!--                            <p class="NoComment2">첫 댓글을 남겨보세요</p>-->
-<!--                        </div>-->
-
-                        <!-- 댓글 있을때 -->
-                        <ul class="comment-lists">
-                            <!-- 내가 쓴 댓글일 경우 -->
-<!--                            <li class="comment-ok-list">-->
-<!--&lt;!&ndash;                                <div class="comment-profile">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="comment-profile-container">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <span class="comment-profile-span">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2Fd7afcbbb-8376-4a2e-89a1-7d379ba76ea7%2FprofileImage%2F8220395f-c776-40bd-bced-f075a2315cdf.jpg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1920&q=75">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                                <div style="width: 100%;">-->
-<!--                                    <div class="comment-user">-->
-<!--                                        <div class="comment-user-name">서현</div>-->
-<!--                                        <button type="button" class="x-btn">-->
-<!--                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">-->
-<!--                                                <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>-->
-<!--                                            </svg>-->
-<!--                                        </button>-->
-<!--                                    </div>-->
-<!--                                    <div style="flex: 0 0 auto; height: 5px;"></div>-->
-<!--                                    <p class="comment-contant"></p>-->
-<!--                                    좋은 활동 후기보고 갑니다.-->
-<!--                                    <div style="flex: 0 0 auto; height: 8px;"></div>-->
-<!--                                    <span class="comment-day" th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">1일 전</span>-->
-<!--                                </div>-->
-<!--                            </li>-->
-<!--                            &lt;!&ndash; 다른 사람들 댓글 x버튼 없음 &ndash;&gt;-->
-<!--                            <li class="comment-ok-list">-->
-<!--                                <div class="comment-profile">-->
-<!--                                    <div class="comment-profile-container">-->
-<!--                                        <span class="comment-profile-span">-->
-<!--                                            <img class="comment-profile-img" src="https://steadio.co/_next/image?url=https%3A%2F%2Fsteadio.imgix.net%2Fprofiles%2F0eb256b8-30cb-476b-a26d-855c97426ae8%2FprofileImage%2Ff0f31273-16c9-4f53-9aa2-2ad51cf7ce28.jpeg%3Fauto%3Dformat%252Ccompress%26h%3D300%26lossless%3Dtrue%26w%3D300&w=1080&q=75">-->
-<!--                                        </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div style="width: 100%;">-->
-<!--                                    <div class="comment-user">-->
-<!--                                        <div class="comment-user-name">시금</div>-->
-<!--                                    </div>-->
-<!--                                    <div style="flex: 0 0 auto; height: 5px;"></div>-->
-<!--                                    <p class="comment-contant"></p>-->
-<!--                                    너무 도움이 되는 활동 후기를 보고 갑니다.-->
-<!--                                    <div style="flex: 0 0 auto; height: 8px;"></div>-->
-<!--                                    <span class="comment-day">1일 전</span>-->
-<!--                                </div>-->
-<!--                            </li>-->
-                            <!--  -->
-                        </ul>
+                        <ul class="comment-lists"></ul>
                         <!--  -->
                         <div style="height: 24px;"></div>
-<!--                        <div id="comment-btn">-->
-<!--                            <button class="comment-btn">-->
-<!--                                <div class="comment-text">-->
-<!--                                    댓글 더 보기-->
-<!--                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="comment-svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.27 8.42a1.076 1.076 0 0 1 1.587-.13L12 14.832l7.143-6.544a1.076 1.076 0 0 1 1.586.13 1.26 1.26 0 0 1-.122 1.696L12 18l-8.607-7.885A1.26 1.26 0 0 1 3.27 8.42Z"></path></svg>-->
-<!--                                </div>-->
-<!--                            </button>-->
-<!--                        </div>-->
+                        <div id="comment-btn">
+                            <button class="comment-btn">
+                                <div class="comment-text">
+                                    댓글 더 보기
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="comment-svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.27 8.42a1.076 1.076 0 0 1 1.587-.13L12 14.832l7.143-6.544a1.076 1.076 0 0 1 1.586.13 1.26 1.26 0 0 1-.122 1.696L12 18l-8.607-7.885A1.26 1.26 0 0 1 3.27 8.42Z"></path></svg>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                     <div style="height: 40px;"></div>
                     <div class="border-line"></div>
@@ -261,26 +207,7 @@
      <!-- -->
 
      <!-- 댓글 삭제 모달창 -->
-     <div>
-         <th:block th:if="${not #strings.isEmpty(userDetail)}">
-             <th:block th:if="${userDetail.id == freeBoardDTO.memberDTO.id}">
-                 <div class="modal">
-                    <h4 class="modal-title">댓글 삭제</h4>
-                    <div class="modal-content">댓글을 삭제하시겠습니까?</div>
-                    <div class="modal-choce">
-                        <div class="choce1">
-                            <button class="choce1-btn">취소</button>
-                        </div>
-                        <div class="choce2">
-                            <form action="" method="post">
-                                <button type="submit" class="choce2-btn" fill="true">삭제</button>
-                            </form>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="modal-back"></div>
-             </th:block>
-         </th:block>
+     <div id="modal-wrap">
      </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
