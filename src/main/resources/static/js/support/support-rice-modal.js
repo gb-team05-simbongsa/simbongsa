@@ -1,5 +1,6 @@
 const $open = $('.donate');
 const $layout = $('.support-layout');
+const $errorLayout = $('.support-layout-error');
     // const $submit = $('.support-pay-layout');
     // const $close = $('.support-rice-close-btn-layout');
     // const $input = $('rice-payment-input');
@@ -7,6 +8,7 @@ const $layout = $('.support-layout');
 
 // 버튼 클릭시 모달창 띄우기
 $open.click(function(){
+
     $('.support-layout').html(
         `
             <div class="support-rice-layout">
@@ -31,8 +33,9 @@ $open.click(function(){
         </div>
         `
     )
-    $layout.show();
 
+    $layout.show();
+    $errorLayout.css('visibility', 'visible');
     // 전송
     // $submit.click(function(){
     //     document.$submit();
