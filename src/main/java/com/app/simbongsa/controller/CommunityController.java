@@ -47,6 +47,12 @@ public class CommunityController {
         return freeBoardDTOS.getContent();
     }
 
+//    @GetMapping("free-board/newList")
+//    public List<FreeBoardDTO> goToFreeNewList(@RequestParam("page") int page, @PageableDefault(page = 1, size = 10) Pageable pageable) {
+//        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(page - 1, pageable.getPageSize()));
+//        return freeBoardDTOS.getContent();
+//    }
+
 
     /*자유게시판 인기순*/
     @GetMapping("free-board/likes")
