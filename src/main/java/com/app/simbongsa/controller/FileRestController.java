@@ -34,7 +34,7 @@ public class FileRestController {
             filePath = uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename();
             multipartFiles.get(i).transferTo(new File(path, filePath));
 
-            InputStream inputStream = new FileInputStream("C:\\upload\\" + getPath() + "\\" + uuids.get(i)+ "_" + multipartFiles.get(i).getOriginalFilename());
+            InputStream inputStream = new FileInputStream("/C:/upload/" + getPath() + "/" + uuids.get(i)+ "_" + multipartFiles.get(i).getOriginalFilename());
 
             if(multipartFiles.get(i).getContentType().startsWith("image")){
                 FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
@@ -55,7 +55,7 @@ public class FileRestController {
     @GetMapping("display")
     public byte[] businessDisplay(String fileName) throws Exception {
         try {
-            return fileName.contentEquals("null") || fileName.isBlank() ? null : FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
+            return fileName.contentEquals("null") || fileName.isBlank() ? null : FileCopyUtils.copyToByteArray(new File("/C:/upload", fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }

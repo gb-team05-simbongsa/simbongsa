@@ -55,7 +55,7 @@ $('.content__detail__btn').on('click', function() {
 
     adminService.getDetail("/admins/volunteer-work-details", contentId, function(result) {
         let text;
-
+        console.log(result.fileDTO.filePath)
         text = `
             <section class="modal">
                 <div class="modal__header">
@@ -175,7 +175,7 @@ $('.content__detail__btn').on('click', function() {
         fileDTO.filePath = `${result.fileDTO.filePath}`
         fileDTO.fileUuid = `${result.fileDTO.fileUuid}`
 
-        $photoPicker = $('#photo-picker-modify');
+        $photoPickerModify = $('#photo-picker-modify');
         $fileId = $('#fileId');
         loadPhoto();
     });
@@ -316,11 +316,12 @@ globalThis.uuids;
 globalThis.paths;
 FileList.prototype.forEach = Array.prototype.forEach;
 let prevFileList;
+let $photoPickerModify;
 
 /* 저장할 파일들의 Array */
 
 let $fileId;
-let $photoPicker = $("#photo-picker2");
+let $photoPicker = $("#photo-picker");
 const uploadAjaxConfig = (data) => {
     return {
         url: "/file/upload",
@@ -363,8 +364,7 @@ $photoPicker.on("change", function () {
 });
 
 function loadPhoto() {
-    $photoPicker.on("change", function () {
-        console.log("!!!!!!!!!!!!")
+    $photoPickerModify.on("change", function () {
         let $files = $(this)[0].files;
         let formData = new FormData();
         prevFileList = '';
@@ -402,8 +402,7 @@ function loadPhoto() {
 let fileDTO = new Object();
 
 let setVolunteerWorkDTO = function() {
-    console.log($('#photo-picker')[0])
-    const $files = $('#photo-picker')[0].files;
+    const $files = $photoPicker[0].files;
 
     fileDTO.fileName = $files[0].name;
     fileDTO.fileUuid = globalThis.uuids[0];

@@ -43,7 +43,7 @@ spring:
       maxFileSize: 10MB
       maxRequestSize: 20MB
 
-      location: c:\\upload
+      location: /C:/upload
 #      location: /Users/hyun/uploads
       enabled: true
 
