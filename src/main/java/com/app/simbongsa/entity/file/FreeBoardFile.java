@@ -18,7 +18,6 @@ public class FreeBoardFile extends File {
     private FreeBoard freeBoard;
 
     @Builder
-
     public FreeBoardFile(Long id, String fileName, String fileUuid, String filePath, FileRepresentationalType fileRepresentationalType, FreeBoard freeBoard) {
         super(id, fileName, fileUuid, filePath, fileRepresentationalType);
         this.freeBoard = freeBoard;

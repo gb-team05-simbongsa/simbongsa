@@ -30,15 +30,6 @@ public class RicePayment extends Period {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-//    더미 데이터용 생성자
-//    public RicePayment(int ricePaymentUsed, RicePaymentType ricePaymentStatus, String ricePaymentExchangeBank, String ricePaymentExchangeAccount, Member member) {
-//        this.ricePaymentUsed = ricePaymentUsed;
-//        this.ricePaymentStatus = ricePaymentStatus;
-//        this.ricePaymentExchangeBank = ricePaymentExchangeBank;
-//        this.ricePaymentExchangeAccount = ricePaymentExchangeAccount;
-//        this.member = member;
-//    }
-
     @Builder
     public RicePayment(int ricePaymentUsed, RicePaymentType ricePaymentStatus, String ricePaymentExchangeBank, String ricePaymentExchangeAccount, Member member) {
         this.ricePaymentUsed = ricePaymentUsed;

@@ -32,13 +32,6 @@ public class Inquiry extends Period {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-//    단위 테스트용 생성자 생성
-    public Inquiry(String inquiryTitle, String inquiryContent, Member member) {
-        this.inquiryTitle = inquiryTitle;
-        this.inquiryContent = inquiryContent;
-        this.member = member;
-    }
-
     @Builder
     public Inquiry(Long id, String inquiryTitle, String inquiryContent, InquiryType inquiryStatus, Member member) {
         this.id = id;

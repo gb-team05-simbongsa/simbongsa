@@ -21,8 +21,6 @@ public class FundingItem {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fundingItem", cascade = CascadeType.REMOVE)
     private List<FundingGiftItem> fundingGiftItems;
 
-
-    //단위테스트용 생성자
     @Builder
     public FundingItem(String itemTitle, String itemType, String itemContent) {
         this.itemTitle = itemTitle;
