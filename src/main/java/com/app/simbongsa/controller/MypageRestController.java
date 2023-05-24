@@ -5,6 +5,8 @@ import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.domain.RicePaymentDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
+import com.app.simbongsa.service.board.FreeBoardService;
+import com.app.simbongsa.service.board.ReviewService;
 import com.app.simbongsa.service.inquiry.InquiryService;
 import com.app.simbongsa.service.member.MemberService;
 import com.app.simbongsa.service.rice.RicePaymentService;
@@ -28,7 +30,9 @@ public class MypageRestController {
     private final InquiryService inquiryService;
     private final RicePaymentService ricePaymentService;
     private final MemberService memberService;
+    private final FreeBoardService freeBoardService;
     private final PasswordEncoder passwordEncoder;
+    private final ReviewService reviewService;
 
     @PostMapping("inquiry-details")
     public InquiryDTO inquiryDetail(Long id) {
@@ -43,6 +47,16 @@ public class MypageRestController {
     @PostMapping("check-member")
     public boolean checkMember(String memberEmail, String memberPassword) {
         return passwordEncoder.matches(memberPassword, memberService.getMemberByEmail(memberEmail).getMemberPassword());
+    }
+
+    @PostMapping("free-board-delete")
+    public void deleteByFreeboard(long id) {
+        freeBoardService.delete(id);
+    }
+
+    @PostMapping("review-board-delete")
+    public void deleteByReviewboard(Long id) {
+        reviewService.delete(id);
     }
 
     /* 변경 */
