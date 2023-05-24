@@ -20,11 +20,6 @@ public class Notice extends Period {
     @NotNull private String noticeTitle;
     @NotNull private String noticeContent;
 
-    public Notice(String noticeTitle, String noticeContent) {
-        this.noticeTitle = noticeTitle;
-        this.noticeContent = noticeContent;
-    }
-
     public void setNoticeTitle(String noticeTitle) {
         this.noticeTitle = noticeTitle;
     }
