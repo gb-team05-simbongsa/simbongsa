@@ -51,8 +51,9 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .leftJoin(freeBoard.member)
-                .leftJoin(freeBoard.freeBoardFiles)
+                .join(freeBoard.member)
+                .fetchJoin()
+                .join(freeBoard.freeBoardFiles)
                 .fetchJoin()
                 .orderBy(freeBoard.freeBoardReplyCount.desc())
                 .offset(pageable.getOffset())
