@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("/community/*")
+@RequestMapping("/communities/*")
 @RequiredArgsConstructor
 @Slf4j
 public class CommunityRestController {
@@ -26,7 +26,7 @@ public class CommunityRestController {
     }
 
     @DeleteMapping("delete")
-    public void deleteFreeReply(@RequestParam("replyId") Long replyId){freeBoardService.deleteReply(replyId);}
+    public void deleteFreeReply(Long replyId){freeBoardService.deleteReply(replyId);}
 
     @PostMapping("list")
     public Slice<FreeBoardReplyDTO> getFreeList(Long boardId, int page){

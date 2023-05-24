@@ -2,7 +2,7 @@ let replyService = (function () {
 
     function save(reply, callback) {
         $.ajax({
-            url: '/community/review-save',
+            url: '/communities/review-save',
             type: "post",
             data: JSON.stringify(reply),
             contentType: "application/json;charset=utf-8",
@@ -16,7 +16,7 @@ let replyService = (function () {
 
     function list(reply, callback) {
         $.ajax({
-            url: '/community/review-list',
+            url: '/communities/review-list',
             type: 'post',
             data: reply,
             success: function (replies) {
@@ -29,9 +29,9 @@ let replyService = (function () {
 
     function deleteReply(replyId, callback) {
         $.ajax({
-            url: '/community/revew-delete',
+            url: '/communities/revew-delete',
             type: 'delete',
-            data: JSON.stringify({replyId: replyId}),
+            data: {replyId: replyId},
             success: function () {
                 if (callback) {
                     callback();
@@ -102,6 +102,7 @@ function showList() {
 
 function repliesContent(replies) {
     let text = ``;
+    let modalText = ``;
     replies.content.forEach(reply => {
         text += `
             <li class="comment-ok-list">
@@ -116,19 +117,33 @@ function repliesContent(replies) {
                         </svg>
                     </button>`
 
-            $("#modal-wrap").append(`<div class="modal">
-                <h4 class="modal-title">댓글 삭제</h4>
-                <div class="modal-content">댓글을 삭제하시겠습니까?</div>
-                <div class="modal-choce">
-                    <div class="choce1">
-                        <button class="choce1-btn">취소</button>
-                    </div>
-                    <div class="choce2">
-                    <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
-                    </div>
-                </div>
-             </div>
-             <div class="modal-back"></div>`);
+            modalText += `<div class="modal">
+                 <h4 class="modal-title">댓글 삭제</h4>
+                 <div class="modal-content">댓글을 삭제하시겠습니까?</div>
+                 <div class="modal-choce">
+                     <div class="choce1">
+                         <button class="choce1-btn">취소</button>
+                     </div>
+                     <div class="choce2">
+                     <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
+                     </div>
+                 </div>
+              </div>
+              <div class="modal-back"></div>`;
+
+            // $("#modal-wrap").append(`<div class="modal">
+            //     <h4 class="modal-title">댓글 삭제</h4>
+            //     <div class="modal-content">댓글을 삭제하시겠습니까?</div>
+            //     <div class="modal-choce">
+            //         <div class="choce1">
+            //             <button class="choce1-btn">취소</button>
+            //         </div>
+            //         <div class="choce2">
+            //         <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
+            //         </div>
+            //     </div>
+            //  </div>
+            //  <div class="modal-back"></div>`);
 
         }
         text += `
@@ -141,6 +156,7 @@ function repliesContent(replies) {
             </li>
         `;
     });
+    $("#modal-wrap").html(modalText);
     return text;
 }
 
@@ -192,6 +208,7 @@ $(".comment-btn").click(() => {
 let modal;
 let modalBack;
 let replyIdToDelete;
+let $modalWrap = $('#modal-wrap');
 
 function showModal() {
     const modals = document.querySelectorAll('.modal');
@@ -219,9 +236,9 @@ function hideModal() {
 }
 
 $replyBox.on("click", ".x-btn", showModal);
-$replyBox.on("click", ".choce1-btn", hideModal);
-$replyBox.on("click", ".modal-back", hideModal);
-$replyBox.on("click", ".choce2-btn", function () {
+$modalWrap.on("click", ".choce1-btn", hideModal);
+$modalWrap.on("click", ".modal-back", hideModal);
+$modalWrap.on("click", ".choce2-btn", function () {
     replyIdToDelete = $(this).data("reply-id");
     replyService.deleteReply(replyIdToDelete, function () {
         hideModal();
