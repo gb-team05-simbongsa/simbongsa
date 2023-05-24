@@ -42,7 +42,7 @@ public class SupportController {
 
 //    참여내역 페이징 처리
     @GetMapping("support-detail/{supportRequestId}")
-    public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId, @AuthenticationPrincipal UserDetail userDetail, InquiryDTO inquiryDTO){
+    public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         log.info("들어오나?");
         page = page == null ? 0 : page -1;
@@ -69,8 +69,6 @@ public class SupportController {
         int originalPrice = totalPrice * 100;
 
         model.addAttribute("attendCount", attendCount);
-//        model.addAttribute("attendList", attendList.getContent());
-//        model.addAttribute("pageDTO", new PageDTO(attendList));
         model.addAttribute("supportRequestDTO", supportDetail);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("originalPrice", originalPrice);

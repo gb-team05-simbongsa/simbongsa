@@ -139,6 +139,8 @@ public class VolunteerWorkServiceImpl implements VolunteerWorkService {
         }
         log.info(categoryType + "===============");
 
+        log.info(keyword + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" + "키워드");
+
 
         Page<VolunteerWork> volunteerWorks = volunteerWorkRepository.findAllPagingAndSearch(keyword, PageRequest.of(page, 8), categoryType);
         List<VolunteerWorkDTO> volunteerWorkDTOS = volunteerWorks.getContent().stream().map(this::toVolunteerWorkDTO).collect(Collectors.toList());
