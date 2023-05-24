@@ -45,6 +45,11 @@ public interface FreeBoardQueryDsl {
     /*마이페이지 내가 작성한 글 전체 조회*/
     public Page<FreeBoard> findAllByFreeMemberIdPaging_QueryDsl(Pageable pageable, Long id);
 
-
+    /* ===== 인기순 무한스크롤  ==== */
+    public Slice<FreeBoard> findAllSliceByPopular(Pageable pageable);
+    /* ===== 최신순 무한스크롤  ==== */
+    public Slice<FreeBoard> findAllSliceByNew(Pageable pageable);
+    /* ===== 인기순, 최신순 무한스크롤  ==== */
+    public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable);
 
 }
