@@ -11,7 +11,6 @@ import org.springframework.data.domain.SliceImpl;
 import java.util.List;
 
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
-import static com.app.simbongsa.entity.member.QMember.member;
 
 @Slf4j
 @RequiredArgsConstructor

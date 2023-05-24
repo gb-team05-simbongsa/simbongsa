@@ -10,8 +10,8 @@ public interface ReviewReplyQueryDsl {
     public Slice<ReviewReply> findAllByReviewReplyWithPaging(Long boardId, Pageable pageable);
 
     // 댓글 갯수
-    public Long getReplyCount_QueryDsl(Long reviewId);
+    public Long getReplyCount_QueryDsl(Long boardId);
 
     // 댓글 삭제
-    public void deleteByReviewId(Long reviewId);
+    public void deleteByReviewId(Long boardId);
 }

@@ -58,6 +58,17 @@ $('.comment-box-span').on('keyup', () => {
 /*====================================================================================================================*/
 /*댓글*/
 /*====================================================================================================================*/
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
 let page = 0;
 
 const $registerButton = $(".singUp");
@@ -125,7 +136,7 @@ function repliesContent(replies) {
                     <div style="flex: 0 0 auto; height: 5px;"></div>
                     <p class="comment-contant">${reply.reviewReplyContent}</p>
                     <div style="flex: 0 0 auto; height: 8px;"></div>
-                    <span class="comment-day">${reply.createdDate}</span>
+                    <span class="comment-day">${formatDate(reply.createdDate)}</span>
                 </div>
             </li>
         `;
@@ -159,6 +170,23 @@ $registerButton.click(() => {
         });
     }
 });
+
+
+// 더보기 버튼
+$(".comment-btn").click(() => {
+    page++;
+    replyService.list({
+        page: page,
+        boardId: boardId
+    }, function (replies) {
+        $replyBox.append(repliesContent(replies));
+
+        if (replies.last) {
+            $(".comment-btn").hide();
+        }
+    });
+});
+
 
 //  삭제모달
 let modal;
