@@ -62,6 +62,7 @@ public class MypageController {
 
         log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myInquiries", myInquiries.getContent());
         model.addAttribute("pageDTO", new PageDTO(myInquiries));
         return "mypage/my-question";
@@ -85,11 +86,13 @@ public class MypageController {
         page = page == null ? 0 : page - 1;
         Page<SupportRequestDTO> mySupportRequests = supportRequestService.getMySupportRequest(page, memberDTO);
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("mySupportRequests", mySupportRequests.getContent());
         model.addAttribute("pageDTO",new PageDTO(mySupportRequests));
         return "mypage/support-request";
     }
 
+    /* 공양미 환불 요청 */
     @GetMapping("exchange-request")
     public String exchangeRequest(RicePaymentDTO ricePaymentDTO, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -118,6 +121,7 @@ public class MypageController {
         Page<FundingDTO> myFundings = fundingService.getMyFunding(page, memberDTO);
         log.info( "myFundings 잘 나오나요" + myFundings.toString());
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myFundings", myFundings.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFundings));
         return "/error/unReady";
@@ -138,9 +142,10 @@ public class MypageController {
         Page<FreeBoardDTO> myFreeBoards = freeBoardService.getMyFreeBoards(page, memberDTO);
         log.info( "freeBoardDTO 잘 나오나요" + myFreeBoards);
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
-        return "/error/unReady";
+        return "/mypage/my-freeboard";
     }
 
     /* 내 자유 게시글 상세보기 */
@@ -152,6 +157,7 @@ public class MypageController {
         return "community/board-modify";
     }
 
+    /* 내 후원 목록 */
     @GetMapping("my-support-list")
     public String mySupportListSupport(Integer page, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -160,12 +166,14 @@ public class MypageController {
 
         Page<SupportDTO> supports = supportService.getSupportById(page, memberDTO.getId());
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("supportDTOS", supports.getContent());
         model.addAttribute("pageDTO", new PageDTO(supports));
 
         return "mypage/my-support-list";
     }
 
+    /* 내 펀딩후원 목록 */
     @GetMapping("my-support-list/funding")
     public String mySupportListFunding(Integer page, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -174,14 +182,18 @@ public class MypageController {
 
         Page<FundingPaymentDTO> fundingPaymentDTOS = fundingService.getFundingSupportByMemberId(page, memberDTO.getId());
 
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("fundingPaymentDTOS", fundingPaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(fundingPaymentDTOS));
 
         return "/error/unReady";
     }
 
+    /* 공양미 충전 */
     @GetMapping("rice-charge")
-    public String riceCharge(){
+    public String riceCharge(Model model, HttpSession session){
+        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        model.addAttribute("memberDTO", memberDTO);
         return "mypage/rice-charge";
     }
 
@@ -237,22 +249,27 @@ public class MypageController {
         return new RedirectView("/mypage/user-modify?result=ok");
     }
 
+    /* 봉사활동 내역 */
     @GetMapping("volunteer-work-list")
     public String volunteerWorkList(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         Long memberId = memberDTO.getId();
         page = page == null ? 0 : page - 1;
         Page<VolunteerWorkActivityDTO> myActivity = volunteerWorkActivityService.getMyVolunteerWork(page, memberId);
+
+        model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myActivity",myActivity.getContent());
         model.addAttribute("pageDTO",new PageDTO(myActivity));
         return "mypage/volunteer-work-list";
     }
 
+    /* 탈퇴확인 */
     @GetMapping("withdraw-check")
     public String withdrawCheck(){
         return "mypage/withdraw-check";
     }
 
+    /* 탈퇴로그인 */
     @GetMapping("withdraw-login")
     public String withdrawLogin(HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -260,6 +277,7 @@ public class MypageController {
         return "mypage/withdraw-login";
     }
 
+    /* 환전요청 */
     @PostMapping("rices-charge")
     @ResponseBody
     public void riceCharge(Integer ricePaymentUsed, HttpSession session) {
@@ -268,6 +286,7 @@ public class MypageController {
         ricePaymentService.insertRicePayment(ricePaymentUsed, memberDTO);
     }
 
+    /* 탈퇴 */
     @PostMapping("withdraw")
     public RedirectView withdraw(HttpSession session) {
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
