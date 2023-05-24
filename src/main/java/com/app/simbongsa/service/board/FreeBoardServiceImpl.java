@@ -95,15 +95,19 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     }
 
     /*저장*/
-    @Override @Transactional
-    public void register(FreeBoardDTO freeBoardDTO, Long memberId) {
+    @Override
+    public void register(FreeBoardDTO freeBoardDTO) {
         List<FileDTO> fileDTOS = freeBoardDTO.getFileDTOS();
 
-        memberRepository.findById(memberId).ifPresent(
-                member -> freeBoardDTO.setMemberDTO(toMemberDTO(member))
-        );
+//        memberRepository.findById(memberId).ifPresent(
+//                member -> freeBoardDTO.setMemberDTO(toMemberDTO(member))
+//        );
 
-        freeBoardRepository.save(toFreeBoardEntity(freeBoardDTO));
+        FreeBoard freeBoard = toFreeBoardEntity(freeBoardDTO);
+        freeBoardRepository.save(freeBoard);
+        freeBoard.setMember(toMemberEntity(freeBoardDTO.getMemberDTO()));
+
+
         if (fileDTOS != null){
             for (int i = 0; i < fileDTOS.size(); i++){
                 if (1 == 0){
@@ -111,8 +115,12 @@ public class FreeBoardServiceImpl implements FreeBoardService{
                 }else {
                     fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
                 }
-                fileDTOS.get(i).setFreeBoard(getCurrentSequence());
-                freeBoardFileRepository.save(toFreeBoardFileEntity(fileDTOS.get(i)));
+
+                FreeBoardFile freeBoardFile = toFreeBoardFileEntity(fileDTOS.get(i));
+                freeBoardFile.setFreeBoard(freeBoard);
+                log.info(fileDTOS.get(0) + "================");
+//                fileDTOS.get(i).setFreeBoard(getCurrentSequence());
+                freeBoardFileRepository.save(freeBoardFile);
             }
         }
     }

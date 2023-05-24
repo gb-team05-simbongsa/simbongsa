@@ -404,9 +404,11 @@ let fileDTO = new Object();
 let setVolunteerWorkDTO = function() {
     const $files = $photoPicker[0].files;
 
-    fileDTO.fileName = $files[0].name;
-    fileDTO.fileUuid = globalThis.uuids[0];
-    fileDTO.filePath = globalThis.paths[0];
+    if($files.length != 0) {
+        fileDTO.fileName = $files[0].name;
+        fileDTO.fileUuid = globalThis.uuids[0];
+        fileDTO.filePath = globalThis.paths[0];
+    }
 
     const volunteerWorkDTO = {
         volunteerWorkTitle : $('input[name=volunteerWorkTitle]').val(),
@@ -490,3 +492,21 @@ function modify() {
 //     }
 //
 // }
+
+const $doAjax = function (config, callback) {
+    const isContentTypeDefined = config.contentType !== undefined;
+
+    $.ajax({
+        url: config.url,
+        data: config.data,
+        method: config.method,
+        processData: config.processData !== false,
+        contentType: isContentTypeDefined ? config.contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function (result) {
+            callback(result)
+        },
+        error: function () {
+            console.log(config.data);
+        }
+    });
+}

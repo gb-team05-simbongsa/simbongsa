@@ -12,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class ReadyController {
     @GetMapping("ready")
-    public  String readyService() {
+    public String readyService() {
         return "/error/unReady.html";
+    }
+
+    @GetMapping("ready-admin")
+    public String readyServiceAdmin() {
+        return "/error/unReadyAdmin.html";
     }
 
 }
