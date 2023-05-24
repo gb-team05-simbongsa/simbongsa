@@ -29,7 +29,7 @@ let replyService = (function () {
 
     function deleteReply(replyId, callback) {
         $.ajax({
-            url: '/communities/revew-delete',
+            url: '/communities/review-delete',
             type: 'delete',
             data: {replyId: replyId},
             success: function () {
