@@ -28,7 +28,7 @@ public class ReviewFileRepositoryTests {
 //        ReviewFile reviewFile1 = new ReviewFile("100" + ".png","48ew34ufeuods","c:/2023/document", FileRepresentationalType.REPRESENTATION,reviewRepository.findById(76L).get());
 //        reviewFileRepository.save(reviewFile1);
         for (int i = 1; i <= 5; i++) {
-            ReviewFile reviewFile2 = new ReviewFile(1300L,"00" + i + ".png","123" + i,"2023/04/28", FileRepresentationalType.NORMAL,reviewRepository.findById(1429L).get());
+            ReviewFile reviewFile2 = new ReviewFile(1300L,"00" + i + ".png","123" + i,"2023/04/28", FileRepresentationalType.NORMAL,reviewRepository.findById(1479L).get());
             reviewFileRepository.save(reviewFile2);
         }
     }

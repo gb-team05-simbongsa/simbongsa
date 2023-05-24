@@ -146,6 +146,7 @@ public class MypageController {
 
         model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
+        model.addAttribute("total", myFreeBoards.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
         return "/mypage/my-freeboard";
     }
@@ -162,6 +163,7 @@ public class MypageController {
 
         model.addAttribute("memberDTO", memberDTO);
         model.addAttribute("myReviews", myReviews.getContent());
+        model.addAttribute("total", myReviews.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myReviews));
         return "/mypage/my-review";
     }
