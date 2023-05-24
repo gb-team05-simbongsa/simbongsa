@@ -1,6 +1,6 @@
 /* 목록 */
 myReviews.forEach((myReview, i) => {
-    let text;
+    let text = '';
 
     text += `
         <div>
@@ -10,8 +10,8 @@ myReviews.forEach((myReview, i) => {
                         ${myReview.boardTitle}
                     </div>
                     <div>
-                        <a href="my-free-board-detail/${myReview.id}">
-                            <span class="review-modify">수정</span>
+                        <a href="/community/review-detail/${myReview.id}">
+                            <span class="review-modify">상세보기</span>
                         </a>
                         <span class="review-delete" onclick="removeReady(this)">삭제
                             <input class="boardId" type="hidden" value="${myReview.id}">

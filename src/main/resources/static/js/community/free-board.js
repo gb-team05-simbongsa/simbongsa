@@ -160,9 +160,9 @@ categoriNew.addEventListener('click', () => {
                                                     <p class="contant-contant">${freeboards.boardContent}</p>
                                                 </div>
                                                 <div class="contant-img">
-                                                        <span class="contant-img-span">
-                                                            <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                                        </span>
+                                                    <span class="contant-img-span">
+                                                        <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="contant-user">
@@ -209,9 +209,9 @@ categoriNew.addEventListener('click', () => {
                                                 <p class="contant-contant">${freeboard.boardContent}</p>
                                             </div>
                                             <div class="contant-img">
-                                                    <span class="contant-img-span">
-                                                        <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-                                                    </span>
+                                                <span class="contant-img-span">
+                                                    <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="contant-user">
