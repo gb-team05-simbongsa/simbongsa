@@ -28,7 +28,7 @@
                             <img src="https://i.namu.wiki/i/67tjhRLuCX7MYeLY5p94GgXYHP7v1dMQ5M0QP8emeuw3IvlZlQNZBgeKz5qj8P_3ll2AF97RWC_isDEnrT4kgeBMW1GU39jR-Wn92gD-XSt5J1HbKiRxpRt8ZRaq8dvGHUMTt_clauEc9TOx_JyIaQ.webp" alt="">
                         </div>
                         <div class="mypage-info">
-                            <div class="info-name">정현진</div>
+                            <div class="info-name" th:text="${memberDTO.memberName}">정현진</div>
                             <div class="info-rice">
                                 <p th:text="'내 공양미: '+${memberDTO.memberRice} + '석'">내 공양미 : 300석</p>
                             </div>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="my-review-count-wrap">
                     총
-                    <em class="my-review-count">50</em>개의 게시물이 있습니다.
+                    <em class="my-review-count" th:text="${total}">50</em>개의 게시물이 있습니다.
                 </div>
                 <div class="my-review-list">
                     <div>
@@ -116,7 +116,7 @@
                                     야생마
                                 </div>
                                 <div>
-                                    <span class="review-modify">수정</span>
+                                    <span class="review-modify">상세보기</span>
                                     <span class="review-delete">삭제</span>
                                 </div>
                             </div>

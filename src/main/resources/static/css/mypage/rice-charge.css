@@ -7,6 +7,23 @@ button {
     outline: none;
 }
 
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 .rice-charge-container {
     width: 1080px;
     margin: 50px auto;
@@ -27,7 +44,7 @@ button {
     position: relative;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
-    height: 138px;
+    height: 150px;
     /* background: url(https://cphoto.asiae.co.kr/listimglink/1/2018030707442862782_1520376271.jpeg);
     background-size: 190px 100%; */
 }
@@ -43,9 +60,8 @@ button {
     height: 126px;
     margin-left: 190px;
     background: #fff;
-    border-left: 1px solid #e6e6e6;
     border-radius: 0 5px 5px 0;
-    top: -138px;
+    top: -150px;
 }
 
 .rice-charge-explain {
@@ -65,6 +81,11 @@ button {
     display: block;
     font-size: 21px;
     color: #222;
+}
+
+.charge-img-wrapper{
+    display: inline-block;
+    height: 100%
 }
 
 .pay-button {
