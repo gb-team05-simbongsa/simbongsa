@@ -15,4 +15,8 @@ public class ServiceInfoController {
     public String servicePrivacy() { return "/service-info/service-conditions.html";}
 
 
+    @GetMapping("privacy-conditions")
+    public String servicePrivacyUse() { return "/service-info/service-privacy-conditions.html";}
+
+
 }
