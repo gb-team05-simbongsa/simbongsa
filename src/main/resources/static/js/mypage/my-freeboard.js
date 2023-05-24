@@ -13,7 +13,9 @@ myFreeBoards.forEach((myFreeBoard, i) => {
                         <a href="my-free-board-detail/${myFreeBoard.id}">
                             <span class="review-modify">수정</span>
                         </a>
-                        <span class="review-delete">삭제</span>
+                        <span class="review-delete" onclick="removeReady(this)">삭제
+                            <input class="boardId" type="hidden" value="${myFreeBoard.id}">
+                        </span>
 
                     </div>
                 </div>
@@ -96,3 +98,23 @@ $('.modal-cancel').on('click', () => {
     $('.delete-modal-wrap').hide();
     $deleteModal.hide();
 });
+
+/* 삭제 확인 버튼 눌렀을 때 */
+function removeReady(button) {
+    var boardId = $(button).find('.boardId').val();
+    console.log("boardId: "+boardId);
+
+    $('.delete-modal-wrap').show();
+
+    $('.modal-ok').on('click', function() {
+        console.log("확인버튼클릭함");
+        $.ajax({
+            url: "/mypages/free-board-delete",
+            type: "post",
+            data: { id: boardId },
+            success: function() {
+                location.reload();
+            }
+        })
+    })
+}

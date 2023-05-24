@@ -1,28 +1,3 @@
-// freeBoardDTOS.forEach(freeBoardDTO => {
-//     let text;
-//
-//     text = `
-//             <li class="comment-ok-list">
-//                 <div style="width: 100%;">
-//                     <div class="comment-user">
-//                         <div class="comment-user-name">${freeBoardDTO.memberDTO.memberName}</div>
-//                         <button type="button" class="x-btn">
-//                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
-//                                 <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
-//                             </svg>
-//                         </button>
-//                     </div>
-//                     <div style="flex: 0 0 auto; height: 5px;"></div>
-//                     <p class="comment-contant">${freeBoardDTO.boardContent}</p>
-//                     <div style="flex: 0 0 auto; height: 8px;"></div>
-//                     <span class="comment-day">${freeBoardDTO.createdDate}</span>
-//                 </div>
-//             </li>
-//     `;
-//
-//     $('.comment-lists').append(text);
-// });
-
 let replyService = (function () {
 
     function save(reply, callback) {
@@ -82,6 +57,18 @@ $('.comment-box-span').on('keyup', () => {
 /*====================================================================================================================*/
 /*댓글*/
 /*====================================================================================================================*/
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+
 let page = 0;
 
 const $registerButton = $(".singUp");
@@ -103,7 +90,6 @@ function showList() {
                     </div>
                 `;
             $replyBox.html(text);
-            // $('.comment-lists').append(text);
             $(".comment-btn").hide();
             return false;
         }
@@ -150,12 +136,13 @@ function repliesContent(replies) {
                     <div style="flex: 0 0 auto; height: 5px;"></div>
                     <p class="comment-contant">${reply.freeBoardReplyContent}</p>
                     <div style="flex: 0 0 auto; height: 8px;"></div>
-                    <span class="comment-day">${reply.createdDate}</span>
+                    <span class="comment-day">${formatDate(reply.createdDate)}</span>
                 </div>
             </li>
         `;
     });
     return text;
+
 }
 
 // 댓글 등록 시
@@ -200,16 +187,56 @@ $(".comment-btn").click(() => {
     });
 });
 
+// //  삭제모달
+// let modal;
+// let modalBack;
+// function showModal() {
+//     const modals = document.querySelectorAll('.modal');
+//     const modalBacks = document.querySelectorAll('.modal-back');
+//     const xBtns = document.querySelectorAll('.x-btn');
+//     const cancelBtns = document.querySelectorAll('.choce1-btn');
+//
+//     let i = $(xBtns).index(this)
+//     modal = modals[i];
+//     modalBack = modalBacks[i];
+//     modal.style.display = 'flex';
+//     modal.style.top = '50%';
+//     modal.style.left = '50%';
+//     modal.style.transform = 'translate(-50%, -50%)';
+//     modalBack.style.display = 'block';
+//     modalBack.style.position = 'fixed';
+// }
+//
+// function hideModal() {
+//     console.log(modal);
+//     modal.style.display = 'none';
+//     modalBack.style.display = 'none';
+// }
+//
+// $replyBox.on("click", ".x-btn", showModal);
+// $replyBox.on("click", ".choce1-btn", function(){
+//     hideModal();
+// });
+// $replyBox.on("click", ".modal-back", showModal);
+// $replyBox.on("click", ".choce2-btn", function(){
+//     replyService.deleteReply($(this).data("reply-id"));
+//     hideModal();
+//     showList();
+// });
+
+
 //  삭제모달
 let modal;
 let modalBack;
+let replyIdToDelete;
+
 function showModal() {
     const modals = document.querySelectorAll('.modal');
     const modalBacks = document.querySelectorAll('.modal-back');
     const xBtns = document.querySelectorAll('.x-btn');
     const cancelBtns = document.querySelectorAll('.choce1-btn');
 
-    let i = $(xBtns).index(this)
+    let i = $(xBtns).index(this);
     modal = modals[i];
     modalBack = modalBacks[i];
     modal.style.display = 'flex';
@@ -218,21 +245,23 @@ function showModal() {
     modal.style.transform = 'translate(-50%, -50%)';
     modalBack.style.display = 'block';
     modalBack.style.position = 'fixed';
+
+    replyIdToDelete = $(this).siblings('.comment-user-name').find('.choce2-btn').data("reply-id");
 }
 
 function hideModal() {
-    console.log(modal);
     modal.style.display = 'none';
     modalBack.style.display = 'none';
+    replyIdToDelete = null;
 }
 
 $replyBox.on("click", ".x-btn", showModal);
-$replyBox.on("click", ".choce1-btn", function(){
-    hideModal();
-});
-$replyBox.on("click", ".modal-back", showModal);
-$replyBox.on("click", ".choce2-btn", function(){
-    replyService.deleteReply($(this).data("reply-id"));
-    hideModal();
-    showList();
+$replyBox.on("click", ".choce1-btn", hideModal);
+$replyBox.on("click", ".modal-back", hideModal);
+$replyBox.on("click", ".choce2-btn", function () {
+    replyIdToDelete = $(this).data("reply-id");
+    replyService.deleteReply(replyIdToDelete, function () {
+        hideModal();
+        showList();
+    });
 });

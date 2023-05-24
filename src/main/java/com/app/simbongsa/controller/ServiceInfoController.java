@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class ServiceInfoController {
     @GetMapping("privacy")
-    public String servicePrivacy() { return "/service-info/service-conditions.html";}
+    public String servicePrivacy() { return "/service-info/service-privacy.html";}
 
 
     @GetMapping("privacy-conditions")
     public String servicePrivacyUse() { return "/service-info/service-privacy-conditions.html";}
 
-
+    @GetMapping("conditions")
+    public String serviceConditions() { return "/service-info/service-conditions.html";}
 }

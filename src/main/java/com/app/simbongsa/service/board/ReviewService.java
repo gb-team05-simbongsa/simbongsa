@@ -3,8 +3,6 @@ package com.app.simbongsa.service.board;
 import com.app.simbongsa.domain.*;
 import com.app.simbongsa.entity.board.Review;
 import com.app.simbongsa.entity.board.ReviewReply;
-import com.app.simbongsa.entity.file.FreeBoardFile;
-import com.app.simbongsa.entity.file.FundingFile;
 import com.app.simbongsa.entity.file.ReviewFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
@@ -34,14 +32,14 @@ public interface ReviewService {
     /*시퀀스 가져오기*/
     public Review getCurrentSequence();
 
-    /*댓글 저장*/
+    /*댓글 작성*/
     public void registerReply(ReplyRequestDTO replyRequestDTO);
 
     /*댓글 삭제*/
     public void deleteReply(Long replyId);
 
     /*댓글 목록*/
-    public Slice<ReplyDTO> getReplyList(Long boardId, Pageable pageable);
+    public Slice<ReviewReplyDTO> getReplyList(Long reviewId, int page);
 
     /*댓글 갯수*/
     public Integer getReplyCount(Long reviewId);
@@ -178,7 +176,7 @@ public interface ReviewService {
     default ReviewReplyDTO toReviewReplyDTO(ReviewReply reviewReply){
         return ReviewReplyDTO.builder().id(reviewReply.getId())
                 .memberDTO(toMemberDTO(reviewReply.getMember()))
-                .replyContent(reviewReply.getReplyContent())
+                .reviewReplyContent(reviewReply.getReplyContent())
                 .id(reviewReply.getReview().getId())
                 .createdDate(reviewReply.getCreatedDate())
                 .updatedDate(reviewReply.getUpdatedDate())
