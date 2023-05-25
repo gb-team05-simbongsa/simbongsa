@@ -144,25 +144,26 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Page<SupportRequest> findAllWithPagingSearch(String keyword , Pageable pageable) {
         OrderSpecifier result;
 
-        if(keyword.equals("후원 많은순")){
-            result = supportRequest.supports.any().supportPrice.sum().desc();
+//        if(keyword.equals("후원 많은순")){
 //            result = supportRequest.supports.any().supportPrice.sum().desc();
-//            result = support.supportPrice.sum().desc();
-
-        }else if(keyword.equals("후원 적은순")){
-
-            result = supportRequest.supports.any().supportPrice.sum().asc();
+////            result = supportRequest.supports.any().supportPrice.sum().desc();
+////            result = support.supportPrice.sum().desc();
+//
+//        }else if(keyword.equals("후원 적은순")){
+//
 //            result = supportRequest.supports.any().supportPrice.sum().asc();
-//            result = support.supportPrice.sum().asc();
-        }else  {
-            result = supportRequest.id.desc();
-        }
+////            result = supportRequest.supports.any().supportPrice.sum().asc();
+////            result = support.supportPrice.sum().asc();
+//        }else  {
+//            result = supportRequest.id.desc();
+//        }
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
                 .leftJoin(supportRequest.supports, support)
                 .fetchJoin()
+                .where(supportRequest.supportRequestStatus.eq(RequestType.승인))
 //                .groupBy(supportRequest.id)
-                .orderBy(result)
+                .orderBy(supportRequest.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
