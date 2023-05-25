@@ -42,3 +42,6 @@ $(document).ready(function(){
 
 });
 
+$('.inquiry-regist-btn').on('click', function() {
+    document.questionForm.submit();
+});
