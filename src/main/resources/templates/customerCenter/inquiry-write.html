@@ -78,7 +78,7 @@
                                                 <!-- <div class="inquiry-currentTime">오전 4:28</div> -->
 
                                                 <!-- 컨텐츠 -->
-                                                <form th:action="@{/inquiry/inquiry-write}" method="post">
+                                                <form th:action="@{/inquiry/inquiry-write}" method="post" name="questionForm">
                                                     <div class="content-layout" tabindex="0">
                                                         <div class="content-container"></div>
                                                             <div class="inquiry-text-layout">
@@ -158,7 +158,7 @@
         clock();
         setInterval(clock, 1000); // 1초마다 실행
 
-    if($('.write-content-title').val() != 0 && $('.write-content-contents').val() != 0{
+    if($('.write-content-title').val() != 0 && $('.write-content-contents').val() != 0) {
         $('.inquiry-regist-btn').submit();
     }
 </script>

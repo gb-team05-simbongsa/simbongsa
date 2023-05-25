@@ -31,7 +31,7 @@ volunteerWorkDTOS.forEach((volunteerWorkDTOS, i) => {
 
         } else {
 
-            text += `<img src="/file/display?fileName=${fileDTO.filePath}>`;
+            text += `<img src="/file/display?fileName=${fileDTO.filePath}" style=" width: 238px; height: 238px;">`;
         }
 
         text +=  `

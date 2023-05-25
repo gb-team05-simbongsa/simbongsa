@@ -424,13 +424,13 @@
 
     fileDTO.forEach((fileDTO, i) =>{
         let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}">
         `;
         $(".funding a").eq(i).html(text);
     })
     freeboardFile.forEach((fileDTO, i) =>{
         let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
+           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}">
         `;
         $(".freeBoardImg a").eq(i).html(text);
     })
