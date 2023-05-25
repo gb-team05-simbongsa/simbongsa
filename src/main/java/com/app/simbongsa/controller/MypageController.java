@@ -152,7 +152,7 @@ public class MypageController {
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
         model.addAttribute("total", myFreeBoards.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
-        return "/mypage/my-freeboard";
+        return "/error/unReady";
     }
 
     /* 내 후기 게시글 목록 */
