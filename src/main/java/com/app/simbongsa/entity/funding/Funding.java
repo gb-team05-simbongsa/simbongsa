@@ -79,6 +79,24 @@ public class Funding {
         this.member = member;
     }
 
+    public Funding(FundingCategoryType fundingCategory, String fundingTitle, String fundingShortTitle, String fundingSummary, int fundingTargetPrice, int fundingCurrentPrice, LocalDate fundingStartDate, LocalDate fundingEndDate, String fundingIntroduce, String fundingBudgetExplain, String fundingScheduleExplain, String fundingGiftExplain, RequestType fundingStatus, FundingCreator fundingCreator, Member member) {
+        this.fundingCategory = fundingCategory;
+        this.fundingTitle = fundingTitle;
+        this.fundingShortTitle = fundingShortTitle;
+        this.fundingSummary = fundingSummary;
+        this.fundingTargetPrice = fundingTargetPrice;
+        this.fundingCurrentPrice = fundingCurrentPrice;
+        this.fundingStartDate = fundingStartDate;
+        this.fundingEndDate = fundingEndDate;
+        this.fundingIntroduce = fundingIntroduce;
+        this.fundingBudgetExplain = fundingBudgetExplain;
+        this.fundingScheduleExplain = fundingScheduleExplain;
+        this.fundingGiftExplain = fundingGiftExplain;
+        this.fundingStatus = fundingStatus;
+        this.fundingCreator = fundingCreator;
+        this.member = member;
+    }
+
     public void setFundingStatus(RequestType fundingStatus) {
         this.fundingStatus = fundingStatus;
     }
