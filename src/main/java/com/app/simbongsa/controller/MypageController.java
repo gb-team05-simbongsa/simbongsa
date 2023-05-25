@@ -56,6 +56,7 @@ public class MypageController {
     public String notice(Integer page, Model model, HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail) {
         page = page == null ? 0 : page - 1;
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        Long memberId = memberDTO.getId();
 /*        if(memberDTO != null){
 
         }*/
@@ -64,7 +65,7 @@ public class MypageController {
 
         log.info(myInquiries.toString() + "asdfasaaaaaaaddddddddddddddddddd");
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myInquiries", myInquiries.getContent());
         model.addAttribute("pageDTO", new PageDTO(myInquiries));
         return "mypage/my-question";
@@ -85,10 +86,11 @@ public class MypageController {
     @GetMapping("support-request")
     public String supportRequest(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        Long memberId = memberDTO.getId();
         page = page == null ? 0 : page - 1;
         Page<SupportRequestDTO> mySupportRequests = supportRequestService.getMySupportRequest(page, memberDTO);
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("mySupportRequests", mySupportRequests.getContent());
         model.addAttribute("pageDTO",new PageDTO(mySupportRequests));
         return "mypage/support-request";
@@ -98,8 +100,9 @@ public class MypageController {
     @GetMapping("exchange-request")
     public String exchangeRequest(RicePaymentDTO ricePaymentDTO, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Long memberId = memberDTO.getId();
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("enableRice", ricePaymentService.findEnableRiceById(memberDTO.getId()));
         return "mypage/exchange-request";
     }
@@ -120,11 +123,12 @@ public class MypageController {
     @GetMapping("my-funding-list")
     public String myFundingList(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+        Long memberId = memberDTO.getId();
         page = page == null ? 0 : page - 1;
         Page<FundingDTO> myFundings = fundingService.getMyFunding(page, memberDTO);
         log.info( "myFundings 잘 나오나요" + myFundings.toString());
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myFundings", myFundings.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFundings));
         return "/error/unReady";
@@ -139,13 +143,12 @@ public class MypageController {
     @GetMapping("my-freeboard")
     public String myFreeBoard(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
-        log.info(memberDTO.getId() + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        Long memberId = memberDTO.getId();
         page = page == null ? 0 : page - 1;
-        log.info(page + "pagepagepagepapgapgagpdspagpsdgpasdpgapsppage");
         Page<FreeBoardDTO> myFreeBoards = freeBoardService.getMyFreeBoards(page, memberDTO);
         log.info( "freeBoardDTO 잘 나오나요" + myFreeBoards);
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
         model.addAttribute("total", myFreeBoards.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
@@ -156,13 +159,12 @@ public class MypageController {
     @GetMapping("my-review")
     public String myReview(Integer page, Model model,HttpSession httpSession, @AuthenticationPrincipal UserDetail userDetail){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
-        log.info(memberDTO.getId() + "아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디아이디");
+        Long memberId = memberDTO.getId();
         page = page == null ? 0 : page - 1;
-        log.info(page + "pagepagepagepapgapgagpdspagpsdgpasdpgapsppage");
         Page<ReviewDTO> myReviews = reviewService.getMyReviewBoards(page, memberDTO);
         log.info( "myReviews 잘 나오나요" + myReviews);
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myReviews", myReviews.getContent());
         model.addAttribute("total", myReviews.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myReviews));
@@ -182,12 +184,13 @@ public class MypageController {
     @GetMapping("my-support-list")
     public String mySupportListSupport(Integer page, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Long memberId = memberDTO.getId();
 
         page = page == null ? 0 : page - 1;
 
         Page<SupportDTO> supports = supportService.getSupportById(page, memberDTO.getId());
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("supportDTOS", supports.getContent());
         model.addAttribute("pageDTO", new PageDTO(supports));
 
@@ -198,12 +201,13 @@ public class MypageController {
     @GetMapping("my-support-list/funding")
     public String mySupportListFunding(Integer page, HttpSession session, Model model){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Long memberId = memberDTO.getId();
 
         page = page == null ? 0 : page - 1;
 
         Page<FundingPaymentDTO> fundingPaymentDTOS = fundingService.getFundingSupportByMemberId(page, memberDTO.getId());
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("fundingPaymentDTOS", fundingPaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(fundingPaymentDTOS));
 
@@ -214,7 +218,8 @@ public class MypageController {
     @GetMapping("rice-charge")
     public String riceCharge(Model model, HttpSession session){
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-        model.addAttribute("memberDTO", memberDTO);
+        Long memberId = memberDTO.getId();
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         return "mypage/rice-charge";
     }
 
@@ -224,10 +229,11 @@ public class MypageController {
         page = page == null ? 0 : page - 1;
 
         MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+        Long memberId = memberDTO.getId();
         Page<RicePaymentDTO> myRice = ricePaymentService.getMyRicePayment(page, memberDTO);
 
         log.info(myRice.toString() + "------------내 공양미 리스트-------------- ");
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myRicePayments", myRice.getContent());
         model.addAttribute("pageDTO", new PageDTO(myRice));
         return "mypage/rice-list";
@@ -278,7 +284,7 @@ public class MypageController {
         page = page == null ? 0 : page - 1;
         Page<VolunteerWorkActivityDTO> myActivity = volunteerWorkActivityService.getMyVolunteerWork(page, memberId);
 
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myActivity",myActivity.getContent());
         model.addAttribute("pageDTO",new PageDTO(myActivity));
         return "mypage/volunteer-work-list";
