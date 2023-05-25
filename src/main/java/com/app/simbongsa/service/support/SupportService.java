@@ -19,6 +19,9 @@ public interface SupportService {
     //    후원 요청 작성
     public void saveSupport(SupportDTO supportDTO, Long id);
 
+    //    후원 공양미 업데이트 작성
+    public void updateRice(int price, Long id);
+
 //    내 후원 조회
     public Page<SupportDTO> getSupportById(Integer page, Long id);
 

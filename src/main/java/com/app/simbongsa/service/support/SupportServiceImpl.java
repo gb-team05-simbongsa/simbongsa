@@ -46,10 +46,15 @@ public class SupportServiceImpl implements SupportService {
     }
 
     @Override
-    @Transactional
     public void saveSupport(SupportDTO supportDTO, Long id) {
         supportRepository.save(toSupportEntity(supportDTO));
-        memberRepository.updateChargeRiceByMemberId(id, -supportDTO.getSupportPrice());
+//        memberRepository.updateChargeRiceByMemberId(id, -supportDTO.getSupportPrice());
+    }
+
+    @Override
+    @Transactional
+    public void updateRice(int price, Long id) {
+        memberRepository.updateChargeRiceByMemberId(id, price);
     }
 
     @Override

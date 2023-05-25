@@ -79,15 +79,20 @@ public class SupportController {
     @PostMapping("support")
     public RedirectView support(String supportRequestId, Integer supportAmount, HttpSession session){
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-        log.info(supportRequestId + "---------------------");
+        SupportRequestDTO supportRequest = supportRequestService.getSupportRequestDetail(Long.valueOf(supportRequestId));
+        MemberDTO receiveMemberDTO = supportRequest.getMemberDTO();
 
         SupportDTO supportDTO = new SupportDTO();
-        supportDTO.setSupportRequestDTO(supportRequestService.getSupportRequestDetail(Long.valueOf(supportRequestId)));
+        supportDTO.setSupportRequestDTO(supportRequest);
         supportDTO.setMemberDTO(memberDTO);
         supportDTO.setSupportPrice(supportAmount);
 
         ricePaymentService.insertSupportRicePayment(supportAmount, memberDTO, RicePaymentType.사용);
         supportService.saveSupport(supportDTO, memberDTO.getId());
+        ricePaymentService.insertSupportRicePayment(supportAmount, receiveMemberDTO, RicePaymentType.후원받은공양미);
+        supportService.updateRice(-supportAmount, memberDTO.getId());
+        supportService.updateRice(supportAmount, receiveMemberDTO.getId());
+
         return new RedirectView("/support/support-success");
     }
 

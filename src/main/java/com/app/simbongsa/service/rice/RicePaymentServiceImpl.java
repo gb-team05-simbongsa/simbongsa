@@ -103,7 +103,6 @@ public class RicePaymentServiceImpl implements RicePaymentService {
         ricePaymentDTO.setRicePaymentStatus(ricePaymentType);
         ricePaymentDTO.setMemberDTO(memberDTO);
         ricePaymentRepository.save(toRicePaymentEntity(ricePaymentDTO));
-        memberRepository.updateChargeRiceByMemberId(memberDTO.getId(), ricePaymentUsed);
     }
 
     @Override
