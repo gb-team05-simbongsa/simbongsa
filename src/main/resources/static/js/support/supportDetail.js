@@ -14,23 +14,24 @@
 //     $('#history-tabpanel').attr('aria-hidden', 'false');
 // })
 
-const $button = $('.img-div');
+// const $button = $('.img-div');
+//
+// /* 첫 페이지 로딩될 때 첫번째 img 띄워주기 */
+// let $firstImage = $('.img-div').attr("src");
+// $("#expandedImg").attr("src", $firstImage);
+//
+// console.log($button)
+// $button.on('click', function(){
+//     console.log("클릭됨");
+//     let $imgUrl = $(this).attr("src").replace(/^url\(['"](.+)['"]\)/, '$1');
+//     let $image = $imgUrl.replace("/file/display?fileName=${file.filePath}");
+//     console.log($image);
+//
+//
+//     $("#expandedImg").attr("src", $image);
+//     $("#expandedImg").css('width', '100%');
+// });
 
-/* 첫 페이지 로딩될 때 첫번째 img 띄워주기 */
-let $firstImage = $('.img-div').attr("src");
-$("#expandedImg").attr("src", $firstImage);
-
-console.log($button)
-$button.on('click', function(){
-    console.log("클릭됨");
-    let $imgUrl = $(this).attr("src").replace(/^url\(['"](.+)['"]\)/, '$1');
-    let $image = $imgUrl.replace("/file/display?fileName=${file.filePath}");
-    console.log($image);
-
-
-    $("#expandedImg").attr("src", $image);
-    $("#expandedImg").css('width', '100%');
-});
 
 /*여기서 부터*/
 let total;
@@ -155,4 +156,22 @@ files.forEach((file, i) =>{
     `;
     $('.view').html(text2);
     $('.thumbnail-list ul').append(text);
+});
+
+const $button = $('.img-div');
+
+/* 첫 페이지 로딩될 때 첫번째 img 띄워주기 */
+let $firstImage = $('.img-div').attr("src");
+$("#expandedImg").attr("src", $firstImage);
+
+console.log($button)
+$button.on('click', function(){
+    console.log("클릭됨");
+    let $imgUrl = $(this).attr("src").replace(/^url\(['"](.+)['"]\)/, '$1');
+    let $image = $imgUrl.replace("/file/display?fileName=${file.filePath}");
+    console.log($image);
+
+
+    $("#expandedImg").attr("src", $image);
+    $("#expandedImg").css('width', '100%');
 });
