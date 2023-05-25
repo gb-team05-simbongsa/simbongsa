@@ -1230,7 +1230,7 @@ b, strong {
         max-width: 314px;
         width: calc((100% - 704px) - 67px);
         margin-bottom: 0px;
-        padding: 0px;    
+        padding: 0px;
     }
 
     .main-banner-container{
@@ -1431,5 +1431,13 @@ b, strong {
 
     .container-component {
         max-width: 1160px;
+    }
+}
+@media (max-width: 1000px) {
+    .main-top-section{
+        display: none;
+        max-width: 314px;
+        width: calc((100% - 766px) - 78px);
+        padding: 0px;
     }
 }
