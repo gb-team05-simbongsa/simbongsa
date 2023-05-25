@@ -166,7 +166,7 @@ public class MypageController {
         model.addAttribute("myReviews", myReviews.getContent());
         model.addAttribute("total", myReviews.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myReviews));
-        return "/mypage/my-review";
+        return "/error/unReady";
     }
 
     /* 내 자유 게시글 상세보기 */

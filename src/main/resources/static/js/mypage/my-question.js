@@ -20,7 +20,7 @@ myInquiries.forEach((inquiry, i) => {
                         <div class="support-request-detail">
                             <button class="show-answer">
                                 <span class="request-detail">
-                                    <div class="detail-text">답변확인</div>
+                                    <div class="detail-text" style="color: #ff7575">답변확인</div>
                                 </span>
                             </button>
                         </div>
@@ -52,7 +52,7 @@ myInquiries.forEach((inquiry, i) => {
                             <button class="go-support-request-delete" onclick="removeReady(this)">
                                 <input class="inquiryId" type="hidden" value="${inquiry.id}"> 
                                 <span class="request-detail">
-                                    <div class="detail-text">삭제</div>
+                                    <div class="detail-text" style="color: #ff7575 !important;">삭제</div>
                                 </span>
                             </button>
                         </div>
