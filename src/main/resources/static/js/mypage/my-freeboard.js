@@ -32,7 +32,7 @@ myFreeBoards.forEach((myFreeBoard, i) => {
             text +=
                 ` <div class="review-main-img">
                         <div class="review-img">
-                            <img src="/file/display?fileName=${myFreeBoard.fileDTOS[j].filePath + '/' + myFreeBoard.fileDTOS[j].fileUuid + '_' + myFreeBoard.fileDTOS[j].fileName}">
+                            <img src="/file/display?fileName=${myFreeBoard.fileDTOS[j].filePath}">
                         </div>
                    </div>
                     `;
