@@ -50,7 +50,7 @@ function getList(contentId, page) {
             text += `
                 <li class="history-item">
                     <div class="history-card">
-                        <span class="history-card-date">${support.supportPrice}</span>
+                        <span class="history-card-date">${support.memberDTO.memberRank}</span>
                         <strong class="history-card-name">${support.memberDTO.memberName}</strong>
                         <span class="history-amount">
                             <span class="number">${support.supportPrice}</span>
