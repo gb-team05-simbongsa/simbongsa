@@ -88,6 +88,8 @@ public class MainController {
                 .collect(Collectors.toList());
         freeBoardFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
+        log.info(fundingListOrderByPopularList.toString() + " ======================");
+
         model.addAttribute("fileDTO", fileDTO);
 //        model.addAttribute("volunteerFileDTO", volunteerFileDTO);
         model.addAttribute("volunteerList", volunteerList);
