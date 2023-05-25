@@ -65,6 +65,26 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return checkLastPage(pageable, freeBoards);
     }
 
+    @Override
+    public Slice<FreeBoard> findByMemberIdDiary_QueryDsl(String sort, Pageable pageable) {
+        List<FreeBoard> foundFreeBoardList = query.select(freeBoard)
+                .from(freeBoard)
+                .leftJoin(freeBoard.freeBoardFiles, freeBoardFile)
+                .fetchJoin()
+                .orderBy(sort.equals("recent") ? freeBoard.id.desc() : freeBoard.freeBoardReplyCount.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1)
+                .fetch();
+
+        boolean hasNext = false;
+        if (foundFreeBoardList.size() > pageable.getPageSize()) {
+            foundFreeBoardList.remove(pageable.getPageSize());
+            hasNext = true;
+        }
+
+        return new SliceImpl<>(foundFreeBoardList, pageable, hasNext);
+    }
+
     // 현재 시퀀스
     @Override
     public FreeBoard getCurrentSequence_QueryDsl() {

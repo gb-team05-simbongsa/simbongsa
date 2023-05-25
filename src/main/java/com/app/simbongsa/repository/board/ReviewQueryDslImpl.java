@@ -23,7 +23,7 @@ import static com.app.simbongsa.entity.board.QReviewReply.reviewReply;
 public class ReviewQueryDslImpl implements ReviewQueryDsl {
     private final JPAQueryFactory query;
 
-    //    최신순 목록 조회(무한스크롤)
+     //   최신순 목록 조회(무한스크롤)
     @Override
     public Slice<Review> findAllByIdReviewPaging_QueryDSL(Pageable pageable) {
         List<Review> reviews = query.select(review)
