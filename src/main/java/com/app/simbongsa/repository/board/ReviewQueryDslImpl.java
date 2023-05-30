@@ -54,17 +54,6 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         log.info(hasNext + "============");
         return new SliceImpl<>(reviews, pageable, hasNext);
     }
-
-    @Override
-    public Long getReplyCount(Long id) {
-        Long replyCount = query.select(reviewReply.count())
-                .from(reviewReply)
-                .where(review.id.eq(id))
-                .groupBy(review.id)
-                .fetchOne();
-        return replyCount;
-    }
-
     //    인기순 목록 조회(무한스크롤)
     @Override
     public Slice<Review> findAllByLikeCountReviewPaging_QueryDSL(Pageable pageable) {
@@ -88,6 +77,18 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         log.info(hasNext + "============");
         return new SliceImpl<>(reviews, pageable, hasNext);
     }
+
+    @Override
+    public Long getReplyCount(Long id) {
+        Long replyCount = query.select(reviewReply.count())
+                .from(reviewReply)
+                .where(review.id.eq(id))
+                .groupBy(review.id)
+                .fetchOne();
+        return replyCount;
+    }
+
+
 
     // 시퀀스
     @Override
