@@ -74,7 +74,7 @@ public interface FreeBoardService {
 //  인기순, 최신순, 인기-최신순
     Slice<FreeBoardDTO> getSlicePopular(Pageable pageable);
     Slice<FreeBoardDTO> getSliceNew(Pageable pageable);
-    Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable);
+    Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable, String keyword);
 
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {

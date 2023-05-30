@@ -182,8 +182,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     public Slice<FreeBoardDTO> getNewList(Pageable pageable) {
         Slice<FreeBoard> freeBoards =
                 freeBoardRepository.findAllByIdDescWithPaging_QueryDSL(pageable);
-        List<FreeBoardDTO> collect = freeBoards.get().map(freeBoard -> freeBoardToDTO(freeBoard)).collect(Collectors.toList());
-        return new SliceImpl<>(collect, pageable, freeBoards.hasNext());
+        List<FreeBoardDTO> freeBoardDTOS =freeBoards.getContent().stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
+        return new SliceImpl<>(freeBoardDTOS, pageable, freeBoards.hasNext());
     }
 
     /*인기순 무한스크롤 전체 목록*/
@@ -319,8 +319,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
     }
 
     @Override
-    public Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable) {
-        Slice<FreeBoard> freeBoardList = freeBoardRepository.findAllSliceByPopular(pageable);
+    public Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable, String keyword) {
+        Slice<FreeBoard> freeBoardList = freeBoardRepository.findAllSliceByNewWithPopular(pageable, keyword);
         List<FreeBoardDTO> freeBoardDTOS = freeBoardList.getContent().stream().map(this::toFreeBoardDTO).collect(Collectors.toList());
         return new SliceImpl<>(freeBoardDTOS, pageable, freeBoardList.hasNext());
     }

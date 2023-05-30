@@ -5,6 +5,7 @@ import com.app.simbongsa.entity.board.QFreeBoard;
 import com.app.simbongsa.entity.file.FreeBoardFile;
 import com.app.simbongsa.entity.file.QFreeBoardFile;
 import com.app.simbongsa.entity.inquiry.Inquiry;
+import com.app.simbongsa.entity.member.QMember;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.FreeBoard;
@@ -25,6 +26,7 @@ import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
 import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
 import static com.app.simbongsa.entity.file.QFreeBoardFile.freeBoardFile;
 import static com.app.simbongsa.entity.inquiry.QInquiry.inquiry;
+import static com.app.simbongsa.entity.member.QMember.member;
 import static java.awt.AWTEventMulticaster.remove;
 
 @Slf4j
@@ -37,15 +39,22 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Slice<FreeBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .leftJoin(freeBoard.member)
-                .leftJoin(freeBoard.freeBoardFiles)
+                .leftJoin(freeBoard.member, member)
+                .fetchJoin()
+                .leftJoin(freeBoard.freeBoardFiles, freeBoardFile)
                 .fetchJoin()
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .limit(pageable.getPageSize() + 1)
                 .fetch();
+        boolean hasNext = false;
+        if (freeBoards.size() > pageable.getPageSize()){
+            freeBoards.remove(pageable.getPageSize());
 
-        return new SliceImpl<>(freeBoards, pageable, false);
+            hasNext = true;
+        }
+        log.info(hasNext + "============");
+        return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
 
     //    인기순 목록 조회(무한스크롤)
@@ -240,7 +249,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchJoin()
                 .join(freeBoard.freeBoardReplies, freeBoardReply)
                 .fetchJoin()
-                .orderBy(freeBoard.freeBoardReplies.any().id.desc())
+                .orderBy(freeBoard.freeBoardReplies.any().replyContent.desc())
                 .fetch();
         boolean hasNext = false;
         if (freeBoards.size() > pageable.getPageSize()){
@@ -276,9 +285,10 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
 
     // 이건 어떻게 써야할지 모르겟네 - 최신순, 인기순
     @Override
-    public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable) {
+    public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable, String keyword) {
         OrderSpecifier popularOrder = freeBoard.freeBoardReplies.any().id.desc();
         OrderSpecifier newOrder = freeBoard.id.desc();
+        OrderSpecifier result = keyword.equals("인기순") ? popularOrder : newOrder;
 
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
@@ -286,7 +296,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchJoin()
                 .join(freeBoard.freeBoardReplies, freeBoardReply)
                 .fetchJoin()
-                .orderBy(popularOrder, newOrder)
+                .orderBy(result)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
                 .fetch();

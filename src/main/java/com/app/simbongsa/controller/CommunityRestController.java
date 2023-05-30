@@ -50,4 +50,12 @@ public class CommunityRestController {
         Slice<ReviewReplyDTO> replyList = reviewService.getReplyList(boardId, page);
         return replyList;
     }
+
+    /* 무한스크롤 */
+    @PostMapping("freeBoard-list")
+    public Slice<FreeBoardDTO> getFreeBoardList(@RequestParam(defaultValue = "0", name = "page") int page, String keyword){
+        PageRequest pageRequest = PageRequest.of(page, 3);
+
+        return freeBoardService.getSliceNewAndPopular(pageRequest, keyword);
+    }
 }
