@@ -55,7 +55,7 @@ public class AdminController {
 //    공양미 환전요청 - gongyangmi-refund.html
 //    후원요청 - sponsorship-request.html
 //    활동후기관리 - activity-review-board.html
-//    봉사모집자유게시판(자유게시판) - volunteer-recruitment-board.html
+//    봉사모집자유게시판(자유게시판) - free-board.html
 
     @GetMapping("activity-review-board")
     public String activityReviewBoard(Integer page, String searchType, String searchContent, Model model) {
@@ -334,7 +334,7 @@ public class AdminController {
         return "admin/volunteer";
     }
 
-    @GetMapping("volunteer-recruitment-board")
+    @GetMapping("free-board")
     public String volunteerRecruitmentBoard(Integer page, String searchType, String searchContent, Model model) {
         page = page == null ? 0 : page - 1;
         searchType = searchType == null ? "" : searchType;
@@ -353,6 +353,6 @@ public class AdminController {
         model.addAttribute("pageDTO", new PageDTO(freeBoardDTOS));
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchContent", searchContent);
-        return "admin/volunteer-recruitment-board";
+        return "admin/free-board";
     }
 }

@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReadyController {
     @GetMapping("ready")
     public String readyService() {
-        return "/error/unReady.html";
+        return "error/unReady.html";
     }
 
     @GetMapping("ready-admin")
     public String readyServiceAdmin() {
-        return "/error/unReadyAdmin.html";
+        return "error/unReadyAdmin.html";
     }
 
 }

@@ -426,7 +426,7 @@
 
     fileDTO.forEach((fileDTO, i) =>{
         let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}">
+           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}.jpg">
         `;
         $(".funding a").eq(i).html(text);
     })

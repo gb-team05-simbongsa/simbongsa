@@ -1,3 +1,151 @@
+.thumbnail-section{
+    width: 624px;
+    overflow: hidden;
+    margin: 50px auto 60px;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.thumbnail-section{
+    width: 624px;
+    margin: 0 auto;
+}
+
+.thumbnail-section{
+    width: 624px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.thumbnail-section .view{
+    overflow: hidden;
+    position: relative;
+    height: 351px;
+    background: #000;
+    text-align: center;
+}
+
+.thumbnail-section .view {
+    overflow: hidden;
+    position: relative;
+    height: 351px;
+    background: #000;
+    text-align: center;
+}
+
+.thumbnail-section .thumbnail-list {
+    position: relative;
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+
+.thumbnail-section .thumbnail-list {
+    position: relative;
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+
+.thumbnail-section .thumbnail-list ul{
+    overflow: hidden;
+    width: 1000px;
+    height: 70px;
+    margin-left: -6px;
+}
+
+.thumbnail-section .thumbnail-list li{
+    position: relative;
+    float: left;
+    margin-left: 6px;
+    width: 99px;
+    height: 70px;
+    background: #f7f7f8;
+}
+
+.thumbnail-section .thumbnail-list li img{
+    vertical-align: top;
+}
+
+.thumbnail-section .thumbnail-list .p-move.prev {
+    left: 0;
+    background-position-x: 0;
+}
+
+.thumbnail-section .thumbnail-list .p-move.prev {
+    display: inline-block;
+    overflow: hidden;
+    background: url(https://ssl.pstatic.net/happyimg2/img/sp_hend_v4.png) no-repeat;
+    font-size: 1px;
+    color: transparent;
+    line-height: 999em;
+}
+
+.thumbnail-section .thumbnail-list li a{
+    display: block;
+    width: 99px;
+    height: 70px;
+}
+
+.thumbnail-section .thumbnail-list li.on a::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 95px;
+    height: 66px;
+    border: 2px solid #ffbcbc;
+    content: '';
+}
+
+.thumbnail-section .thumbnail-list .p-move {
+    position: absolute;
+    z-index: 100;
+    top: -222px;
+    overflow: hidden;
+    width: 31px;
+    height: 83px;
+    background-position-y: 0;
+}
+
+.thumbnail-section .thumbnail-list .p-move.next {
+    display: inline-block;
+    overflow: hidden;
+    background: url(https://ssl.pstatic.net/happyimg2/img/sp_hend_v4.png) no-repeat;
+    font-size: 1px;
+    color: transparent;
+    line-height: 999em;
+}
+
+.thumbnail-section .thumbnail-list .p-move.next {
+    right: 0;
+    background-position-x: -33px;
+}
+
+.thumbnail-section .view .div-sub-position {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    width: 100%;
+    height: 70px;
+    text-align: left;
+}
+
+.thumbnail-section .view .div-sub-position .back-g{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: #333d53;
+    opacity: .7;
+}
+
+
 body{
     height: 100%;
     margin: 0;
