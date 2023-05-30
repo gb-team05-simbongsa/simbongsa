@@ -42,4 +42,6 @@ public interface ReviewQueryDsl {
     //    최신순 목록 조회 - 무한스크롤
     public Slice<Review> findAllByIdReviewPaging_QueryDSL(Pageable pageable);
 
+//    댓글 수 가져오기
+    public Long getReplyCount(Long id);
 }

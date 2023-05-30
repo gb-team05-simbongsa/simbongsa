@@ -213,7 +213,6 @@ public interface FreeBoardService {
         return FreeBoardReplyDTO.builder().id(freeBoardReply.getId())
                 .memberDTO(toMemberDTO(freeBoardReply.getMember()))
                 .freeBoardReplyContent(freeBoardReply.getReplyContent())
-                .id(freeBoardReply.getId())
                 .createdDate(freeBoardReply.getCreatedDate())
                 .updatedDate(freeBoardReply.getUpdatedDate())
                 .build();

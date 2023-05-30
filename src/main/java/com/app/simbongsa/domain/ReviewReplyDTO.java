@@ -17,7 +17,6 @@ public class ReviewReplyDTO {
     private ReviewDTO reviewDTO;
 
     @Builder
-
     public ReviewReplyDTO(Long id, MemberDTO memberDTO, String reviewReplyContent, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.memberDTO = memberDTO;
