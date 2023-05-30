@@ -16,6 +16,8 @@ import org.springframework.data.domain.*;
 import java.util.List;
 import java.util.Optional;
 
+import static com.app.simbongsa.entity.board.QFreeBoard.freeBoard;
+import static com.app.simbongsa.entity.board.QFreeBoardReply.freeBoardReply;
 import static com.app.simbongsa.entity.board.QReview.review;
 
 
@@ -51,6 +53,16 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
         }
         log.info(hasNext + "============");
         return new SliceImpl<>(reviews, pageable, hasNext);
+    }
+
+    @Override
+    public Long getReplyCount(Long id) {
+        Long replyCount = query.select(reviewReply.count())
+                .from(reviewReply)
+                .where(review.id.eq(id))
+                .groupBy(review.id)
+                .fetchOne();
+        return replyCount;
     }
 
     //    인기순 목록 조회(무한스크롤)

@@ -269,4 +269,9 @@ public class ReviewServiceImpl implements ReviewService{
         log.info("myReviewDTOS serviceImpl: ===== " + myReveiwDTOS);
         return new PageImpl<>(myReveiwDTOS,myReviews.getPageable(),myReviews.getTotalElements());
     }
+
+    @Override
+    public Long getCount(Long id) {
+        return reviewRepository.getReplyCount(id);
+    }
 }

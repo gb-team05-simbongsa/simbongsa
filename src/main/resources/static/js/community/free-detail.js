@@ -133,7 +133,6 @@ function repliesContent(replies) {
                         <div class="comment-user-name">${reply.memberDTO.memberName}</div>`;
         if (memberId == reply.memberDTO.id) {
 
-            console.log(`${reply.id}` + "???????");
             text += `<button type="button" class="x-btn" data-reply-id="${reply.id}">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
                             <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
