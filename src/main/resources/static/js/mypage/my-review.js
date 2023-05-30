@@ -32,7 +32,7 @@ myReviews.forEach((myReview, i) => {
             text +=
                 ` <div class="review-main-img">
                         <div class="review-img">
-                            <img src="/file/display?fileName=${myReview.fileDTOS[j].filePath + '/' + myReview.fileDTOS[j].fileUuid + '_' + myReview.fileDTOS[j].fileName}">
+                            <img src="/file/display?fileName=${myReview.fileDTOS[j].filePath}">
                         </div>
                    </div>
                     `;
