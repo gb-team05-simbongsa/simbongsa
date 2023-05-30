@@ -161,6 +161,11 @@ $(window).scroll(
 
 // let nextPage = 0;
 // let checkStatus = false;
+// const loadMoreData = () => {
+//     if (checkStatus) {
+//         fetchData();
+//     }
+// };
 //
 // // ajax로 게시글 목록 불러오기(10개씩 가져옴)
 // const fetchData = () => {
