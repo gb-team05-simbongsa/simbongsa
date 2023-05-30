@@ -62,16 +62,23 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     public Slice<FreeBoard> findAllByLikeCountDescWithPaging_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.select(freeBoard)
                 .from(freeBoard)
-                .join(freeBoard.member)
+                .join(freeBoard.member, member)
                 .fetchJoin()
-                .join(freeBoard.freeBoardFiles)
+                .join(freeBoard.freeBoardFiles, freeBoardFile)
                 .fetchJoin()
-                .orderBy(freeBoard.freeBoardReplyCount.desc())
+                .orderBy(freeBoard.freeBoardReplies.size().desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .limit(pageable.getPageSize() + 1)
                 .fetch();
 
-        return checkLastPage(pageable, freeBoards);
+        boolean hasNext = false;
+        if (freeBoards.size() > pageable.getPageSize()){
+            freeBoards.remove(pageable.getPageSize());
+
+            hasNext = true;
+        }
+        log.info(hasNext + "============");
+        return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
 
     @Override

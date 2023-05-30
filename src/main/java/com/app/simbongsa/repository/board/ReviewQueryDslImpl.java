@@ -2,12 +2,15 @@ package com.app.simbongsa.repository.board;
 
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.entity.board.FreeBoard;
+import com.app.simbongsa.entity.file.QReviewFile;
 import com.app.simbongsa.entity.file.ReviewFile;
+import com.app.simbongsa.entity.member.QMember;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.board.Review;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.*;
 
 import java.util.List;
@@ -17,9 +20,12 @@ import static com.app.simbongsa.entity.board.QReview.review;
 
 
 import static com.app.simbongsa.entity.board.QReviewReply.reviewReply;
+import static com.app.simbongsa.entity.file.QReviewFile.reviewFile;
+import static com.app.simbongsa.entity.member.QMember.member;
 
 
 @RequiredArgsConstructor
+@Slf4j
 public class ReviewQueryDslImpl implements ReviewQueryDsl {
     private final JPAQueryFactory query;
 
@@ -28,15 +34,23 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
     public Slice<Review> findAllByIdReviewPaging_QueryDSL(Pageable pageable) {
         List<Review> reviews = query.select(review)
                 .from(review)
-                .leftJoin(review.member)
-                .leftJoin(review.reviewFiles)
+                .leftJoin(review.member, member)
+                .fetchJoin()
+                .leftJoin(review.reviewFiles, reviewFile)
                 .fetchJoin()
                 .orderBy(review.id.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .limit(pageable.getPageSize() + 1)
                 .fetch();
 
-        return new SliceImpl<>(reviews, pageable, false);
+        boolean hasNext = false;
+        if (reviews.size() > pageable.getPageSize()){
+            reviews.remove(pageable.getPageSize());
+
+            hasNext = true;
+        }
+        log.info(hasNext + "============");
+        return new SliceImpl<>(reviews, pageable, hasNext);
     }
 
     //    인기순 목록 조회(무한스크롤)
@@ -44,15 +58,23 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
     public Slice<Review> findAllByLikeCountReviewPaging_QueryDSL(Pageable pageable) {
         List<Review> reviews = query.select(review)
                 .from(review)
-                .leftJoin(review.member)
-                .leftJoin(review.reviewFiles)
+                .leftJoin(review.member, member)
                 .fetchJoin()
-                .orderBy(review.reviewReplyCount.desc())
+                .leftJoin(review.reviewFiles, reviewFile)
+                .fetchJoin()
+                .orderBy(review.reviewReplies.size().desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .limit(pageable.getPageSize() + 1)
                 .fetch();
 
-        return checkLastPage(pageable, reviews);
+        boolean hasNext = false;
+        if (reviews.size() > pageable.getPageSize()){
+            reviews.remove(pageable.getPageSize());
+
+            hasNext = true;
+        }
+        log.info(hasNext + "============");
+        return new SliceImpl<>(reviews, pageable, hasNext);
     }
 
     // 시퀀스
