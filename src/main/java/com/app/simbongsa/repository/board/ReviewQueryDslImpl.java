@@ -62,7 +62,7 @@ public class ReviewQueryDslImpl implements ReviewQueryDsl {
                 .fetchJoin()
                 .leftJoin(review.reviewFiles, reviewFile)
                 .fetchJoin()
-                .orderBy(review.reviewReplyCount.desc())
+                .orderBy(review.reviewReplies.size().desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1)
                 .fetch();

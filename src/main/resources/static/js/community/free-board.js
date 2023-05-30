@@ -43,106 +43,7 @@ userTimeElements.forEach((userTimeElement) => {
 });
 
 
-// categoriNew.addEventListener('click', () => {
-//     categoriNew.style.color = '#1d1d1e';
-//     categoriNew.style.fill = '#1d1d1e';
-//     categoriBest.style.color = '#8a8a8b';
-//     categoriBest.style.fill = '#8a8a8b';
-//
-//     $.ajax({
-//         url: "/community/free-board/newList",
-//         type: "get",
-//         success: function (result) {
-//             let text = ``;
-//             console.log("몇번")
-//             result.forEach(freeboards => {
-//
-//                 text += `
-//                             <a href="/community/free-detail/${freeboards.id}">
-//                                 <li class="contant-list-container" style="margin-top: 10px">
-//                                     <div>
-//                                         <button class="contant-btn">
-//                                             <div class="contant-title-container">
-//                                                 <div class="contant-title-wrapper">
-//                                                     <h2 class="contant-title">${freeboards.boardTitle}</h2>
-//                                                     <p class="contant-contant">${freeboards.boardContent}</p>
-//                                                 </div>
-//                                                 <div class="contant-img">
-//                                                     <span class="contant-img-span">
-//                                                         <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-//                                                     </span>
-//                                                 </div>
-//                                             </div>
-//                                             <div class="contant-user">
-//                                                 <div class="user-profile">
-//                                                     <span class="user-name">${freeboards.memberDTO.memberName}</span>
-//                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-//                                                     <span class="user-time">${date()}</span>
-//                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-//                                                     <span class="user-see">댓글수 ${freeboards.replyCount}</span>
-//                                                 </div>
-//                                             </div>
-//                                         </button>
-//                                     </div>
-//                                 </li>
-//                             </a>
-//                         `;
-//             });
-//             $('.contant').html(text);
-//         }
-//     });
-// });
 
-// categoriBest.addEventListener('click', () => {
-//     categoriBest.style.color = '#1d1d1e';
-//     categoriBest.style.fill = '#1d1d1e';
-//     categoriNew.style.color = '#8a8a8b';
-//     categoriNew.style.fill = '#8a8a8b';
-//
-//     $.ajax({
-//         url: "/community/free-board/likes",
-//         type: "get",
-//         success: function (results) {
-//             let text = ``;
-//             if (Array.isArray(results)) {
-//                 results.forEach(freeboard => {
-//
-//                     text += `
-//                         <a href="/community/free-detail/${freeboard.id}">
-//                             <li class="contant-list-container" style="margin-top: 10px">
-//                                 <div>
-//                                     <button class="contant-btn">
-//                                         <div class="contant-title-container">
-//                                             <div class="contant-title-wrapper">
-//                                                 <h2 class="contant-title">${freeboard.boardTitle}</h2>
-//                                                 <p class="contant-contant">${freeboard.boardContent}</p>
-//                                             </div>
-//                                             <div class="contant-img">
-//                                                 <span class="contant-img-span">
-//                                                     <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
-//                                                 </span>
-//                                             </div>
-//                                         </div>
-//                                         <div class="contant-user">
-//                                             <div class="user-profile">
-//                                                 <span class="user-name">${freeboard.memberDTO.memberName}</span>
-//                                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-//                                                 <span class="user-time">${date()}</span>
-//                                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-//                                                 <span class="user-see">댓글수 ${freeboard.replyCount}</span>
-//                                             </div>
-//                                         </div>
-//                                     </button>
-//                                 </div>
-//                             </li>
-//                         </a>
-//                     `;
-//                 });
-//                 $('.contant').html(text);
-//             }
-//         }
-//     });
-// });
 
 const $div = $('.contant');
 let page = 0;
@@ -189,14 +90,6 @@ $categoriContent.on('click', function() {
     }
 })
 function list(page) {
-    let $url  = '';
-
-    // if ($('.categori-best').text() == "최신순") {
-    //     $url= '/community/free-board/newList';
-    // } else if ($('.categori-best').text() == "인기순") {
-    //     $url = '/community/free-board/likes';
-    // }
-
     $.ajax({
         url: '/community/free-board/newList',
         type: 'get',
@@ -226,8 +119,8 @@ function listText(list){
                                     <span class="contant-img-span">
                                     `;
 
-                                        if(freeBoardDTO.fileDTOS[0] == null || freeBoardDTO.fileDTOS[0] == undefined){
-                                            text += `<img src="https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=ccaf0c29a4a9c34a703c08e3ddef88d1">`;
+                                        if(freeBoardDTO.fileDTOS == null || freeBoardDTO.fileDTOS == undefined){
+                                            text += `<img class="contant-image" src="https://tumblbug-pci.imgix.net/11ea5b920c65d5f3d65d29a1b1583cd2e03f16e6/007b6da4e73604f590568620636df9f45c1c385b/99ad89d91fbd1abe533280381a952c13901f41bf/4e17000d-8d19-4c6c-97a9-8772101c7f60.png?auto=format%2Ccompress&fit=crop&h=288&lossless=true&w=384&s=ccaf0c29a4a9c34a703c08e3ddef88d1">`;
                                         }else{
                                             text += `<img class="contant-image" src="/file/display?fileName=${freeBoardDTO.fileDTOS[0].filePath}">`
                                         }
@@ -405,5 +298,107 @@ $(window).scroll(
 //             scrollTop: 0
 //         }, 800);
 //         return false;
+//     });
+// });
+
+
+// categoriNew.addEventListener('click', () => {
+//     categoriNew.style.color = '#1d1d1e';
+//     categoriNew.style.fill = '#1d1d1e';
+//     categoriBest.style.color = '#8a8a8b';
+//     categoriBest.style.fill = '#8a8a8b';
+//
+//     $.ajax({
+//         url: "/community/free-board/newList",
+//         type: "get",
+//         success: function (result) {
+//             let text = ``;
+//             console.log("몇번")
+//             result.forEach(freeboards => {
+//
+//                 text += `
+//                             <a href="/community/free-detail/${freeboards.id}">
+//                                 <li class="contant-list-container" style="margin-top: 10px">
+//                                     <div>
+//                                         <button class="contant-btn">
+//                                             <div class="contant-title-container">
+//                                                 <div class="contant-title-wrapper">
+//                                                     <h2 class="contant-title">${freeboards.boardTitle}</h2>
+//                                                     <p class="contant-contant">${freeboards.boardContent}</p>
+//                                                 </div>
+//                                                 <div class="contant-img">
+//                                                     <span class="contant-img-span">
+//                                                         <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+//                                                     </span>
+//                                                 </div>
+//                                             </div>
+//                                             <div class="contant-user">
+//                                                 <div class="user-profile">
+//                                                     <span class="user-name">${freeboards.memberDTO.memberName}</span>
+//                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+//                                                     <span class="user-time">${date()}</span>
+//                                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+//                                                     <span class="user-see">댓글수 ${freeboards.replyCount}</span>
+//                                                 </div>
+//                                             </div>
+//                                         </button>
+//                                     </div>
+//                                 </li>
+//                             </a>
+//                         `;
+//             });
+//             $('.contant').html(text);
+//         }
+//     });
+// });
+
+// categoriBest.addEventListener('click', () => {
+//     categoriBest.style.color = '#1d1d1e';
+//     categoriBest.style.fill = '#1d1d1e';
+//     categoriNew.style.color = '#8a8a8b';
+//     categoriNew.style.fill = '#8a8a8b';
+//
+//     $.ajax({
+//         url: "/community/free-board/likes",
+//         type: "get",
+//         success: function (results) {
+//             let text = ``;
+//             if (Array.isArray(results)) {
+//                 results.forEach(freeboard => {
+//
+//                     text += `
+//                         <a href="/community/free-detail/${freeboard.id}">
+//                             <li class="contant-list-container" style="margin-top: 10px">
+//                                 <div>
+//                                     <button class="contant-btn">
+//                                         <div class="contant-title-container">
+//                                             <div class="contant-title-wrapper">
+//                                                 <h2 class="contant-title">${freeboard.boardTitle}</h2>
+//                                                 <p class="contant-contant">${freeboard.boardContent}</p>
+//                                             </div>
+//                                             <div class="contant-img">
+//                                                 <span class="contant-img-span">
+//                                                     <img class="contant-image" src="https://steadio.imgix.net/creator-posts/079d1a28-343d-4f6a-8889-e9328964aafd/creatorPostImage/269f44f6-9d34-47bb-83a2-7d99d86a5280.jpg?auto=format%2Ccompress&fit=crop&h=420&lossless=true&w=680">
+//                                                 </span>
+//                                             </div>
+//                                         </div>
+//                                         <div class="contant-user">
+//                                             <div class="user-profile">
+//                                                 <span class="user-name">${freeboard.memberDTO.memberName}</span>
+//                                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+//                                                 <span class="user-time">${date()}</span>
+//                                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
+//                                                 <span class="user-see">댓글수 ${freeboard.replyCount}</span>
+//                                             </div>
+//                                         </div>
+//                                     </button>
+//                                 </div>
+//                             </li>
+//                         </a>
+//                     `;
+//                 });
+//                 $('.contant').html(text);
+//             }
+//         }
 //     });
 // });

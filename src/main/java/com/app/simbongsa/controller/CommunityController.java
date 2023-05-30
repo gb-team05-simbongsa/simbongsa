@@ -30,18 +30,11 @@ public class CommunityController {
     private final FreeBoardService freeBoardService;
     private final ReviewService reviewService;
 
-    @GetMapping("free-board")
+    @GetMapping("free-board/new")
     public String goFreeList(){return "community/free-board";}
 
-    /*자유게시판 최신순*/
-//    @GetMapping("free-board/new")
-//    public String goFreeNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable) {
-//        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
-//                pageable.getPageSize()));
-//        model.addAttribute("freeBoardList", freeBoardDTOS.getContent());
-//        return "community/free-board";
-//    }
 
+    /*============ 자유게시판 인기순, 최신순 START =================*/
     @GetMapping("free-board/newList")
     @ResponseBody
     public Slice<FreeBoardDTO> goToFreeNewList(@RequestParam(defaultValue = "0", name = "page") int page){
@@ -56,19 +49,34 @@ public class CommunityController {
         log.info(page + "=====================");
         return freeBoardService.getLikesList(pageRequest);
     }
-//    @GetMapping("free-board")
-//    public String goToFreeBoardList(){
-//        return "community/free-board";
-//    }
+    /*============ 자유게시판 인기순, 최신순 END =================*/
 
-    /*자유게시판 인기순*/
-//    @GetMapping("free-board/likes")
-//    @ResponseBody
-//    public Slice<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
-//        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
-//                pageable.getPageSize()));
-//        return freeBoardDTOS;
-//    }
+    /*============ 리뷰게시판 인기순, 최신순 START =================*/
+    @GetMapping("review-board/new")
+    public String goToReviewBoard(){return "community/review-board";}
+
+    /*활동후기 최신순*/
+
+    @GetMapping("review-board/newList")
+    @ResponseBody
+    public Slice<ReviewDTO> getToReviewNewList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 3);
+        log.info(page + "=====================");
+        return reviewService.getNewReviewList(pageRequest);
+    }
+
+    /*황동후기 인기순*/
+    @GetMapping("review-board/likes")
+    @ResponseBody
+    public Slice<ReviewDTO> getReviewLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 3);
+        log.info(page + "=====================");
+        return reviewService.getLikesReviewList(pageRequest);
+    }
+    /*============ 리뷰게시판 인기순, 최신순 END =================*/
+
+
+
 
     /*자유게시판 작성하기*/
     @GetMapping("free-create")
@@ -138,34 +146,34 @@ public class CommunityController {
 
 /*=========================================================================================================================*/
 
-    @GetMapping("review-board")
-    public String goToReviewBoard(){return "community/review-board";}
-
-    /*활동후기 최신순*/
-    @GetMapping("review-board/new")
-    public String getReviewNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable){
-        Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
-        model.addAttribute("reviewBoardList", reviewDTOS.getContent());
-        return "community/review-board";
-    }
-
-    @GetMapping("review-board/newList")
-    @ResponseBody
-    public List<ReviewDTO> getToReviewNewList(@PageableDefault(page=1, size=10) Pageable pageable){
-        Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
-        return reviewDTOS.getContent();
-    }
-
-    /*황동후기 인기순*/
-    @GetMapping("review-board/likes")
-    @ResponseBody
-    public List<ReviewDTO> getReviewLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
-        Slice<ReviewDTO> reviewDTOS = reviewService.getLikesReviewList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
-        return reviewDTOS.getContent();
-    }
+//    @GetMapping("review-board")
+//    public String goToReviewBoard(){return "community/review-board";}
+//
+//    /*활동후기 최신순*/
+//    @GetMapping("review-board/new")
+//    public String getReviewNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable){
+//        Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
+//                pageable.getPageSize()));
+//        model.addAttribute("reviewBoardList", reviewDTOS.getContent());
+//        return "community/review-board";
+//    }
+//
+//    @GetMapping("review-board/newList")
+//    @ResponseBody
+//    public List<ReviewDTO> getToReviewNewList(@PageableDefault(page=1, size=10) Pageable pageable){
+//        Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
+//                pageable.getPageSize()));
+//        return reviewDTOS.getContent();
+//    }
+//
+//    /*황동후기 인기순*/
+//    @GetMapping("review-board/likes")
+//    @ResponseBody
+//    public List<ReviewDTO> getReviewLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
+//        Slice<ReviewDTO> reviewDTOS = reviewService.getLikesReviewList(PageRequest.of(pageable.getPageNumber() - 1,
+//                pageable.getPageSize()));
+//        return reviewDTOS.getContent();
+//    }
 
     /*활동후기 작성하기*/
     @GetMapping("review-create")
