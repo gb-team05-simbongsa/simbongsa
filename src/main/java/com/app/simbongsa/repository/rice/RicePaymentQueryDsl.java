@@ -45,6 +45,9 @@ public interface RicePaymentQueryDsl {
 //    결제 총 금액
     public Long getAllPaymentPrice();
 
-//    회원 환전 가능 공양미(후원받은 공양미) 가져오기
-    public Integer findEnableRiceById(Long id);
+    /*후원받은 공양미 개수*/
+    public Integer findSupportedRiceById(Long id);
+
+    /*환전대기 공양미 개수*/
+    public Integer findWaitRiceById(Long id);
 }
