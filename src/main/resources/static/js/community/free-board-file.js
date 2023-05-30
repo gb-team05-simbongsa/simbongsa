@@ -1,7 +1,7 @@
 
 $('.choce2-btn').on('click', function() {
     if(!$('input[type=file]').val()) {
-
+        alert("파일을 넣어주세요")
         // 파일을 아무것도 안넣었을 때 모달
         // $('.pay-content').text('파일을 선택해주세요.')
         // $container.css("display", "block");
@@ -9,6 +9,7 @@ $('.choce2-btn').on('click', function() {
         // $close.on("click", function () {
         //     $container.css("display", "none");
         // });
+        return;
     } else {
         let freeBoardDTO = setFreeBoardDTO();
        /* let formData = new FormData();*/

@@ -107,6 +107,7 @@ public interface FreeBoardService {
                             .fileName(freeBoardFile.getFileName())
                             .filePath(freeBoardFile.getFilePath())
                             .fileUuid(freeBoardFile.getFileUuid())
+                            .fileRepresentationalType(freeBoardFile.getFileRepresentationalType())
                             .build();
                     freeBoardFileList.add(fileDTO);
                 }
