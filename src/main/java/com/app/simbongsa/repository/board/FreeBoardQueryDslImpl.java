@@ -309,5 +309,23 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
         return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
 
+    @Override
+    public void updateCount(int count, Long id) {
+        query.update(freeBoard)
+                .set(freeBoard.freeBoardReplyCount, freeBoard.freeBoardReplyCount.add(count))
+                .where(freeBoard.id.eq(id))
+                .execute();
+    }
+
+    @Override
+    public Long getReplyCount(Long id) {
+        Long replyCount = query.select(freeBoardReply.count())
+                .from(freeBoardReply)
+                .where(freeBoard.id.eq(id))
+                .groupBy(freeBoard.id)
+                .fetchOne();
+        return replyCount;
+    }
+
 
 }

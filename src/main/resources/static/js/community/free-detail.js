@@ -114,7 +114,10 @@ function showList() {
         }
         if (replies.last) {
             $(".comment-btn").hide();
+        } else {
+            $(".comment-btn").show();
         }
+
         $replyBox.html(repliesContent(replies));
     });
 }
@@ -130,7 +133,8 @@ function repliesContent(replies) {
                         <div class="comment-user-name">${reply.memberDTO.memberName}</div>`;
         if (memberId == reply.memberDTO.id) {
 
-            text += `<button type="button" class="x-btn">
+            console.log(`${reply.id}` + "???????");
+            text += `<button type="button" class="x-btn" data-reply-id="${reply.id}">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
                             <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
                         </svg>
@@ -202,6 +206,8 @@ $registerButton.click(() => {
                 if (replies.last) {
                     $(".comment-btn").hide();
                 }
+                $('#countReply').text('댓글수' + (parseInt($('#countReply').text().replace('댓글수', '')) + 1));
+                $('#countReply2').text(parseInt($('#countReply2').text()) + 1);
             });
         });
     }
@@ -277,9 +283,6 @@ function showModal() {
     const cancelBtns = document.querySelectorAll('.choce1-btn');
 
     let i = $(xBtns).index(this);
-    console.log(i)
-    console.log(modals)
-    console.log(modals[i])
     modal = modals[i];
     modalBack = modalBacks[i];
     modal.style.display = 'flex';
@@ -289,7 +292,8 @@ function showModal() {
     modalBack.style.display = 'block';
     modalBack.style.position = 'fixed';
 
-    replyIdToDelete = $(this).siblings('.comment-user-name').find('.choce2-btn').data("reply-id");
+    // replyIdToDelete = $(this).siblings('.comment-user-name').find('.choce2-btn').data("reply-id");
+    replyIdToDelete = $(this).data("reply-id");
 }
 
 function hideModal() {
@@ -302,9 +306,12 @@ $replyBox.on("click", ".x-btn", showModal);
 $modalWrap.on("click", ".choce1-btn", hideModal);
 $modalWrap.on("click", ".modal-back", hideModal);
 $modalWrap.on("click", ".choce2-btn", function () {
-    replyIdToDelete = $(this).data("reply-id");
     replyService.deleteReply(replyIdToDelete, function () {
+        page = 0;
         hideModal();
+        $('#countReply').text('댓글수' + (parseInt($('#countReply').text().replace('댓글수', '')) - 1));
+        $('#countReply2').text(parseInt($('#countReply2').text()) - 1);
+
         showList();
     });
 });
