@@ -124,7 +124,7 @@ function listText(list){
                                         }else{
                                             for(let j = 0; j<freeBoardDTO.fileDTOS.length; j++){
                                                 if(freeBoardDTO.fileDTOS[j].fileType === 'REPRESENTATION'){
-                                                    text += `<img class="contant-image" src="/file/display?fileName=${freeBoardDTO.fileDTOS[0].filePath}">`
+                                                    text += `<img class="contant-image" src="/file/display?fileName=${freeBoardDTO.fileDTOS[j].filePath}">`
                                                 }
                                             }
 
