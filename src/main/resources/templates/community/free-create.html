@@ -26,23 +26,13 @@
             <form name="form" method="post" th:action="@{/community/free-create}" enctype="multipart/form-data">
                 <label id="photo-picker">
                     <div class="photo" id="photo">
-                        <input
-                                id="file-input"
-                                type="file"
-                                style="display: none"
-                                name="imgFile"
-                                accept="image/*"
-                                multiple="multiple"
-                        />
+                        <input id="file-input" type="file" style="display: none" name="imgFile" accept="image/*" multiple="multiple"/>
                         <div class="photo-container">
                             <div class="photo-img"></div>
                         </div>
                     </div>
                 </label>
-                <label id="photo-picker2">
-                    <!--이미지 들어가는 곳-->
-
-                </label>
+                <label id="photo-picker2"></label><!--이미지 들어가는 곳-->
                 <div class="content">
                     <div class="content-container">
                         <div class="title">
@@ -66,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <div >
+                <div>
                     <div class="modal">
                         <h4 class="modal-title">게시물 등록</h4>
                         <div class="modal-content">게시물을 등록하시겠습니까?</div>
@@ -75,7 +65,7 @@
                                 <button class="choce1-btn" type="button">취소</button>
                             </div>
                             <div class="choce2">
-                                <button type="button" class="choce2-btn">등록</button>
+                                <button type="submit" class="choce2-btn">등록</button>
                             </div>
                         </div>
                     </div>

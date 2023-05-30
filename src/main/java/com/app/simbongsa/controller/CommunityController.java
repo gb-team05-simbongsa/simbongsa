@@ -173,10 +173,11 @@ public class CommunityController {
 
     @PostMapping("review-create")
     @ResponseBody
-    public void reviewCreate(@ModelAttribute("reviewDTO") ReviewDTO reviewDTO, HttpSession session){
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
-        Long memberId = member.getId();
-        reviewService.register(reviewDTO, memberId);
+    public void reviewCreate(@RequestBody ReviewDTO reviewDTO, HttpSession session){
+        MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+        reviewDTO.setMemberDTO(memberDTO);
+
+        reviewService.register(reviewDTO);
     }
 
     /*활동후기 상세보기*/

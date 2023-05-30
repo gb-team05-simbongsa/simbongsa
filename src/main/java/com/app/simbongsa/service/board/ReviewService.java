@@ -24,7 +24,7 @@ public interface ReviewService {
     public void delete(Long reviewId);
 
     /*저징*/
-    public void register(ReviewDTO reviewDTO, Long memberId);
+    public void register(ReviewDTO reviewDTO);
 
     /*상세보기*/
     public ReviewDTO getReview(Long reviewId);
@@ -67,7 +67,7 @@ public interface ReviewService {
 
 
     default ReviewDTO toReviewDTO(Review review) {
-        return ReviewDTO.builder()
+        ReviewDTO.ReviewDTOBuilder builder = ReviewDTO.builder()
                 .id(review.getId())
                 .boardTitle(review.getBoardTitle())
                 .boardContent(review.getBoardContent())
@@ -75,8 +75,13 @@ public interface ReviewService {
                 .updatedDate(review.getUpdatedDate())
                 .memberDTO(toMemberDTO(review.getMember()))
                 .fileDTOS(FileToDTO(review.getReviewFiles()))
-                .replyCount(review.getReviewReplyCount())
-                .build();
+                .replyCount(review.getReviewReplyCount());
+
+        if (review.getMember() != null) {
+            builder.memberDTO(toMemberDTO(review.getMember()));
+        }
+
+        return builder.build();
     }
 
     default MemberDTO toMemberDTO(Member member){

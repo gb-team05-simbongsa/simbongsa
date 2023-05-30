@@ -90,12 +90,14 @@ public interface FreeBoardService {
                 .memberDTO(toMemberDTO(freeBoard.getMember()))
                 .fileDTOS(FileToDTO(freeBoard.getFreeBoardFiles()))
                 .replyCount(freeBoard.getFreeBoardReplyCount());
+
         if (freeBoard.getMember() != null) {
             builder.memberDTO(toMemberDTO(freeBoard.getMember()));
         }
 
-    return builder.build();
+        return builder.build();
     }
+
     default List<FileDTO> FileToDTO(List<FreeBoardFile> freeBoardFiles){
         List<FileDTO> freeBoardFileList = new ArrayList<>();
         freeBoardFiles.forEach(
@@ -111,6 +113,7 @@ public interface FreeBoardService {
         );
         return freeBoardFileList;
     }
+
     default List<FreeBoardFile> toFreeBoardListEntity(List<FileDTO> fileDTOS){
         List<FreeBoardFile> freeBoardFiles = new ArrayList<>();
 
