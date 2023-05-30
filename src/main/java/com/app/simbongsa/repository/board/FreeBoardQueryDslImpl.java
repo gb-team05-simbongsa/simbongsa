@@ -67,7 +67,7 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchJoin()
                 .orderBy(freeBoard.freeBoardReplyCount.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1)
+                .limit(pageable.getPageSize())
                 .fetch();
 
         boolean hasNext = false;
