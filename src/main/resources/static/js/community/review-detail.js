@@ -195,7 +195,7 @@ $registerButton.click(() => {
         alert("입력해주세요.");
         return false;
     } else {
-        replyService.save(replyRequestDTO, function () {
+        replyService.save(replyRequestDTO, function() {
             $(".comment-btn").show();
             page = 0;
             replyService.list({page: page, boardId: boardId}, function (replies) {
@@ -257,7 +257,6 @@ function showModal() {
 
     // replyIdToDelete = $(this).siblings('.comment-user-name').find('.choce2-btn').data("reply-id");
     replyIdToDelete = $(this).data("reply-id");
-    console.log(replyIdToDelete);
 }
 
 function hideModal() {
