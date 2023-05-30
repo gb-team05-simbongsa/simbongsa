@@ -26,7 +26,9 @@ public class CommunityRestController {
     }
 
     @DeleteMapping("delete")
-    public void deleteFreeReply(Long replyId){freeBoardService.deleteReply(replyId);}
+    public void deleteFreeReply(Long replyId){
+        freeBoardService.deleteReply(replyId);
+    }
 
     @PostMapping("list")
     public Slice<FreeBoardReplyDTO> getFreeList(Long boardId, int page){
@@ -42,8 +44,10 @@ public class CommunityRestController {
         reviewService.registerReply(replyRequestDTO);
     }
 
-    @DeleteMapping("revew-delete")
-    public void deleteReviewReply(Long replyId){reviewService.deleteReply(replyId);}
+    @DeleteMapping("review-delete")
+    public void deleteReviewReply(Long replyId){
+        reviewService.deleteReply(replyId);
+    }
 
     @PostMapping("review-list")
     public Slice<ReviewReplyDTO> getReviewList(Long boardId, int page){

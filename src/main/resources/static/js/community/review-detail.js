@@ -76,6 +76,25 @@ let $replyContent = $(".comment-box-span");
 let $replyBox = $("ul.comment-lists");
 
 showList();
+showFiles();
+
+function showFiles() {
+    fileDTOS.forEach((fileDTO, i) => {
+        if(i == 0) {
+            $('#expandedImg').attr('src', `/file/display?fileName=${fileDTO.filePath}`);
+        }
+
+        let text = ``;
+
+        text = `
+            <li class="on">
+                <img class="img-div" src="/file/display?fileName=${fileDTO.filePath}" style="height: 100%; cursor: pointer">
+            </li>
+        `;
+
+        $('.thumbnail-list ul').append(text);
+    });
+}
 
 function showList() {
     replyService.list({
@@ -95,15 +114,19 @@ function showList() {
         }
         if (replies.last) {
             $(".comment-btn").hide();
+        } else {
+            $(".comment-btn").show();
         }
+
         $replyBox.html(repliesContent(replies));
     });
 }
 
 function repliesContent(replies) {
     let text = ``;
-    let modalText = ``;
+    let modalText = document.querySelector('#modal-wrap').innerHTML;
     replies.content.forEach(reply => {
+        console.log(`${reply.id}` + "번")
         text += `
             <li class="comment-ok-list">
                 <div style="width: 100%;">
@@ -111,7 +134,7 @@ function repliesContent(replies) {
                         <div class="comment-user-name">${reply.memberDTO.memberName}</div>`;
         if (memberId == reply.memberDTO.id) {
 
-            text += `<button type="button" class="x-btn">
+            text += `<button type="button" class="x-btn" data-reply-id="${reply.id}">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="x-btn-svg">
                             <path d="M5.707 5.707a1 1 0 0 0 0 1.414l4.95 4.95-4.95 4.95a1 1 0 1 0 1.414 1.414l4.95-4.95 4.95 4.95a1 1 0 0 0 1.414-1.414l-4.95-4.95 4.95-4.95a1 1 0 1 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"></path>
                         </svg>
@@ -125,7 +148,7 @@ function repliesContent(replies) {
                          <button class="choce1-btn">취소</button>
                      </div>
                      <div class="choce2">
-                     <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
+                        <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
                      </div>
                  </div>
               </div>
@@ -182,6 +205,8 @@ $registerButton.click(() => {
                 if (replies.last) {
                     $(".comment-btn").hide();
                 }
+                $('#countReply').text('댓글수' + (parseInt($('#countReply').text().replace('댓글수', '')) + 1));
+                $('#countReply2').text(parseInt($('#countReply2').text()) + 1);
             });
         });
     }
@@ -202,6 +227,10 @@ $(".comment-btn").click(() => {
         }
     });
 });
+
+$('.img-div').on('click', function() {
+    $('#expandedImg').attr('src', $(this).attr('src'));
+})
 
 
 //  삭제모달
@@ -226,7 +255,9 @@ function showModal() {
     modalBack.style.display = 'block';
     modalBack.style.position = 'fixed';
 
-    replyIdToDelete = $(this).siblings('.comment-user-name').find('.choce2-btn').data("reply-id");
+    // replyIdToDelete = $(this).siblings('.comment-user-name').find('.choce2-btn').data("reply-id");
+    replyIdToDelete = $(this).data("reply-id");
+    console.log(replyIdToDelete);
 }
 
 function hideModal() {
@@ -239,9 +270,13 @@ $replyBox.on("click", ".x-btn", showModal);
 $modalWrap.on("click", ".choce1-btn", hideModal);
 $modalWrap.on("click", ".modal-back", hideModal);
 $modalWrap.on("click", ".choce2-btn", function () {
-    replyIdToDelete = $(this).data("reply-id");
+    console.log(replyIdToDelete);
     replyService.deleteReply(replyIdToDelete, function () {
+        page = 0;
         hideModal();
+        $('#countReply').text('댓글수' + (parseInt($('#countReply').text().replace('댓글수', '')) - 1));
+        $('#countReply2').text(parseInt($('#countReply2').text()) - 1);
+
         showList();
     });
 });

@@ -65,6 +65,9 @@ public interface ReviewService {
     /* 내 후기 게시물 목록 조회 (페이징처리) */
     Page<ReviewDTO> getMyReviewBoards(Integer page, MemberDTO memberDTO);
 
+//    댓글 갯수
+    public Long getCount(Long id);
+
 
     default ReviewDTO toReviewDTO(Review review) {
         ReviewDTO.ReviewDTOBuilder builder = ReviewDTO.builder()
@@ -105,13 +108,13 @@ public interface ReviewService {
     default List<FileDTO> FileToDTO(List<ReviewFile> reviewFiles){
         List<FileDTO> reviewFileList = new ArrayList<>();
         reviewFiles.forEach(
-                fundingFile -> {
+                reviewFile -> {
                     FileDTO fileDTO = FileDTO.builder()
-                            .id(fundingFile.getId())
-                            .fileName(fundingFile.getFileName())
-                            .filePath(fundingFile.getFilePath())
-                            .fileRepresentationalType(fundingFile.getFileRepresentationalType())
-                            .fileUuid(fundingFile.getFileUuid())
+                            .id(reviewFile.getId())
+                            .fileName(reviewFile.getFileName())
+                            .filePath(reviewFile.getFilePath())
+                            .fileRepresentationalType(reviewFile.getFileRepresentationalType())
+                            .fileUuid(reviewFile.getFileUuid())
                             .build();
                     reviewFileList.add(fileDTO);
                 }
@@ -182,10 +185,8 @@ public interface ReviewService {
         return ReviewReplyDTO.builder().id(reviewReply.getId())
                 .memberDTO(toMemberDTO(reviewReply.getMember()))
                 .reviewReplyContent(reviewReply.getReplyContent())
-                .id(reviewReply.getReview().getId())
                 .createdDate(reviewReply.getCreatedDate())
                 .updatedDate(reviewReply.getUpdatedDate())
                 .build();
     }
-
 }

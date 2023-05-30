@@ -192,7 +192,9 @@ public class CommunityController {
     @GetMapping("review-detail/{id}")
     public String goToReviewDerail(Model model, @PathVariable Long id) {
         ReviewDTO reviewDTO = reviewService.getReviewDetail(id);
+
         model.addAttribute("reviewDTO", reviewDTO);
+        model.addAttribute("replyCount", reviewService.getCount(id));
         return "community/review-detail";
     }
 
