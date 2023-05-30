@@ -102,8 +102,9 @@ public class CommunityController {
     @GetMapping("free-detail/{id}")
     public String goToFreeDetail(Model model, @PathVariable Long id) {
         FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(id);
-        log.info(freeBoardDTO.toString());
+
         model.addAttribute("freeBoardDTO", freeBoardDTO);
+        model.addAttribute("replyCount", freeBoardService.getCount(id));
         return "community/free-detail";
     }
 

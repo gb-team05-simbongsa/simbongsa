@@ -54,4 +54,9 @@ public interface FreeBoardQueryDsl {
     /* ===== 인기순, 최신순 무한스크롤  ==== */
     public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable);
 
+//    댓글 입력 시 count update
+    public void updateCount(int count, Long id);
+
+//    댓글 수 가져오기
+    public Long getReplyCount(Long id);
 }

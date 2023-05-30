@@ -76,6 +76,9 @@ public interface FreeBoardService {
     Slice<FreeBoardDTO> getSliceNew(Pageable pageable);
     Slice<FreeBoardDTO> getSliceNewAndPopular(Pageable pageable);
 
+//    댓글 갯수
+    public Long getCount(Long id);
+
 
     default FreeBoardDTO toFreeBoardDTO(FreeBoard freeBoard) {
         FreeBoardDTO.FreeBoardDTOBuilder builder = FreeBoardDTO.builder()
