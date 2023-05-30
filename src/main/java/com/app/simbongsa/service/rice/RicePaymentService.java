@@ -46,7 +46,7 @@ public interface RicePaymentService {
 //    환전 요청 값 넣기
     public void insertExchangeRequest(RicePaymentDTO ricePaymentDTO, MemberDTO memberDTO);
 
-//    회원 환전 가능 공양미(후원받은 공양미) 가져오기
+    /*회원 환전 가능 공양미(후원받은 공양미) 가져오기*/
     public int findEnableRiceById(Long id);
 
     default RicePaymentDTO toRicePaymentDTO(RicePayment ricePayment) {
