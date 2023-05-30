@@ -76,6 +76,25 @@ let $replyContent = $(".comment-box-span");
 let $replyBox = $("ul.comment-lists");
 
 showList();
+showFiles();
+
+function showFiles() {
+    fileDTOS.forEach((fileDTO, i) => {
+        if(i == 0) {
+            $('#expandedImg').attr('src', `/file/display?fileName=${fileDTO.filePath}`);
+        }
+
+        let text = ``;
+
+        text = `
+            <li class="on">
+                <img class="img-div" src="/file/display?fileName=${fileDTO.filePath}" style="height: 100%; cursor: pointer">
+            </li>
+        `;
+
+        $('.thumbnail-list ul').append(text);
+    });
+}
 
 function showList() {
     replyService.list({
@@ -102,7 +121,7 @@ function showList() {
 
 function repliesContent(replies) {
     let text = ``;
-    let modalText = ``;
+    let modalText = document.querySelector('#modal-wrap').innerHTML;
     replies.content.forEach(reply => {
         text += `
             <li class="comment-ok-list">
@@ -125,7 +144,7 @@ function repliesContent(replies) {
                          <button class="choce1-btn">취소</button>
                      </div>
                      <div class="choce2">
-                     <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
+                        <button type="button" class="choce2-btn" fill="true" data-reply-id="${reply.id}">삭제</button>
                      </div>
                  </div>
               </div>
@@ -203,6 +222,10 @@ $(".comment-btn").click(() => {
     });
 });
 
+$('.img-div').on('click', function() {
+    $('#expandedImg').attr('src', $(this).attr('src'));
+})
+
 // //  삭제모달
 // let modal;
 // let modalBack;
@@ -254,6 +277,9 @@ function showModal() {
     const cancelBtns = document.querySelectorAll('.choce1-btn');
 
     let i = $(xBtns).index(this);
+    console.log(i)
+    console.log(modals)
+    console.log(modals[i])
     modal = modals[i];
     modalBack = modalBacks[i];
     modal.style.display = 'flex';
