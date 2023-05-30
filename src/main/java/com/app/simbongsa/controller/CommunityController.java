@@ -4,6 +4,7 @@ import com.app.simbongsa.domain.*;
 import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.service.board.FreeBoardService;
 import com.app.simbongsa.service.board.ReviewService;
+import com.app.simbongsa.type.FileRepresentationalType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -65,7 +66,7 @@ public class CommunityController {
     public void freeCreate(@RequestBody FreeBoardDTO freeBoardDTO, HttpSession session){
         MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
         freeBoardDTO.setMemberDTO(memberDTO);
-        Long memberId = memberDTO.getId();
+
         freeBoardService.register(freeBoardDTO);
     }
 

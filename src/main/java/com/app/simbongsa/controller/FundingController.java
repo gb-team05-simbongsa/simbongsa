@@ -68,7 +68,7 @@ public class FundingController {
 
         model.addAttribute("fundingDTO", fundingDTO);
 
-        return "/funding/funding-detail";
+        return "funding/funding-detail";
     }
 
     //
@@ -140,7 +140,7 @@ public class FundingController {
     public String goToFundingList(Model model, Long fundingId) {
         model.addAttribute("count", fundingService.getFundingCount(fundingId));
 
-        return "/funding/funding-list";
+        return "funding/funding-list";
     }
 
     @GetMapping("funding-list")

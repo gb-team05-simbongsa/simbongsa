@@ -110,7 +110,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
         if (fileDTOS != null){
             for (int i = 0; i < fileDTOS.size(); i++){
-                if (1 == 0){
+                if (i == 0){
                     fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
                 }else {
                     fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);

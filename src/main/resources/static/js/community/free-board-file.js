@@ -21,7 +21,7 @@ $('.choce2-btn').on('click', function() {
             data: JSON.stringify(freeBoardDTO),
             contentType: "application/json; charset=utf-8",
             success: function() {
-                location.href = "/community/free-board";
+                location.href = "/community/free-board/new";
             }
         });
     }
@@ -115,6 +115,8 @@ let setFreeBoardDTO = function() {
         fileDTO.fileUuid = globalThis.uuids[i];
         fileDTO.filePath = globalThis.paths[i];
 
+        i == 0 ? fileDTO.fileRepresentationalType = 'REPRESENTATION' : fileDTO.fileRepresentationalType = 'NORMAL';
+
         fileDTOS.push(fileDTO);
     });
 
@@ -123,8 +125,6 @@ let setFreeBoardDTO = function() {
         boardTitle : $('.title-input').val(),
         boardContent : $('.contents-text').val(),
         fileDTOS : fileDTOS
-
-
     }
 
     return freeBoardDTO;
