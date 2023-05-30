@@ -34,7 +34,6 @@ import static java.awt.AWTEventMulticaster.remove;
 public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
     private final JPAQueryFactory query;
 
-    //    최신순 목록 조회(무한스크롤)
     @Override
     public Slice<FreeBoard> findAllByIdDescWithPaging_QueryDSL(Pageable pageable) {
         List<FreeBoard> freeBoards = query.select(freeBoard)
@@ -45,14 +44,14 @@ public class FreeBoardQueryDslImpl implements FreeBoardQueryDsl {
                 .fetchJoin()
                 .orderBy(freeBoard.id.desc())
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1)
+                .limit(pageable.getPageSize())
                 .fetch();
-        boolean hasNext = false;
-        if (freeBoards.size() > pageable.getPageSize()){
-            freeBoards.remove(pageable.getPageSize());
 
-            hasNext = true;
+        boolean hasNext = freeBoards.size() > pageable.getPageSize();
+        if (hasNext) {
+            freeBoards.remove(pageable.getPageSize());
         }
+
         log.info(hasNext + "============");
         return new SliceImpl<>(freeBoards, pageable, hasNext);
     }
