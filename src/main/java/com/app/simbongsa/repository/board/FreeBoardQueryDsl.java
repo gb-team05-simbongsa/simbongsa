@@ -52,6 +52,6 @@ public interface FreeBoardQueryDsl {
     /* ===== 최신순 무한스크롤  ==== */
     public Slice<FreeBoard> findAllSliceByNew(Pageable pageable);
     /* ===== 인기순, 최신순 무한스크롤  ==== */
-    public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable);
+    public Slice<FreeBoard> findAllSliceByNewWithPopular(Pageable pageable, String keyword);
 
 }

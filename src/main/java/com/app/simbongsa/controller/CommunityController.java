@@ -34,28 +34,41 @@ public class CommunityController {
     public String goFreeList(){return "community/free-board";}
 
     /*자유게시판 최신순*/
-    @GetMapping("free-board/new")
-    public String goFreeNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable) {
-        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
-        model.addAttribute("freeBoardList", freeBoardDTOS.getContent());
-        return "community/free-board";
-    }
-    @GetMapping("free-board/newList")
-    public List<FreeBoardDTO> goToFreeNewList(@PageableDefault(page=1, size=10) Pageable pageable){
-        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
-        return freeBoardDTOS.getContent();
-    }
+//    @GetMapping("free-board/new")
+//    public String goFreeNewList(Model model, @PageableDefault(page=1, size=10) Pageable pageable) {
+//        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getNewList(PageRequest.of(pageable.getPageNumber() - 1,
+//                pageable.getPageSize()));
+//        model.addAttribute("freeBoardList", freeBoardDTOS.getContent());
+//        return "community/free-board";
+//    }
 
-    /*자유게시판 인기순*/
+    @GetMapping("free-board/newList")
+    @ResponseBody
+    public Slice<FreeBoardDTO> goToFreeNewList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 3);
+        log.info(page + "=====================");
+        return freeBoardService.getNewList(pageRequest);
+    }
     @GetMapping("free-board/likes")
     @ResponseBody
-    public Slice<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
-        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize()));
-        return freeBoardDTOS;
+    public Slice<FreeBoardDTO> goFreeLikesList(@RequestParam(defaultValue = "0", name = "page") int page){
+        PageRequest pageRequest = PageRequest.of(page, 3);
+        log.info(page + "=====================");
+        return freeBoardService.getLikesList(pageRequest);
     }
+//    @GetMapping("free-board")
+//    public String goToFreeBoardList(){
+//        return "community/free-board";
+//    }
+
+    /*자유게시판 인기순*/
+//    @GetMapping("free-board/likes")
+//    @ResponseBody
+//    public Slice<FreeBoardDTO> goFreeLikesList(@PageableDefault(page=1, size=10) Pageable pageable){
+//        Slice<FreeBoardDTO> freeBoardDTOS = freeBoardService.getLikesList(PageRequest.of(pageable.getPageNumber() - 1,
+//                pageable.getPageSize()));
+//        return freeBoardDTOS;
+//    }
 
     /*자유게시판 작성하기*/
     @GetMapping("free-create")
@@ -137,6 +150,7 @@ public class CommunityController {
     }
 
     @GetMapping("review-board/newList")
+    @ResponseBody
     public List<ReviewDTO> getToReviewNewList(@PageableDefault(page=1, size=10) Pageable pageable){
         Slice<ReviewDTO> reviewDTOS = reviewService.getNewReviewList(PageRequest.of(pageable.getPageNumber() - 1,
                 pageable.getPageSize()));
