@@ -21,6 +21,7 @@ $('.choce2-btn').on('click', function() {
             data: JSON.stringify(reviewDTO),
             contentType: "application/json; charset=utf-8",
             success: function() {
+                console.log("다시 옵니까")
                 location.href = "/community/review-board/new";
             }
         });

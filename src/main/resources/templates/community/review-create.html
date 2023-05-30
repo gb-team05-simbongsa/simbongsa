@@ -23,7 +23,7 @@
                     <button class="register-btn" type="button" disabled>등록</button>
                 </div>
             </div>
-            <form name="form" method="post" th:action="@{/community/review-create}" enctype="multipart/form-data">
+            <form name="form" method="post" th:action="@{/community/review-create}">
                 <label id="photo-picker">
                     <div class="photo" id="photo">
                         <input id="file-input" type="file" style="display: none" name="imgFile" accept="image/*" multiple="multiple"/>
@@ -65,7 +65,7 @@
                                 <button class="choce1-btn" type="button">취소</button>
                             </div>
                             <div class="choce2">
-                                <button class="choce2-btn" type="submit">등록</button>
+                                <button class="choce2-btn" type="button" style="cursor: pointer">등록</button>
                             </div>
                         </div>
                     </div>
