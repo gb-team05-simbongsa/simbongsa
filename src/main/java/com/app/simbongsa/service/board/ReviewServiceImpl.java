@@ -213,7 +213,7 @@ public class ReviewServiceImpl implements ReviewService{
     public Slice<ReviewDTO> getNewReviewList(Pageable pageable) {
         Slice<Review> reviews =
                 reviewRepository.findAllByIdReviewPaging_QueryDSL(pageable);
-        List<ReviewDTO> collect = reviews.get().map(review -> reviewToDTO(review)).collect(Collectors.toList());
+        List<ReviewDTO> collect = reviews.getContent().stream().map(this::toReviewDTO).collect(Collectors.toList());
 
         return new SliceImpl<>(collect, pageable, reviews.hasNext());
     }
@@ -222,8 +222,8 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public Slice<ReviewDTO> getLikesReviewList(Pageable pageable) {
         Slice<Review> reviews =
-                reviewRepository.findAllByLikeCountReviewPaging_QueryDSL(PageRequest.of(0,10));
-        List<ReviewDTO> collect = reviews.get().map(review -> reviewToDTO(review)).collect(Collectors.toList());
+                reviewRepository.findAllByLikeCountReviewPaging_QueryDSL(pageable);
+        List<ReviewDTO> collect = reviews.getContent().stream().map(this::toReviewDTO).collect(Collectors.toList());
         return new SliceImpl<>(collect, pageable, reviews.hasNext());
     }
 
