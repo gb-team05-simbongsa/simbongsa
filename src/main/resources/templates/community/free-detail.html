@@ -29,7 +29,7 @@
                                 <div class="user-see">
                                     <span th:text="${#temporals.format(freeBoardDTO.createdDate, 'yyyy.MM.dd HH:mm')}">5시간 전</span>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="user-svg"><circle cx="12" cy="12" r="4"></circle></svg>
-                                    <span th:text="댓글수 + ${freeBoardDTO.replyCount}">댓글수 25</span>
+                                    <span th:text="댓글수 + ${replyCount}" id="countReply">댓글수 25</span>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                         <div style="display: flex;">
                             <button class="footer-btn">
                                 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-svg"><path clip-rule="evenodd" d="M8.144 13.563v2l2.543-2h2.396a2.74 2.74 0 0 0 2.741-2.74V7.073a2.74 2.74 0 0 0-2.74-2.74h-6.01a2.74 2.74 0 0 0-2.74 2.74v4.012a2.477 2.477 0 0 0 2.477 2.477h1.333Zm-.104 3.778a.815.815 0 0 1-1.23-.702v-1.743A3.81 3.81 0 0 1 3 11.086V7.074A4.074 4.074 0 0 1 7.074 3h6.01a4.074 4.074 0 0 1 4.073 4.074v3.748a4.074 4.074 0 0 1-4.074 4.074h-1.935L8.04 17.341Z"></path><path d="M8.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM10.667 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0ZM13.167 9a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0Z"></path></svg>
-                                <span style="margin-left: 4px;" th:text="${freeBoardDTO.replyCount}">6</span>
+                                <span style="margin-left: 4px;" th:text="${replyCount}" id="countReply2">6</span>
                             </button>
                         </div>
                     </div>

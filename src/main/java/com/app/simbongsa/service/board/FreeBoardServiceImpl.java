@@ -325,5 +325,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
         return new SliceImpl<>(freeBoardDTOS, pageable, freeBoardList.hasNext());
     }
 
+    @Override
+    public Long getCount(Long id) {
+        return freeBoardRepository.getReplyCount(id);
+    }
+
 
 }
