@@ -287,7 +287,7 @@ function listText(list){
                                 <div class="user-profile">
                                     <span class="user-name">${reviewBoardDTO.memberDTO.memberName}</span>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
-                                    <span class="user-time"></span>
+                                    <span class="user-time">${reviewBoardDTO.createdDate.substring(0, 10)}</span>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="contant-user-span"><circle cx="12" cy="12" r="4"></circle></svg>
                                     <span class="user-see">댓글수 ${reviewBoardDTO.replyCount}</span>
                                 </div>
