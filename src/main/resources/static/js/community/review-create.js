@@ -1,23 +1,23 @@
-$("form[name='form']").on("submit", function (e) {
-    e.preventDefault();
-
-    let formData = new FormData(); // Create FormData object
-    formData.append('file', $('#file_input')[0].files[0]); // Append the file
-    formData.append('boardTitle', $("input[name='boardTitle']").val()); // Append the title
-    formData.append('boardContent', $("textarea[name='boardContent']").val()); // Append the content
-
-    $.ajax({
-        url: '/community/review-create',
-        data: formData,
-        processData: false,
-        contentType: false,
-        method: 'post',
-        success: function () {
-            // redirect 경로
-            location.href = "/community/review-board/new";
-        }
-    });
-});
+// $("form[name='form']").on("submit", function (e) {
+//     e.preventDefault();
+//
+//     let formData = new FormData(); // Create FormData object
+//     formData.append('file', $('#file_input')[0].files[0]); // Append the file
+//     formData.append('boardTitle', $("input[name='boardTitle']").val()); // Append the title
+//     formData.append('boardContent', $("textarea[name='boardContent']").val()); // Append the content
+//
+//     $.ajax({
+//         url: '/community/review-create',
+//         data: formData,
+//         processData: false,
+//         contentType: false,
+//         method: 'post',
+//         success: function () {
+//             // redirect 경로
+//             location.href = "/community/review-board/new";
+//         }
+//     });
+// });
 
 
 $(document).ready(function() {

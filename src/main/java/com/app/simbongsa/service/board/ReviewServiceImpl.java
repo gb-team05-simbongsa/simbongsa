@@ -88,24 +88,30 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     /*저장*/
-    @Override @Transactional
-    public void register(ReviewDTO reviewDTO, Long memberId) {
+    @Override
+    public void register(ReviewDTO reviewDTO) {
         List<FileDTO> fileDTOS = reviewDTO.getFileDTOS();
 
-        memberRepository.findById(memberId).ifPresent(
-                member -> reviewDTO.setMemberDTO(toMemberDTO(member))
-        );
+//        memberRepository.findById(memberId).ifPresent(
+//                member -> reviewDTO.setMemberDTO(toMemberDTO(member))
+//        );
 
-        reviewRepository.save(toReviewEntity(reviewDTO));
+        Review review = toReviewEntity(reviewDTO);
+        reviewRepository.save(review);
+        review.setMember(toMemberEntity(reviewDTO.getMemberDTO()));
+
         if (fileDTOS != null){
             for (int i = 0; i < fileDTOS.size(); i++){
-                if (1 == 0){
+                if (i == 0){
                     fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.REPRESENTATION);
                 }else {
                     fileDTOS.get(i).setFileRepresentationalType(FileRepresentationalType.NORMAL);
                 }
-                fileDTOS.get(i).setReview(getCurrentSequence());
-                reviewFileRepository.save(toReviewFileEntity(fileDTOS.get(i)));
+
+                ReviewFile reviewFile = toReviewFileEntity(fileDTOS.get(i));
+                reviewFile.setReview(review);
+//                fileDTOS.get(i).setReview(getCurrentSequence());
+                reviewFileRepository.save(reviewFile);
             }
         }
     }

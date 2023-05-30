@@ -20,19 +20,13 @@
         <section class="board-container">
             <div class="register">
                 <div class="register-container">
-                    <button class="register-btn" type="button">등록</button>
+                    <button class="register-btn" type="button" disabled>등록</button>
                 </div>
             </div>
-            <form name="form" method="post">
+            <form name="form" method="post" th:action="@{/community/review-create}" enctype="multipart/form-data">
                 <label id="photo-picker">
                     <div class="photo" id="photo">
-                        <input
-                                id="file_input"
-                                type="file"
-                                style="display: none"
-                                name="imgFile"
-                                accept="image/*"
-                        />
+                        <input id="file-input" type="file" style="display: none" name="imgFile" accept="image/*" multiple="multiple"/>
                         <div class="photo-container">
                             <div class="photo-img"></div>
                         </div>
@@ -44,13 +38,7 @@
                         <div class="title">
                             <div class="title-container">
                                 <label class="title-label">
-                                    <input
-                                            type="text"
-                                            placeholder="제목을 입력해주세요."
-                                            class="title-input"
-                                            name="boardTitle"
-                                            value=""
-                                    />
+                                    <input type="text" placeholder="제목을 입력해주세요." class="title-input" name="boardTitle"/>
                                 </label>
                             </div>
                         </div>
@@ -68,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <div >
+                <div>
                     <div class="modal">
                         <h4 class="modal-title">게시물 등록</h4>
                         <div class="modal-content">게시물을 등록하시겠습니까?</div>
@@ -94,13 +82,14 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script th:inline="javascript">
-    let fileDTOS = null;
+    // let fileDTOS = null;
     let reviewDTO = [[${reviewDTO}]];
-    if (reviewDTO == null || reviewDTO == undefined){
-    }else {
-        fileDTOS = reviewDTO.fileDTOS;
-    }
+    // if (reviewDTO == null || reviewDTO == undefined){
+    // }else {
+    //     fileDTOS = reviewDTO.fileDTOS;
+    // }
 </script>
 <script src="/js/main/header.js"></script>
-<script src="/js/community/review-create.js"></script>
+<script src="/js/community/free-create.js"></script>
+<script src="/js/community/review-file.js"></script>
 </html>
