@@ -173,11 +173,21 @@ public class RicePaymentQueryDslImpl implements RicePaymentQueryDsl {
                   .fetchOne());
     }
 
+    /*후원받은 공양미 개수*/
     @Override
-    public Integer findEnableRiceById(Long id) {
+    public Integer findSupportedRiceById(Long id) {
         return query.select(ricePayment.ricePaymentUsed.sum())
                 .from(ricePayment)
                 .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.후원받은공양미).and(ricePayment.member.id.eq(id)))
+                .fetchOne();
+    }
+
+    /*환전대기 공양미 개수*/
+    @Override
+    public Integer findWaitRiceById(Long id) {
+        return query.select(ricePayment.ricePaymentUsed.sum())
+                .from(ricePayment)
+                .where(ricePayment.ricePaymentStatus.eq(RicePaymentType.환전승인).or(ricePayment.ricePaymentStatus.eq(RicePaymentType.환전대기)).and(ricePayment.member.id.eq(id)))
                 .fetchOne();
     }
 

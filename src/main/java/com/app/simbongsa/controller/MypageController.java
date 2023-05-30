@@ -131,7 +131,7 @@ public class MypageController {
         model.addAttribute("memberDTO", memberService.getMemberById(memberId));
         model.addAttribute("myFundings", myFundings.getContent());
         model.addAttribute("pageDTO", new PageDTO(myFundings));
-        return "/error/unReady";
+        return "mypage/my-funding-list";
     }
 
 /*    @GetMapping("my-question")
@@ -152,7 +152,7 @@ public class MypageController {
         model.addAttribute("myFreedBoards", myFreeBoards.getContent());
         model.addAttribute("total", myFreeBoards.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myFreeBoards));
-        return "/error/unReady";
+        return "mypage/my-freeboard";
     }
 
     /* 내 후기 게시글 목록 */
@@ -168,7 +168,7 @@ public class MypageController {
         model.addAttribute("myReviews", myReviews.getContent());
         model.addAttribute("total", myReviews.getTotalElements());
         model.addAttribute("pageDTO", new PageDTO(myReviews));
-        return "/error/unReady";
+        return "mypage/my-review";
     }
 
     /* 내 자유 게시글 상세보기 */
@@ -211,7 +211,7 @@ public class MypageController {
         model.addAttribute("fundingPaymentDTOS", fundingPaymentDTOS.getContent());
         model.addAttribute("pageDTO", new PageDTO(fundingPaymentDTOS));
 
-        return "/error/unReady";
+        return "mypage/unReady";
     }
 
     /* 공양미 충전 */

@@ -1,15 +1,11 @@
 package com.app.simbongsa.service.rice;
 
-import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.RicePaymentDTO;
-import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.entity.rice.RicePayment;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.member.MemberRepository;
 import com.app.simbongsa.repository.rice.RicePaymentRepository;
 import com.app.simbongsa.search.admin.AdminPaymentSearch;
-import com.app.simbongsa.type.RequestType;
 import com.app.simbongsa.type.RicePaymentType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +17,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -114,10 +109,23 @@ public class RicePaymentServiceImpl implements RicePaymentService {
         memberRepository.updateChargeRiceByMemberId(memberDTO.getId(), ricePaymentUsed);
     }
 
+    /*회원 환전 가능 공양미(후원받은 공양미) 가져오기*/
     @Override
     public int findEnableRiceById(Long id) {
-        Integer rice = ricePaymentRepository.findEnableRiceById(id);
-        return rice == null ? 0 : rice;
+        Integer supportedRice = ricePaymentRepository.findSupportedRiceById(id);
+        Integer waitRice = ricePaymentRepository.findWaitRiceById(id);
+
+        log.info("supportedRice: " + supportedRice);
+        log.info("waitRice: " + waitRice);
+
+        int supportedRiceValue = supportedRice != null ? supportedRice : 0;
+        int waitRiceValue = waitRice != null ? waitRice : 0;
+
+        int rice = supportedRiceValue - waitRiceValue;
+        log.info("supportedRiceValue: " + supportedRiceValue);
+        log.info("waitRiceValue: " + waitRiceValue);
+        log.info("rice: " + rice);
+        return rice >= 0 ? rice : 0;
     }
 
 }
