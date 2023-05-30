@@ -260,7 +260,7 @@ function listText(list){
 
     reviewBoardDTOS.forEach((reviewBoardDTO, i) => {
         text += `
-             <a href="/community/free-detail/${reviewBoardDTO.id}">
+             <a href="/community/review-detail/${reviewBoardDTO.id}">
                 <li class="contant-list-container" style="margin-top: 10px">
                     <div>
                         <button class="contant-btn">
