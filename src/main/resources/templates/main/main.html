@@ -258,78 +258,78 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="main-content-section-wrapper sbs">
-                            <div class="main-content-list-title">
-                                <div>
-                                    <div class="main-content-list-icon-with-title">
-                                        <a class="main-content-list-link" title="인기 게시판" href="#">
-                                            <span>인기 펀딩</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <a class="view-total-list-button view-total-list-button-color" href="/ready">전체보기</a>
-                            </div>
-                            <div class="main-content-list-wrapper">
-                                <div class="container-component main-content-slider-banner-container">
-                                    <div class="main-content-slider-wrapper">
-                                        <div class="main-content-slider-banner-wrapper">
-                                            <div class="main-content-swiper-container">
-                                                <div class="swiper-wrapper">
+<!--                        <div class="main-content-section-wrapper sbs">-->
+<!--                            <div class="main-content-list-title">-->
+<!--                                <div>-->
+<!--                                    <div class="main-content-list-icon-with-title">-->
+<!--                                        <a class="main-content-list-link" title="인기 게시판" href="#">-->
+<!--                                            <span>인기 펀딩</span>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <a class="view-total-list-button view-total-list-button-color" href="/ready">전체보기</a>-->
+<!--                            </div>-->
+<!--                            <div class="main-content-list-wrapper">-->
+<!--                                <div class="container-component main-content-slider-banner-container">-->
+<!--                                    <div class="main-content-slider-wrapper">-->
+<!--                                        <div class="main-content-slider-banner-wrapper">-->
+<!--                                            <div class="main-content-swiper-container">-->
+<!--                                                <div class="swiper-wrapper">-->
 
-                                                    <!--인기 펀딩 순 -->
-                                                    <div class="swiper-slide swiper-slide-active" th:each="fundingListOrderByPopularList : ${fundingListOrderByPopularList}" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper funding">
-                                                                    <a href="/ready"></a>
-<!--                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">-->
-                                                                </div>
-<!--                                                                <div class="info-wrapper">-->
-<!--                                                                    <dl>-->
+<!--                                                    &lt;!&ndash;인기 펀딩 순 &ndash;&gt;-->
+<!--                                                    <div class="swiper-slide swiper-slide-active" th:each="fundingListOrderByPopularList : ${fundingListOrderByPopularList}" style= "width:220.8px; margin-right: 14px;">-->
+<!--                                                        <div></div>-->
+<!--                                                        <div class="volunteer-percentage-wrapper">-->
+<!--                                                            <div></div>-->
+<!--                                                            <div class="volunteer-link-wrapper">-->
+<!--                                                                <div class="volunteer-image-wrapper funding">-->
+<!--                                                                    <a href="/ready"></a>-->
+<!--&lt;!&ndash;                                                                    <img th:src="@{/file/display?fileName=${fundingListOrderByPopularList.fileDTOs.filePath}/${fundingListOrderByPopularList.fileDTOs.fileUuid}_${fundingListOrderByPopularList.fileDTOs.fileName})}">&ndash;&gt;-->
 <!--                                                                </div>-->
-                                                                <div class="info-wrapper fundpercent">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCategory}">펀딩 카테고리</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCreator.fundingCreatorNickname}">창작자이름</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="#">
-                                                                                <strong th:text="${fundingListOrderByPopularList.fundingTitle}">펀딩제목</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <div class="funding-status">
-                                                                        <span class="percentage" th:text="${fundingListOrderByPopularList.fundingPercent} +'% 달성'">1336% 달성</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+<!--&lt;!&ndash;                                                                <div class="info-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                    <dl>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                </div>&ndash;&gt;-->
+<!--                                                                <div class="info-wrapper fundpercent">-->
+<!--                                                                    <dl>-->
+<!--                                                                        <dd class="volunteer-sub-info">-->
+<!--                                                                            <span>-->
+<!--                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCategory}">펀딩 카테고리</a>-->
+<!--                                                                            </span>-->
+<!--                                                                            <span>-->
+<!--                                                                                <a href="#" th:text="${fundingListOrderByPopularList.fundingCreator.fundingCreatorNickname}">창작자이름</a>-->
+<!--                                                                            </span>-->
+<!--                                                                        </dd>-->
+<!--                                                                        <dt>-->
+<!--                                                                            <a href="#">-->
+<!--                                                                                <strong th:text="${fundingListOrderByPopularList.fundingTitle}">펀딩제목</strong>-->
+<!--                                                                            </a>-->
+<!--                                                                        </dt>-->
+<!--                                                                    </dl>-->
+<!--                                                                    <div class="funding-status">-->
+<!--                                                                        <span class="percentage" th:text="${fundingListOrderByPopularList.fundingPercent} +'% 달성'">1336% 달성</span>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="main-content-slider-nav-button-left">
-                                            <div class="arrow-left1-icon">
-                                                <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M32.8912 45.3014L12 23.913L32.8912 2.52471C33.5866 1.8251 34.7804 1.8251 35.4777 2.52471C36.1741 3.22333 36.1741 4.42368 35.4777 5.22224L17.1731 23.913L35.4777 42.7018C36.1741 43.4024 36.1741 44.6018 35.4777 45.4013C35.0788 45.8011 34.6819 46 34.1845 46C33.7855 45.9011 33.2881 45.7002 32.8912 45.3014Z"></path></svg>
-                                            </div>
-                                        </button>
-                                        <button class="main-content-slider-nav-button-right">
-                                            <div class="arrow-right1-icon">
-                                                <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9071 46C13.4118 46 12.9164 45.8001 12.6192 45.4003C11.9257 44.7007 11.9257 43.5014 12.6192 42.7019L30.8493 24.0125L12.5201 5.22317C11.8266 4.52357 11.8266 3.32425 12.5201 2.5247C13.2136 1.8251 14.3034 1.8251 15.096 2.5247L36 24.0125L15.195 45.4003C14.7988 45.8001 14.3034 46 13.9071 46Z"></path></svg>
-                                            </div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <button class="main-content-slider-nav-button-left">-->
+<!--                                            <div class="arrow-left1-icon">-->
+<!--                                                <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M32.8912 45.3014L12 23.913L32.8912 2.52471C33.5866 1.8251 34.7804 1.8251 35.4777 2.52471C36.1741 3.22333 36.1741 4.42368 35.4777 5.22224L17.1731 23.913L35.4777 42.7018C36.1741 43.4024 36.1741 44.6018 35.4777 45.4013C35.0788 45.8011 34.6819 46 34.1845 46C33.7855 45.9011 33.2881 45.7002 32.8912 45.3014Z"></path></svg>-->
+<!--                                            </div>-->
+<!--                                        </button>-->
+<!--                                        <button class="main-content-slider-nav-button-right">-->
+<!--                                            <div class="arrow-right1-icon">-->
+<!--                                                <svg viewBox="0 0 48 48"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9071 46C13.4118 46 12.9164 45.8001 12.6192 45.4003C11.9257 44.7007 11.9257 43.5014 12.6192 42.7019L30.8493 24.0125L12.5201 5.22317C11.8266 4.52357 11.8266 3.32425 12.5201 2.5247C13.2136 1.8251 14.3034 1.8251 15.096 2.5247L36 24.0125L15.195 45.4003C14.7988 45.8001 14.3034 46 13.9071 46Z"></path></svg>-->
+<!--                                            </div>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div class="main-bottom-banner"></div>
