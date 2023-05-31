@@ -2,7 +2,7 @@ let type = 'GN';
 
 let getList = function(callback) {
     $.ajax({
-        url: "http://openapi.seoul.go.kr:8088/7852734252746f6e3537597746496d/json/fcltOpenInfo_" + type + "/1/1000/",
+        url: "http://openapi.seoul.go.kr:8088/7a694f42506d796e3130347242526a72/json/fcltOpenInfo_" + type + "/1/1000/",
         type: "get",
         success: function(result) {
             if(callback) {
