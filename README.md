@@ -59,8 +59,8 @@
 - AWS 서버 배포 <a href="http://www.simbongsa.site/main">simbongsa</a>
 
 ### 퍼블리싱 작업(회원가입/로그인) - <a href="#" > 상세보기 - WIKI 이동</a>
- 1. 관리자페이지 <br>
- 2. 펀딩페이지 <br>
+ 1. 관리자 페이지 <br>
+ 2. 펀딩 페이지 <br>
 
 ### 백엔드 작업(관리자 페이지) - <a href="#" >상세보기 - WIKI 이동</a>
  1. 메인페이지<br>
