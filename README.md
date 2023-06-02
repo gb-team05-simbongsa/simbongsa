@@ -67,7 +67,7 @@
 - 프론트 업무 : 메인페이지, 서비스소개페이지, 복지센터
 - 백엔드 업무 : 회원가입, 로그인, 비밀번호찾기, 마이페이지
 
-### 프론트 진행 - <a href="https://github.com/coder-juyeon/simbongsa/wiki/front)" > 상세보기 - WIKI 이동</a>
+### 프론트 진행 - <a href="https://github.com/coder-juyeon/simbongsa/wiki/front" > 상세보기 - WIKI 이동</a>
 - 메인페이지 
 - 서비스소개페이지
 - 복지센터 
