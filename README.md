@@ -1,4 +1,4 @@
-# simbongsa |<a href="http://www.simbongsa.site/main"> JPA 프로젝트 : 봉사, 후원, 펀딩, 커뮤니티 종합 플랫폼 서비스(http://www.simbongsa.site/main)</a>
+# simbongsa |<a href="http://www.simbongsa.site/main/"> JPA 프로젝트 : 봉사, 후원, 펀딩, 커뮤니티 종합 플랫폼 서비스(http://www.simbongsa.site/main/)</a>
 
 ## 🖥️ 프로젝트 소개
 봉사활동에 참여하고자 하는 사람들에게 편리한 플랫폼을 제공하여, 다양한 봉사기회를 찾을 수 있도록 돕고 사회적 상호작용과 긍정적 영향을 증가시켜 사회적 가치 창출과 지역사회 발전에 도움을 줄 수 있다.
@@ -62,7 +62,7 @@
 - 프로젝트 팀장, 서비스 기획 및 전반적인 구성, 엔티티 설계
 - 퍼블리싱 업무 : 펀딩페이지, 관리자페이지
 - 백엔드 업무 : 메인페이지, 봉사페이지, 후원페이지
-- AWS 서버 배포 <a href="http://www.simbongsa.site/main">simbongsa</a>
+- AWS 서버 배포 <a href="http://www.simbongsa.site/main/">simbongsa</a>
 
 ### 퍼블리싱 작업(회원가입/로그인) - <a href="https://github.com/code-hyun/simbongsa/wiki/맡은기능-소개(퍼블리싱)" > 상세보기 - WIKI 이동</a>
  1. 관리자 페이지 <br>
