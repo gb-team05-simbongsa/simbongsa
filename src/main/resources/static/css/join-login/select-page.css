@@ -319,7 +319,7 @@ button {
         right: 0px;
         width: 50%;
         height: 100%;
-        background-image: url(https://tumblbug-assets.s3.ap-northeast-1.amazonaws.com/static_assets/login/bg_login_kakao.jpg);
+        background-image: url(../../image/natural5.jpg);
         background-size: cover;
         background-position: center center;
     }
@@ -331,7 +331,7 @@ button {
         right: 0px;
         width: 50%;
         height: 100%;
-        background-image: url(https://tumblbug-assets.s3.ap-northeast-1.amazonaws.com/static_assets/login/bg_signup_kakao.jpg);
+        background-image: url(../../image/natural5.jpg);
         background-size: cover;
         background-position: center center;
     }
