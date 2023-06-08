@@ -63,7 +63,7 @@
 - 백엔드 업무 : 관리자페이지, 복지센터 검색, 고객센터, 리뷰 게시판, 자유 게시판
 - AWS 서버 배포 <a href="http://www.simbongsa.site/main/">simbongsa</a>
 
-### 퍼블리싱 작업(회원가입/로그인) - <a href="https://github.com/code-hyun/simbongsa/wiki/맡은기능-소개(퍼블리싱)" > 상세보기 - WIKI 이동</a>
+### 퍼블리싱 작업(회원가입/로그인) - <a href="https://github.com/dev-hyunjin/simbongsa/wiki/맡은-기능-소개-(퍼블리싱)" > 상세보기 - WIKI 이동</a>
  1. 회원가입 페이지 <br>
  2. 로그인 페이지 <br>
  3. 마이페이지 <br>
