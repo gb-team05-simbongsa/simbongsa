@@ -68,7 +68,7 @@
  2. 로그인 페이지 <br>
  3. 마이페이지 <br>
 
-### 백엔드 작업(관리자 페이지) - <a href="https://github.com/code-hyun/simbongsa/wiki/맡은기능-소개(백엔드)" >상세보기 - WIKI 이동</a>
+### 백엔드 작업(관리자 페이지) - <a href="https://github.com/dev-hyunjin/simbongsa/wiki/맡은-기능-소개-(백엔드)" >상세보기 - WIKI 이동</a>
  1. 관리자 페이지<br>
     1) 봉사 목록 조회<br>
     2) 후원 목록 조회<br>
