@@ -105,11 +105,15 @@
                                 봉사 활동
                                 <a class="total-funding-link" href="/volunteer-work/work-list" title="전체보기">전체보기</a>
                             </div>
+
+                            <!-- 봉사활동 목록 -->
                             <div class="main-first-list-wrapper">
                                 <div class="main-first-list-layout">
                                     <!--봉사추천  8 개 들어가는 부분-->
                                 </div>
                             </div>
+                            <!--봉사활동 목록 end-->
+
                         </div>
                     </div>
 
@@ -121,58 +125,24 @@
                                     23.04.23 15:13
                                     기준
                                 </span>
-                                <!-- <a class="total-funding-link" href="#" title="전체보기">전체보기</a> -->
                             </div>
                         </div>
+
+
+                        <!--심청이 랭킹-->
                         <div class="main-popular-list-wrapper">
                             <div class="main-popular-list-layout list-layout">
-
-                                <!-- 유저 랭킹 -->
-                                <div class="list-wrapper">
-                                    <div></div>
-                                    <div class="volunteer-percentage-wrapper">
-                                        <div></div>
-                                        <div class="popular-percentage-layout" th:each="memberRankList, state : ${memberRankList}">
-                                            <span class="rank-layout-top" th:text="${state.count}">1</span>
-                                            <div class="info-wrapper" style="margin-left: 11px; width: calc(100% - 120px);">
-                                                <dl>
-                                                    <dd class="volunteer-sub-info">
-                                                        <div class="memberRank" style= "
-                                                                        background-size: 20px;
-                                                                        width: 20px;
-                                                                        height: 20px;
-                                                                        display: inline-block;">
-                                                        </div>
-                                                        <span>
-                                                            <a href="#" th:text="${memberRankList.memberRank}" class="rank" style="font-size: 12px">3티어</a>
-                                                        </span>
-                                                    </dd>
-                                                    <dt>
-                                                        <a href="#">
-                                                            <strong th:text="${memberRankList.memberName}">황자현</strong>
-                                                        </a>
-                                                    </dt>
-                                                </dl>
-                                                <div class="funding-status" style="margin-left: 2px;">
-                                                    <span class="percentage">누적 </span><span class="percentage" th:text="${memberRankList.memberVolunteerTime}">봉사 54시간 달성</span><span class="percentage">시간 달성</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                                <!-- 심청이 랭킹 8명 들어가는 부분-->
                             </div>
                         </div>
-                        <!-- <a class="view-total-funding-button" href="#" title="펀딩 목록 전체보기">펀딩 목록 전체보기</a> -->
+                        <!--심청이 랭킹 end-->
+
                     </div>
                 </div>
                 <div class="main-content-wrap">
                     <div class="content-banner-wrap">
                         <div class="picture-data">
                             <picture>
-                                <!-- <source media="(max-width: 767px)" srcset="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/008/original/7c79ddf9-2d76-4b68-b314-a1bce150ce6f.png?q=50 1x, https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/008/original/7c79ddf9-2d76-4b68-b314-a1bce150ce6f.png?q=50 2x">
-                                <source media="(min-width: 768px)" srcset="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/008/original/7c79ddf9-2d76-4b68-b314-a1bce150ce6f.png?q=50"> -->
                                 <img class="m-img" src="/image/main/banner.png">
                                 <img class="pc-img" src="/image/main/banner.png">
                             </picture>
@@ -188,60 +158,20 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a class="view-total-list-button view-total-list-button-color" href="/ready">전체보기</a>
+                                <a class="view-total-list-button view-total-list-button-color" href="/community/free-board/new">전체보기</a>
                             </div>
                             <div class="main-content-list-wrapper">
                                 <div class="container-component main-content-slider-banner-container">
                                     <div class="main-content-slider-wrapper">
                                         <div class="main-content-slider-banner-wrapper">
+
+                                            <!--인기 게시판 목록-->
                                             <div class="main-content-swiper-container">
                                                 <div class="swiper-wrapper">
-
-
-                                                    <div class="swiper-slide swiper-slide-active" th:each="freeBoardList : ${freeBoardList}" style= "width:220.8px; margin-right: 14px;">
-                                                        <div></div>
-                                                        <div class="volunteer-percentage-wrapper">
-                                                            <div></div>
-                                                            <div class="volunteer-link-wrapper">
-                                                                <div class="volunteer-image-wrapper freeBoardImg">
-                                                                    <a th:href="@{/community/free-detail/{id}(id=${freeBoardList.id})}"></a>
-<!--                                                                    <a th:href="@{/community/free-board/${freeBoardList.id}}"></a>-->
-                                                                    <!-- <div class="like-button-wrapper">
-                                                                        <button  class="like-button" type="button">
-                                                                            <span>좋아요</span>
-                                                                        </button>
-                                                                    </div> -->
-                                                                </div>
-                                                                <div class="info-wrapper">
-                                                                    <dl>
-                                                                        <dd class="volunteer-sub-info">
-                                                                            <span>
-                                                                                <a href="#">댓글수</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#" th:text="${freeBoardList.replyCount}">150</a>
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">자유게시판</a>
-                                                                            </span>
-                                                                        </dd>
-                                                                        <dt>
-                                                                            <a href="">
-                                                                                <strong th:text="${freeBoardList.boardTitle}">게시판제목 1</strong>
-                                                                            </a>
-                                                                        </dt>
-                                                                    </dl>
-                                                                    <!-- <div class="funding-status">
-                                                                        <span class="percentage">150</span>
-                                                                    </div> -->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-
+                                                    <!--인기 게시판 8개 목록 나오는 부분-->
                                                 </div>
+                                             <!--인기 게시판 목록 end-->
+
                                             </div>
                                         </div>
                                         <button class="main-content-slider-nav-button-left">
@@ -258,6 +188,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <!--********* 인기 펀딩 ********* -->
 <!--                        <div class="main-content-section-wrapper sbs">-->
 <!--                            <div class="main-content-list-title">-->
 <!--                                <div>-->
@@ -330,6 +263,8 @@
 <!--                                </div>-->
 <!--                            </div>-->
 <!--                        </div>-->
+                        <!--****** end 인기펀딩 ****** -->
+
                     </div>
                 </div>
                 <div class="main-bottom-banner"></div>
@@ -356,128 +291,28 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/banner.js"></script>
-<script src="/js/main/main.js"></script>
+<script src="/js/main/event.js"></script>
 <script src="/js/main/header.js"></script>
-<script type="text/javascript">
-    $(".image-wrapper a").each((i,e) => {
-        console.log($(e));
-        $(e).eq(i).css('background-image', 'url("https://tumblbug-upi.imgix.net/default_avatar.png?auto=format%2Ccompress&ch=Save-Data&facepad=2.0&fit=facearea&h=250&mask=ellipse&w=250&s=80a07af0ffbe653137dd423ed1d5651c")');
-    } )
-</script>
 <script th:inline="javascript">
-    FileList.prototype.forEach = Array.prototype.forEach;
-    let fileDTO =[[${fileDTO}]];
-    // let volunteerFile = [[${volunteerFileDTO}]];
-    let volunteerList = [[${volunteerList}]];
-    let freeboardFile = [[${freeBoardFileDTO}]];
-    let fundingListOrderByPopularList = [[${fundingListOrderByPopularList}]];
-    console.log(fundingListOrderByPopularList);
-
+    /* model 객체로 받아온 파라미터 봉사, 멤버, 게시판 */
+    let volunteerList = [[${volunteerList}]]; // 봉사리스트
+    let memberRankList = [[${memberRankList}]]; // 멤버 랭크 리스트
+    let freeBoardList = [[${freeBoardList}]]; // 자유게시판 리스트
 </script>
-<script th:inline="javascript">
-
-    const $volunteerAppend = $('.main-first-list-layout');
-
-/* 이후 타임리프로 통일 할 예정*/
-    volunteerList.forEach(volunteer => {
-        let text;
-        console.log("옴?");
-        text = `
-    <div class="list-wrapper">
-         <div></div>
-           <div class="volunteer-percentage-wrapper">
-            <div></div>
-            <div class="volunteer-link-wrapper">
-             <div class="volunteer-image-wrapper volunteerImg">
-             <a href="/volunteer-work/work-detail/${volunteer.id}">
-                <img class="fundingImg" src="/file/display?fileName=${volunteer.fileDTO.filePath}">
-            </a>
-            </div>
-            <div class="info-wrapper" >
-            <dl>
-                <dd class="volunteer-sub-info">
-                    <span>
-                        <a href="/volunteer-work/work-detail/${volunteer.id}">${volunteer.volunteerWorkCategory}</a>
-                    </span>
-                    <span>
-                        <a href="/volunteer-work/work-detail/${volunteer.id}" >${volunteer.volunteerWorkPlace}</a>
-                    </span>
-                </dd>
-                <dt>
-                    <a href="/volunteer-work/work-detail/${volunteer.id}">
-                        <strong>${volunteer.volunteerWorkTitle}</strong>
-                    </a>
-                </dt>
-            </dl>
-        </div>
-        </div>
-    </div>
-</div>
-`;
-        $volunteerAppend.append(text);
-    });
-
-    // volunteerFile.forEach((fileDTO, i) => {
-    //     let text = `
-    //        <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}/${fileDTO.fileUuid}_${fileDTO.fileName}">
-    //     `;
-    //     $(".volunteerImg a").eq(i).html(text);
-    // });
-
-    fileDTO.forEach((fileDTO, i) =>{
-        let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}.jpg">
-        `;
-        $(".funding a").eq(i).html(text);
-    })
-    freeboardFile.forEach((fileDTO, i) =>{
-        let text = `
-           <img class="fundingImg" src="/file/display?fileName=${fileDTO.filePath}">
-        `;
-        $(".freeBoardImg a").eq(i).html(text);
-    })
-
-
-    const $rank = $('.rank');
-    const $image = $('.memberRank');
-
-    $(document).ready(function () {
-        $rank.each(function (index) {
-            const text = $(this).text();
-            if (text === "동냥1티어") {
-                $image.eq(index).css("background-image", "url(/image/main/bronze1.png)");
-            } else if (text === "동냥2티어") {
-                $image.eq(index).css("background-image", "url(/image/main/bronze2.png)");
-            } else if (text === "동냥3티어") {
-                $image.eq(index).css("background-image", "url(/image/main/bronze3.png)");
-            } else if (text === "은냥1티어") {
-                $image.eq(index).css("background-image", "url(/image/main/silver1.png)");
-            } else if (text === "은냥2티어") {
-                $image.eq(index).css("background-image", "url(/image/main/silver2.png)");
-            } else if (text === "은냥3티어") {
-                $image.eq(index).css("background-image", "url(/image/main/silver3.png)");
-            } else if (text === "금냥1티어") {
-                $image.eq(index).css("background-image", "url(/image/main/gold1.png)");
-            } else if (text === "금냥2티어") {
-                $image.eq(index).css("background-image", "url(/image/main/gold2.png)");
-            } else if (text === "금냥3티어") {
-                $image.eq(index).css("background-image", "url(/image/main/gold3.png)");
-            }
-        });
-    });
-
-</script>
+<script src="/js/main/main.js"></script>
 <script>
-
+    // 시계 출력 대상 요소
     var Target = document.getElementById("clock");
+    // am/pm 출력 대상 요소
     var Target_apm = document.getElementById("apm");
 
     function clock() {
-        var time = new Date();
-        var hours = time.getHours();
-        var minutes = time.getMinutes();
-        // var seconds = time.getSeconds();
-        var AmPm ="AM";
+        var time = new Date(); // 현재시간
+        var hours = time.getHours(); // 시간 추출
+        var minutes = time.getMinutes(); // 분 추출
+        // var seconds = time.getSeconds(); // 초 추출
+        var AmPm ="AM"; // 기본값 AM
+        // 12시 넘으면 pm으로 변경
         if(hours > 12){
             var AmPm ="PM";
             hours %= 12;
@@ -489,6 +324,7 @@
         Target_apm.innerText = `${AmPm}`;
 
     }
+    // 페이지 로드 시 시계 표시
     clock();
     setInterval(clock, 1000); // 1초마다 실행
 </script>
