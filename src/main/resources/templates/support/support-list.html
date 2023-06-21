@@ -22,19 +22,10 @@
 
     <!-- 전체 div -->
     <div class="main">
-        <!-- 배너 -->
-        <!-- <div class="board-benner">
-            <div class="benner-cover"></div>
-        </div> -->
 
         <!-- 중간 메인 -->
         <div>
             <div class="main-container">
-                <!-- <section class="row">
-                    <div class="row-container">
-                        <h1 class="row-text">심봉사와 함께 봉사할 심청을 찾습니다.</h1>
-                    </div>
-                </section> -->
                 <div>
 
                 </div>
@@ -44,16 +35,16 @@
                         <h4 class="service-header">
                             진행 중인 후원 정보
                         </h4>
-<!--                            <form name="goForm" action="/support/support-list" style="height: 34px;">-->
-<!--                                <input name="keyword" type="hidden" value="" id="inputOp">-->
-<!--                                <select class="select-region" id="selectOp">-->
-<!--                                    <option value="">전체보기</option>-->
-<!--                                    <option value="후원 많은순">후원 많은순</option>-->
-<!--                                    <option value="후원 적은순">후원 적은순</option>-->
-<!--                                    <option value="최신순">최신순</option>-->
-<!--                                </select>-->
-<!--                            </form>-->
-                            <!-- <button type="button" class="button">지원</button> -->
+                            <form name="goForm" action="/support/support-list" style="height: 34px;">
+                                <input name="keyword" type="hidden" value="" id="inputOp">
+                                <select class="select-region" id="selectOp">
+                                    <option value="">선택</option>
+                                    <option value="참여 많은순">참여 많은순</option>
+                                    <option value="참여 적은순">참여 적은순</option>
+                                    <option value="최신순">최신순</option>
+                                </select>
+                            </form>
+<!--                             <button type="button" class="button">지원</button>-->
                         </div>
                     </div>
                     <!--  -->
@@ -114,8 +105,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
-<script th:inline="javascript">
-</script>
 <script src="/js/support/support-list.js"></script>
-<!--<script src="/js/customerCenter/inquiry-write.js"></script>-->
 </html>

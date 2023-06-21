@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface SupportService {
+    // 후원 참여 내역
     public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id);
+    // 후원 총 참여 수
     public Long getAllSupportAttend_QueryDSL(Long id);
     //    후원 요청 작성
     public void saveSupport(SupportDTO supportDTO, Long id);
@@ -25,14 +27,6 @@ public interface SupportService {
 //    내 후원 조회
     public Page<SupportDTO> getSupportById(Integer page, Long id);
 
-//    후원명단 조회
-//    public Page<SupportDTO> getSupportListWithPaging(Long id);
-//    public List<SupportDTO> getSupportList(Long id);
-
-//    공양미 후원 update
-    public void updateSupportGongyangmi(SupportDTO supportDTO);
-
-  
     default SupportDTO toSupportDTO(Support support){
         return SupportDTO.builder()
                 .id(support.getId())

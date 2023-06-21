@@ -1,13 +1,11 @@
 package com.app.simbongsa.repository.support;
 
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.provider.UserDetail;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -66,13 +64,6 @@ public class SupportQueryDslImpl implements SupportQueryDsl {
         return allSupportAttend;
     }
 
-//    @Override
-//    public List<Support> findByIdList(Long id) {
-//        query.select(support)
-//                .from(support)
-//                .where(support.id.eq(id))
-//                .fetch();
-//    }
 
     @Override
     public void updateSupportRequestCash(Support supportModify) {

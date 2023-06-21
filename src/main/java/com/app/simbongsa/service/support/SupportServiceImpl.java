@@ -26,29 +26,21 @@ public class SupportServiceImpl implements SupportService {
     private final SupportRepository supportRepository;
     private final MemberRepository memberRepository;
     private final SupportRequestRepository supportRequestRepository;
-//    @Override
-//    public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id) {
-//        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5),id);
-//        List<SupportDTO> supportDTOS = getAttendMember.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
-//        return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
-//    }
     @Override
     public Page<SupportDTO> getAllSupportAttendWithMember_QueryDSL(Integer page, Long id) {
         Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5), id);
         List<SupportDTO> supportDTOS = getAttendMember.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
         return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
     }
-
+    // 후원 총 참여 수
     @Override
     public Long getAllSupportAttend_QueryDSL(Long id) {
-
         return supportRepository.findAllSupportAttend_QueryDSL(id);
     }
 
     @Override
     public void saveSupport(SupportDTO supportDTO, Long id) {
         supportRepository.save(toSupportEntity(supportDTO));
-//        memberRepository.updateChargeRiceByMemberId(id, -supportDTO.getSupportPrice());
     }
 
     @Override
@@ -63,19 +55,6 @@ public class SupportServiceImpl implements SupportService {
         List<SupportDTO> supportDTOS = foundSupport.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
         return new PageImpl<>(supportDTOS, foundSupport.getPageable(), foundSupport.getTotalElements());
     }
-
-    @Override
-    public void updateSupportGongyangmi(SupportDTO supportDTO) {
-        supportRepository.updateSupportRequestCash(toSupportEntity(supportDTO));
-    }
-
-
-//    @Override
-//    public Page<SupportDTO> getSupportListWithPaging(Integer page, Long id) {
-//        Page<Support> getAttendMember = supportRepository.findAllSupportAttendWithMember_QueryDSL(PageRequest.of(page,5), id);
-//        List<SupportDTO> supportDTOS = getAttendMember.getContent().stream().map(this::toSupportDTO).collect(Collectors.toList());
-//        return new PageImpl<>(supportDTOS, getAttendMember.getPageable(), getAttendMember.getTotalElements());
-//    }
 
 
 }

@@ -1,22 +1,17 @@
 //package com.app.simbongsa.repository.supportRequest;
 //
-//import com.app.simbongsa.provider.UserDetail;
-//import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 //import com.app.simbongsa.entity.support.SupportRequest;
 //import com.app.simbongsa.repository.support.SupportRequestRepository;
 //import com.app.simbongsa.repository.member.MemberRepository;
-//import com.app.simbongsa.type.RequestType;
 //import lombok.extern.slf4j.Slf4j;
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.context.SpringBootTest;
 //import org.springframework.data.domain.Page;
 //import org.springframework.data.domain.PageRequest;
-//import org.springframework.data.domain.Slice;
 //import org.springframework.test.annotation.Rollback;
 //import org.springframework.transaction.annotation.Transactional;
 //
-//import java.util.Arrays;
 //import java.util.List;
 //
 //@SpringBootTest
@@ -29,7 +24,7 @@
 //
 //    @Autowired
 //    private MemberRepository memberRepository;
-//
+
 //    /* 후원요청목록 save */
 //    @Test
 //    public void saveTest(){
@@ -131,7 +126,7 @@
 //    @Test
 //    public void findAllWithPagingSearchTest(){
 //        PageRequest pageRequest = PageRequest.of(0, 5);
-//        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch("후원 많은순", pageRequest);
+//        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch_QueryDSL("참여 적은순", pageRequest);
 //        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 //
 //        List<SupportRequest> supportRequestList = supportRequests.getContent();

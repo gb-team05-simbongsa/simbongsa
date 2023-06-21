@@ -13,7 +13,6 @@ import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public interface SupportRequestService {
 
@@ -30,10 +29,8 @@ public interface SupportRequestService {
     public void updateWaitToAccessOrDenied(List<Long> ids, RequestType requestType);
 
 //    후원 목록 전체 조회(후원 목록 페이지)
-    public Page<SupportRequestDTO> getSupportRequestAllWithPaging(Integer page, String keyword);
+    public Page<SupportRequestDTO> getSupportRequestAllWithPaging_QueryDSL(Integer page, String keyword);
 
-//    후원 상세페이지
-//    public SupportRequestDTO getByIdWithSupportRequestInfo_QueryDsl(Long id);
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
     Page<SupportRequestDTO> getMySupportRequest(Integer page, MemberDTO memberDTO);
@@ -44,7 +41,7 @@ public interface SupportRequestService {
 //    후원 요청 작성
   public void saveSupportRequest(SupportRequestDTO supportRequestDTO);
 
-// ==== 후원 요청 페이지 - 후원요청 사항 등록 ====
+//  후원 요청 페이지 - 후원요청 사항 등록
   public void register(SupportRequestDTO supportRequestDTO);
 
   public SupportRequest getCurrentSequence();
