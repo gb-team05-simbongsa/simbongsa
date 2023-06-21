@@ -30,7 +30,6 @@ import java.util.stream.Stream;
 public class MainController {
     private final VolunteerWorkService volunteerWorkService;
     private final MemberService memberService;
-    private final FundingService fundingService;
     private final FreeBoardService freeBoardService;
     private final HttpSession session;
 
@@ -54,7 +53,6 @@ public class MainController {
 
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
         List<MemberDTO> memberRankList = memberService.getMemberRankingList();
-//        List<FundingDTO> fundingListOrderByPopularList = fundingService.getAllPopularFundingList();
         List<FreeBoardDTO> freeBoardList = freeBoardService.getAllWithPopularFreeBoard();
 
 
@@ -74,11 +72,8 @@ public class MainController {
                 .collect(Collectors.toList());
         freeBoardFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
-
 //        model.addAttribute("fileDTO", fileDTO);
 //        model.addAttribute("fundingListOrderByPopularList",fundingListOrderByPopularList);
-//        model.addAttribute("volunteerFileDTO", volunteerFileDTO);
-
 
         model.addAttribute("volunteerList", volunteerList);
         model.addAttribute("memberRankList", memberRankList);
