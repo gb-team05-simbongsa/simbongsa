@@ -18,8 +18,6 @@ public interface SupportQueryDsl {
     /* 총 후원 참여 내역*/
     public Long findAllSupportAttend_QueryDSL(Long id);
 
-//    후원명단 가져오기
-//    public Page<Support> findByIdList(Long id);
     // 공양미 후원
     public void updateSupportRequestCash(Support supportModify);
 

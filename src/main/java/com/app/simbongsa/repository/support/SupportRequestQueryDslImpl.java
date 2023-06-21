@@ -3,16 +3,22 @@ package com.app.simbongsa.repository.support;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.member.Member;
+import com.app.simbongsa.entity.support.QSupport;
+import com.app.simbongsa.entity.support.QSupportRequest;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
 import com.app.simbongsa.entity.support.SupportRequest;
 import com.app.simbongsa.type.RequestType;
+import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -144,34 +150,32 @@ public class SupportRequestQueryDslImpl implements SupportRequestQueryDsl {
     public Page<SupportRequest> findAllWithPagingSearch(String keyword , Pageable pageable) {
         OrderSpecifier result;
 
-//        if(keyword.equals("후원 많은순")){
-//            result = supportRequest.supports.any().supportPrice.sum().desc();
-////            result = supportRequest.supports.any().supportPrice.sum().desc();
-////            result = support.supportPrice.sum().desc();
-//
-//        }else if(keyword.equals("후원 적은순")){
-//
-//            result = supportRequest.supports.any().supportPrice.sum().asc();
-////            result = supportRequest.supports.any().supportPrice.sum().asc();
-////            result = support.supportPrice.sum().asc();
-//        }else  {
-//            result = supportRequest.id.desc();
-//        }
+        if(keyword.equals("참여 많은순")){
+            result = supportRequest.supports.size().desc();
+
+        }else if(keyword.equals("참여 적은순")){
+
+            result = supportRequest.supports.size().asc();
+        }else  {
+            result = supportRequest.id.desc();
+        }
+
         List<SupportRequest> foundSupportRequest = query.select(supportRequest)
                 .from(supportRequest)
-                .leftJoin(supportRequest.supports, support)
+                .join(supportRequest.supports, support)
                 .fetchJoin()
                 .where(supportRequest.supportRequestStatus.eq(RequestType.승인))
-//                .groupBy(supportRequest.id)
-                .orderBy(supportRequest.id.desc())
+                .orderBy(result)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+
 
         Long count = query.select(supportRequest.count())
                 .from(supportRequest)
                 .where(supportRequest.supportRequestStatus.eq(RequestType.승인))
                 .fetchOne();
+
 
         return new PageImpl<>(foundSupportRequest, pageable, count);
     }

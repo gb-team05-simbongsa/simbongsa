@@ -39,7 +39,7 @@ public class SupportController {
         return supportService.getAllSupportAttendWithMember_QueryDSL(page, id);
     }
 
-//    참여내역 페이징 처리
+    /*============== 참여내역 페이징 처리 ==============*/
     @GetMapping("support-detail/{supportRequestId}")
     public String supportDetail(Integer page, Model model, HttpSession httpSession, @PathVariable("supportRequestId") Long supportRequestId){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
@@ -97,19 +97,19 @@ public class SupportController {
     }
 
 
-
-//    후원 목록페이지 페이징처리
+    /*============== 후원 목록페이지 페이징처리 ==============*/
     @GetMapping("support-list")
     public String supportList(Integer page, Model model, String keyword){
-        log.info(keyword);
         if(keyword == null){
             keyword = "";
         }
-
+        // 페이지가 null인 경우 0으로 설정하고, 아닌 경우에는 1을 뺀 값을 사용
         page = page == null ? 0 : page -1;
 
+        // 지정된 페이지와 키워드를 사용하여 SupportRequestDTO의 paging 가져옴
         Page<SupportRequestDTO> supportRequestDTOs = supportRequestService.getSupportRequestAllWithPaging(page, keyword);
 
+        // 모델에 SupportRequestDTO 목록과 페이지 정보를 추가
         model.addAttribute("supportRequestDTOs", supportRequestDTOs);
         model.addAttribute("pageDTO", new PageDTO(supportRequestDTOs));
         return "support/support-list";
