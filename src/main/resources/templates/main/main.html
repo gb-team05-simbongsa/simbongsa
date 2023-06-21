@@ -117,7 +117,7 @@
                         </div>
                     </div>
 
-                    <div class="main-popular-section" style="zoom:1.1">
+                    <div class="main-popular-section">
                         <div class="main-popular-title-wrapper">
                             <div class="popular-list-title">
                                 <a href="#">심청이 랭킹</a>
@@ -317,12 +317,10 @@
             var AmPm ="PM";
             hours %= 12;
         }
-
         Target.innerText =
             `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
 
         Target_apm.innerText = `${AmPm}`;
-
     }
     // 페이지 로드 시 시계 표시
     clock();
