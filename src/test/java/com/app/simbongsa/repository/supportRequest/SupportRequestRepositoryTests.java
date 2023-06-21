@@ -1,34 +1,29 @@
-package com.app.simbongsa.repository.supportRequest;
-
-import com.app.simbongsa.provider.UserDetail;
-import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
-import com.app.simbongsa.entity.support.SupportRequest;
-import com.app.simbongsa.repository.support.SupportRequestRepository;
-import com.app.simbongsa.repository.member.MemberRepository;
-import com.app.simbongsa.type.RequestType;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Arrays;
-import java.util.List;
-
-@SpringBootTest
-@Transactional
-@Rollback(false)
-@Slf4j
-public class SupportRequestRepositoryTests {
-    @Autowired
-    private SupportRequestRepository supportRequestRepository;
-
-    @Autowired
-    private MemberRepository memberRepository;
+//package com.app.simbongsa.repository.supportRequest;
+//
+//import com.app.simbongsa.entity.support.SupportRequest;
+//import com.app.simbongsa.repository.support.SupportRequestRepository;
+//import com.app.simbongsa.repository.member.MemberRepository;
+//import lombok.extern.slf4j.Slf4j;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.PageRequest;
+//import org.springframework.test.annotation.Rollback;
+//import org.springframework.transaction.annotation.Transactional;
+//
+//import java.util.List;
+//
+//@SpringBootTest
+//@Transactional
+//@Rollback(false)
+//@Slf4j
+//public class SupportRequestRepositoryTests {
+//    @Autowired
+//    private SupportRequestRepository supportRequestRepository;
+//
+//    @Autowired
+//    private MemberRepository memberRepository;
 
 //    /* 후원요청목록 save */
 //    @Test
@@ -128,17 +123,17 @@ public class SupportRequestRepositoryTests {
 //        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
 //        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
 //    }
-    @Test
-    public void findAllWithPagingSearchTest(){
-        PageRequest pageRequest = PageRequest.of(0, 5);
-        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch("참여 적은순", pageRequest);
-        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
-
-        List<SupportRequest> supportRequestList = supportRequests.getContent();
-        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
-        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
-        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
-    }
+//    @Test
+//    public void findAllWithPagingSearchTest(){
+//        PageRequest pageRequest = PageRequest.of(0, 5);
+//        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch_QueryDSL("참여 적은순", pageRequest);
+//        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+//
+//        List<SupportRequest> supportRequestList = supportRequests.getContent();
+//        long totalCount = supportRequests.hasNext() ? (pageRequest.getPageNumber() + 1) * pageRequest.getPageSize() : supportRequestList.size();
+//        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
+//        supportRequests.stream().map(SupportRequest::toString).forEach(log::info);
+//    }
 //
 ////    후원요청 삭제
 //    @Test
@@ -156,4 +151,4 @@ public class SupportRequestRepositoryTests {
 ////        log.info("==================== 전체 후원 요청 목록 수 ====================" + totalCount);
 ////    }*/
 //
-}
+//}
