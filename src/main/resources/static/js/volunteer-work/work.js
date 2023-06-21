@@ -2,17 +2,15 @@ const $div = $('.real_content');
 let page = 0;
 let keyword = '';
 
+// 지역별 선택 select 박스 변화 시 search-form submit
 $(document).ready(function() {
     $('#location-select').change(function() {
         $('#search-form').submit();
     });
 });
-
-
-console.log(volunteerWorkDTOS);
-
+// volunteerWorkDTOS 배열을 순회하면서 각 요소에 대해 코드 블록을 실행
 volunteerWorkDTOS.forEach((volunteerWorkDTOS, i) => {
-    let fileDTO = volunteerWorkDTOS.fileDTO;
+        let fileDTO = volunteerWorkDTOS.fileDTO;
         let text='';
         text += `
                  <div class="first_content">
@@ -23,20 +21,18 @@ volunteerWorkDTOS.forEach((volunteerWorkDTOS, i) => {
                                     <div class="project_card_img">
                                         <div class="image_wrapper">
                                             <a href="/volunteer-work/work-detail/${volunteerWorkDTOS.id}">
-                       `;
+                           `;
 
-        if(fileDTO == null || fileDTO == undefined) {
-            text += `
+                        if(fileDTO == null || fileDTO == undefined) {
+                            text += `
                                     <img style=" width: 238px; height: 238px;" src=""> `;
 
-        } else {
+                             } else {
+                                text += `<img src="/file/display?fileName=${fileDTO.filePath}" style=" width: 238px; height: 238px;">`;
+                              }
+                                text +=  `
 
-            text += `<img src="/file/display?fileName=${fileDTO.filePath}" style=" width: 238px; height: 238px;">`;
-        }
-
-        text +=  `
-
-                                                </a>
+                                        </a>
                                             <div class="like">
                                                 <button class="like_button">
                                                     <!-- <span>좋아요</span> -->
@@ -75,6 +71,6 @@ volunteerWorkDTOS.forEach((volunteerWorkDTOS, i) => {
                                 </div>
                             </div>
                         </div>
-            `;
-    $div.append(text);
-    });
+                   `;
+                $div.append(text);
+            });
