@@ -1433,7 +1433,7 @@ b, strong {
         max-width: 1160px;
     }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1080px) {
     .main-top-section{
         display: none;
         max-width: 314px;
@@ -1441,3 +1441,4 @@ b, strong {
         padding: 0px;
     }
 }
+

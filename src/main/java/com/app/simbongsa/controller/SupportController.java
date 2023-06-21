@@ -115,24 +115,23 @@ public class SupportController {
         return "support/support-list";
     }
 
+    /*============== 후원 성공 시 이동 페이지 ==============*/
     @GetMapping("support-success")
     public String supportSuccess(){
 
         return "support/support-success";
     }
-    @GetMapping("support-write")
-    public void goToWriteForm(SupportRequestDTO supportRequestDTO){
-    }
+
+    /*============== 후원 요청 페이지 ==============*/
     @PostMapping("support-write")
     @ResponseBody
     public void supportWrite(@RequestBody SupportRequestDTO supportRequestDTO, HttpSession httpSession){
         MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
         supportRequestDTO.setMemberDTO(memberDTO);
-//        Long memberId = userDetail.getMember().getId();
-        Long memberId = memberDTO.getId();
-        log.info("========================" + memberId.toString() + "=============================");
         supportRequestService.register(supportRequestDTO);
-//        return new RedirectView("support-list");
+    }
+    @GetMapping("support-write")
+    public void goToWriteForm(){
     }
 
 }

@@ -1,18 +1,13 @@
 package com.app.simbongsa.service.support;
 
 import com.app.simbongsa.domain.*;
-import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
-import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
-import com.app.simbongsa.summernote.SupportRequestFileDTO;
-import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 
@@ -49,7 +44,9 @@ public interface SupportRequestService {
 //    후원 요청 작성
   public void saveSupportRequest(SupportRequestDTO supportRequestDTO);
 
+// ==== 후원 요청 페이지 - 후원요청 사항 등록 ====
   public void register(SupportRequestDTO supportRequestDTO);
+
   public SupportRequest getCurrentSequence();
 
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {
