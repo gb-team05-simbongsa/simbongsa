@@ -80,7 +80,7 @@ public class CommunityController {
 
     /*자유게시판 작성하기*/
     @GetMapping("free-create")
-    public String goToFreeCreate() {return "/community/free-create.html";}
+    public String goToFreeCreate() {return "community/free-create";}
 
     @PostMapping("free-create")
     @ResponseBody
