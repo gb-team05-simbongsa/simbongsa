@@ -73,12 +73,6 @@ public class MemberController {
         return "join-login/change-password";
     }
 
-    /* 비밀번호 재설정 페이지이동 */
-//    @GetMapping("change-password")
-//    public String changePassword(@RequestParam("memberEmail") String memberEmail, String randomKey) {
-//        return "/join-login/change-password";
-//    }
-
     /* 비밀번호 변경하기 */
     @GetMapping("change-password")
     @ResponseBody
@@ -96,45 +90,6 @@ public class MemberController {
     /* 로그아웃 */
     @GetMapping("logout")
     public void goToLogout() {;}
-
-    /* 카카오 회원가입 */
-    @GetMapping("kakao")
-    public RedirectView kakaoJoin(String code, RedirectAttributes redirectAttributes) throws Exception {
-        String token = memberService.getKaKaoAccessToken(code, "join");
-        MemberDTO kakaoInfo = memberService.getKakaoInfo(token);
-
-        kakaoInfo.setMemberJoinType(MemberJoinType.카카오);
-
-        MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
-
-        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        if (memberDTO == null/* || memberDTO.getMemberJoinType() != MemberJoinType.카카오*/) {
-            redirectAttributes.addFlashAttribute("kakaoInfo", kakaoInfo.getMemberEmail());
-            return new RedirectView("/member/join");
-        }
-
-        return new RedirectView("/member/join-select?join=false");
-    }
-
-    /* 카카오 로그인 */
-    @GetMapping("kakao-login")
-    public RedirectView kakaoLogin(String code) throws Exception {
-        /*String userIdentification = null;*/
-        log.info("------------------이리로 들어오나?------------------------" + code);
-        String token = memberService.getKaKaoAccessToken(code, "login");
-        memberService.getKakaoInfo(token);
-
-        MemberDTO kakaoInfo = memberService.getKakaoInfo(token);
-        MemberDTO memberDTO = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
-        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 무슨 값이야 : " + memberDTO);
-
-        if(memberDTO == null || memberDTO.getMemberJoinType() != MemberJoinType.카카오){
-            return new RedirectView("/member/login?check=false");
-        }
-
-        /*session.setAttribute("user", userVO);*/
-        return new RedirectView("/main/");
-    }
 
     /* 이메일 형식으로 화면이동 */
     @GetMapping("find-password-email-send")
@@ -162,6 +117,7 @@ public class MemberController {
         mailDTO.setMessage("링크: http://localhost:10000/member/change-password-email?memberEmail=" + memberEmail + "&randomKey=" + randomKey);
         memberService.sendMail(mailDTO);
 
+//        find-password.html에서 받은 memberEmail과 위에서 생성한 randomKey를 url 파라미터로 담아주기
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         return new RedirectView("/member/find-password-email-send");
     }
