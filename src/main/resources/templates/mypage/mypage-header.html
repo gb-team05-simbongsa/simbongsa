@@ -9,17 +9,17 @@
     <link rel="shortcut icon" href="/image/pavicon.png">
 </head>
 <body>
-    <div class="mypage-header-wrap">
+    <div th:fragment="mypageHeader" class="mypage-header-wrap">
         <div class="mypage-header-container">
             <div class="mypage-header">
                 <div class="mypage-header-left">
                     <div class="my-rank">
-                        <img src="https://i.namu.wiki/i/67tjhRLuCX7MYeLY5p94GgXYHP7v1dMQ5M0QP8emeuw3IvlZlQNZBgeKz5qj8P_3ll2AF97RWC_isDEnrT4kgeBMW1GU39jR-Wn92gD-XSt5J1HbKiRxpRt8ZRaq8dvGHUMTt_clauEc9TOx_JyIaQ.webp" alt="">
+                        <img alt="">
                     </div>
                     <div class="mypage-info">
-                        <div class="info-name">정현진</div>
+                        <div class="info-name" th:text="${memberDTO.memberName}"></div>
                         <div class="info-rice">
-                            <p>내 공양미 : 300석</p>
+                            <p th:text="'내 공양미: '+${memberDTO.memberRice} + '석'">내 공양미 : 300석</p>
                         </div>
                     </div>
                 </div>
@@ -70,12 +70,12 @@
                     </span>
                     <span class="header-menu-element">
                         <div class="header-menu-div">
-                            <a href="/mypage/exchange-request" class="header-menu-a-select">공양미 환전요청</a>
+                            <a href="/mypage/exchange-request" class="header-menu-a">공양미 환전요청</a>
                         </div>
                     </span>
                     <span class="header-menu-element">
                         <div class="header-menu-div">
-                            <a href="/mypage/user-modify" class="header-menu-a-select">회원정보 수정</a>
+                            <a href="/mypage/user-modify" class="header-menu-a">회원정보 수정</a>
                         </div>
                     </span>
                 </div>

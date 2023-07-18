@@ -25,11 +25,11 @@
             <div class="join-wrap">
                 <div class="join-inner-wrap">
                     <h1 class="join-title">이메일로 가입하기</h1>
-
+                    <!-- memberDTO를 Flash 속성으로 전달받아서(즉 오어스 로그인이면) member가 null이 아닐경우에는 joinType을 member에 있는 memberJoinType으로 set해주기-->
+                    <!-- memberDTO를 Flash 속성으로 전달받지못해서 member가 null일 경우에는 joinType을 심청이(일반)으로 set해주기-->
                     <form th:action="@{/member/join}" method="post" name="joinForm">
                         <input th:if="${member != null && member.memberJoinType != null}" type="hidden" name="memberJoinType" th:value="${member.memberJoinType}">
                         <input th:unless="${member != null && member.memberJoinType != null}" type="hidden" name="memberJoinType" th:value="심청이">
-                        <!--<input type="hidden" name="memberJoinType" th:if="${kakaoInfo} != null" value="카카오">-->
                         <div class="input-div">
                             <div class="input-title">이름</div>
                             <div class="input-include-div">
@@ -43,6 +43,7 @@
                             <div class="input-title">이메일 주소</div>
                             <div class="input-include-div">
                                 <span class="input-include-span" style="padding: 0px 0px 0px 12px;">
+                                    <!-- memberDTO를 Flash 속성으로 전달받아서(즉 오어스 로그인이면) member가 null이 아닐경우에는 memberEmail의 value를 member에 있는 memberEmail로 해주기-->
                                     <input th:if="${member == null}"  type="text" name="memberEmail" class="input-write input-email" id="email-input" placeholder="이메일 주소를 입력해주세요">
                                     <input th:unless="${member == null}" type="text" name="memberEmail" class="input-write input-email" placeholder="이메일 주소를 입력해주세요" id="email-value" th:value="${member.memberEmail}" readonly>
                                     <button class="email-check" type="button" onclick="">중복확인</button>
@@ -212,9 +213,6 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script th:inline="javascript">
-    let kakaoinfo = [[${kakaoInfo}]];
-</script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/join-login/email.join.js"></script>
 </html>
