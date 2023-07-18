@@ -1,24 +1,18 @@
 package com.app.simbongsa.service.support;
 
 import com.app.simbongsa.domain.*;
-import com.app.simbongsa.entity.file.File;
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
-import com.app.simbongsa.entity.file.VolunteerWorkFile;
 import com.app.simbongsa.entity.member.Member;
 import com.app.simbongsa.entity.support.Support;
 import com.app.simbongsa.entity.support.SupportRequest;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
-import com.app.simbongsa.summernote.SupportRequestFileDTO;
-import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public interface SupportRequestService {
 
@@ -35,10 +29,8 @@ public interface SupportRequestService {
     public void updateWaitToAccessOrDenied(List<Long> ids, RequestType requestType);
 
 //    후원 목록 전체 조회(후원 목록 페이지)
-    public Page<SupportRequestDTO> getSupportRequestAllWithPaging(Integer page, String keyword);
+    public Page<SupportRequestDTO> getSupportRequestAllWithPaging_QueryDSL(Integer page, String keyword);
 
-//    후원 상세페이지
-//    public SupportRequestDTO getByIdWithSupportRequestInfo_QueryDsl(Long id);
 
     /* 내 후원요청목록 페이징처리해서 불러오기 */
     Page<SupportRequestDTO> getMySupportRequest(Integer page, MemberDTO memberDTO);
@@ -49,7 +41,9 @@ public interface SupportRequestService {
 //    후원 요청 작성
   public void saveSupportRequest(SupportRequestDTO supportRequestDTO);
 
+//  후원 요청 페이지 - 후원요청 사항 등록
   public void register(SupportRequestDTO supportRequestDTO);
+
   public SupportRequest getCurrentSequence();
 
     default SupportRequestDTO toSupportRequestDTO(SupportRequest supportRequest) {

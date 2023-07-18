@@ -145,36 +145,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/main/header.js"></script>
-<!-- 웹에디터 API -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script>
-  $('#summernote').summernote({
-      placeholder: '내용을 입력하세요',
-      tabsize: 2,
-      height: 300,
-      width: '100%',
-      toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-      ],
-
-  });
-</script>
-<script th:inline="javascript">
-    // let fileDTOS = null;
-    let supportRequestDTO =[[${supportRequestDTO}]];
-    // console.log(supportRequestDTO.fileDTOs);
-    // console.log(supportRequestDTO +"1 . ==================");
-    // if(supportRequestDTO == null || supportRequestDTO == undefined){
-    // }else {
-    //     fileDTOS = supportRequestDTO.fileDTOs;
-    // }
-    // console.log(fileDTOS + "2. =====================");
-</script>
 <script src="/js/support/supportRequest-write.js"></script>
 <script src="/js/customerCenter/inquiry-write.js"></script>
 </html>

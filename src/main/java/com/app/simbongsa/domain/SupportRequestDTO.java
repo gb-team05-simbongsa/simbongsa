@@ -2,7 +2,6 @@ package com.app.simbongsa.domain;
 
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.support.Support;
-import com.app.simbongsa.summernote.SupportRequestFileDTO;
 import com.app.simbongsa.type.RequestType;
 import lombok.Builder;
 import lombok.Data;

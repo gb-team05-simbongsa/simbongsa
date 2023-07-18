@@ -5,13 +5,10 @@ import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.SupportRequestDTO;
 import com.app.simbongsa.entity.file.SupportRequestFile;
 import com.app.simbongsa.entity.support.SupportRequest;
-import com.app.simbongsa.provider.UserDetail;
-import com.app.simbongsa.repository.member.MemberRepository;
+import com.app.simbongsa.repository.support.SupportRequestFileRepository;
 import com.app.simbongsa.repository.support.SupportRequestRepository;
 import com.app.simbongsa.search.admin.AdminSupportRequestSearch;
-import com.app.simbongsa.summernote.SupportRequestFileRepository;
 import com.app.simbongsa.type.FileRepresentationalType;
-import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +30,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SupportRequestServiceImpl implements SupportRequestService {
     private final SupportRequestRepository supportRequestRepository;
-    private final MemberRepository memberRepository;
     private final SupportRequestFileRepository supportRequestFileRepository;
 
     @Override
@@ -60,8 +56,8 @@ public class SupportRequestServiceImpl implements SupportRequestService {
     }
 
     @Override
-    public Page<SupportRequestDTO> getSupportRequestAllWithPaging(Integer page, String keyword) {
-        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch(keyword, PageRequest.of(page, 5));
+    public Page<SupportRequestDTO> getSupportRequestAllWithPaging_QueryDSL(Integer page, String keyword) {
+        Page<SupportRequest> supportRequests = supportRequestRepository.findAllWithPagingSearch_QueryDSL(keyword, PageRequest.of(page, 5));
         List<SupportRequestDTO> noticeDTOS = supportRequests.getContent().stream().map(this::toSupportRequestDTO).collect(Collectors.toList());
         return new PageImpl<>(noticeDTOS, supportRequests.getPageable(), supportRequests.getTotalElements());
     }

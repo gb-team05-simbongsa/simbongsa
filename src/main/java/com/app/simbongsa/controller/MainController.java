@@ -30,19 +30,11 @@ import java.util.stream.Stream;
 public class MainController {
     private final VolunteerWorkService volunteerWorkService;
     private final MemberService memberService;
-    private final FundingService fundingService;
     private final FreeBoardService freeBoardService;
     private final HttpSession session;
 
     @GetMapping("")
     public String main(Model model, @AuthenticationPrincipal UserDetail userDetail) {
-/*        if(userDetail != null) {
-            session.invalidate();
-            session.setAttribute("member", userDetail);
-        }
-
-        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");*/
-
         Member member = null;
 
         if(session.getAttribute("member")==null){
@@ -58,27 +50,19 @@ public class MainController {
                 log.info("member: " + memberDTO.toString());
             }
         }
-        /*log.info("member,session: " + session.getAttribute("member").toString());*/
 
         List<VolunteerWorkDTO> volunteerList = volunteerWorkService.getVolunteerList();
         List<MemberDTO> memberRankList = memberService.getMemberRankingList();
-        List<FundingDTO> fundingListOrderByPopularList = fundingService.getAllPopularFundingList();
         List<FreeBoardDTO> freeBoardList = freeBoardService.getAllWithPopularFreeBoard();
 
 
 
         // 인기 펀딩
-        List<FileDTO> fileDTO = fundingService.getAllPopularFundingList()
-                .stream()
-                .flatMap(funding -> funding.getFileDTOs().stream())
-                .collect(Collectors.toList());
-
-        // 봉사 파일
-//        List<FileDTO> volunteerFileDTO = volunteerWorkService.getVolunteerList()
+//        List<FileDTO> fileDTO = fundingService.getAllPopularFundingList()
 //                .stream()
-//                .flatMap(VolunteerWorkDTO::getFileDTO)
+//                .flatMap(funding -> funding.getFileDTOs().stream())
 //                .collect(Collectors.toList());
-//        volunteerFileDTO.stream().map(FileDTO::toString).forEach(log::info);
+
 
         // 게시판 파일
         List<FileDTO> freeBoardFileDTO = Optional.ofNullable(freeBoardService.getAllWithFile())
@@ -88,17 +72,14 @@ public class MainController {
                 .collect(Collectors.toList());
         freeBoardFileDTO.stream().map(FileDTO::toString).forEach(log::info);
 
-        log.info(fundingListOrderByPopularList.toString() + " ======================");
+//        model.addAttribute("fileDTO", fileDTO);
+//        model.addAttribute("fundingListOrderByPopularList",fundingListOrderByPopularList);
 
-        model.addAttribute("fileDTO", fileDTO);
-//        model.addAttribute("volunteerFileDTO", volunteerFileDTO);
         model.addAttribute("volunteerList", volunteerList);
         model.addAttribute("memberRankList", memberRankList);
-
-        model.addAttribute("fundingListOrderByPopularList",fundingListOrderByPopularList);
-
         model.addAttribute("freeBoardList", freeBoardList);
         model.addAttribute("freeBoardFileDTO", freeBoardFileDTO);
+
         return "main/main";
 
     }
