@@ -46,10 +46,6 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
         Member member = saveOrUpdate(attributes);
         log.info(member + " service OAuth 구분");
 
-//        OAuth를 통해 전달받은 정보를 DTO로 변환하여 session에 저장
-//        session에 객체를 저장하기 위해 직렬화 사용(다시 가져올 때에는 역직렬화를 통해 원본 객체 생성)
-//        회원 번호를 사용하는 것 보다 OAuth 인증에 작성된 이메일을 사용하는 것이 올바르다.
-
         log.info(" --------------------------- 데이터 넘기기 전 -------------------------------------------- ");
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())),
@@ -60,12 +56,14 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
     private Member saveOrUpdate(OAuthAttributes attributes) {
         log.info(" ------------------------------- 데이터 저장 분기처리 ----------------------------------- ");
 
+//        데이터베이스에서 해당 이메일로 등록된 회원 찾기
         Optional<Member> foundMemberOptional = memberRepository.findByMemberEmail(attributes.getEmail());
         Member foundMember;
 
         if (foundMemberOptional.isPresent()) {
 //            이미 가입된 회원이 있는 경우, 회원 정보 업데이트
             foundMember = foundMemberOptional.get();
+//            가입된 회원이면 해당 회원의 정보를 가져와서 MemberDTO 객체를 생성하고 세션에 저장. 이때, MemberDTO는 직렬화되어 세션에 저장
             session.setAttribute("member",
                     MemberDTO.builder().id(foundMember.getId())
                             .memberPassword(foundMember.getMemberPassword())
@@ -86,11 +84,19 @@ public class MemberOAuthService implements OAuth2UserService<OAuth2UserRequest, 
             /*memberRepository.save(foundMember);*/
 
         } else {
-            // 첫 오어스 로그인 시 진입
-            // 필요한 정보를 폼 페이지에 미리 채워 넣기 위해 해당 정보를 세션에 저장
+//          첫 오어스 로그인 시 진입
+//          OAuth를 통해 전달받은 정보를 DTO로 변환하여 session에 저장
+//          session에 객체를 저장하기 위해 직렬화 사용(다시 가져올 때에는 역직렬화를 통해 원본 객체 생성)
+//          회원 번호를 사용하는 것 보다 OAuth 인증에 작성된 이메일을 사용하는 것이 올바르다.
+
+//            필요한 정보를 폼 페이지에 미리 채워 넣기 위해 해당 정보를 세션에 저장
+
+//            이전에 생성된 Member 객체가 존재한다면 해당 객체를 업데이트하고, 존재하지 않는다면 새로운 Member 객체를 생성
             foundMember = foundMemberOptional.map(member -> member.update(attributes.getEmail(), attributes.getMemberJoinType()))
                     .orElse(attributes.toEntity());
+//          세션에 저장할 MemberDTO 객체를 생성하고 OAuth를 통해 전달받은 정보를 DTO로 변환하여 session에 저장
             session.setAttribute("member", MemberDTO.builder().memberEmail(attributes.getEmail()).memberJoinType(attributes.getMemberJoinType()).build());
+//          객체를 세션에서 가져올 때 역직렬화를 수행하여 원본 객체를 생성 이를 위해 session.getAttribute("member")를 사용하여 세션에서 객체를 가져옴
             MemberDTO sessionMemberDTO = (MemberDTO) session.getAttribute("member");
             log.info(sessionMemberDTO + "첫 오어스 로그인 시 진입");
             log.info(foundMember + "첫 오어스 로그인 시 진입 foundMember");
