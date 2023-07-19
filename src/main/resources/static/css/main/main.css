@@ -877,12 +877,12 @@ b, strong {
 
 .main-content-slider-banner-wrapper .swiper-slide {
     flex-shrink: 0;
-    width: 18%;
+    width: 328px;
     height: 100%;
     position: relative;
     transition-property: transform;
     box-sizing: border-box;
-    margin-right: 17px;
+    margin-right: 24px;
 }
 
 .arrow-right1-icon{
@@ -1048,8 +1048,8 @@ b, strong {
     }
 
     .swiper-slide-active{
-        width: 17.8% !important;
-        margin-right: 13px !important;
+        width: 144.8px !important;
+        margin-right: 12px !important;
         flex-flow: row;
         overflow: auto hidden;
     }
@@ -1379,8 +1379,7 @@ b, strong {
     }
 
     .main-content-slider-banner-wrapper .swiper-slide {
-        width: 18%;
-        margin-right: 24px;
+        width: 336px;
     }
 
     .main-content-slider-nav-button-left {

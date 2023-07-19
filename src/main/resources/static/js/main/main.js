@@ -46,7 +46,7 @@ memberRankList.forEach((memberRankList,i) => {
 freeBoardList.forEach(freeBoard => {
     let text;
     text = `
-        <div class="swiper-slide swiper-slide-active">
+        <div class="swiper-slide swiper-slide-active" style="width:220.8px; margin-right: 14px;">
             <div></div>
             <div class="volunteer-percentage-wrapper">
                 <div></div>
