@@ -1,6 +1,5 @@
 package com.app.simbongsa.repository.inquiry;
 
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.entity.inquiry.Inquiry;
 import com.app.simbongsa.type.InquiryType;
@@ -10,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -90,6 +88,7 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
                 .execute();
     }
 
+//    문의 상세보기
     @Override
     public Inquiry findInquiryAndAnswerById(Long id) {
         return query.select(inquiry)
@@ -100,6 +99,7 @@ public class InquiryQueryDslImpl implements InquiryQueryDsl {
                 .fetchOne();
     }
 
+/* 문의 삭제하기 */
     @Override
     public void deleteByInquiryId(Long id) {
         query.delete(inquiry)

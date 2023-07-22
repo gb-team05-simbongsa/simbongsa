@@ -2,7 +2,6 @@ package com.app.simbongsa.service.inquiry;
 
 import com.app.simbongsa.domain.InquiryDTO;
 import com.app.simbongsa.entity.inquiry.Inquiry;
-import com.app.simbongsa.provider.UserDetail;
 import com.app.simbongsa.repository.inquiry.InquiryRepository;
 import com.app.simbongsa.search.admin.AdminBoardSearch;
 import com.app.simbongsa.type.InquiryType;

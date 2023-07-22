@@ -8,9 +8,9 @@ const $checks = $('.agree');
 let emailCheck = false;
 
 $('.submit-button').on('click', function(event) {
-    if(kakaoinfo != null) {
+    /*if(kakaoinfo != null) {
         emailCheck = true;
-    }
+    }*/
 
     // 비어있는 input 태그가 있을 시 에러 메시지 출력
     $inputs.each((i, e) => {

@@ -326,6 +326,7 @@ b, strong {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .main-first-list-wrapper .list-wrapper{
@@ -333,7 +334,7 @@ b, strong {
 }
 
 .main-first-list-layout .list-wrapper{
-    width: 25%;
+    width: 22%;
     padding: 0px 7px;
 }
 
@@ -585,7 +586,7 @@ b, strong {
     flex-flow: column wrap;
     width: 100%;
     max-height: 432px;
-    overflow: auto hidden;
+    /*overflow: auto hidden;*/
 }
 
 .rank-layout-top{
@@ -673,10 +674,10 @@ b, strong {
 .main-popular-list-layout .list-wrapper {
     display: flex;
     min-width: 272px;
-    width: 80%;
+    width: 44%;
     height: 88px;
     padding: 0px 0px 0px 16px;
-    margin: 10px 0px 0px !important;
+    margin: 10px -46px 0px !important;
 }
 
 .volunteer-percentage-wrapper .funding-status{
@@ -1032,12 +1033,13 @@ b, strong {
         padding: 0px;
         list-style: none;
         display: flex;
-        flex-wrap: nowrap;
+        /*flex-wrap: nowrap;*/
     }
 
     .main-first-list-layout{
-        flex-flow: row;
-        overflow: auto hidden;  
+        /*flex-flow: row;*/
+        /*overflow: auto hidden;  */
+        justify-content: center;
     }
 
     .swiper-wrapper {
@@ -1049,7 +1051,10 @@ b, strong {
         width: 144.8px !important;
         margin-right: 12px !important;
         flex-flow: row;
-        overflow: auto hidden;  
+        overflow: auto hidden;
+    }
+    .volunteer-percentage-wrapper dl dt {
+        font-size: 11px;
     }
 }
 
@@ -1069,6 +1074,7 @@ b, strong {
 @media (min-width: 768px) {
     .main-banner-container{
         display: flex;
+        zoom: 1.2;
         margin: 0px auto 40px;    
     }
 
@@ -1124,7 +1130,7 @@ b, strong {
     }
 
     .main-popular-list-layout .list-wrapper {
-        width: 76.92%;
+        width: 10%;
         padding: 0px 12px;
     }
 
@@ -1230,11 +1236,12 @@ b, strong {
         max-width: 314px;
         width: calc((100% - 704px) - 67px);
         margin-bottom: 0px;
-        padding: 0px;
+        /*padding: 0px;*/
     }
 
     .main-banner-container{
         margin-bottom: 45px;
+        zoom: 1;
     }
 
     .main-first-wrapper{
@@ -1392,19 +1399,13 @@ b, strong {
     }
 
     .main-first-section{
-        width: 766px;
+        /*width: 766px;*/
         margin: 0px 93px 0px 0px;
     }
 
     /* .swiper-slider{
         width: 766px;
     } */
-
-    .main-popular-section{
-        max-width: 314px;
-        width: calc((100% - 766px) - 78px);
-        padding: 0px;
-    }
 
     .main-popular-list-layout .image-wrapper{
         width: 108px;
@@ -1435,10 +1436,10 @@ b, strong {
 }
 @media (max-width: 1080px) {
     .main-top-section{
-        display: none;
-        max-width: 314px;
-        width: calc((100% - 766px) - 78px);
+        display: block;
+        max-width: 1080px;
+        /*width: calc((100% - 766px) - 78px);*/
         padding: 0px;
     }
-}
 
+}

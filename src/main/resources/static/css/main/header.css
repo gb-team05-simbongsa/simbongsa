@@ -487,6 +487,7 @@ svg:not(:root) {
     align-items: center;
     overflow-x: auto;
     flex-wrap: nowrap;
+    min-width: 517px;
     user-select: none;
 }
 
@@ -804,5 +805,10 @@ svg:not(:root) {
         margin: 0px;
         padding: 16px;
         cursor: pointer;
+    }
+}
+@media (max-width: 516px) {
+    .category-wrapper{
+        font-size: 11px;
     }
 }

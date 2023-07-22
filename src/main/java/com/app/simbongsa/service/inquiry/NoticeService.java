@@ -25,18 +25,6 @@ public interface NoticeService {
 //    공지사항 삭제
     public void deleteNotice(List<Long> ids);
 
-
-//    default NoticeDTO toNoticeDTO(Notice notice, Long noticeCount) {
-//        return NoticeDTO.builder()
-//                .id(notice.getId())
-//                .noticeTitle(notice.getNoticeTitle())
-//                .noticeContent(notice.getNoticeContent())
-//                .createdDate(notice.getCreatedDate())
-//                .updatedDate(notice.getUpdatedDate())
-//                .noticeCount(noticeCount)
-//                .build();
-//    }
-
     default NoticeDTO toNoticeDTO(Notice notice) {
         return NoticeDTO.builder()
                 .id(notice.getId())
@@ -59,17 +47,4 @@ public interface NoticeService {
         notice.setNoticeTitle(noticeTitle);
         notice.setNoticeContent(noticeContent);
     }
-
-//    default PageDTO toPageDTO(Page<Notice> notices) {
-//        return PageDTO.builder()
-//                .totalPage(notices.getTotalPages())
-//                .totalElements(notices.getTotalElements())
-//                .currentNumber(notices.getNumber())
-//                .hasNext(notices.hasNext())
-//                .hasPrevious(notices.hasPrevious())
-//                .startPage((int)Math.ceil((notices.getNumber() + 1) / 5.0) * 5 - 5 + 1)
-//                .endPage((int)Math.ceil((notices.getNumber() + 1) / 5.0) * 5)
-//                .realEndPage((int) (Math.ceil(notices.getTotalPages() / 5)))
-//                .build();
-//    }
 }
