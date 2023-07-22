@@ -1,5 +1,4 @@
 HELP.md
-README.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -75,3 +74,5 @@ Temporary Items
 *.icloud
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
+
+README.md
