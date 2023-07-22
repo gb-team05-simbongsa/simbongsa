@@ -1,8 +1,6 @@
 package com.app.simbongsa.controller;
 
 import com.app.simbongsa.domain.*;
-import com.app.simbongsa.entity.inquiry.Notice;
-import com.app.simbongsa.search.admin.AdminNoticeSearch;
 import com.app.simbongsa.domain.MemberDTO;
 import com.app.simbongsa.domain.NoticeDTO;
 import com.app.simbongsa.service.board.FreeBoardService;
@@ -17,22 +15,12 @@ import com.app.simbongsa.service.support.SupportRequestService;
 import com.app.simbongsa.service.support.SupportService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkActivityService;
 import com.app.simbongsa.service.volunteer.VolunteerWorkService;
-import com.app.simbongsa.type.FileRepresentationalType;
-import com.app.simbongsa.type.MemberStatus;
 import com.app.simbongsa.type.RequestType;
-import com.app.simbongsa.type.RicePaymentType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityManager;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -211,7 +199,6 @@ public class AdminRestController {
 
     @PostMapping("/admins/volunteer-works-update")
     public void volunteerWorkUpdate(@RequestBody VolunteerWorkDTO volunteerWorkDTO) {
-        log.info(volunteerWorkDTO.toString());
         volunteerWorkService.updateVolunteerWork(volunteerWorkDTO);
     }
 
